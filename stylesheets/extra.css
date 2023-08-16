@@ -16,3 +16,10 @@ div.has-actions details {
   border-left-color: rgba(0,0,0,0);
   border-right-color: rgba(0,0,0,0);
 }
+
+@media screen and (min-width: 60em) {
+    .md-header__source {
+        max-width: 12.2rem;
+        width:12.2rem
+    }
+}

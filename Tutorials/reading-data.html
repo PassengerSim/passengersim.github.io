@@ -2163,12 +2163,12 @@ import sqlite3 as sq</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">db_filename</span> <span class="o">=</span> <span class="s2">"/tmp/airsim/airsim-output.sqlite"</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">db_filename</span> <span class="o">=</span> <span class="s2">"/tmp/airsim/passengersim-output.sqlite"</span>
 <span class="k">with</span> <span class="n">sq</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">db_filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
     <span class="n">master</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="s2">"SELECT * FROM sqlite_master WHERE type='table'"</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
 <span class="n">master</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-2">db_filename = "/tmp/airsim/airsim-output.sqlite"
+<div class="clipboard-copy-txt" id="cell-2">db_filename = "/tmp/airsim/passengersim-output.sqlite"
 with sq.connect(db_filename) as conn:
     master = pd.read_sql_query("SELECT * FROM sqlite_master WHERE type='table'", conn)
 master</div>
@@ -2295,11 +2295,11 @@ master</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="k">with</span> <span class="n">sq</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"/tmp/airsim/airsim-output.sqlite"</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="k">with</span> <span class="n">sq</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"/tmp/airsim/passengersim-output.sqlite"</span><span class="p">)</span> <span class="k">as</span> <span class="n">conn</span><span class="p">:</span>
     <span class="n">fare</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="s2">"SELECT * FROM fare"</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
 <span class="n">fare</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-3">with sq.connect("/tmp/airsim/airsim-output.sqlite") as conn:
+<div class="clipboard-copy-txt" id="cell-3">with sq.connect("/tmp/airsim/passengersim-output.sqlite") as conn:
     fare = pd.read_sql_query("SELECT * FROM fare", conn)
 fare</div>
 </div>
