@@ -2121,9 +2121,9 @@ Licensed under the Apache License, Version 2.0.
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">passengersim</span> <span class="k">as</span> <span class="nn">sw</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">passengersim</span> <span class="k">as</span> <span class="nn">pax</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-1">import passengersim as sw</div>
+<div class="clipboard-copy-txt" id="cell-1">import passengersim as pax</div>
 </div>
 </div>
 </div>
@@ -2148,9 +2148,9 @@ Licensed under the Apache License, Version 2.0.
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">input_file</span> <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">demo_network</span><span class="p">(</span><span class="s2">"3mkt"</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">input_file</span> <span class="o">=</span> <span class="n">pax</span><span class="o">.</span><span class="n">demo_network</span><span class="p">(</span><span class="s2">"3mkt"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-2">input_file = sw.demo_network("3mkt")</div>
+<div class="clipboard-copy-txt" id="cell-2">input_file = pax.demo_network("3mkt")</div>
 </div>
 </div>
 </div>
@@ -2189,7 +2189,7 @@ Licensed under the Apache License, Version 2.0.
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>PosixPath('/Users/jpn/Git/passengersim-core/src/passengersim/passengersim/networks/3mkt.yaml')</pre>
+<pre>PosixPath('/Users/jpn/Git/passengersim-core/environments/.env/HANGAR/lib/python3.11/site-packages/passengersim/networks/3mkt.yaml')</pre>
 </div>
 </div>
 </div>
@@ -2214,9 +2214,9 @@ Licensed under the Apache License, Version 2.0.
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">Simulation</span><span class="o">.</span><span class="n">from_yaml</span><span class="p">(</span><span class="n">input_file</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">pax</span><span class="o">.</span><span class="n">Simulation</span><span class="o">.</span><span class="n">from_yaml</span><span class="p">(</span><span class="n">input_file</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-4">sim = sw.Simulation.from_yaml(input_file)</div>
+<div class="clipboard-copy-txt" id="cell-4">sim = pax.Simulation.from_yaml(input_file)</div>
 </div>
 </div>
 </div>
@@ -2228,12 +2228,12 @@ Licensed under the Apache License, Version 2.0.
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[2023-08-15 11:52:59,160] passengersim.database.database.INFO: connecting to sqlite database: airsim-output.sqlite
-Airline = AL1, control = leg
+<pre>Airline = AL1, control = leg
 Airline = AL2, control = leg
 Airline = AL3, control = leg
+[2023-08-16 08:59:38,915] passengersim.database.database.INFO: connecting to sqlite database: airsim-output.sqlite
 Airline = AL4, control = leg
-[2023-08-15 11:52:59,161] passengersim.database.database.INFO: initializing sqlite tables
+[2023-08-16 08:59:38,916] passengersim.database.database.INFO: initializing sqlite tables
 </pre>
 </div>
 </div>
@@ -2273,10 +2273,10 @@ Airline = AL4, control = leg
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[2023-08-15 11:52:59,164] passengersim.database.database.INFO: deleting existing scenario 'Three Market Test Network' from database
-[2023-08-15 11:52:59,165] passengersim.INFO: building connections
-[2023-08-15 11:52:59,165] passengersim.INFO: Connections done, num_paths = 18
-[2023-08-15 11:52:59,990] passengersim.INFO: Th' th' that's all folks !!!    (Elapsed time = 0.83)
+<pre>[2023-08-16 08:59:38,919] passengersim.database.database.INFO: deleting existing scenario 'Three Market Test Network' from database
+[2023-08-16 08:59:38,920] passengersim.INFO: building connections
+[2023-08-16 08:59:38,920] passengersim.INFO: Connections done, num_paths = 18
+[2023-08-16 08:59:39,774] passengersim.INFO: Th' th' that's all folks !!!    (Elapsed time = 0.85)
 </pre>
 </div>
 </div>
@@ -3030,23 +3030,23 @@ Airline = AL4, control = leg
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 <style>
-  #altair-viz-87705dce3f024f35a2c91d87e78a935b.vega-embed {
+  #altair-viz-1ad6219acb7e4d38b3f48c6edd60a3e2.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-87705dce3f024f35a2c91d87e78a935b.vega-embed details,
-  #altair-viz-87705dce3f024f35a2c91d87e78a935b.vega-embed details summary {
+  #altair-viz-1ad6219acb7e4d38b3f48c6edd60a3e2.vega-embed details,
+  #altair-viz-1ad6219acb7e4d38b3f48c6edd60a3e2.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-87705dce3f024f35a2c91d87e78a935b"></div>
+<div id="altair-viz-1ad6219acb7e4d38b3f48c6edd60a3e2"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-87705dce3f024f35a2c91d87e78a935b") {
-      outputDiv = document.getElementById("altair-viz-87705dce3f024f35a2c91d87e78a935b");
+    if (outputDiv.id !== "altair-viz-1ad6219acb7e4d38b3f48c6edd60a3e2") {
+      outputDiv = document.getElementById("altair-viz-1ad6219acb7e4d38b3f48c6edd60a3e2");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
