@@ -174,7 +174,7 @@
 
   <li class="md-tabs__item">
     <a href="../index.html" class="md-tabs__link">
-      PassengerSim
+      Home
     </a>
   </li>
 
@@ -282,7 +282,7 @@
   
     <li class="md-nav__item">
       <a href="../index.html" class="md-nav__link">
-        PassengerSim
+        Home
       </a>
     </li>
   
@@ -418,6 +418,8 @@
         
           
         
+          
+        
       
       
         
@@ -487,6 +489,90 @@
       <a href="demo-3mkt-db.nbconvert.html" class="md-nav__link">
         Three Market Database Demo
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+          3MKT
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          3MKT
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="verification/3mkt-01.nbconvert.html" class="md-nav__link">
+        Simple FCFS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="verification/3mkt-02.nbconvert.html" class="md-nav__link">
+        FCFS with Product Restrictions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="verification/3mkt-03.nbconvert.html" class="md-nav__link">
+        FCFS with AP and Product Restrictions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -2148,9 +2234,9 @@ Licensed under the Apache License, Version 2.0.
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">input_file</span> <span class="o">=</span> <span class="n">pax</span><span class="o">.</span><span class="n">demo_network</span><span class="p">(</span><span class="s2">"3mkt"</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">input_file</span> <span class="o">=</span> <span class="n">pax</span><span class="o">.</span><span class="n">demo_network</span><span class="p">(</span><span class="s2">"3MKT/base"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-2">input_file = pax.demo_network("3mkt")</div>
+<div class="clipboard-copy-txt" id="cell-2">input_file = pax.demo_network("3MKT/base")</div>
 </div>
 </div>
 </div>
@@ -2189,7 +2275,7 @@ Licensed under the Apache License, Version 2.0.
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>PosixPath('/Users/jpn/Git/passengersim-core/environments/.env/HANGAR/lib/python3.11/site-packages/passengersim/networks/3mkt.yaml')</pre>
+<pre>PosixPath('/Users/jpn/Git/pxsim/passengersim-public/passengersim/networks/3MKT/base.yaml')</pre>
 </div>
 </div>
 </div>
@@ -2228,12 +2314,10 @@ Licensed under the Apache License, Version 2.0.
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Airline = AL1, control = leg
-Airline = AL2, control = leg
-Airline = AL3, control = leg
-[2023-08-16 08:59:38,915] passengersim.database.database.INFO: connecting to sqlite database: airsim-output.sqlite
-Airline = AL4, control = leg
-[2023-08-16 08:59:38,916] passengersim.database.database.INFO: initializing sqlite tables
+<pre>[2023-08-27 19:06:09,261] passengersim.config.INFO: loaded config from /Users/jpn/Git/pxsim/passengersim-public/passengersim/networks/3MKT/base.yaml
+extra simulation setting: debug_orders =  0.0
+[2023-08-27 19:06:09,276] passengersim.database.INFO: connecting to sqlite database: :memory:
+[2023-08-27 19:06:09,276] passengersim.database.INFO: initializing sqlite tables
 </pre>
 </div>
 </div>
@@ -2273,10 +2357,7 @@ Airline = AL4, control = leg
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[2023-08-16 08:59:38,919] passengersim.database.database.INFO: deleting existing scenario 'Three Market Test Network' from database
-[2023-08-16 08:59:38,920] passengersim.INFO: building connections
-[2023-08-16 08:59:38,920] passengersim.INFO: Connections done, num_paths = 18
-[2023-08-16 08:59:39,774] passengersim.INFO: Th' th' that's all folks !!!    (Elapsed time = 0.85)
+<pre>[2023-08-27 19:06:18,463] passengersim.INFO: Th' th' that's all folks !!!    (Elapsed time = 9.18)
 </pre>
 </div>
 </div>
@@ -2284,7 +2365,7 @@ Airline = AL4, control = leg
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d9de1556-0106-4b58-b536-584e32f275c1">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3ad5993e">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2302,9 +2383,9 @@ Airline = AL4, control = leg
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">demands</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">fig_carrier_revenues</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-6">summary.demands</div>
+<div class="clipboard-copy-txt" id="cell-6">summary.fig_carrier_revenues()</div>
 </div>
 </div>
 </div>
@@ -2316,737 +2397,24 @@ Airline = AL4, control = leg
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>orig</th>
-<th>dest</th>
-<th>segment</th>
-<th>sold</th>
-<th>revenue</th>
-<th>avg_fare</th>
-<th>gt_demand</th>
-<th>gt_sold</th>
-<th>gt_revenue</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>BOS</td>
-<td>SFO</td>
-<td>business</td>
-<td>55</td>
-<td>20572.38</td>
-<td>374.043273</td>
-<td>14149</td>
-<td>11043</td>
-<td>4.067501e+06</td>
-</tr>
-<tr>
-<th>1</th>
-<td>BOS</td>
-<td>SFO</td>
-<td>leisure</td>
-<td>6</td>
-<td>1867.28</td>
-<td>311.213333</td>
-<td>17761</td>
-<td>1055</td>
-<td>3.290952e+05</td>
-</tr>
-<tr>
-<th>2</th>
-<td>BOS</td>
-<td>ORD</td>
-<td>business</td>
-<td>102</td>
-<td>47301.33</td>
-<td>463.738529</td>
-<td>23420</td>
-<td>23420</td>
-<td>1.083009e+07</td>
-</tr>
-<tr>
-<th>3</th>
-<td>BOS</td>
-<td>ORD</td>
-<td>leisure</td>
-<td>18</td>
-<td>5881.28</td>
-<td>326.737778</td>
-<td>29165</td>
-<td>6931</td>
-<td>2.274515e+06</td>
-</tr>
-<tr>
-<th>4</th>
-<td>BOS</td>
-<td>DFW</td>
-<td>business</td>
-<td>122</td>
-<td>70669.76</td>
-<td>579.260328</td>
-<td>19810</td>
-<td>19810</td>
-<td>1.166860e+07</td>
-</tr>
-<tr>
-<th>5</th>
-<td>BOS</td>
-<td>DFW</td>
-<td>leisure</td>
-<td>124</td>
-<td>42519.66</td>
-<td>342.900484</td>
-<td>27984</td>
-<td>13646</td>
-<td>4.693767e+06</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=33281077-7399-4d60-ac56-43e9a979a573">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy for="cell-7">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">legs</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-7">summary.legs</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>carrier</th>
-<th>flt_no</th>
-<th>orig</th>
-<th>dest</th>
-<th>avg_sold</th>
-<th>avg_rev</th>
-<th>lf</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>AL1</td>
-<td>1</td>
-<td>BOS</td>
-<td>SFO</td>
-<td>29.465</td>
-<td>10680.11855</td>
-<td>29.465000</td>
-</tr>
-<tr>
-<th>1</th>
-<td>AL2</td>
-<td>2</td>
-<td>BOS</td>
-<td>SFO</td>
-<td>31.025</td>
-<td>11302.86455</td>
-<td>31.025000</td>
-</tr>
-<tr>
-<th>2</th>
-<td>AL1</td>
-<td>3</td>
-<td>BOS</td>
-<td>ORD</td>
-<td>50.095</td>
-<td>21580.50595</td>
-<td>50.095000</td>
-</tr>
-<tr>
-<th>3</th>
-<td>AL2</td>
-<td>4</td>
-<td>BOS</td>
-<td>ORD</td>
-<td>50.635</td>
-<td>21948.10560</td>
-<td>50.635000</td>
-</tr>
-<tr>
-<th>4</th>
-<td>AL3</td>
-<td>5</td>
-<td>BOS</td>
-<td>ORD</td>
-<td>51.025</td>
-<td>21994.42095</td>
-<td>42.520833</td>
-</tr>
-<tr>
-<th>5</th>
-<td>AL1</td>
-<td>6</td>
-<td>BOS</td>
-<td>DFW</td>
-<td>41.750</td>
-<td>20345.93430</td>
-<td>34.791667</td>
-</tr>
-<tr>
-<th>6</th>
-<td>AL1</td>
-<td>7</td>
-<td>BOS</td>
-<td>DFW</td>
-<td>42.445</td>
-<td>20839.31465</td>
-<td>35.370833</td>
-</tr>
-<tr>
-<th>7</th>
-<td>AL2</td>
-<td>8</td>
-<td>BOS</td>
-<td>DFW</td>
-<td>41.405</td>
-<td>20301.95650</td>
-<td>34.504167</td>
-</tr>
-<tr>
-<th>8</th>
-<td>AL4</td>
-<td>9</td>
-<td>BOS</td>
-<td>DFW</td>
-<td>41.680</td>
-<td>20324.63570</td>
-<td>34.733333</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ec57f9b8-28e4-4322-b5bf-10940188b0c5">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy for="cell-8">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">paths</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-8">summary.paths</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>orig</th>
-<th>dest</th>
-<th>carrier1</th>
-<th>flt_no1</th>
-<th>carrier2</th>
-<th>flt_no2</th>
-<th>avg_sold</th>
-<th>avg_rev</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>BOS</td>
-<td>SFO</td>
-<td>AL1</td>
-<td>1</td>
-<td>None</td>
-<td>None</td>
-<td>29.465</td>
-<td>10680.11855</td>
-</tr>
-<tr>
-<th>1</th>
-<td>BOS</td>
-<td>SFO</td>
-<td>AL2</td>
-<td>2</td>
-<td>None</td>
-<td>None</td>
-<td>31.025</td>
-<td>11302.86455</td>
-</tr>
-<tr>
-<th>2</th>
-<td>BOS</td>
-<td>ORD</td>
-<td>AL1</td>
-<td>3</td>
-<td>None</td>
-<td>None</td>
-<td>50.095</td>
-<td>21580.50595</td>
-</tr>
-<tr>
-<th>3</th>
-<td>BOS</td>
-<td>ORD</td>
-<td>AL2</td>
-<td>4</td>
-<td>None</td>
-<td>None</td>
-<td>50.635</td>
-<td>21948.10560</td>
-</tr>
-<tr>
-<th>4</th>
-<td>BOS</td>
-<td>ORD</td>
-<td>AL3</td>
-<td>5</td>
-<td>None</td>
-<td>None</td>
-<td>51.025</td>
-<td>21994.42095</td>
-</tr>
-<tr>
-<th>5</th>
-<td>BOS</td>
-<td>DFW</td>
-<td>AL1</td>
-<td>6</td>
-<td>None</td>
-<td>None</td>
-<td>41.750</td>
-<td>20345.93430</td>
-</tr>
-<tr>
-<th>6</th>
-<td>BOS</td>
-<td>DFW</td>
-<td>AL1</td>
-<td>7</td>
-<td>None</td>
-<td>None</td>
-<td>42.445</td>
-<td>20839.31465</td>
-</tr>
-<tr>
-<th>7</th>
-<td>BOS</td>
-<td>DFW</td>
-<td>AL2</td>
-<td>8</td>
-<td>None</td>
-<td>None</td>
-<td>41.405</td>
-<td>20301.95650</td>
-</tr>
-<tr>
-<th>8</th>
-<td>BOS</td>
-<td>DFW</td>
-<td>AL4</td>
-<td>9</td>
-<td>None</td>
-<td>None</td>
-<td>41.680</td>
-<td>20324.63570</td>
-</tr>
-<tr>
-<th>9</th>
-<td>BOS</td>
-<td>DFW</td>
-<td>AL1</td>
-<td>6</td>
-<td>None</td>
-<td>None</td>
-<td>41.750</td>
-<td>20345.93430</td>
-</tr>
-<tr>
-<th>10</th>
-<td>BOS</td>
-<td>DFW</td>
-<td>AL1</td>
-<td>7</td>
-<td>None</td>
-<td>None</td>
-<td>42.445</td>
-<td>20839.31465</td>
-</tr>
-<tr>
-<th>11</th>
-<td>BOS</td>
-<td>DFW</td>
-<td>AL2</td>
-<td>8</td>
-<td>None</td>
-<td>None</td>
-<td>41.405</td>
-<td>20301.95650</td>
-</tr>
-<tr>
-<th>12</th>
-<td>BOS</td>
-<td>DFW</td>
-<td>AL4</td>
-<td>9</td>
-<td>None</td>
-<td>None</td>
-<td>41.680</td>
-<td>20324.63570</td>
-</tr>
-<tr>
-<th>13</th>
-<td>BOS</td>
-<td>ORD</td>
-<td>AL1</td>
-<td>3</td>
-<td>None</td>
-<td>None</td>
-<td>50.095</td>
-<td>21580.50595</td>
-</tr>
-<tr>
-<th>14</th>
-<td>BOS</td>
-<td>ORD</td>
-<td>AL2</td>
-<td>4</td>
-<td>None</td>
-<td>None</td>
-<td>50.635</td>
-<td>21948.10560</td>
-</tr>
-<tr>
-<th>15</th>
-<td>BOS</td>
-<td>ORD</td>
-<td>AL3</td>
-<td>5</td>
-<td>None</td>
-<td>None</td>
-<td>51.025</td>
-<td>21994.42095</td>
-</tr>
-<tr>
-<th>16</th>
-<td>BOS</td>
-<td>SFO</td>
-<td>AL1</td>
-<td>1</td>
-<td>None</td>
-<td>None</td>
-<td>29.465</td>
-<td>10680.11855</td>
-</tr>
-<tr>
-<th>17</th>
-<td>BOS</td>
-<td>SFO</td>
-<td>AL2</td>
-<td>2</td>
-<td>None</td>
-<td>None</td>
-<td>31.025</td>
-<td>11302.86455</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5287d24a-8f42-4416-b928-d94385a75143">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy for="cell-9">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">airlines</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-9">summary.airlines</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>name</th>
-<th>avg_sold</th>
-<th>load_factor</th>
-<th>avg_rev</th>
-<th>asm</th>
-<th>rpm</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>AL1</td>
-<td>164</td>
-<td>36.457074</td>
-<td>73445.87345</td>
-<td>118440000.0</td>
-<td>43179759.0</td>
-</tr>
-<tr>
-<th>1</th>
-<td>AL2</td>
-<td>123</td>
-<td>37.369630</td>
-<td>53552.92665</td>
-<td>76560000.0</td>
-<td>28610189.0</td>
-</tr>
-<tr>
-<th>2</th>
-<td>AL3</td>
-<td>51</td>
-<td>42.520833</td>
-<td>21994.42095</td>
-<td>41880000.0</td>
-<td>17807725.0</td>
-</tr>
-<tr>
-<th>3</th>
-<td>AL4</td>
-<td>42</td>
-<td>34.733333</td>
-<td>20324.63570</td>
-<td>41880000.0</td>
-<td>14546320.0</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5303b546-7619-46f8-bc31-a2c1b50e8dd1">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy for="cell-10">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">airlines</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">"name"</span><span class="p">)[[</span><span class="s2">"asm"</span><span class="p">,</span> <span class="s2">"rpm"</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">();</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-10">summary.airlines.set_index("name")[["asm", "rpm"]].plot.bar();</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedImage jp-OutputArea-output">
-<img alt="No description has been provided for this image" class="" src="data:image/png;base64,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dJlGkhISElRVVaWlS5eqrKxMkZGRysvL06BBgyRJZWVlds8cmTVrlmpra7V27Vr98pe/lL+/vx544AEtX768484CAAA4LYvVCa6V1NTUyM/PT9XV1fL19e3y44c+/d9dfswrPnuh7Z9AAwDQnV3vf795Nw0AADCKMAIAAIwijAAAAKMcvoEV6Om4RwgAuhYrIwAAwCjCCAAAMIowAgAAjCKMAAAAowgjAADAKMIIAAAwijACAACMIowAAACjCCMAAMAowggAADCKMAIAAIwijAAAAKMIIwAAwCjCCAAAMIowAgAAjCKMAAAAowgjAADAKMIIAAAwijACAACMIowAAACjCCMAAMAowggAADCKMAIAAIwijAAAAKMIIwAAwCjCCAAAMIowAgAAjCKMAAAAowgjAADAKMIIAAAwijACAACMIowAAACjCCMAAMAowggAADCKMAIAAIwijAAAAKMIIwAAwCjCCAAAMIowAgAAjCKMAAAAowgjAADAKMIIAAAwijACAACMIowAAACj2hVG1q1bp7CwMHl7eysqKkoFBQVX7V9fX6+FCxdq0KBB8vLy0h133KGtW7e2q2AAANCzeDg6IDc3V3PnztW6des0atQobdy4UfHx8Tpx4oRuu+22VsdMmzZNX375pbZs2aLvf//7qqioUGNj4w0XDwAAnJ/DYWTVqlVKTk5WSkqKJCk7O1vvvvuu1q9fr6ysrBb933nnHe3fv19nzpxRv379JEmhoaE3VjUAAOgxHLpM09DQoKKiIsXFxdm1x8XF6dChQ62OefvttxUdHa0VK1bolltu0eDBgzV//nx9++23bR6nvr5eNTU1dh8AANAzObQyUllZqaamJgUGBtq1BwYGqry8vNUxZ86c0fvvvy9vb2+99dZbqqysVFpamr7++us27xvJysrSkiVLHCkNAAA4qXbdwGqxWOy2rVZri7YrmpubZbFYtH37dg0fPlyTJk3SqlWrlJOT0+bqSGZmpqqrq22fs2fPtqdMAADgBBxaGenfv7/c3d1brIJUVFS0WC25IigoSLfccov8/PxsbREREbJarTp37pzCw8NbjPHy8pKXl5cjpQEAACfl0MpIr169FBUVpfz8fLv2/Px8jRw5stUxo0aN0vnz53XhwgVb2yeffCI3Nzfdeuut7SgZAAD0JA5fpsnIyNDmzZu1detWnTx5UvPm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hZYuXar8/HxJkpubm1avXq3//d//1SuvvKL33ntPCxYssBt/8eJFrV69Wjt37tQ777yjffv26Sc/+Yny8vKUl5enbdu2adOmTXrjjTdsY5KSknTw4EHt3LlTH330kR599FFNnDhRp06d6tJzB9BxeOgZgHYZM2aMmpqaVFBQYGsbPny4HnjgAb3wwgst+u/atUtPPvmkKisrJV1eGUlKStKnn36qO+64Q5KUmpqqbdu26csvv1Tfvn0lSRMnTlRoaKg2bNig06dPKzw8XOfOnVNwcLDtu8eNG6fhw4dr2bJlnXnKADqJh+kCADive+65x247KChIFRUVkqQ///nPWrZsmU6cOKGamho1Njbq73//u+rq6tSnTx9Jko+Pjy2ISFJgYKBCQ0NtQeRK25XvPHr0qKxWqwYPHmx33Pr6egUEBHTKOQLofIQRAO3m6elpt22xWNTc3KzPP/9ckyZNUmpqqp577jn169dP77//vpKTk3Xp0qWrjm/rOyWpublZ7u7uKioqkru7u12/fwwwAJwLYQRAhyssLFRjY6NWrlwpN7fLt6a9/vrrN/y99957r5qamlRRUaHY2Ngb/j4A3QM3sALocHfccYcaGxu1Zs0anTlzRtu2bdOGDRtu+HsHDx6sxx57TImJidq9e7dKSkp05MgRLV++XHl5eR1QOQATCCMAOtywYcO0atUqLV++XJGRkdq+fbuysrI65LtffvllJSYm6pe//KXuvPNO/ehHP9Lhw4cVEhLSId8PoOvxaxoAAGAUKyMAAMAowggAADCKMAIAAIwijAAAAKMIIwAAwCjCCAAAMIowAgAAjCKMAAAAowgjAADAKMIIAAAwijACAACMIowAAACj/h+bOo7S08tBKwAAAABJRU5ErkJggg=="/>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7b3d0737">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy for="cell-11">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">fig_airline_loads</span><span class="p">()</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-11">summary.fig_airline_loads()</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 <style>
-  #altair-viz-1ad6219acb7e4d38b3f48c6edd60a3e2.vega-embed {
+  #altair-viz-aacc959812294090800b92d49110a886.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-1ad6219acb7e4d38b3f48c6edd60a3e2.vega-embed details,
-  #altair-viz-1ad6219acb7e4d38b3f48c6edd60a3e2.vega-embed details summary {
+  #altair-viz-aacc959812294090800b92d49110a886.vega-embed details,
+  #altair-viz-aacc959812294090800b92d49110a886.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-1ad6219acb7e4d38b3f48c6edd60a3e2"></div>
+<div id="altair-viz-aacc959812294090800b92d49110a886"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-1ad6219acb7e4d38b3f48c6edd60a3e2") {
-      outputDiv = document.getElementById("altair-viz-1ad6219acb7e4d38b3f48c6edd60a3e2");
+    if (outputDiv.id !== "altair-viz-aacc959812294090800b92d49110a886") {
+      outputDiv = document.getElementById("altair-viz-aacc959812294090800b92d49110a886");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -3092,8 +2460,357 @@ Airline = AL4, control = leg
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}, "legend": {"labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "measure", "type": "nominal"}, "tooltip": [{"field": "name", "type": "nominal"}, {"field": "measure", "type": "nominal"}, {"field": "value", "format": ".4s", "type": "quantitative"}], "x": {"field": "name", "title": "Airline", "type": "nominal"}, "y": {"field": "value", "stack": null, "title": "miles", "type": "quantitative"}}}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 5}, "encoding": {"text": {"field": "value", "format": ".4s", "type": "quantitative"}, "x": {"field": "name", "type": "nominal"}, "y": {"field": "value", "stack": null, "type": "quantitative"}}}], "data": {"name": "data-6e6bd999c0cda2cfe40063533a5049ef"}, "height": 300, "width": 400, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-6e6bd999c0cda2cfe40063533a5049ef": [{"measure": "asm", "name": "AL1", "value": 118440000.0}, {"measure": "asm", "name": "AL2", "value": 76560000.0}, {"measure": "asm", "name": "AL3", "value": 41880000.0}, {"measure": "asm", "name": "AL4", "value": 41880000.0}, {"measure": "rpm", "name": "AL1", "value": 43179759.0}, {"measure": "rpm", "name": "AL2", "value": 28610189.0}, {"measure": "rpm", "name": "AL3", "value": 17807725.0}, {"measure": "rpm", "name": "AL4", "value": 14546320.0}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}, "legend": {"labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Average Revenue", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}}}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 3}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}}}], "data": {"name": "data-df8cab56d3eee1f84ca8f4ad1dcd9e4b"}, "height": 300, "width": 200, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-df8cab56d3eee1f84ca8f4ad1dcd9e4b": [{"carrier": "AL1", "avg_rev": 46676.14}, {"carrier": "AL2", "avg_rev": 46661.64}]}}, {"mode": "vega-lite"});
 </script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7b3d0737">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy for="cell-7">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">fig_carrier_load_factors</span><span class="p">()</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-7">summary.fig_carrier_load_factors()</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<style>
+  #altair-viz-de86fb08cf154f3fafdf851d6f99e3d6.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-de86fb08cf154f3fafdf851d6f99e3d6.vega-embed details,
+  #altair-viz-de86fb08cf154f3fafdf851d6f99e3d6.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-de86fb08cf154f3fafdf851d6f99e3d6"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-de86fb08cf154f3fafdf851d6f99e3d6") {
+      outputDiv = document.getElementById("altair-viz-de86fb08cf154f3fafdf851d6f99e3d6");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.8.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.8.0"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}, "legend": {"labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_lf", "format": ".2f", "title": "Load Factor", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_lf", "stack": "zero", "title": "Load Factor", "type": "quantitative"}}}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 3}, "encoding": {"text": {"field": "avg_lf", "format": ".2f", "type": "quantitative"}, "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_lf", "stack": "zero", "title": "Load Factor", "type": "quantitative"}}}], "data": {"name": "data-6543bc39f5f187dc3417ff98ef5e8e86"}, "height": 300, "width": 200, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-6543bc39f5f187dc3417ff98ef5e8e86": [{"carrier": "AL1", "avg_lf": 92.36}, {"carrier": "AL2", "avg_lf": 92.34}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f2f1ab1d">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy for="cell-8">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">fig_fare_class_mix</span><span class="p">()</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-8">summary.fig_fare_class_mix()</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<style>
+  #altair-viz-706d022f45e043d2919d948c6a2e8003.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-706d022f45e043d2919d948c6a2e8003.vega-embed details,
+  #altair-viz-706d022f45e043d2919d948c6a2e8003.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-706d022f45e043d2919d948c6a2e8003"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-706d022f45e043d2919d948c6a2e8003") {
+      outputDiv = document.getElementById("altair-viz-706d022f45e043d2919d948c6a2e8003");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.8.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.8.0"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}, "legend": {"labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "booking_class", "type": "nominal"}, "tooltip": [{"field": "carrier", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 3}, "encoding": {"opacity": {"condition": {"test": "datum.avg_sold < 18.079", "value": 0}, "value": 1}, "order": {"field": "booking_class", "sort": "descending", "type": "nominal"}, "text": {"field": "avg_sold", "format": ".2f", "type": "quantitative"}, "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}], "data": {"name": "data-ecb8a8b728662e151ae853b93d1ab7c4"}, "height": 300, "width": 400, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-ecb8a8b728662e151ae853b93d1ab7c4": [{"carrier": "AL1", "booking_class": "Y0", "avg_sold": 0.0}, {"carrier": "AL1", "booking_class": "Y1", "avg_sold": 0.0}, {"carrier": "AL1", "booking_class": "Y2", "avg_sold": 0.0}, {"carrier": "AL1", "booking_class": "Y3", "avg_sold": 0.0}, {"carrier": "AL1", "booking_class": "Y4", "avg_sold": 0.0}, {"carrier": "AL1", "booking_class": "Y5", "avg_sold": 301.31875}, {"carrier": "AL2", "booking_class": "Y0", "avg_sold": 0.0}, {"carrier": "AL2", "booking_class": "Y1", "avg_sold": 0.0}, {"carrier": "AL2", "booking_class": "Y2", "avg_sold": 0.0}, {"carrier": "AL2", "booking_class": "Y3", "avg_sold": 0.0}, {"carrier": "AL2", "booking_class": "Y4", "avg_sold": 0.0}, {"carrier": "AL2", "booking_class": "Y5", "avg_sold": 301.23075}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=aa8b330b">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy for="cell-9">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">fig_bookings_by_timeframe</span><span class="p">()</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-9">summary.fig_bookings_by_timeframe()</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<style>
+  #altair-viz-a8ca64081de64b2cb01b4643c62253b4.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-a8ca64081de64b2cb01b4643c62253b4.vega-embed details,
+  #altair-viz-a8ca64081de64b2cb01b4643c62253b4.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-a8ca64081de64b2cb01b4643c62253b4"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-a8ca64081de64b2cb01b4643c62253b4") {
+      outputDiv = document.getElementById("altair-viz-a8ca64081de64b2cb01b4643c62253b4");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.8.0?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "5")
+        .then(() => maybeLoadScript("vega-lite", "5.8.0"))
+        .then(() => maybeLoadScript("vega-embed", "6"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}, "legend": {"labelFontSize": 15, "titleFontSize": 12}}, "data": {"name": "data-34873b975882a9bc37f7b96d1c95ed6a"}, "mark": {"type": "line"}, "encoding": {"color": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "strokeDash": {"field": "paxtype", "title": "Passenger Type", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "paxtype", "title": "Passenger Type", "type": "nominal"}, {"field": "rrd", "title": "DfD", "type": "quantitative"}, {"field": "sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "rrd", "scale": {"reverse": true}, "title": "Days from Departure", "type": "ordinal"}, "y": {"field": "sold", "type": "quantitative"}}, "height": 300, "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-34873b975882a9bc37f7b96d1c95ed6a": [{"paxtype": "business", "rrd": 63, "carrier": "AL1", "sold": 8.619000000000002, "sem": 0.039611305905707744, "ci0": 8.541361840424814, "ci1": 8.696638159575189}, {"paxtype": "business", "rrd": 63, "carrier": "AL2", "sold": 8.736249999999998, "sem": 0.03402256195853305, "ci0": 8.669565778561273, "ci1": 8.802934221438724}, {"paxtype": "business", "rrd": 56, "carrier": "AL1", "sold": 7.41175, "sem": 0.026283840620764904, "ci0": 7.3602336723833, "ci1": 7.463266327616699}, {"paxtype": "business", "rrd": 56, "carrier": "AL2", "sold": 7.422, "sem": 0.027617928959282965, "ci0": 7.367868859239805, "ci1": 7.476131140760194}, {"paxtype": "business", "rrd": 49, "carrier": "AL1", "sold": 5.945750000000001, "sem": 0.026682417223499073, "ci0": 5.893452462241943, "ci1": 5.998047537758059}, {"paxtype": "business", "rrd": 49, "carrier": "AL2", "sold": 5.98625, "sem": 0.03325041770832032, "ci0": 5.9210791812916925, "ci1": 6.051420818708308}, {"paxtype": "business", "rrd": 42, "carrier": "AL1", "sold": 7.387249999999999, "sem": 0.0334050270667955, "ci0": 7.321776146949079, "ci1": 7.452723853050919}, {"paxtype": "business", "rrd": 42, "carrier": "AL2", "sold": 7.397500000000001, "sem": 0.03381526611195328, "ci0": 7.331222078420573, "ci1": 7.463777921579429}, {"paxtype": "business", "rrd": 35, "carrier": "AL1", "sold": 4.509, "sem": 0.01710750322714151, "ci0": 4.475469293674803, "ci1": 4.542530706325198}, {"paxtype": "business", "rrd": 35, "carrier": "AL2", "sold": 4.508000000000001, "sem": 0.0249549594269361, "ci0": 4.459088279523206, "ci1": 4.556911720476796}, {"paxtype": "business", "rrd": 31, "carrier": "AL1", "sold": 3.0842499999999995, "sem": 0.018889481199863934, "ci0": 3.047226616848266, "ci1": 3.121273383151733}, {"paxtype": "business", "rrd": 31, "carrier": "AL2", "sold": 3.067000000000001, "sem": 0.018347721626645556, "ci0": 3.031038465611776, "ci1": 3.102961534388226}, {"paxtype": "business", "rrd": 28, "carrier": "AL1", "sold": 4.4415000000000004, "sem": 0.025833870962147957, "ci0": 4.39086561291419, "ci1": 4.492134387085811}, {"paxtype": "business", "rrd": 28, "carrier": "AL2", "sold": 4.504249999999999, "sem": 0.02412942532814791, "ci0": 4.4569563263568295, "ci1": 4.5515436736431685}, {"paxtype": "business", "rrd": 24, "carrier": "AL1", "sold": 4.5705, "sem": 0.018275666882496676, "ci0": 4.534679692910307, "ci1": 4.606320307089693}, {"paxtype": "business", "rrd": 24, "carrier": "AL2", "sold": 4.5009999999999994, "sem": 0.019892768088484194, "ci0": 4.46201017454657, "ci1": 4.5399898254534286}, {"paxtype": "business", "rrd": 21, "carrier": "AL1", "sold": 5.8885, "sem": 0.024264743513538373, "ci0": 5.840941102713464, "ci1": 5.936058897286535}, {"paxtype": "business", "rrd": 21, "carrier": "AL2", "sold": 5.876750000000001, "sem": 0.024358577088527993, "ci0": 5.829007188906487, "ci1": 5.924492811093516}, {"paxtype": "business", "rrd": 17, "carrier": "AL1", "sold": 7.299250000000001, "sem": 0.036444497374623, "ci0": 7.22781878514574, "ci1": 7.370681214854262}, {"paxtype": "business", "rrd": 17, "carrier": "AL2", "sold": 7.2705, "sem": 0.0383039742643561, "ci0": 7.195424210441862, "ci1": 7.345575789558138}, {"paxtype": "business", "rrd": 14, "carrier": "AL1", "sold": 14.107, "sem": 0.06966566984932736, "ci0": 13.970455287095318, "ci1": 14.243544712904681}, {"paxtype": "business", "rrd": 14, "carrier": "AL2", "sold": 14.104250000000002, "sem": 0.04489192268350967, "ci0": 14.016261831540323, "ci1": 14.192238168459681}, {"paxtype": "business", "rrd": 10, "carrier": "AL1", "sold": 15.647999999999996, "sem": 0.10456709701324704, "ci0": 15.443048489854032, "ci1": 15.85295151014596}, {"paxtype": "business", "rrd": 10, "carrier": "AL2", "sold": 15.722749999999996, "sem": 0.11172041616861698, "ci0": 15.503777984309506, "ci1": 15.941722015690486}, {"paxtype": "business", "rrd": 7, "carrier": "AL1", "sold": 9.369500000000004, "sem": 0.06062269468698298, "ci0": 9.250679518413516, "ci1": 9.488320481586491}, {"paxtype": "business", "rrd": 7, "carrier": "AL2", "sold": 9.207749999999999, "sem": 0.0866630207566444, "ci0": 9.037890479316976, "ci1": 9.377609520683022}, {"paxtype": "business", "rrd": 5, "carrier": "AL1", "sold": 7.97625, "sem": 0.08368861763837497, "ci0": 7.812220309428786, "ci1": 8.140279690571216}, {"paxtype": "business", "rrd": 5, "carrier": "AL2", "sold": 7.846000000000001, "sem": 0.041422953915806957, "ci0": 7.764811010325019, "ci1": 7.927188989674983}, {"paxtype": "business", "rrd": 3, "carrier": "AL1", "sold": 12.565499999999997, "sem": 0.1288009877463852, "ci0": 12.313050064017082, "ci1": 12.817949935982911}, {"paxtype": "business", "rrd": 3, "carrier": "AL2", "sold": 12.45875, "sem": 0.15291030867799651, "ci0": 12.159045794991126, "ci1": 12.758454205008874}, {"paxtype": "business", "rrd": 1, "carrier": "AL1", "sold": 2.752249999999999, "sem": 0.049004605792607674, "ci0": 2.6562009726464884, "ci1": 2.84829902735351}, {"paxtype": "business", "rrd": 1, "carrier": "AL2", "sold": 2.754999999999998, "sem": 0.03463901140493268, "ci0": 2.6871075376463303, "ci1": 2.822892462353666}, {"paxtype": "leisure", "rrd": 63, "carrier": "AL1", "sold": 32.097750000000005, "sem": 0.10074476137469608, "ci0": 31.9002902677056, "ci1": 32.29520973229441}, {"paxtype": "leisure", "rrd": 63, "carrier": "AL2", "sold": 32.22025000000001, "sem": 0.09430848465423348, "ci0": 32.03540537007771, "ci1": 32.4050946299223}, {"paxtype": "leisure", "rrd": 56, "carrier": "AL1", "sold": 15.258749999999997, "sem": 0.06450371436333475, "ci0": 15.132322719847862, "ci1": 15.385177280152133}, {"paxtype": "leisure", "rrd": 56, "carrier": "AL2", "sold": 15.383000000000001, "sem": 0.05907128462008142, "ci0": 15.267220282144642, "ci1": 15.49877971785536}, {"paxtype": "leisure", "rrd": 49, "carrier": "AL1", "sold": 17.240999999999996, "sem": 0.08195544182325258, "ci0": 17.08036733402642, "ci1": 17.401632665973573}, {"paxtype": "leisure", "rrd": 49, "carrier": "AL2", "sold": 17.153, "sem": 0.029282626627783907, "ci0": 17.095606051809543, "ci1": 17.210393948190454}, {"paxtype": "leisure", "rrd": 42, "carrier": "AL1", "sold": 17.176750000000006, "sem": 0.03163166925725034, "ci0": 17.114751928255796, "ci1": 17.238748071744215}, {"paxtype": "leisure", "rrd": 42, "carrier": "AL2", "sold": 17.156499999999998, "sem": 0.08469733696456402, "ci0": 16.990493219549453, "ci1": 17.322506780450542}, {"paxtype": "leisure", "rrd": 35, "carrier": "AL1", "sold": 11.525749999999999, "sem": 0.036940361094306234, "ci0": 11.453346892255158, "ci1": 11.598153107744839}, {"paxtype": "leisure", "rrd": 35, "carrier": "AL2", "sold": 11.466750000000001, "sem": 0.04236916134800484, "ci0": 11.383706443757912, "ci1": 11.54979355624209}, {"paxtype": "leisure", "rrd": 31, "carrier": "AL1", "sold": 7.704250000000002, "sem": 0.04174667318747869, "ci0": 7.622426520552543, "ci1": 7.78607347944746}, {"paxtype": "leisure", "rrd": 31, "carrier": "AL2", "sold": 7.694500000000003, "sem": 0.02808172596784839, "ci0": 7.63945981710302, "ci1": 7.749540182896986}, {"paxtype": "leisure", "rrd": 28, "carrier": "AL1", "sold": 15.156749999999999, "sem": 0.039970562084280147, "ci0": 15.078407698314809, "ci1": 15.235092301685189}, {"paxtype": "leisure", "rrd": 28, "carrier": "AL2", "sold": 15.2285, "sem": 0.04683036764038112, "ci0": 15.136712479424853, "ci1": 15.320287520575148}, {"paxtype": "leisure", "rrd": 24, "carrier": "AL1", "sold": 15.134499999999994, "sem": 0.04610344648480988, "ci0": 15.044137244889766, "ci1": 15.224862755110221}, {"paxtype": "leisure", "rrd": 24, "carrier": "AL2", "sold": 15.193249999999997, "sem": 0.04705500622793583, "ci0": 15.101022187793243, "ci1": 15.285477812206752}, {"paxtype": "leisure", "rrd": 21, "carrier": "AL1", "sold": 11.347250000000008, "sem": 0.050021453730708564, "ci0": 11.249207950687818, "ci1": 11.445292049312197}, {"paxtype": "leisure", "rrd": 21, "carrier": "AL2", "sold": 11.396499999999998, "sem": 0.04361797539750874, "ci0": 11.31100876822088, "ci1": 11.481991231779116}, {"paxtype": "leisure", "rrd": 17, "carrier": "AL1", "sold": 9.4245, "sem": 0.04610194018573369, "ci0": 9.334140197235962, "ci1": 9.514859802764038}, {"paxtype": "leisure", "rrd": 17, "carrier": "AL2", "sold": 9.4095, "sem": 0.03466666666666589, "ci0": 9.341553333333334, "ci1": 9.477446666666665}, {"paxtype": "leisure", "rrd": 14, "carrier": "AL1", "sold": 9.192499999999999, "sem": 0.0365889327529523, "ci0": 9.120785691804212, "ci1": 9.264214308195786}, {"paxtype": "leisure", "rrd": 14, "carrier": "AL2", "sold": 9.167250000000005, "sem": 0.0315556166861672, "ci0": 9.105400991295117, "ci1": 9.229099008704893}, {"paxtype": "leisure", "rrd": 10, "carrier": "AL1", "sold": 5.152749999999995, "sem": 0.04262310601852858, "ci0": 5.069208712203679, "ci1": 5.236291287796311}, {"paxtype": "leisure", "rrd": 10, "carrier": "AL2", "sold": 5.120500000000002, "sem": 0.03565225565561498, "ci0": 5.050621578914996, "ci1": 5.190378421085007}, {"paxtype": "leisure", "rrd": 7, "carrier": "AL1", "sold": 3.0640000000000045, "sem": 0.021376908621738765, "ci0": 3.0221012591013965, "ci1": 3.1058987408986125}, {"paxtype": "leisure", "rrd": 7, "carrier": "AL2", "sold": 3.0384999999999933, "sem": 0.025022767410678746, "ci0": 2.989455375875063, "ci1": 3.0875446241249236}, {"paxtype": "leisure", "rrd": 5, "carrier": "AL1", "sold": 6.234499999999997, "sem": 0.058061031108077504, "ci0": 6.1207003790281655, "ci1": 6.3482996209718285}, {"paxtype": "leisure", "rrd": 5, "carrier": "AL2", "sold": 6.1750000000000025, "sem": 0.04740487551109467, "ci0": 6.082086443998257, "ci1": 6.267913556001748}, {"paxtype": "leisure", "rrd": 3, "carrier": "AL1", "sold": 2.7724999999999995, "sem": 0.03274056267757997, "ci0": 2.7083284971519426, "ci1": 2.8366715028480565}, {"paxtype": "leisure", "rrd": 3, "carrier": "AL2", "sold": 2.7782500000000026, "sem": 0.029444038257156233, "ci0": 2.7205396850159764, "ci1": 2.8359603149840287}, {"paxtype": "leisure", "rrd": 1, "carrier": "AL1", "sold": 1.2599999999999993, "sem": 0.028937192522964075, "ci0": 1.2032831026549897, "ci1": 1.316716897345009}, {"paxtype": "leisure", "rrd": 1, "carrier": "AL2", "sold": 1.285499999999996, "sem": 0.023810011899759127, "ci0": 1.2388323766764682, "ci1": 1.332167623323524}]}}, {"mode": "vega-lite"});
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8909d99f">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy for="cell-10">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">cfg2</span> <span class="o">=</span> <span class="n">pax</span><span class="o">.</span><span class="n">Config</span><span class="o">.</span><span class="n">from_yaml</span><span class="p">(</span><span class="n">input_file</span><span class="p">)</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-10">cfg2 = pax.Config.from_yaml(input_file)</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>[2023-08-27 19:06:18,999] passengersim.config.INFO: loaded config from /Users/jpn/Git/pxsim/passengersim-public/passengersim/networks/3MKT/base.yaml
+</pre>
 </div>
 </div>
 </div>

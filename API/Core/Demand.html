@@ -174,7 +174,7 @@
 
   <li class="md-tabs__item">
     <a href="../../index.html" class="md-tabs__link">
-      PassengerSim
+      Home
     </a>
   </li>
 
@@ -282,7 +282,7 @@
   
     <li class="md-nav__item">
       <a href="../../index.html" class="md-nav__link">
-        PassengerSim
+        Home
       </a>
     </li>
   
@@ -416,6 +416,8 @@
         
           
         
+          
+        
       
       
         
@@ -475,6 +477,90 @@
       <a href="../../Tutorials/demo-3mkt-db.nbconvert.html" class="md-nav__link">
         Three Market Database Demo
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+          3MKT
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          3MKT
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/verification/3mkt-01.nbconvert.html" class="md-nav__link">
+        Simple FCFS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/verification/3mkt-02.nbconvert.html" class="md-nav__link">
+        FCFS with Product Restrictions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/verification/3mkt-03.nbconvert.html" class="md-nav__link">
+        FCFS with AP and Product Restrictions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1126,6 +1212,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#passengersim_core._Demand.Demand.add_fare" class="md-nav__link">
+    add_fare()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core._Demand.Demand.add_group_sizes" class="md-nav__link">
+    add_group_sizes()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core._Demand.Demand.add_path" class="md-nav__link">
+    add_path()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core._Demand.Demand.get_airline_revenue" class="md-nav__link">
+    get_airline_revenue()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core._Demand.Demand.get_airline_sold" class="md-nav__link">
+    get_airline_sold()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core._Demand.Demand.get_demand_dcp" class="md-nav__link">
+    get_demand_dcp()
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1399,6 +1527,48 @@
         <li class="md-nav__item">
   <a href="#passengersim_core._Demand.Demand.add_curve" class="md-nav__link">
     add_curve()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core._Demand.Demand.add_fare" class="md-nav__link">
+    add_fare()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core._Demand.Demand.add_group_sizes" class="md-nav__link">
+    add_group_sizes()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core._Demand.Demand.add_path" class="md-nav__link">
+    add_path()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core._Demand.Demand.get_airline_revenue" class="md-nav__link">
+    get_airline_revenue()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core._Demand.Demand.get_airline_sold" class="md-nav__link">
+    get_airline_sold()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core._Demand.Demand.get_demand_dcp" class="md-nav__link">
+    get_demand_dcp()
   </a>
   
 </li>
@@ -1903,7 +2073,133 @@
 
   <div class="doc doc-contents ">
   
-      <p>Add a choice model to this market segment</p>
+      <p>Add a booking curve to this market segment</p>
+
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="passengersim_core._Demand.Demand.add_fare" class="doc doc-heading">
+          <span class="doc doc-object-name doc-function-name">add_fare</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">add_fare</span><span class="p">(</span><span class="n">fare</span><span class="p">:</span> <span class="n">Fare</span><span class="p">)</span>
+</span></code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Add a fare to this market segment</p>
+
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="passengersim_core._Demand.Demand.add_group_sizes" class="doc doc-heading">
+          <span class="doc doc-object-name doc-function-name">add_group_sizes</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">add_group_sizes</span><span class="p">(</span><span class="n">group_sizes</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span>
+</span></code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Group sizes is an array, with proportion for each, i.e [0.5, 0.4, 0.1] has 40% of bookings with 2 passengers</p>
+
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="passengersim_core._Demand.Demand.add_path" class="doc doc-heading">
+          <span class="doc doc-object-name doc-function-name">add_path</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">add_path</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span>
+</span></code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Add an itinerary path to this market segment</p>
+
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="passengersim_core._Demand.Demand.get_airline_revenue" class="doc doc-heading">
+          <span class="doc doc-object-name doc-function-name">get_airline_revenue</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">get_airline_revenue</span><span class="p">(</span><span class="n">airline_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span>
+</span></code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Get revenue for the specified airline code</p>
+
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="passengersim_core._Demand.Demand.get_airline_sold" class="doc doc-heading">
+          <span class="doc doc-object-name doc-function-name">get_airline_sold</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">get_airline_sold</span><span class="p">(</span><span class="n">airline_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span>
+</span></code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Get sold for the specifed airline code</p>
+
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="passengersim_core._Demand.Demand.get_demand_dcp" class="doc doc-heading">
+          <span class="doc doc-object-name doc-function-name">get_demand_dcp</span>
+
+
+</h2>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">get_demand_dcp</span><span class="p">(</span><span class="n">dcp</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span>
+</span></code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Get demand for the specified DCP</p>
 
   </div>
 

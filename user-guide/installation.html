@@ -174,7 +174,7 @@
 
   <li class="md-tabs__item">
     <a href="../index.html" class="md-tabs__link">
-      PassengerSim
+      Home
     </a>
   </li>
 
@@ -282,7 +282,7 @@
   
     <li class="md-nav__item">
       <a href="../index.html" class="md-nav__link">
-        PassengerSim
+        Home
       </a>
     </li>
   
@@ -369,8 +369,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#gt-student-quick-start" class="md-nav__link">
-    GT Student Quick-start
+  <a href="#docker-quick-start" class="md-nav__link">
+    Docker Quick-start
   </a>
   
 </li>
@@ -459,6 +459,8 @@
         
           
         
+          
+        
       
       
         
@@ -518,6 +520,90 @@
       <a href="../Tutorials/demo-3mkt-db.nbconvert.html" class="md-nav__link">
         Three Market Database Demo
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+          3MKT
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          3MKT
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorials/verification/3mkt-01.nbconvert.html" class="md-nav__link">
+        Simple FCFS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorials/verification/3mkt-02.nbconvert.html" class="md-nav__link">
+        FCFS with Product Restrictions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tutorials/verification/3mkt-03.nbconvert.html" class="md-nav__link">
+        FCFS with AP and Product Restrictions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1093,8 +1179,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#gt-student-quick-start" class="md-nav__link">
-    GT Student Quick-start
+  <a href="#docker-quick-start" class="md-nav__link">
+    Docker Quick-start
   </a>
   
 </li>
@@ -1119,22 +1205,50 @@
 
 <h1 id="installation">Installation</h1>
 <p>Install instructions will be here.</p>
-<h2 id="gt-student-quick-start">GT Student Quick-start</h2>
-<ol>
-<li>Double click <code>create-airsim-env.cmd</code> in <code>C:\PyPI-Local</code> to install your working environment.</li>
-<li>Look on your desktop for <code>AirSim-Env.cmd</code>, double click that to open and use your environment.</li>
-<li>Inside the <code>AirSim-Env</code> window, run the following command to run a simple simulation 
-   and confirm it is working.
-   <div class="language-bat highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>python -m AirSim run -n <span class="s2">&quot;C:\AirSim-networks\network-3mkt-pods.txt&quot;</span> <span class="se">^</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="se"> </span>      -o <span class="s2">&quot;</span><span class="nv">%USERPROFILE%</span><span class="s2">\air-sim-outputs&quot;</span> --fast
+<h2 id="docker-quick-start">Docker Quick-start</h2>
+<p>Do you have a link to a <code>sky</code> docker image file? If not, these are not the install
+instructions you are looking for. If you do have a link, go ahead and download
+the file.  If you are installing on Windows or an Intel-based Mac, you want the
+amd64 image.  For installing on more recent Apple Silicon-based Macs, use an
+arm64 image.</p>
+<p>In addition to the image file, you'll want to download and install 
+<a href="www.docker.com">Docker Desktop</a> for your computer.  Once it's installed, make
+sure it's running (you should be able to open and see Docker's dashboard).</p>
+<p>Then, open a console terminal and change to the directory where the docker image
+<code>sky.tar</code> file has been saved.  It might be named something slightly different from
+<code>sky.tar</code>, in which case change the filename in the commands you type to match
+the filename of the image file you have.  The first step is to run</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>load<span class="w"> </span>--input<span class="w"> </span>sky.tar
 </span></code></pre></div>
-   You should then see an "air-sim-outputs" directory in your home directory.  With the <code>--fast</code>
-   option, the .sqlite file in the output directory is just a stub until the simulation completes, 
-   then it is populated all at once with the stored data from that simulation.  This overcomes the 
-   very slow file write speeds on this server.</li>
-</ol>
-<p>For actual simulation experiments, you'll want to change the <code>-n</code> file to the network simulation defs 
-that you want to use.  To work with the outputs in Python, see <a href="./reading-data.ipynb">reading data</a></p>
+<p>This command may take a few moments to complete, as the content of the downloaded
+image file will be imported into docker.  You'll need several free gigabytes of
+hard disk space to complete this step, so if you encounter unexplained EOF errors 
+here that may be the problem.</p>
+<p>After the docker image is loaded, you should see a <code>sky</code> image in the docker desktop 
+dashboard.  If you can see it, you should then be able to start a container with
+this image using the following command:</p>
+<p>=== Mac/Linux</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker run -p 8899:8899 --rm --volume &quot;$(pwd)&quot;:/tmp/workplace/work sky:latest
+</span></code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Windows</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>docker run -p 8899:8899 --rm --volume &quot;%cd%&quot;:/tmp/workplace/work sky:latest
+</span></code></pre></div>
+<p>Within this command, we have:
+- <code>-p 8899:8899</code> tells docker to expose the container's port 8899 (which has been 
+  configured to be the port served by Jupyter Lab) to localhost.
+- <code>--rm</code> means to remove the container when it exits, so there isn't an 
+  extraneous container image file left on your file system.
+- <code>--volume "...":/tmp/workplace/work</code> makes the current working directory
+  available inside Jupyter Lab in a directory named <code>work</code> (the container has
+  been configured with <code>/tmp/workplace</code> as the base location for Jupyter).
+- <code>sky:latest</code> tells Docker to use the latest version of the user image
+  that was installed in the <code>docker load</code> step above.  If your installed
+  docker image (as shown in the Docker Dashboard) has a different name than
+  <code>sky</code> then change the command to give the corrent image name.</p>
 
 
 
