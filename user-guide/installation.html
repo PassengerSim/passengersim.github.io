@@ -1227,28 +1227,32 @@ here that may be the problem.</p>
 <p>After the docker image is loaded, you should see a <code>sky</code> image in the docker desktop 
 dashboard.  If you can see it, you should then be able to start a container with
 this image using the following command:</p>
-<p>=== Mac/Linux</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker run -p 8899:8899 --rm --volume &quot;$(pwd)&quot;:/tmp/workplace/work sky:latest
-</span></code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Windows</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Mac/Linux</label><label for="__tabbed_1_2">Windows</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>docker run -p 8899:8899 --rm --volume &quot;%cd%&quot;:/tmp/workplace/work sky:latest
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">8899</span>:8899<span class="w"> </span>--rm<span class="w"> </span>--volume<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>:/tmp/workplace/work<span class="w"> </span>sky:latest
 </span></code></pre></div>
-<p>Within this command, we have:
-- <code>-p 8899:8899</code> tells docker to expose the container's port 8899 (which has been 
-  configured to be the port served by Jupyter Lab) to localhost.
-- <code>--rm</code> means to remove the container when it exits, so there isn't an 
-  extraneous container image file left on your file system.
-- <code>--volume "...":/tmp/workplace/work</code> makes the current working directory
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">8899</span>:8899<span class="w"> </span>--rm<span class="w"> </span>--volume<span class="w"> </span><span class="s2">&quot;%cd%&quot;</span>:/tmp/workplace/work<span class="w"> </span>sky:latest
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p>Within this command, we have:</p>
+<ul>
+<li><code>-p 8899:8899</code> tells docker to expose the container's port 8899 (which has been 
+  configured to be the port served by Jupyter Lab) to localhost.</li>
+<li><code>--rm</code> means to remove the container when it exits, so there isn't an 
+  extraneous container image file left on your file system.</li>
+<li><code>--volume "...":/tmp/workplace/work</code> makes the current working directory
   available inside Jupyter Lab in a directory named <code>work</code> (the container has
-  been configured with <code>/tmp/workplace</code> as the base location for Jupyter).
-- <code>sky:latest</code> tells Docker to use the latest version of the user image
+  been configured with <code>/tmp/workplace</code> as the base location for Jupyter).</li>
+<li><code>sky:latest</code> tells Docker to use the latest version of the user image
   that was installed in the <code>docker load</code> step above.  If your installed
   docker image (as shown in the Docker Dashboard) has a different name than
-  <code>sky</code> then change the command to give the corrent image name.</p>
+  <code>sky</code> then change the command to give the corrent image name.</li>
+</ul>
 
 
 
