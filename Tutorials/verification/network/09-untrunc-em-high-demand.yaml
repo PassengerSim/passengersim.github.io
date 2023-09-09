@@ -1,32 +1,5 @@
 include:
-  - 01-base.yaml
-  - 02-buyup.yaml
-  - 03-ap.yaml
+  - 08-untrunc-em.yaml
 
 simulation_controls:
   demand_multiplier: 1.1
-
-rm_systems:
-  rm_test1:
-    steps:
-      - step_type: untruncation
-        name: untruncation
-        algorithm: em
-        kind: leg
-      - step_type: forecast
-        name: forecast
-        algorithm: additive_pickup
-        alpha: 0.15
-        kind: leg
-      - step_type: emsr
-        name: optimization
-        algorithm: emsrb
-        kind: leg
-
-airlines:
-  - name: AL1
-    rm_system: rm_test1
-    control: leg
-  - name: AL2
-    rm_system: rm_test1
-    control: leg

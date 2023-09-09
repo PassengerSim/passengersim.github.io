@@ -1,0 +1,34 @@
+snapshot_filters:
+  - type: rm
+    title: EMSR
+    airline: AL1
+    sample: [399]
+    dcp: [63]
+    flt_no: [111]
+  - type: leg_untruncation
+    title: leg_untruncation
+    airline: AL1
+    sample: [399]
+    dcp: [63]
+    flt_no: [111]
+  - type: forecast
+    title: forecast
+    airline: AL1
+    sample: [399]
+    dcp: [63]
+    flt_no: [111]
+
+#    type: Literal[
+#        "forecast", "leg_untruncation", "path_untruncation", "rm", "pro_bp", None
+#    ] = None
+#    title: str = ""
+#    airline: str = ""
+#    sample: list[int] = []
+#    dcp: list[int] = []
+#    orig: list[str] = []
+#    dest: list[str] = []
+#    flt_no: list[int] = []
+#    logger: str | None = None
+
+simulation_controls:
+  show_progress_bar: false

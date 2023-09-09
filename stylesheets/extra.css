@@ -24,3 +24,8 @@ div.has-actions details {
         width:12.2rem
     }
 }
+
+.jupyter-wrapper .jp-OutputArea-output pre {
+    padding: 8px 15px;
+    font-size: var(--jp-code-font-size);
+}
