@@ -1040,33 +1040,6 @@
           notice.hidden = true
         }, 1000)
       })
-</script><script>
-(function() {
-  function addWidgetsRenderer() {
-    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
-    var scriptElement = document.createElement('script');
-    
-    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
-    
-    var widgetState;
-
-    // Fallback for older version:
-    try {
-      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
-
-      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
-        
-        var widgetRendererSrc = 'https://unpkg.com/@jupyter-js-widgets@*/dist/embed.js';
-        
-      }
-    } catch(e) {}
-
-    scriptElement.src = widgetRendererSrc;
-    document.body.appendChild(scriptElement);
-  }
-
-  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
-}());
 </script>
 <style type="text/css">
     
@@ -2155,11 +2128,11 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[2023-09-09 23:39:11,656] passengersim.config.INFO: loaded config from network/01-base.yaml
-[2023-09-09 23:39:11,657] passengersim.config.INFO: loaded config from network/02-buyup.yaml
-[2023-09-09 23:39:11,658] passengersim.config.INFO: loaded config from network/03-ap.yaml
-[2023-09-09 23:39:11,658] passengersim.config.INFO: loaded config from network/08-untrunc-em.yaml
-[2023-09-09 23:39:11,658] passengersim.config.INFO: loaded config from network/09-untrunc-em-high-demand.yaml
+<pre>[2023-09-10 15:21:40,282] passengersim.config.INFO: loaded config from network/01-base.yaml
+[2023-09-10 15:21:40,283] passengersim.config.INFO: loaded config from network/02-buyup.yaml
+[2023-09-10 15:21:40,283] passengersim.config.INFO: loaded config from network/03-ap.yaml
+[2023-09-10 15:21:40,284] passengersim.config.INFO: loaded config from network/08-untrunc-em.yaml
+[2023-09-10 15:21:40,284] passengersim.config.INFO: loaded config from network/09-untrunc-em-high-demand.yaml
 </pre>
 </div>
 </div>
@@ -2199,8 +2172,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[2023-09-09 23:39:11,672] passengersim.database.INFO: connecting to sqlite database: :memory:
-[2023-09-09 23:39:11,672] passengersim.database.INFO: initializing sqlite tables
+<pre>[2023-09-10 15:21:40,298] passengersim.database.INFO: connecting to sqlite database: :memory:
+[2023-09-10 15:21:40,298] passengersim.database.INFO: initializing sqlite tables
 </pre>
 </div>
 </div>
@@ -2239,13 +2212,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jupyter-widgets jp-OutputArea-output" id="aa5a5a94-9ee7-4467-b4a1-f9ddad7def9f">
-<script type="text/javascript">
-var element = document.getElementById('aa5a5a94-9ee7-4467-b4a1-f9ddad7def9f');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "ddb8f8c693124c4495eec3f193e2ebb7", "version_major": 2, "version_minor": 0}
-</script>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Output()</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -2264,7 +2232,7 @@ var element = document.getElementById('aa5a5a94-9ee7-4467-b4a1-f9ddad7def9f');
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[2023-09-09 23:39:24,860] passengersim.INFO: Th' th' that's all folks !!!    (Elapsed time = 13.18)
+<pre>[2023-09-10 15:21:53,716] passengersim.INFO: Th' th' that's all folks !!!    (Elapsed time = 13.41)
 </pre>
 </div>
 </div>
@@ -2305,23 +2273,23 @@ var element = document.getElementById('aa5a5a94-9ee7-4467-b4a1-f9ddad7def9f');
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 <style>
-  #altair-viz-1a8d7b006eab4ee49073ee8af023bff3.vega-embed {
+  #altair-viz-14ead358df414cac9b12d897987b3d14.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-1a8d7b006eab4ee49073ee8af023bff3.vega-embed details,
-  #altair-viz-1a8d7b006eab4ee49073ee8af023bff3.vega-embed details summary {
+  #altair-viz-14ead358df414cac9b12d897987b3d14.vega-embed details,
+  #altair-viz-14ead358df414cac9b12d897987b3d14.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-1a8d7b006eab4ee49073ee8af023bff3"></div>
+<div id="altair-viz-14ead358df414cac9b12d897987b3d14"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-1a8d7b006eab4ee49073ee8af023bff3") {
-      outputDiv = document.getElementById("altair-viz-1a8d7b006eab4ee49073ee8af023bff3");
+    if (outputDiv.id !== "altair-viz-14ead358df414cac9b12d897987b3d14") {
+      outputDiv = document.getElementById("altair-viz-14ead358df414cac9b12d897987b3d14");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2367,7 +2335,7 @@ var element = document.getElementById('aa5a5a94-9ee7-4467-b4a1-f9ddad7def9f');
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}, "legend": {"labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Average Revenue", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}}}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 3}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}}}], "data": {"name": "data-3c9a76b1eb539f5734a2899f864ce942"}, "height": 300, "width": 200, "$schema": "https://vega.github.io/schema/vega-lite/v5.14.1.json", "datasets": {"data-3c9a76b1eb539f5734a2899f864ce942": [{"carrier": "AL1", "avg_rev": 96319.14}, {"carrier": "AL2", "avg_rev": 96352.39}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}, "legend": {"labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Average Revenue", "type": "quantitative"}], "x": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-3c9a76b1eb539f5734a2899f864ce942"}, "height": 50, "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.14.1.json", "datasets": {"data-3c9a76b1eb539f5734a2899f864ce942": [{"carrier": "AL1", "avg_rev": 96319.14}, {"carrier": "AL2", "avg_rev": 96352.39}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
@@ -2408,23 +2376,23 @@ var element = document.getElementById('aa5a5a94-9ee7-4467-b4a1-f9ddad7def9f');
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 <style>
-  #altair-viz-7c76b2cab45743aaa83d97239614d99c.vega-embed {
+  #altair-viz-0231449784414d8da3ddf8797de54b2e.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-7c76b2cab45743aaa83d97239614d99c.vega-embed details,
-  #altair-viz-7c76b2cab45743aaa83d97239614d99c.vega-embed details summary {
+  #altair-viz-0231449784414d8da3ddf8797de54b2e.vega-embed details,
+  #altair-viz-0231449784414d8da3ddf8797de54b2e.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-7c76b2cab45743aaa83d97239614d99c"></div>
+<div id="altair-viz-0231449784414d8da3ddf8797de54b2e"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-7c76b2cab45743aaa83d97239614d99c") {
-      outputDiv = document.getElementById("altair-viz-7c76b2cab45743aaa83d97239614d99c");
+    if (outputDiv.id !== "altair-viz-0231449784414d8da3ddf8797de54b2e") {
+      outputDiv = document.getElementById("altair-viz-0231449784414d8da3ddf8797de54b2e");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2470,7 +2438,7 @@ var element = document.getElementById('aa5a5a94-9ee7-4467-b4a1-f9ddad7def9f');
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}, "legend": {"labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_lf", "format": ".2f", "title": "Load Factor", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_lf", "stack": "zero", "title": "Load Factor", "type": "quantitative"}}}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 3}, "encoding": {"text": {"field": "avg_lf", "format": ".2f", "type": "quantitative"}, "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_lf", "stack": "zero", "title": "Load Factor", "type": "quantitative"}}}], "data": {"name": "data-4d41a923ae9d6e7e396ee9b3a673dd06"}, "height": 300, "width": 200, "$schema": "https://vega.github.io/schema/vega-lite/v5.14.1.json", "datasets": {"data-4d41a923ae9d6e7e396ee9b3a673dd06": [{"carrier": "AL1", "avg_lf": 89.2}, {"carrier": "AL2", "avg_lf": 89.16}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}, "legend": {"labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "sys_lf", "format": ".2f", "title": "System Load Factor", "type": "quantitative"}], "x": {"field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "sys_lf", "format": ".2f", "type": "quantitative"}, "x": {"field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-76bc5745d60b21ece80a3dc0805b3459"}, "height": 50, "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.14.1.json", "datasets": {"data-76bc5745d60b21ece80a3dc0805b3459": [{"carrier": "AL1", "sys_lf": 89.89}, {"carrier": "AL2", "sys_lf": 89.86}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
@@ -2511,23 +2479,23 @@ var element = document.getElementById('aa5a5a94-9ee7-4467-b4a1-f9ddad7def9f');
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 <style>
-  #altair-viz-55861278a693453f8ccf0ae09c70734d.vega-embed {
+  #altair-viz-168dbf018a6a4c27b921d323a94a50e3.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-55861278a693453f8ccf0ae09c70734d.vega-embed details,
-  #altair-viz-55861278a693453f8ccf0ae09c70734d.vega-embed details summary {
+  #altair-viz-168dbf018a6a4c27b921d323a94a50e3.vega-embed details,
+  #altair-viz-168dbf018a6a4c27b921d323a94a50e3.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-55861278a693453f8ccf0ae09c70734d"></div>
+<div id="altair-viz-168dbf018a6a4c27b921d323a94a50e3"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-55861278a693453f8ccf0ae09c70734d") {
-      outputDiv = document.getElementById("altair-viz-55861278a693453f8ccf0ae09c70734d");
+    if (outputDiv.id !== "altair-viz-168dbf018a6a4c27b921d323a94a50e3") {
+      outputDiv = document.getElementById("altair-viz-168dbf018a6a4c27b921d323a94a50e3");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2614,23 +2582,23 @@ var element = document.getElementById('aa5a5a94-9ee7-4467-b4a1-f9ddad7def9f');
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 <style>
-  #altair-viz-c360b30808dd443887b5eef773bc824e.vega-embed {
+  #altair-viz-43678f5836284538b695b04392de212e.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-c360b30808dd443887b5eef773bc824e.vega-embed details,
-  #altair-viz-c360b30808dd443887b5eef773bc824e.vega-embed details summary {
+  #altair-viz-43678f5836284538b695b04392de212e.vega-embed details,
+  #altair-viz-43678f5836284538b695b04392de212e.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-c360b30808dd443887b5eef773bc824e"></div>
+<div id="altair-viz-43678f5836284538b695b04392de212e"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-c360b30808dd443887b5eef773bc824e") {
-      outputDiv = document.getElementById("altair-viz-c360b30808dd443887b5eef773bc824e");
+    if (outputDiv.id !== "altair-viz-43678f5836284538b695b04392de212e") {
+      outputDiv = document.getElementById("altair-viz-43678f5836284538b695b04392de212e");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2819,23 +2787,23 @@ target = targets.load(9)</div>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 <style>
-  #altair-viz-556d4d5091d540e1bab31aec25f24e7a.vega-embed {
+  #altair-viz-31581356a4d846069b4c0b5d238efe0a.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-556d4d5091d540e1bab31aec25f24e7a.vega-embed details,
-  #altair-viz-556d4d5091d540e1bab31aec25f24e7a.vega-embed details summary {
+  #altair-viz-31581356a4d846069b4c0b5d238efe0a.vega-embed details,
+  #altair-viz-31581356a4d846069b4c0b5d238efe0a.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-556d4d5091d540e1bab31aec25f24e7a"></div>
+<div id="altair-viz-31581356a4d846069b4c0b5d238efe0a"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-556d4d5091d540e1bab31aec25f24e7a") {
-      outputDiv = document.getElementById("altair-viz-556d4d5091d540e1bab31aec25f24e7a");
+    if (outputDiv.id !== "altair-viz-31581356a4d846069b4c0b5d238efe0a") {
+      outputDiv = document.getElementById("altair-viz-31581356a4d846069b4c0b5d238efe0a");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2928,23 +2896,23 @@ target = targets.load(9)</div>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 <style>
-  #altair-viz-b0669cd4703543b3983165531394022a.vega-embed {
+  #altair-viz-09a76463184e4c9daf4fdc65681f3be0.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-b0669cd4703543b3983165531394022a.vega-embed details,
-  #altair-viz-b0669cd4703543b3983165531394022a.vega-embed details summary {
+  #altair-viz-09a76463184e4c9daf4fdc65681f3be0.vega-embed details,
+  #altair-viz-09a76463184e4c9daf4fdc65681f3be0.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-b0669cd4703543b3983165531394022a"></div>
+<div id="altair-viz-09a76463184e4c9daf4fdc65681f3be0"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-b0669cd4703543b3983165531394022a") {
-      outputDiv = document.getElementById("altair-viz-b0669cd4703543b3983165531394022a");
+    if (outputDiv.id !== "altair-viz-09a76463184e4c9daf4fdc65681f3be0") {
+      outputDiv = document.getElementById("altair-viz-09a76463184e4c9daf4fdc65681f3be0");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -3033,86 +3001,85 @@ target = targets.load(9)</div>
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<style>
-  #altair-viz-eacba1dd3c4142a99a281ca2efd2e70d.vega-embed {
-    width: 100%;
-    display: flex;
-  }
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[16], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">contrast</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">fig_carrier_load_factors</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">{</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">simulation</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg">:</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">summary</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">target</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg">:</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">target</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span> <span class="ansi-yellow-bg">}</span><span class="ansi-yellow-bg">)</span>
 
-  #altair-viz-eacba1dd3c4142a99a281ca2efd2e70d.vega-embed details,
-  #altair-viz-eacba1dd3c4142a99a281ca2efd2e70d.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-eacba1dd3c4142a99a281ca2efd2e70d"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-eacba1dd3c4142a99a281ca2efd2e70d") {
-      outputDiv = document.getElementById("altair-viz-eacba1dd3c4142a99a281ca2efd2e70d");
-    }
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.14.1?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
+File <span class="ansi-green-fg">/opt/conda/lib/python3.10/site-packages/passengersim/contrast.py:92</span>, in <span class="ansi-cyan-fg">fig_carrier_load_factors</span><span class="ansi-blue-fg">(summaries, raw_df)</span>
+<span class="ansi-green-intense-fg ansi-bold">     91</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> <span style="color: rgb(0,0,255)">fig_carrier_load_factors</span>(summaries, raw_df<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">False</span>):
+<span class="ansi-green-fg">---&gt; 92</span>     df <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">_assemble</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">summaries</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">carrier_load_factors</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     93</span>     source_order <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">list</span>(summaries<span style="color: rgb(98,98,98)">.</span>keys())
+<span class="ansi-green-intense-fg ansi-bold">     94</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> raw_df:
 
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
+File <span class="ansi-green-fg">/opt/conda/lib/python3.10/site-packages/passengersim/contrast.py:9</span>, in <span class="ansi-cyan-fg">_assemble</span><span class="ansi-blue-fg">(summaries, base, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">      7</span> <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> k, v <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> summaries<span style="color: rgb(98,98,98)">.</span>items():
+<span class="ansi-green-intense-fg ansi-bold">      8</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> (fun <span style="color: rgb(98,98,98)">:=</span> <span style="color: rgb(0,135,0)">getattr</span>(v, <span style="color: rgb(175,0,0)">f</span><span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">fig_</span><span class="ansi-bold" style="color: rgb(175,95,135)">{</span>base<span class="ansi-bold" style="color: rgb(175,95,135)">}</span><span style="color: rgb(175,0,0)">"</span>, <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>)) <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
+<span class="ansi-green-fg">----&gt; 9</span>         summaries_[k] <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">fun</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">raw_df</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">True</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     10</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">elif</span> (raw <span style="color: rgb(98,98,98)">:=</span> <span style="color: rgb(0,135,0)">getattr</span>(v, <span style="color: rgb(175,0,0)">f</span><span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">raw_</span><span class="ansi-bold" style="color: rgb(175,95,135)">{</span>base<span class="ansi-bold" style="color: rgb(175,95,135)">}</span><span style="color: rgb(175,0,0)">"</span>, <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>)) <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
+<span class="ansi-green-intense-fg ansi-bold">     11</span>         summaries_[k] <span style="color: rgb(98,98,98)">=</span> raw
 
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
+File <span class="ansi-green-fg">/opt/conda/lib/python3.10/site-packages/passengersim/summary.py:515</span>, in <span class="ansi-cyan-fg">SummaryTables.fig_carrier_load_factors</span><span class="ansi-blue-fg">(self, raw_df, load_measure)</span>
+<span class="ansi-green-intense-fg ansi-bold">    512</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> <span style="color: rgb(0,0,255)">fig_carrier_load_factors</span>(
+<span class="ansi-green-intense-fg ansi-bold">    513</span>     <span style="color: rgb(0,135,0)">self</span>, raw_df<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">False</span>, load_measure: Literal[<span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">sys_lf</span><span style="color: rgb(175,0,0)">"</span>, <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">avg_lf</span><span style="color: rgb(175,0,0)">"</span>] <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">sys_lf</span><span style="color: rgb(175,0,0)">"</span>
+<span class="ansi-green-intense-fg ansi-bold">    514</span> ):
+<span class="ansi-green-fg">--&gt; 515</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">_fig_carrier_load_factors</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-intense-fg ansi-bold">    516</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">raw_df</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">    517</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">load_measure</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">    518</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">System Load Factor</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">if</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">load_measure</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">==</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">sys_lf</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">else</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">Leg Load Factor</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">    519</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">)</span>
 
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
+File <span class="ansi-green-fg">/opt/conda/lib/python3.10/site-packages/passengersim/summary.py:456</span>, in <span class="ansi-cyan-fg">SummaryTables._fig_carrier_load_factors</span><span class="ansi-blue-fg">(self, raw_df, load_measure, measure_name, measure_format, orient)</span>
+<span class="ansi-green-intense-fg ansi-bold">    448</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> <span style="color: rgb(0,0,255)">_fig_carrier_load_factors</span>(
+<span class="ansi-green-intense-fg ansi-bold">    449</span>     <span style="color: rgb(0,135,0)">self</span>,
+<span class="ansi-green-intense-fg ansi-bold">    450</span>     raw_df: <span style="color: rgb(0,135,0)">bool</span>,
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-intense-fg ansi-bold">    454</span>     orient: Literal[<span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">h</span><span style="color: rgb(175,0,0)">"</span>, <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">v</span><span style="color: rgb(175,0,0)">"</span>] <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">h</span><span style="color: rgb(175,0,0)">"</span>,
+<span class="ansi-green-intense-fg ansi-bold">    455</span> ):
+<span class="ansi-green-fg">--&gt; 456</span>     df <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">load_factors</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">carrier</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">load_measure</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">]</span>
+<span class="ansi-green-intense-fg ansi-bold">    457</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> raw_df:
+<span class="ansi-green-intense-fg ansi-bold">    458</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> df
 
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.14.1"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "title": {"fontSize": 18}}, "data": {"name": "data-2a7c4aa20ca56dd2cf357a8e00b8ad5d"}, "facet": {"column": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "source", "title": "Source", "type": "nominal"}, "tooltip": [{"field": "source", "title": null, "type": "nominal"}, {"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_lf", "format": ".2f", "title": "Load Factor", "type": "quantitative"}], "x": {"field": "source", "sort": ["simulation", "target"], "title": null, "type": "nominal"}, "y": {"field": "avg_lf", "stack": "zero", "title": "Load Factor", "type": "quantitative"}}}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 3}, "encoding": {"text": {"field": "avg_lf", "format": ".2f", "type": "quantitative"}, "x": {"field": "source", "sort": ["simulation", "target"], "title": null, "type": "nominal"}, "y": {"field": "avg_lf", "stack": "zero", "title": "Load Factor", "type": "quantitative"}}}], "height": 300, "width": 125}, "title": "Carrier Load Factors", "$schema": "https://vega.github.io/schema/vega-lite/v5.14.1.json", "datasets": {"data-2a7c4aa20ca56dd2cf357a8e00b8ad5d": [{"source": "simulation", "carrier": "AL1", "avg_lf": 89.2}, {"source": "simulation", "carrier": "AL2", "avg_lf": 89.16}, {"source": "target", "carrier": "AL1", "avg_lf": 90.1}, {"source": "target", "carrier": "AL2", "avg_lf": 90.14}]}}, {"mode": "vega-lite"});
-</script>
+File <span class="ansi-green-fg">/opt/conda/lib/python3.10/site-packages/pandas/core/frame.py:3767</span>, in <span class="ansi-cyan-fg">DataFrame.__getitem__</span><span class="ansi-blue-fg">(self, key)</span>
+<span class="ansi-green-intense-fg ansi-bold">   3765</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> is_iterator(key):
+<span class="ansi-green-intense-fg ansi-bold">   3766</span>         key <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">list</span>(key)
+<span class="ansi-green-fg">-&gt; 3767</span>     indexer <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">columns</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">_get_indexer_strict</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">key</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">columns</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg">)</span>[<span style="color: rgb(98,98,98)">1</span>]
+<span class="ansi-green-intense-fg ansi-bold">   3769</span> <span style="color: rgb(95,135,135)"># take() does not accept boolean indexers</span>
+<span class="ansi-green-intense-fg ansi-bold">   3770</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">getattr</span>(indexer, <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">dtype</span><span style="color: rgb(175,0,0)">"</span>, <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>) <span style="color: rgb(98,98,98)">==</span> <span style="color: rgb(0,135,0)">bool</span>:
+
+File <span class="ansi-green-fg">/opt/conda/lib/python3.10/site-packages/pandas/core/indexes/base.py:5877</span>, in <span class="ansi-cyan-fg">Index._get_indexer_strict</span><span class="ansi-blue-fg">(self, key, axis_name)</span>
+<span class="ansi-green-intense-fg ansi-bold">   5874</span> <span class="ansi-bold" style="color: rgb(0,135,0)">else</span>:
+<span class="ansi-green-intense-fg ansi-bold">   5875</span>     keyarr, indexer, new_indexer <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>_reindex_non_unique(keyarr)
+<span class="ansi-green-fg">-&gt; 5877</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">_raise_if_missing</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">keyarr</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">indexer</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">axis_name</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   5879</span> keyarr <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>take(indexer)
+<span class="ansi-green-intense-fg ansi-bold">   5880</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">isinstance</span>(key, Index):
+<span class="ansi-green-intense-fg ansi-bold">   5881</span>     <span style="color: rgb(95,135,135)"># GH 42790 - Preserve name from an Index</span>
+
+File <span class="ansi-green-fg">/opt/conda/lib/python3.10/site-packages/pandas/core/indexes/base.py:5941</span>, in <span class="ansi-cyan-fg">Index._raise_if_missing</span><span class="ansi-blue-fg">(self, key, indexer, axis_name)</span>
+<span class="ansi-green-intense-fg ansi-bold">   5938</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> <span class="ansi-bold" style="color: rgb(215,95,95)">KeyError</span>(<span style="color: rgb(175,0,0)">f</span><span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">None of [</span><span class="ansi-bold" style="color: rgb(175,95,135)">{</span>key<span class="ansi-bold" style="color: rgb(175,95,135)">}</span><span style="color: rgb(175,0,0)">] are in the [</span><span class="ansi-bold" style="color: rgb(175,95,135)">{</span>axis_name<span class="ansi-bold" style="color: rgb(175,95,135)">}</span><span style="color: rgb(175,0,0)">]</span><span style="color: rgb(175,0,0)">"</span>)
+<span class="ansi-green-intense-fg ansi-bold">   5940</span> not_found <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">list</span>(ensure_index(key)[missing_mask<span style="color: rgb(98,98,98)">.</span>nonzero()[<span style="color: rgb(98,98,98)">0</span>]]<span style="color: rgb(98,98,98)">.</span>unique())
+<span class="ansi-green-fg">-&gt; 5941</span> <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> <span class="ansi-bold" style="color: rgb(215,95,95)">KeyError</span>(<span style="color: rgb(175,0,0)">f</span><span style="color: rgb(175,0,0)">"</span><span class="ansi-bold" style="color: rgb(175,95,135)">{</span>not_found<span class="ansi-bold" style="color: rgb(175,95,135)">}</span><span style="color: rgb(175,0,0)"> not in index</span><span style="color: rgb(175,0,0)">"</span>)
+
+<span class="ansi-red-fg">KeyError</span>: "['sys_lf'] not in index"</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b18c6e52-75c1-41c3-91c6-fd6043e6e93c">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=b18c6e52-75c1-41c3-91c6-fd6043e6e93c">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy for="cell-17">
@@ -3138,90 +3105,14 @@ target = targets.load(9)</div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[17]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<style>
-  #altair-viz-e4f765288ef94e9f8bbb6466ed7e64df.vega-embed {
-    width: 100%;
-    display: flex;
-  }
-
-  #altair-viz-e4f765288ef94e9f8bbb6466ed7e64df.vega-embed details,
-  #altair-viz-e4f765288ef94e9f8bbb6466ed7e64df.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-e4f765288ef94e9f8bbb6466ed7e64df"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-e4f765288ef94e9f8bbb6466ed7e64df") {
-      outputDiv = document.getElementById("altair-viz-e4f765288ef94e9f8bbb6466ed7e64df");
-    }
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.14.1?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
-
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
-
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
-
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
-
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.14.1"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "title": {"fontSize": 18}}, "data": {"name": "data-0e3e9179c8cf1b6c4665ed35ffdcae0f"}, "facet": {"column": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "booking_class", "type": "nominal"}, "tooltip": [{"field": "source", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "source", "sort": ["simulation", "target"], "title": "Source", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 3}, "encoding": {"opacity": {"condition": {"test": "datum.avg_sold < 17.720", "value": 0}, "value": 1}, "order": {"field": "booking_class", "sort": "descending", "type": "nominal"}, "text": {"field": "avg_sold", "format": ".2f", "type": "quantitative"}, "x": {"field": "source", "sort": ["simulation", "target"], "title": "Source", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}], "height": 300, "width": 200}, "title": "Carrier Fare Class Mix", "$schema": "https://vega.github.io/schema/vega-lite/v5.14.1.json", "datasets": {"data-0e3e9179c8cf1b6c4665ed35ffdcae0f": [{"source": "simulation", "carrier": "AL1", "booking_class": "Y0", "avg_sold": 59.00375}, {"source": "simulation", "carrier": "AL1", "booking_class": "Y1", "avg_sold": 56.9945}, {"source": "simulation", "carrier": "AL1", "booking_class": "Y2", "avg_sold": 31.32375}, {"source": "simulation", "carrier": "AL1", "booking_class": "Y3", "avg_sold": 18.53975}, {"source": "simulation", "carrier": "AL1", "booking_class": "Y4", "avg_sold": 108.19075}, {"source": "simulation", "carrier": "AL1", "booking_class": "Y5", "avg_sold": 20.50175}, {"source": "simulation", "carrier": "AL2", "booking_class": "Y0", "avg_sold": 59.14025}, {"source": "simulation", "carrier": "AL2", "booking_class": "Y1", "avg_sold": 57.04975}, {"source": "simulation", "carrier": "AL2", "booking_class": "Y2", "avg_sold": 31.13275}, {"source": "simulation", "carrier": "AL2", "booking_class": "Y3", "avg_sold": 18.581}, {"source": "simulation", "carrier": "AL2", "booking_class": "Y4", "avg_sold": 108.1185}, {"source": "simulation", "carrier": "AL2", "booking_class": "Y5", "avg_sold": 20.433}, {"source": "target", "carrier": "AL1", "booking_class": "Y5", "avg_sold": 19.69}, {"source": "target", "carrier": "AL1", "booking_class": "Y4", "avg_sold": 110.29}, {"source": "target", "carrier": "AL1", "booking_class": "Y3", "avg_sold": 18.06}, {"source": "target", "carrier": "AL1", "booking_class": "Y2", "avg_sold": 32.14}, {"source": "target", "carrier": "AL1", "booking_class": "Y1", "avg_sold": 56.12}, {"source": "target", "carrier": "AL1", "booking_class": "Y0", "avg_sold": 58.86}, {"source": "target", "carrier": "AL2", "booking_class": "Y5", "avg_sold": 19.86}, {"source": "target", "carrier": "AL2", "booking_class": "Y4", "avg_sold": 110.59}, {"source": "target", "carrier": "AL2", "booking_class": "Y3", "avg_sold": 18.02}, {"source": "target", "carrier": "AL2", "booking_class": "Y2", "avg_sold": 32.06}, {"source": "target", "carrier": "AL2", "booking_class": "Y1", "avg_sold": 55.96}, {"source": "target", "carrier": "AL2", "booking_class": "Y0", "avg_sold": 58.85}]}}, {"mode": "vega-lite"});
-</script>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=892f7593-73ea-49ad-b0e1-29e7394f734d">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=892f7593-73ea-49ad-b0e1-29e7394f734d">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy for="cell-18">
@@ -3243,82 +3134,6 @@ target = targets.load(9)</div>
     "simulation": summary,
     "target": target,
 }, by_airline="AL1", by_class=True)</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[18]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<style>
-  #altair-viz-40e58a9288f24fd9b41f50e7fb9cf02f.vega-embed {
-    width: 100%;
-    display: flex;
-  }
-
-  #altair-viz-40e58a9288f24fd9b41f50e7fb9cf02f.vega-embed details,
-  #altair-viz-40e58a9288f24fd9b41f50e7fb9cf02f.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-40e58a9288f24fd9b41f50e7fb9cf02f"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-40e58a9288f24fd9b41f50e7fb9cf02f") {
-      outputDiv = document.getElementById("altair-viz-40e58a9288f24fd9b41f50e7fb9cf02f");
-    }
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.14.1?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
-
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
-
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
-
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
-
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.14.1"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "title": {"fontSize": 18}}, "data": {"name": "data-e760dd3bb8c27b60dcd4fceae0a4ef4a"}, "facet": {"row": {"field": "paxtype", "title": "Passenger Type", "type": "nominal"}}, "spec": {"mark": {"type": "bar"}, "encoding": {"color": {"field": "class", "title": "Booking Class", "type": "nominal"}, "tooltip": [{"field": "source", "title": "Source", "type": "nominal"}, {"field": "paxtype", "title": "Passenger Type", "type": "nominal"}, {"field": "class", "title": "Booking Class", "type": "nominal"}, {"field": "rrd", "title": "DfD", "type": "quantitative"}, {"field": "sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "rrd", "scale": {"reverse": true}, "title": "Days from Departure", "type": "ordinal"}, "xOffset": {"field": "source", "sort": ["simulation", "target"], "title": "Source", "type": "nominal"}, "y": {"field": "sold", "stack": true, "type": "quantitative"}}, "height": 200, "width": 500}, "title": "Bookings by Class by Timeframe", "$schema": "https://vega.github.io/schema/vega-lite/v5.14.1.json", "datasets": {"data-e760dd3bb8c27b60dcd4fceae0a4ef4a": [{"source": "target", "paxtype": "business", "rrd": 63, "class": "Y0", "sold": 3.69, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 14, "class": "Y1", "sold": 5.650000000000002, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 10, "class": "Y4", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 10, "class": "Y3", "sold": 0.3599999999999999, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 10, "class": "Y2", "sold": 4.219999999999999, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 10, "class": "Y1", "sold": 6.789999999999996, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 10, "class": "Y0", "sold": 7.350000000000001, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 14, "class": "Y5", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 14, "class": "Y4", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 14, "class": "Y3", "sold": 0.33000000000000007, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 14, "class": "Y2", "sold": 3.6999999999999993, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 14, "class": "Y0", "sold": 6.120000000000001, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 7, "class": "Y0", "sold": 4.880000000000003, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 17, "class": "Y5", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 17, "class": "Y4", "sold": 0.19999999999999973, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 17, "class": "Y3", "sold": 0.16999999999999993, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 17, "class": "Y2", "sold": 1.7400000000000002, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 17, "class": "Y1", "sold": 2.849999999999998, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 17, "class": "Y0", "sold": 3.049999999999997, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 21, "class": "Y5", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 21, "class": "Y4", "sold": 0.18000000000000016, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 21, "class": "Y3", "sold": 0.15000000000000013, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 10, "class": "Y5", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 7, "class": "Y1", "sold": 4.480000000000004, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 21, "class": "Y1", "sold": 2.2900000000000027, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 3, "class": "Y1", "sold": 8.61, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 1, "class": "Y4", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 1, "class": "Y3", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 1, "class": "Y2", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 1, "class": "Y1", "sold": 2.1499999999999986, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 1, "class": "Y0", "sold": 2.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 3, "class": "Y5", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 3, "class": "Y4", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 3, "class": "Y3", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 3, "class": "Y2", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 3, "class": "Y0", "sold": 9.14, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 7, "class": "Y2", "sold": 2.8000000000000007, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 5, "class": "Y5", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 5, "class": "Y4", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 5, "class": "Y3", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 5, "class": "Y2", "sold": 2.4400000000000013, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 5, "class": "Y1", "sold": 4.25, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 5, "class": "Y0", "sold": 4.849999999999994, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 7, "class": "Y5", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 7, "class": "Y4", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 7, "class": "Y3", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 21, "class": "Y2", "sold": 1.4400000000000013, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 21, "class": "Y0", "sold": 2.4299999999999997, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 63, "class": "Y0", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 49, "class": "Y1", "sold": 2.3099999999999996, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 42, "class": "Y4", "sold": 0.3999999999999999, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 42, "class": "Y3", "sold": 0.19000000000000006, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 42, "class": "Y2", "sold": 1.6100000000000003, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 42, "class": "Y1", "sold": 2.8100000000000005, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 42, "class": "Y0", "sold": 3.039999999999999, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 49, "class": "Y5", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 49, "class": "Y4", "sold": 0.32999999999999996, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 49, "class": "Y3", "sold": 0.15999999999999998, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 49, "class": "Y2", "sold": 1.2599999999999998, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 49, "class": "Y0", "sold": 2.45, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 35, "class": "Y0", "sold": 1.870000000000001, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 56, "class": "Y5", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 56, "class": "Y4", "sold": 0.41000000000000003, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 56, "class": "Y3", "sold": 0.2, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 56, "class": "Y2", "sold": 1.62, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 56, "class": "Y1", "sold": 2.83, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 56, "class": "Y0", "sold": 3.02, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 63, "class": "Y5", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 63, "class": "Y4", "sold": 0.5, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 63, "class": "Y3", "sold": 0.24, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 42, "class": "Y5", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 35, "class": "Y1", "sold": 1.75, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 24, "class": "Y5", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 28, "class": "Y1", "sold": 1.7100000000000009, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 24, "class": "Y4", "sold": 0.16999999999999993, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 24, "class": "Y3", "sold": 0.10999999999999988, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 24, "class": "Y2", "sold": 1.049999999999999, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 24, "class": "Y1", "sold": 1.7399999999999984, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 24, "class": "Y0", "sold": 1.8399999999999999, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 28, "class": "Y5", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 28, "class": "Y4", "sold": 0.20000000000000018, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 28, "class": "Y3", "sold": 0.1200000000000001, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 28, "class": "Y2", "sold": 0.9800000000000004, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 28, "class": "Y0", "sold": 1.8100000000000023, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 35, "class": "Y2", "sold": 0.96, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 31, "class": "Y5", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 31, "class": "Y4", "sold": 0.15999999999999992, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 31, "class": "Y3", "sold": 0.07999999999999996, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 31, "class": "Y2", "sold": 0.6699999999999999, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 31, "class": "Y1", "sold": 1.1999999999999993, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 31, "class": "Y0", "sold": 1.2899999999999991, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 35, "class": "Y5", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 35, "class": "Y4", "sold": 0.25, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 35, "class": "Y3", "sold": 0.12, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 1, "class": "Y5", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 63, "class": "Y1", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 63, "class": "Y1", "sold": 3.37, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 14, "class": "Y1", "sold": 0.049999999999999996, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 10, "class": "Y4", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 10, "class": "Y3", "sold": 2.379999999999999, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 10, "class": "Y2", "sold": 0.4200000000000004, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 10, "class": "Y1", "sold": 0.07, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 10, "class": "Y0", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 14, "class": "Y5", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 14, "class": "Y4", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 14, "class": "Y3", "sold": 4.0600000000000005, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 14, "class": "Y2", "sold": 0.7699999999999998, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 14, "class": "Y0", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 7, "class": "Y0", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 17, "class": "Y5", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 17, "class": "Y4", "sold": 4.079999999999998, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 17, "class": "Y3", "sold": 1.7400000000000002, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 17, "class": "Y2", "sold": 0.51, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 17, "class": "Y1", "sold": 0.02, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 17, "class": "Y0", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 21, "class": "Y5", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 21, "class": "Y4", "sold": 5.530000000000001, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 21, "class": "Y3", "sold": 2.13, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 10, "class": "Y5", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 7, "class": "Y1", "sold": 0.07999999999999999, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 21, "class": "Y1", "sold": 0.01, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 3, "class": "Y1", "sold": 0.53, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 1, "class": "Y4", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 1, "class": "Y3", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 1, "class": "Y2", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 1, "class": "Y1", "sold": 0.29000000000000004, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 1, "class": "Y0", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 3, "class": "Y5", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 3, "class": "Y4", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 3, "class": "Y3", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 3, "class": "Y2", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 3, "class": "Y0", "sold": 0.02, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 7, "class": "Y2", "sold": 1.0599999999999996, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 5, "class": "Y5", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 5, "class": "Y4", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 5, "class": "Y3", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 5, "class": "Y2", "sold": 2.2, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 5, "class": "Y1", "sold": 0.22999999999999998, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 5, "class": "Y0", "sold": 0.02, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 7, "class": "Y5", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 7, "class": "Y4", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 7, "class": "Y3", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 21, "class": "Y2", "sold": 0.41000000000000003, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 21, "class": "Y0", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 63, "class": "Y2", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 49, "class": "Y1", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 42, "class": "Y4", "sold": 13.779999999999994, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 42, "class": "Y3", "sold": 0.21999999999999997, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 42, "class": "Y2", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 42, "class": "Y1", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 42, "class": "Y0", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 49, "class": "Y5", "sold": 2.6900000000000013, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 49, "class": "Y4", "sold": 13.71, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 49, "class": "Y3", "sold": 0.13999999999999996, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 49, "class": "Y2", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 49, "class": "Y0", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 35, "class": "Y0", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 56, "class": "Y5", "sold": 2.5699999999999994, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 56, "class": "Y4", "sold": 12.099999999999998, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 56, "class": "Y3", "sold": 0.11000000000000001, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 56, "class": "Y2", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 56, "class": "Y1", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 56, "class": "Y0", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 63, "class": "Y5", "sold": 4.95, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 63, "class": "Y4", "sold": 25.98, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 63, "class": "Y3", "sold": 0.23, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 42, "class": "Y5", "sold": 2.5199999999999996, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 35, "class": "Y1", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 24, "class": "Y5", "sold": 1.990000000000002, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 28, "class": "Y1", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 24, "class": "Y4", "sold": 8.060000000000002, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 24, "class": "Y3", "sold": 2.45, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 24, "class": "Y2", "sold": 0.27, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 24, "class": "Y1", "sold": 0.01, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 24, "class": "Y0", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 28, "class": "Y5", "sold": 2.039999999999999, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 28, "class": "Y4", "sold": 9.820000000000007, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 28, "class": "Y3", "sold": 1.5999999999999999, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 28, "class": "Y2", "sold": 0.09, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 28, "class": "Y0", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 35, "class": "Y2", "sold": 0.01, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 31, "class": "Y5", "sold": 1.17, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 31, "class": "Y4", "sold": 5.599999999999994, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 31, "class": "Y3", "sold": 0.43999999999999995, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 31, "class": "Y2", "sold": 0.01, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 31, "class": "Y1", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 31, "class": "Y0", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 35, "class": "Y5", "sold": 1.7599999999999998, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 35, "class": "Y4", "sold": 8.820000000000007, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 35, "class": "Y3", "sold": 0.3500000000000001, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "business", "rrd": 63, "class": "Y2", "sold": 1.88, "sem": null, "ci0": null, "ci1": null}, {"source": "target", "paxtype": "leisure", "rrd": 1, "class": "Y5", "sold": 0.0, "sem": null, "ci0": null, "ci1": null}, {"source": "simulation", "paxtype": "business", "rrd": 63, "class": "Y1", "sold": 3.33875, "sem": 0.03309340736628837, "ci0": 3.2738869215620747, "ci1": 3.4036130784379255}, {"source": "simulation", "paxtype": "leisure", "rrd": 1, "class": "Y5", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "business", "rrd": 10, "class": "Y4", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "business", "rrd": 10, "class": "Y3", "sold": 0.286, "sem": 0.009812124019690008, "ci0": 0.26676823692140755, "ci1": 0.3052317630785924}, {"source": "simulation", "paxtype": "business", "rrd": 10, "class": "Y2", "sold": 4.0120000000000005, "sem": 0.015810509865979337, "ci0": 3.981011400662681, "ci1": 4.04298859933732}, {"source": "simulation", "paxtype": "business", "rrd": 10, "class": "Y1", "sold": 6.85325, "sem": 0.03607293922657827, "ci0": 6.782547039115907, "ci1": 6.923952960884093}, {"source": "simulation", "paxtype": "business", "rrd": 10, "class": "Y0", "sold": 7.3295, "sem": 0.04576327979699228, "ci0": 7.239803971597896, "ci1": 7.419196028402105}, {"source": "simulation", "paxtype": "business", "rrd": 14, "class": "Y5", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "business", "rrd": 14, "class": "Y4", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "business", "rrd": 14, "class": "Y3", "sold": 0.28225, "sem": 0.011710927945015003, "ci0": 0.2592965812277706, "ci1": 0.3052034187722294}, {"source": "simulation", "paxtype": "business", "rrd": 14, "class": "Y2", "sold": 3.6827499999999995, "sem": 0.02661831554066142, "ci0": 3.630578101540303, "ci1": 3.734921898459696}, {"source": "simulation", "paxtype": "business", "rrd": 14, "class": "Y1", "sold": 5.655, "sem": 0.036522443632496626, "ci0": 5.583416010480307, "ci1": 5.7265839895196935}, {"source": "simulation", "paxtype": "business", "rrd": 14, "class": "Y0", "sold": 6.106, "sem": 0.037876260521745087, "ci0": 6.03176252937738, "ci1": 6.18023747062262}, {"source": "simulation", "paxtype": "business", "rrd": 17, "class": "Y5", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "business", "rrd": 17, "class": "Y4", "sold": 0.17, "sem": 0.005974482776311609, "ci0": 0.15829001375842927, "ci1": 0.18170998624157075}, {"source": "simulation", "paxtype": "business", "rrd": 17, "class": "Y3", "sold": 0.1535, "sem": 0.004988876515698599, "ci0": 0.14372180202923074, "ci1": 0.16327819797076926}, {"source": "simulation", "paxtype": "business", "rrd": 17, "class": "Y2", "sold": 1.8212500000000003, "sem": 0.020399652774822738, "ci0": 1.7812666805613477, "ci1": 1.8612333194386528}, {"source": "simulation", "paxtype": "business", "rrd": 17, "class": "Y1", "sold": 2.8525, "sem": 0.0252047173715117, "ci0": 2.8030987539518373, "ci1": 2.901901246048163}, {"source": "simulation", "paxtype": "business", "rrd": 17, "class": "Y0", "sold": 3.0812500000000003, "sem": 0.023013432068154347, "ci0": 3.0361436731464178, "ci1": 3.126356326853583}, {"source": "simulation", "paxtype": "business", "rrd": 21, "class": "Y5", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "business", "rrd": 21, "class": "Y4", "sold": 0.17825000000000002, "sem": 0.005137687547266108, "ci0": 0.16818013240735846, "ci1": 0.18831986759264158}, {"source": "simulation", "paxtype": "business", "rrd": 21, "class": "Y3", "sold": 0.14900000000000005, "sem": 0.005763872155263522, "ci0": 0.13770281057568354, "ci1": 0.16029718942431656}, {"source": "simulation", "paxtype": "business", "rrd": 21, "class": "Y2", "sold": 1.38225, "sem": 0.012613099451672482, "ci0": 1.3575283250747219, "ci1": 1.406971674925278}, {"source": "simulation", "paxtype": "business", "rrd": 10, "class": "Y5", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "business", "rrd": 7, "class": "Y0", "sold": 4.895999999999999, "sem": 0.03596333008928861, "ci0": 4.825511873024993, "ci1": 4.966488126975005}, {"source": "simulation", "paxtype": "business", "rrd": 7, "class": "Y1", "sold": 4.577500000000001, "sem": 0.03880864737543794, "ci0": 4.501435051144142, "ci1": 4.653564948855859}, {"source": "simulation", "paxtype": "business", "rrd": 3, "class": "Y1", "sold": 8.34075, "sem": 0.027706422239858513, "ci0": 8.286445412409877, "ci1": 8.395054587590122}, {"source": "simulation", "paxtype": "business", "rrd": 1, "class": "Y4", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "business", "rrd": 1, "class": "Y3", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "business", "rrd": 1, "class": "Y2", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "business", "rrd": 1, "class": "Y1", "sold": 2.713250000000001, "sem": 0.02188686186327845, "ci0": 2.670351750747975, "ci1": 2.7561482492520266}, {"source": "simulation", "paxtype": "business", "rrd": 1, "class": "Y0", "sold": 2.680750000000001, "sem": 0.018823190484080345, "ci0": 2.6438565466512034, "ci1": 2.7176434533487988}, {"source": "simulation", "paxtype": "business", "rrd": 3, "class": "Y5", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "business", "rrd": 3, "class": "Y4", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "business", "rrd": 3, "class": "Y3", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "business", "rrd": 3, "class": "Y2", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "business", "rrd": 3, "class": "Y0", "sold": 8.278749999999999, "sem": 0.036797588236187465, "ci0": 8.20662672705707, "ci1": 8.350873272942927}, {"source": "simulation", "paxtype": "business", "rrd": 7, "class": "Y2", "sold": 2.6325, "sem": 0.024977767892445633, "ci0": 2.583543574930806, "ci1": 2.6814564250691935}, {"source": "simulation", "paxtype": "business", "rrd": 5, "class": "Y5", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "business", "rrd": 5, "class": "Y4", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "business", "rrd": 5, "class": "Y3", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "business", "rrd": 5, "class": "Y2", "sold": 1.9789999999999999, "sem": 0.029744747435471862, "ci0": 1.920700295026475, "ci1": 2.037299704973525}, {"source": "simulation", "paxtype": "business", "rrd": 5, "class": "Y1", "sold": 4.287749999999999, "sem": 0.03974475856428603, "ci0": 4.209850273213998, "ci1": 4.365649726786}, {"source": "simulation", "paxtype": "business", "rrd": 5, "class": "Y0", "sold": 5.008749999999999, "sem": 0.039763624499451096, "ci0": 4.930813295981075, "ci1": 5.086686704018923}, {"source": "simulation", "paxtype": "business", "rrd": 7, "class": "Y5", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "business", "rrd": 7, "class": "Y4", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "business", "rrd": 7, "class": "Y3", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "business", "rrd": 21, "class": "Y1", "sold": 2.29575, "sem": 0.023449265565376253, "ci0": 2.2497894394918627, "ci1": 2.341710560508137}, {"source": "simulation", "paxtype": "business", "rrd": 21, "class": "Y0", "sold": 2.471999999999999, "sem": 0.019578190814157608, "ci0": 2.43362674600425, "ci1": 2.510373253995748}, {"source": "simulation", "paxtype": "business", "rrd": 24, "class": "Y5", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "business", "rrd": 49, "class": "Y0", "sold": 2.45275, "sem": 0.024867565890801104, "ci0": 2.4040095708540297, "ci1": 2.5014904291459703}, {"source": "simulation", "paxtype": "business", "rrd": 42, "class": "Y3", "sold": 0.19049999999999997, "sem": 0.007451696302036055, "ci0": 0.1758946752480093, "ci1": 0.20510532475199064}, {"source": "simulation", "paxtype": "business", "rrd": 42, "class": "Y2", "sold": 1.6145, "sem": 0.010754843869934427, "ci0": 1.5934205060149285, "ci1": 1.6355794939850716}, {"source": "simulation", "paxtype": "business", "rrd": 42, "class": "Y1", "sold": 2.8600000000000003, "sem": 0.02754541704167861, "ci0": 2.8060109825983104, "ci1": 2.9139890174016903}, {"source": "simulation", "paxtype": "business", "rrd": 42, "class": "Y0", "sold": 3.05425, "sem": 0.015293653367764459, "ci0": 3.0242744393991816, "ci1": 3.0842255606008186}, {"source": "simulation", "paxtype": "business", "rrd": 49, "class": "Y5", "sold": 0.00075, "sem": 0.0005335936864527374, "ci0": 0.0, "ci1": 0.0017958436254473652}, {"source": "simulation", "paxtype": "business", "rrd": 49, "class": "Y4", "sold": 0.33399999999999996, "sem": 0.011786291472158091, "ci0": 0.3108988687145701, "ci1": 0.3571011312854298}, {"source": "simulation", "paxtype": "business", "rrd": 49, "class": "Y3", "sold": 0.16150000000000003, "sem": 0.006457123542603506, "ci0": 0.14884403785649716, "ci1": 0.1741559621435029}, {"source": "simulation", "paxtype": "business", "rrd": 49, "class": "Y2", "sold": 1.2830000000000001, "sem": 0.014896867679705869, "ci0": 1.2538021393477767, "ci1": 1.3121978606522235}, {"source": "simulation", "paxtype": "business", "rrd": 49, "class": "Y1", "sold": 2.31825, "sem": 0.017810928293232463, "ci0": 2.2833405805452642, "ci1": 2.3531594194547356}, {"source": "simulation", "paxtype": "business", "rrd": 56, "class": "Y5", "sold": 0.0005, "sem": 0.00033333333333333327, "ci0": 0.0, "ci1": 0.0011533333333333333}, {"source": "simulation", "paxtype": "business", "rrd": 42, "class": "Y5", "sold": 0.00025, "sem": 0.00025, "ci0": 0.0, "ci1": 0.00074}, {"source": "simulation", "paxtype": "business", "rrd": 56, "class": "Y4", "sold": 0.40499999999999997, "sem": 0.008407998837086289, "ci0": 0.3885203222793108, "ci1": 0.4214796777206891}, {"source": "simulation", "paxtype": "business", "rrd": 56, "class": "Y3", "sold": 0.18425, "sem": 0.00442609057496317, "ci0": 0.1755748624730722, "ci1": 0.1929251375269278}, {"source": "simulation", "paxtype": "business", "rrd": 56, "class": "Y2", "sold": 1.6219999999999999, "sem": 0.027220294716340677, "ci0": 1.5686482223559721, "ci1": 1.6753517776440277}, {"source": "simulation", "paxtype": "business", "rrd": 56, "class": "Y1", "sold": 2.8459999999999996, "sem": 0.028062925324666, "ci0": 2.7909966663636543, "ci1": 2.901003333636345}, {"source": "simulation", "paxtype": "business", "rrd": 56, "class": "Y0", "sold": 3.0797499999999998, "sem": 0.025675458450954085, "ci0": 3.0294261014361297, "ci1": 3.13007389856387}, {"source": "simulation", "paxtype": "business", "rrd": 63, "class": "Y5", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "business", "rrd": 63, "class": "Y4", "sold": 0.477, "sem": 0.011179097558489337, "ci0": 0.45508896878536087, "ci1": 0.4989110312146391}, {"source": "simulation", "paxtype": "business", "rrd": 63, "class": "Y3", "sold": 0.238, "sem": 0.00890380692612872, "ci0": 0.2205485384247877, "ci1": 0.25545146157521226}, {"source": "simulation", "paxtype": "business", "rrd": 63, "class": "Y2", "sold": 1.8482499999999997, "sem": 0.018596781382211755, "ci0": 1.8118003084908647, "ci1": 1.8846996915091347}, {"source": "simulation", "paxtype": "business", "rrd": 42, "class": "Y4", "sold": 0.41500000000000004, "sem": 0.008603939666093536, "ci0": 0.3981362782544567, "ci1": 0.4318637217455434}, {"source": "simulation", "paxtype": "business", "rrd": 35, "class": "Y0", "sold": 1.8712499999999999, "sem": 0.015838814840623525, "ci0": 1.8402059229123777, "ci1": 1.902294077087622}, {"source": "simulation", "paxtype": "business", "rrd": 24, "class": "Y4", "sold": 0.14674999999999985, "sem": 0.006922688141980035, "ci0": 0.133181531241719, "ci1": 0.1603184687582807}, {"source": "simulation", "paxtype": "business", "rrd": 28, "class": "Y0", "sold": 1.87725, "sem": 0.01704752344346698, "ci0": 1.8438368540508048, "ci1": 1.9106631459491954}, {"source": "simulation", "paxtype": "business", "rrd": 24, "class": "Y3", "sold": 0.11899999999999997, "sem": 0.004918784854457886, "ci0": 0.10935918168526251, "ci1": 0.12864081831473742}, {"source": "simulation", "paxtype": "business", "rrd": 24, "class": "Y2", "sold": 1.049, "sem": 0.013407087677791833, "ci0": 1.0227221081515279, "ci1": 1.075277891848472}, {"source": "simulation", "paxtype": "business", "rrd": 24, "class": "Y1", "sold": 1.7745000000000002, "sem": 0.016573908544590166, "ci0": 1.7420151392526035, "ci1": 1.8069848607473968}, {"source": "simulation", "paxtype": "business", "rrd": 24, "class": "Y0", "sold": 1.8677500000000005, "sem": 0.012966034688969095, "ci0": 1.842336572009621, "ci1": 1.89316342799038}, {"source": "simulation", "paxtype": "business", "rrd": 28, "class": "Y5", "sold": 0.00025, "sem": 0.00025, "ci0": 0.0, "ci1": 0.00074}, {"source": "simulation", "paxtype": "business", "rrd": 28, "class": "Y4", "sold": 0.18825000000000008, "sem": 0.004362880037569461, "ci0": 0.17969875512636393, "ci1": 0.19680124487363623}, {"source": "simulation", "paxtype": "business", "rrd": 28, "class": "Y3", "sold": 0.11124999999999999, "sem": 0.005812462664157286, "ci0": 0.09985757317825171, "ci1": 0.12264242682174827}, {"source": "simulation", "paxtype": "business", "rrd": 28, "class": "Y2", "sold": 1.0249999999999997, "sem": 0.017830217796388947, "ci0": 0.9900527731190774, "ci1": 1.059947226880922}, {"source": "simulation", "paxtype": "business", "rrd": 28, "class": "Y1", "sold": 1.69, "sem": 0.017456294630368272, "ci0": 1.6557856625244782, "ci1": 1.7242143374755217}, {"source": "simulation", "paxtype": "business", "rrd": 31, "class": "Y5", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "business", "rrd": 35, "class": "Y1", "sold": 1.7505, "sem": 0.024252147671220227, "ci0": 1.7029657905644082, "ci1": 1.7980342094355917}, {"source": "simulation", "paxtype": "business", "rrd": 31, "class": "Y4", "sold": 0.15649999999999997, "sem": 0.006823163163486252, "ci0": 0.1431266001995669, "ci1": 0.16987339980043303}, {"source": "simulation", "paxtype": "business", "rrd": 31, "class": "Y3", "sold": 0.07950000000000002, "sem": 0.0050525021304080415, "ci0": 0.06959709582440025, "ci1": 0.08940290417559978}, {"source": "simulation", "paxtype": "business", "rrd": 31, "class": "Y2", "sold": 0.6700000000000002, "sem": 0.01007609933346123, "ci0": 0.6502508453064162, "ci1": 0.6897491546935841}, {"source": "simulation", "paxtype": "business", "rrd": 31, "class": "Y1", "sold": 1.207, "sem": 0.013394650673558745, "ci0": 1.180746484679825, "ci1": 1.2332535153201751}, {"source": "simulation", "paxtype": "business", "rrd": 31, "class": "Y0", "sold": 1.2537500000000001, "sem": 0.018712926310738034, "ci0": 1.2170726644309535, "ci1": 1.2904273355690468}, {"source": "simulation", "paxtype": "business", "rrd": 35, "class": "Y5", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "business", "rrd": 35, "class": "Y4", "sold": 0.2532500000000001, "sem": 0.005916666666666678, "ci0": 0.2416533333333334, "ci1": 0.2648466666666668}, {"source": "simulation", "paxtype": "business", "rrd": 35, "class": "Y3", "sold": 0.12025000000000001, "sem": 0.007677980782008307, "ci0": 0.10520115766726373, "ci1": 0.13529884233273629}, {"source": "simulation", "paxtype": "business", "rrd": 35, "class": "Y2", "sold": 0.9844999999999999, "sem": 0.016578098001077516, "ci0": 0.952006927917888, "ci1": 1.0169930720821119}, {"source": "simulation", "paxtype": "business", "rrd": 1, "class": "Y5", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 63, "class": "Y0", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 63, "class": "Y1", "sold": 0.00075, "sem": 0.0003818813079129867, "ci0": 1.5126364905460954e-06, "ci1": 0.001498487363509454}, {"source": "simulation", "paxtype": "leisure", "rrd": 14, "class": "Y1", "sold": 0.07425, "sem": 0.007647167231509105, "ci0": 0.05926155222624215, "ci1": 0.08923844777375785}, {"source": "simulation", "paxtype": "leisure", "rrd": 10, "class": "Y4", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 10, "class": "Y3", "sold": 2.0149999999999997, "sem": 0.031732387941099637, "ci0": 1.9528045196354444, "ci1": 2.077195480364555}, {"source": "simulation", "paxtype": "leisure", "rrd": 10, "class": "Y2", "sold": 0.5062500000000001, "sem": 0.012672421938121289, "ci0": 0.48141205300128237, "ci1": 0.5310879469987179}, {"source": "simulation", "paxtype": "leisure", "rrd": 10, "class": "Y1", "sold": 0.10225, "sem": 0.007494905677265799, "ci0": 0.08755998487255903, "ci1": 0.11694001512744095}, {"source": "simulation", "paxtype": "leisure", "rrd": 10, "class": "Y0", "sold": 0.0005, "sem": 0.0005, "ci0": 0.0, "ci1": 0.00148}, {"source": "simulation", "paxtype": "leisure", "rrd": 14, "class": "Y5", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 14, "class": "Y4", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 14, "class": "Y3", "sold": 3.7897500000000006, "sem": 0.01900456816428917, "ci0": 3.752501046397994, "ci1": 3.8269989536020073}, {"source": "simulation", "paxtype": "leisure", "rrd": 14, "class": "Y2", "sold": 0.8384999999999998, "sem": 0.013830320957149821, "ci0": 0.8113925709239862, "ci1": 0.8656074290760134}, {"source": "simulation", "paxtype": "leisure", "rrd": 14, "class": "Y0", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 7, "class": "Y0", "sold": 0.004, "sem": 0.000927960727138337, "ci0": 0.0021811969748088593, "ci1": 0.005818803025191141}, {"source": "simulation", "paxtype": "leisure", "rrd": 17, "class": "Y5", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 17, "class": "Y4", "sold": 3.589999999999999, "sem": 0.045325979795746596, "ci0": 3.501161079600336, "ci1": 3.678838920399662}, {"source": "simulation", "paxtype": "leisure", "rrd": 17, "class": "Y3", "sold": 1.9002500000000004, "sem": 0.022096536933294265, "ci0": 1.8569407876107438, "ci1": 1.943559212389257}, {"source": "simulation", "paxtype": "leisure", "rrd": 17, "class": "Y2", "sold": 0.62475, "sem": 0.013093944741325617, "ci0": 0.5990858683070018, "ci1": 0.6504141316929982}, {"source": "simulation", "paxtype": "leisure", "rrd": 17, "class": "Y1", "sold": 0.025250000000000005, "sem": 0.0031501763619059668, "ci0": 0.01907565433066431, "ci1": 0.0314243456693357}, {"source": "simulation", "paxtype": "leisure", "rrd": 17, "class": "Y0", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 21, "class": "Y5", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 21, "class": "Y4", "sold": 5.1857500000000005, "sem": 0.04654754140780356, "ci0": 5.094516818840706, "ci1": 5.276983181159295}, {"source": "simulation", "paxtype": "leisure", "rrd": 21, "class": "Y3", "sold": 2.2412499999999995, "sem": 0.03668796729780015, "ci0": 2.169341584096311, "ci1": 2.313158415903688}, {"source": "simulation", "paxtype": "leisure", "rrd": 10, "class": "Y5", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 7, "class": "Y1", "sold": 0.1085, "sem": 0.005233439489369196, "ci0": 0.09824245860083637, "ci1": 0.11875754139916363}, {"source": "simulation", "paxtype": "leisure", "rrd": 21, "class": "Y1", "sold": 0.016250000000000004, "sem": 0.002148966159704604, "ci0": 0.012038026326978979, "ci1": 0.02046197367302103}, {"source": "simulation", "paxtype": "leisure", "rrd": 3, "class": "Y1", "sold": 0.507, "sem": 0.01138224738597591, "ci0": 0.48469079512348723, "ci1": 0.5293092048765128}, {"source": "simulation", "paxtype": "leisure", "rrd": 1, "class": "Y4", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 1, "class": "Y3", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 1, "class": "Y2", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 1, "class": "Y1", "sold": 0.36824999999999997, "sem": 0.00679102757729311, "ci0": 0.3549395859485055, "ci1": 0.38156041405149443}, {"source": "simulation", "paxtype": "leisure", "rrd": 1, "class": "Y0", "sold": 0.004999999999999999, "sem": 0.0014907119849998597, "ci0": 0.0020782045094002743, "ci1": 0.007921795490599725}, {"source": "simulation", "paxtype": "leisure", "rrd": 3, "class": "Y5", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 3, "class": "Y4", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 3, "class": "Y3", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 3, "class": "Y2", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 3, "class": "Y0", "sold": 0.013500000000000003, "sem": 0.0017950549357115008, "ci0": 0.009981692326005463, "ci1": 0.017018307673994544}, {"source": "simulation", "paxtype": "leisure", "rrd": 7, "class": "Y2", "sold": 0.9582499999999999, "sem": 0.013442521671505298, "ci0": 0.9319026575238496, "ci1": 0.9845973424761503}, {"source": "simulation", "paxtype": "leisure", "rrd": 5, "class": "Y5", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 5, "class": "Y4", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 5, "class": "Y3", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 5, "class": "Y2", "sold": 1.7510000000000001, "sem": 0.026402861797750456, "ci0": 1.6992503908764092, "ci1": 1.802749609123591}, {"source": "simulation", "paxtype": "leisure", "rrd": 5, "class": "Y1", "sold": 0.4095000000000001, "sem": 0.016811041345232338, "ci0": 0.3765503589633447, "ci1": 0.44244964103665546}, {"source": "simulation", "paxtype": "leisure", "rrd": 5, "class": "Y0", "sold": 0.031999999999999994, "sem": 0.0018559214542766737, "ci0": 0.028362393949617714, "ci1": 0.03563760605038228}, {"source": "simulation", "paxtype": "leisure", "rrd": 7, "class": "Y5", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 7, "class": "Y4", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 7, "class": "Y3", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 21, "class": "Y2", "sold": 0.49275, "sem": 0.016768232199940187, "ci0": 0.45988426488811723, "ci1": 0.5256157351118828}, {"source": "simulation", "paxtype": "leisure", "rrd": 21, "class": "Y0", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 63, "class": "Y2", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 49, "class": "Y1", "sold": 0.00025, "sem": 0.00025, "ci0": 0.0, "ci1": 0.00074}, {"source": "simulation", "paxtype": "leisure", "rrd": 42, "class": "Y4", "sold": 13.624, "sem": 0.06740651963192448, "ci0": 13.491883221521428, "ci1": 13.756116778478573}, {"source": "simulation", "paxtype": "leisure", "rrd": 42, "class": "Y3", "sold": 0.31899999999999995, "sem": 0.024827739862232058, "ci0": 0.27033762987002513, "ci1": 0.36766237012997477}, {"source": "simulation", "paxtype": "leisure", "rrd": 42, "class": "Y2", "sold": 0.0062499999999999995, "sem": 0.0013043729868748772, "ci0": 0.00369342894572524, "ci1": 0.00880657105427476}, {"source": "simulation", "paxtype": "leisure", "rrd": 42, "class": "Y1", "sold": 0.0024999999999999996, "sem": 0.0007453559924999299, "ci0": 0.0010391022547001371, "ci1": 0.003960897745299862}, {"source": "simulation", "paxtype": "leisure", "rrd": 42, "class": "Y0", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 49, "class": "Y5", "sold": 2.7785, "sem": 0.0597450602328111, "ci0": 2.6613996819436903, "ci1": 2.89560031805631}, {"source": "simulation", "paxtype": "leisure", "rrd": 49, "class": "Y4", "sold": 13.89925, "sem": 0.06538459935897223, "ci0": 13.771096185256415, "ci1": 14.027403814743586}, {"source": "simulation", "paxtype": "leisure", "rrd": 49, "class": "Y3", "sold": 0.1365, "sem": 0.007333333333333335, "ci0": 0.12212666666666668, "ci1": 0.15087333333333336}, {"source": "simulation", "paxtype": "leisure", "rrd": 49, "class": "Y2", "sold": 0.00075, "sem": 0.0003818813079129867, "ci0": 1.5126364905460954e-06, "ci1": 0.001498487363509454}, {"source": "simulation", "paxtype": "leisure", "rrd": 49, "class": "Y0", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 35, "class": "Y0", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 56, "class": "Y5", "sold": 2.776, "sem": 0.062155941880974716, "ci0": 2.654174353913289, "ci1": 2.8978256460867104}, {"source": "simulation", "paxtype": "leisure", "rrd": 56, "class": "Y4", "sold": 12.274750000000001, "sem": 0.068044562604223, "ci0": 12.141382657295724, "ci1": 12.408117342704278}, {"source": "simulation", "paxtype": "leisure", "rrd": 56, "class": "Y3", "sold": 0.10725, "sem": 0.005129571132170794, "ci0": 0.09719604058094525, "ci1": 0.11730395941905475}, {"source": "simulation", "paxtype": "leisure", "rrd": 56, "class": "Y2", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 56, "class": "Y1", "sold": 0.0005, "sem": 0.00033333333333333327, "ci0": 0.0, "ci1": 0.0011533333333333333}, {"source": "simulation", "paxtype": "leisure", "rrd": 56, "class": "Y0", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 63, "class": "Y5", "sold": 5.45275, "sem": 0.15416957204469517, "ci0": 5.150577638792398, "ci1": 5.754922361207602}, {"source": "simulation", "paxtype": "leisure", "rrd": 63, "class": "Y4", "sold": 25.91225, "sem": 0.08728342244282888, "ci0": 25.741174492012057, "ci1": 26.083325507987944}, {"source": "simulation", "paxtype": "leisure", "rrd": 63, "class": "Y3", "sold": 0.2445, "sem": 0.008439325934114774, "ci0": 0.22795892116913505, "ci1": 0.26104107883086497}, {"source": "simulation", "paxtype": "leisure", "rrd": 42, "class": "Y5", "sold": 2.6024999999999996, "sem": 0.05542888336518339, "ci0": 2.49385938860424, "ci1": 2.7111406113957592}, {"source": "simulation", "paxtype": "leisure", "rrd": 35, "class": "Y1", "sold": 0.0004999999999999999, "sem": 0.0003333333333333332, "ci0": 0.0, "ci1": 0.001153333333333333}, {"source": "simulation", "paxtype": "leisure", "rrd": 24, "class": "Y5", "sold": 1.79025, "sem": 0.02597661876038206, "ci0": 1.739335827229651, "ci1": 1.8411641727703487}, {"source": "simulation", "paxtype": "leisure", "rrd": 28, "class": "Y1", "sold": 0.0052499999999999995, "sem": 0.0008700255424092125, "ci0": 0.003544749936877943, "ci1": 0.006955250063122056}, {"source": "simulation", "paxtype": "leisure", "rrd": 24, "class": "Y4", "sold": 7.373750000000001, "sem": 0.07529871070166681, "ci0": 7.226164527024734, "ci1": 7.521335472975268}, {"source": "simulation", "paxtype": "leisure", "rrd": 24, "class": "Y3", "sold": 2.80725, "sem": 0.0311235218301385, "ci0": 2.7462478972129283, "ci1": 2.8682521027870713}, {"source": "simulation", "paxtype": "leisure", "rrd": 24, "class": "Y2", "sold": 0.38675, "sem": 0.02047712137972523, "ci0": 0.3466148420957385, "ci1": 0.42688515790426146}, {"source": "simulation", "paxtype": "leisure", "rrd": 24, "class": "Y1", "sold": 0.01175, "sem": 0.0017098570440569323, "ci0": 0.008398680193648412, "ci1": 0.015101319806351588}, {"source": "simulation", "paxtype": "leisure", "rrd": 24, "class": "Y0", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 28, "class": "Y5", "sold": 2.00725, "sem": 0.03665046990755281, "ci0": 1.9354150789811966, "ci1": 2.0790849210188034}, {"source": "simulation", "paxtype": "leisure", "rrd": 28, "class": "Y4", "sold": 9.18975, "sem": 0.10088046419181301, "ci0": 8.992024290184046, "ci1": 9.387475709815954}, {"source": "simulation", "paxtype": "leisure", "rrd": 28, "class": "Y3", "sold": 2.04275, "sem": 0.05058470618675178, "ci0": 1.9436039758739663, "ci1": 2.141896024126033}, {"source": "simulation", "paxtype": "leisure", "rrd": 28, "class": "Y2", "sold": 0.13424999999999998, "sem": 0.01047516905193738, "ci0": 0.11371866865820271, "ci1": 0.15478133134179725}, {"source": "simulation", "paxtype": "leisure", "rrd": 28, "class": "Y0", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 35, "class": "Y2", "sold": 0.008000000000000002, "sem": 0.0011055415967851333, "ci0": 0.005833138470301141, "ci1": 0.010166861529698864}, {"source": "simulation", "paxtype": "leisure", "rrd": 31, "class": "Y5", "sold": 1.2660000000000007, "sem": 0.020575740839909255, "ci0": 1.2256715479537785, "ci1": 1.3063284520462228}, {"source": "simulation", "paxtype": "leisure", "rrd": 31, "class": "Y4", "sold": 5.616, "sem": 0.06146724511658482, "ci0": 5.495524199571493, "ci1": 5.736475800428506}, {"source": "simulation", "paxtype": "leisure", "rrd": 31, "class": "Y3", "sold": 0.4330000000000001, "sem": 0.015419143945109272, "ci0": 0.4027784778675859, "ci1": 0.4632215221324143}, {"source": "simulation", "paxtype": "leisure", "rrd": 31, "class": "Y2", "sold": 0.01025, "sem": 0.0023407619841980232, "ci0": 0.005662106510971875, "ci1": 0.014837893489028125}, {"source": "simulation", "paxtype": "leisure", "rrd": 31, "class": "Y1", "sold": 0.0009999999999999998, "sem": 0.0004082482904638629, "ci0": 0.00019983335069082855, "ci1": 0.001800166649309171}, {"source": "simulation", "paxtype": "leisure", "rrd": 31, "class": "Y0", "sold": 0.0, "sem": 0.0, "ci0": 0.0, "ci1": 0.0}, {"source": "simulation", "paxtype": "leisure", "rrd": 35, "class": "Y5", "sold": 1.8267499999999999, "sem": 0.029207233693042636, "ci0": 1.7695038219616364, "ci1": 1.8839961780383634}, {"source": "simulation", "paxtype": "leisure", "rrd": 35, "class": "Y4", "sold": 8.801249999999998, "sem": 0.07275362724825285, "ci0": 8.658652890593423, "ci1": 8.943847109406573}, {"source": "simulation", "paxtype": "leisure", "rrd": 35, "class": "Y3", "sold": 0.4282500000000001, "sem": 0.03212616188992668, "ci0": 0.3652827226957438, "ci1": 0.49121727730425635}, {"source": "simulation", "paxtype": "business", "rrd": 63, "class": "Y0", "sold": 3.6390000000000002, "sem": 0.023514770771675485, "ci0": 3.5929110492875163, "ci1": 3.685088950712484}]}}, {"mode": "vega-lite"});
-</script>
 </div>
 </div>
 </div>

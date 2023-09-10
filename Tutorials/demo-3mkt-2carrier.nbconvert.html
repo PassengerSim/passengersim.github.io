@@ -1647,9 +1647,9 @@ Licensed under the Apache License, Version 2.0.
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[2023-09-09 23:35:30,166] passengersim.config.INFO: loaded config from /opt/conda/lib/python3.10/site-packages/passengersim/networks/3mkt-2carrier.yaml
-[2023-09-09 23:35:30,177] passengersim.database.INFO: connecting to sqlite database: airsim-output.sqlite
-[2023-09-09 23:35:30,178] passengersim.database.INFO: initializing sqlite tables
+<pre>[2023-09-10 15:17:56,556] passengersim.config.INFO: loaded config from /opt/conda/lib/python3.10/site-packages/passengersim/networks/3mkt-2carrier.yaml
+[2023-09-10 15:17:56,568] passengersim.database.INFO: connecting to sqlite database: airsim-output.sqlite
+[2023-09-10 15:17:56,570] passengersim.database.INFO: initializing sqlite tables
 </pre>
 </div>
 </div>
@@ -1778,143 +1778,125 @@ Leg2: AL2 212: ORD-LAX, bp=0, contrib=325, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0, contrib=250, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0, contrib=200, to path=BOS-LAX
 ******************** CoreProBP iteration 0 *******************
-Class , sold=0, n=1, mu=0, agg_fare=325, rev_low=300, agg_mu=2.3601, agg_sigma=0.963955, prot=0.985425, auth=79
-Class , sold=0, n=2, mu=0, agg_fare=320.997, rev_low=250, agg_mu=2.8101, agg_sigma=1.19477, prot=1.89224, auth=78
-Class , sold=0, n=3, mu=0, agg_fare=277.239, rev_low=200, agg_mu=7.32438, agg_sigma=1.97181, prot=6.16692, auth=77
-Class , sold=0, n=4, mu=0, agg_fare=254.795, rev_low=200, agg_mu=10.3244, agg_sigma=2.06107, prot=8.69819, auth=72
-Class , sold=0, n=5, mu=0, agg_fare=215.641, rev_low=150, agg_mu=36.1692, agg_sigma=8.92398, prot=31.602, auth=70
-Class , sold=0, n=6, mu=0, agg_fare=203.408, rev_low=125, agg_mu=44.454, agg_sigma=9.08749, prot=41.8082, auth=47
-Class , sold=0, n=7, mu=0, agg_fare=198.365, rev_low=100, agg_mu=47.5095, agg_sigma=9.16392, prot=47.4148, auth=37
+Class , sold=0, n=1, mu=0, agg_fare=325, rev_low=250, agg_mu=1.73088, agg_sigma=1.09704, prot=0.923115, auth=85
+Class , sold=0, n=2, mu=0, agg_fare=261.225, rev_low=200, agg_mu=11.5653, agg_sigma=2.79145, prot=9.54282, auth=84
+Class , sold=0, n=3, mu=0, agg_fare=221.833, rev_low=150, agg_mu=32.4319, agg_sigma=7.93378, prot=28.8057, auth=75
+Class , sold=0, n=4, mu=0, agg_fare=210.5, rev_low=125, agg_mu=38.507, agg_sigma=8.04123, prot=36.5981, auth=56
+Class , sold=0, n=5, mu=0, agg_fare=199.224, rev_low=100, agg_mu=44.3567, agg_sigma=8.26651, prot=44.3164, auth=48
 ***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 21, bid_price = 0
+Flight = 201, BOS-ORD, cap = 100, sold = 15, bid_price = 0
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    2.36    325.00     0      1     79
-    BOS-ORD   Y1  300.00    0.45    300.00     1      2     78
-    BOS-LAX   Y4  250.00    4.51    250.00     2      6     77
-    BOS-ORD   Y2  200.00    3.00    200.00     3      9     72
-    BOS-LAX   Y5  200.00   25.84    200.00     4     32     70
-    BOS-ORD   Y3  150.00    8.28    150.00     5     42     47
-    BOS-ORD   Y4  125.00    3.06    125.00     6     47     37
-    BOS-ORD   Y5  100.00   15.47    100.00     7      0     32
-    EMSRc, flt=201, μ=62.98, σ=10.65, z=1.51, agg_fare=174.21, cap=100, prob=0.07, emsr_c=11.52
+    BOS-LAX   Y3  325.00    1.73    325.00     0      1     85
+    BOS-LAX   Y4  250.00    9.83    250.00     1     10     84
+    BOS-LAX   Y5  200.00   20.87    200.00     2     29     75
+    BOS-ORD   Y3  150.00    6.08    150.00     3     37     56
+    BOS-ORD   Y4  125.00    5.85    125.00     4     44     48
+    BOS-ORD   Y5  100.00   13.84    100.00     5      0     41
+    EMSRc, flt=201, μ=58.20, σ=9.11, z=2.94, agg_fare=175.63, cap=100, prob=0.00, emsr_c=0.28
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=11.52, contrib=313.48, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=11.52, contrib=238.48, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=11.52, contrib=188.48, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=0.28, contrib=324.72, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=0.28, contrib=249.72, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=0.28, contrib=199.72, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 21, bid_price = 11.52
+Flight = 201, BOS-ORD, cap = 100, sold = 15, bid_price = 0.28
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    2.36    325.00     0      1     79
-    BOS-ORD   Y1  300.00    0.45    300.00     1      2     78
-    BOS-LAX   Y4  250.00    4.51    250.00     2      6     77
-    BOS-ORD   Y2  200.00    3.00    200.00     3      9     72
-    BOS-LAX   Y5  200.00   25.84    200.00     4     32     70
-    BOS-ORD   Y3  150.00    8.28    150.00     5     42     47
-    BOS-ORD   Y4  125.00    3.06    125.00     6     47     37
-    BOS-ORD   Y5  100.00   15.47    100.00     7      0     32
+    BOS-LAX   Y3  325.00    1.73    325.00     0      1     85
+    BOS-LAX   Y4  250.00    9.83    250.00     1     10     84
+    BOS-LAX   Y5  200.00   20.87    200.00     2     29     75
+    BOS-ORD   Y3  150.00    6.08    150.00     3     37     56
+    BOS-ORD   Y4  125.00    5.85    125.00     4     44     48
+    BOS-ORD   Y5  100.00   13.84    100.00     5      0     41
 ******************** CoreProBP iteration 1 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=2.36, agg_sigma=0.96, prot=0.99, auth=79
-Class , sold=0, n=2, mu=0.00, agg_fare=321.00, rev_low=250.00, agg_mu=2.81, agg_sigma=1.19, prot=1.89, auth=78
-Class , sold=0, n=3, mu=0.00, agg_fare=277.24, rev_low=200.00, agg_mu=7.32, agg_sigma=1.97, prot=6.17, auth=77
-Class , sold=0, n=4, mu=0.00, agg_fare=254.80, rev_low=200.00, agg_mu=10.32, agg_sigma=2.06, prot=8.70, auth=72
-Class , sold=0, n=5, mu=0.00, agg_fare=215.64, rev_low=150.00, agg_mu=36.17, agg_sigma=8.92, prot=31.60, auth=70
-Class , sold=0, n=6, mu=0.00, agg_fare=203.41, rev_low=125.00, agg_mu=44.45, agg_sigma=9.09, prot=41.81, auth=47
-Class , sold=0, n=7, mu=0.00, agg_fare=198.37, rev_low=100.00, agg_mu=47.51, agg_sigma=9.16, prot=47.41, auth=37
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=1.73, agg_sigma=1.10, prot=0.92, auth=85
+Class , sold=0, n=2, mu=0.00, agg_fare=261.22, rev_low=200.00, agg_mu=11.57, agg_sigma=2.79, prot=9.54, auth=84
+Class , sold=0, n=3, mu=0.00, agg_fare=221.83, rev_low=150.00, agg_mu=32.43, agg_sigma=7.93, prot=28.81, auth=75
+Class , sold=0, n=4, mu=0.00, agg_fare=210.50, rev_low=125.00, agg_mu=38.51, agg_sigma=8.04, prot=36.60, auth=56
+Class , sold=0, n=5, mu=0.00, agg_fare=199.22, rev_low=100.00, agg_mu=44.36, agg_sigma=8.27, prot=44.32, auth=48
 ***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 21, bid_price = 11.52
+Flight = 201, BOS-ORD, cap = 100, sold = 15, bid_price = 0.28
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    2.36    325.00     0      1     79
-    BOS-ORD   Y1  300.00    0.45    300.00     1      2     78
-    BOS-LAX   Y4  250.00    4.51    250.00     2      6     77
-    BOS-ORD   Y2  200.00    3.00    200.00     3      9     72
-    BOS-LAX   Y5  200.00   25.84    200.00     4     32     70
-    BOS-ORD   Y3  150.00    8.28    150.00     5     42     47
-    BOS-ORD   Y4  125.00    3.06    125.00     6     47     37
-    BOS-ORD   Y5  100.00   15.47    100.00     7      0     32
-    EMSRc, flt=201, μ=62.98, σ=10.65, z=1.51, agg_fare=174.21, cap=100, prob=0.07, emsr_c=11.52
+    BOS-LAX   Y3  325.00    1.73    325.00     0      1     85
+    BOS-LAX   Y4  250.00    9.83    250.00     1     10     84
+    BOS-LAX   Y5  200.00   20.87    200.00     2     29     75
+    BOS-ORD   Y3  150.00    6.08    150.00     3     37     56
+    BOS-ORD   Y4  125.00    5.85    125.00     4     44     48
+    BOS-ORD   Y5  100.00   13.84    100.00     5      0     41
+    EMSRc, flt=201, μ=58.20, σ=9.11, z=2.94, agg_fare=175.63, cap=100, prob=0.00, emsr_c=0.28
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=11.52, contrib=313.48, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=11.52, contrib=238.48, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=11.52, contrib=188.48, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=0.28, contrib=324.72, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=0.28, contrib=249.72, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=0.28, contrib=199.72, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 21, bid_price = 11.52
+Flight = 201, BOS-ORD, cap = 100, sold = 15, bid_price = 0.28
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    2.36    325.00     0      1     79
-    BOS-ORD   Y1  300.00    0.45    300.00     1      2     78
-    BOS-LAX   Y4  250.00    4.51    250.00     2      6     77
-    BOS-ORD   Y2  200.00    3.00    200.00     3      9     72
-    BOS-LAX   Y5  200.00   25.84    200.00     4     32     70
-    BOS-ORD   Y3  150.00    8.28    150.00     5     42     47
-    BOS-ORD   Y4  125.00    3.06    125.00     6     47     37
-    BOS-ORD   Y5  100.00   15.47    100.00     7      0     32
+    BOS-LAX   Y3  325.00    1.73    325.00     0      1     85
+    BOS-LAX   Y4  250.00    9.83    250.00     1     10     84
+    BOS-LAX   Y5  200.00   20.87    200.00     2     29     75
+    BOS-ORD   Y3  150.00    6.08    150.00     3     37     56
+    BOS-ORD   Y4  125.00    5.85    125.00     4     44     48
+    BOS-ORD   Y5  100.00   13.84    100.00     5      0     41
 ******************** CoreProBP iteration 2 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=2.36, agg_sigma=0.96, prot=0.99, auth=79
-Class , sold=0, n=2, mu=0.00, agg_fare=321.00, rev_low=250.00, agg_mu=2.81, agg_sigma=1.19, prot=1.89, auth=78
-Class , sold=0, n=3, mu=0.00, agg_fare=277.24, rev_low=200.00, agg_mu=7.32, agg_sigma=1.97, prot=6.17, auth=77
-Class , sold=0, n=4, mu=0.00, agg_fare=254.80, rev_low=200.00, agg_mu=10.32, agg_sigma=2.06, prot=8.70, auth=72
-Class , sold=0, n=5, mu=0.00, agg_fare=215.64, rev_low=150.00, agg_mu=36.17, agg_sigma=8.92, prot=31.60, auth=70
-Class , sold=0, n=6, mu=0.00, agg_fare=203.41, rev_low=125.00, agg_mu=44.45, agg_sigma=9.09, prot=41.81, auth=47
-Class , sold=0, n=7, mu=0.00, agg_fare=198.37, rev_low=100.00, agg_mu=47.51, agg_sigma=9.16, prot=47.41, auth=37
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=1.73, agg_sigma=1.10, prot=0.92, auth=85
+Class , sold=0, n=2, mu=0.00, agg_fare=261.22, rev_low=200.00, agg_mu=11.57, agg_sigma=2.79, prot=9.54, auth=84
+Class , sold=0, n=3, mu=0.00, agg_fare=221.83, rev_low=150.00, agg_mu=32.43, agg_sigma=7.93, prot=28.81, auth=75
+Class , sold=0, n=4, mu=0.00, agg_fare=210.50, rev_low=125.00, agg_mu=38.51, agg_sigma=8.04, prot=36.60, auth=56
+Class , sold=0, n=5, mu=0.00, agg_fare=199.22, rev_low=100.00, agg_mu=44.36, agg_sigma=8.27, prot=44.32, auth=48
 ***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 21, bid_price = 11.52
+Flight = 201, BOS-ORD, cap = 100, sold = 15, bid_price = 0.28
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    2.36    325.00     0      1     79
-    BOS-ORD   Y1  300.00    0.45    300.00     1      2     78
-    BOS-LAX   Y4  250.00    4.51    250.00     2      6     77
-    BOS-ORD   Y2  200.00    3.00    200.00     3      9     72
-    BOS-LAX   Y5  200.00   25.84    200.00     4     32     70
-    BOS-ORD   Y3  150.00    8.28    150.00     5     42     47
-    BOS-ORD   Y4  125.00    3.06    125.00     6     47     37
-    BOS-ORD   Y5  100.00   15.47    100.00     7      0     32
-    EMSRc, flt=201, μ=62.98, σ=10.65, z=1.51, agg_fare=174.21, cap=100, prob=0.07, emsr_c=11.52
+    BOS-LAX   Y3  325.00    1.73    325.00     0      1     85
+    BOS-LAX   Y4  250.00    9.83    250.00     1     10     84
+    BOS-LAX   Y5  200.00   20.87    200.00     2     29     75
+    BOS-ORD   Y3  150.00    6.08    150.00     3     37     56
+    BOS-ORD   Y4  125.00    5.85    125.00     4     44     48
+    BOS-ORD   Y5  100.00   13.84    100.00     5      0     41
+    EMSRc, flt=201, μ=58.20, σ=9.11, z=2.94, agg_fare=175.63, cap=100, prob=0.00, emsr_c=0.28
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=11.52, contrib=313.48, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=11.52, contrib=238.48, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=11.52, contrib=188.48, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=0.28, contrib=324.72, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=0.28, contrib=249.72, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=0.28, contrib=199.72, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 21, bid_price = 11.52
+Flight = 201, BOS-ORD, cap = 100, sold = 15, bid_price = 0.28
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    2.36    325.00     0      1     79
-    BOS-ORD   Y1  300.00    0.45    300.00     1      2     78
-    BOS-LAX   Y4  250.00    4.51    250.00     2      6     77
-    BOS-ORD   Y2  200.00    3.00    200.00     3      9     72
-    BOS-LAX   Y5  200.00   25.84    200.00     4     32     70
-    BOS-ORD   Y3  150.00    8.28    150.00     5     42     47
-    BOS-ORD   Y4  125.00    3.06    125.00     6     47     37
-    BOS-ORD   Y5  100.00   15.47    100.00     7      0     32
+    BOS-LAX   Y3  325.00    1.73    325.00     0      1     85
+    BOS-LAX   Y4  250.00    9.83    250.00     1     10     84
+    BOS-LAX   Y5  200.00   20.87    200.00     2     29     75
+    BOS-ORD   Y3  150.00    6.08    150.00     3     37     56
+    BOS-ORD   Y4  125.00    5.85    125.00     4     44     48
+    BOS-ORD   Y5  100.00   13.84    100.00     5      0     41
 ProBP converged in 2 iterations
-Leg: AL1:101 BOS-ORD, cap: 100, sold: 96, bp: 0.00
+Leg: AL1:101 BOS-ORD, cap: 100, sold: 93, bp: 0.00
  Class  Sold  ActRev    Fcst  StdDev FcstRev  Prot  Auth
-    Y0     0    0.00    0.00    0.00  400.00     0     4
-    Y1     4  543.75    3.51    1.62  300.00     3     4
-    Y2    15  333.33    7.12    1.45  200.00    10     1
-    Y3    26  250.96    0.00    0.00  150.00    10     0
-    Y4    18  222.22    0.00    0.00  125.00    11     0
-    Y5    33  142.42    0.00    0.00  100.00     0     0
+    Y0     0    0.00    0.00    0.00  400.00     0     7
+    Y1    11  565.91   12.98    2.31  300.00    12     7
+    Y2    15  383.33    9.67    1.58  200.00    22     0
+    Y3    27  227.78    0.00    0.00  150.00    23     0
+    Y4    14  232.14    0.00    0.00  125.00    23     0
+    Y5    26  130.77    0.00    0.00  100.00     0     0
 CoreProBP initialize *******************
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
@@ -1929,143 +1911,125 @@ Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ******************** CoreProBP iteration 0 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=7.51, agg_sigma=0.88, prot=6.26, auth=68
-Class , sold=0, n=2, mu=0.00, agg_fare=322.04, rev_low=250.00, agg_mu=8.51, agg_sigma=0.98, prot=7.77, auth=61
-Class , sold=0, n=3, mu=0.00, agg_fare=293.72, rev_low=200.00, agg_mu=14.03, agg_sigma=2.04, prot=13.07, auth=60
-Class , sold=0, n=4, mu=0.00, agg_fare=284.68, rev_low=200.00, agg_mu=15.53, agg_sigma=2.08, prot=14.42, auth=54
-Class , sold=0, n=5, mu=0.00, agg_fare=229.52, rev_low=150.00, agg_mu=44.55, agg_sigma=9.56, prot=40.78, auth=53
-Class , sold=0, n=6, mu=0.00, agg_fare=217.78, rev_low=125.00, agg_mu=52.27, agg_sigma=9.74, prot=50.45, auth=27
-Class , sold=0, n=7, mu=0.00, agg_fare=209.74, rev_low=100.00, agg_mu=57.22, agg_sigma=9.87, prot=57.80, auth=17
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=1.51, agg_sigma=0.90, prot=0.85, auth=86
+Class , sold=0, n=2, mu=0.00, agg_fare=261.35, rev_low=200.00, agg_mu=10.00, agg_sigma=2.58, prot=8.13, auth=85
+Class , sold=0, n=3, mu=0.00, agg_fare=218.82, rev_low=150.00, agg_mu=32.59, agg_sigma=8.39, prot=28.54, auth=77
+Class , sold=0, n=4, mu=0.00, agg_fare=207.89, rev_low=125.00, agg_mu=38.74, agg_sigma=8.49, prot=36.56, auth=57
+Class , sold=0, n=5, mu=0.00, agg_fare=197.93, rev_low=100.00, agg_mu=44.04, agg_sigma=8.65, prot=43.92, auth=49
 ***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 32, bid_price = 0.00
+Flight = 201, BOS-ORD, cap = 100, sold = 14, bid_price = 0.00
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    7.51    325.00     0      6     68
-    BOS-ORD   Y1  300.00    1.01    300.00     1      8     61
-    BOS-LAX   Y4  250.00    5.52    250.00     2     13     60
-    BOS-ORD   Y2  200.00    1.50    200.00     3     14     54
-    BOS-LAX   Y5  200.00   29.02    200.00     4     41     53
-    BOS-ORD   Y3  150.00    7.71    150.00     5     50     27
-    BOS-ORD   Y4  125.00    4.96    125.00     6     58     17
-    BOS-ORD   Y5  100.00   13.50    100.00     7      0     10
-    EMSRc, flt=201, μ=70.72, σ=10.80, z=-0.25, agg_fare=188.79, cap=100, prob=0.60, emsr_c=113.19
+    BOS-LAX   Y3  325.00    1.51    325.00     0      1     86
+    BOS-LAX   Y4  250.00    8.49    250.00     1      8     85
+    BOS-LAX   Y5  200.00   22.59    200.00     2     29     77
+    BOS-ORD   Y3  150.00    6.15    150.00     3     37     57
+    BOS-ORD   Y4  125.00    5.29    125.00     4     44     49
+    BOS-ORD   Y5  100.00   15.36    100.00     5      0     42
+    EMSRc, flt=201, μ=59.40, σ=9.61, z=2.77, agg_fare=172.60, cap=100, prob=0.00, emsr_c=0.49
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=113.19, contrib=211.81, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=113.19, contrib=136.81, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=113.19, contrib=86.81, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=0.49, contrib=324.51, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=0.49, contrib=249.51, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=0.49, contrib=199.51, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 32, bid_price = 113.19
+Flight = 201, BOS-ORD, cap = 100, sold = 14, bid_price = 0.49
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    7.51    325.00     0      6     68
-    BOS-ORD   Y1  300.00    1.01    300.00     1      8     61
-    BOS-LAX   Y4  250.00    5.52    250.00     2     13     60
-    BOS-ORD   Y2  200.00    1.50    200.00     3     14     54
-    BOS-LAX   Y5  200.00   29.02    200.00     4     41     53
-    BOS-ORD   Y3  150.00    7.71    150.00     5     50     27
-    BOS-ORD   Y4  125.00    4.96    125.00     6     58     17
-    BOS-ORD   Y5  100.00   13.50    100.00     7      0     10
+    BOS-LAX   Y3  325.00    1.51    325.00     0      1     86
+    BOS-LAX   Y4  250.00    8.49    250.00     1      8     85
+    BOS-LAX   Y5  200.00   22.59    200.00     2     29     77
+    BOS-ORD   Y3  150.00    6.15    150.00     3     37     57
+    BOS-ORD   Y4  125.00    5.29    125.00     4     44     49
+    BOS-ORD   Y5  100.00   15.36    100.00     5      0     42
 ******************** CoreProBP iteration 1 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=7.51, agg_sigma=0.88, prot=6.26, auth=68
-Class , sold=0, n=2, mu=0.00, agg_fare=322.04, rev_low=250.00, agg_mu=8.51, agg_sigma=0.98, prot=7.77, auth=61
-Class , sold=0, n=3, mu=0.00, agg_fare=293.72, rev_low=200.00, agg_mu=14.03, agg_sigma=2.04, prot=13.07, auth=60
-Class , sold=0, n=4, mu=0.00, agg_fare=284.68, rev_low=200.00, agg_mu=15.53, agg_sigma=2.08, prot=14.42, auth=54
-Class , sold=0, n=5, mu=0.00, agg_fare=229.52, rev_low=150.00, agg_mu=44.55, agg_sigma=9.56, prot=40.78, auth=53
-Class , sold=0, n=6, mu=0.00, agg_fare=217.78, rev_low=125.00, agg_mu=52.27, agg_sigma=9.74, prot=50.45, auth=27
-Class , sold=0, n=7, mu=0.00, agg_fare=209.74, rev_low=100.00, agg_mu=57.22, agg_sigma=9.87, prot=57.80, auth=17
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=1.51, agg_sigma=0.90, prot=0.85, auth=86
+Class , sold=0, n=2, mu=0.00, agg_fare=261.35, rev_low=200.00, agg_mu=10.00, agg_sigma=2.58, prot=8.13, auth=85
+Class , sold=0, n=3, mu=0.00, agg_fare=218.82, rev_low=150.00, agg_mu=32.59, agg_sigma=8.39, prot=28.54, auth=77
+Class , sold=0, n=4, mu=0.00, agg_fare=207.89, rev_low=125.00, agg_mu=38.74, agg_sigma=8.49, prot=36.56, auth=57
+Class , sold=0, n=5, mu=0.00, agg_fare=197.93, rev_low=100.00, agg_mu=44.04, agg_sigma=8.65, prot=43.92, auth=49
 ***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 32, bid_price = 113.19
+Flight = 201, BOS-ORD, cap = 100, sold = 14, bid_price = 0.49
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    7.51    325.00     0      6     68
-    BOS-ORD   Y1  300.00    1.01    300.00     1      8     61
-    BOS-LAX   Y4  250.00    5.52    250.00     2     13     60
-    BOS-ORD   Y2  200.00    1.50    200.00     3     14     54
-    BOS-LAX   Y5  200.00   29.02    200.00     4     41     53
-    BOS-ORD   Y3  150.00    7.71    150.00     5     50     27
-    BOS-ORD   Y4  125.00    4.96    125.00     6     58     17
-    BOS-ORD   Y5  100.00   13.50    100.00     7      0     10
-    EMSRc, flt=201, μ=70.72, σ=10.80, z=-0.25, agg_fare=188.79, cap=100, prob=0.60, emsr_c=113.19
+    BOS-LAX   Y3  325.00    1.51    325.00     0      1     86
+    BOS-LAX   Y4  250.00    8.49    250.00     1      8     85
+    BOS-LAX   Y5  200.00   22.59    200.00     2     29     77
+    BOS-ORD   Y3  150.00    6.15    150.00     3     37     57
+    BOS-ORD   Y4  125.00    5.29    125.00     4     44     49
+    BOS-ORD   Y5  100.00   15.36    100.00     5      0     42
+    EMSRc, flt=201, μ=59.40, σ=9.61, z=2.77, agg_fare=172.60, cap=100, prob=0.00, emsr_c=0.49
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=113.19, contrib=211.81, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=113.19, contrib=136.81, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=113.19, contrib=86.81, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=0.49, contrib=324.51, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=0.49, contrib=249.51, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=0.49, contrib=199.51, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 32, bid_price = 113.19
+Flight = 201, BOS-ORD, cap = 100, sold = 14, bid_price = 0.49
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    7.51    325.00     0      6     68
-    BOS-ORD   Y1  300.00    1.01    300.00     1      8     61
-    BOS-LAX   Y4  250.00    5.52    250.00     2     13     60
-    BOS-ORD   Y2  200.00    1.50    200.00     3     14     54
-    BOS-LAX   Y5  200.00   29.02    200.00     4     41     53
-    BOS-ORD   Y3  150.00    7.71    150.00     5     50     27
-    BOS-ORD   Y4  125.00    4.96    125.00     6     58     17
-    BOS-ORD   Y5  100.00   13.50    100.00     7      0     10
+    BOS-LAX   Y3  325.00    1.51    325.00     0      1     86
+    BOS-LAX   Y4  250.00    8.49    250.00     1      8     85
+    BOS-LAX   Y5  200.00   22.59    200.00     2     29     77
+    BOS-ORD   Y3  150.00    6.15    150.00     3     37     57
+    BOS-ORD   Y4  125.00    5.29    125.00     4     44     49
+    BOS-ORD   Y5  100.00   15.36    100.00     5      0     42
 ******************** CoreProBP iteration 2 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=7.51, agg_sigma=0.88, prot=6.26, auth=68
-Class , sold=0, n=2, mu=0.00, agg_fare=322.04, rev_low=250.00, agg_mu=8.51, agg_sigma=0.98, prot=7.77, auth=61
-Class , sold=0, n=3, mu=0.00, agg_fare=293.72, rev_low=200.00, agg_mu=14.03, agg_sigma=2.04, prot=13.07, auth=60
-Class , sold=0, n=4, mu=0.00, agg_fare=284.68, rev_low=200.00, agg_mu=15.53, agg_sigma=2.08, prot=14.42, auth=54
-Class , sold=0, n=5, mu=0.00, agg_fare=229.52, rev_low=150.00, agg_mu=44.55, agg_sigma=9.56, prot=40.78, auth=53
-Class , sold=0, n=6, mu=0.00, agg_fare=217.78, rev_low=125.00, agg_mu=52.27, agg_sigma=9.74, prot=50.45, auth=27
-Class , sold=0, n=7, mu=0.00, agg_fare=209.74, rev_low=100.00, agg_mu=57.22, agg_sigma=9.87, prot=57.80, auth=17
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=1.51, agg_sigma=0.90, prot=0.85, auth=86
+Class , sold=0, n=2, mu=0.00, agg_fare=261.35, rev_low=200.00, agg_mu=10.00, agg_sigma=2.58, prot=8.13, auth=85
+Class , sold=0, n=3, mu=0.00, agg_fare=218.82, rev_low=150.00, agg_mu=32.59, agg_sigma=8.39, prot=28.54, auth=77
+Class , sold=0, n=4, mu=0.00, agg_fare=207.89, rev_low=125.00, agg_mu=38.74, agg_sigma=8.49, prot=36.56, auth=57
+Class , sold=0, n=5, mu=0.00, agg_fare=197.93, rev_low=100.00, agg_mu=44.04, agg_sigma=8.65, prot=43.92, auth=49
 ***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 32, bid_price = 113.19
+Flight = 201, BOS-ORD, cap = 100, sold = 14, bid_price = 0.49
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    7.51    325.00     0      6     68
-    BOS-ORD   Y1  300.00    1.01    300.00     1      8     61
-    BOS-LAX   Y4  250.00    5.52    250.00     2     13     60
-    BOS-ORD   Y2  200.00    1.50    200.00     3     14     54
-    BOS-LAX   Y5  200.00   29.02    200.00     4     41     53
-    BOS-ORD   Y3  150.00    7.71    150.00     5     50     27
-    BOS-ORD   Y4  125.00    4.96    125.00     6     58     17
-    BOS-ORD   Y5  100.00   13.50    100.00     7      0     10
-    EMSRc, flt=201, μ=70.72, σ=10.80, z=-0.25, agg_fare=188.79, cap=100, prob=0.60, emsr_c=113.19
+    BOS-LAX   Y3  325.00    1.51    325.00     0      1     86
+    BOS-LAX   Y4  250.00    8.49    250.00     1      8     85
+    BOS-LAX   Y5  200.00   22.59    200.00     2     29     77
+    BOS-ORD   Y3  150.00    6.15    150.00     3     37     57
+    BOS-ORD   Y4  125.00    5.29    125.00     4     44     49
+    BOS-ORD   Y5  100.00   15.36    100.00     5      0     42
+    EMSRc, flt=201, μ=59.40, σ=9.61, z=2.77, agg_fare=172.60, cap=100, prob=0.00, emsr_c=0.49
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=113.19, contrib=211.81, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=113.19, contrib=136.81, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=113.19, contrib=86.81, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=0.49, contrib=324.51, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=0.49, contrib=249.51, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=0.49, contrib=199.51, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 32, bid_price = 113.19
+Flight = 201, BOS-ORD, cap = 100, sold = 14, bid_price = 0.49
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    7.51    325.00     0      6     68
-    BOS-ORD   Y1  300.00    1.01    300.00     1      8     61
-    BOS-LAX   Y4  250.00    5.52    250.00     2     13     60
-    BOS-ORD   Y2  200.00    1.50    200.00     3     14     54
-    BOS-LAX   Y5  200.00   29.02    200.00     4     41     53
-    BOS-ORD   Y3  150.00    7.71    150.00     5     50     27
-    BOS-ORD   Y4  125.00    4.96    125.00     6     58     17
-    BOS-ORD   Y5  100.00   13.50    100.00     7      0     10
+    BOS-LAX   Y3  325.00    1.51    325.00     0      1     86
+    BOS-LAX   Y4  250.00    8.49    250.00     1      8     85
+    BOS-LAX   Y5  200.00   22.59    200.00     2     29     77
+    BOS-ORD   Y3  150.00    6.15    150.00     3     37     57
+    BOS-ORD   Y4  125.00    5.29    125.00     4     44     49
+    BOS-ORD   Y5  100.00   15.36    100.00     5      0     42
 ProBP converged in 2 iterations
-Leg: AL1:101 BOS-ORD, cap: 100, sold: 67, bp: 0.00
+Leg: AL1:101 BOS-ORD, cap: 100, sold: 62, bp: 0.00
  Class  Sold  ActRev    Fcst  StdDev FcstRev  Prot  Auth
-    Y0     0    0.00    0.00    0.00  400.00     0    33
-    Y1    11  625.00   13.53    3.05  300.00    12    33
-    Y2    10  425.00    8.61    1.45  200.00    22    20
-    Y3    24  288.54    0.00    0.00  150.00    22    11
-    Y4    11  193.18    0.00    0.00  125.00    23    10
-    Y5    11  100.00    0.00    0.00  100.00     0    10
+    Y0     0    0.00    0.00    0.00  400.00     0    38
+    Y1     0    0.00   14.57    3.26  300.00    13    38
+    Y2     2  450.00   10.56    2.09  200.00    24    24
+    Y3    21  283.33    0.00    0.00  150.00    25    13
+    Y4    15  208.33    0.00    0.00  125.00    26    12
+    Y5    24  112.50    0.00    0.00  100.00     0    12
 </pre>
 </div>
 </div>
@@ -2114,294 +2078,258 @@ Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ******************** CoreProBP iteration 0 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=2.81, agg_sigma=0.73, prot=1.77, auth=83
-Class , sold=0, n=2, mu=0.00, agg_fare=314.61, rev_low=250.00, agg_mu=4.81, agg_sigma=0.83, prot=4.13, auth=81
-Class , sold=0, n=3, mu=0.00, agg_fare=285.39, rev_low=200.00, agg_mu=8.79, agg_sigma=1.76, prot=7.86, auth=78
-Class , sold=0, n=4, mu=0.00, agg_fare=263.49, rev_low=200.00, agg_mu=11.82, agg_sigma=1.85, prot=10.52, auth=75
-Class , sold=0, n=5, mu=0.00, agg_fare=218.11, rev_low=150.00, agg_mu=41.43, agg_sigma=8.58, prot=37.23, auth=72
-Class , sold=0, n=6, mu=0.00, agg_fare=209.28, rev_low=125.00, agg_mu=47.60, agg_sigma=8.69, prot=45.46, auth=45
-Class , sold=0, n=7, mu=0.00, agg_fare=202.90, rev_low=100.00, agg_mu=51.49, agg_sigma=8.81, prot=51.65, auth=37
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=1.88, agg_sigma=0.80, prot=1.30, auth=68
+Class , sold=0, n=2, mu=0.00, agg_fare=275.85, rev_low=200.00, agg_mu=5.47, agg_sigma=1.72, prot=4.44, auth=66
+Class , sold=0, n=3, mu=0.00, agg_fare=210.77, rev_low=150.00, agg_mu=38.52, agg_sigma=6.39, prot=34.95, auth=63
+Class , sold=0, n=4, mu=0.00, agg_fare=206.52, rev_low=125.00, agg_mu=41.41, agg_sigma=6.45, prot=39.69, auth=33
+Class , sold=0, n=5, mu=0.00, agg_fare=198.00, rev_low=100.00, agg_mu=46.25, agg_sigma=6.52, prot=46.16, auth=28
 ***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 17, bid_price = 0.00
+Flight = 201, BOS-ORD, cap = 100, sold = 32, bid_price = 0.00
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    2.81    325.00     0      2     83
-    BOS-ORD   Y1  300.00    2.00    300.00     1      4     81
-    BOS-LAX   Y4  250.00    3.97    250.00     2      8     78
-    BOS-ORD   Y2  200.00    3.03    200.00     3     11     75
-    BOS-LAX   Y5  200.00   29.61    200.00     4     37     72
-    BOS-ORD   Y3  150.00    6.17    150.00     5     45     45
-    BOS-ORD   Y4  125.00    3.89    125.00     6     52     37
-    BOS-ORD   Y5  100.00   16.51    100.00     7      0     31
-    EMSRc, flt=201, μ=68.00, σ=9.87, z=1.52, agg_fare=177.92, cap=100, prob=0.06, emsr_c=11.43
+    BOS-LAX   Y3  325.00    1.88    325.00     0      1     68
+    BOS-LAX   Y4  250.00    3.58    250.00     1      4     66
+    BOS-LAX   Y5  200.00   33.05    200.00     2     35     63
+    BOS-ORD   Y3  150.00    2.89    150.00     3     40     33
+    BOS-ORD   Y4  125.00    4.84    125.00     4     46     28
+    BOS-ORD   Y5  100.00   17.60    100.00     5      0     22
+    EMSRc, flt=201, μ=63.85, σ=7.54, z=0.55, agg_fare=170.98, cap=100, prob=0.29, emsr_c=49.76
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=11.43, contrib=313.57, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=11.43, contrib=238.57, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=11.43, contrib=188.57, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=49.76, contrib=275.24, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=49.76, contrib=200.24, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=49.76, contrib=150.24, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 17, bid_price = 11.43
+Flight = 201, BOS-ORD, cap = 100, sold = 32, bid_price = 49.76
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    2.81    325.00     0      2     83
-    BOS-ORD   Y1  300.00    2.00    300.00     1      4     81
-    BOS-LAX   Y4  250.00    3.97    250.00     2      8     78
-    BOS-ORD   Y2  200.00    3.03    200.00     3     11     75
-    BOS-LAX   Y5  200.00   29.61    200.00     4     37     72
-    BOS-ORD   Y3  150.00    6.17    150.00     5     45     45
-    BOS-ORD   Y4  125.00    3.89    125.00     6     52     37
-    BOS-ORD   Y5  100.00   16.51    100.00     7      0     31
+    BOS-LAX   Y3  325.00    1.88    325.00     0      1     68
+    BOS-LAX   Y4  250.00    3.58    250.00     1      4     66
+    BOS-LAX   Y5  200.00   33.05    200.00     2     35     63
+    BOS-ORD   Y3  150.00    2.89    150.00     3     40     33
+    BOS-ORD   Y4  125.00    4.84    125.00     4     46     28
+    BOS-ORD   Y5  100.00   17.60    100.00     5      0     22
 ******************** CoreProBP iteration 1 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=2.81, agg_sigma=0.73, prot=1.77, auth=83
-Class , sold=0, n=2, mu=0.00, agg_fare=314.61, rev_low=250.00, agg_mu=4.81, agg_sigma=0.83, prot=4.13, auth=81
-Class , sold=0, n=3, mu=0.00, agg_fare=285.39, rev_low=200.00, agg_mu=8.79, agg_sigma=1.76, prot=7.86, auth=78
-Class , sold=0, n=4, mu=0.00, agg_fare=263.49, rev_low=200.00, agg_mu=11.82, agg_sigma=1.85, prot=10.52, auth=75
-Class , sold=0, n=5, mu=0.00, agg_fare=218.11, rev_low=150.00, agg_mu=41.43, agg_sigma=8.58, prot=37.23, auth=72
-Class , sold=0, n=6, mu=0.00, agg_fare=209.28, rev_low=125.00, agg_mu=47.60, agg_sigma=8.69, prot=45.46, auth=45
-Class , sold=0, n=7, mu=0.00, agg_fare=202.90, rev_low=100.00, agg_mu=51.49, agg_sigma=8.81, prot=51.65, auth=37
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=1.88, agg_sigma=0.80, prot=1.30, auth=68
+Class , sold=0, n=2, mu=0.00, agg_fare=275.85, rev_low=200.00, agg_mu=5.47, agg_sigma=1.72, prot=4.44, auth=66
+Class , sold=0, n=3, mu=0.00, agg_fare=210.77, rev_low=150.00, agg_mu=38.52, agg_sigma=6.39, prot=34.95, auth=63
+Class , sold=0, n=4, mu=0.00, agg_fare=206.52, rev_low=125.00, agg_mu=41.41, agg_sigma=6.45, prot=39.69, auth=33
+Class , sold=0, n=5, mu=0.00, agg_fare=198.00, rev_low=100.00, agg_mu=46.25, agg_sigma=6.52, prot=46.16, auth=28
 ***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 17, bid_price = 11.43
+Flight = 201, BOS-ORD, cap = 100, sold = 32, bid_price = 49.76
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    2.81    325.00     0      2     83
-    BOS-ORD   Y1  300.00    2.00    300.00     1      4     81
-    BOS-LAX   Y4  250.00    3.97    250.00     2      8     78
-    BOS-ORD   Y2  200.00    3.03    200.00     3     11     75
-    BOS-LAX   Y5  200.00   29.61    200.00     4     37     72
-    BOS-ORD   Y3  150.00    6.17    150.00     5     45     45
-    BOS-ORD   Y4  125.00    3.89    125.00     6     52     37
-    BOS-ORD   Y5  100.00   16.51    100.00     7      0     31
-    EMSRc, flt=201, μ=68.00, σ=9.87, z=1.52, agg_fare=177.92, cap=100, prob=0.06, emsr_c=11.43
+    BOS-LAX   Y3  325.00    1.88    325.00     0      1     68
+    BOS-LAX   Y4  250.00    3.58    250.00     1      4     66
+    BOS-LAX   Y5  200.00   33.05    200.00     2     35     63
+    BOS-ORD   Y3  150.00    2.89    150.00     3     40     33
+    BOS-ORD   Y4  125.00    4.84    125.00     4     46     28
+    BOS-ORD   Y5  100.00   17.60    100.00     5      0     22
+    EMSRc, flt=201, μ=63.85, σ=7.54, z=0.55, agg_fare=170.98, cap=100, prob=0.29, emsr_c=49.76
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=11.43, contrib=313.57, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=11.43, contrib=238.57, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=11.43, contrib=188.57, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=49.76, contrib=275.24, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=49.76, contrib=200.24, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=49.76, contrib=150.24, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 17, bid_price = 11.43
+Flight = 201, BOS-ORD, cap = 100, sold = 32, bid_price = 49.76
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    2.81    325.00     0      2     83
-    BOS-ORD   Y1  300.00    2.00    300.00     1      4     81
-    BOS-LAX   Y4  250.00    3.97    250.00     2      8     78
-    BOS-ORD   Y2  200.00    3.03    200.00     3     11     75
-    BOS-LAX   Y5  200.00   29.61    200.00     4     37     72
-    BOS-ORD   Y3  150.00    6.17    150.00     5     45     45
-    BOS-ORD   Y4  125.00    3.89    125.00     6     52     37
-    BOS-ORD   Y5  100.00   16.51    100.00     7      0     31
+    BOS-LAX   Y3  325.00    1.88    325.00     0      1     68
+    BOS-LAX   Y4  250.00    3.58    250.00     1      4     66
+    BOS-LAX   Y5  200.00   33.05    200.00     2     35     63
+    BOS-ORD   Y3  150.00    2.89    150.00     3     40     33
+    BOS-ORD   Y4  125.00    4.84    125.00     4     46     28
+    BOS-ORD   Y5  100.00   17.60    100.00     5      0     22
 ******************** CoreProBP iteration 2 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=2.81, agg_sigma=0.73, prot=1.77, auth=83
-Class , sold=0, n=2, mu=0.00, agg_fare=314.61, rev_low=250.00, agg_mu=4.81, agg_sigma=0.83, prot=4.13, auth=81
-Class , sold=0, n=3, mu=0.00, agg_fare=285.39, rev_low=200.00, agg_mu=8.79, agg_sigma=1.76, prot=7.86, auth=78
-Class , sold=0, n=4, mu=0.00, agg_fare=263.49, rev_low=200.00, agg_mu=11.82, agg_sigma=1.85, prot=10.52, auth=75
-Class , sold=0, n=5, mu=0.00, agg_fare=218.11, rev_low=150.00, agg_mu=41.43, agg_sigma=8.58, prot=37.23, auth=72
-Class , sold=0, n=6, mu=0.00, agg_fare=209.28, rev_low=125.00, agg_mu=47.60, agg_sigma=8.69, prot=45.46, auth=45
-Class , sold=0, n=7, mu=0.00, agg_fare=202.90, rev_low=100.00, agg_mu=51.49, agg_sigma=8.81, prot=51.65, auth=37
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=1.88, agg_sigma=0.80, prot=1.30, auth=68
+Class , sold=0, n=2, mu=0.00, agg_fare=275.85, rev_low=200.00, agg_mu=5.47, agg_sigma=1.72, prot=4.44, auth=66
+Class , sold=0, n=3, mu=0.00, agg_fare=210.77, rev_low=150.00, agg_mu=38.52, agg_sigma=6.39, prot=34.95, auth=63
+Class , sold=0, n=4, mu=0.00, agg_fare=206.52, rev_low=125.00, agg_mu=41.41, agg_sigma=6.45, prot=39.69, auth=33
+Class , sold=0, n=5, mu=0.00, agg_fare=198.00, rev_low=100.00, agg_mu=46.25, agg_sigma=6.52, prot=46.16, auth=28
 ***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 17, bid_price = 11.43
+Flight = 201, BOS-ORD, cap = 100, sold = 32, bid_price = 49.76
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    2.81    325.00     0      2     83
-    BOS-ORD   Y1  300.00    2.00    300.00     1      4     81
-    BOS-LAX   Y4  250.00    3.97    250.00     2      8     78
-    BOS-ORD   Y2  200.00    3.03    200.00     3     11     75
-    BOS-LAX   Y5  200.00   29.61    200.00     4     37     72
-    BOS-ORD   Y3  150.00    6.17    150.00     5     45     45
-    BOS-ORD   Y4  125.00    3.89    125.00     6     52     37
-    BOS-ORD   Y5  100.00   16.51    100.00     7      0     31
-    EMSRc, flt=201, μ=68.00, σ=9.87, z=1.52, agg_fare=177.92, cap=100, prob=0.06, emsr_c=11.43
+    BOS-LAX   Y3  325.00    1.88    325.00     0      1     68
+    BOS-LAX   Y4  250.00    3.58    250.00     1      4     66
+    BOS-LAX   Y5  200.00   33.05    200.00     2     35     63
+    BOS-ORD   Y3  150.00    2.89    150.00     3     40     33
+    BOS-ORD   Y4  125.00    4.84    125.00     4     46     28
+    BOS-ORD   Y5  100.00   17.60    100.00     5      0     22
+    EMSRc, flt=201, μ=63.85, σ=7.54, z=0.55, agg_fare=170.98, cap=100, prob=0.29, emsr_c=49.76
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=11.43, contrib=313.57, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=11.43, contrib=238.57, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=11.43, contrib=188.57, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=49.76, contrib=275.24, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=49.76, contrib=200.24, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=49.76, contrib=150.24, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 17, bid_price = 11.43
+Flight = 201, BOS-ORD, cap = 100, sold = 32, bid_price = 49.76
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    2.81    325.00     0      2     83
-    BOS-ORD   Y1  300.00    2.00    300.00     1      4     81
-    BOS-LAX   Y4  250.00    3.97    250.00     2      8     78
-    BOS-ORD   Y2  200.00    3.03    200.00     3     11     75
-    BOS-LAX   Y5  200.00   29.61    200.00     4     37     72
-    BOS-ORD   Y3  150.00    6.17    150.00     5     45     45
-    BOS-ORD   Y4  125.00    3.89    125.00     6     52     37
-    BOS-ORD   Y5  100.00   16.51    100.00     7      0     31
-ProBP converged in 2 iterations
-Leg: AL1:101 BOS-ORD, cap: 100, sold: 56, bp: 0.00
- Class  Sold  ActRev    Fcst  StdDev FcstRev  Prot  Auth
-    Y0     0    0.00    0.00    0.00  400.00     0    44
-    Y1     0    0.00   16.59    4.36  300.00    15    44
-    Y2     0    0.00    9.42    1.52  200.00    25    29
-    Y3    32  270.31    0.00    0.00  150.00    26    18
-    Y4     9  194.44    0.00    0.00  125.00    27    17
-    Y5    15  100.00    0.00    0.00  100.00     0    17
-CoreProBP initialize *******************
-Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
-Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
-Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
-Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
-Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
-Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
-Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
-******************** CoreProBP iteration 0 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=1.14, agg_sigma=0.67, prot=0.19, auth=74
-Class , sold=0, n=2, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=1.14, agg_sigma=0.67, prot=0.65, auth=73
-Class , sold=0, n=3, mu=0.00, agg_fare=265.51, rev_low=200.00, agg_mu=5.52, agg_sigma=1.71, prot=4.35, auth=73
-Class , sold=0, n=4, mu=0.00, agg_fare=265.51, rev_low=200.00, agg_mu=5.52, agg_sigma=1.71, prot=4.35, auth=69
-Class , sold=0, n=5, mu=0.00, agg_fare=210.28, rev_low=150.00, agg_mu=35.16, agg_sigma=6.80, prot=31.33, auth=69
-Class , sold=0, n=6, mu=0.00, agg_fare=205.18, rev_low=125.00, agg_mu=38.41, agg_sigma=6.84, prot=36.51, auth=42
-Class , sold=0, n=7, mu=0.00, agg_fare=197.78, rev_low=100.00, agg_mu=42.31, agg_sigma=6.99, prot=42.21, auth=37
-***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 26, bid_price = 0.00
-    Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    1.14    325.00     0      0     74
-    BOS-ORD   Y1  300.00    0.00    300.00     1      1     73
-    BOS-LAX   Y4  250.00    4.38    250.00     2      4     73
-    BOS-ORD   Y2  200.00    0.00    200.00     3      4     69
-    BOS-LAX   Y5  200.00   29.64    200.00     4     31     69
-    BOS-ORD   Y3  150.00    3.25    150.00     5     37     42
-    BOS-ORD   Y4  125.00    3.90    125.00     6     42     37
-    BOS-ORD   Y5  100.00   15.33    100.00     7      0     32
-    EMSRc, flt=201, μ=57.64, σ=8.56, z=1.91, agg_fare=171.78, cap=100, prob=0.03, emsr_c=4.80
-Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
-Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
-Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
-Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
-Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=4.80, contrib=320.20, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=4.80, contrib=245.20, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=4.80, contrib=195.20, to path=BOS-LAX
-Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
-Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
-Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
-***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 26, bid_price = 4.80
-    Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    1.14    325.00     0      0     74
-    BOS-ORD   Y1  300.00    0.00    300.00     1      1     73
-    BOS-LAX   Y4  250.00    4.38    250.00     2      4     73
-    BOS-ORD   Y2  200.00    0.00    200.00     3      4     69
-    BOS-LAX   Y5  200.00   29.64    200.00     4     31     69
-    BOS-ORD   Y3  150.00    3.25    150.00     5     37     42
-    BOS-ORD   Y4  125.00    3.90    125.00     6     42     37
-    BOS-ORD   Y5  100.00   15.33    100.00     7      0     32
-******************** CoreProBP iteration 1 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=1.14, agg_sigma=0.67, prot=0.19, auth=74
-Class , sold=0, n=2, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=1.14, agg_sigma=0.67, prot=0.65, auth=73
-Class , sold=0, n=3, mu=0.00, agg_fare=265.51, rev_low=200.00, agg_mu=5.52, agg_sigma=1.71, prot=4.35, auth=73
-Class , sold=0, n=4, mu=0.00, agg_fare=265.51, rev_low=200.00, agg_mu=5.52, agg_sigma=1.71, prot=4.35, auth=69
-Class , sold=0, n=5, mu=0.00, agg_fare=210.28, rev_low=150.00, agg_mu=35.16, agg_sigma=6.80, prot=31.33, auth=69
-Class , sold=0, n=6, mu=0.00, agg_fare=205.18, rev_low=125.00, agg_mu=38.41, agg_sigma=6.84, prot=36.51, auth=42
-Class , sold=0, n=7, mu=0.00, agg_fare=197.78, rev_low=100.00, agg_mu=42.31, agg_sigma=6.99, prot=42.21, auth=37
-***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 26, bid_price = 4.80
-    Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    1.14    325.00     0      0     74
-    BOS-ORD   Y1  300.00    0.00    300.00     1      1     73
-    BOS-LAX   Y4  250.00    4.38    250.00     2      4     73
-    BOS-ORD   Y2  200.00    0.00    200.00     3      4     69
-    BOS-LAX   Y5  200.00   29.64    200.00     4     31     69
-    BOS-ORD   Y3  150.00    3.25    150.00     5     37     42
-    BOS-ORD   Y4  125.00    3.90    125.00     6     42     37
-    BOS-ORD   Y5  100.00   15.33    100.00     7      0     32
-    EMSRc, flt=201, μ=57.64, σ=8.56, z=1.91, agg_fare=171.78, cap=100, prob=0.03, emsr_c=4.80
-Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
-Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
-Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
-Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
-Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=4.80, contrib=320.20, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=4.80, contrib=245.20, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=4.80, contrib=195.20, to path=BOS-LAX
-Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
-Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
-Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
-***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 26, bid_price = 4.80
-    Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    1.14    325.00     0      0     74
-    BOS-ORD   Y1  300.00    0.00    300.00     1      1     73
-    BOS-LAX   Y4  250.00    4.38    250.00     2      4     73
-    BOS-ORD   Y2  200.00    0.00    200.00     3      4     69
-    BOS-LAX   Y5  200.00   29.64    200.00     4     31     69
-    BOS-ORD   Y3  150.00    3.25    150.00     5     37     42
-    BOS-ORD   Y4  125.00    3.90    125.00     6     42     37
-    BOS-ORD   Y5  100.00   15.33    100.00     7      0     32
-******************** CoreProBP iteration 2 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=1.14, agg_sigma=0.67, prot=0.19, auth=74
-Class , sold=0, n=2, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=1.14, agg_sigma=0.67, prot=0.65, auth=73
-Class , sold=0, n=3, mu=0.00, agg_fare=265.51, rev_low=200.00, agg_mu=5.52, agg_sigma=1.71, prot=4.35, auth=73
-Class , sold=0, n=4, mu=0.00, agg_fare=265.51, rev_low=200.00, agg_mu=5.52, agg_sigma=1.71, prot=4.35, auth=69
-Class , sold=0, n=5, mu=0.00, agg_fare=210.28, rev_low=150.00, agg_mu=35.16, agg_sigma=6.80, prot=31.33, auth=69
-Class , sold=0, n=6, mu=0.00, agg_fare=205.18, rev_low=125.00, agg_mu=38.41, agg_sigma=6.84, prot=36.51, auth=42
-Class , sold=0, n=7, mu=0.00, agg_fare=197.78, rev_low=100.00, agg_mu=42.31, agg_sigma=6.99, prot=42.21, auth=37
-***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 26, bid_price = 4.80
-    Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    1.14    325.00     0      0     74
-    BOS-ORD   Y1  300.00    0.00    300.00     1      1     73
-    BOS-LAX   Y4  250.00    4.38    250.00     2      4     73
-    BOS-ORD   Y2  200.00    0.00    200.00     3      4     69
-    BOS-LAX   Y5  200.00   29.64    200.00     4     31     69
-    BOS-ORD   Y3  150.00    3.25    150.00     5     37     42
-    BOS-ORD   Y4  125.00    3.90    125.00     6     42     37
-    BOS-ORD   Y5  100.00   15.33    100.00     7      0     32
-    EMSRc, flt=201, μ=57.64, σ=8.56, z=1.91, agg_fare=171.78, cap=100, prob=0.03, emsr_c=4.80
-Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
-Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
-Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
-Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
-Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=4.80, contrib=320.20, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=4.80, contrib=245.20, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=4.80, contrib=195.20, to path=BOS-LAX
-Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
-Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
-Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
-***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 26, bid_price = 4.80
-    Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    1.14    325.00     0      0     74
-    BOS-ORD   Y1  300.00    0.00    300.00     1      1     73
-    BOS-LAX   Y4  250.00    4.38    250.00     2      4     73
-    BOS-ORD   Y2  200.00    0.00    200.00     3      4     69
-    BOS-LAX   Y5  200.00   29.64    200.00     4     31     69
-    BOS-ORD   Y3  150.00    3.25    150.00     5     37     42
-    BOS-ORD   Y4  125.00    3.90    125.00     6     42     37
-    BOS-ORD   Y5  100.00   15.33    100.00     7      0     32
+    BOS-LAX   Y3  325.00    1.88    325.00     0      1     68
+    BOS-LAX   Y4  250.00    3.58    250.00     1      4     66
+    BOS-LAX   Y5  200.00   33.05    200.00     2     35     63
+    BOS-ORD   Y3  150.00    2.89    150.00     3     40     33
+    BOS-ORD   Y4  125.00    4.84    125.00     4     46     28
+    BOS-ORD   Y5  100.00   17.60    100.00     5      0     22
 ProBP converged in 2 iterations
 Leg: AL1:101 BOS-ORD, cap: 100, sold: 83, bp: 0.00
  Class  Sold  ActRev    Fcst  StdDev FcstRev  Prot  Auth
     Y0     0    0.00    0.00    0.00  400.00     0    17
-    Y1     9  480.56   17.85    4.38  300.00    16    17
-    Y2    21  390.48    9.55    2.36  200.00    27     1
-    Y3    39  284.62    0.00    0.00  150.00    28     0
-    Y4    14  187.50    0.00    0.00  125.00    29     0
-    Y5     0    0.00    0.00    0.00  100.00     0     0
+    Y1     3  408.33   13.56    3.66  300.00    12    17
+    Y2    19  410.53    9.06    3.22  200.00    22     5
+    Y3    40  255.00    0.00    0.00  150.00    23     0
+    Y4    14  125.00    0.00    0.00  125.00    24     0
+    Y5     7  100.00    0.00    0.00  100.00     0     0
+CoreProBP initialize *******************
+Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
+Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
+Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
+Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
+Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
+Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
+Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
+Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
+Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
+******************** CoreProBP iteration 0 *******************
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=0.94, agg_sigma=0.57, prot=0.52, auth=64
+Class , sold=0, n=2, mu=0.00, agg_fare=271.52, rev_low=200.00, agg_mu=3.27, agg_sigma=1.50, prot=2.32, auth=63
+Class , sold=0, n=3, mu=0.00, agg_fare=207.27, rev_low=150.00, agg_mu=32.15, agg_sigma=6.16, prot=28.49, auth=61
+Class , sold=0, n=4, mu=0.00, agg_fare=203.77, rev_low=125.00, agg_mu=34.24, agg_sigma=6.23, prot=32.44, auth=35
+Class , sold=0, n=5, mu=0.00, agg_fare=192.48, rev_low=100.00, agg_mu=39.97, agg_sigma=6.33, prot=39.66, auth=31
+***** ProBP, after EMSRb *****
+Flight = 201, BOS-ORD, cap = 100, sold = 36, bid_price = 0.00
+    Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
+    BOS-LAX   Y3  325.00    0.94    325.00     0      1     64
+    BOS-LAX   Y4  250.00    2.33    250.00     1      2     63
+    BOS-LAX   Y5  200.00   28.88    200.00     2     28     61
+    BOS-ORD   Y3  150.00    2.09    150.00     3     32     35
+    BOS-ORD   Y4  125.00    5.73    125.00     4     40     31
+    BOS-ORD   Y5  100.00   16.44    100.00     5      0     24
+    EMSRc, flt=201, μ=56.41, σ=8.15, z=0.93, agg_fare=165.52, cap=100, prob=0.18, emsr_c=29.09
+Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
+Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
+Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
+Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
+Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
+Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=29.09, contrib=295.91, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=29.09, contrib=220.91, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=29.09, contrib=170.91, to path=BOS-LAX
+Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
+Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
+Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
+***** ProBP, after displacement adjustment *****
+Flight = 201, BOS-ORD, cap = 100, sold = 36, bid_price = 29.09
+    Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
+    BOS-LAX   Y3  325.00    0.94    325.00     0      1     64
+    BOS-LAX   Y4  250.00    2.33    250.00     1      2     63
+    BOS-LAX   Y5  200.00   28.88    200.00     2     28     61
+    BOS-ORD   Y3  150.00    2.09    150.00     3     32     35
+    BOS-ORD   Y4  125.00    5.73    125.00     4     40     31
+    BOS-ORD   Y5  100.00   16.44    100.00     5      0     24
+******************** CoreProBP iteration 1 *******************
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=0.94, agg_sigma=0.57, prot=0.52, auth=64
+Class , sold=0, n=2, mu=0.00, agg_fare=271.52, rev_low=200.00, agg_mu=3.27, agg_sigma=1.50, prot=2.32, auth=63
+Class , sold=0, n=3, mu=0.00, agg_fare=207.27, rev_low=150.00, agg_mu=32.15, agg_sigma=6.16, prot=28.49, auth=61
+Class , sold=0, n=4, mu=0.00, agg_fare=203.77, rev_low=125.00, agg_mu=34.24, agg_sigma=6.23, prot=32.44, auth=35
+Class , sold=0, n=5, mu=0.00, agg_fare=192.48, rev_low=100.00, agg_mu=39.97, agg_sigma=6.33, prot=39.66, auth=31
+***** ProBP, after EMSRb *****
+Flight = 201, BOS-ORD, cap = 100, sold = 36, bid_price = 29.09
+    Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
+    BOS-LAX   Y3  325.00    0.94    325.00     0      1     64
+    BOS-LAX   Y4  250.00    2.33    250.00     1      2     63
+    BOS-LAX   Y5  200.00   28.88    200.00     2     28     61
+    BOS-ORD   Y3  150.00    2.09    150.00     3     32     35
+    BOS-ORD   Y4  125.00    5.73    125.00     4     40     31
+    BOS-ORD   Y5  100.00   16.44    100.00     5      0     24
+    EMSRc, flt=201, μ=56.41, σ=8.15, z=0.93, agg_fare=165.52, cap=100, prob=0.18, emsr_c=29.09
+Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
+Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
+Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
+Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
+Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
+Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=29.09, contrib=295.91, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=29.09, contrib=220.91, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=29.09, contrib=170.91, to path=BOS-LAX
+Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
+Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
+Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
+***** ProBP, after displacement adjustment *****
+Flight = 201, BOS-ORD, cap = 100, sold = 36, bid_price = 29.09
+    Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
+    BOS-LAX   Y3  325.00    0.94    325.00     0      1     64
+    BOS-LAX   Y4  250.00    2.33    250.00     1      2     63
+    BOS-LAX   Y5  200.00   28.88    200.00     2     28     61
+    BOS-ORD   Y3  150.00    2.09    150.00     3     32     35
+    BOS-ORD   Y4  125.00    5.73    125.00     4     40     31
+    BOS-ORD   Y5  100.00   16.44    100.00     5      0     24
+******************** CoreProBP iteration 2 *******************
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=0.94, agg_sigma=0.57, prot=0.52, auth=64
+Class , sold=0, n=2, mu=0.00, agg_fare=271.52, rev_low=200.00, agg_mu=3.27, agg_sigma=1.50, prot=2.32, auth=63
+Class , sold=0, n=3, mu=0.00, agg_fare=207.27, rev_low=150.00, agg_mu=32.15, agg_sigma=6.16, prot=28.49, auth=61
+Class , sold=0, n=4, mu=0.00, agg_fare=203.77, rev_low=125.00, agg_mu=34.24, agg_sigma=6.23, prot=32.44, auth=35
+Class , sold=0, n=5, mu=0.00, agg_fare=192.48, rev_low=100.00, agg_mu=39.97, agg_sigma=6.33, prot=39.66, auth=31
+***** ProBP, after EMSRb *****
+Flight = 201, BOS-ORD, cap = 100, sold = 36, bid_price = 29.09
+    Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
+    BOS-LAX   Y3  325.00    0.94    325.00     0      1     64
+    BOS-LAX   Y4  250.00    2.33    250.00     1      2     63
+    BOS-LAX   Y5  200.00   28.88    200.00     2     28     61
+    BOS-ORD   Y3  150.00    2.09    150.00     3     32     35
+    BOS-ORD   Y4  125.00    5.73    125.00     4     40     31
+    BOS-ORD   Y5  100.00   16.44    100.00     5      0     24
+    EMSRc, flt=201, μ=56.41, σ=8.15, z=0.93, agg_fare=165.52, cap=100, prob=0.18, emsr_c=29.09
+Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
+Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
+Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
+Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
+Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
+Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=29.09, contrib=295.91, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=29.09, contrib=220.91, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=29.09, contrib=170.91, to path=BOS-LAX
+Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
+Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
+Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
+***** ProBP, after displacement adjustment *****
+Flight = 201, BOS-ORD, cap = 100, sold = 36, bid_price = 29.09
+    Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
+    BOS-LAX   Y3  325.00    0.94    325.00     0      1     64
+    BOS-LAX   Y4  250.00    2.33    250.00     1      2     63
+    BOS-LAX   Y5  200.00   28.88    200.00     2     28     61
+    BOS-ORD   Y3  150.00    2.09    150.00     3     32     35
+    BOS-ORD   Y4  125.00    5.73    125.00     4     40     31
+    BOS-ORD   Y5  100.00   16.44    100.00     5      0     24
+ProBP converged in 2 iterations
+Leg: AL1:101 BOS-ORD, cap: 100, sold: 86, bp: 0.00
+ Class  Sold  ActRev    Fcst  StdDev FcstRev  Prot  Auth
+    Y0     0    0.00    0.00    0.00  400.00     0    14
+    Y1    10  592.50   14.49    3.73  300.00    13    14
+    Y2    23  341.30   11.00    3.29  200.00    24     1
+    Y3    39  262.18    0.00    0.00  150.00    26     0
+    Y4    11  181.82    0.00    0.00  125.00    27     0
+    Y5     3  100.00    0.00    0.00  100.00     0     0
 </pre>
 </div>
 </div>
@@ -2450,143 +2378,125 @@ Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ******************** CoreProBP iteration 0 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=1.35, agg_sigma=0.96, prot=0.00, auth=82
-Class , sold=0, n=2, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=1.35, agg_sigma=0.96, prot=0.64, auth=82
-Class , sold=0, n=3, mu=0.00, agg_fare=266.84, rev_low=200.00, agg_mu=6.00, agg_sigma=1.88, prot=4.74, auth=81
-Class , sold=0, n=4, mu=0.00, agg_fare=266.84, rev_low=200.00, agg_mu=6.00, agg_sigma=1.88, prot=4.74, auth=77
-Class , sold=0, n=5, mu=0.00, agg_fare=211.11, rev_low=150.00, agg_mu=36.09, agg_sigma=7.77, prot=31.78, auth=77
-Class , sold=0, n=6, mu=0.00, agg_fare=203.42, rev_low=125.00, agg_mu=41.29, agg_sigma=7.90, prot=38.99, auth=50
-Class , sold=0, n=7, mu=0.00, agg_fare=192.72, rev_low=100.00, agg_mu=47.81, agg_sigma=7.97, prot=47.43, auth=43
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=3.23, agg_sigma=0.68, prot=2.73, auth=82
+Class , sold=0, n=2, mu=0.00, agg_fare=275.69, rev_low=200.00, agg_mu=9.42, agg_sigma=1.23, prot=8.69, auth=79
+Class , sold=0, n=3, mu=0.00, agg_fare=219.31, rev_low=150.00, agg_mu=36.94, agg_sigma=9.33, prot=32.47, auth=73
+Class , sold=0, n=4, mu=0.00, agg_fare=208.75, rev_low=125.00, agg_mu=43.58, agg_sigma=9.43, prot=41.22, auth=49
+Class , sold=0, n=5, mu=0.00, agg_fare=200.92, rev_low=100.00, agg_mu=48.07, agg_sigma=9.58, prot=48.13, auth=40
 ***** ProBP, after EMSRb *****
 Flight = 201, BOS-ORD, cap = 100, sold = 18, bid_price = 0.00
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    1.35    325.00     0      0     82
-    BOS-ORD   Y1  300.00    0.00    300.00     1      1     82
-    BOS-LAX   Y4  250.00    4.65    250.00     2      5     81
-    BOS-ORD   Y2  200.00    0.00    200.00     3      5     77
-    BOS-LAX   Y5  200.00   30.09    200.00     4     32     77
-    BOS-ORD   Y3  150.00    5.20    150.00     5     39     50
-    BOS-ORD   Y4  125.00    6.52    125.00     6     47     43
-    BOS-ORD   Y5  100.00   18.39    100.00     7      0     35
-    EMSRc, flt=201, μ=66.20, σ=9.12, z=1.73, agg_fare=166.96, cap=100, prob=0.04, emsr_c=6.95
+    BOS-LAX   Y3  325.00    3.23    325.00     0      3     82
+    BOS-LAX   Y4  250.00    6.20    250.00     1      9     79
+    BOS-LAX   Y5  200.00   27.52    200.00     2     32     73
+    BOS-ORD   Y3  150.00    6.64    150.00     3     41     49
+    BOS-ORD   Y4  125.00    4.50    125.00     4     48     40
+    BOS-ORD   Y5  100.00   12.55    100.00     5      0     34
+    EMSRc, flt=201, μ=60.62, σ=10.55, z=2.03, agg_fare=180.03, cap=100, prob=0.02, emsr_c=3.85
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=6.95, contrib=318.05, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=6.95, contrib=243.05, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=6.95, contrib=193.05, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=3.85, contrib=321.15, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=3.85, contrib=246.15, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=3.85, contrib=196.15, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 18, bid_price = 6.95
+Flight = 201, BOS-ORD, cap = 100, sold = 18, bid_price = 3.85
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    1.35    325.00     0      0     82
-    BOS-ORD   Y1  300.00    0.00    300.00     1      1     82
-    BOS-LAX   Y4  250.00    4.65    250.00     2      5     81
-    BOS-ORD   Y2  200.00    0.00    200.00     3      5     77
-    BOS-LAX   Y5  200.00   30.09    200.00     4     32     77
-    BOS-ORD   Y3  150.00    5.20    150.00     5     39     50
-    BOS-ORD   Y4  125.00    6.52    125.00     6     47     43
-    BOS-ORD   Y5  100.00   18.39    100.00     7      0     35
+    BOS-LAX   Y3  325.00    3.23    325.00     0      3     82
+    BOS-LAX   Y4  250.00    6.20    250.00     1      9     79
+    BOS-LAX   Y5  200.00   27.52    200.00     2     32     73
+    BOS-ORD   Y3  150.00    6.64    150.00     3     41     49
+    BOS-ORD   Y4  125.00    4.50    125.00     4     48     40
+    BOS-ORD   Y5  100.00   12.55    100.00     5      0     34
 ******************** CoreProBP iteration 1 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=1.35, agg_sigma=0.96, prot=0.00, auth=82
-Class , sold=0, n=2, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=1.35, agg_sigma=0.96, prot=0.64, auth=82
-Class , sold=0, n=3, mu=0.00, agg_fare=266.84, rev_low=200.00, agg_mu=6.00, agg_sigma=1.88, prot=4.74, auth=81
-Class , sold=0, n=4, mu=0.00, agg_fare=266.84, rev_low=200.00, agg_mu=6.00, agg_sigma=1.88, prot=4.74, auth=77
-Class , sold=0, n=5, mu=0.00, agg_fare=211.11, rev_low=150.00, agg_mu=36.09, agg_sigma=7.77, prot=31.78, auth=77
-Class , sold=0, n=6, mu=0.00, agg_fare=203.42, rev_low=125.00, agg_mu=41.29, agg_sigma=7.90, prot=38.99, auth=50
-Class , sold=0, n=7, mu=0.00, agg_fare=192.72, rev_low=100.00, agg_mu=47.81, agg_sigma=7.97, prot=47.43, auth=43
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=3.23, agg_sigma=0.68, prot=2.73, auth=82
+Class , sold=0, n=2, mu=0.00, agg_fare=275.69, rev_low=200.00, agg_mu=9.42, agg_sigma=1.23, prot=8.69, auth=79
+Class , sold=0, n=3, mu=0.00, agg_fare=219.31, rev_low=150.00, agg_mu=36.94, agg_sigma=9.33, prot=32.47, auth=73
+Class , sold=0, n=4, mu=0.00, agg_fare=208.75, rev_low=125.00, agg_mu=43.58, agg_sigma=9.43, prot=41.22, auth=49
+Class , sold=0, n=5, mu=0.00, agg_fare=200.92, rev_low=100.00, agg_mu=48.07, agg_sigma=9.58, prot=48.13, auth=40
 ***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 18, bid_price = 6.95
+Flight = 201, BOS-ORD, cap = 100, sold = 18, bid_price = 3.85
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    1.35    325.00     0      0     82
-    BOS-ORD   Y1  300.00    0.00    300.00     1      1     82
-    BOS-LAX   Y4  250.00    4.65    250.00     2      5     81
-    BOS-ORD   Y2  200.00    0.00    200.00     3      5     77
-    BOS-LAX   Y5  200.00   30.09    200.00     4     32     77
-    BOS-ORD   Y3  150.00    5.20    150.00     5     39     50
-    BOS-ORD   Y4  125.00    6.52    125.00     6     47     43
-    BOS-ORD   Y5  100.00   18.39    100.00     7      0     35
-    EMSRc, flt=201, μ=66.20, σ=9.12, z=1.73, agg_fare=166.96, cap=100, prob=0.04, emsr_c=6.95
+    BOS-LAX   Y3  325.00    3.23    325.00     0      3     82
+    BOS-LAX   Y4  250.00    6.20    250.00     1      9     79
+    BOS-LAX   Y5  200.00   27.52    200.00     2     32     73
+    BOS-ORD   Y3  150.00    6.64    150.00     3     41     49
+    BOS-ORD   Y4  125.00    4.50    125.00     4     48     40
+    BOS-ORD   Y5  100.00   12.55    100.00     5      0     34
+    EMSRc, flt=201, μ=60.62, σ=10.55, z=2.03, agg_fare=180.03, cap=100, prob=0.02, emsr_c=3.85
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=6.95, contrib=318.05, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=6.95, contrib=243.05, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=6.95, contrib=193.05, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=3.85, contrib=321.15, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=3.85, contrib=246.15, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=3.85, contrib=196.15, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 18, bid_price = 6.95
+Flight = 201, BOS-ORD, cap = 100, sold = 18, bid_price = 3.85
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    1.35    325.00     0      0     82
-    BOS-ORD   Y1  300.00    0.00    300.00     1      1     82
-    BOS-LAX   Y4  250.00    4.65    250.00     2      5     81
-    BOS-ORD   Y2  200.00    0.00    200.00     3      5     77
-    BOS-LAX   Y5  200.00   30.09    200.00     4     32     77
-    BOS-ORD   Y3  150.00    5.20    150.00     5     39     50
-    BOS-ORD   Y4  125.00    6.52    125.00     6     47     43
-    BOS-ORD   Y5  100.00   18.39    100.00     7      0     35
+    BOS-LAX   Y3  325.00    3.23    325.00     0      3     82
+    BOS-LAX   Y4  250.00    6.20    250.00     1      9     79
+    BOS-LAX   Y5  200.00   27.52    200.00     2     32     73
+    BOS-ORD   Y3  150.00    6.64    150.00     3     41     49
+    BOS-ORD   Y4  125.00    4.50    125.00     4     48     40
+    BOS-ORD   Y5  100.00   12.55    100.00     5      0     34
 ******************** CoreProBP iteration 2 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=1.35, agg_sigma=0.96, prot=0.00, auth=82
-Class , sold=0, n=2, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=1.35, agg_sigma=0.96, prot=0.64, auth=82
-Class , sold=0, n=3, mu=0.00, agg_fare=266.84, rev_low=200.00, agg_mu=6.00, agg_sigma=1.88, prot=4.74, auth=81
-Class , sold=0, n=4, mu=0.00, agg_fare=266.84, rev_low=200.00, agg_mu=6.00, agg_sigma=1.88, prot=4.74, auth=77
-Class , sold=0, n=5, mu=0.00, agg_fare=211.11, rev_low=150.00, agg_mu=36.09, agg_sigma=7.77, prot=31.78, auth=77
-Class , sold=0, n=6, mu=0.00, agg_fare=203.42, rev_low=125.00, agg_mu=41.29, agg_sigma=7.90, prot=38.99, auth=50
-Class , sold=0, n=7, mu=0.00, agg_fare=192.72, rev_low=100.00, agg_mu=47.81, agg_sigma=7.97, prot=47.43, auth=43
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=3.23, agg_sigma=0.68, prot=2.73, auth=82
+Class , sold=0, n=2, mu=0.00, agg_fare=275.69, rev_low=200.00, agg_mu=9.42, agg_sigma=1.23, prot=8.69, auth=79
+Class , sold=0, n=3, mu=0.00, agg_fare=219.31, rev_low=150.00, agg_mu=36.94, agg_sigma=9.33, prot=32.47, auth=73
+Class , sold=0, n=4, mu=0.00, agg_fare=208.75, rev_low=125.00, agg_mu=43.58, agg_sigma=9.43, prot=41.22, auth=49
+Class , sold=0, n=5, mu=0.00, agg_fare=200.92, rev_low=100.00, agg_mu=48.07, agg_sigma=9.58, prot=48.13, auth=40
 ***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 18, bid_price = 6.95
+Flight = 201, BOS-ORD, cap = 100, sold = 18, bid_price = 3.85
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    1.35    325.00     0      0     82
-    BOS-ORD   Y1  300.00    0.00    300.00     1      1     82
-    BOS-LAX   Y4  250.00    4.65    250.00     2      5     81
-    BOS-ORD   Y2  200.00    0.00    200.00     3      5     77
-    BOS-LAX   Y5  200.00   30.09    200.00     4     32     77
-    BOS-ORD   Y3  150.00    5.20    150.00     5     39     50
-    BOS-ORD   Y4  125.00    6.52    125.00     6     47     43
-    BOS-ORD   Y5  100.00   18.39    100.00     7      0     35
-    EMSRc, flt=201, μ=66.20, σ=9.12, z=1.73, agg_fare=166.96, cap=100, prob=0.04, emsr_c=6.95
+    BOS-LAX   Y3  325.00    3.23    325.00     0      3     82
+    BOS-LAX   Y4  250.00    6.20    250.00     1      9     79
+    BOS-LAX   Y5  200.00   27.52    200.00     2     32     73
+    BOS-ORD   Y3  150.00    6.64    150.00     3     41     49
+    BOS-ORD   Y4  125.00    4.50    125.00     4     48     40
+    BOS-ORD   Y5  100.00   12.55    100.00     5      0     34
+    EMSRc, flt=201, μ=60.62, σ=10.55, z=2.03, agg_fare=180.03, cap=100, prob=0.02, emsr_c=3.85
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=6.95, contrib=318.05, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=6.95, contrib=243.05, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=6.95, contrib=193.05, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=3.85, contrib=321.15, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=3.85, contrib=246.15, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=3.85, contrib=196.15, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 18, bid_price = 6.95
+Flight = 201, BOS-ORD, cap = 100, sold = 18, bid_price = 3.85
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    1.35    325.00     0      0     82
-    BOS-ORD   Y1  300.00    0.00    300.00     1      1     82
-    BOS-LAX   Y4  250.00    4.65    250.00     2      5     81
-    BOS-ORD   Y2  200.00    0.00    200.00     3      5     77
-    BOS-LAX   Y5  200.00   30.09    200.00     4     32     77
-    BOS-ORD   Y3  150.00    5.20    150.00     5     39     50
-    BOS-ORD   Y4  125.00    6.52    125.00     6     47     43
-    BOS-ORD   Y5  100.00   18.39    100.00     7      0     35
+    BOS-LAX   Y3  325.00    3.23    325.00     0      3     82
+    BOS-LAX   Y4  250.00    6.20    250.00     1      9     79
+    BOS-LAX   Y5  200.00   27.52    200.00     2     32     73
+    BOS-ORD   Y3  150.00    6.64    150.00     3     41     49
+    BOS-ORD   Y4  125.00    4.50    125.00     4     48     40
+    BOS-ORD   Y5  100.00   12.55    100.00     5      0     34
 ProBP converged in 2 iterations
-Leg: AL1:101 BOS-ORD, cap: 100, sold: 51, bp: 0.00
+Leg: AL1:101 BOS-ORD, cap: 100, sold: 70, bp: 0.00
  Class  Sold  ActRev    Fcst  StdDev FcstRev  Prot  Auth
-    Y0     0    0.00    0.00    0.00  400.00     0    49
-    Y1     0    0.00   15.06    3.29  300.00    14    49
-    Y2     0    0.00    9.67    2.05  200.00    24    35
-    Y3    23  226.09    0.00    0.00  150.00    25    24
-    Y4    18  201.39    0.00    0.00  125.00    26    24
-    Y5    10  100.00    0.00    0.00  100.00     0    23
+    Y0     0    0.00    0.00    0.00  400.00     0    30
+    Y1     1  625.00   14.05    3.64  300.00    12    30
+    Y2     2  450.00    7.68    1.70  200.00    21    17
+    Y3    27  214.81    0.00    0.00  150.00    22     8
+    Y4    14  169.64    0.00    0.00  125.00    23     7
+    Y5    26  100.00    0.00    0.00  100.00     0     7
 CoreProBP initialize *******************
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
@@ -2601,143 +2511,125 @@ Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ******************** CoreProBP iteration 0 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=1.57, agg_sigma=0.94, prot=0.23, auth=67
-Class , sold=0, n=2, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=1.57, agg_sigma=0.94, prot=0.88, auth=66
-Class , sold=0, n=3, mu=0.00, agg_fare=264.13, rev_low=200.00, agg_mu=8.34, agg_sigma=1.89, prot=7.03, auth=66
-Class , sold=0, n=4, mu=0.00, agg_fare=264.13, rev_low=200.00, agg_mu=8.34, agg_sigma=1.89, prot=7.03, auth=59
-Class , sold=0, n=5, mu=0.00, agg_fare=215.06, rev_low=150.00, agg_mu=35.52, agg_sigma=8.06, prot=31.35, auth=59
-Class , sold=0, n=6, mu=0.00, agg_fare=207.93, rev_low=125.00, agg_mu=39.90, agg_sigma=8.13, prot=37.81, auth=35
-Class , sold=0, n=7, mu=0.00, agg_fare=195.81, rev_low=100.00, agg_mu=46.72, agg_sigma=8.16, prot=46.50, auth=29
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=2.82, agg_sigma=0.81, prot=2.22, auth=83
+Class , sold=0, n=2, mu=0.00, agg_fare=276.10, rev_low=200.00, agg_mu=8.09, agg_sigma=1.77, prot=7.04, auth=80
+Class , sold=0, n=3, mu=0.00, agg_fare=219.07, rev_low=150.00, agg_mu=32.29, agg_sigma=9.35, prot=27.80, auth=75
+Class , sold=0, n=4, mu=0.00, agg_fare=206.89, rev_low=125.00, agg_mu=39.21, agg_sigma=9.47, prot=36.70, auth=55
+Class , sold=0, n=5, mu=0.00, agg_fare=196.97, rev_low=100.00, agg_mu=44.61, agg_sigma=9.64, prot=44.43, auth=46
 ***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 33, bid_price = 0.00
+Flight = 201, BOS-ORD, cap = 100, sold = 17, bid_price = 0.00
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    1.57    325.00     0      0     67
-    BOS-ORD   Y1  300.00    0.00    300.00     1      1     66
-    BOS-LAX   Y4  250.00    6.77    250.00     2      7     66
-    BOS-ORD   Y2  200.00    0.00    200.00     3      7     59
-    BOS-LAX   Y5  200.00   27.18    200.00     4     31     59
-    BOS-ORD   Y3  150.00    4.37    150.00     5     38     35
-    BOS-ORD   Y4  125.00    6.83    125.00     6     47     29
-    BOS-ORD   Y5  100.00   15.99    100.00     7      0     20
-    EMSRc, flt=201, μ=62.71, σ=9.22, z=0.47, agg_fare=171.38, cap=100, prob=0.32, emsr_c=55.00
+    BOS-LAX   Y3  325.00    2.82    325.00     0      2     83
+    BOS-LAX   Y4  250.00    5.28    250.00     1      7     80
+    BOS-LAX   Y5  200.00   24.20    200.00     2     28     75
+    BOS-ORD   Y3  150.00    6.91    150.00     3     37     55
+    BOS-ORD   Y4  125.00    5.41    125.00     4     44     46
+    BOS-ORD   Y5  100.00   15.19    100.00     5      0     39
+    EMSRc, flt=201, μ=59.81, σ=10.46, z=2.22, agg_fare=172.33, cap=100, prob=0.01, emsr_c=2.29
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=55.00, contrib=270.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=55.00, contrib=195.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=55.00, contrib=145.00, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=2.29, contrib=322.71, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=2.29, contrib=247.71, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=2.29, contrib=197.71, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 33, bid_price = 55.00
+Flight = 201, BOS-ORD, cap = 100, sold = 17, bid_price = 2.29
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    1.57    325.00     0      0     67
-    BOS-ORD   Y1  300.00    0.00    300.00     1      1     66
-    BOS-LAX   Y4  250.00    6.77    250.00     2      7     66
-    BOS-ORD   Y2  200.00    0.00    200.00     3      7     59
-    BOS-LAX   Y5  200.00   27.18    200.00     4     31     59
-    BOS-ORD   Y3  150.00    4.37    150.00     5     38     35
-    BOS-ORD   Y4  125.00    6.83    125.00     6     47     29
-    BOS-ORD   Y5  100.00   15.99    100.00     7      0     20
+    BOS-LAX   Y3  325.00    2.82    325.00     0      2     83
+    BOS-LAX   Y4  250.00    5.28    250.00     1      7     80
+    BOS-LAX   Y5  200.00   24.20    200.00     2     28     75
+    BOS-ORD   Y3  150.00    6.91    150.00     3     37     55
+    BOS-ORD   Y4  125.00    5.41    125.00     4     44     46
+    BOS-ORD   Y5  100.00   15.19    100.00     5      0     39
 ******************** CoreProBP iteration 1 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=1.57, agg_sigma=0.94, prot=0.23, auth=67
-Class , sold=0, n=2, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=1.57, agg_sigma=0.94, prot=0.88, auth=66
-Class , sold=0, n=3, mu=0.00, agg_fare=264.13, rev_low=200.00, agg_mu=8.34, agg_sigma=1.89, prot=7.03, auth=66
-Class , sold=0, n=4, mu=0.00, agg_fare=264.13, rev_low=200.00, agg_mu=8.34, agg_sigma=1.89, prot=7.03, auth=59
-Class , sold=0, n=5, mu=0.00, agg_fare=215.06, rev_low=150.00, agg_mu=35.52, agg_sigma=8.06, prot=31.35, auth=59
-Class , sold=0, n=6, mu=0.00, agg_fare=207.93, rev_low=125.00, agg_mu=39.90, agg_sigma=8.13, prot=37.81, auth=35
-Class , sold=0, n=7, mu=0.00, agg_fare=195.81, rev_low=100.00, agg_mu=46.72, agg_sigma=8.16, prot=46.50, auth=29
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=2.82, agg_sigma=0.81, prot=2.22, auth=83
+Class , sold=0, n=2, mu=0.00, agg_fare=276.10, rev_low=200.00, agg_mu=8.09, agg_sigma=1.77, prot=7.04, auth=80
+Class , sold=0, n=3, mu=0.00, agg_fare=219.07, rev_low=150.00, agg_mu=32.29, agg_sigma=9.35, prot=27.80, auth=75
+Class , sold=0, n=4, mu=0.00, agg_fare=206.89, rev_low=125.00, agg_mu=39.21, agg_sigma=9.47, prot=36.70, auth=55
+Class , sold=0, n=5, mu=0.00, agg_fare=196.97, rev_low=100.00, agg_mu=44.61, agg_sigma=9.64, prot=44.43, auth=46
 ***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 33, bid_price = 55.00
+Flight = 201, BOS-ORD, cap = 100, sold = 17, bid_price = 2.29
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    1.57    325.00     0      0     67
-    BOS-ORD   Y1  300.00    0.00    300.00     1      1     66
-    BOS-LAX   Y4  250.00    6.77    250.00     2      7     66
-    BOS-ORD   Y2  200.00    0.00    200.00     3      7     59
-    BOS-LAX   Y5  200.00   27.18    200.00     4     31     59
-    BOS-ORD   Y3  150.00    4.37    150.00     5     38     35
-    BOS-ORD   Y4  125.00    6.83    125.00     6     47     29
-    BOS-ORD   Y5  100.00   15.99    100.00     7      0     20
-    EMSRc, flt=201, μ=62.71, σ=9.22, z=0.47, agg_fare=171.38, cap=100, prob=0.32, emsr_c=55.00
+    BOS-LAX   Y3  325.00    2.82    325.00     0      2     83
+    BOS-LAX   Y4  250.00    5.28    250.00     1      7     80
+    BOS-LAX   Y5  200.00   24.20    200.00     2     28     75
+    BOS-ORD   Y3  150.00    6.91    150.00     3     37     55
+    BOS-ORD   Y4  125.00    5.41    125.00     4     44     46
+    BOS-ORD   Y5  100.00   15.19    100.00     5      0     39
+    EMSRc, flt=201, μ=59.81, σ=10.46, z=2.22, agg_fare=172.33, cap=100, prob=0.01, emsr_c=2.29
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=55.00, contrib=270.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=55.00, contrib=195.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=55.00, contrib=145.00, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=2.29, contrib=322.71, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=2.29, contrib=247.71, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=2.29, contrib=197.71, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 33, bid_price = 55.00
+Flight = 201, BOS-ORD, cap = 100, sold = 17, bid_price = 2.29
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    1.57    325.00     0      0     67
-    BOS-ORD   Y1  300.00    0.00    300.00     1      1     66
-    BOS-LAX   Y4  250.00    6.77    250.00     2      7     66
-    BOS-ORD   Y2  200.00    0.00    200.00     3      7     59
-    BOS-LAX   Y5  200.00   27.18    200.00     4     31     59
-    BOS-ORD   Y3  150.00    4.37    150.00     5     38     35
-    BOS-ORD   Y4  125.00    6.83    125.00     6     47     29
-    BOS-ORD   Y5  100.00   15.99    100.00     7      0     20
+    BOS-LAX   Y3  325.00    2.82    325.00     0      2     83
+    BOS-LAX   Y4  250.00    5.28    250.00     1      7     80
+    BOS-LAX   Y5  200.00   24.20    200.00     2     28     75
+    BOS-ORD   Y3  150.00    6.91    150.00     3     37     55
+    BOS-ORD   Y4  125.00    5.41    125.00     4     44     46
+    BOS-ORD   Y5  100.00   15.19    100.00     5      0     39
 ******************** CoreProBP iteration 2 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=1.57, agg_sigma=0.94, prot=0.23, auth=67
-Class , sold=0, n=2, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=1.57, agg_sigma=0.94, prot=0.88, auth=66
-Class , sold=0, n=3, mu=0.00, agg_fare=264.13, rev_low=200.00, agg_mu=8.34, agg_sigma=1.89, prot=7.03, auth=66
-Class , sold=0, n=4, mu=0.00, agg_fare=264.13, rev_low=200.00, agg_mu=8.34, agg_sigma=1.89, prot=7.03, auth=59
-Class , sold=0, n=5, mu=0.00, agg_fare=215.06, rev_low=150.00, agg_mu=35.52, agg_sigma=8.06, prot=31.35, auth=59
-Class , sold=0, n=6, mu=0.00, agg_fare=207.93, rev_low=125.00, agg_mu=39.90, agg_sigma=8.13, prot=37.81, auth=35
-Class , sold=0, n=7, mu=0.00, agg_fare=195.81, rev_low=100.00, agg_mu=46.72, agg_sigma=8.16, prot=46.50, auth=29
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=2.82, agg_sigma=0.81, prot=2.22, auth=83
+Class , sold=0, n=2, mu=0.00, agg_fare=276.10, rev_low=200.00, agg_mu=8.09, agg_sigma=1.77, prot=7.04, auth=80
+Class , sold=0, n=3, mu=0.00, agg_fare=219.07, rev_low=150.00, agg_mu=32.29, agg_sigma=9.35, prot=27.80, auth=75
+Class , sold=0, n=4, mu=0.00, agg_fare=206.89, rev_low=125.00, agg_mu=39.21, agg_sigma=9.47, prot=36.70, auth=55
+Class , sold=0, n=5, mu=0.00, agg_fare=196.97, rev_low=100.00, agg_mu=44.61, agg_sigma=9.64, prot=44.43, auth=46
 ***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 33, bid_price = 55.00
+Flight = 201, BOS-ORD, cap = 100, sold = 17, bid_price = 2.29
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    1.57    325.00     0      0     67
-    BOS-ORD   Y1  300.00    0.00    300.00     1      1     66
-    BOS-LAX   Y4  250.00    6.77    250.00     2      7     66
-    BOS-ORD   Y2  200.00    0.00    200.00     3      7     59
-    BOS-LAX   Y5  200.00   27.18    200.00     4     31     59
-    BOS-ORD   Y3  150.00    4.37    150.00     5     38     35
-    BOS-ORD   Y4  125.00    6.83    125.00     6     47     29
-    BOS-ORD   Y5  100.00   15.99    100.00     7      0     20
-    EMSRc, flt=201, μ=62.71, σ=9.22, z=0.47, agg_fare=171.38, cap=100, prob=0.32, emsr_c=55.00
+    BOS-LAX   Y3  325.00    2.82    325.00     0      2     83
+    BOS-LAX   Y4  250.00    5.28    250.00     1      7     80
+    BOS-LAX   Y5  200.00   24.20    200.00     2     28     75
+    BOS-ORD   Y3  150.00    6.91    150.00     3     37     55
+    BOS-ORD   Y4  125.00    5.41    125.00     4     44     46
+    BOS-ORD   Y5  100.00   15.19    100.00     5      0     39
+    EMSRc, flt=201, μ=59.81, σ=10.46, z=2.22, agg_fare=172.33, cap=100, prob=0.01, emsr_c=2.29
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=55.00, contrib=270.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=55.00, contrib=195.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=55.00, contrib=145.00, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=2.29, contrib=322.71, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=2.29, contrib=247.71, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=2.29, contrib=197.71, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 33, bid_price = 55.00
+Flight = 201, BOS-ORD, cap = 100, sold = 17, bid_price = 2.29
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    1.57    325.00     0      0     67
-    BOS-ORD   Y1  300.00    0.00    300.00     1      1     66
-    BOS-LAX   Y4  250.00    6.77    250.00     2      7     66
-    BOS-ORD   Y2  200.00    0.00    200.00     3      7     59
-    BOS-LAX   Y5  200.00   27.18    200.00     4     31     59
-    BOS-ORD   Y3  150.00    4.37    150.00     5     38     35
-    BOS-ORD   Y4  125.00    6.83    125.00     6     47     29
-    BOS-ORD   Y5  100.00   15.99    100.00     7      0     20
+    BOS-LAX   Y3  325.00    2.82    325.00     0      2     83
+    BOS-LAX   Y4  250.00    5.28    250.00     1      7     80
+    BOS-LAX   Y5  200.00   24.20    200.00     2     28     75
+    BOS-ORD   Y3  150.00    6.91    150.00     3     37     55
+    BOS-ORD   Y4  125.00    5.41    125.00     4     44     46
+    BOS-ORD   Y5  100.00   15.19    100.00     5      0     39
 ProBP converged in 2 iterations
-Leg: AL1:101 BOS-ORD, cap: 100, sold: 92, bp: 0.00
+Leg: AL1:101 BOS-ORD, cap: 100, sold: 65, bp: 0.00
  Class  Sold  ActRev    Fcst  StdDev FcstRev  Prot  Auth
-    Y0     0    0.00    0.00    0.00  400.00     0     8
-    Y1    16  503.12   14.07    4.20  300.00    12     8
-    Y2    17  391.18    9.76    2.88  200.00    23     0
-    Y3    39  262.18    0.00    0.00  150.00    24     0
-    Y4    16  226.56    0.00    0.00  125.00    25     0
-    Y5     4  100.00    0.00    0.00  100.00     0     0
+    Y0     0    0.00    0.00    0.00  400.00     0    35
+    Y1     5  625.00   13.37    3.95  300.00    12    35
+    Y2     8  418.75    8.39    1.97  200.00    21    23
+    Y3    25  276.00    0.00    0.00  150.00    22    14
+    Y4    11  170.45    0.00    0.00  125.00    23    12
+    Y5    16  100.00    0.00    0.00  100.00     0    12
 </pre>
 </div>
 </div>
@@ -2786,143 +2678,125 @@ Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ******************** CoreProBP iteration 0 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=7.44, agg_sigma=0.94, prot=6.10, auth=72
-Class , sold=0, n=2, mu=0.00, agg_fare=319.63, rev_low=250.00, agg_mu=9.47, agg_sigma=1.06, prot=8.65, auth=65
-Class , sold=0, n=3, mu=0.00, agg_fare=285.96, rev_low=200.00, agg_mu=18.34, agg_sigma=2.01, prot=17.29, auth=63
-Class , sold=0, n=4, mu=0.00, agg_fare=281.60, rev_low=200.00, agg_mu=19.32, agg_sigma=2.03, prot=18.20, auth=54
-Class , sold=0, n=5, mu=0.00, agg_fare=235.12, rev_low=150.00, agg_mu=44.90, agg_sigma=6.72, prot=42.53, auth=53
-Class , sold=0, n=6, mu=0.00, agg_fare=220.81, rev_low=125.00, agg_mu=53.97, agg_sigma=6.92, prot=52.82, auth=29
-Class , sold=0, n=7, mu=0.00, agg_fare=211.60, rev_low=100.00, agg_mu=59.71, agg_sigma=7.17, prot=60.20, auth=19
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=5.57, agg_sigma=1.09, prot=4.77, auth=83
+Class , sold=0, n=2, mu=0.00, agg_fare=284.84, rev_low=200.00, agg_mu=12.00, agg_sigma=2.27, prot=10.79, auth=78
+Class , sold=0, n=3, mu=0.00, agg_fare=224.48, rev_low=150.00, agg_mu=41.58, agg_sigma=9.22, prot=37.57, auth=72
+Class , sold=0, n=4, mu=0.00, agg_fare=217.07, rev_low=125.00, agg_mu=46.18, agg_sigma=9.33, prot=44.39, auth=45
+Class , sold=0, n=5, mu=0.00, agg_fare=207.32, rev_low=100.00, agg_mu=51.64, agg_sigma=9.46, prot=52.06, auth=38
 ***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 28, bid_price = 0.00
+Flight = 201, BOS-ORD, cap = 100, sold = 17, bid_price = 0.00
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    7.44    325.00     0      6     72
-    BOS-ORD   Y1  300.00    2.04    300.00     1      9     65
-    BOS-LAX   Y4  250.00    8.87    250.00     2     17     63
-    BOS-ORD   Y2  200.00    0.98    200.00     3     18     54
-    BOS-LAX   Y5  200.00   25.58    200.00     4     43     53
-    BOS-ORD   Y3  150.00    9.07    150.00     5     53     29
-    BOS-ORD   Y4  125.00    5.74    125.00     6     60     19
-    BOS-ORD   Y5  100.00   17.34    100.00     7      0     12
-    EMSRc, flt=201, μ=77.05, σ=9.17, z=-0.55, agg_fare=186.49, cap=100, prob=0.71, emsr_c=132.20
+    BOS-LAX   Y3  325.00    5.57    325.00     0      5     83
+    BOS-LAX   Y4  250.00    6.43    250.00     1     11     78
+    BOS-LAX   Y5  200.00   29.58    200.00     2     38     72
+    BOS-ORD   Y3  150.00    4.59    150.00     3     44     45
+    BOS-ORD   Y4  125.00    5.47    125.00     4     52     38
+    BOS-ORD   Y5  100.00   17.83    100.00     5      0     31
+    EMSRc, flt=201, μ=69.48, σ=10.76, z=1.26, agg_fare=179.78, cap=100, prob=0.10, emsr_c=18.78
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=132.20, contrib=192.80, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=132.20, contrib=117.80, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=132.20, contrib=67.80, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=18.78, contrib=306.22, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=18.78, contrib=231.22, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=18.78, contrib=181.22, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 28, bid_price = 132.20
+Flight = 201, BOS-ORD, cap = 100, sold = 17, bid_price = 18.78
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    7.44    325.00     0      6     72
-    BOS-ORD   Y1  300.00    2.04    300.00     1      9     65
-    BOS-LAX   Y4  250.00    8.87    250.00     2     17     63
-    BOS-ORD   Y2  200.00    0.98    200.00     3     18     54
-    BOS-LAX   Y5  200.00   25.58    200.00     4     43     53
-    BOS-ORD   Y3  150.00    9.07    150.00     5     53     29
-    BOS-ORD   Y4  125.00    5.74    125.00     6     60     19
-    BOS-ORD   Y5  100.00   17.34    100.00     7      0     12
+    BOS-LAX   Y3  325.00    5.57    325.00     0      5     83
+    BOS-LAX   Y4  250.00    6.43    250.00     1     11     78
+    BOS-LAX   Y5  200.00   29.58    200.00     2     38     72
+    BOS-ORD   Y3  150.00    4.59    150.00     3     44     45
+    BOS-ORD   Y4  125.00    5.47    125.00     4     52     38
+    BOS-ORD   Y5  100.00   17.83    100.00     5      0     31
 ******************** CoreProBP iteration 1 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=7.44, agg_sigma=0.94, prot=6.10, auth=72
-Class , sold=0, n=2, mu=0.00, agg_fare=319.63, rev_low=250.00, agg_mu=9.47, agg_sigma=1.06, prot=8.65, auth=65
-Class , sold=0, n=3, mu=0.00, agg_fare=285.96, rev_low=200.00, agg_mu=18.34, agg_sigma=2.01, prot=17.29, auth=63
-Class , sold=0, n=4, mu=0.00, agg_fare=281.60, rev_low=200.00, agg_mu=19.32, agg_sigma=2.03, prot=18.20, auth=54
-Class , sold=0, n=5, mu=0.00, agg_fare=235.12, rev_low=150.00, agg_mu=44.90, agg_sigma=6.72, prot=42.53, auth=53
-Class , sold=0, n=6, mu=0.00, agg_fare=220.81, rev_low=125.00, agg_mu=53.97, agg_sigma=6.92, prot=52.82, auth=29
-Class , sold=0, n=7, mu=0.00, agg_fare=211.60, rev_low=100.00, agg_mu=59.71, agg_sigma=7.17, prot=60.20, auth=19
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=5.57, agg_sigma=1.09, prot=4.77, auth=83
+Class , sold=0, n=2, mu=0.00, agg_fare=284.84, rev_low=200.00, agg_mu=12.00, agg_sigma=2.27, prot=10.79, auth=78
+Class , sold=0, n=3, mu=0.00, agg_fare=224.48, rev_low=150.00, agg_mu=41.58, agg_sigma=9.22, prot=37.57, auth=72
+Class , sold=0, n=4, mu=0.00, agg_fare=217.07, rev_low=125.00, agg_mu=46.18, agg_sigma=9.33, prot=44.39, auth=45
+Class , sold=0, n=5, mu=0.00, agg_fare=207.32, rev_low=100.00, agg_mu=51.64, agg_sigma=9.46, prot=52.06, auth=38
 ***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 28, bid_price = 132.20
+Flight = 201, BOS-ORD, cap = 100, sold = 17, bid_price = 18.78
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    7.44    325.00     0      6     72
-    BOS-ORD   Y1  300.00    2.04    300.00     1      9     65
-    BOS-LAX   Y4  250.00    8.87    250.00     2     17     63
-    BOS-ORD   Y2  200.00    0.98    200.00     3     18     54
-    BOS-LAX   Y5  200.00   25.58    200.00     4     43     53
-    BOS-ORD   Y3  150.00    9.07    150.00     5     53     29
-    BOS-ORD   Y4  125.00    5.74    125.00     6     60     19
-    BOS-ORD   Y5  100.00   17.34    100.00     7      0     12
-    EMSRc, flt=201, μ=77.05, σ=9.17, z=-0.55, agg_fare=186.49, cap=100, prob=0.71, emsr_c=132.20
+    BOS-LAX   Y3  325.00    5.57    325.00     0      5     83
+    BOS-LAX   Y4  250.00    6.43    250.00     1     11     78
+    BOS-LAX   Y5  200.00   29.58    200.00     2     38     72
+    BOS-ORD   Y3  150.00    4.59    150.00     3     44     45
+    BOS-ORD   Y4  125.00    5.47    125.00     4     52     38
+    BOS-ORD   Y5  100.00   17.83    100.00     5      0     31
+    EMSRc, flt=201, μ=69.48, σ=10.76, z=1.26, agg_fare=179.78, cap=100, prob=0.10, emsr_c=18.78
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=132.20, contrib=192.80, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=132.20, contrib=117.80, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=132.20, contrib=67.80, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=18.78, contrib=306.22, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=18.78, contrib=231.22, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=18.78, contrib=181.22, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 28, bid_price = 132.20
+Flight = 201, BOS-ORD, cap = 100, sold = 17, bid_price = 18.78
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    7.44    325.00     0      6     72
-    BOS-ORD   Y1  300.00    2.04    300.00     1      9     65
-    BOS-LAX   Y4  250.00    8.87    250.00     2     17     63
-    BOS-ORD   Y2  200.00    0.98    200.00     3     18     54
-    BOS-LAX   Y5  200.00   25.58    200.00     4     43     53
-    BOS-ORD   Y3  150.00    9.07    150.00     5     53     29
-    BOS-ORD   Y4  125.00    5.74    125.00     6     60     19
-    BOS-ORD   Y5  100.00   17.34    100.00     7      0     12
+    BOS-LAX   Y3  325.00    5.57    325.00     0      5     83
+    BOS-LAX   Y4  250.00    6.43    250.00     1     11     78
+    BOS-LAX   Y5  200.00   29.58    200.00     2     38     72
+    BOS-ORD   Y3  150.00    4.59    150.00     3     44     45
+    BOS-ORD   Y4  125.00    5.47    125.00     4     52     38
+    BOS-ORD   Y5  100.00   17.83    100.00     5      0     31
 ******************** CoreProBP iteration 2 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=7.44, agg_sigma=0.94, prot=6.10, auth=72
-Class , sold=0, n=2, mu=0.00, agg_fare=319.63, rev_low=250.00, agg_mu=9.47, agg_sigma=1.06, prot=8.65, auth=65
-Class , sold=0, n=3, mu=0.00, agg_fare=285.96, rev_low=200.00, agg_mu=18.34, agg_sigma=2.01, prot=17.29, auth=63
-Class , sold=0, n=4, mu=0.00, agg_fare=281.60, rev_low=200.00, agg_mu=19.32, agg_sigma=2.03, prot=18.20, auth=54
-Class , sold=0, n=5, mu=0.00, agg_fare=235.12, rev_low=150.00, agg_mu=44.90, agg_sigma=6.72, prot=42.53, auth=53
-Class , sold=0, n=6, mu=0.00, agg_fare=220.81, rev_low=125.00, agg_mu=53.97, agg_sigma=6.92, prot=52.82, auth=29
-Class , sold=0, n=7, mu=0.00, agg_fare=211.60, rev_low=100.00, agg_mu=59.71, agg_sigma=7.17, prot=60.20, auth=19
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=5.57, agg_sigma=1.09, prot=4.77, auth=83
+Class , sold=0, n=2, mu=0.00, agg_fare=284.84, rev_low=200.00, agg_mu=12.00, agg_sigma=2.27, prot=10.79, auth=78
+Class , sold=0, n=3, mu=0.00, agg_fare=224.48, rev_low=150.00, agg_mu=41.58, agg_sigma=9.22, prot=37.57, auth=72
+Class , sold=0, n=4, mu=0.00, agg_fare=217.07, rev_low=125.00, agg_mu=46.18, agg_sigma=9.33, prot=44.39, auth=45
+Class , sold=0, n=5, mu=0.00, agg_fare=207.32, rev_low=100.00, agg_mu=51.64, agg_sigma=9.46, prot=52.06, auth=38
 ***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 28, bid_price = 132.20
+Flight = 201, BOS-ORD, cap = 100, sold = 17, bid_price = 18.78
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    7.44    325.00     0      6     72
-    BOS-ORD   Y1  300.00    2.04    300.00     1      9     65
-    BOS-LAX   Y4  250.00    8.87    250.00     2     17     63
-    BOS-ORD   Y2  200.00    0.98    200.00     3     18     54
-    BOS-LAX   Y5  200.00   25.58    200.00     4     43     53
-    BOS-ORD   Y3  150.00    9.07    150.00     5     53     29
-    BOS-ORD   Y4  125.00    5.74    125.00     6     60     19
-    BOS-ORD   Y5  100.00   17.34    100.00     7      0     12
-    EMSRc, flt=201, μ=77.05, σ=9.17, z=-0.55, agg_fare=186.49, cap=100, prob=0.71, emsr_c=132.20
+    BOS-LAX   Y3  325.00    5.57    325.00     0      5     83
+    BOS-LAX   Y4  250.00    6.43    250.00     1     11     78
+    BOS-LAX   Y5  200.00   29.58    200.00     2     38     72
+    BOS-ORD   Y3  150.00    4.59    150.00     3     44     45
+    BOS-ORD   Y4  125.00    5.47    125.00     4     52     38
+    BOS-ORD   Y5  100.00   17.83    100.00     5      0     31
+    EMSRc, flt=201, μ=69.48, σ=10.76, z=1.26, agg_fare=179.78, cap=100, prob=0.10, emsr_c=18.78
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=132.20, contrib=192.80, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=132.20, contrib=117.80, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=132.20, contrib=67.80, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=18.78, contrib=306.22, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=18.78, contrib=231.22, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=18.78, contrib=181.22, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 28, bid_price = 132.20
+Flight = 201, BOS-ORD, cap = 100, sold = 17, bid_price = 18.78
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    7.44    325.00     0      6     72
-    BOS-ORD   Y1  300.00    2.04    300.00     1      9     65
-    BOS-LAX   Y4  250.00    8.87    250.00     2     17     63
-    BOS-ORD   Y2  200.00    0.98    200.00     3     18     54
-    BOS-LAX   Y5  200.00   25.58    200.00     4     43     53
-    BOS-ORD   Y3  150.00    9.07    150.00     5     53     29
-    BOS-ORD   Y4  125.00    5.74    125.00     6     60     19
-    BOS-ORD   Y5  100.00   17.34    100.00     7      0     12
+    BOS-LAX   Y3  325.00    5.57    325.00     0      5     83
+    BOS-LAX   Y4  250.00    6.43    250.00     1     11     78
+    BOS-LAX   Y5  200.00   29.58    200.00     2     38     72
+    BOS-ORD   Y3  150.00    4.59    150.00     3     44     45
+    BOS-ORD   Y4  125.00    5.47    125.00     4     52     38
+    BOS-ORD   Y5  100.00   17.83    100.00     5      0     31
 ProBP converged in 2 iterations
-Leg: AL1:101 BOS-ORD, cap: 100, sold: 80, bp: 0.00
+Leg: AL1:101 BOS-ORD, cap: 100, sold: 75, bp: 0.00
  Class  Sold  ActRev    Fcst  StdDev FcstRev  Prot  Auth
-    Y0     0    0.00    0.00    0.00  400.00     0    20
-    Y1     2  625.00   13.55    4.87  300.00    11    20
-    Y2    16  371.88   10.32    3.13  200.00    23     8
-    Y3    41  282.32    0.00    0.00  150.00    24     0
-    Y4    15  175.00    0.00    0.00  125.00    25     0
-    Y5     6  100.00    0.00    0.00  100.00     0     0
+    Y0     0    0.00    0.00    0.00  400.00     0    25
+    Y1     1  625.00   12.63    3.51  300.00    11    25
+    Y2     7  450.00    7.17    2.33  200.00    19    13
+    Y3    34  252.94    0.00    0.00  150.00    20     5
+    Y4    14  151.79    0.00    0.00  125.00    21     4
+    Y5    19  100.00    0.00    0.00  100.00     0     4
 CoreProBP initialize *******************
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
@@ -2937,143 +2811,125 @@ Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ******************** CoreProBP iteration 0 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=7.11, agg_sigma=1.04, prot=5.63, auth=81
-Class , sold=0, n=2, mu=0.00, agg_fare=320.80, rev_low=250.00, agg_mu=8.55, agg_sigma=1.12, prot=7.69, auth=75
-Class , sold=0, n=3, mu=0.00, agg_fare=286.06, rev_low=200.00, agg_mu=16.79, agg_sigma=2.06, prot=15.71, auth=73
-Class , sold=0, n=4, mu=0.00, agg_fare=283.67, rev_low=200.00, agg_mu=17.26, agg_sigma=2.07, prot=16.15, auth=65
-Class , sold=0, n=5, mu=0.00, agg_fare=238.09, rev_low=150.00, agg_mu=37.92, agg_sigma=6.27, prot=35.84, auth=64
-Class , sold=0, n=6, mu=0.00, agg_fare=223.60, rev_low=125.00, agg_mu=45.39, agg_sigma=6.45, prot=44.43, auth=45
-Class , sold=0, n=7, mu=0.00, agg_fare=212.73, rev_low=100.00, agg_mu=51.01, agg_sigma=6.71, prot=51.52, auth=36
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=4.20, agg_sigma=0.83, prot=3.59, auth=75
+Class , sold=0, n=2, mu=0.00, agg_fare=279.98, rev_low=200.00, agg_mu=10.50, agg_sigma=2.21, prot=9.25, auth=71
+Class , sold=0, n=3, mu=0.00, agg_fare=222.09, rev_low=150.00, agg_mu=38.02, agg_sigma=9.11, prot=33.87, auth=65
+Class , sold=0, n=4, mu=0.00, agg_fare=212.17, rev_low=125.00, agg_mu=44.08, agg_sigma=9.23, prot=42.00, auth=41
+Class , sold=0, n=5, mu=0.00, agg_fare=204.57, rev_low=100.00, agg_mu=48.30, agg_sigma=9.31, prot=48.56, auth=32
 ***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 19, bid_price = 0.00
+Flight = 201, BOS-ORD, cap = 100, sold = 25, bid_price = 0.00
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    7.11    325.00     0      6     81
-    BOS-ORD   Y1  300.00    1.44    300.00     1      8     75
-    BOS-LAX   Y4  250.00    8.24    250.00     2     16     73
-    BOS-ORD   Y2  200.00    0.48    200.00     3     16     65
-    BOS-LAX   Y5  200.00   20.66    200.00     4     36     64
-    BOS-ORD   Y3  150.00    7.46    150.00     5     44     45
-    BOS-ORD   Y4  125.00    5.63    125.00     6     52     36
-    BOS-ORD   Y5  100.00   14.33    100.00     7      0     29
-    EMSRc, flt=201, μ=65.34, σ=8.53, z=1.84, agg_fare=188.01, cap=100, prob=0.03, emsr_c=6.23
+    BOS-LAX   Y3  325.00    4.20    325.00     0      4     75
+    BOS-LAX   Y4  250.00    6.30    250.00     1      9     71
+    BOS-LAX   Y5  200.00   27.52    200.00     2     34     65
+    BOS-ORD   Y3  150.00    6.06    150.00     3     42     41
+    BOS-ORD   Y4  125.00    4.21    125.00     4     49     32
+    BOS-ORD   Y5  100.00   11.94    100.00     5      0     26
+    EMSRc, flt=201, μ=60.24, σ=10.30, z=1.43, agg_fare=183.84, cap=100, prob=0.08, emsr_c=13.96
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=6.23, contrib=318.77, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=6.23, contrib=243.77, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=6.23, contrib=193.77, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=13.96, contrib=311.04, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=13.96, contrib=236.04, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=13.96, contrib=186.04, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 19, bid_price = 6.23
+Flight = 201, BOS-ORD, cap = 100, sold = 25, bid_price = 13.96
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    7.11    325.00     0      6     81
-    BOS-ORD   Y1  300.00    1.44    300.00     1      8     75
-    BOS-LAX   Y4  250.00    8.24    250.00     2     16     73
-    BOS-ORD   Y2  200.00    0.48    200.00     3     16     65
-    BOS-LAX   Y5  200.00   20.66    200.00     4     36     64
-    BOS-ORD   Y3  150.00    7.46    150.00     5     44     45
-    BOS-ORD   Y4  125.00    5.63    125.00     6     52     36
-    BOS-ORD   Y5  100.00   14.33    100.00     7      0     29
+    BOS-LAX   Y3  325.00    4.20    325.00     0      4     75
+    BOS-LAX   Y4  250.00    6.30    250.00     1      9     71
+    BOS-LAX   Y5  200.00   27.52    200.00     2     34     65
+    BOS-ORD   Y3  150.00    6.06    150.00     3     42     41
+    BOS-ORD   Y4  125.00    4.21    125.00     4     49     32
+    BOS-ORD   Y5  100.00   11.94    100.00     5      0     26
 ******************** CoreProBP iteration 1 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=7.11, agg_sigma=1.04, prot=5.63, auth=81
-Class , sold=0, n=2, mu=0.00, agg_fare=320.80, rev_low=250.00, agg_mu=8.55, agg_sigma=1.12, prot=7.69, auth=75
-Class , sold=0, n=3, mu=0.00, agg_fare=286.06, rev_low=200.00, agg_mu=16.79, agg_sigma=2.06, prot=15.71, auth=73
-Class , sold=0, n=4, mu=0.00, agg_fare=283.67, rev_low=200.00, agg_mu=17.26, agg_sigma=2.07, prot=16.15, auth=65
-Class , sold=0, n=5, mu=0.00, agg_fare=238.09, rev_low=150.00, agg_mu=37.92, agg_sigma=6.27, prot=35.84, auth=64
-Class , sold=0, n=6, mu=0.00, agg_fare=223.60, rev_low=125.00, agg_mu=45.39, agg_sigma=6.45, prot=44.43, auth=45
-Class , sold=0, n=7, mu=0.00, agg_fare=212.73, rev_low=100.00, agg_mu=51.01, agg_sigma=6.71, prot=51.52, auth=36
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=4.20, agg_sigma=0.83, prot=3.59, auth=75
+Class , sold=0, n=2, mu=0.00, agg_fare=279.98, rev_low=200.00, agg_mu=10.50, agg_sigma=2.21, prot=9.25, auth=71
+Class , sold=0, n=3, mu=0.00, agg_fare=222.09, rev_low=150.00, agg_mu=38.02, agg_sigma=9.11, prot=33.87, auth=65
+Class , sold=0, n=4, mu=0.00, agg_fare=212.17, rev_low=125.00, agg_mu=44.08, agg_sigma=9.23, prot=42.00, auth=41
+Class , sold=0, n=5, mu=0.00, agg_fare=204.57, rev_low=100.00, agg_mu=48.30, agg_sigma=9.31, prot=48.56, auth=32
 ***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 19, bid_price = 6.23
+Flight = 201, BOS-ORD, cap = 100, sold = 25, bid_price = 13.96
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    7.11    325.00     0      6     81
-    BOS-ORD   Y1  300.00    1.44    300.00     1      8     75
-    BOS-LAX   Y4  250.00    8.24    250.00     2     16     73
-    BOS-ORD   Y2  200.00    0.48    200.00     3     16     65
-    BOS-LAX   Y5  200.00   20.66    200.00     4     36     64
-    BOS-ORD   Y3  150.00    7.46    150.00     5     44     45
-    BOS-ORD   Y4  125.00    5.63    125.00     6     52     36
-    BOS-ORD   Y5  100.00   14.33    100.00     7      0     29
-    EMSRc, flt=201, μ=65.34, σ=8.53, z=1.84, agg_fare=188.01, cap=100, prob=0.03, emsr_c=6.23
+    BOS-LAX   Y3  325.00    4.20    325.00     0      4     75
+    BOS-LAX   Y4  250.00    6.30    250.00     1      9     71
+    BOS-LAX   Y5  200.00   27.52    200.00     2     34     65
+    BOS-ORD   Y3  150.00    6.06    150.00     3     42     41
+    BOS-ORD   Y4  125.00    4.21    125.00     4     49     32
+    BOS-ORD   Y5  100.00   11.94    100.00     5      0     26
+    EMSRc, flt=201, μ=60.24, σ=10.30, z=1.43, agg_fare=183.84, cap=100, prob=0.08, emsr_c=13.96
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=6.23, contrib=318.77, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=6.23, contrib=243.77, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=6.23, contrib=193.77, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=13.96, contrib=311.04, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=13.96, contrib=236.04, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=13.96, contrib=186.04, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 19, bid_price = 6.23
+Flight = 201, BOS-ORD, cap = 100, sold = 25, bid_price = 13.96
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    7.11    325.00     0      6     81
-    BOS-ORD   Y1  300.00    1.44    300.00     1      8     75
-    BOS-LAX   Y4  250.00    8.24    250.00     2     16     73
-    BOS-ORD   Y2  200.00    0.48    200.00     3     16     65
-    BOS-LAX   Y5  200.00   20.66    200.00     4     36     64
-    BOS-ORD   Y3  150.00    7.46    150.00     5     44     45
-    BOS-ORD   Y4  125.00    5.63    125.00     6     52     36
-    BOS-ORD   Y5  100.00   14.33    100.00     7      0     29
+    BOS-LAX   Y3  325.00    4.20    325.00     0      4     75
+    BOS-LAX   Y4  250.00    6.30    250.00     1      9     71
+    BOS-LAX   Y5  200.00   27.52    200.00     2     34     65
+    BOS-ORD   Y3  150.00    6.06    150.00     3     42     41
+    BOS-ORD   Y4  125.00    4.21    125.00     4     49     32
+    BOS-ORD   Y5  100.00   11.94    100.00     5      0     26
 ******************** CoreProBP iteration 2 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=7.11, agg_sigma=1.04, prot=5.63, auth=81
-Class , sold=0, n=2, mu=0.00, agg_fare=320.80, rev_low=250.00, agg_mu=8.55, agg_sigma=1.12, prot=7.69, auth=75
-Class , sold=0, n=3, mu=0.00, agg_fare=286.06, rev_low=200.00, agg_mu=16.79, agg_sigma=2.06, prot=15.71, auth=73
-Class , sold=0, n=4, mu=0.00, agg_fare=283.67, rev_low=200.00, agg_mu=17.26, agg_sigma=2.07, prot=16.15, auth=65
-Class , sold=0, n=5, mu=0.00, agg_fare=238.09, rev_low=150.00, agg_mu=37.92, agg_sigma=6.27, prot=35.84, auth=64
-Class , sold=0, n=6, mu=0.00, agg_fare=223.60, rev_low=125.00, agg_mu=45.39, agg_sigma=6.45, prot=44.43, auth=45
-Class , sold=0, n=7, mu=0.00, agg_fare=212.73, rev_low=100.00, agg_mu=51.01, agg_sigma=6.71, prot=51.52, auth=36
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=4.20, agg_sigma=0.83, prot=3.59, auth=75
+Class , sold=0, n=2, mu=0.00, agg_fare=279.98, rev_low=200.00, agg_mu=10.50, agg_sigma=2.21, prot=9.25, auth=71
+Class , sold=0, n=3, mu=0.00, agg_fare=222.09, rev_low=150.00, agg_mu=38.02, agg_sigma=9.11, prot=33.87, auth=65
+Class , sold=0, n=4, mu=0.00, agg_fare=212.17, rev_low=125.00, agg_mu=44.08, agg_sigma=9.23, prot=42.00, auth=41
+Class , sold=0, n=5, mu=0.00, agg_fare=204.57, rev_low=100.00, agg_mu=48.30, agg_sigma=9.31, prot=48.56, auth=32
 ***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 19, bid_price = 6.23
+Flight = 201, BOS-ORD, cap = 100, sold = 25, bid_price = 13.96
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    7.11    325.00     0      6     81
-    BOS-ORD   Y1  300.00    1.44    300.00     1      8     75
-    BOS-LAX   Y4  250.00    8.24    250.00     2     16     73
-    BOS-ORD   Y2  200.00    0.48    200.00     3     16     65
-    BOS-LAX   Y5  200.00   20.66    200.00     4     36     64
-    BOS-ORD   Y3  150.00    7.46    150.00     5     44     45
-    BOS-ORD   Y4  125.00    5.63    125.00     6     52     36
-    BOS-ORD   Y5  100.00   14.33    100.00     7      0     29
-    EMSRc, flt=201, μ=65.34, σ=8.53, z=1.84, agg_fare=188.01, cap=100, prob=0.03, emsr_c=6.23
+    BOS-LAX   Y3  325.00    4.20    325.00     0      4     75
+    BOS-LAX   Y4  250.00    6.30    250.00     1      9     71
+    BOS-LAX   Y5  200.00   27.52    200.00     2     34     65
+    BOS-ORD   Y3  150.00    6.06    150.00     3     42     41
+    BOS-ORD   Y4  125.00    4.21    125.00     4     49     32
+    BOS-ORD   Y5  100.00   11.94    100.00     5      0     26
+    EMSRc, flt=201, μ=60.24, σ=10.30, z=1.43, agg_fare=183.84, cap=100, prob=0.08, emsr_c=13.96
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=6.23, contrib=318.77, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=6.23, contrib=243.77, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=6.23, contrib=193.77, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=13.96, contrib=311.04, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=13.96, contrib=236.04, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=13.96, contrib=186.04, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 19, bid_price = 6.23
+Flight = 201, BOS-ORD, cap = 100, sold = 25, bid_price = 13.96
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    7.11    325.00     0      6     81
-    BOS-ORD   Y1  300.00    1.44    300.00     1      8     75
-    BOS-LAX   Y4  250.00    8.24    250.00     2     16     73
-    BOS-ORD   Y2  200.00    0.48    200.00     3     16     65
-    BOS-LAX   Y5  200.00   20.66    200.00     4     36     64
-    BOS-ORD   Y3  150.00    7.46    150.00     5     44     45
-    BOS-ORD   Y4  125.00    5.63    125.00     6     52     36
-    BOS-ORD   Y5  100.00   14.33    100.00     7      0     29
+    BOS-LAX   Y3  325.00    4.20    325.00     0      4     75
+    BOS-LAX   Y4  250.00    6.30    250.00     1      9     71
+    BOS-LAX   Y5  200.00   27.52    200.00     2     34     65
+    BOS-ORD   Y3  150.00    6.06    150.00     3     42     41
+    BOS-ORD   Y4  125.00    4.21    125.00     4     49     32
+    BOS-ORD   Y5  100.00   11.94    100.00     5      0     26
 ProBP converged in 2 iterations
 Leg: AL1:101 BOS-ORD, cap: 100, sold: 74, bp: 0.00
  Class  Sold  ActRev    Fcst  StdDev FcstRev  Prot  Auth
     Y0     0    0.00    0.00    0.00  400.00     0    26
-    Y1     5  625.00   11.97    4.25  300.00    10    26
-    Y2    17  435.29    8.61    2.74  200.00    20    15
-    Y3    23  279.35    0.00    0.00  150.00    21     6
-    Y4    11  159.09    0.00    0.00  125.00    22     5
-    Y5    18  100.00    0.00    0.00  100.00     0     4
+    Y1     0    0.00   12.04    3.39  300.00    11    26
+    Y2     7  342.86    7.06    2.50  200.00    18    15
+    Y3    41  286.59    0.00    0.00  150.00    19     7
+    Y4     5  175.00    0.00    0.00  125.00    20     6
+    Y5    21  100.00    0.00    0.00  100.00     0     6
 </pre>
 </div>
 </div>
@@ -3122,143 +2978,125 @@ Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ******************** CoreProBP iteration 0 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=0.81, agg_sigma=0.72, prot=0.00, auth=74
-Class , sold=0, n=2, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=0.81, agg_sigma=0.72, prot=0.27, auth=74
-Class , sold=0, n=3, mu=0.00, agg_fare=258.10, rev_low=200.00, agg_mu=7.46, agg_sigma=2.02, prot=5.94, auth=73
-Class , sold=0, n=4, mu=0.00, agg_fare=251.08, rev_low=200.00, agg_mu=8.49, agg_sigma=2.03, prot=6.80, auth=68
-Class , sold=0, n=5, mu=0.00, agg_fare=211.03, rev_low=150.00, agg_mu=39.29, agg_sigma=7.43, prot=35.17, auth=67
-Class , sold=0, n=6, mu=0.00, agg_fare=201.16, rev_low=125.00, agg_mu=46.88, agg_sigma=7.58, prot=44.54, auth=38
-Class , sold=0, n=7, mu=0.00, agg_fare=192.68, rev_low=100.00, agg_mu=52.75, agg_sigma=7.71, prot=52.38, auth=29
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=1.51, agg_sigma=0.67, prot=1.02, auth=90
+Class , sold=0, n=2, mu=0.00, agg_fare=261.41, rev_low=200.00, agg_mu=9.95, agg_sigma=1.74, prot=8.70, auth=88
+Class , sold=0, n=3, mu=0.00, agg_fare=216.28, rev_low=150.00, agg_mu=37.52, agg_sigma=8.83, prot=33.05, auth=81
+Class , sold=0, n=4, mu=0.00, agg_fare=209.60, rev_low=125.00, agg_mu=41.73, agg_sigma=8.96, prot=39.54, auth=56
+Class , sold=0, n=5, mu=0.00, agg_fare=198.34, rev_low=100.00, agg_mu=48.13, agg_sigma=9.26, prot=48.04, auth=50
 ***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 26, bid_price = 0.00
+Flight = 201, BOS-ORD, cap = 100, sold = 10, bid_price = 0.00
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    0.81    325.00     0      0     74
-    BOS-ORD   Y1  300.00    0.00    300.00     1      0     74
-    BOS-LAX   Y4  250.00    6.65    250.00     2      6     73
-    BOS-ORD   Y2  200.00    1.03    200.00     3      7     68
-    BOS-LAX   Y5  200.00   30.81    200.00     4     35     67
-    BOS-ORD   Y3  150.00    7.58    150.00     5     45     38
-    BOS-ORD   Y4  125.00    5.87    125.00     6     52     29
-    BOS-ORD   Y5  100.00   20.63    100.00     7      0     22
-    EMSRc, flt=201, μ=73.38, σ=9.26, z=0.07, agg_fare=166.63, cap=100, prob=0.47, emsr_c=78.86
+    BOS-LAX   Y3  325.00    1.51    325.00     0      1     90
+    BOS-LAX   Y4  250.00    8.44    250.00     1      9     88
+    BOS-LAX   Y5  200.00   27.57    200.00     2     33     81
+    BOS-ORD   Y3  150.00    4.20    150.00     3     40     56
+    BOS-ORD   Y4  125.00    6.41    125.00     4     48     50
+    BOS-ORD   Y5  100.00   15.98    100.00     5      0     42
+    EMSRc, flt=201, μ=64.12, σ=11.06, z=2.34, agg_fare=173.83, cap=100, prob=0.01, emsr_c=1.67
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=78.86, contrib=246.14, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=78.86, contrib=171.14, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=78.86, contrib=121.14, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=1.67, contrib=323.33, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=1.67, contrib=248.33, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=1.67, contrib=198.33, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 26, bid_price = 78.86
+Flight = 201, BOS-ORD, cap = 100, sold = 10, bid_price = 1.67
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    0.81    325.00     0      0     74
-    BOS-ORD   Y1  300.00    0.00    300.00     1      0     74
-    BOS-LAX   Y4  250.00    6.65    250.00     2      6     73
-    BOS-ORD   Y2  200.00    1.03    200.00     3      7     68
-    BOS-LAX   Y5  200.00   30.81    200.00     4     35     67
-    BOS-ORD   Y3  150.00    7.58    150.00     5     45     38
-    BOS-ORD   Y4  125.00    5.87    125.00     6     52     29
-    BOS-ORD   Y5  100.00   20.63    100.00     7      0     22
+    BOS-LAX   Y3  325.00    1.51    325.00     0      1     90
+    BOS-LAX   Y4  250.00    8.44    250.00     1      9     88
+    BOS-LAX   Y5  200.00   27.57    200.00     2     33     81
+    BOS-ORD   Y3  150.00    4.20    150.00     3     40     56
+    BOS-ORD   Y4  125.00    6.41    125.00     4     48     50
+    BOS-ORD   Y5  100.00   15.98    100.00     5      0     42
 ******************** CoreProBP iteration 1 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=0.81, agg_sigma=0.72, prot=0.00, auth=74
-Class , sold=0, n=2, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=0.81, agg_sigma=0.72, prot=0.27, auth=74
-Class , sold=0, n=3, mu=0.00, agg_fare=258.10, rev_low=200.00, agg_mu=7.46, agg_sigma=2.02, prot=5.94, auth=73
-Class , sold=0, n=4, mu=0.00, agg_fare=251.08, rev_low=200.00, agg_mu=8.49, agg_sigma=2.03, prot=6.80, auth=68
-Class , sold=0, n=5, mu=0.00, agg_fare=211.03, rev_low=150.00, agg_mu=39.29, agg_sigma=7.43, prot=35.17, auth=67
-Class , sold=0, n=6, mu=0.00, agg_fare=201.16, rev_low=125.00, agg_mu=46.88, agg_sigma=7.58, prot=44.54, auth=38
-Class , sold=0, n=7, mu=0.00, agg_fare=192.68, rev_low=100.00, agg_mu=52.75, agg_sigma=7.71, prot=52.38, auth=29
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=1.51, agg_sigma=0.67, prot=1.02, auth=90
+Class , sold=0, n=2, mu=0.00, agg_fare=261.41, rev_low=200.00, agg_mu=9.95, agg_sigma=1.74, prot=8.70, auth=88
+Class , sold=0, n=3, mu=0.00, agg_fare=216.28, rev_low=150.00, agg_mu=37.52, agg_sigma=8.83, prot=33.05, auth=81
+Class , sold=0, n=4, mu=0.00, agg_fare=209.60, rev_low=125.00, agg_mu=41.73, agg_sigma=8.96, prot=39.54, auth=56
+Class , sold=0, n=5, mu=0.00, agg_fare=198.34, rev_low=100.00, agg_mu=48.13, agg_sigma=9.26, prot=48.04, auth=50
 ***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 26, bid_price = 78.86
+Flight = 201, BOS-ORD, cap = 100, sold = 10, bid_price = 1.67
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    0.81    325.00     0      0     74
-    BOS-ORD   Y1  300.00    0.00    300.00     1      0     74
-    BOS-LAX   Y4  250.00    6.65    250.00     2      6     73
-    BOS-ORD   Y2  200.00    1.03    200.00     3      7     68
-    BOS-LAX   Y5  200.00   30.81    200.00     4     35     67
-    BOS-ORD   Y3  150.00    7.58    150.00     5     45     38
-    BOS-ORD   Y4  125.00    5.87    125.00     6     52     29
-    BOS-ORD   Y5  100.00   20.63    100.00     7      0     22
-    EMSRc, flt=201, μ=73.38, σ=9.26, z=0.07, agg_fare=166.63, cap=100, prob=0.47, emsr_c=78.86
+    BOS-LAX   Y3  325.00    1.51    325.00     0      1     90
+    BOS-LAX   Y4  250.00    8.44    250.00     1      9     88
+    BOS-LAX   Y5  200.00   27.57    200.00     2     33     81
+    BOS-ORD   Y3  150.00    4.20    150.00     3     40     56
+    BOS-ORD   Y4  125.00    6.41    125.00     4     48     50
+    BOS-ORD   Y5  100.00   15.98    100.00     5      0     42
+    EMSRc, flt=201, μ=64.12, σ=11.06, z=2.34, agg_fare=173.83, cap=100, prob=0.01, emsr_c=1.67
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=78.86, contrib=246.14, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=78.86, contrib=171.14, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=78.86, contrib=121.14, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=1.67, contrib=323.33, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=1.67, contrib=248.33, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=1.67, contrib=198.33, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 26, bid_price = 78.86
+Flight = 201, BOS-ORD, cap = 100, sold = 10, bid_price = 1.67
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    0.81    325.00     0      0     74
-    BOS-ORD   Y1  300.00    0.00    300.00     1      0     74
-    BOS-LAX   Y4  250.00    6.65    250.00     2      6     73
-    BOS-ORD   Y2  200.00    1.03    200.00     3      7     68
-    BOS-LAX   Y5  200.00   30.81    200.00     4     35     67
-    BOS-ORD   Y3  150.00    7.58    150.00     5     45     38
-    BOS-ORD   Y4  125.00    5.87    125.00     6     52     29
-    BOS-ORD   Y5  100.00   20.63    100.00     7      0     22
+    BOS-LAX   Y3  325.00    1.51    325.00     0      1     90
+    BOS-LAX   Y4  250.00    8.44    250.00     1      9     88
+    BOS-LAX   Y5  200.00   27.57    200.00     2     33     81
+    BOS-ORD   Y3  150.00    4.20    150.00     3     40     56
+    BOS-ORD   Y4  125.00    6.41    125.00     4     48     50
+    BOS-ORD   Y5  100.00   15.98    100.00     5      0     42
 ******************** CoreProBP iteration 2 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=0.81, agg_sigma=0.72, prot=0.00, auth=74
-Class , sold=0, n=2, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=0.81, agg_sigma=0.72, prot=0.27, auth=74
-Class , sold=0, n=3, mu=0.00, agg_fare=258.10, rev_low=200.00, agg_mu=7.46, agg_sigma=2.02, prot=5.94, auth=73
-Class , sold=0, n=4, mu=0.00, agg_fare=251.08, rev_low=200.00, agg_mu=8.49, agg_sigma=2.03, prot=6.80, auth=68
-Class , sold=0, n=5, mu=0.00, agg_fare=211.03, rev_low=150.00, agg_mu=39.29, agg_sigma=7.43, prot=35.17, auth=67
-Class , sold=0, n=6, mu=0.00, agg_fare=201.16, rev_low=125.00, agg_mu=46.88, agg_sigma=7.58, prot=44.54, auth=38
-Class , sold=0, n=7, mu=0.00, agg_fare=192.68, rev_low=100.00, agg_mu=52.75, agg_sigma=7.71, prot=52.38, auth=29
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=1.51, agg_sigma=0.67, prot=1.02, auth=90
+Class , sold=0, n=2, mu=0.00, agg_fare=261.41, rev_low=200.00, agg_mu=9.95, agg_sigma=1.74, prot=8.70, auth=88
+Class , sold=0, n=3, mu=0.00, agg_fare=216.28, rev_low=150.00, agg_mu=37.52, agg_sigma=8.83, prot=33.05, auth=81
+Class , sold=0, n=4, mu=0.00, agg_fare=209.60, rev_low=125.00, agg_mu=41.73, agg_sigma=8.96, prot=39.54, auth=56
+Class , sold=0, n=5, mu=0.00, agg_fare=198.34, rev_low=100.00, agg_mu=48.13, agg_sigma=9.26, prot=48.04, auth=50
 ***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 26, bid_price = 78.86
+Flight = 201, BOS-ORD, cap = 100, sold = 10, bid_price = 1.67
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    0.81    325.00     0      0     74
-    BOS-ORD   Y1  300.00    0.00    300.00     1      0     74
-    BOS-LAX   Y4  250.00    6.65    250.00     2      6     73
-    BOS-ORD   Y2  200.00    1.03    200.00     3      7     68
-    BOS-LAX   Y5  200.00   30.81    200.00     4     35     67
-    BOS-ORD   Y3  150.00    7.58    150.00     5     45     38
-    BOS-ORD   Y4  125.00    5.87    125.00     6     52     29
-    BOS-ORD   Y5  100.00   20.63    100.00     7      0     22
-    EMSRc, flt=201, μ=73.38, σ=9.26, z=0.07, agg_fare=166.63, cap=100, prob=0.47, emsr_c=78.86
+    BOS-LAX   Y3  325.00    1.51    325.00     0      1     90
+    BOS-LAX   Y4  250.00    8.44    250.00     1      9     88
+    BOS-LAX   Y5  200.00   27.57    200.00     2     33     81
+    BOS-ORD   Y3  150.00    4.20    150.00     3     40     56
+    BOS-ORD   Y4  125.00    6.41    125.00     4     48     50
+    BOS-ORD   Y5  100.00   15.98    100.00     5      0     42
+    EMSRc, flt=201, μ=64.12, σ=11.06, z=2.34, agg_fare=173.83, cap=100, prob=0.01, emsr_c=1.67
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=78.86, contrib=246.14, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=78.86, contrib=171.14, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=78.86, contrib=121.14, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=1.67, contrib=323.33, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=1.67, contrib=248.33, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=1.67, contrib=198.33, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 26, bid_price = 78.86
+Flight = 201, BOS-ORD, cap = 100, sold = 10, bid_price = 1.67
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    0.81    325.00     0      0     74
-    BOS-ORD   Y1  300.00    0.00    300.00     1      0     74
-    BOS-LAX   Y4  250.00    6.65    250.00     2      6     73
-    BOS-ORD   Y2  200.00    1.03    200.00     3      7     68
-    BOS-LAX   Y5  200.00   30.81    200.00     4     35     67
-    BOS-ORD   Y3  150.00    7.58    150.00     5     45     38
-    BOS-ORD   Y4  125.00    5.87    125.00     6     52     29
-    BOS-ORD   Y5  100.00   20.63    100.00     7      0     22
+    BOS-LAX   Y3  325.00    1.51    325.00     0      1     90
+    BOS-LAX   Y4  250.00    8.44    250.00     1      9     88
+    BOS-LAX   Y5  200.00   27.57    200.00     2     33     81
+    BOS-ORD   Y3  150.00    4.20    150.00     3     40     56
+    BOS-ORD   Y4  125.00    6.41    125.00     4     48     50
+    BOS-ORD   Y5  100.00   15.98    100.00     5      0     42
 ProBP converged in 2 iterations
-Leg: AL1:101 BOS-ORD, cap: 100, sold: 84, bp: 0.00
+Leg: AL1:101 BOS-ORD, cap: 100, sold: 42, bp: 0.00
  Class  Sold  ActRev    Fcst  StdDev FcstRev  Prot  Auth
-    Y0     0    0.00    0.00    0.00  400.00     0    16
-    Y1     6  570.83   15.97    3.19  300.00    15    16
-    Y2    24  345.83    9.40    1.96  200.00    25     1
-    Y3    45  243.33    0.00    0.00  150.00    26     0
-    Y4     9  125.00    0.00    0.00  125.00    27     0
-    Y5     0    0.00    0.00    0.00  100.00     0     0
+    Y0     0    0.00    0.00    0.00  400.00     0    58
+    Y1     0    0.00   12.52    3.95  300.00    11    58
+    Y2     2  325.00    9.18    2.80  200.00    21    47
+    Y3    25  248.00    0.00    0.00  150.00    22    37
+    Y4     3  250.00    0.00    0.00  125.00    23    36
+    Y5    12  100.00    0.00    0.00  100.00     0    35
 CoreProBP initialize *******************
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
@@ -3273,143 +3111,125 @@ Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ******************** CoreProBP iteration 0 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=0.79, agg_sigma=0.74, prot=0.00, auth=85
-Class , sold=0, n=2, mu=0.00, agg_fare=304.10, rev_low=250.00, agg_mu=4.79, agg_sigma=1.09, prot=3.78, auth=85
-Class , sold=0, n=3, mu=0.00, agg_fare=275.16, rev_low=200.00, agg_mu=10.29, agg_sigma=2.00, prot=9.08, auth=81
-Class , sold=0, n=4, mu=0.00, agg_fare=260.18, rev_low=200.00, agg_mu=12.85, agg_sigma=2.01, prot=11.38, auth=75
-Class , sold=0, n=5, mu=0.00, agg_fare=219.76, rev_low=150.00, agg_mu=39.15, agg_sigma=7.41, prot=35.63, auth=73
-Class , sold=0, n=6, mu=0.00, agg_fare=211.43, rev_low=125.00, agg_mu=44.46, agg_sigma=7.51, prot=42.72, auth=49
-Class , sold=0, n=7, mu=0.00, agg_fare=204.38, rev_low=100.00, agg_mu=48.40, agg_sigma=7.59, prot=48.61, auth=42
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=1.98, agg_sigma=0.63, prot=1.51, auth=81
+Class , sold=0, n=2, mu=0.00, agg_fare=271.56, rev_low=200.00, agg_mu=6.89, agg_sigma=1.34, prot=6.05, auth=79
+Class , sold=0, n=3, mu=0.00, agg_fare=216.66, rev_low=150.00, agg_mu=29.61, agg_sigma=8.77, prot=25.20, auth=74
+Class , sold=0, n=4, mu=0.00, agg_fare=210.63, rev_low=125.00, agg_mu=32.56, agg_sigma=8.83, prot=30.47, auth=55
+Class , sold=0, n=5, mu=0.00, agg_fare=194.11, rev_low=100.00, agg_mu=40.34, agg_sigma=9.04, prot=39.99, auth=50
 ***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 15, bid_price = 0.00
+Flight = 201, BOS-ORD, cap = 100, sold = 19, bid_price = 0.00
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    0.79    325.00     0      0     85
-    BOS-ORD   Y1  300.00    4.00    300.00     1      4     85
-    BOS-LAX   Y4  250.00    5.51    250.00     2      9     81
-    BOS-ORD   Y2  200.00    2.56    200.00     3     11     75
-    BOS-LAX   Y5  200.00   26.29    200.00     4     36     73
-    BOS-ORD   Y3  150.00    5.31    150.00     5     43     49
-    BOS-ORD   Y4  125.00    3.95    125.00     6     49     42
-    BOS-ORD   Y5  100.00   18.43    100.00     7      0     36
-    EMSRc, flt=201, μ=66.84, σ=9.26, z=1.96, agg_fare=175.59, cap=100, prob=0.02, emsr_c=4.37
+    BOS-LAX   Y3  325.00    1.98    325.00     0      2     81
+    BOS-LAX   Y4  250.00    4.91    250.00     1      6     79
+    BOS-LAX   Y5  200.00   22.72    200.00     2     25     74
+    BOS-ORD   Y3  150.00    2.94    150.00     3     30     55
+    BOS-ORD   Y4  125.00    7.78    125.00     4     40     50
+    BOS-ORD   Y5  100.00   15.78    100.00     5      0     41
+    EMSRc, flt=201, μ=56.12, σ=10.51, z=2.37, agg_fare=167.64, cap=100, prob=0.01, emsr_c=1.51
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=4.37, contrib=320.63, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=4.37, contrib=245.63, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=4.37, contrib=195.63, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=1.51, contrib=323.49, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=1.51, contrib=248.49, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=1.51, contrib=198.49, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 15, bid_price = 4.37
+Flight = 201, BOS-ORD, cap = 100, sold = 19, bid_price = 1.51
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    0.79    325.00     0      0     85
-    BOS-ORD   Y1  300.00    4.00    300.00     1      4     85
-    BOS-LAX   Y4  250.00    5.51    250.00     2      9     81
-    BOS-ORD   Y2  200.00    2.56    200.00     3     11     75
-    BOS-LAX   Y5  200.00   26.29    200.00     4     36     73
-    BOS-ORD   Y3  150.00    5.31    150.00     5     43     49
-    BOS-ORD   Y4  125.00    3.95    125.00     6     49     42
-    BOS-ORD   Y5  100.00   18.43    100.00     7      0     36
+    BOS-LAX   Y3  325.00    1.98    325.00     0      2     81
+    BOS-LAX   Y4  250.00    4.91    250.00     1      6     79
+    BOS-LAX   Y5  200.00   22.72    200.00     2     25     74
+    BOS-ORD   Y3  150.00    2.94    150.00     3     30     55
+    BOS-ORD   Y4  125.00    7.78    125.00     4     40     50
+    BOS-ORD   Y5  100.00   15.78    100.00     5      0     41
 ******************** CoreProBP iteration 1 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=0.79, agg_sigma=0.74, prot=0.00, auth=85
-Class , sold=0, n=2, mu=0.00, agg_fare=304.10, rev_low=250.00, agg_mu=4.79, agg_sigma=1.09, prot=3.78, auth=85
-Class , sold=0, n=3, mu=0.00, agg_fare=275.16, rev_low=200.00, agg_mu=10.29, agg_sigma=2.00, prot=9.08, auth=81
-Class , sold=0, n=4, mu=0.00, agg_fare=260.18, rev_low=200.00, agg_mu=12.85, agg_sigma=2.01, prot=11.38, auth=75
-Class , sold=0, n=5, mu=0.00, agg_fare=219.76, rev_low=150.00, agg_mu=39.15, agg_sigma=7.41, prot=35.63, auth=73
-Class , sold=0, n=6, mu=0.00, agg_fare=211.43, rev_low=125.00, agg_mu=44.46, agg_sigma=7.51, prot=42.72, auth=49
-Class , sold=0, n=7, mu=0.00, agg_fare=204.38, rev_low=100.00, agg_mu=48.40, agg_sigma=7.59, prot=48.61, auth=42
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=1.98, agg_sigma=0.63, prot=1.51, auth=81
+Class , sold=0, n=2, mu=0.00, agg_fare=271.56, rev_low=200.00, agg_mu=6.89, agg_sigma=1.34, prot=6.05, auth=79
+Class , sold=0, n=3, mu=0.00, agg_fare=216.66, rev_low=150.00, agg_mu=29.61, agg_sigma=8.77, prot=25.20, auth=74
+Class , sold=0, n=4, mu=0.00, agg_fare=210.63, rev_low=125.00, agg_mu=32.56, agg_sigma=8.83, prot=30.47, auth=55
+Class , sold=0, n=5, mu=0.00, agg_fare=194.11, rev_low=100.00, agg_mu=40.34, agg_sigma=9.04, prot=39.99, auth=50
 ***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 15, bid_price = 4.37
+Flight = 201, BOS-ORD, cap = 100, sold = 19, bid_price = 1.51
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    0.79    325.00     0      0     85
-    BOS-ORD   Y1  300.00    4.00    300.00     1      4     85
-    BOS-LAX   Y4  250.00    5.51    250.00     2      9     81
-    BOS-ORD   Y2  200.00    2.56    200.00     3     11     75
-    BOS-LAX   Y5  200.00   26.29    200.00     4     36     73
-    BOS-ORD   Y3  150.00    5.31    150.00     5     43     49
-    BOS-ORD   Y4  125.00    3.95    125.00     6     49     42
-    BOS-ORD   Y5  100.00   18.43    100.00     7      0     36
-    EMSRc, flt=201, μ=66.84, σ=9.26, z=1.96, agg_fare=175.59, cap=100, prob=0.02, emsr_c=4.37
+    BOS-LAX   Y3  325.00    1.98    325.00     0      2     81
+    BOS-LAX   Y4  250.00    4.91    250.00     1      6     79
+    BOS-LAX   Y5  200.00   22.72    200.00     2     25     74
+    BOS-ORD   Y3  150.00    2.94    150.00     3     30     55
+    BOS-ORD   Y4  125.00    7.78    125.00     4     40     50
+    BOS-ORD   Y5  100.00   15.78    100.00     5      0     41
+    EMSRc, flt=201, μ=56.12, σ=10.51, z=2.37, agg_fare=167.64, cap=100, prob=0.01, emsr_c=1.51
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=4.37, contrib=320.63, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=4.37, contrib=245.63, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=4.37, contrib=195.63, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=1.51, contrib=323.49, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=1.51, contrib=248.49, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=1.51, contrib=198.49, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 15, bid_price = 4.37
+Flight = 201, BOS-ORD, cap = 100, sold = 19, bid_price = 1.51
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    0.79    325.00     0      0     85
-    BOS-ORD   Y1  300.00    4.00    300.00     1      4     85
-    BOS-LAX   Y4  250.00    5.51    250.00     2      9     81
-    BOS-ORD   Y2  200.00    2.56    200.00     3     11     75
-    BOS-LAX   Y5  200.00   26.29    200.00     4     36     73
-    BOS-ORD   Y3  150.00    5.31    150.00     5     43     49
-    BOS-ORD   Y4  125.00    3.95    125.00     6     49     42
-    BOS-ORD   Y5  100.00   18.43    100.00     7      0     36
+    BOS-LAX   Y3  325.00    1.98    325.00     0      2     81
+    BOS-LAX   Y4  250.00    4.91    250.00     1      6     79
+    BOS-LAX   Y5  200.00   22.72    200.00     2     25     74
+    BOS-ORD   Y3  150.00    2.94    150.00     3     30     55
+    BOS-ORD   Y4  125.00    7.78    125.00     4     40     50
+    BOS-ORD   Y5  100.00   15.78    100.00     5      0     41
 ******************** CoreProBP iteration 2 *******************
-Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=300.00, agg_mu=0.79, agg_sigma=0.74, prot=0.00, auth=85
-Class , sold=0, n=2, mu=0.00, agg_fare=304.10, rev_low=250.00, agg_mu=4.79, agg_sigma=1.09, prot=3.78, auth=85
-Class , sold=0, n=3, mu=0.00, agg_fare=275.16, rev_low=200.00, agg_mu=10.29, agg_sigma=2.00, prot=9.08, auth=81
-Class , sold=0, n=4, mu=0.00, agg_fare=260.18, rev_low=200.00, agg_mu=12.85, agg_sigma=2.01, prot=11.38, auth=75
-Class , sold=0, n=5, mu=0.00, agg_fare=219.76, rev_low=150.00, agg_mu=39.15, agg_sigma=7.41, prot=35.63, auth=73
-Class , sold=0, n=6, mu=0.00, agg_fare=211.43, rev_low=125.00, agg_mu=44.46, agg_sigma=7.51, prot=42.72, auth=49
-Class , sold=0, n=7, mu=0.00, agg_fare=204.38, rev_low=100.00, agg_mu=48.40, agg_sigma=7.59, prot=48.61, auth=42
+Class , sold=0, n=1, mu=0.00, agg_fare=325.00, rev_low=250.00, agg_mu=1.98, agg_sigma=0.63, prot=1.51, auth=81
+Class , sold=0, n=2, mu=0.00, agg_fare=271.56, rev_low=200.00, agg_mu=6.89, agg_sigma=1.34, prot=6.05, auth=79
+Class , sold=0, n=3, mu=0.00, agg_fare=216.66, rev_low=150.00, agg_mu=29.61, agg_sigma=8.77, prot=25.20, auth=74
+Class , sold=0, n=4, mu=0.00, agg_fare=210.63, rev_low=125.00, agg_mu=32.56, agg_sigma=8.83, prot=30.47, auth=55
+Class , sold=0, n=5, mu=0.00, agg_fare=194.11, rev_low=100.00, agg_mu=40.34, agg_sigma=9.04, prot=39.99, auth=50
 ***** ProBP, after EMSRb *****
-Flight = 201, BOS-ORD, cap = 100, sold = 15, bid_price = 4.37
+Flight = 201, BOS-ORD, cap = 100, sold = 19, bid_price = 1.51
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    0.79    325.00     0      0     85
-    BOS-ORD   Y1  300.00    4.00    300.00     1      4     85
-    BOS-LAX   Y4  250.00    5.51    250.00     2      9     81
-    BOS-ORD   Y2  200.00    2.56    200.00     3     11     75
-    BOS-LAX   Y5  200.00   26.29    200.00     4     36     73
-    BOS-ORD   Y3  150.00    5.31    150.00     5     43     49
-    BOS-ORD   Y4  125.00    3.95    125.00     6     49     42
-    BOS-ORD   Y5  100.00   18.43    100.00     7      0     36
-    EMSRc, flt=201, μ=66.84, σ=9.26, z=1.96, agg_fare=175.59, cap=100, prob=0.02, emsr_c=4.37
+    BOS-LAX   Y3  325.00    1.98    325.00     0      2     81
+    BOS-LAX   Y4  250.00    4.91    250.00     1      6     79
+    BOS-LAX   Y5  200.00   22.72    200.00     2     25     74
+    BOS-ORD   Y3  150.00    2.94    150.00     3     30     55
+    BOS-ORD   Y4  125.00    7.78    125.00     4     40     50
+    BOS-ORD   Y5  100.00   15.78    100.00     5      0     41
+    EMSRc, flt=201, μ=56.12, σ=10.51, z=2.37, agg_fare=167.64, cap=100, prob=0.01, emsr_c=1.51
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 201: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg1: AL2 202: BOS-ORD, bp=0.00, contrib=200.00, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=4.37, contrib=320.63, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=4.37, contrib=245.63, to path=BOS-LAX
-Leg2: AL2 211: ORD-LAX, bp=4.37, contrib=195.63, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=1.51, contrib=323.49, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=1.51, contrib=248.49, to path=BOS-LAX
+Leg2: AL2 211: ORD-LAX, bp=1.51, contrib=198.49, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=325.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=250.00, to path=BOS-LAX
 Leg2: AL2 212: ORD-LAX, bp=0.00, contrib=200.00, to path=BOS-LAX
 ***** ProBP, after displacement adjustment *****
-Flight = 201, BOS-ORD, cap = 100, sold = 15, bid_price = 4.37
+Flight = 201, BOS-ORD, cap = 100, sold = 19, bid_price = 1.51
     Org-Dst  Cls   Price    Dmd    Contrib   Bkt  Prot  Alloc
-    BOS-LAX   Y3  325.00    0.79    325.00     0      0     85
-    BOS-ORD   Y1  300.00    4.00    300.00     1      4     85
-    BOS-LAX   Y4  250.00    5.51    250.00     2      9     81
-    BOS-ORD   Y2  200.00    2.56    200.00     3     11     75
-    BOS-LAX   Y5  200.00   26.29    200.00     4     36     73
-    BOS-ORD   Y3  150.00    5.31    150.00     5     43     49
-    BOS-ORD   Y4  125.00    3.95    125.00     6     49     42
-    BOS-ORD   Y5  100.00   18.43    100.00     7      0     36
+    BOS-LAX   Y3  325.00    1.98    325.00     0      2     81
+    BOS-LAX   Y4  250.00    4.91    250.00     1      6     79
+    BOS-LAX   Y5  200.00   22.72    200.00     2     25     74
+    BOS-ORD   Y3  150.00    2.94    150.00     3     30     55
+    BOS-ORD   Y4  125.00    7.78    125.00     4     40     50
+    BOS-ORD   Y5  100.00   15.78    100.00     5      0     41
 ProBP converged in 2 iterations
-Leg: AL1:101 BOS-ORD, cap: 100, sold: 78, bp: 0.00
+Leg: AL1:101 BOS-ORD, cap: 100, sold: 51, bp: 0.00
  Class  Sold  ActRev    Fcst  StdDev FcstRev  Prot  Auth
-    Y0     0    0.00    0.00    0.00  400.00     0    22
-    Y1     0    0.00   13.90    3.54  300.00    12    22
-    Y2    11  359.09    9.32    2.79  200.00    22     9
-    Y3    38  251.32    0.00    0.00  150.00    23     0
-    Y4    10  150.00    0.00    0.00  125.00    25     0
-    Y5    19  100.00    0.00    0.00  100.00     0     0
+    Y0     0    0.00    0.00    0.00  400.00     0    49
+    Y1     0    0.00   13.38    3.30  300.00    12    49
+    Y2     1  450.00   10.91    2.83  200.00    23    37
+    Y3    31  279.84    0.00    0.00  150.00    24    25
+    Y4     9  222.22    0.00    0.00  125.00    25    24
+    Y5    10  100.00    0.00    0.00  100.00     0    24
 </pre>
 </div>
 </div>
@@ -3429,7 +3249,7 @@ Leg: AL1:101 BOS-ORD, cap: 100, sold: 78, bp: 0.00
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[2023-09-09 23:35:38,757] passengersim.INFO: Th' th' that's all folks !!!    (Elapsed time = 8.57)
+<pre>[2023-09-10 15:18:05,113] passengersim.INFO: Th' th' that's all folks !!!    (Elapsed time = 8.54)
 </pre>
 </div>
 </div>
@@ -3504,72 +3324,72 @@ Leg: AL1:101 BOS-ORD, cap: 100, sold: 78, bp: 0.00
 <td>BOS</td>
 <td>ORD</td>
 <td>business</td>
-<td>89</td>
-<td>18000.0</td>
-<td>202.247191</td>
-<td>174769</td>
-<td>152533</td>
-<td>27962875.0</td>
+<td>75</td>
+<td>13375.0</td>
+<td>178.333333</td>
+<td>172183</td>
+<td>150744</td>
+<td>27558775.0</td>
 </tr>
 <tr>
 <th>1</th>
 <td>BOS</td>
 <td>ORD</td>
 <td>leisure</td>
-<td>63</td>
-<td>7575.0</td>
-<td>120.238095</td>
-<td>223542</td>
-<td>159473</td>
-<td>18368125.0</td>
+<td>72</td>
+<td>8300.0</td>
+<td>115.277778</td>
+<td>222658</td>
+<td>160590</td>
+<td>18424625.0</td>
 </tr>
 <tr>
 <th>2</th>
 <td>ORD</td>
 <td>LAX</td>
 <td>business</td>
-<td>117</td>
-<td>34350.0</td>
-<td>293.589744</td>
-<td>298114</td>
-<td>260278</td>
-<td>72685500.0</td>
+<td>124</td>
+<td>36325.0</td>
+<td>292.943548</td>
+<td>297592</td>
+<td>261156</td>
+<td>72874425.0</td>
 </tr>
 <tr>
 <th>3</th>
 <td>ORD</td>
 <td>LAX</td>
 <td>leisure</td>
-<td>113</td>
-<td>22425.0</td>
-<td>198.451327</td>
-<td>374322</td>
-<td>251907</td>
-<td>45489250.0</td>
+<td>108</td>
+<td>20650.0</td>
+<td>191.203704</td>
+<td>370265</td>
+<td>249921</td>
+<td>45095275.0</td>
 </tr>
 <tr>
 <th>4</th>
 <td>BOS</td>
 <td>LAX</td>
 <td>business</td>
-<td>61</td>
-<td>24625.0</td>
-<td>403.688525</td>
-<td>249241</td>
-<td>198203</td>
-<td>78409525.0</td>
+<td>86</td>
+<td>35675.0</td>
+<td>414.825581</td>
+<td>246527</td>
+<td>196722</td>
+<td>77693175.0</td>
 </tr>
 <tr>
 <th>5</th>
 <td>BOS</td>
 <td>LAX</td>
 <td>leisure</td>
-<td>99</td>
-<td>25600.0</td>
-<td>258.585859</td>
-<td>348731</td>
-<td>205867</td>
-<td>50390100.0</td>
+<td>77</td>
+<td>18525.0</td>
+<td>240.584416</td>
+<td>348241</td>
+<td>206306</td>
+<td>50374375.0</td>
 </tr>
 </tbody>
 </table>
@@ -3646,9 +3466,9 @@ Leg: AL1:101 BOS-ORD, cap: 100, sold: 78, bp: 0.00
 <td>101</td>
 <td>BOS</td>
 <td>ORD</td>
-<td>87.9288</td>
-<td>25742.320</td>
-<td>87.928800</td>
+<td>87.6960</td>
+<td>25429.860</td>
+<td>87.696000</td>
 </tr>
 <tr>
 <th>1</th>
@@ -3656,9 +3476,9 @@ Leg: AL1:101 BOS-ORD, cap: 100, sold: 78, bp: 0.00
 <td>102</td>
 <td>BOS</td>
 <td>ORD</td>
-<td>87.9312</td>
-<td>25670.090</td>
-<td>87.931200</td>
+<td>87.7372</td>
+<td>25580.140</td>
+<td>87.737200</td>
 </tr>
 <tr>
 <th>2</th>
@@ -3666,9 +3486,9 @@ Leg: AL1:101 BOS-ORD, cap: 100, sold: 78, bp: 0.00
 <td>201</td>
 <td>BOS</td>
 <td>ORD</td>
-<td>55.2484</td>
-<td>5757.285</td>
-<td>55.248400</td>
+<td>55.1364</td>
+<td>5738.025</td>
+<td>55.136400</td>
 </tr>
 <tr>
 <th>3</th>
@@ -3676,9 +3496,9 @@ Leg: AL1:101 BOS-ORD, cap: 100, sold: 78, bp: 0.00
 <td>202</td>
 <td>BOS</td>
 <td>ORD</td>
-<td>55.3220</td>
-<td>5765.790</td>
-<td>55.322000</td>
+<td>55.1752</td>
+<td>5744.870</td>
+<td>55.175200</td>
 </tr>
 <tr>
 <th>4</th>
@@ -3686,9 +3506,9 @@ Leg: AL1:101 BOS-ORD, cap: 100, sold: 78, bp: 0.00
 <td>111</td>
 <td>ORD</td>
 <td>LAX</td>
-<td>108.2368</td>
-<td>17134.990</td>
-<td>90.197333</td>
+<td>108.2044</td>
+<td>17195.190</td>
+<td>90.170333</td>
 </tr>
 <tr>
 <th>5</th>
@@ -3696,9 +3516,9 @@ Leg: AL1:101 BOS-ORD, cap: 100, sold: 78, bp: 0.00
 <td>112</td>
 <td>ORD</td>
 <td>LAX</td>
-<td>108.3028</td>
-<td>17172.340</td>
-<td>90.252333</td>
+<td>108.2068</td>
+<td>17176.740</td>
+<td>90.172333</td>
 </tr>
 <tr>
 <th>6</th>
@@ -3706,9 +3526,9 @@ Leg: AL1:101 BOS-ORD, cap: 100, sold: 78, bp: 0.00
 <td>211</td>
 <td>ORD</td>
 <td>LAX</td>
-<td>74.9920</td>
-<td>10044.485</td>
-<td>62.493333</td>
+<td>74.5840</td>
+<td>9965.405</td>
+<td>62.153333</td>
 </tr>
 <tr>
 <th>7</th>
@@ -3716,9 +3536,9 @@ Leg: AL1:101 BOS-ORD, cap: 100, sold: 78, bp: 0.00
 <td>212</td>
 <td>ORD</td>
 <td>LAX</td>
-<td>74.9704</td>
-<td>10034.850</td>
-<td>62.475333</td>
+<td>74.6468</td>
+<td>9978.030</td>
+<td>62.205667</td>
 </tr>
 </tbody>
 </table>
@@ -3798,8 +3618,8 @@ Leg: AL1:101 BOS-ORD, cap: 100, sold: 78, bp: 0.00
 <td>101</td>
 <td>AL1</td>
 <td>111.0</td>
-<td>46.4132</td>
-<td>18685.25</td>
+<td>45.9540</td>
+<td>18399.52</td>
 </tr>
 <tr>
 <th>1</th>
@@ -3809,8 +3629,8 @@ Leg: AL1:101 BOS-ORD, cap: 100, sold: 78, bp: 0.00
 <td>102</td>
 <td>AL1</td>
 <td>112.0</td>
-<td>46.2492</td>
-<td>18601.07</td>
+<td>46.1172</td>
+<td>18572.53</td>
 </tr>
 <tr>
 <th>2</th>
@@ -3820,8 +3640,8 @@ Leg: AL1:101 BOS-ORD, cap: 100, sold: 78, bp: 0.00
 <td>201</td>
 <td>AL2</td>
 <td>211.0</td>
-<td>34.4460</td>
-<td>7109.99</td>
+<td>34.5708</td>
+<td>7126.71</td>
 </tr>
 <tr>
 <th>3</th>
@@ -3831,8 +3651,8 @@ Leg: AL1:101 BOS-ORD, cap: 100, sold: 78, bp: 0.00
 <td>202</td>
 <td>AL2</td>
 <td>212.0</td>
-<td>34.5196</td>
-<td>7123.54</td>
+<td>34.5692</td>
+<td>7128.26</td>
 </tr>
 <tr>
 <th>4</th>
@@ -3842,8 +3662,8 @@ Leg: AL1:101 BOS-ORD, cap: 100, sold: 78, bp: 0.00
 <td>101</td>
 <td>None</td>
 <td>NaN</td>
-<td>41.5156</td>
-<td>7057.07</td>
+<td>41.7420</td>
+<td>7030.34</td>
 </tr>
 <tr>
 <th>5</th>
@@ -3853,8 +3673,8 @@ Leg: AL1:101 BOS-ORD, cap: 100, sold: 78, bp: 0.00
 <td>102</td>
 <td>None</td>
 <td>NaN</td>
-<td>41.6820</td>
-<td>7069.02</td>
+<td>41.6200</td>
+<td>7007.61</td>
 </tr>
 <tr>
 <th>6</th>
@@ -3864,8 +3684,8 @@ Leg: AL1:101 BOS-ORD, cap: 100, sold: 78, bp: 0.00
 <td>201</td>
 <td>None</td>
 <td>NaN</td>
-<td>20.8024</td>
-<td>2202.29</td>
+<td>20.5656</td>
+<td>2174.67</td>
 </tr>
 <tr>
 <th>7</th>
@@ -3875,8 +3695,8 @@ Leg: AL1:101 BOS-ORD, cap: 100, sold: 78, bp: 0.00
 <td>202</td>
 <td>None</td>
 <td>NaN</td>
-<td>20.8024</td>
-<td>2204.02</td>
+<td>20.6060</td>
+<td>2180.74</td>
 </tr>
 <tr>
 <th>8</th>
@@ -3886,8 +3706,8 @@ Leg: AL1:101 BOS-ORD, cap: 100, sold: 78, bp: 0.00
 <td>111</td>
 <td>None</td>
 <td>NaN</td>
-<td>61.8236</td>
-<td>17134.99</td>
+<td>62.2504</td>
+<td>17195.19</td>
 </tr>
 <tr>
 <th>9</th>
@@ -3897,8 +3717,8 @@ Leg: AL1:101 BOS-ORD, cap: 100, sold: 78, bp: 0.00
 <td>112</td>
 <td>None</td>
 <td>NaN</td>
-<td>62.0536</td>
-<td>17172.34</td>
+<td>62.0896</td>
+<td>17176.74</td>
 </tr>
 <tr>
 <th>10</th>
@@ -3908,8 +3728,8 @@ Leg: AL1:101 BOS-ORD, cap: 100, sold: 78, bp: 0.00
 <td>211</td>
 <td>None</td>
 <td>NaN</td>
-<td>40.5460</td>
-<td>6489.49</td>
+<td>40.0132</td>
+<td>6402.05</td>
 </tr>
 <tr>
 <th>11</th>
@@ -3919,8 +3739,8 @@ Leg: AL1:101 BOS-ORD, cap: 100, sold: 78, bp: 0.00
 <td>212</td>
 <td>None</td>
 <td>NaN</td>
-<td>40.4508</td>
-<td>6473.08</td>
+<td>40.0776</td>
+<td>6413.90</td>
 </tr>
 </tbody>
 </table>

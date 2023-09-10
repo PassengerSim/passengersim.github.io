@@ -1040,33 +1040,6 @@
           notice.hidden = true
         }, 1000)
       })
-</script><script>
-(function() {
-  function addWidgetsRenderer() {
-    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
-    var scriptElement = document.createElement('script');
-    
-    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
-    
-    var widgetState;
-
-    // Fallback for older version:
-    try {
-      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
-
-      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
-        
-        var widgetRendererSrc = 'https://unpkg.com/@jupyter-js-widgets@*/dist/embed.js';
-        
-      }
-    } catch(e) {}
-
-    scriptElement.src = widgetRendererSrc;
-    document.body.appendChild(scriptElement);
-  }
-
-  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
-}());
 </script>
 <style type="text/css">
     
@@ -1977,7 +1950,7 @@ pax.versions()</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>passengersim 0.9.3
+<pre>passengersim 0.9.4
 passengersim.core 0.9.0
 </pre>
 </div>
@@ -2155,12 +2128,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[2023-09-09 23:37:28,188] passengersim.config.INFO: loaded config from network/01-base.yaml
-[2023-09-09 23:37:28,189] passengersim.config.INFO: loaded config from network/02-buyup.yaml
-[2023-09-09 23:37:28,189] passengersim.config.INFO: loaded config from network/03-ap.yaml
-[2023-09-09 23:37:28,190] passengersim.config.INFO: loaded config from network/04-emsrb-low-demand.yaml
-[2023-09-09 23:37:28,201] passengersim.database.INFO: connecting to sqlite database: :memory:
-[2023-09-09 23:37:28,201] passengersim.database.INFO: initializing sqlite tables
+<pre>[2023-09-10 15:19:54,813] passengersim.config.INFO: loaded config from network/01-base.yaml
+[2023-09-10 15:19:54,813] passengersim.config.INFO: loaded config from network/02-buyup.yaml
+[2023-09-10 15:19:54,814] passengersim.config.INFO: loaded config from network/03-ap.yaml
+[2023-09-10 15:19:54,814] passengersim.config.INFO: loaded config from network/04-emsrb-low-demand.yaml
+[2023-09-10 15:19:54,825] passengersim.database.INFO: connecting to sqlite database: :memory:
+[2023-09-10 15:19:54,826] passengersim.database.INFO: initializing sqlite tables
 </pre>
 </div>
 </div>
@@ -2199,13 +2172,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jupyter-widgets jp-OutputArea-output" id="ac303788-5945-4c1e-bf70-5ff25f94b0fc">
-<script type="text/javascript">
-var element = document.getElementById('ac303788-5945-4c1e-bf70-5ff25f94b0fc');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "a387921e99e14716aed6e3d46561a203", "version_major": 2, "version_minor": 0}
-</script>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Output()</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -2224,7 +2192,7 @@ var element = document.getElementById('ac303788-5945-4c1e-bf70-5ff25f94b0fc');
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[2023-09-09 23:37:34,517] passengersim.INFO: Th' th' that's all folks !!!    (Elapsed time = 6.31)
+<pre>[2023-09-10 15:20:01,156] passengersim.INFO: Th' th' that's all folks !!!    (Elapsed time = 6.33)
 </pre>
 </div>
 </div>
@@ -2265,23 +2233,23 @@ var element = document.getElementById('ac303788-5945-4c1e-bf70-5ff25f94b0fc');
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 <style>
-  #altair-viz-9371fdf1eb764c458316590db3d454a9.vega-embed {
+  #altair-viz-7cf3396f347448d3bd1028b6c1f8c4df.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-9371fdf1eb764c458316590db3d454a9.vega-embed details,
-  #altair-viz-9371fdf1eb764c458316590db3d454a9.vega-embed details summary {
+  #altair-viz-7cf3396f347448d3bd1028b6c1f8c4df.vega-embed details,
+  #altair-viz-7cf3396f347448d3bd1028b6c1f8c4df.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-9371fdf1eb764c458316590db3d454a9"></div>
+<div id="altair-viz-7cf3396f347448d3bd1028b6c1f8c4df"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-9371fdf1eb764c458316590db3d454a9") {
-      outputDiv = document.getElementById("altair-viz-9371fdf1eb764c458316590db3d454a9");
+    if (outputDiv.id !== "altair-viz-7cf3396f347448d3bd1028b6c1f8c4df") {
+      outputDiv = document.getElementById("altair-viz-7cf3396f347448d3bd1028b6c1f8c4df");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2327,7 +2295,7 @@ var element = document.getElementById('ac303788-5945-4c1e-bf70-5ff25f94b0fc');
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}, "legend": {"labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Average Revenue", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}}}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 3}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}}}], "data": {"name": "data-e771c4cc9e98c221e53eb8cb1b9eb561"}, "height": 300, "width": 200, "$schema": "https://vega.github.io/schema/vega-lite/v5.14.1.json", "datasets": {"data-e771c4cc9e98c221e53eb8cb1b9eb561": [{"carrier": "AL1", "avg_rev": 47345.02}, {"carrier": "AL2", "avg_rev": 47337.72}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}, "legend": {"labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Average Revenue", "type": "quantitative"}], "x": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-e771c4cc9e98c221e53eb8cb1b9eb561"}, "height": 50, "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.14.1.json", "datasets": {"data-e771c4cc9e98c221e53eb8cb1b9eb561": [{"carrier": "AL1", "avg_rev": 47345.02}, {"carrier": "AL2", "avg_rev": 47337.72}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
@@ -2368,23 +2336,23 @@ var element = document.getElementById('ac303788-5945-4c1e-bf70-5ff25f94b0fc');
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 <style>
-  #altair-viz-77567c3d83d84624a02f46346d3b6865.vega-embed {
+  #altair-viz-07c3bbae281843c8848ce66d36a38466.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-77567c3d83d84624a02f46346d3b6865.vega-embed details,
-  #altair-viz-77567c3d83d84624a02f46346d3b6865.vega-embed details summary {
+  #altair-viz-07c3bbae281843c8848ce66d36a38466.vega-embed details,
+  #altair-viz-07c3bbae281843c8848ce66d36a38466.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-77567c3d83d84624a02f46346d3b6865"></div>
+<div id="altair-viz-07c3bbae281843c8848ce66d36a38466"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-77567c3d83d84624a02f46346d3b6865") {
-      outputDiv = document.getElementById("altair-viz-77567c3d83d84624a02f46346d3b6865");
+    if (outputDiv.id !== "altair-viz-07c3bbae281843c8848ce66d36a38466") {
+      outputDiv = document.getElementById("altair-viz-07c3bbae281843c8848ce66d36a38466");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2430,7 +2398,7 @@ var element = document.getElementById('ac303788-5945-4c1e-bf70-5ff25f94b0fc');
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}, "legend": {"labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_lf", "format": ".2f", "title": "Load Factor", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_lf", "stack": "zero", "title": "Load Factor", "type": "quantitative"}}}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 3}, "encoding": {"text": {"field": "avg_lf", "format": ".2f", "type": "quantitative"}, "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_lf", "stack": "zero", "title": "Load Factor", "type": "quantitative"}}}], "data": {"name": "data-acd8c83fef984c8184f0928f2f4a86eb"}, "height": 300, "width": 200, "$schema": "https://vega.github.io/schema/vega-lite/v5.14.1.json", "datasets": {"data-acd8c83fef984c8184f0928f2f4a86eb": [{"carrier": "AL1", "avg_lf": 46.0}, {"carrier": "AL2", "avg_lf": 46.07}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}, "legend": {"labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "sys_lf", "format": ".2f", "title": "System Load Factor", "type": "quantitative"}], "x": {"field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "sys_lf", "format": ".2f", "type": "quantitative"}, "x": {"field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-0db99b376bb5aa3d96167e95d0a5bb5c"}, "height": 50, "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.14.1.json", "datasets": {"data-0db99b376bb5aa3d96167e95d0a5bb5c": [{"carrier": "AL1", "sys_lf": 46.56}, {"carrier": "AL2", "sys_lf": 46.61}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
@@ -2471,23 +2439,23 @@ var element = document.getElementById('ac303788-5945-4c1e-bf70-5ff25f94b0fc');
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 <style>
-  #altair-viz-39449ce0aa9d4797a11fbb73ff7d914f.vega-embed {
+  #altair-viz-3b1b3f2fce2f46a2a9caa83e23848c0c.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-39449ce0aa9d4797a11fbb73ff7d914f.vega-embed details,
-  #altair-viz-39449ce0aa9d4797a11fbb73ff7d914f.vega-embed details summary {
+  #altair-viz-3b1b3f2fce2f46a2a9caa83e23848c0c.vega-embed details,
+  #altair-viz-3b1b3f2fce2f46a2a9caa83e23848c0c.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-39449ce0aa9d4797a11fbb73ff7d914f"></div>
+<div id="altair-viz-3b1b3f2fce2f46a2a9caa83e23848c0c"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-39449ce0aa9d4797a11fbb73ff7d914f") {
-      outputDiv = document.getElementById("altair-viz-39449ce0aa9d4797a11fbb73ff7d914f");
+    if (outputDiv.id !== "altair-viz-3b1b3f2fce2f46a2a9caa83e23848c0c") {
+      outputDiv = document.getElementById("altair-viz-3b1b3f2fce2f46a2a9caa83e23848c0c");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2574,23 +2542,23 @@ var element = document.getElementById('ac303788-5945-4c1e-bf70-5ff25f94b0fc');
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 <style>
-  #altair-viz-f5dbb9968106426ab6797221fca9c14c.vega-embed {
+  #altair-viz-919dff4f5b7140efa4383fef45041210.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-f5dbb9968106426ab6797221fca9c14c.vega-embed details,
-  #altair-viz-f5dbb9968106426ab6797221fca9c14c.vega-embed details summary {
+  #altair-viz-919dff4f5b7140efa4383fef45041210.vega-embed details,
+  #altair-viz-919dff4f5b7140efa4383fef45041210.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-f5dbb9968106426ab6797221fca9c14c"></div>
+<div id="altair-viz-919dff4f5b7140efa4383fef45041210"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-f5dbb9968106426ab6797221fca9c14c") {
-      outputDiv = document.getElementById("altair-viz-f5dbb9968106426ab6797221fca9c14c");
+    if (outputDiv.id !== "altair-viz-919dff4f5b7140efa4383fef45041210") {
+      outputDiv = document.getElementById("altair-viz-919dff4f5b7140efa4383fef45041210");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2779,23 +2747,23 @@ target = targets.load(4)</div>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 <style>
-  #altair-viz-0a39e5be8d494e96a4febe8a5ed3ef3c.vega-embed {
+  #altair-viz-1856d7c9ecf94b159ba719435212e511.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-0a39e5be8d494e96a4febe8a5ed3ef3c.vega-embed details,
-  #altair-viz-0a39e5be8d494e96a4febe8a5ed3ef3c.vega-embed details summary {
+  #altair-viz-1856d7c9ecf94b159ba719435212e511.vega-embed details,
+  #altair-viz-1856d7c9ecf94b159ba719435212e511.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-0a39e5be8d494e96a4febe8a5ed3ef3c"></div>
+<div id="altair-viz-1856d7c9ecf94b159ba719435212e511"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-0a39e5be8d494e96a4febe8a5ed3ef3c") {
-      outputDiv = document.getElementById("altair-viz-0a39e5be8d494e96a4febe8a5ed3ef3c");
+    if (outputDiv.id !== "altair-viz-1856d7c9ecf94b159ba719435212e511") {
+      outputDiv = document.getElementById("altair-viz-1856d7c9ecf94b159ba719435212e511");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2884,86 +2852,85 @@ target = targets.load(4)</div>
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<style>
-  #altair-viz-fae43458fa1b4c6f83f758555c91fc14.vega-embed {
-    width: 100%;
-    display: flex;
-  }
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[13], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">contrast</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">fig_carrier_load_factors</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">{</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">simulation</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg">:</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">summary</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">target</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg">:</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">target</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span> <span class="ansi-yellow-bg">}</span><span class="ansi-yellow-bg">)</span>
 
-  #altair-viz-fae43458fa1b4c6f83f758555c91fc14.vega-embed details,
-  #altair-viz-fae43458fa1b4c6f83f758555c91fc14.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-fae43458fa1b4c6f83f758555c91fc14"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-fae43458fa1b4c6f83f758555c91fc14") {
-      outputDiv = document.getElementById("altair-viz-fae43458fa1b4c6f83f758555c91fc14");
-    }
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.14.1?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
+File <span class="ansi-green-fg">/opt/conda/lib/python3.10/site-packages/passengersim/contrast.py:92</span>, in <span class="ansi-cyan-fg">fig_carrier_load_factors</span><span class="ansi-blue-fg">(summaries, raw_df)</span>
+<span class="ansi-green-intense-fg ansi-bold">     91</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> <span style="color: rgb(0,0,255)">fig_carrier_load_factors</span>(summaries, raw_df<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">False</span>):
+<span class="ansi-green-fg">---&gt; 92</span>     df <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">_assemble</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">summaries</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">carrier_load_factors</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     93</span>     source_order <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">list</span>(summaries<span style="color: rgb(98,98,98)">.</span>keys())
+<span class="ansi-green-intense-fg ansi-bold">     94</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> raw_df:
 
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
+File <span class="ansi-green-fg">/opt/conda/lib/python3.10/site-packages/passengersim/contrast.py:9</span>, in <span class="ansi-cyan-fg">_assemble</span><span class="ansi-blue-fg">(summaries, base, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">      7</span> <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> k, v <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> summaries<span style="color: rgb(98,98,98)">.</span>items():
+<span class="ansi-green-intense-fg ansi-bold">      8</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> (fun <span style="color: rgb(98,98,98)">:=</span> <span style="color: rgb(0,135,0)">getattr</span>(v, <span style="color: rgb(175,0,0)">f</span><span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">fig_</span><span class="ansi-bold" style="color: rgb(175,95,135)">{</span>base<span class="ansi-bold" style="color: rgb(175,95,135)">}</span><span style="color: rgb(175,0,0)">"</span>, <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>)) <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
+<span class="ansi-green-fg">----&gt; 9</span>         summaries_[k] <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">fun</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">raw_df</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">True</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     10</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">elif</span> (raw <span style="color: rgb(98,98,98)">:=</span> <span style="color: rgb(0,135,0)">getattr</span>(v, <span style="color: rgb(175,0,0)">f</span><span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">raw_</span><span class="ansi-bold" style="color: rgb(175,95,135)">{</span>base<span class="ansi-bold" style="color: rgb(175,95,135)">}</span><span style="color: rgb(175,0,0)">"</span>, <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>)) <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
+<span class="ansi-green-intense-fg ansi-bold">     11</span>         summaries_[k] <span style="color: rgb(98,98,98)">=</span> raw
 
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
+File <span class="ansi-green-fg">/opt/conda/lib/python3.10/site-packages/passengersim/summary.py:515</span>, in <span class="ansi-cyan-fg">SummaryTables.fig_carrier_load_factors</span><span class="ansi-blue-fg">(self, raw_df, load_measure)</span>
+<span class="ansi-green-intense-fg ansi-bold">    512</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> <span style="color: rgb(0,0,255)">fig_carrier_load_factors</span>(
+<span class="ansi-green-intense-fg ansi-bold">    513</span>     <span style="color: rgb(0,135,0)">self</span>, raw_df<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">False</span>, load_measure: Literal[<span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">sys_lf</span><span style="color: rgb(175,0,0)">"</span>, <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">avg_lf</span><span style="color: rgb(175,0,0)">"</span>] <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">sys_lf</span><span style="color: rgb(175,0,0)">"</span>
+<span class="ansi-green-intense-fg ansi-bold">    514</span> ):
+<span class="ansi-green-fg">--&gt; 515</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">_fig_carrier_load_factors</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-intense-fg ansi-bold">    516</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">raw_df</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">    517</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">load_measure</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">    518</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">System Load Factor</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">if</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">load_measure</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">==</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">sys_lf</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(0,135,0)">else</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">Leg Load Factor</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">    519</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">)</span>
 
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
+File <span class="ansi-green-fg">/opt/conda/lib/python3.10/site-packages/passengersim/summary.py:456</span>, in <span class="ansi-cyan-fg">SummaryTables._fig_carrier_load_factors</span><span class="ansi-blue-fg">(self, raw_df, load_measure, measure_name, measure_format, orient)</span>
+<span class="ansi-green-intense-fg ansi-bold">    448</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> <span style="color: rgb(0,0,255)">_fig_carrier_load_factors</span>(
+<span class="ansi-green-intense-fg ansi-bold">    449</span>     <span style="color: rgb(0,135,0)">self</span>,
+<span class="ansi-green-intense-fg ansi-bold">    450</span>     raw_df: <span style="color: rgb(0,135,0)">bool</span>,
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-intense-fg ansi-bold">    454</span>     orient: Literal[<span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">h</span><span style="color: rgb(175,0,0)">"</span>, <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">v</span><span style="color: rgb(175,0,0)">"</span>] <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">h</span><span style="color: rgb(175,0,0)">"</span>,
+<span class="ansi-green-intense-fg ansi-bold">    455</span> ):
+<span class="ansi-green-fg">--&gt; 456</span>     df <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">load_factors</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">carrier</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">load_measure</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">]</span>
+<span class="ansi-green-intense-fg ansi-bold">    457</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> raw_df:
+<span class="ansi-green-intense-fg ansi-bold">    458</span>         <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> df
 
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.14.1"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "title": {"fontSize": 18}}, "data": {"name": "data-4a19fd4b2c0f822392af3ca3cfdcd6b5"}, "facet": {"column": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "source", "title": "Source", "type": "nominal"}, "tooltip": [{"field": "source", "title": null, "type": "nominal"}, {"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_lf", "format": ".2f", "title": "Load Factor", "type": "quantitative"}], "x": {"field": "source", "sort": ["simulation", "target"], "title": null, "type": "nominal"}, "y": {"field": "avg_lf", "stack": "zero", "title": "Load Factor", "type": "quantitative"}}}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 3}, "encoding": {"text": {"field": "avg_lf", "format": ".2f", "type": "quantitative"}, "x": {"field": "source", "sort": ["simulation", "target"], "title": null, "type": "nominal"}, "y": {"field": "avg_lf", "stack": "zero", "title": "Load Factor", "type": "quantitative"}}}], "height": 300, "width": 125}, "title": "Carrier Load Factors", "$schema": "https://vega.github.io/schema/vega-lite/v5.14.1.json", "datasets": {"data-4a19fd4b2c0f822392af3ca3cfdcd6b5": [{"source": "simulation", "carrier": "AL1", "avg_lf": 46.0}, {"source": "simulation", "carrier": "AL2", "avg_lf": 46.07}, {"source": "target", "carrier": "AL1", "avg_lf": 46.9}, {"source": "target", "carrier": "AL2", "avg_lf": 46.7}]}}, {"mode": "vega-lite"});
-</script>
+File <span class="ansi-green-fg">/opt/conda/lib/python3.10/site-packages/pandas/core/frame.py:3767</span>, in <span class="ansi-cyan-fg">DataFrame.__getitem__</span><span class="ansi-blue-fg">(self, key)</span>
+<span class="ansi-green-intense-fg ansi-bold">   3765</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> is_iterator(key):
+<span class="ansi-green-intense-fg ansi-bold">   3766</span>         key <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">list</span>(key)
+<span class="ansi-green-fg">-&gt; 3767</span>     indexer <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">columns</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">_get_indexer_strict</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">key</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">columns</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">"</span><span class="ansi-yellow-bg">)</span>[<span style="color: rgb(98,98,98)">1</span>]
+<span class="ansi-green-intense-fg ansi-bold">   3769</span> <span style="color: rgb(95,135,135)"># take() does not accept boolean indexers</span>
+<span class="ansi-green-intense-fg ansi-bold">   3770</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">getattr</span>(indexer, <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">dtype</span><span style="color: rgb(175,0,0)">"</span>, <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>) <span style="color: rgb(98,98,98)">==</span> <span style="color: rgb(0,135,0)">bool</span>:
+
+File <span class="ansi-green-fg">/opt/conda/lib/python3.10/site-packages/pandas/core/indexes/base.py:5877</span>, in <span class="ansi-cyan-fg">Index._get_indexer_strict</span><span class="ansi-blue-fg">(self, key, axis_name)</span>
+<span class="ansi-green-intense-fg ansi-bold">   5874</span> <span class="ansi-bold" style="color: rgb(0,135,0)">else</span>:
+<span class="ansi-green-intense-fg ansi-bold">   5875</span>     keyarr, indexer, new_indexer <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>_reindex_non_unique(keyarr)
+<span class="ansi-green-fg">-&gt; 5877</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">_raise_if_missing</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">keyarr</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">indexer</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">axis_name</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   5879</span> keyarr <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>take(indexer)
+<span class="ansi-green-intense-fg ansi-bold">   5880</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">isinstance</span>(key, Index):
+<span class="ansi-green-intense-fg ansi-bold">   5881</span>     <span style="color: rgb(95,135,135)"># GH 42790 - Preserve name from an Index</span>
+
+File <span class="ansi-green-fg">/opt/conda/lib/python3.10/site-packages/pandas/core/indexes/base.py:5941</span>, in <span class="ansi-cyan-fg">Index._raise_if_missing</span><span class="ansi-blue-fg">(self, key, indexer, axis_name)</span>
+<span class="ansi-green-intense-fg ansi-bold">   5938</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> <span class="ansi-bold" style="color: rgb(215,95,95)">KeyError</span>(<span style="color: rgb(175,0,0)">f</span><span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">None of [</span><span class="ansi-bold" style="color: rgb(175,95,135)">{</span>key<span class="ansi-bold" style="color: rgb(175,95,135)">}</span><span style="color: rgb(175,0,0)">] are in the [</span><span class="ansi-bold" style="color: rgb(175,95,135)">{</span>axis_name<span class="ansi-bold" style="color: rgb(175,95,135)">}</span><span style="color: rgb(175,0,0)">]</span><span style="color: rgb(175,0,0)">"</span>)
+<span class="ansi-green-intense-fg ansi-bold">   5940</span> not_found <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">list</span>(ensure_index(key)[missing_mask<span style="color: rgb(98,98,98)">.</span>nonzero()[<span style="color: rgb(98,98,98)">0</span>]]<span style="color: rgb(98,98,98)">.</span>unique())
+<span class="ansi-green-fg">-&gt; 5941</span> <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> <span class="ansi-bold" style="color: rgb(215,95,95)">KeyError</span>(<span style="color: rgb(175,0,0)">f</span><span style="color: rgb(175,0,0)">"</span><span class="ansi-bold" style="color: rgb(175,95,135)">{</span>not_found<span class="ansi-bold" style="color: rgb(175,95,135)">}</span><span style="color: rgb(175,0,0)"> not in index</span><span style="color: rgb(175,0,0)">"</span>)
+
+<span class="ansi-red-fg">KeyError</span>: "['sys_lf'] not in index"</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b18c6e52-75c1-41c3-91c6-fd6043e6e93c">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=b18c6e52-75c1-41c3-91c6-fd6043e6e93c">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy for="cell-14">
@@ -2985,82 +2952,6 @@ target = targets.load(4)</div>
     "simulation": summary,
     "target": target,
 })</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<style>
-  #altair-viz-bd1725ac6834482eb7b654b54ce57ab6.vega-embed {
-    width: 100%;
-    display: flex;
-  }
-
-  #altair-viz-bd1725ac6834482eb7b654b54ce57ab6.vega-embed details,
-  #altair-viz-bd1725ac6834482eb7b654b54ce57ab6.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-bd1725ac6834482eb7b654b54ce57ab6"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-bd1725ac6834482eb7b654b54ce57ab6") {
-      outputDiv = document.getElementById("altair-viz-bd1725ac6834482eb7b654b54ce57ab6");
-    }
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.14.1?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
-
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
-
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
-
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
-
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.14.1"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "title": {"fontSize": 18}}, "data": {"name": "data-6659c93679025419d3221f9c53203e01"}, "facet": {"column": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "booking_class", "type": "nominal"}, "tooltip": [{"field": "source", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "source", "sort": ["simulation", "target"], "title": "Source", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 3}, "encoding": {"opacity": {"condition": {"test": "datum.avg_sold < 9.120", "value": 0}, "value": 1}, "order": {"field": "booking_class", "sort": "descending", "type": "nominal"}, "text": {"field": "avg_sold", "format": ".2f", "type": "quantitative"}, "x": {"field": "source", "sort": ["simulation", "target"], "title": "Source", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}], "height": 300, "width": 200}, "title": "Carrier Fare Class Mix", "$schema": "https://vega.github.io/schema/vega-lite/v5.14.1.json", "datasets": {"data-6659c93679025419d3221f9c53203e01": [{"source": "simulation", "carrier": "AL1", "booking_class": "Y0", "avg_sold": 28.0965}, {"source": "simulation", "carrier": "AL1", "booking_class": "Y1", "avg_sold": 27.02525}, {"source": "simulation", "carrier": "AL1", "booking_class": "Y2", "avg_sold": 14.331}, {"source": "simulation", "carrier": "AL1", "booking_class": "Y3", "avg_sold": 5.56875}, {"source": "simulation", "carrier": "AL1", "booking_class": "Y4", "avg_sold": 54.5335}, {"source": "simulation", "carrier": "AL1", "booking_class": "Y5", "avg_sold": 20.1955}, {"source": "simulation", "carrier": "AL2", "booking_class": "Y0", "avg_sold": 27.98975}, {"source": "simulation", "carrier": "AL2", "booking_class": "Y1", "avg_sold": 27.10575}, {"source": "simulation", "carrier": "AL2", "booking_class": "Y2", "avg_sold": 14.29675}, {"source": "simulation", "carrier": "AL2", "booking_class": "Y3", "avg_sold": 5.62025}, {"source": "simulation", "carrier": "AL2", "booking_class": "Y4", "avg_sold": 54.68125}, {"source": "simulation", "carrier": "AL2", "booking_class": "Y5", "avg_sold": 20.285}, {"source": "target", "carrier": "AL1", "booking_class": "Y5", "avg_sold": 21.0}, {"source": "target", "carrier": "AL1", "booking_class": "Y4", "avg_sold": 55.0}, {"source": "target", "carrier": "AL1", "booking_class": "Y3", "avg_sold": 6.0}, {"source": "target", "carrier": "AL1", "booking_class": "Y2", "avg_sold": 15.0}, {"source": "target", "carrier": "AL1", "booking_class": "Y1", "avg_sold": 27.0}, {"source": "target", "carrier": "AL1", "booking_class": "Y0", "avg_sold": 28.0}, {"source": "target", "carrier": "AL2", "booking_class": "Y5", "avg_sold": 20.0}, {"source": "target", "carrier": "AL2", "booking_class": "Y4", "avg_sold": 55.0}, {"source": "target", "carrier": "AL2", "booking_class": "Y3", "avg_sold": 6.0}, {"source": "target", "carrier": "AL2", "booking_class": "Y2", "avg_sold": 15.0}, {"source": "target", "carrier": "AL2", "booking_class": "Y1", "avg_sold": 27.0}, {"source": "target", "carrier": "AL2", "booking_class": "Y0", "avg_sold": 28.0}]}}, {"mode": "vega-lite"});
-</script>
 </div>
 </div>
 </div>
