@@ -8,7 +8,9 @@ simulation_controls:
 
 rm_systems:
   rm_test1:
-    steps:
+    availability_control: leg
+    processes:
+      DCP:
       - step_type: untruncation
         name: untruncation
         algorithm: em
@@ -26,7 +28,5 @@ rm_systems:
 airlines:
   - name: AL1
     rm_system: rm_test1
-    control: leg
   - name: AL2
     rm_system: rm_test1
-    control: leg

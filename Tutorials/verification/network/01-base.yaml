@@ -29,12 +29,17 @@ simulation_controls:
   disable_ap: true
   demand_multiplier: 1.0
   manual_paths: false
+  timeframe_demand_allocation: pods
 
 rm_systems:
   fcfs:
-    steps: []
+    availability_control: none
+    processes:
+      DCP: []
   rm_no_detruncation:
-    steps:
+    availability_control: vn
+    processes:
+      DCP:
       - step_type: untruncation
         name: untruncation
         algorithm: none
@@ -49,7 +54,9 @@ rm_systems:
         algorithm: emsrb
         kind: leg
   rm_test1:
-    steps:
+    availability_control: leg
+    processes:
+      DCP:
       - step_type: untruncation
         name: untruncation
         algorithm: none
@@ -64,7 +71,9 @@ rm_systems:
         algorithm: fcfs
         kind: leg
   rm_test2:
-    steps:
+    availability_control: bp
+    processes:
+      DCP:
       - step_type: untruncation
         name: untruncation
         algorithm: em
@@ -96,10 +105,8 @@ choice_models:
 airlines:
   - name: AL1
     rm_system: rm_test1
-    control: leg
   - name: AL2
     rm_system: rm_test1
-    control: leg
 
 classes:
   - Y0
@@ -126,7 +133,7 @@ dcps:
   - 3
   - 1
 booking_curves:
-  - name: c1
+  - name: c1  # business
     curve:
       63: 0.06
       56: 0.11
@@ -144,7 +151,7 @@ booking_curves:
       5: 0.78
       3: 0.95
       1: 1.0
-  - name: c2
+  - name: c2  # leisure
     curve:
       63: 0.17
       56: 0.25
@@ -236,36 +243,42 @@ demands:
     base_demand: 70.0
     reference_fare: 250.0
     choice_model: business
+    curve: c1
   - orig: BOS
     dest: ORD
     segment: leisure
     base_demand: 90.0
     reference_fare: 100.0
     choice_model: leisure
+    curve: c2
   - orig: ORD
     dest: LAX
     segment: business
     base_demand: 120.0
     reference_fare: 375.0
     choice_model: business
+    curve: c1
   - orig: ORD
     dest: LAX
     segment: leisure
     base_demand: 150.0
     reference_fare: 150.0
     choice_model: leisure
+    curve: c2
   - orig: BOS
     dest: LAX
     segment: business
     base_demand: 100.0
     reference_fare: 500.0
     choice_model: business
+    curve: c1
   - orig: BOS
     dest: LAX
     segment: leisure
     base_demand: 140.0
     reference_fare: 200.0
     choice_model: leisure
+    curve: c2
 
 fares:
   - carrier: AL1

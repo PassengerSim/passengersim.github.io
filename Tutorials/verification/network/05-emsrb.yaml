@@ -9,7 +9,5 @@ simulation_controls:
 airlines:
   - name: AL1
     rm_system: rm_no_detruncation
-    control: leg
   - name: AL2
     rm_system: rm_no_detruncation
-    control: leg
