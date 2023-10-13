@@ -33,9 +33,20 @@ simulation_controls:
 
 rm_systems:
   fcfs:
-    availability_control: none
+    availability_control: leg
     processes:
-      DCP: []
+      DCP:
+      - step_type: untruncation
+        name: untruncation
+        algorithm: none
+        kind: leg
+      - step_type: forecast
+        name: forecast
+        algorithm: additive_pickup
+        alpha: 0.15
+        kind: leg
+      - step_type: fcfs
+        name: optimization
   rm_no_detruncation:
     availability_control: vn
     processes:
@@ -66,10 +77,8 @@ rm_systems:
         algorithm: additive_pickup
         alpha: 0.15
         kind: leg
-      - step_type: emsr
+      - step_type: fcfs
         name: optimization
-        algorithm: fcfs
-        kind: leg
   rm_test2:
     availability_control: bp
     processes:
