@@ -22,7 +22,6 @@ simulation_controls:
   mkt_k_factor: 0.15
   pax_type_k_factor: 0.2
   tf_k_factor: 0.1
-  z_factor: 2.0
   prorate_revenue: true
   dwm_lite: false
   max_connect_time: 120
