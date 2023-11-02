@@ -1868,7 +1868,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=34deaf3d-4fb6-4e8c-98ec-51700abc94f7">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=130300ef-0e2f-4909-b061-4f59a1102735">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -1886,16 +1886,16 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">pax</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">cfg</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">reports</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"local_and_flow_yields"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-6">sim = pax.Simulation(cfg)</div>
+<div class="clipboard-copy-txt" id="cell-6">cfg.outputs.reports.add("local_and_flow_yields")</div>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e7644d17-393b-461b-b7ec-a7af9c79efdc">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=34deaf3d-4fb6-4e8c-98ec-51700abc94f7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -1913,9 +1913,36 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 </clipboard-copy>
 </div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">pax</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-7">sim = pax.Simulation(cfg)</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e7644d17-393b-461b-b7ec-a7af9c79efdc">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy for="cell-8">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">summary</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-7">summary = sim.run()</div>
+<div class="clipboard-copy-txt" id="cell-8">summary = sim.run()</div>
 </div>
 </div>
 </div>
@@ -1926,12 +1953,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jupyter-widgets jp-OutputArea-output" id="0cdf382e-a901-4ed6-9f74-8e20a6510887" tabindex="0">
+<div class="jupyter-widgets jp-OutputArea-output" id="eb2a71e2-e32c-4d12-a00a-4755ed506ed7" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('0cdf382e-a901-4ed6-9f74-8e20a6510887');
+var element = document.getElementById('eb2a71e2-e32c-4d12-a00a-4755ed506ed7');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "956cb47fbf484955a60de66694941180", "version_major": 2, "version_minor": 0}
+{"model_id": "bd4d53c534344a81889b4023d2035fb7", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 </div>
@@ -1951,7 +1978,7 @@ var element = document.getElementById('0cdf382e-a901-4ed6-9f74-8e20a6510887');
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Task Completed after <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">13.86</span> seconds
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Task Completed after <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">13.01</span> seconds
 </pre>
 </div>
 </div>
@@ -1964,10 +1991,10 @@ var element = document.getElementById('0cdf382e-a901-4ed6-9f74-8e20a6510887');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-8">
+<clipboard-copy for="cell-9">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -1979,7 +2006,7 @@ var element = document.getElementById('0cdf382e-a901-4ed6-9f74-8e20a6510887');
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">fig_carrier_revenues</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-8">summary.fig_carrier_revenues()</div>
+<div class="clipboard-copy-txt" id="cell-9">summary.fig_carrier_revenues()</div>
 </div>
 </div>
 </div>
@@ -1989,26 +2016,26 @@ var element = document.getElementById('0cdf382e-a901-4ed6-9f74-8e20a6510887');
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-e48e8bbcd25640f88dd086b1324e8a96.vega-embed {
+  #altair-viz-967210c633704e4b8ef5d0e38af3b22e.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-e48e8bbcd25640f88dd086b1324e8a96.vega-embed details,
-  #altair-viz-e48e8bbcd25640f88dd086b1324e8a96.vega-embed details summary {
+  #altair-viz-967210c633704e4b8ef5d0e38af3b22e.vega-embed details,
+  #altair-viz-967210c633704e4b8ef5d0e38af3b22e.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-e48e8bbcd25640f88dd086b1324e8a96"></div>
+<div id="altair-viz-967210c633704e4b8ef5d0e38af3b22e"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-e48e8bbcd25640f88dd086b1324e8a96") {
-      outputDiv = document.getElementById("altair-viz-e48e8bbcd25640f88dd086b1324e8a96");
+    if (outputDiv.id !== "altair-viz-967210c633704e4b8ef5d0e38af3b22e") {
+      outputDiv = document.getElementById("altair-viz-967210c633704e4b8ef5d0e38af3b22e");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2067,10 +2094,10 @@ var element = document.getElementById('0cdf382e-a901-4ed6-9f74-8e20a6510887');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-9">
+<clipboard-copy for="cell-10">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -2082,7 +2109,7 @@ var element = document.getElementById('0cdf382e-a901-4ed6-9f74-8e20a6510887');
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">fig_carrier_load_factors</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-9">summary.fig_carrier_load_factors()</div>
+<div class="clipboard-copy-txt" id="cell-10">summary.fig_carrier_load_factors()</div>
 </div>
 </div>
 </div>
@@ -2092,26 +2119,26 @@ var element = document.getElementById('0cdf382e-a901-4ed6-9f74-8e20a6510887');
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-9a2c8ad1fc824f4ca6dcf6a35bdc81ad.vega-embed {
+  #altair-viz-03ad1554a73842f2afb1849703d7c5b4.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-9a2c8ad1fc824f4ca6dcf6a35bdc81ad.vega-embed details,
-  #altair-viz-9a2c8ad1fc824f4ca6dcf6a35bdc81ad.vega-embed details summary {
+  #altair-viz-03ad1554a73842f2afb1849703d7c5b4.vega-embed details,
+  #altair-viz-03ad1554a73842f2afb1849703d7c5b4.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-9a2c8ad1fc824f4ca6dcf6a35bdc81ad"></div>
+<div id="altair-viz-03ad1554a73842f2afb1849703d7c5b4"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-9a2c8ad1fc824f4ca6dcf6a35bdc81ad") {
-      outputDiv = document.getElementById("altair-viz-9a2c8ad1fc824f4ca6dcf6a35bdc81ad");
+    if (outputDiv.id !== "altair-viz-03ad1554a73842f2afb1849703d7c5b4") {
+      outputDiv = document.getElementById("altair-viz-03ad1554a73842f2afb1849703d7c5b4");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2170,10 +2197,10 @@ var element = document.getElementById('0cdf382e-a901-4ed6-9f74-8e20a6510887');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-10">
+<clipboard-copy for="cell-11">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -2185,7 +2212,7 @@ var element = document.getElementById('0cdf382e-a901-4ed6-9f74-8e20a6510887');
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">fig_fare_class_mix</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-10">summary.fig_fare_class_mix()</div>
+<div class="clipboard-copy-txt" id="cell-11">summary.fig_fare_class_mix()</div>
 </div>
 </div>
 </div>
@@ -2195,26 +2222,26 @@ var element = document.getElementById('0cdf382e-a901-4ed6-9f74-8e20a6510887');
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-25bda2f1f76440f48d68c04f0c0dcb75.vega-embed {
+  #altair-viz-463b3e4f7f2f4c7daab85c99644fc160.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-25bda2f1f76440f48d68c04f0c0dcb75.vega-embed details,
-  #altair-viz-25bda2f1f76440f48d68c04f0c0dcb75.vega-embed details summary {
+  #altair-viz-463b3e4f7f2f4c7daab85c99644fc160.vega-embed details,
+  #altair-viz-463b3e4f7f2f4c7daab85c99644fc160.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-25bda2f1f76440f48d68c04f0c0dcb75"></div>
+<div id="altair-viz-463b3e4f7f2f4c7daab85c99644fc160"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-25bda2f1f76440f48d68c04f0c0dcb75") {
-      outputDiv = document.getElementById("altair-viz-25bda2f1f76440f48d68c04f0c0dcb75");
+    if (outputDiv.id !== "altair-viz-463b3e4f7f2f4c7daab85c99644fc160") {
+      outputDiv = document.getElementById("altair-viz-463b3e4f7f2f4c7daab85c99644fc160");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2273,10 +2300,10 @@ var element = document.getElementById('0cdf382e-a901-4ed6-9f74-8e20a6510887');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-11">
+<clipboard-copy for="cell-12">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -2288,7 +2315,7 @@ var element = document.getElementById('0cdf382e-a901-4ed6-9f74-8e20a6510887');
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">fig_bookings_by_timeframe</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-11">summary.fig_bookings_by_timeframe()</div>
+<div class="clipboard-copy-txt" id="cell-12">summary.fig_bookings_by_timeframe()</div>
 </div>
 </div>
 </div>
@@ -2298,26 +2325,26 @@ var element = document.getElementById('0cdf382e-a901-4ed6-9f74-8e20a6510887');
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-cb46b2e21f184f54a92f28e7a16d3ad0.vega-embed {
+  #altair-viz-3ae016b586a34a259e4bac8df54a0ad5.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-cb46b2e21f184f54a92f28e7a16d3ad0.vega-embed details,
-  #altair-viz-cb46b2e21f184f54a92f28e7a16d3ad0.vega-embed details summary {
+  #altair-viz-3ae016b586a34a259e4bac8df54a0ad5.vega-embed details,
+  #altair-viz-3ae016b586a34a259e4bac8df54a0ad5.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-cb46b2e21f184f54a92f28e7a16d3ad0"></div>
+<div id="altair-viz-3ae016b586a34a259e4bac8df54a0ad5"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-cb46b2e21f184f54a92f28e7a16d3ad0") {
-      outputDiv = document.getElementById("altair-viz-cb46b2e21f184f54a92f28e7a16d3ad0");
+    if (outputDiv.id !== "altair-viz-3ae016b586a34a259e4bac8df54a0ad5") {
+      outputDiv = document.getElementById("altair-viz-3ae016b586a34a259e4bac8df54a0ad5");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2370,16 +2397,183 @@ var element = document.getElementById('0cdf382e-a901-4ed6-9f74-8e20a6510887');
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3821c9f4-d319-47ce-aa3c-6d64937fd4ac">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy for="cell-13">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">local_and_flow_yields</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-13">summary.local_and_flow_yields</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>flt_no</th>
+<th>carrier</th>
+<th>orig</th>
+<th>dest</th>
+<th>capacity</th>
+<th>distance</th>
+<th>local_yield</th>
+<th>local_fraction</th>
+<th>flow_yield</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>101</td>
+<td>AL1</td>
+<td>BOS</td>
+<td>ORD</td>
+<td>100</td>
+<td>863.753282</td>
+<td>0.228001</td>
+<td>0.420964</td>
+<td>0.160534</td>
+</tr>
+<tr>
+<th>1</th>
+<td>102</td>
+<td>AL1</td>
+<td>BOS</td>
+<td>ORD</td>
+<td>100</td>
+<td>863.753282</td>
+<td>0.228167</td>
+<td>0.418236</td>
+<td>0.161452</td>
+</tr>
+<tr>
+<th>2</th>
+<td>111</td>
+<td>AL1</td>
+<td>ORD</td>
+<td>LAX</td>
+<td>120</td>
+<td>1739.799337</td>
+<td>0.176072</td>
+<td>0.547242</td>
+<td>0.160534</td>
+</tr>
+<tr>
+<th>3</th>
+<td>112</td>
+<td>AL1</td>
+<td>ORD</td>
+<td>LAX</td>
+<td>120</td>
+<td>1739.799337</td>
+<td>0.175771</td>
+<td>0.546325</td>
+<td>0.161452</td>
+</tr>
+<tr>
+<th>4</th>
+<td>201</td>
+<td>AL2</td>
+<td>BOS</td>
+<td>ORD</td>
+<td>100</td>
+<td>863.753282</td>
+<td>0.228358</td>
+<td>0.419200</td>
+<td>0.161371</td>
+</tr>
+<tr>
+<th>5</th>
+<td>202</td>
+<td>AL2</td>
+<td>BOS</td>
+<td>ORD</td>
+<td>100</td>
+<td>863.753282</td>
+<td>0.227649</td>
+<td>0.418352</td>
+<td>0.160918</td>
+</tr>
+<tr>
+<th>6</th>
+<td>211</td>
+<td>AL2</td>
+<td>ORD</td>
+<td>LAX</td>
+<td>120</td>
+<td>1739.799337</td>
+<td>0.176223</td>
+<td>0.545831</td>
+<td>0.161371</td>
+</tr>
+<tr>
+<th>7</th>
+<td>212</td>
+<td>AL2</td>
+<td>ORD</td>
+<td>LAX</td>
+<td>120</td>
+<td>1739.799337</td>
+<td>0.176275</td>
+<td>0.546105</td>
+<td>0.160918</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=173767f3-f15f-4733-b12c-b1587ac71203">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-12">
+<clipboard-copy for="cell-14">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -2391,7 +2585,7 @@ var element = document.getElementById('0cdf382e-a901-4ed6-9f74-8e20a6510887');
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">to_xlsx</span><span class="p">(</span><span class="s2">"outputs/3mkt-08.xlsx"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-12">summary.to_xlsx("outputs/3mkt-08.xlsx")</div>
+<div class="clipboard-copy-txt" id="cell-14">summary.to_xlsx("outputs/3mkt-08.xlsx")</div>
 </div>
 </div>
 </div>
@@ -2414,62 +2608,6 @@ var element = document.getElementById('0cdf382e-a901-4ed6-9f74-8e20a6510887');
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy for="cell-13">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">targets</span>
-<span class="n">target</span> <span class="o">=</span> <span class="n">targets</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">cfg</span><span class="p">)</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-13">import targets
-target = targets.load(8, cfg)</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=658336d8-3ceb-4605-aafb-4dc5ca9a5bb3">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy for="cell-14">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">passengersim</span> <span class="kn">import</span> <span class="n">contrast</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-14">from passengersim import contrast</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=1988e31c-3cee-4185-900f-45c77c7010d1">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
@@ -2483,22 +2621,18 @@ target = targets.load(8, cfg)</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">comps</span> <span class="o">=</span> <span class="n">contrast</span><span class="o">.</span><span class="n">Contrast</span><span class="p">({</span>
-    <span class="s2">"simulation"</span><span class="p">:</span> <span class="n">summary</span><span class="p">,</span>
-    <span class="s2">"target"</span><span class="p">:</span> <span class="n">target</span><span class="p">,</span>
-<span class="p">})</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">targets</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">targets</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">cfg</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-15">comps = contrast.Contrast({
-    "simulation": summary,
-    "target": target,
-})</div>
+<div class="clipboard-copy-txt" id="cell-15">import targets
+target = targets.load(8, cfg)</div>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4c7860da-5946-4c03-8f36-b9858f162b79">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=658336d8-3ceb-4605-aafb-4dc5ca9a5bb3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2516,9 +2650,69 @@ target = targets.load(8, cfg)</div>
 </div>
 </clipboard-copy>
 </div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">passengersim</span> <span class="kn">import</span> <span class="n">contrast</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-16">from passengersim import contrast</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=1988e31c-3cee-4185-900f-45c77c7010d1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy for="cell-17">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">comps</span> <span class="o">=</span> <span class="n">contrast</span><span class="o">.</span><span class="n">Contrast</span><span class="p">({</span>
+    <span class="s2">"simulation"</span><span class="p">:</span> <span class="n">summary</span><span class="p">,</span>
+    <span class="s2">"target"</span><span class="p">:</span> <span class="n">target</span><span class="p">,</span>
+<span class="p">})</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-17">comps = contrast.Contrast({
+    "simulation": summary,
+    "target": target,
+})</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4c7860da-5946-4c03-8f36-b9858f162b79">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy for="cell-18">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">comps</span><span class="o">.</span><span class="n">fig_demand_to_come</span><span class="p">(</span><span class="s2">"mean"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-16">comps.fig_demand_to_come("mean")</div>
+<div class="clipboard-copy-txt" id="cell-18">comps.fig_demand_to_come("mean")</div>
 </div>
 </div>
 </div>
@@ -2528,26 +2722,26 @@ target = targets.load(8, cfg)</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[18]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-90aca722bded48c1b790316e9b2a99c3.vega-embed {
+  #altair-viz-acad4eb50f2b4f1dbc92b151413c1ac9.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-90aca722bded48c1b790316e9b2a99c3.vega-embed details,
-  #altair-viz-90aca722bded48c1b790316e9b2a99c3.vega-embed details summary {
+  #altair-viz-acad4eb50f2b4f1dbc92b151413c1ac9.vega-embed details,
+  #altair-viz-acad4eb50f2b4f1dbc92b151413c1ac9.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-90aca722bded48c1b790316e9b2a99c3"></div>
+<div id="altair-viz-acad4eb50f2b4f1dbc92b151413c1ac9"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-90aca722bded48c1b790316e9b2a99c3") {
-      outputDiv = document.getElementById("altair-viz-90aca722bded48c1b790316e9b2a99c3");
+    if (outputDiv.id !== "altair-viz-acad4eb50f2b4f1dbc92b151413c1ac9") {
+      outputDiv = document.getElementById("altair-viz-acad4eb50f2b4f1dbc92b151413c1ac9");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2606,10 +2800,10 @@ target = targets.load(8, cfg)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-17">
+<clipboard-copy for="cell-19">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -2621,7 +2815,7 @@ target = targets.load(8, cfg)</div>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">comps</span><span class="o">.</span><span class="n">fig_demand_to_come</span><span class="p">(</span><span class="s2">"std"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-17">comps.fig_demand_to_come("std")</div>
+<div class="clipboard-copy-txt" id="cell-19">comps.fig_demand_to_come("std")</div>
 </div>
 </div>
 </div>
@@ -2631,26 +2825,26 @@ target = targets.load(8, cfg)</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[17]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[19]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-28f351d88b96478fb9da2c1afe2e5596.vega-embed {
+  #altair-viz-16c0e3256aa848fd9b054d00d0e458d6.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-28f351d88b96478fb9da2c1afe2e5596.vega-embed details,
-  #altair-viz-28f351d88b96478fb9da2c1afe2e5596.vega-embed details summary {
+  #altair-viz-16c0e3256aa848fd9b054d00d0e458d6.vega-embed details,
+  #altair-viz-16c0e3256aa848fd9b054d00d0e458d6.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-28f351d88b96478fb9da2c1afe2e5596"></div>
+<div id="altair-viz-16c0e3256aa848fd9b054d00d0e458d6"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-28f351d88b96478fb9da2c1afe2e5596") {
-      outputDiv = document.getElementById("altair-viz-28f351d88b96478fb9da2c1afe2e5596");
+    if (outputDiv.id !== "altair-viz-16c0e3256aa848fd9b054d00d0e458d6") {
+      outputDiv = document.getElementById("altair-viz-16c0e3256aa848fd9b054d00d0e458d6");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2709,10 +2903,10 @@ target = targets.load(8, cfg)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-18">
+<clipboard-copy for="cell-20">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -2728,7 +2922,7 @@ target = targets.load(8, cfg)</div>
     <span class="p">)</span>
 <span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-18">comps.apply(
+<div class="clipboard-copy-txt" id="cell-20">comps.apply(
     lambda s: (
         s.aggregate_demand_history(by_segment=True).unstack("segment").cov()
     )
@@ -2742,7 +2936,7 @@ target = targets.load(8, cfg)</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[18]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[20]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -2810,10 +3004,10 @@ target = targets.load(8, cfg)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-19">
+<clipboard-copy for="cell-21">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -2825,7 +3019,7 @@ target = targets.load(8, cfg)</div>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">contrast</span><span class="o">.</span><span class="n">fig_bookings_by_timeframe</span><span class="p">(</span><span class="n">comps</span><span class="p">,</span> <span class="n">by_carrier</span><span class="o">=</span><span class="s2">"AL1"</span><span class="p">,</span>  <span class="n">by_class</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-19">contrast.fig_bookings_by_timeframe(comps, by_carrier="AL1",  by_class=True)</div>
+<div class="clipboard-copy-txt" id="cell-21">contrast.fig_bookings_by_timeframe(comps, by_carrier="AL1",  by_class=True)</div>
 </div>
 </div>
 </div>
@@ -2835,26 +3029,26 @@ target = targets.load(8, cfg)</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[19]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[21]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-0a8d1e015e1c4cb18d784c630f1f1448.vega-embed {
+  #altair-viz-6b766f85cbb74e8390ec26f2b4d1234d.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-0a8d1e015e1c4cb18d784c630f1f1448.vega-embed details,
-  #altair-viz-0a8d1e015e1c4cb18d784c630f1f1448.vega-embed details summary {
+  #altair-viz-6b766f85cbb74e8390ec26f2b4d1234d.vega-embed details,
+  #altair-viz-6b766f85cbb74e8390ec26f2b4d1234d.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-0a8d1e015e1c4cb18d784c630f1f1448"></div>
+<div id="altair-viz-6b766f85cbb74e8390ec26f2b4d1234d"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-0a8d1e015e1c4cb18d784c630f1f1448") {
-      outputDiv = document.getElementById("altair-viz-0a8d1e015e1c4cb18d784c630f1f1448");
+    if (outputDiv.id !== "altair-viz-6b766f85cbb74e8390ec26f2b4d1234d") {
+      outputDiv = document.getElementById("altair-viz-6b766f85cbb74e8390ec26f2b4d1234d");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2913,10 +3107,10 @@ target = targets.load(8, cfg)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-20">
+<clipboard-copy for="cell-22">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -2928,7 +3122,7 @@ target = targets.load(8, cfg)</div>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">comps</span><span class="o">.</span><span class="n">fig_carrier_revenues</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-20">comps.fig_carrier_revenues()</div>
+<div class="clipboard-copy-txt" id="cell-22">comps.fig_carrier_revenues()</div>
 </div>
 </div>
 </div>
@@ -2938,26 +3132,26 @@ target = targets.load(8, cfg)</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[20]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[22]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-10f1ef6fe71e4bbea74cbffbb394f12b.vega-embed {
+  #altair-viz-4500a003c90841f185182c29f6332d50.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-10f1ef6fe71e4bbea74cbffbb394f12b.vega-embed details,
-  #altair-viz-10f1ef6fe71e4bbea74cbffbb394f12b.vega-embed details summary {
+  #altair-viz-4500a003c90841f185182c29f6332d50.vega-embed details,
+  #altair-viz-4500a003c90841f185182c29f6332d50.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-10f1ef6fe71e4bbea74cbffbb394f12b"></div>
+<div id="altair-viz-4500a003c90841f185182c29f6332d50"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-10f1ef6fe71e4bbea74cbffbb394f12b") {
-      outputDiv = document.getElementById("altair-viz-10f1ef6fe71e4bbea74cbffbb394f12b");
+    if (outputDiv.id !== "altair-viz-4500a003c90841f185182c29f6332d50") {
+      outputDiv = document.getElementById("altair-viz-4500a003c90841f185182c29f6332d50");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -3016,10 +3210,10 @@ target = targets.load(8, cfg)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-21">
+<clipboard-copy for="cell-23">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3031,7 +3225,7 @@ target = targets.load(8, cfg)</div>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">comps</span><span class="o">.</span><span class="n">fig_carrier_load_factors</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-21">comps.fig_carrier_load_factors()</div>
+<div class="clipboard-copy-txt" id="cell-23">comps.fig_carrier_load_factors()</div>
 </div>
 </div>
 </div>
@@ -3041,26 +3235,26 @@ target = targets.load(8, cfg)</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[21]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[23]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-cad74353db93493dbd11a5d670949294.vega-embed {
+  #altair-viz-a7b8eecd717840159e0fea22bfc4cfdb.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-cad74353db93493dbd11a5d670949294.vega-embed details,
-  #altair-viz-cad74353db93493dbd11a5d670949294.vega-embed details summary {
+  #altair-viz-a7b8eecd717840159e0fea22bfc4cfdb.vega-embed details,
+  #altair-viz-a7b8eecd717840159e0fea22bfc4cfdb.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-cad74353db93493dbd11a5d670949294"></div>
+<div id="altair-viz-a7b8eecd717840159e0fea22bfc4cfdb"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-cad74353db93493dbd11a5d670949294") {
-      outputDiv = document.getElementById("altair-viz-cad74353db93493dbd11a5d670949294");
+    if (outputDiv.id !== "altair-viz-a7b8eecd717840159e0fea22bfc4cfdb") {
+      outputDiv = document.getElementById("altair-viz-a7b8eecd717840159e0fea22bfc4cfdb");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -3119,10 +3313,10 @@ target = targets.load(8, cfg)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-22">
+<clipboard-copy for="cell-24">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3134,7 +3328,7 @@ target = targets.load(8, cfg)</div>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">comps</span><span class="o">.</span><span class="n">fig_fare_class_mix</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-22">comps.fig_fare_class_mix()</div>
+<div class="clipboard-copy-txt" id="cell-24">comps.fig_fare_class_mix()</div>
 </div>
 </div>
 </div>
@@ -3144,26 +3338,26 @@ target = targets.load(8, cfg)</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[22]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[24]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-298a3f95e6ca4fa0b97d4544cbdcb042.vega-embed {
+  #altair-viz-ee163252d8f344eaac549eb1b25ff0ec.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-298a3f95e6ca4fa0b97d4544cbdcb042.vega-embed details,
-  #altair-viz-298a3f95e6ca4fa0b97d4544cbdcb042.vega-embed details summary {
+  #altair-viz-ee163252d8f344eaac549eb1b25ff0ec.vega-embed details,
+  #altair-viz-ee163252d8f344eaac549eb1b25ff0ec.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-298a3f95e6ca4fa0b97d4544cbdcb042"></div>
+<div id="altair-viz-ee163252d8f344eaac549eb1b25ff0ec"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-298a3f95e6ca4fa0b97d4544cbdcb042") {
-      outputDiv = document.getElementById("altair-viz-298a3f95e6ca4fa0b97d4544cbdcb042");
+    if (outputDiv.id !== "altair-viz-ee163252d8f344eaac549eb1b25ff0ec") {
+      outputDiv = document.getElementById("altair-viz-ee163252d8f344eaac549eb1b25ff0ec");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -3222,10 +3416,10 @@ target = targets.load(8, cfg)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-23">
+<clipboard-copy for="cell-25">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3237,7 +3431,7 @@ target = targets.load(8, cfg)</div>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">comps</span><span class="o">.</span><span class="n">fig_bookings_by_timeframe</span><span class="p">(</span><span class="n">by_carrier</span><span class="o">=</span><span class="s2">"AL1"</span><span class="p">,</span> <span class="n">by_class</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-23">comps.fig_bookings_by_timeframe(by_carrier="AL1", by_class=True)</div>
+<div class="clipboard-copy-txt" id="cell-25">comps.fig_bookings_by_timeframe(by_carrier="AL1", by_class=True)</div>
 </div>
 </div>
 </div>
@@ -3247,26 +3441,26 @@ target = targets.load(8, cfg)</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[23]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[25]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-5389b965a5834d4da72ea112a3052324.vega-embed {
+  #altair-viz-a8fcb6403b214cffaaffc2bc53a1ac1b.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-5389b965a5834d4da72ea112a3052324.vega-embed details,
-  #altair-viz-5389b965a5834d4da72ea112a3052324.vega-embed details summary {
+  #altair-viz-a8fcb6403b214cffaaffc2bc53a1ac1b.vega-embed details,
+  #altair-viz-a8fcb6403b214cffaaffc2bc53a1ac1b.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-5389b965a5834d4da72ea112a3052324"></div>
+<div id="altair-viz-a8fcb6403b214cffaaffc2bc53a1ac1b"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-5389b965a5834d4da72ea112a3052324") {
-      outputDiv = document.getElementById("altair-viz-5389b965a5834d4da72ea112a3052324");
+    if (outputDiv.id !== "altair-viz-a8fcb6403b214cffaaffc2bc53a1ac1b") {
+      outputDiv = document.getElementById("altair-viz-a8fcb6403b214cffaaffc2bc53a1ac1b");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -3325,10 +3519,10 @@ target = targets.load(8, cfg)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-24">
+<clipboard-copy for="cell-26">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3340,7 +3534,7 @@ target = targets.load(8, cfg)</div>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">comps</span><span class="o">.</span><span class="n">fig_leg_forecasts</span><span class="p">(</span><span class="n">by_flt_no</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">of</span><span class="o">=</span><span class="p">[</span><span class="s2">"mu"</span><span class="p">,</span> <span class="s2">"sigma"</span><span class="p">])</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-24">comps.fig_leg_forecasts(by_flt_no=101, of=["mu", "sigma"])</div>
+<div class="clipboard-copy-txt" id="cell-26">comps.fig_leg_forecasts(by_flt_no=101, of=["mu", "sigma"])</div>
 </div>
 </div>
 </div>
@@ -3350,26 +3544,26 @@ target = targets.load(8, cfg)</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[24]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[26]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-3df2cbdb43674d11ba88185fc8b1baf4.vega-embed {
+  #altair-viz-d95db653e1dd4a8e857751d15403e33c.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-3df2cbdb43674d11ba88185fc8b1baf4.vega-embed details,
-  #altair-viz-3df2cbdb43674d11ba88185fc8b1baf4.vega-embed details summary {
+  #altair-viz-d95db653e1dd4a8e857751d15403e33c.vega-embed details,
+  #altair-viz-d95db653e1dd4a8e857751d15403e33c.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-3df2cbdb43674d11ba88185fc8b1baf4"></div>
+<div id="altair-viz-d95db653e1dd4a8e857751d15403e33c"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-3df2cbdb43674d11ba88185fc8b1baf4") {
-      outputDiv = document.getElementById("altair-viz-3df2cbdb43674d11ba88185fc8b1baf4");
+    if (outputDiv.id !== "altair-viz-d95db653e1dd4a8e857751d15403e33c") {
+      outputDiv = document.getElementById("altair-viz-d95db653e1dd4a8e857751d15403e33c");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -3428,10 +3622,10 @@ target = targets.load(8, cfg)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-25">
+<clipboard-copy for="cell-27">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3443,7 +3637,7 @@ target = targets.load(8, cfg)</div>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">comps</span><span class="o">.</span><span class="n">fig_leg_forecasts</span><span class="p">(</span><span class="n">by_flt_no</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">of</span><span class="o">=</span><span class="p">[</span><span class="s2">"mu"</span><span class="p">,</span> <span class="s2">"sigma"</span><span class="p">])</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-25">comps.fig_leg_forecasts(by_flt_no=101, of=["mu", "sigma"])</div>
+<div class="clipboard-copy-txt" id="cell-27">comps.fig_leg_forecasts(by_flt_no=101, of=["mu", "sigma"])</div>
 </div>
 </div>
 </div>
@@ -3453,26 +3647,26 @@ target = targets.load(8, cfg)</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[25]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[27]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-600066c0ccb34a8a99ddc7af397fefbd.vega-embed {
+  #altair-viz-22a4f64d4df640449098a7c6a2e7e427.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-600066c0ccb34a8a99ddc7af397fefbd.vega-embed details,
-  #altair-viz-600066c0ccb34a8a99ddc7af397fefbd.vega-embed details summary {
+  #altair-viz-22a4f64d4df640449098a7c6a2e7e427.vega-embed details,
+  #altair-viz-22a4f64d4df640449098a7c6a2e7e427.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-600066c0ccb34a8a99ddc7af397fefbd"></div>
+<div id="altair-viz-22a4f64d4df640449098a7c6a2e7e427"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-600066c0ccb34a8a99ddc7af397fefbd") {
-      outputDiv = document.getElementById("altair-viz-600066c0ccb34a8a99ddc7af397fefbd");
+    if (outputDiv.id !== "altair-viz-22a4f64d4df640449098a7c6a2e7e427") {
+      outputDiv = document.getElementById("altair-viz-22a4f64d4df640449098a7c6a2e7e427");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -3531,10 +3725,10 @@ target = targets.load(8, cfg)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-26">
+<clipboard-copy for="cell-28">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3546,7 +3740,7 @@ target = targets.load(8, cfg)</div>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">comps</span><span class="o">.</span><span class="n">fig_leg_forecasts</span><span class="p">(</span><span class="n">by_flt_no</span><span class="o">=</span><span class="mi">111</span><span class="p">,</span> <span class="n">of</span><span class="o">=</span><span class="p">[</span><span class="s2">"mu"</span><span class="p">,</span> <span class="s2">"sigma"</span><span class="p">])</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-26">comps.fig_leg_forecasts(by_flt_no=111, of=["mu", "sigma"])</div>
+<div class="clipboard-copy-txt" id="cell-28">comps.fig_leg_forecasts(by_flt_no=111, of=["mu", "sigma"])</div>
 </div>
 </div>
 </div>
@@ -3556,26 +3750,26 @@ target = targets.load(8, cfg)</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[26]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[28]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-692a81cd87ba481f9f1cab62da94273d.vega-embed {
+  #altair-viz-5ace5cbc775b40b2b4fc83eb3ee7e73f.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-692a81cd87ba481f9f1cab62da94273d.vega-embed details,
-  #altair-viz-692a81cd87ba481f9f1cab62da94273d.vega-embed details summary {
+  #altair-viz-5ace5cbc775b40b2b4fc83eb3ee7e73f.vega-embed details,
+  #altair-viz-5ace5cbc775b40b2b4fc83eb3ee7e73f.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-692a81cd87ba481f9f1cab62da94273d"></div>
+<div id="altair-viz-5ace5cbc775b40b2b4fc83eb3ee7e73f"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-692a81cd87ba481f9f1cab62da94273d") {
-      outputDiv = document.getElementById("altair-viz-692a81cd87ba481f9f1cab62da94273d");
+    if (outputDiv.id !== "altair-viz-5ace5cbc775b40b2b4fc83eb3ee7e73f") {
+      outputDiv = document.getElementById("altair-viz-5ace5cbc775b40b2b4fc83eb3ee7e73f");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
