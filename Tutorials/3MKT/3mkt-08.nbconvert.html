@@ -426,6 +426,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1620,8 +1626,8 @@ pax.versions()</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>passengersim 0.15.12
-passengersim.core 0.15.9
+<pre>passengersim 0.16.2
+passengersim.core 0.16.1
 </pre>
 </div>
 </div>
@@ -1920,12 +1926,12 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jupyter-widgets jp-OutputArea-output" id="d05b912a-e9bb-48fc-9ff2-b04587251464" tabindex="0">
+<div class="jupyter-widgets jp-OutputArea-output" id="0cdf382e-a901-4ed6-9f74-8e20a6510887" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('d05b912a-e9bb-48fc-9ff2-b04587251464');
+var element = document.getElementById('0cdf382e-a901-4ed6-9f74-8e20a6510887');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "7f1f2892fa414ab6b4373f6a567a0dad", "version_major": 2, "version_minor": 0}
+{"model_id": "956cb47fbf484955a60de66694941180", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 </div>
@@ -1945,7 +1951,7 @@ var element = document.getElementById('d05b912a-e9bb-48fc-9ff2-b04587251464');
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Task Completed after <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">13.03</span> seconds
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Task Completed after <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">13.86</span> seconds
 </pre>
 </div>
 </div>
@@ -1986,23 +1992,23 @@ var element = document.getElementById('d05b912a-e9bb-48fc-9ff2-b04587251464');
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-27fa5a7ccbc04fa8a9472ef7d27c86d3.vega-embed {
+  #altair-viz-e48e8bbcd25640f88dd086b1324e8a96.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-27fa5a7ccbc04fa8a9472ef7d27c86d3.vega-embed details,
-  #altair-viz-27fa5a7ccbc04fa8a9472ef7d27c86d3.vega-embed details summary {
+  #altair-viz-e48e8bbcd25640f88dd086b1324e8a96.vega-embed details,
+  #altair-viz-e48e8bbcd25640f88dd086b1324e8a96.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-27fa5a7ccbc04fa8a9472ef7d27c86d3"></div>
+<div id="altair-viz-e48e8bbcd25640f88dd086b1324e8a96"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-27fa5a7ccbc04fa8a9472ef7d27c86d3") {
-      outputDiv = document.getElementById("altair-viz-27fa5a7ccbc04fa8a9472ef7d27c86d3");
+    if (outputDiv.id !== "altair-viz-e48e8bbcd25640f88dd086b1324e8a96") {
+      outputDiv = document.getElementById("altair-viz-e48e8bbcd25640f88dd086b1324e8a96");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2048,7 +2054,7 @@ var element = document.getElementById('d05b912a-e9bb-48fc-9ff2-b04587251464');
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}, "legend": {"labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Average Revenue", "type": "quantitative"}], "x": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-1df5879655b35b7140c7c21fa35c3676"}, "height": 50, "title": "Carrier Revenues", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-1df5879655b35b7140c7c21fa35c3676": [{"carrier": "AL1", "avg_rev": 91050}, {"carrier": "AL2", "avg_rev": 91367}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}, "legend": {"labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Average Revenue", "type": "quantitative"}], "x": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-ef3fde0bc9fa21ff76fe70c67f140114"}, "height": 50, "title": "Carrier Revenues", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-ef3fde0bc9fa21ff76fe70c67f140114": [{"carrier": "AL1", "avg_rev": 91050.0}, {"carrier": "AL2", "avg_rev": 91367.0}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
@@ -2089,23 +2095,23 @@ var element = document.getElementById('d05b912a-e9bb-48fc-9ff2-b04587251464');
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-8f6668ce84344d13957b0f48d70070be.vega-embed {
+  #altair-viz-9a2c8ad1fc824f4ca6dcf6a35bdc81ad.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-8f6668ce84344d13957b0f48d70070be.vega-embed details,
-  #altair-viz-8f6668ce84344d13957b0f48d70070be.vega-embed details summary {
+  #altair-viz-9a2c8ad1fc824f4ca6dcf6a35bdc81ad.vega-embed details,
+  #altair-viz-9a2c8ad1fc824f4ca6dcf6a35bdc81ad.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-8f6668ce84344d13957b0f48d70070be"></div>
+<div id="altair-viz-9a2c8ad1fc824f4ca6dcf6a35bdc81ad"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-8f6668ce84344d13957b0f48d70070be") {
-      outputDiv = document.getElementById("altair-viz-8f6668ce84344d13957b0f48d70070be");
+    if (outputDiv.id !== "altair-viz-9a2c8ad1fc824f4ca6dcf6a35bdc81ad") {
+      outputDiv = document.getElementById("altair-viz-9a2c8ad1fc824f4ca6dcf6a35bdc81ad");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2192,23 +2198,23 @@ var element = document.getElementById('d05b912a-e9bb-48fc-9ff2-b04587251464');
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-e92eccb7492e4cdf98b96a3d93654aaf.vega-embed {
+  #altair-viz-25bda2f1f76440f48d68c04f0c0dcb75.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-e92eccb7492e4cdf98b96a3d93654aaf.vega-embed details,
-  #altair-viz-e92eccb7492e4cdf98b96a3d93654aaf.vega-embed details summary {
+  #altair-viz-25bda2f1f76440f48d68c04f0c0dcb75.vega-embed details,
+  #altair-viz-25bda2f1f76440f48d68c04f0c0dcb75.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-e92eccb7492e4cdf98b96a3d93654aaf"></div>
+<div id="altair-viz-25bda2f1f76440f48d68c04f0c0dcb75"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-e92eccb7492e4cdf98b96a3d93654aaf") {
-      outputDiv = document.getElementById("altair-viz-e92eccb7492e4cdf98b96a3d93654aaf");
+    if (outputDiv.id !== "altair-viz-25bda2f1f76440f48d68c04f0c0dcb75") {
+      outputDiv = document.getElementById("altair-viz-25bda2f1f76440f48d68c04f0c0dcb75");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2295,23 +2301,23 @@ var element = document.getElementById('d05b912a-e9bb-48fc-9ff2-b04587251464');
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-d58e553afd66434e9b697f7f69e0f08e.vega-embed {
+  #altair-viz-cb46b2e21f184f54a92f28e7a16d3ad0.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-d58e553afd66434e9b697f7f69e0f08e.vega-embed details,
-  #altair-viz-d58e553afd66434e9b697f7f69e0f08e.vega-embed details summary {
+  #altair-viz-cb46b2e21f184f54a92f28e7a16d3ad0.vega-embed details,
+  #altair-viz-cb46b2e21f184f54a92f28e7a16d3ad0.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-d58e553afd66434e9b697f7f69e0f08e"></div>
+<div id="altair-viz-cb46b2e21f184f54a92f28e7a16d3ad0"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-d58e553afd66434e9b697f7f69e0f08e") {
-      outputDiv = document.getElementById("altair-viz-d58e553afd66434e9b697f7f69e0f08e");
+    if (outputDiv.id !== "altair-viz-cb46b2e21f184f54a92f28e7a16d3ad0") {
+      outputDiv = document.getElementById("altair-viz-cb46b2e21f184f54a92f28e7a16d3ad0");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2525,23 +2531,23 @@ target = targets.load(8, cfg)</div>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-9c52baad3dfd4225891bb16d045ad20d.vega-embed {
+  #altair-viz-90aca722bded48c1b790316e9b2a99c3.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-9c52baad3dfd4225891bb16d045ad20d.vega-embed details,
-  #altair-viz-9c52baad3dfd4225891bb16d045ad20d.vega-embed details summary {
+  #altair-viz-90aca722bded48c1b790316e9b2a99c3.vega-embed details,
+  #altair-viz-90aca722bded48c1b790316e9b2a99c3.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-9c52baad3dfd4225891bb16d045ad20d"></div>
+<div id="altair-viz-90aca722bded48c1b790316e9b2a99c3"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-9c52baad3dfd4225891bb16d045ad20d") {
-      outputDiv = document.getElementById("altair-viz-9c52baad3dfd4225891bb16d045ad20d");
+    if (outputDiv.id !== "altair-viz-90aca722bded48c1b790316e9b2a99c3") {
+      outputDiv = document.getElementById("altair-viz-90aca722bded48c1b790316e9b2a99c3");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2587,7 +2593,7 @@ target = targets.load(8, cfg)</div>
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-e62d7d75d90c3f8cc559ee712862710b"}, "mark": {"type": "line"}, "encoding": {"color": {"field": "segment", "type": "nominal"}, "strokeDash": {"field": "source", "type": "nominal"}, "x": {"field": "rrd", "scale": {"reverse": true}, "title": "Days from Departure", "type": "ordinal"}, "y": {"field": "dtc", "title": "Mean Demand to Come", "type": "quantitative"}}, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-e62d7d75d90c3f8cc559ee712862710b": [{"segment": "business", "rrd": 63, "source": "simulation", "dtc": 291.42133333333334}, {"segment": "business", "rrd": 63, "source": "target", "dtc": 289.9202}, {"segment": "business", "rrd": 56, "source": "simulation", "dtc": 273.852}, {"segment": "business", "rrd": 56, "source": "target", "dtc": 272.5814}, {"segment": "business", "rrd": 49, "source": "simulation", "dtc": 259.2196666666667}, {"segment": "business", "rrd": 49, "source": "target", "dtc": 258.0139}, {"segment": "business", "rrd": 42, "source": "simulation", "dtc": 247.58}, {"segment": "business", "rrd": 42, "source": "target", "dtc": 246.3756}, {"segment": "business", "rrd": 35, "source": "simulation", "dtc": 232.99766666666667}, {"segment": "business", "rrd": 35, "source": "target", "dtc": 231.8431}, {"segment": "business", "rrd": 31, "source": "simulation", "dtc": 224.09966666666668}, {"segment": "business", "rrd": 31, "source": "target", "dtc": 223.0482}, {"segment": "business", "rrd": 28, "source": "simulation", "dtc": 218.14366666666666}, {"segment": "business", "rrd": 28, "source": "target", "dtc": 217.1405}, {"segment": "business", "rrd": 24, "source": "simulation", "dtc": 209.31}, {"segment": "business", "rrd": 24, "source": "target", "dtc": 208.3312}, {"segment": "business", "rrd": 21, "source": "simulation", "dtc": 200.449}, {"segment": "business", "rrd": 21, "source": "target", "dtc": 199.5352}, {"segment": "business", "rrd": 17, "source": "simulation", "dtc": 188.78033333333335}, {"segment": "business", "rrd": 17, "source": "target", "dtc": 187.95}, {"segment": "business", "rrd": 14, "source": "simulation", "dtc": 174.31366666666668}, {"segment": "business", "rrd": 14, "source": "target", "dtc": 173.4659}, {"segment": "business", "rrd": 10, "source": "simulation", "dtc": 145.146}, {"segment": "business", "rrd": 10, "source": "target", "dtc": 144.5612}, {"segment": "business", "rrd": 7, "source": "simulation", "dtc": 110.34566666666667}, {"segment": "business", "rrd": 7, "source": "target", "dtc": 109.8625}, {"segment": "business", "rrd": 5, "source": "simulation", "dtc": 86.99366666666667}, {"segment": "business", "rrd": 5, "source": "target", "dtc": 86.7521}, {"segment": "business", "rrd": 3, "source": "simulation", "dtc": 63.708666666666666}, {"segment": "business", "rrd": 3, "source": "target", "dtc": 63.6534}, {"segment": "business", "rrd": 1, "source": "simulation", "dtc": 14.458666666666666}, {"segment": "business", "rrd": 1, "source": "target", "dtc": 14.4946}, {"segment": "business", "rrd": 0, "source": "simulation", "dtc": 0.0}, {"segment": "business", "rrd": 0, "source": "target", "dtc": 0.0}, {"segment": "leisure", "rrd": 63, "source": "simulation", "dtc": 382.69733333333335}, {"segment": "leisure", "rrd": 63, "source": "target", "dtc": 380.5918}, {"segment": "leisure", "rrd": 56, "source": "simulation", "dtc": 317.41866666666664}, {"segment": "leisure", "rrd": 56, "source": "target", "dtc": 316.0196}, {"segment": "leisure", "rrd": 49, "source": "simulation", "dtc": 286.761}, {"segment": "leisure", "rrd": 49, "source": "target", "dtc": 285.5683}, {"segment": "leisure", "rrd": 42, "source": "simulation", "dtc": 252.34533333333334}, {"segment": "leisure", "rrd": 42, "source": "target", "dtc": 251.3031}, {"segment": "leisure", "rrd": 35, "source": "simulation", "dtc": 217.91266666666667}, {"segment": "leisure", "rrd": 35, "source": "target", "dtc": 217.0929}, {"segment": "leisure", "rrd": 31, "source": "simulation", "dtc": 195.11266666666666}, {"segment": "leisure", "rrd": 31, "source": "target", "dtc": 194.2415}, {"segment": "leisure", "rrd": 28, "source": "simulation", "dtc": 179.80233333333334}, {"segment": "leisure", "rrd": 28, "source": "target", "dtc": 178.9868}, {"segment": "leisure", "rrd": 24, "source": "simulation", "dtc": 149.30866666666665}, {"segment": "leisure", "rrd": 24, "source": "target", "dtc": 148.5291}, {"segment": "leisure", "rrd": 21, "source": "simulation", "dtc": 118.698}, {"segment": "leisure", "rrd": 21, "source": "target", "dtc": 118.0148}, {"segment": "leisure", "rrd": 17, "source": "simulation", "dtc": 95.83033333333333}, {"segment": "leisure", "rrd": 17, "source": "target", "dtc": 95.0405}, {"segment": "leisure", "rrd": 14, "source": "simulation", "dtc": 76.58733333333333}, {"segment": "leisure", "rrd": 14, "source": "target", "dtc": 76.0532}, {"segment": "leisure", "rrd": 10, "source": "simulation", "dtc": 57.45633333333333}, {"segment": "leisure", "rrd": 10, "source": "target", "dtc": 57.0417}, {"segment": "leisure", "rrd": 7, "source": "simulation", "dtc": 45.928333333333335}, {"segment": "leisure", "rrd": 7, "source": "target", "dtc": 45.5544}, {"segment": "leisure", "rrd": 5, "source": "simulation", "dtc": 38.208}, {"segment": "leisure", "rrd": 5, "source": "target", "dtc": 37.9393}, {"segment": "leisure", "rrd": 3, "source": "simulation", "dtc": 19.106333333333332}, {"segment": "leisure", "rrd": 3, "source": "target", "dtc": 18.8894}, {"segment": "leisure", "rrd": 1, "source": "simulation", "dtc": 7.593333333333334}, {"segment": "leisure", "rrd": 1, "source": "target", "dtc": 7.6281}, {"segment": "leisure", "rrd": 0, "source": "simulation", "dtc": 0.0}, {"segment": "leisure", "rrd": 0, "source": "target", "dtc": 0.0}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-b20b7a58e9f148a1d48e1862eb7c3846"}, "mark": {"type": "line"}, "encoding": {"color": {"field": "segment", "type": "nominal"}, "strokeDash": {"field": "source", "type": "nominal"}, "x": {"field": "rrd", "scale": {"reverse": true}, "title": "Days from Departure", "type": "ordinal"}, "y": {"field": "dtc", "title": "Mean Demand to Come", "type": "quantitative"}}, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-b20b7a58e9f148a1d48e1862eb7c3846": [{"segment": "business", "rrd": 63, "source": "simulation", "dtc": 292.59458333333333}, {"segment": "business", "rrd": 63, "source": "target", "dtc": 289.9202}, {"segment": "business", "rrd": 56, "source": "simulation", "dtc": 274.95458333333335}, {"segment": "business", "rrd": 56, "source": "target", "dtc": 272.5814}, {"segment": "business", "rrd": 49, "source": "simulation", "dtc": 260.2420833333333}, {"segment": "business", "rrd": 49, "source": "target", "dtc": 258.0139}, {"segment": "business", "rrd": 42, "source": "simulation", "dtc": 248.5225}, {"segment": "business", "rrd": 42, "source": "target", "dtc": 246.3756}, {"segment": "business", "rrd": 35, "source": "simulation", "dtc": 233.91}, {"segment": "business", "rrd": 35, "source": "target", "dtc": 231.8431}, {"segment": "business", "rrd": 31, "source": "simulation", "dtc": 224.98041666666666}, {"segment": "business", "rrd": 31, "source": "target", "dtc": 223.0482}, {"segment": "business", "rrd": 28, "source": "simulation", "dtc": 219.03083333333333}, {"segment": "business", "rrd": 28, "source": "target", "dtc": 217.1405}, {"segment": "business", "rrd": 24, "source": "simulation", "dtc": 210.14083333333335}, {"segment": "business", "rrd": 24, "source": "target", "dtc": 208.3312}, {"segment": "business", "rrd": 21, "source": "simulation", "dtc": 201.22958333333332}, {"segment": "business", "rrd": 21, "source": "target", "dtc": 199.5352}, {"segment": "business", "rrd": 17, "source": "simulation", "dtc": 189.55041666666668}, {"segment": "business", "rrd": 17, "source": "target", "dtc": 187.95}, {"segment": "business", "rrd": 14, "source": "simulation", "dtc": 175.02875}, {"segment": "business", "rrd": 14, "source": "target", "dtc": 173.4659}, {"segment": "business", "rrd": 10, "source": "simulation", "dtc": 145.77666666666667}, {"segment": "business", "rrd": 10, "source": "target", "dtc": 144.5612}, {"segment": "business", "rrd": 7, "source": "simulation", "dtc": 110.79375}, {"segment": "business", "rrd": 7, "source": "target", "dtc": 109.8625}, {"segment": "business", "rrd": 5, "source": "simulation", "dtc": 87.31666666666666}, {"segment": "business", "rrd": 5, "source": "target", "dtc": 86.7521}, {"segment": "business", "rrd": 3, "source": "simulation", "dtc": 63.98083333333334}, {"segment": "business", "rrd": 3, "source": "target", "dtc": 63.6534}, {"segment": "business", "rrd": 1, "source": "simulation", "dtc": 14.469583333333333}, {"segment": "business", "rrd": 1, "source": "target", "dtc": 14.4946}, {"segment": "business", "rrd": 0, "source": "simulation", "dtc": 0.0}, {"segment": "business", "rrd": 0, "source": "target", "dtc": 0.0}, {"segment": "leisure", "rrd": 63, "source": "simulation", "dtc": 384.2729166666667}, {"segment": "leisure", "rrd": 63, "source": "target", "dtc": 380.5918}, {"segment": "leisure", "rrd": 56, "source": "simulation", "dtc": 318.7729166666667}, {"segment": "leisure", "rrd": 56, "source": "target", "dtc": 316.0196}, {"segment": "leisure", "rrd": 49, "source": "simulation", "dtc": 287.9125}, {"segment": "leisure", "rrd": 49, "source": "target", "dtc": 285.5683}, {"segment": "leisure", "rrd": 42, "source": "simulation", "dtc": 253.44083333333333}, {"segment": "leisure", "rrd": 42, "source": "target", "dtc": 251.3031}, {"segment": "leisure", "rrd": 35, "source": "simulation", "dtc": 218.825}, {"segment": "leisure", "rrd": 35, "source": "target", "dtc": 217.0929}, {"segment": "leisure", "rrd": 31, "source": "simulation", "dtc": 195.95}, {"segment": "leisure", "rrd": 31, "source": "target", "dtc": 194.2415}, {"segment": "leisure", "rrd": 28, "source": "simulation", "dtc": 180.55125}, {"segment": "leisure", "rrd": 28, "source": "target", "dtc": 178.9868}, {"segment": "leisure", "rrd": 24, "source": "simulation", "dtc": 149.85375}, {"segment": "leisure", "rrd": 24, "source": "target", "dtc": 148.5291}, {"segment": "leisure", "rrd": 21, "source": "simulation", "dtc": 119.1725}, {"segment": "leisure", "rrd": 21, "source": "target", "dtc": 118.0148}, {"segment": "leisure", "rrd": 17, "source": "simulation", "dtc": 96.24291666666667}, {"segment": "leisure", "rrd": 17, "source": "target", "dtc": 95.0405}, {"segment": "leisure", "rrd": 14, "source": "simulation", "dtc": 76.94125}, {"segment": "leisure", "rrd": 14, "source": "target", "dtc": 76.0532}, {"segment": "leisure", "rrd": 10, "source": "simulation", "dtc": 57.759166666666665}, {"segment": "leisure", "rrd": 10, "source": "target", "dtc": 57.0417}, {"segment": "leisure", "rrd": 7, "source": "simulation", "dtc": 46.18208333333333}, {"segment": "leisure", "rrd": 7, "source": "target", "dtc": 45.5544}, {"segment": "leisure", "rrd": 5, "source": "simulation", "dtc": 38.38916666666667}, {"segment": "leisure", "rrd": 5, "source": "target", "dtc": 37.9393}, {"segment": "leisure", "rrd": 3, "source": "simulation", "dtc": 19.217916666666667}, {"segment": "leisure", "rrd": 3, "source": "target", "dtc": 18.8894}, {"segment": "leisure", "rrd": 1, "source": "simulation", "dtc": 7.622916666666667}, {"segment": "leisure", "rrd": 1, "source": "target", "dtc": 7.6281}, {"segment": "leisure", "rrd": 0, "source": "simulation", "dtc": 0.0}, {"segment": "leisure", "rrd": 0, "source": "target", "dtc": 0.0}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
@@ -2628,23 +2634,23 @@ target = targets.load(8, cfg)</div>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[17]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-780feea7a3ca44b1a9d9fc0711061662.vega-embed {
+  #altair-viz-28f351d88b96478fb9da2c1afe2e5596.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-780feea7a3ca44b1a9d9fc0711061662.vega-embed details,
-  #altair-viz-780feea7a3ca44b1a9d9fc0711061662.vega-embed details summary {
+  #altair-viz-28f351d88b96478fb9da2c1afe2e5596.vega-embed details,
+  #altair-viz-28f351d88b96478fb9da2c1afe2e5596.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-780feea7a3ca44b1a9d9fc0711061662"></div>
+<div id="altair-viz-28f351d88b96478fb9da2c1afe2e5596"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-780feea7a3ca44b1a9d9fc0711061662") {
-      outputDiv = document.getElementById("altair-viz-780feea7a3ca44b1a9d9fc0711061662");
+    if (outputDiv.id !== "altair-viz-28f351d88b96478fb9da2c1afe2e5596") {
+      outputDiv = document.getElementById("altair-viz-28f351d88b96478fb9da2c1afe2e5596");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2690,7 +2696,7 @@ target = targets.load(8, cfg)</div>
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-b4e3bc75889c005edb48744ff2d0769e"}, "mark": {"type": "line"}, "encoding": {"color": {"field": "segment", "type": "nominal"}, "strokeDash": {"field": "source", "type": "nominal"}, "x": {"field": "rrd", "scale": {"reverse": true}, "title": "Days from Departure", "type": "ordinal"}, "y": {"field": "dtc", "title": "Std Dev Demand to Come", "type": "quantitative"}}, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-b4e3bc75889c005edb48744ff2d0769e": [{"segment": "business", "rrd": 63, "source": "simulation", "dtc": 56.89144068806319}, {"segment": "business", "rrd": 63, "source": "target", "dtc": 57.005254072402714}, {"segment": "business", "rrd": 56, "source": "simulation", "dtc": 53.64451516544613}, {"segment": "business", "rrd": 56, "source": "target", "dtc": 53.74893551361624}, {"segment": "business", "rrd": 49, "source": "simulation", "dtc": 51.05016604321576}, {"segment": "business", "rrd": 49, "source": "target", "dtc": 51.05309930537876}, {"segment": "business", "rrd": 42, "source": "simulation", "dtc": 48.91938915752308}, {"segment": "business", "rrd": 42, "source": "target", "dtc": 48.91880854664154}, {"segment": "business", "rrd": 35, "source": "simulation", "dtc": 46.21307402268071}, {"segment": "business", "rrd": 35, "source": "target", "dtc": 46.1805862570485}, {"segment": "business", "rrd": 31, "source": "simulation", "dtc": 44.53038720937906}, {"segment": "business", "rrd": 31, "source": "target", "dtc": 44.51363187948518}, {"segment": "business", "rrd": 28, "source": "simulation", "dtc": 43.41310776556056}, {"segment": "business", "rrd": 28, "source": "target", "dtc": 43.43951034318723}, {"segment": "business", "rrd": 24, "source": "simulation", "dtc": 41.73106429558698}, {"segment": "business", "rrd": 24, "source": "target", "dtc": 41.82735778585509}, {"segment": "business", "rrd": 21, "source": "simulation", "dtc": 40.14910604117229}, {"segment": "business", "rrd": 21, "source": "target", "dtc": 40.24152704619811}, {"segment": "business", "rrd": 17, "source": "simulation", "dtc": 37.96119638129339}, {"segment": "business", "rrd": 17, "source": "target", "dtc": 38.06714345391659}, {"segment": "business", "rrd": 14, "source": "simulation", "dtc": 35.32045381987001}, {"segment": "business", "rrd": 14, "source": "target", "dtc": 35.31423150352654}, {"segment": "business", "rrd": 10, "source": "simulation", "dtc": 29.775373632556146}, {"segment": "business", "rrd": 10, "source": "target", "dtc": 29.82501982800301}, {"segment": "business", "rrd": 7, "source": "simulation", "dtc": 23.41608319523764}, {"segment": "business", "rrd": 7, "source": "target", "dtc": 23.197237010697872}, {"segment": "business", "rrd": 5, "source": "simulation", "dtc": 18.89973615065592}, {"segment": "business", "rrd": 5, "source": "target", "dtc": 18.826117174255213}, {"segment": "business", "rrd": 3, "source": "simulation", "dtc": 14.4323440833706}, {"segment": "business", "rrd": 3, "source": "target", "dtc": 14.42943828805997}, {"segment": "business", "rrd": 1, "source": "simulation", "dtc": 4.777017708600728}, {"segment": "business", "rrd": 1, "source": "target", "dtc": 4.656472818981269}, {"segment": "business", "rrd": 0, "source": "simulation", "dtc": 0.0}, {"segment": "business", "rrd": 0, "source": "target", "dtc": 0.0}, {"segment": "leisure", "rrd": 63, "source": "simulation", "dtc": 72.3342782422356}, {"segment": "leisure", "rrd": 63, "source": "target", "dtc": 73.2089839315695}, {"segment": "leisure", "rrd": 56, "source": "simulation", "dtc": 60.46270446398551}, {"segment": "leisure", "rrd": 56, "source": "target", "dtc": 61.15369484568636}, {"segment": "leisure", "rrd": 49, "source": "simulation", "dtc": 54.84941839770207}, {"segment": "leisure", "rrd": 49, "source": "target", "dtc": 55.51420464891647}, {"segment": "leisure", "rrd": 42, "source": "simulation", "dtc": 48.6012630749419}, {"segment": "leisure", "rrd": 42, "source": "target", "dtc": 49.088650418910404}, {"segment": "leisure", "rrd": 35, "source": "simulation", "dtc": 42.358105591003955}, {"segment": "leisure", "rrd": 35, "source": "target", "dtc": 42.79827378310814}, {"segment": "leisure", "rrd": 31, "source": "simulation", "dtc": 38.19074255839071}, {"segment": "leisure", "rrd": 31, "source": "target", "dtc": 38.51756142337935}, {"segment": "leisure", "rrd": 28, "source": "simulation", "dtc": 35.36974602962662}, {"segment": "leisure", "rrd": 28, "source": "target", "dtc": 35.671976042090414}, {"segment": "leisure", "rrd": 24, "source": "simulation", "dtc": 29.86800000050611}, {"segment": "leisure", "rrd": 24, "source": "target", "dtc": 30.05655490636418}, {"segment": "leisure", "rrd": 21, "source": "simulation", "dtc": 24.380421058238376}, {"segment": "leisure", "rrd": 21, "source": "target", "dtc": 24.393935462912467}, {"segment": "leisure", "rrd": 17, "source": "simulation", "dtc": 20.14196563104132}, {"segment": "leisure", "rrd": 17, "source": "target", "dtc": 20.062240879346216}, {"segment": "leisure", "rrd": 14, "source": "simulation", "dtc": 16.557307179285882}, {"segment": "leisure", "rrd": 14, "source": "target", "dtc": 16.516611323299955}, {"segment": "leisure", "rrd": 10, "source": "simulation", "dtc": 13.055148621293583}, {"segment": "leisure", "rrd": 10, "source": "target", "dtc": 12.945807062599451}, {"segment": "leisure", "rrd": 7, "source": "simulation", "dtc": 10.841296438082258}, {"segment": "leisure", "rrd": 7, "source": "target", "dtc": 10.74339716748245}, {"segment": "leisure", "rrd": 5, "source": "simulation", "dtc": 9.446223921870965}, {"segment": "leisure", "rrd": 5, "source": "target", "dtc": 9.326077046717328}, {"segment": "leisure", "rrd": 3, "source": "simulation", "dtc": 5.673542948230614}, {"segment": "leisure", "rrd": 3, "source": "target", "dtc": 5.636217200785777}, {"segment": "leisure", "rrd": 1, "source": "simulation", "dtc": 3.1517085278364525}, {"segment": "leisure", "rrd": 1, "source": "target", "dtc": 3.1302348517359984}, {"segment": "leisure", "rrd": 0, "source": "simulation", "dtc": 0.0}, {"segment": "leisure", "rrd": 0, "source": "target", "dtc": 0.0}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-9ae4ef5ce56ae4db5c031cb32a8f02f3"}, "mark": {"type": "line"}, "encoding": {"color": {"field": "segment", "type": "nominal"}, "strokeDash": {"field": "source", "type": "nominal"}, "x": {"field": "rrd", "scale": {"reverse": true}, "title": "Days from Departure", "type": "ordinal"}, "y": {"field": "dtc", "title": "Std Dev Demand to Come", "type": "quantitative"}}, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-9ae4ef5ce56ae4db5c031cb32a8f02f3": [{"segment": "business", "rrd": 63, "source": "simulation", "dtc": 57.12354166116355}, {"segment": "business", "rrd": 63, "source": "target", "dtc": 57.005254072402714}, {"segment": "business", "rrd": 56, "source": "simulation", "dtc": 53.87452441384885}, {"segment": "business", "rrd": 56, "source": "target", "dtc": 53.74893551361624}, {"segment": "business", "rrd": 49, "source": "simulation", "dtc": 51.22161003472187}, {"segment": "business", "rrd": 49, "source": "target", "dtc": 51.05309930537876}, {"segment": "business", "rrd": 42, "source": "simulation", "dtc": 49.07651886639229}, {"segment": "business", "rrd": 42, "source": "target", "dtc": 48.91880854664154}, {"segment": "business", "rrd": 35, "source": "simulation", "dtc": 46.42582757055249}, {"segment": "business", "rrd": 35, "source": "target", "dtc": 46.1805862570485}, {"segment": "business", "rrd": 31, "source": "simulation", "dtc": 44.74679856129756}, {"segment": "business", "rrd": 31, "source": "target", "dtc": 44.51363187948518}, {"segment": "business", "rrd": 28, "source": "simulation", "dtc": 43.63767468687179}, {"segment": "business", "rrd": 28, "source": "target", "dtc": 43.43951034318723}, {"segment": "business", "rrd": 24, "source": "simulation", "dtc": 41.889015505028866}, {"segment": "business", "rrd": 24, "source": "target", "dtc": 41.82735778585509}, {"segment": "business", "rrd": 21, "source": "simulation", "dtc": 40.305515721491226}, {"segment": "business", "rrd": 21, "source": "target", "dtc": 40.24152704619811}, {"segment": "business", "rrd": 17, "source": "simulation", "dtc": 38.11233642017339}, {"segment": "business", "rrd": 17, "source": "target", "dtc": 38.06714345391659}, {"segment": "business", "rrd": 14, "source": "simulation", "dtc": 35.46376492793309}, {"segment": "business", "rrd": 14, "source": "target", "dtc": 35.31423150352654}, {"segment": "business", "rrd": 10, "source": "simulation", "dtc": 29.9006712820162}, {"segment": "business", "rrd": 10, "source": "target", "dtc": 29.82501982800301}, {"segment": "business", "rrd": 7, "source": "simulation", "dtc": 23.438752467577043}, {"segment": "business", "rrd": 7, "source": "target", "dtc": 23.197237010697872}, {"segment": "business", "rrd": 5, "source": "simulation", "dtc": 18.943800667116335}, {"segment": "business", "rrd": 5, "source": "target", "dtc": 18.826117174255213}, {"segment": "business", "rrd": 3, "source": "simulation", "dtc": 14.474181327718814}, {"segment": "business", "rrd": 3, "source": "target", "dtc": 14.42943828805997}, {"segment": "business", "rrd": 1, "source": "simulation", "dtc": 4.771029863897991}, {"segment": "business", "rrd": 1, "source": "target", "dtc": 4.656472818981269}, {"segment": "business", "rrd": 0, "source": "simulation", "dtc": 0.0}, {"segment": "business", "rrd": 0, "source": "target", "dtc": 0.0}, {"segment": "leisure", "rrd": 63, "source": "simulation", "dtc": 72.7455386747199}, {"segment": "leisure", "rrd": 63, "source": "target", "dtc": 73.2089839315695}, {"segment": "leisure", "rrd": 56, "source": "simulation", "dtc": 60.75428765065086}, {"segment": "leisure", "rrd": 56, "source": "target", "dtc": 61.15369484568636}, {"segment": "leisure", "rrd": 49, "source": "simulation", "dtc": 55.121388742245}, {"segment": "leisure", "rrd": 49, "source": "target", "dtc": 55.51420464891647}, {"segment": "leisure", "rrd": 42, "source": "simulation", "dtc": 48.82988307982673}, {"segment": "leisure", "rrd": 42, "source": "target", "dtc": 49.088650418910404}, {"segment": "leisure", "rrd": 35, "source": "simulation", "dtc": 42.522507097270626}, {"segment": "leisure", "rrd": 35, "source": "target", "dtc": 42.79827378310814}, {"segment": "leisure", "rrd": 31, "source": "simulation", "dtc": 38.314270531826615}, {"segment": "leisure", "rrd": 31, "source": "target", "dtc": 38.51756142337935}, {"segment": "leisure", "rrd": 28, "source": "simulation", "dtc": 35.483369142785996}, {"segment": "leisure", "rrd": 28, "source": "target", "dtc": 35.671976042090414}, {"segment": "leisure", "rrd": 24, "source": "simulation", "dtc": 29.944075053066207}, {"segment": "leisure", "rrd": 24, "source": "target", "dtc": 30.05655490636418}, {"segment": "leisure", "rrd": 21, "source": "simulation", "dtc": 24.395437776904156}, {"segment": "leisure", "rrd": 21, "source": "target", "dtc": 24.393935462912467}, {"segment": "leisure", "rrd": 17, "source": "simulation", "dtc": 20.126231274639366}, {"segment": "leisure", "rrd": 17, "source": "target", "dtc": 20.062240879346216}, {"segment": "leisure", "rrd": 14, "source": "simulation", "dtc": 16.55985286993157}, {"segment": "leisure", "rrd": 14, "source": "target", "dtc": 16.516611323299955}, {"segment": "leisure", "rrd": 10, "source": "simulation", "dtc": 13.047461991350227}, {"segment": "leisure", "rrd": 10, "source": "target", "dtc": 12.945807062599451}, {"segment": "leisure", "rrd": 7, "source": "simulation", "dtc": 10.826754057017437}, {"segment": "leisure", "rrd": 7, "source": "target", "dtc": 10.74339716748245}, {"segment": "leisure", "rrd": 5, "source": "simulation", "dtc": 9.452333595108625}, {"segment": "leisure", "rrd": 5, "source": "target", "dtc": 9.326077046717328}, {"segment": "leisure", "rrd": 3, "source": "simulation", "dtc": 5.692298592784629}, {"segment": "leisure", "rrd": 3, "source": "target", "dtc": 5.636217200785777}, {"segment": "leisure", "rrd": 1, "source": "simulation", "dtc": 3.183281382453045}, {"segment": "leisure", "rrd": 1, "source": "target", "dtc": 3.1302348517359984}, {"segment": "leisure", "rrd": 0, "source": "simulation", "dtc": 0.0}, {"segment": "leisure", "rrd": 0, "source": "target", "dtc": 0.0}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
@@ -2771,13 +2777,13 @@ target = targets.load(8, cfg)</div>
 <tr>
 <th rowspan="2" valign="top">simulation</th>
 <th>business</th>
-<td>3236.636024</td>
-<td>1976.759777</td>
+<td>3263.099012</td>
+<td>1976.758878</td>
 </tr>
 <tr>
 <th>leisure</th>
-<td>1976.759777</td>
-<td>5232.247809</td>
+<td>1976.758878</td>
+<td>5291.913397</td>
 </tr>
 <tr>
 <th rowspan="2" valign="top">target</th>
@@ -2832,23 +2838,23 @@ target = targets.load(8, cfg)</div>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[19]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-8385394ced034773992f600ac9bc20fb.vega-embed {
+  #altair-viz-0a8d1e015e1c4cb18d784c630f1f1448.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-8385394ced034773992f600ac9bc20fb.vega-embed details,
-  #altair-viz-8385394ced034773992f600ac9bc20fb.vega-embed details summary {
+  #altair-viz-0a8d1e015e1c4cb18d784c630f1f1448.vega-embed details,
+  #altair-viz-0a8d1e015e1c4cb18d784c630f1f1448.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-8385394ced034773992f600ac9bc20fb"></div>
+<div id="altair-viz-0a8d1e015e1c4cb18d784c630f1f1448"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-8385394ced034773992f600ac9bc20fb") {
-      outputDiv = document.getElementById("altair-viz-8385394ced034773992f600ac9bc20fb");
+    if (outputDiv.id !== "altair-viz-0a8d1e015e1c4cb18d784c630f1f1448") {
+      outputDiv = document.getElementById("altair-viz-0a8d1e015e1c4cb18d784c630f1f1448");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2935,23 +2941,23 @@ target = targets.load(8, cfg)</div>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[20]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-58077103b288457c919625a1cdd4c5db.vega-embed {
+  #altair-viz-10f1ef6fe71e4bbea74cbffbb394f12b.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-58077103b288457c919625a1cdd4c5db.vega-embed details,
-  #altair-viz-58077103b288457c919625a1cdd4c5db.vega-embed details summary {
+  #altair-viz-10f1ef6fe71e4bbea74cbffbb394f12b.vega-embed details,
+  #altair-viz-10f1ef6fe71e4bbea74cbffbb394f12b.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-58077103b288457c919625a1cdd4c5db"></div>
+<div id="altair-viz-10f1ef6fe71e4bbea74cbffbb394f12b"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-58077103b288457c919625a1cdd4c5db") {
-      outputDiv = document.getElementById("altair-viz-58077103b288457c919625a1cdd4c5db");
+    if (outputDiv.id !== "altair-viz-10f1ef6fe71e4bbea74cbffbb394f12b") {
+      outputDiv = document.getElementById("altair-viz-10f1ef6fe71e4bbea74cbffbb394f12b");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2997,7 +3003,7 @@ target = targets.load(8, cfg)</div>
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "title": {"fontSize": 18}}, "data": {"name": "data-784780f865fbecd3414f69cfe4326a5a"}, "facet": {"row": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "source", "title": "Source", "type": "nominal"}, "tooltip": [{"field": "source", "title": null, "type": "nominal"}, {"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Revenue ($)", "type": "quantitative"}, {"field": "ratio", "format": ".3%", "title": "vs simulation", "type": "quantitative"}], "x": {"field": "avg_rev", "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["simulation", "target"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"field": "avg_rev", "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["simulation", "target"], "title": null, "type": "nominal"}}}], "height": 50, "width": 500}, "title": "Carrier Revenues", "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-784780f865fbecd3414f69cfe4326a5a": [{"source": "simulation", "carrier": "AL1", "avg_rev": 91050, "ratio": 0.0}, {"source": "simulation", "carrier": "AL2", "avg_rev": 91367, "ratio": 0.0}, {"source": "target", "carrier": "AL1", "avg_rev": 90357, "ratio": -0.007611202635914305}, {"source": "target", "carrier": "AL2", "avg_rev": 90311, "ratio": -0.011557783444788639}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "title": {"fontSize": 18}}, "data": {"name": "data-52479d5ec25d867c2c9fa176f14f0cb1"}, "facet": {"row": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "source", "title": "Source", "type": "nominal"}, "tooltip": [{"field": "source", "title": null, "type": "nominal"}, {"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Revenue ($)", "type": "quantitative"}, {"field": "ratio", "format": ".3%", "title": "vs simulation", "type": "quantitative"}], "x": {"field": "avg_rev", "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["simulation", "target"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"field": "avg_rev", "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["simulation", "target"], "title": null, "type": "nominal"}}}], "height": 50, "width": 500}, "title": "Carrier Revenues", "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-52479d5ec25d867c2c9fa176f14f0cb1": [{"source": "simulation", "carrier": "AL1", "avg_rev": 91050.0, "ratio": 0.0}, {"source": "simulation", "carrier": "AL2", "avg_rev": 91367.0, "ratio": 0.0}, {"source": "target", "carrier": "AL1", "avg_rev": 90357.0, "ratio": -0.007611202635914305}, {"source": "target", "carrier": "AL2", "avg_rev": 90311.0, "ratio": -0.011557783444788639}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
@@ -3038,23 +3044,23 @@ target = targets.load(8, cfg)</div>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[21]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-511a1a5219f849e388ab61525ba0e286.vega-embed {
+  #altair-viz-cad74353db93493dbd11a5d670949294.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-511a1a5219f849e388ab61525ba0e286.vega-embed details,
-  #altair-viz-511a1a5219f849e388ab61525ba0e286.vega-embed details summary {
+  #altair-viz-cad74353db93493dbd11a5d670949294.vega-embed details,
+  #altair-viz-cad74353db93493dbd11a5d670949294.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-511a1a5219f849e388ab61525ba0e286"></div>
+<div id="altair-viz-cad74353db93493dbd11a5d670949294"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-511a1a5219f849e388ab61525ba0e286") {
-      outputDiv = document.getElementById("altair-viz-511a1a5219f849e388ab61525ba0e286");
+    if (outputDiv.id !== "altair-viz-cad74353db93493dbd11a5d670949294") {
+      outputDiv = document.getElementById("altair-viz-cad74353db93493dbd11a5d670949294");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -3141,23 +3147,23 @@ target = targets.load(8, cfg)</div>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[22]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-0691f97480e741678844c8a16b9400fe.vega-embed {
+  #altair-viz-298a3f95e6ca4fa0b97d4544cbdcb042.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-0691f97480e741678844c8a16b9400fe.vega-embed details,
-  #altair-viz-0691f97480e741678844c8a16b9400fe.vega-embed details summary {
+  #altair-viz-298a3f95e6ca4fa0b97d4544cbdcb042.vega-embed details,
+  #altair-viz-298a3f95e6ca4fa0b97d4544cbdcb042.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-0691f97480e741678844c8a16b9400fe"></div>
+<div id="altair-viz-298a3f95e6ca4fa0b97d4544cbdcb042"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-0691f97480e741678844c8a16b9400fe") {
-      outputDiv = document.getElementById("altair-viz-0691f97480e741678844c8a16b9400fe");
+    if (outputDiv.id !== "altair-viz-298a3f95e6ca4fa0b97d4544cbdcb042") {
+      outputDiv = document.getElementById("altair-viz-298a3f95e6ca4fa0b97d4544cbdcb042");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -3244,23 +3250,23 @@ target = targets.load(8, cfg)</div>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[23]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-a34b9ebf66da41569c417ac1015185d6.vega-embed {
+  #altair-viz-5389b965a5834d4da72ea112a3052324.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-a34b9ebf66da41569c417ac1015185d6.vega-embed details,
-  #altair-viz-a34b9ebf66da41569c417ac1015185d6.vega-embed details summary {
+  #altair-viz-5389b965a5834d4da72ea112a3052324.vega-embed details,
+  #altair-viz-5389b965a5834d4da72ea112a3052324.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-a34b9ebf66da41569c417ac1015185d6"></div>
+<div id="altair-viz-5389b965a5834d4da72ea112a3052324"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-a34b9ebf66da41569c417ac1015185d6") {
-      outputDiv = document.getElementById("altair-viz-a34b9ebf66da41569c417ac1015185d6");
+    if (outputDiv.id !== "altair-viz-5389b965a5834d4da72ea112a3052324") {
+      outputDiv = document.getElementById("altair-viz-5389b965a5834d4da72ea112a3052324");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -3347,23 +3353,23 @@ target = targets.load(8, cfg)</div>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[24]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-cf9c38329096425cb62b51337b797736.vega-embed {
+  #altair-viz-3df2cbdb43674d11ba88185fc8b1baf4.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-cf9c38329096425cb62b51337b797736.vega-embed details,
-  #altair-viz-cf9c38329096425cb62b51337b797736.vega-embed details summary {
+  #altair-viz-3df2cbdb43674d11ba88185fc8b1baf4.vega-embed details,
+  #altair-viz-3df2cbdb43674d11ba88185fc8b1baf4.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-cf9c38329096425cb62b51337b797736"></div>
+<div id="altair-viz-3df2cbdb43674d11ba88185fc8b1baf4"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-cf9c38329096425cb62b51337b797736") {
-      outputDiv = document.getElementById("altair-viz-cf9c38329096425cb62b51337b797736");
+    if (outputDiv.id !== "altair-viz-3df2cbdb43674d11ba88185fc8b1baf4") {
+      outputDiv = document.getElementById("altair-viz-3df2cbdb43674d11ba88185fc8b1baf4");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -3450,23 +3456,23 @@ target = targets.load(8, cfg)</div>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[25]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-d418c3f1f6134d0f894e36e519409545.vega-embed {
+  #altair-viz-600066c0ccb34a8a99ddc7af397fefbd.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-d418c3f1f6134d0f894e36e519409545.vega-embed details,
-  #altair-viz-d418c3f1f6134d0f894e36e519409545.vega-embed details summary {
+  #altair-viz-600066c0ccb34a8a99ddc7af397fefbd.vega-embed details,
+  #altair-viz-600066c0ccb34a8a99ddc7af397fefbd.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-d418c3f1f6134d0f894e36e519409545"></div>
+<div id="altair-viz-600066c0ccb34a8a99ddc7af397fefbd"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-d418c3f1f6134d0f894e36e519409545") {
-      outputDiv = document.getElementById("altair-viz-d418c3f1f6134d0f894e36e519409545");
+    if (outputDiv.id !== "altair-viz-600066c0ccb34a8a99ddc7af397fefbd") {
+      outputDiv = document.getElementById("altair-viz-600066c0ccb34a8a99ddc7af397fefbd");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -3553,23 +3559,23 @@ target = targets.load(8, cfg)</div>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[26]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-0b81d67bf3bc404abc530eebe090acfe.vega-embed {
+  #altair-viz-692a81cd87ba481f9f1cab62da94273d.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-0b81d67bf3bc404abc530eebe090acfe.vega-embed details,
-  #altair-viz-0b81d67bf3bc404abc530eebe090acfe.vega-embed details summary {
+  #altair-viz-692a81cd87ba481f9f1cab62da94273d.vega-embed details,
+  #altair-viz-692a81cd87ba481f9f1cab62da94273d.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-0b81d67bf3bc404abc530eebe090acfe"></div>
+<div id="altair-viz-692a81cd87ba481f9f1cab62da94273d"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-0b81d67bf3bc404abc530eebe090acfe") {
-      outputDiv = document.getElementById("altair-viz-0b81d67bf3bc404abc530eebe090acfe");
+    if (outputDiv.id !== "altair-viz-692a81cd87ba481f9f1cab62da94273d") {
+      outputDiv = document.getElementById("altair-viz-692a81cd87ba481f9f1cab62da94273d");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",

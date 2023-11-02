@@ -426,6 +426,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1428,6 +1434,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#passengersim_core.Path.add_airline" class="md-nav__link">
+    add_airline()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#passengersim_core.Path.add_booking_class" class="md-nav__link">
     add_booking_class()
   </a>
@@ -1465,6 +1478,13 @@
         <li class="md-nav__item">
   <a href="#passengersim_core.Path.capture_dcp" class="md-nav__link">
     capture_dcp()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core.Path.check_avail" class="md-nav__link">
+    check_avail()
   </a>
   
 </li>
@@ -1556,6 +1576,20 @@
         <li class="md-nav__item">
   <a href="#passengersim_core.Path.get_leg_orig" class="md-nav__link">
     get_leg_orig()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core.Path.get_total_bid_price" class="md-nav__link">
+    get_total_bid_price()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core.Path.get_total_distance" class="md-nav__link">
+    get_total_distance()
   </a>
   
 </li>
@@ -1853,6 +1887,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#passengersim_core.Path.add_airline" class="md-nav__link">
+    add_airline()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#passengersim_core.Path.add_booking_class" class="md-nav__link">
     add_booking_class()
   </a>
@@ -1890,6 +1931,13 @@
         <li class="md-nav__item">
   <a href="#passengersim_core.Path.capture_dcp" class="md-nav__link">
     capture_dcp()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core.Path.check_avail" class="md-nav__link">
+    check_avail()
   </a>
   
 </li>
@@ -1981,6 +2029,20 @@
         <li class="md-nav__item">
   <a href="#passengersim_core.Path.get_leg_orig" class="md-nav__link">
     get_leg_orig()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core.Path.get_total_bid_price" class="md-nav__link">
+    get_total_bid_price()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core.Path.get_total_distance" class="md-nav__link">
+    get_total_distance()
   </a>
   
 </li>
@@ -2562,6 +2624,28 @@
 
 
 
+<h2 id="passengersim_core.Path.add_airline" class="doc doc-heading">
+          <span class="doc doc-object-name doc-function-name">add_airline</span>
+
+
+</h2>
+<div class="doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">add_airline</span><span class="p">(</span><span class="n">airline</span><span class="p">:</span> <span class="n">Airline</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Add an Airline to this Path.</p>
+
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+
 <h2 id="passengersim_core.Path.add_booking_class" class="doc doc-heading">
           <span class="doc doc-object-name doc-function-name">add_booking_class</span>
 
@@ -2690,6 +2774,30 @@
   <div class="doc doc-contents ">
   
       <p>Save relevant information for this DCP</p>
+
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+
+<h2 id="passengersim_core.Path.check_avail" class="doc doc-heading">
+          <span class="doc doc-object-name doc-function-name">check_avail</span>
+
+
+</h2>
+<div class="doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">check_avail</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">fare</span><span class="p">:</span> <span class="s2">&quot;Fare&quot;</span><span class="p">,</span> <span class="n">num_pax</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">debug</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span>
+</span></code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Is this fare available on the Path?  Used for unit testing</p>
 
   </div>
 
@@ -2985,6 +3093,50 @@
   <div class="doc doc-contents ">
   
       <p>Get the origin airport for the n-th leg.</p>
+
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+
+<h2 id="passengersim_core.Path.get_total_bid_price" class="doc doc-heading">
+          <span class="doc doc-object-name doc-function-name">get_total_bid_price</span>
+
+
+</h2>
+<div class="doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">get_total_bid_price</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">float</span>
+</span></code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Get the total of bid prices on all legs</p>
+
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+
+<h2 id="passengersim_core.Path.get_total_distance" class="doc doc-heading">
+          <span class="doc doc-object-name doc-function-name">get_total_distance</span>
+
+
+</h2>
+<div class="doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">get_total_distance</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">float</span>
+</span></code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Get the total of distances on all legs</p>
 
   </div>
 

@@ -426,6 +426,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1542,8 +1548,8 @@ pax.versions()</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>passengersim 0.15.12
-passengersim.core 0.15.9
+<pre>passengersim 0.16.2
+passengersim.core 0.16.1
 </pre>
 </div>
 </div>
@@ -1684,23 +1690,23 @@ core simulation code.</p>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-361dad6b9be04686abf1a20138039d99.vega-embed {
+  #altair-viz-ee1d19b9319748fb9c93ad5e9fe348d4.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-361dad6b9be04686abf1a20138039d99.vega-embed details,
-  #altair-viz-361dad6b9be04686abf1a20138039d99.vega-embed details summary {
+  #altair-viz-ee1d19b9319748fb9c93ad5e9fe348d4.vega-embed details,
+  #altair-viz-ee1d19b9319748fb9c93ad5e9fe348d4.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-361dad6b9be04686abf1a20138039d99"></div>
+<div id="altair-viz-ee1d19b9319748fb9c93ad5e9fe348d4"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-361dad6b9be04686abf1a20138039d99") {
-      outputDiv = document.getElementById("altair-viz-361dad6b9be04686abf1a20138039d99");
+    if (outputDiv.id !== "altair-viz-ee1d19b9319748fb9c93ad5e9fe348d4") {
+      outputDiv = document.getElementById("altair-viz-ee1d19b9319748fb9c93ad5e9fe348d4");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -1746,7 +1752,7 @@ core simulation code.</p>
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "title": {"fontSize": 18}}, "data": {"name": "data-6c76edb1af40f35ee3781294031f2cae"}, "facet": {"row": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "source", "title": "Source", "type": "nominal"}, "tooltip": [{"field": "source", "title": null, "type": "nominal"}, {"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Revenue ($)", "type": "quantitative"}, {"field": "ratio", "format": ".3%", "title": "vs Simple", "type": "quantitative"}], "x": {"field": "avg_rev", "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"field": "avg_rev", "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}], "height": 50, "width": 500}, "title": "Carrier Revenues", "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-6c76edb1af40f35ee3781294031f2cae": [{"source": "Simple", "carrier": "AL1", "avg_rev": 89012, "ratio": 0.0}, {"source": "Simple", "carrier": "AL2", "avg_rev": 89211, "ratio": 0.0}, {"source": "Untruncated", "carrier": "AL1", "avg_rev": 90170, "ratio": 0.013009481867613415}, {"source": "Untruncated", "carrier": "AL2", "avg_rev": 90098, "ratio": 0.009942720068153}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "title": {"fontSize": 18}}, "data": {"name": "data-67a63ac0fae7cd81fa542a1a1b84c58e"}, "facet": {"row": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "source", "title": "Source", "type": "nominal"}, "tooltip": [{"field": "source", "title": null, "type": "nominal"}, {"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Revenue ($)", "type": "quantitative"}, {"field": "ratio", "format": ".3%", "title": "vs Simple", "type": "quantitative"}], "x": {"field": "avg_rev", "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"field": "avg_rev", "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}], "height": 50, "width": 500}, "title": "Carrier Revenues", "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-67a63ac0fae7cd81fa542a1a1b84c58e": [{"source": "Simple", "carrier": "AL1", "avg_rev": 89012.0, "ratio": 0.0}, {"source": "Simple", "carrier": "AL2", "avg_rev": 89211.0, "ratio": 0.0}, {"source": "Untruncated", "carrier": "AL1", "avg_rev": 90170.0, "ratio": 0.013009481867613415}, {"source": "Untruncated", "carrier": "AL2", "avg_rev": 90098.0, "ratio": 0.009942720068153}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
@@ -1787,23 +1793,23 @@ core simulation code.</p>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-397287948d4b4d188560badd53620089.vega-embed {
+  #altair-viz-071f453de6984a3dad2998fcafc2f600.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-397287948d4b4d188560badd53620089.vega-embed details,
-  #altair-viz-397287948d4b4d188560badd53620089.vega-embed details summary {
+  #altair-viz-071f453de6984a3dad2998fcafc2f600.vega-embed details,
+  #altair-viz-071f453de6984a3dad2998fcafc2f600.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-397287948d4b4d188560badd53620089"></div>
+<div id="altair-viz-071f453de6984a3dad2998fcafc2f600"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-397287948d4b4d188560badd53620089") {
-      outputDiv = document.getElementById("altair-viz-397287948d4b4d188560badd53620089");
+    if (outputDiv.id !== "altair-viz-071f453de6984a3dad2998fcafc2f600") {
+      outputDiv = document.getElementById("altair-viz-071f453de6984a3dad2998fcafc2f600");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -1890,23 +1896,23 @@ core simulation code.</p>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-6f9a1d23a08b4f689a6a32fc721573f9.vega-embed {
+  #altair-viz-ba159bd1716b417f836a8ab80f47252b.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-6f9a1d23a08b4f689a6a32fc721573f9.vega-embed details,
-  #altair-viz-6f9a1d23a08b4f689a6a32fc721573f9.vega-embed details summary {
+  #altair-viz-ba159bd1716b417f836a8ab80f47252b.vega-embed details,
+  #altair-viz-ba159bd1716b417f836a8ab80f47252b.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-6f9a1d23a08b4f689a6a32fc721573f9"></div>
+<div id="altair-viz-ba159bd1716b417f836a8ab80f47252b"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-6f9a1d23a08b4f689a6a32fc721573f9") {
-      outputDiv = document.getElementById("altair-viz-6f9a1d23a08b4f689a6a32fc721573f9");
+    if (outputDiv.id !== "altair-viz-ba159bd1716b417f836a8ab80f47252b") {
+      outputDiv = document.getElementById("altair-viz-ba159bd1716b417f836a8ab80f47252b");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -1993,23 +1999,23 @@ core simulation code.</p>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-137772183e7a42a69959bc406c74dfba.vega-embed {
+  #altair-viz-65138c58e27040fd88f552301bb08910.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-137772183e7a42a69959bc406c74dfba.vega-embed details,
-  #altair-viz-137772183e7a42a69959bc406c74dfba.vega-embed details summary {
+  #altair-viz-65138c58e27040fd88f552301bb08910.vega-embed details,
+  #altair-viz-65138c58e27040fd88f552301bb08910.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-137772183e7a42a69959bc406c74dfba"></div>
+<div id="altair-viz-65138c58e27040fd88f552301bb08910"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-137772183e7a42a69959bc406c74dfba") {
-      outputDiv = document.getElementById("altair-viz-137772183e7a42a69959bc406c74dfba");
+    if (outputDiv.id !== "altair-viz-65138c58e27040fd88f552301bb08910") {
+      outputDiv = document.getElementById("altair-viz-65138c58e27040fd88f552301bb08910");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
