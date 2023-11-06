@@ -337,6 +337,8 @@
       
         
       
+        
+      
     
     
     
@@ -479,6 +481,66 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../user-guide/database/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Database
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -817,6 +879,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -858,6 +924,48 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../simulation.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Simulation
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
               
             
               
@@ -915,10 +1023,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -929,8 +1037,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
             <span class="md-nav__icon md-icon"></span>
             Config
           </label>
@@ -1397,6 +1505,54 @@
   
   
   
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../database/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Database
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
     <li class="md-nav__item">
       <a href="../summary.html" class="md-nav__link">
         
@@ -1707,33 +1863,39 @@
 <span class="normal"><a href="#__codelineno-0-38">38</a></span>
 <span class="normal"><a href="#__codelineno-0-39">39</a></span>
 <span class="normal"><a href="#__codelineno-0-40">40</a></span>
-<span class="normal"><a href="#__codelineno-0-41">41</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="k">class</span> <span class="nc">RmSystem</span><span class="p">(</span><span class="n">Named</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="s2">&quot;forbid&quot;</span><span class="p">):</span>
+<span class="normal"><a href="#__codelineno-0-41">41</a></span>
+<span class="normal"><a href="#__codelineno-0-42">42</a></span>
+<span class="normal"><a href="#__codelineno-0-43">43</a></span>
+<span class="normal"><a href="#__codelineno-0-44">44</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="k">class</span> <span class="nc">RmSystem</span><span class="p">(</span><span class="n">Named</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="s2">&quot;forbid&quot;</span><span class="p">):</span>
 </span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a>    <span class="n">processes</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">RmProcess</span><span class="p">]</span>
 </span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17"></a>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18"></a>    <span class="n">availability_control</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;infer&quot;</span><span class="p">,</span> <span class="s2">&quot;leg&quot;</span><span class="p">,</span> <span class="s2">&quot;theft&quot;</span><span class="p">,</span> <span class="s2">&quot;bp&quot;</span><span class="p">,</span> <span class="s2">&quot;vn&quot;</span><span class="p">,</span> <span class="s2">&quot;none&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;infer&quot;</span>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Fare class availability algorithm for carriers using this RmSystem.</span>
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20"></a>
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="sd">    The default value will infer the appropriate control based on the steps in the DCP process</span>
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="sd">    (This is pending implementation).</span>
-</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23"></a>
-</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="sd">    Allowed values include:</span>
-</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="sd">    - &quot;leg&quot; (default): Uses leg-based controls.</span>
-</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="sd">    - &quot;bp&quot;: Bid price controls.</span>
-</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="sd">    - &quot;vn&quot;: Virtual nesting.</span>
-</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="sd">    - &quot;none&quot;: No controls.</span>
-</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30"></a>
-</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31"></a>    <span class="nd">@field_validator</span><span class="p">(</span><span class="s2">&quot;processes&quot;</span><span class="p">)</span>
-</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32"></a>    <span class="nd">@classmethod</span>
-</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33"></a>    <span class="k">def</span> <span class="nf">_require_dcp_process</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">RmProcess</span><span class="p">]):</span>
-</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Ensure that every RmSystem is either empty or has a DCP process.</span>
-</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35"></a>
-</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="sd">        This validator also converts all keys to lowercase.</span>
-</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38"></a>        <span class="n">lower_value</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span> <span class="n">v</span> <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="n">value</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
-</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39"></a>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lower_value</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;dcp&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lower_value</span><span class="p">:</span>
-</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Non-empty RmSystem missing a `dcp` process.&quot;</span><span class="p">)</span>
-</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41"></a>        <span class="k">return</span> <span class="n">lower_value</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18"></a>    <span class="n">availability_control</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19"></a>        <span class="s2">&quot;infer&quot;</span><span class="p">,</span> <span class="s2">&quot;leg&quot;</span><span class="p">,</span> <span class="s2">&quot;theft&quot;</span><span class="p">,</span> <span class="s2">&quot;bp&quot;</span><span class="p">,</span> <span class="s2">&quot;bp_loose&quot;</span><span class="p">,</span> <span class="s2">&quot;vn&quot;</span><span class="p">,</span> <span class="s2">&quot;none&quot;</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20"></a>    <span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;infer&quot;</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Fare class availability algorithm for carriers using this RmSystem.</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22"></a>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="sd">    The default value will infer the appropriate control based on the steps in the DCP process</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="sd">    (This is pending implementation).</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25"></a>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="sd">    Allowed values include:</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="sd">    - &quot;leg&quot; (default): Uses leg-based controls.</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="sd">    - &quot;bp&quot;: Bid price controls with strict resolution (fare must be strictly greater than bid price).</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="sd">    - &quot;bp_loose&quot;: Bid price controls with non-strict resolution (fare must be greater than *or equal to* bid price).</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="sd">    - &quot;vn&quot;: Virtual nesting.</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="sd">    - &quot;none&quot;: No controls.</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33"></a>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34"></a>    <span class="nd">@field_validator</span><span class="p">(</span><span class="s2">&quot;processes&quot;</span><span class="p">)</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35"></a>    <span class="nd">@classmethod</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36"></a>    <span class="k">def</span> <span class="nf">_require_dcp_process</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">RmProcess</span><span class="p">]):</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Ensure that every RmSystem is either empty or has a DCP process.</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38"></a>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="sd">        This validator also converts all keys to lowercase.</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41"></a>        <span class="n">lower_value</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span> <span class="n">v</span> <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="n">value</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42"></a>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lower_value</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;dcp&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">lower_value</span><span class="p">:</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Non-empty RmSystem missing a `dcp` process.&quot;</span><span class="p">)</span>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44"></a>        <span class="k">return</span> <span class="n">lower_value</span>
 </span></code></pre></div></td></tr></table></div>
             </details>
 
@@ -1763,7 +1925,7 @@
 
 </h3>
 <div class="doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">availability_control</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="s2">&quot;infer&quot;</span><span class="p">,</span> <span class="s2">&quot;leg&quot;</span><span class="p">,</span> <span class="s2">&quot;theft&quot;</span><span class="p">,</span> <span class="s2">&quot;bp&quot;</span><span class="p">,</span> <span class="s2">&quot;vn&quot;</span><span class="p">,</span> <span class="s2">&quot;none&quot;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="s2">&quot;infer&quot;</span><span class="p">,</span> <span class="s2">&quot;leg&quot;</span><span class="p">,</span> <span class="s2">&quot;theft&quot;</span><span class="p">,</span> <span class="s2">&quot;bp&quot;</span><span class="p">,</span> <span class="s2">&quot;bp_loose&quot;</span><span class="p">,</span> <span class="s2">&quot;vn&quot;</span><span class="p">,</span> <span class="s2">&quot;none&quot;</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;infer&quot;</span>
 </span></code></pre></div>
 
@@ -1774,7 +1936,8 @@
 (This is pending implementation).</p>
 <p>Allowed values include:
 - "leg" (default): Uses leg-based controls.
-- "bp": Bid price controls.
+- "bp": Bid price controls with strict resolution (fare must be strictly greater than bid price).
+- "bp_loose": Bid price controls with non-strict resolution (fare must be greater than <em>or equal to</em> bid price).
 - "vn": Virtual nesting.
 - "none": No controls.</p>
   </div>

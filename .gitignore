@@ -3,3 +3,5 @@
 Tutorials/verification/snapshots-09
 Tutorials/verification/snapshots
 Tutorials/3MKT/snapshots
+**/*.pyc
+__pycache__

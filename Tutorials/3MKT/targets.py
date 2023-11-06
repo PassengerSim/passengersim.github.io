@@ -1,6 +1,6 @@
-from passengersim import Config
-
 import verification_tools as vt
+
+from passengersim import Config
 
 
 def load(experiment_n: int, config: Config):

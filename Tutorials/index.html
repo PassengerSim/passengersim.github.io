@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../user-guide/writing-configs.html">
+        <link rel="prev" href="../user-guide/database/distance.html">
       
       
         <link rel="next" href="3MKT/3mkt-01.nbconvert.html">
@@ -337,6 +337,8 @@
       
         
       
+        
+      
     
     
     
@@ -479,6 +481,66 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../user-guide/database/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Database
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -817,6 +879,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -858,6 +924,48 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../API/simulation.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Simulation
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
               
             
               
@@ -921,6 +1029,54 @@
   
   <span class="md-ellipsis">
     Config
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../API/database/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Database
   </span>
   
 
@@ -1069,6 +1225,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#3mkt-al1" class="md-nav__link">
+    3MKT AL1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3mkt-al2" class="md-nav__link">
+    3MKT AL2
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1091,6 +1269,18 @@ PassengerSim.  These examples are built upon a very simple three market network
 with two airlines.  Each airline offers a pair of flights from BOS to ORD, and
 another pair from ORD to LAX.  Passenger demands are constructed for each single-leg
 market, as well as for the connecting market BOS-LAX.</p>
+<h2 id="3mkt-al1">3MKT AL1</h2>
+<pre class="mermaid"><code>graph LR
+    BOS--&gt;|101| ORD;
+    BOS--&gt;|102| ORD;
+    ORD--&gt;|111| LAX;
+    ORD--&gt;|112| LAX;</code></pre>
+<h2 id="3mkt-al2">3MKT AL2</h2>
+<pre class="mermaid"><code>graph LR
+    BOS--&gt;|201| ORD;
+    BOS--&gt;|202| ORD;
+    ORD--&gt;|211| LAX;
+    ORD--&gt;|212| LAX;</code></pre>
 
 
 

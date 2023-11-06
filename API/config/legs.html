@@ -337,6 +337,8 @@
       
         
       
+        
+      
     
     
     
@@ -479,6 +481,66 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../user-guide/database/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Database
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
     </li>
   
 
@@ -817,6 +879,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -858,6 +924,48 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../simulation.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Simulation
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
               
             
               
@@ -915,10 +1023,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -929,8 +1037,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
             <span class="md-nav__icon md-icon"></span>
             Config
           </label>
@@ -1246,13 +1354,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#passengersim.config.legs.create_timestamp" class="md-nav__link">
-    create_timestamp()
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1424,6 +1525,54 @@
             
           </ul>
         </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../database/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Database
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
       
     </li>
   
@@ -1650,13 +1799,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#passengersim.config.legs.create_timestamp" class="md-nav__link">
-    create_timestamp()
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1810,7 +1952,7 @@
 </span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57"></a>        <span class="k">return</span> <span class="n">v</span>
 </span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58"></a>
 </span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59"></a>    <span class="nd">@field_validator</span><span class="p">(</span><span class="s2">&quot;dep_time&quot;</span><span class="p">,</span> <span class="s2">&quot;arr_time&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;before&quot;</span><span class="p">)</span>
-</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60"></a>    <span class="k">def</span> <span class="nf">_timestring_to_int</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">info</span><span class="p">:</span> <span class="n">FieldValidationInfo</span><span class="p">):</span>
+</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60"></a>    <span class="k">def</span> <span class="nf">_timestring_to_int</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">info</span><span class="p">:</span> <span class="n">ValidationInfo</span><span class="p">):</span>
 </span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61"></a>        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;:&quot;</span> <span class="ow">in</span> <span class="n">v</span><span class="p">:</span>
 </span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62"></a>            <span class="n">dep_time_str</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
 </span><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63"></a>            <span class="n">hh</span><span class="p">,</span> <span class="n">mm</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">dep_time_str</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">dep_time_str</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
@@ -2062,41 +2204,6 @@ if the carrier is different, <code>fltno</code> values should be unique.</p>
 
 </div>
 
-
-
-<div class="doc doc-object doc-function">
-
-
-
-
-<h2 id="passengersim.config.legs.create_timestamp" class="doc doc-heading">
-          <span class="doc doc-object-name doc-function-name">create_timestamp</span>
-
-
-</h2>
-<div class="doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">create_timestamp</span><span class="p">(</span><span class="n">base_date</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">hh</span><span class="p">,</span> <span class="n">mm</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span>
-</span></code></pre></div>
-
-  <div class="doc doc-contents ">
-  
-      <p>Create Unix time from base date, offset (days) and time</p>
-
-          <details class="quote">
-            <summary>Source code in <code>passengersim/config/legs.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-0-10">10</a></span>
-<span class="normal"><a href="#__codelineno-0-11">11</a></span>
-<span class="normal"><a href="#__codelineno-0-12">12</a></span>
-<span class="normal"><a href="#__codelineno-0-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="k">def</span> <span class="nf">create_timestamp</span><span class="p">(</span><span class="n">base_date</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">hh</span><span class="p">,</span> <span class="n">mm</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Create Unix time from base date, offset (days) and time&quot;&quot;&quot;</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a>    <span class="n">td</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">offset</span><span class="p">,</span> <span class="n">hours</span><span class="o">=</span><span class="n">hh</span><span class="p">,</span> <span class="n">minutes</span><span class="o">=</span><span class="n">mm</span><span class="p">)</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a>    <span class="n">tmp</span> <span class="o">=</span> <span class="n">base_date</span> <span class="o">+</span> <span class="n">td</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a>    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">mktime</span><span class="p">(</span><span class="n">tmp</span><span class="o">.</span><span class="n">timetuple</span><span class="p">()))</span>
-</span></code></pre></div></td></tr></table></div>
-          </details>
-  </div>
-
-</div>
 
 
 
