@@ -631,6 +631,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -865,6 +871,66 @@
   
   <span class="md-ellipsis">
     ProBP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/3MKT/3mkt-11.nbconvert.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ProBP with Daily Reoptimization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/3MKT/3mkt-12.nbconvert.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ProBP Deprecated Approach
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/3MKT/3mkt-50.nbconvert.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Custom Forecaster
   </span>
   
 
@@ -1445,6 +1511,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.num_dcps" class="md-nav__link">
+    num_dcps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#passengersim_core.SimulationEngine.num_samples" class="md-nav__link">
     num_samples
   </a>
@@ -1584,6 +1657,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.add_dcp" class="md-nav__link">
+    add_dcp()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#passengersim_core.SimulationEngine.add_demand" class="md-nav__link">
     add_demand()
   </a>
@@ -1656,6 +1736,13 @@
           <li class="md-nav__item">
   <a href="#passengersim_core.SimulationEngine.final_write_to_sqlite" class="md-nav__link">
     final_write_to_sqlite()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.get_days_prior" class="md-nav__link">
+    get_days_prior()
   </a>
   
 </li>
@@ -2120,6 +2207,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.num_dcps" class="md-nav__link">
+    num_dcps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#passengersim_core.SimulationEngine.num_samples" class="md-nav__link">
     num_samples
   </a>
@@ -2259,6 +2353,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.add_dcp" class="md-nav__link">
+    add_dcp()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#passengersim_core.SimulationEngine.add_demand" class="md-nav__link">
     add_demand()
   </a>
@@ -2331,6 +2432,13 @@
           <li class="md-nav__item">
   <a href="#passengersim_core.SimulationEngine.final_write_to_sqlite" class="md-nav__link">
     final_write_to_sqlite()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.get_days_prior" class="md-nav__link">
+    get_days_prior()
   </a>
   
 </li>
@@ -2846,6 +2954,28 @@
 
 
 
+<h3 id="passengersim_core.SimulationEngine.num_dcps" class="doc doc-heading">
+          <span class="doc doc-object-name doc-attribute-name">num_dcps</span>
+
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">num_dcps</span><span class="p">:</span> <span class="nb">int</span>
+</span></code></pre></div>
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+
 <h3 id="passengersim_core.SimulationEngine.num_samples" class="doc doc-heading">
           <span class="doc doc-object-name doc-attribute-name">num_samples</span>
 
@@ -3247,6 +3377,28 @@
 
 
 
+<h3 id="passengersim_core.SimulationEngine.add_dcp" class="doc doc-heading">
+          <span class="doc doc-object-name doc-function-name">add_dcp</span>
+
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">add_dcp</span><span class="p">(</span><span class="n">dcp_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">days_prior</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Add dcp_index and days_prior.  Must be added in ascending order of dcp_index</p>
+
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+
 <h3 id="passengersim_core.SimulationEngine.add_demand" class="doc doc-heading">
           <span class="doc doc-object-name doc-function-name">add_demand</span>
 
@@ -3612,6 +3764,28 @@
   <div class="doc doc-contents ">
   
       <p>Write final summary details to sqlite</p>
+
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+
+<h3 id="passengersim_core.SimulationEngine.get_days_prior" class="doc doc-heading">
+          <span class="doc doc-object-name doc-function-name">get_days_prior</span>
+
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">get_days_prior</span><span class="p">(</span><span class="n">dcp_index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span>
+</span></code></pre></div>
+
+  <div class="doc doc-contents ">
+  
+      <p>Get days_prior for this dcp_index</p>
 
   </div>
 

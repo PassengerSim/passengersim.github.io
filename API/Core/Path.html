@@ -631,6 +631,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -865,6 +871,66 @@
   
   <span class="md-ellipsis">
     ProBP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/3MKT/3mkt-11.nbconvert.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ProBP with Daily Reoptimization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/3MKT/3mkt-12.nbconvert.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ProBP Deprecated Approach
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/3MKT/3mkt-50.nbconvert.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Custom Forecaster
   </span>
   
 
@@ -1508,8 +1574,22 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#passengersim_core.Path.fcst_mean_next_tf" class="md-nav__link">
+    fcst_mean_next_tf
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#passengersim_core.Path.fcst_std_dev" class="md-nav__link">
     fcst_std_dev
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core.Path.fcst_std_dev_next_tf" class="md-nav__link">
+    fcst_std_dev_next_tf
   </a>
   
 </li>
@@ -1961,8 +2041,22 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#passengersim_core.Path.fcst_mean_next_tf" class="md-nav__link">
+    fcst_mean_next_tf
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#passengersim_core.Path.fcst_std_dev" class="md-nav__link">
     fcst_std_dev
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core.Path.fcst_std_dev_next_tf" class="md-nav__link">
+    fcst_std_dev_next_tf
   </a>
   
 </li>
@@ -2427,6 +2521,28 @@
 
 
 
+<h2 id="passengersim_core.Path.fcst_mean_next_tf" class="doc doc-heading">
+          <span class="doc doc-object-name doc-attribute-name">fcst_mean_next_tf</span>
+
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h2>
+<div class="doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">fcst_mean_next_tf</span><span class="p">:</span> <span class="nb">float</span>
+</span></code></pre></div>
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+
 <h2 id="passengersim_core.Path.fcst_std_dev" class="doc doc-heading">
           <span class="doc doc-object-name doc-attribute-name">fcst_std_dev</span>
 
@@ -2437,6 +2553,28 @@
 
 </h2>
 <div class="doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">fcst_std_dev</span><span class="p">:</span> <span class="nb">float</span>
+</span></code></pre></div>
+
+  <div class="doc doc-contents ">
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+
+<h2 id="passengersim_core.Path.fcst_std_dev_next_tf" class="doc doc-heading">
+          <span class="doc doc-object-name doc-attribute-name">fcst_std_dev_next_tf</span>
+
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h2>
+<div class="doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">fcst_std_dev_next_tf</span><span class="p">:</span> <span class="nb">float</span>
 </span></code></pre></div>
 
   <div class="doc doc-contents ">
@@ -2918,11 +3056,13 @@
 
 </h2>
 <div class="doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">adjust_forecasts</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">last_ts</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">current_ts</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">departure_ts</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">snapshot_instruction</span><span class="p">:</span> <span class="s2">&quot;SnapshotInstruction | None&quot;</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">algorithm</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">last_ts</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">current_ts</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">end_tf_ts</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">departure_ts</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">snapshot_instruction</span><span class="p">:</span> <span class="s2">&quot;SnapshotInstruction | None&quot;</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </span></code></pre></div>
 
   <div class="doc doc-contents ">

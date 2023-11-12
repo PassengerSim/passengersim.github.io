@@ -15,7 +15,7 @@ db:
     - demand
 
 simulation_controls:
-  num_trials: 4 # 10
+  num_trials: 10
   show_progress_bar: false
 
 rm_systems:

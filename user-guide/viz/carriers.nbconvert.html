@@ -20,7 +20,7 @@
     
     
       
-        <title>Carrier-level Summary Visualizations - PassengerSim</title>
+        <title>Carrier-level Summaries - PassengerSim</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#carrier-level-summary-visualizations" class="md-skip">
+        <a href="#carrier-level-summaries" class="md-skip">
           Skip to content
         </a>
       
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Carrier-level Summary Visualizations
+              Carrier-level Summaries
             
           </span>
         </div>
@@ -611,7 +611,7 @@
           
   
   <span class="md-ellipsis">
-    Carrier-level Summary Visualizations
+    Carrier-level Summaries
   </span>
   
 
@@ -622,7 +622,7 @@
         
   
   <span class="md-ellipsis">
-    Carrier-level Summary Visualizations
+    Carrier-level Summaries
   </span>
   
 
@@ -644,11 +644,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#summaries-for-one-simulation-run" class="md-nav__link">
-    Summaries for One Simulation Run
+  <a href="#one-simulation-run" class="md-nav__link">
+    One Simulation Run
   </a>
   
-    <nav class="md-nav" aria-label="Summaries for One Simulation Run">
+    <nav class="md-nav" aria-label="One Simulation Run">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -766,6 +766,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -1024,6 +1030,66 @@
   
   <span class="md-ellipsis">
     ProBP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/3MKT/3mkt-11.nbconvert.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ProBP with Daily Reoptimization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/3MKT/3mkt-12.nbconvert.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ProBP Deprecated Approach
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/3MKT/3mkt-50.nbconvert.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Custom Forecaster
   </span>
   
 
@@ -1433,11 +1499,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#summaries-for-one-simulation-run" class="md-nav__link">
-    Summaries for One Simulation Run
+  <a href="#one-simulation-run" class="md-nav__link">
+    One Simulation Run
   </a>
   
-    <nav class="md-nav" aria-label="Summaries for One Simulation Run">
+    <nav class="md-nav" aria-label="One Simulation Run">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1946,7 +2012,8 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="carrier-level-summary-visualizations">Carrier-level Summary Visualizations<a class="anchor-link" href="#carrier-level-summary-visualizations">¶</a></h1>
+<h1 id="carrier-level-summaries">Carrier-level Summaries<a class="anchor-link" href="#carrier-level-summaries">¶</a></h1><p>This page provides an overview of the carrier-level summary visualizations
+available in PassengerSim.</p>
 </div>
 </div>
 </div>
@@ -1957,7 +2024,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="summaries-for-one-simulation-run">Summaries for One Simulation Run<a class="anchor-link" href="#summaries-for-one-simulation-run">¶</a></h2><p>The results from a simulation run are stored in a <code>SummaryTables</code> instance, which
+<h2 id="one-simulation-run">One Simulation Run<a class="anchor-link" href="#one-simulation-run">¶</a></h2><p>The results from a simulation run are stored in a <code>SummaryTables</code> instance, which
 is returned from <code>Simulation.run</code> or can be loaded from a stored database of results.
 This object has a number of methods to generate visualizations for the results
 of the simulation.</p>
@@ -2005,8 +2072,8 @@ summarytables = SummaryTables.from_sqlite("simple.sqlite", additional="*")</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="revenues">Revenues<a class="anchor-link" href="#revenues">¶</a></h3><p>Display the average revenues by carrier with
-<a href="../../API/summary.html#passengersim.summary.SummaryTables.fig_carrier_revenues"><code>SummaryTables.fig_carrier_revenues</code></a>.</p>
+<h3 id="revenues">Revenues<a class="anchor-link" href="#revenues">¶</a></h3><p><a href="../../API/summary.html#passengersim.summary.SummaryTables.fig_carrier_revenues"><code>SummaryTables.fig_carrier_revenues</code></a></p>
+<p>Display the average revenues by carrier.</p>
 </div>
 </div>
 </div>
@@ -2044,23 +2111,23 @@ summarytables = SummaryTables.from_sqlite("simple.sqlite", additional="*")</div>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-fb8f8ec662244058b6757a2a3feb8f33.vega-embed {
+  #altair-viz-9b8f5942b2474e6889da2de6687683a1.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-fb8f8ec662244058b6757a2a3feb8f33.vega-embed details,
-  #altair-viz-fb8f8ec662244058b6757a2a3feb8f33.vega-embed details summary {
+  #altair-viz-9b8f5942b2474e6889da2de6687683a1.vega-embed details,
+  #altair-viz-9b8f5942b2474e6889da2de6687683a1.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-fb8f8ec662244058b6757a2a3feb8f33"></div>
+<div id="altair-viz-9b8f5942b2474e6889da2de6687683a1"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-fb8f8ec662244058b6757a2a3feb8f33") {
-      outputDiv = document.getElementById("altair-viz-fb8f8ec662244058b6757a2a3feb8f33");
+    if (outputDiv.id !== "altair-viz-9b8f5942b2474e6889da2de6687683a1") {
+      outputDiv = document.getElementById("altair-viz-9b8f5942b2474e6889da2de6687683a1");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2106,7 +2173,7 @@ summarytables = SummaryTables.from_sqlite("simple.sqlite", additional="*")</div>
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}, "legend": {"labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Average Revenue", "type": "quantitative"}], "x": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-427ed358848a428cd59eb4ad338b6504"}, "height": 50, "title": "Carrier Revenues", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-427ed358848a428cd59eb4ad338b6504": [{"carrier": "AL1", "avg_rev": 89012.0}, {"carrier": "AL2", "avg_rev": 89211.0}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}, "legend": {"labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Average Revenue", "type": "quantitative"}], "x": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-684f078bca5d0868243ef407718845a1"}, "height": 50, "title": "Carrier Revenues", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-684f078bca5d0868243ef407718845a1": [{"carrier": "AL1", "avg_rev": 89150.0}, {"carrier": "AL2", "avg_rev": 89029.0}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
@@ -2120,9 +2187,8 @@ summarytables = SummaryTables.from_sqlite("simple.sqlite", additional="*")</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="mileage">Mileage<a class="anchor-link" href="#mileage">¶</a></h3><p>Use
-<a href="../../API/summary.html#passengersim.summary.SummaryTables.fig_carrier_mileage"><code>SummaryTables.fig_carrier_mileage</code></a>
-to display the available seat miles (ASM) and average revenue passenger miles (RPM) by carrier.</p>
+<h3 id="mileage">Mileage<a class="anchor-link" href="#mileage">¶</a></h3><p><a href="../../API/summary.html#passengersim.summary.SummaryTables.fig_carrier_mileage"><code>SummaryTables.fig_carrier_mileage</code></a></p>
+<p>Display the available seat miles (ASM) and average revenue passenger miles (RPM) by carrier.</p>
 </div>
 </div>
 </div>
@@ -2160,23 +2226,23 @@ to display the available seat miles (ASM) and average revenue passenger miles (R
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-3001470f0c6f4d89b984044be04a753e.vega-embed {
+  #altair-viz-4d1a6d9a2fae448cbc1837f68fa44284.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-3001470f0c6f4d89b984044be04a753e.vega-embed details,
-  #altair-viz-3001470f0c6f4d89b984044be04a753e.vega-embed details summary {
+  #altair-viz-4d1a6d9a2fae448cbc1837f68fa44284.vega-embed details,
+  #altair-viz-4d1a6d9a2fae448cbc1837f68fa44284.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-3001470f0c6f4d89b984044be04a753e"></div>
+<div id="altair-viz-4d1a6d9a2fae448cbc1837f68fa44284"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-3001470f0c6f4d89b984044be04a753e") {
-      outputDiv = document.getElementById("altair-viz-3001470f0c6f4d89b984044be04a753e");
+    if (outputDiv.id !== "altair-viz-4d1a6d9a2fae448cbc1837f68fa44284") {
+      outputDiv = document.getElementById("altair-viz-4d1a6d9a2fae448cbc1837f68fa44284");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2222,7 +2288,7 @@ to display the available seat miles (ASM) and average revenue passenger miles (R
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}, "legend": {"labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "measure", "type": "nominal"}, "tooltip": [{"field": "carrier", "type": "nominal"}, {"field": "measure", "type": "nominal"}, {"field": "value", "format": ".4s", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "value", "stack": null, "title": "miles", "type": "quantitative"}}, "title": "Carrier Loads"}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 5}, "encoding": {"text": {"field": "value", "format": ".4s", "type": "quantitative"}, "x": {"field": "carrier", "type": "nominal"}, "y": {"field": "value", "stack": null, "type": "quantitative"}}, "title": "Carrier Loads"}], "data": {"name": "data-81569ae76634550feb58759720037ba5"}, "height": 300, "width": 400, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-81569ae76634550feb58759720037ba5": [{"measure": "asm", "carrier": "AL1", "value": 590302.0}, {"measure": "asm", "carrier": "AL2", "value": 590302.0}, {"measure": "rpm", "carrier": "AL1", "value": 518981.0}, {"measure": "rpm", "carrier": "AL2", "value": 519970.0}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}, "legend": {"labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "measure", "type": "nominal"}, "tooltip": [{"field": "carrier", "type": "nominal"}, {"field": "measure", "type": "nominal"}, {"field": "value", "format": ".4s", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "value", "stack": null, "title": "miles", "type": "quantitative"}}, "title": "Carrier Loads"}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 5}, "encoding": {"text": {"field": "value", "format": ".4s", "type": "quantitative"}, "x": {"field": "carrier", "type": "nominal"}, "y": {"field": "value", "stack": null, "type": "quantitative"}}, "title": "Carrier Loads"}], "data": {"name": "data-dd05480f959673c92b506ec080176ad5"}, "height": 300, "width": 400, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-dd05480f959673c92b506ec080176ad5": [{"measure": "asm", "carrier": "AL1", "value": 590302.0}, {"measure": "asm", "carrier": "AL2", "value": 590302.0}, {"measure": "rpm", "carrier": "AL1", "value": 519434.0}, {"measure": "rpm", "carrier": "AL2", "value": 519781.0}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
@@ -2236,8 +2302,8 @@ to display the available seat miles (ASM) and average revenue passenger miles (R
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="load-factors">Load Factors<a class="anchor-link" href="#load-factors">¶</a></h3><p><a href="../../API/summary.html#passengersim.summary.SummaryTables.fig_carrier_load_factors"><code>SummaryTables.fig_carrier_load_factors</code></a>
-will display the average system load factors by carrier.  The system load factor
+<h3 id="load-factors">Load Factors<a class="anchor-link" href="#load-factors">¶</a></h3><p><a href="../../API/summary.html#passengersim.summary.SummaryTables.fig_carrier_load_factors"><code>SummaryTables.fig_carrier_load_factors</code></a></p>
+<p>Display the average system load factors by carrier.  The system load factor
 is calculated based on ASM and RPM figures for the carrier, which weights
 larger capacity vehicles and longer distance legs more heavily, to reflect
 their larger relative importance in evaluating carrier performance.</p>
@@ -2278,23 +2344,23 @@ their larger relative importance in evaluating carrier performance.</p>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-b35b7b63d7c347a7bfeb1bc8cad4710a.vega-embed {
+  #altair-viz-7e9a83f56a3d43a4ac43d2c055c9a52b.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-b35b7b63d7c347a7bfeb1bc8cad4710a.vega-embed details,
-  #altair-viz-b35b7b63d7c347a7bfeb1bc8cad4710a.vega-embed details summary {
+  #altair-viz-7e9a83f56a3d43a4ac43d2c055c9a52b.vega-embed details,
+  #altair-viz-7e9a83f56a3d43a4ac43d2c055c9a52b.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-b35b7b63d7c347a7bfeb1bc8cad4710a"></div>
+<div id="altair-viz-7e9a83f56a3d43a4ac43d2c055c9a52b"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-b35b7b63d7c347a7bfeb1bc8cad4710a") {
-      outputDiv = document.getElementById("altair-viz-b35b7b63d7c347a7bfeb1bc8cad4710a");
+    if (outputDiv.id !== "altair-viz-7e9a83f56a3d43a4ac43d2c055c9a52b") {
+      outputDiv = document.getElementById("altair-viz-7e9a83f56a3d43a4ac43d2c055c9a52b");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2340,7 +2406,7 @@ their larger relative importance in evaluating carrier performance.</p>
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}, "legend": {"labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "sys_lf", "format": ".2f", "title": "System Load Factor", "type": "quantitative"}], "x": {"field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "sys_lf", "format": ".2f", "type": "quantitative"}, "x": {"field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-67b269aa2adeceefe1f9b31c45da5ad1"}, "height": 50, "title": "Carrier System Load Factors", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-67b269aa2adeceefe1f9b31c45da5ad1": [{"carrier": "AL1", "sys_lf": 87.918}, {"carrier": "AL2", "sys_lf": 88.085}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}, "legend": {"labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "sys_lf", "format": ".2f", "title": "System Load Factor", "type": "quantitative"}], "x": {"field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "sys_lf", "format": ".2f", "type": "quantitative"}, "x": {"field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-55bf164029cb1cf1c381f92958b90d2d"}, "height": 50, "title": "Carrier System Load Factors", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-55bf164029cb1cf1c381f92958b90d2d": [{"carrier": "AL1", "sys_lf": 87.994}, {"carrier": "AL2", "sys_lf": 88.053}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
@@ -2394,23 +2460,23 @@ legs uniformly.</p>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-9bd94b2a041f4c4ca9422f7b7843dcea.vega-embed {
+  #altair-viz-24fae43ed7294775a238e864acb2d50d.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-9bd94b2a041f4c4ca9422f7b7843dcea.vega-embed details,
-  #altair-viz-9bd94b2a041f4c4ca9422f7b7843dcea.vega-embed details summary {
+  #altair-viz-24fae43ed7294775a238e864acb2d50d.vega-embed details,
+  #altair-viz-24fae43ed7294775a238e864acb2d50d.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-9bd94b2a041f4c4ca9422f7b7843dcea"></div>
+<div id="altair-viz-24fae43ed7294775a238e864acb2d50d"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-9bd94b2a041f4c4ca9422f7b7843dcea") {
-      outputDiv = document.getElementById("altair-viz-9bd94b2a041f4c4ca9422f7b7843dcea");
+    if (outputDiv.id !== "altair-viz-24fae43ed7294775a238e864acb2d50d") {
+      outputDiv = document.getElementById("altair-viz-24fae43ed7294775a238e864acb2d50d");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2456,7 +2522,7 @@ legs uniformly.</p>
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}, "legend": {"labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_leg_lf", "format": ".2f", "title": "Leg Load Factor", "type": "quantitative"}], "x": {"field": "avg_leg_lf", "stack": "zero", "title": "Leg Load Factor", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_leg_lf", "format": ".2f", "type": "quantitative"}, "x": {"field": "avg_leg_lf", "stack": "zero", "title": "Leg Load Factor", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-e6680f457514466fa55adf2881e63ef0"}, "height": 50, "title": "Carrier Leg Load Factors", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-e6680f457514466fa55adf2881e63ef0": [{"carrier": "AL1", "avg_leg_lf": 86.883}, {"carrier": "AL2", "avg_leg_lf": 86.926}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}, "legend": {"labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_leg_lf", "format": ".2f", "title": "Leg Load Factor", "type": "quantitative"}], "x": {"field": "avg_leg_lf", "stack": "zero", "title": "Leg Load Factor", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_leg_lf", "format": ".2f", "type": "quantitative"}, "x": {"field": "avg_leg_lf", "stack": "zero", "title": "Leg Load Factor", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-bb76b1a0c1caae8b44eab2fe4f09be82"}, "height": 50, "title": "Carrier Leg Load Factors", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-bb76b1a0c1caae8b44eab2fe4f09be82": [{"carrier": "AL1", "avg_leg_lf": 86.934}, {"carrier": "AL2", "avg_leg_lf": 86.914}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
@@ -2470,8 +2536,8 @@ legs uniformly.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="yields">Yields<a class="anchor-link" href="#yields">¶</a></h3><p>Display the average yield (revenue per passenger mile) by carrier with
-<a href="../../API/summary.html#passengersim.summary.SummaryTables.fig_carrier_yields"><code>SummaryTables.fig_carrier_yields</code></a>.</p>
+<h3 id="yields">Yields<a class="anchor-link" href="#yields">¶</a></h3><p><a href="../../API/summary.html#passengersim.summary.SummaryTables.fig_carrier_yields"><code>SummaryTables.fig_carrier_yields</code></a></p>
+<p>Display the average yield (revenue per passenger mile) by carrier.</p>
 </div>
 </div>
 </div>
@@ -2509,23 +2575,23 @@ legs uniformly.</p>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-99fad186d80b450ba4fb390dc0e6e8c3.vega-embed {
+  #altair-viz-379f554cb2134f1d8494c13b26f15b00.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-99fad186d80b450ba4fb390dc0e6e8c3.vega-embed details,
-  #altair-viz-99fad186d80b450ba4fb390dc0e6e8c3.vega-embed details summary {
+  #altair-viz-379f554cb2134f1d8494c13b26f15b00.vega-embed details,
+  #altair-viz-379f554cb2134f1d8494c13b26f15b00.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-99fad186d80b450ba4fb390dc0e6e8c3"></div>
+<div id="altair-viz-379f554cb2134f1d8494c13b26f15b00"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-99fad186d80b450ba4fb390dc0e6e8c3") {
-      outputDiv = document.getElementById("altair-viz-99fad186d80b450ba4fb390dc0e6e8c3");
+    if (outputDiv.id !== "altair-viz-379f554cb2134f1d8494c13b26f15b00") {
+      outputDiv = document.getElementById("altair-viz-379f554cb2134f1d8494c13b26f15b00");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2571,7 +2637,7 @@ legs uniformly.</p>
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}, "legend": {"labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "yield", "format": "$.4f", "title": "Average Yield", "type": "quantitative"}], "x": {"field": "yield", "stack": "zero", "title": "Average Yield", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "yield", "format": "$.4f", "type": "quantitative"}, "x": {"field": "yield", "stack": "zero", "title": "Average Yield", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-b9355091a949ce944fc36b762940b757"}, "height": 50, "title": "Carrier Yields", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-b9355091a949ce944fc36b762940b757": [{"carrier": "AL1", "yield": 0.1715}, {"carrier": "AL2", "yield": 0.1716}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}, "legend": {"labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "yield", "format": "$.4f", "title": "Average Yield", "type": "quantitative"}], "x": {"field": "yield", "stack": "zero", "title": "Average Yield", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "yield", "format": "$.4f", "type": "quantitative"}, "x": {"field": "yield", "stack": "zero", "title": "Average Yield", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-c1d2c43a86a9e195a3c2538b54744b78"}, "height": 50, "title": "Carrier Yields", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-c1d2c43a86a9e195a3c2538b54744b78": [{"carrier": "AL1", "yield": 0.1716}, {"carrier": "AL2", "yield": 0.1713}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
@@ -2585,9 +2651,8 @@ legs uniformly.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="fare-class-mix">Fare Class Mix<a class="anchor-link" href="#fare-class-mix">¶</a></h3><p>The
-<a href="../../API/summary.html#passengersim.summary.SummaryTables.fig_fare_class_mix"><code>SummaryTables.fig_fare_class_mix</code></a>
-method will display the fare class mix by carrier.</p>
+<h3 id="fare-class-mix">Fare Class Mix<a class="anchor-link" href="#fare-class-mix">¶</a></h3><p><a href="../../API/summary.html#passengersim.summary.SummaryTables.fig_fare_class_mix"><code>SummaryTables.fig_fare_class_mix</code></a></p>
+<p>Display the fare class mix by carrier.</p>
 </div>
 </div>
 </div>
@@ -2625,23 +2690,23 @@ method will display the fare class mix by carrier.</p>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-e46a7dfb5e9743d5b06c94f033da0f72.vega-embed {
+  #altair-viz-43cbc7c29eae4f4aad6dd9511e1f9e9c.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-e46a7dfb5e9743d5b06c94f033da0f72.vega-embed details,
-  #altair-viz-e46a7dfb5e9743d5b06c94f033da0f72.vega-embed details summary {
+  #altair-viz-43cbc7c29eae4f4aad6dd9511e1f9e9c.vega-embed details,
+  #altair-viz-43cbc7c29eae4f4aad6dd9511e1f9e9c.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-e46a7dfb5e9743d5b06c94f033da0f72"></div>
+<div id="altair-viz-43cbc7c29eae4f4aad6dd9511e1f9e9c"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-e46a7dfb5e9743d5b06c94f033da0f72") {
-      outputDiv = document.getElementById("altair-viz-e46a7dfb5e9743d5b06c94f033da0f72");
+    if (outputDiv.id !== "altair-viz-43cbc7c29eae4f4aad6dd9511e1f9e9c") {
+      outputDiv = document.getElementById("altair-viz-43cbc7c29eae4f4aad6dd9511e1f9e9c");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2687,7 +2752,7 @@ method will display the fare class mix by carrier.</p>
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}, "legend": {"labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "booking_class", "type": "nominal"}, "tooltip": [{"field": "carrier", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "title": "Fare Class Mix", "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 3}, "encoding": {"opacity": {"condition": {"test": "datum.avg_sold < 17.115", "value": 0}, "value": 1}, "order": {"field": "booking_class", "sort": "descending", "type": "nominal"}, "text": {"field": "avg_sold", "format": ".2f", "type": "quantitative"}, "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "title": "Fare Class Mix", "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}], "data": {"name": "data-7999a7266e00d210264ef8cc64456868"}, "height": 300, "width": 400, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-7999a7266e00d210264ef8cc64456868": [{"carrier": "AL1", "booking_class": "Y0", "avg_sold": 52.03125}, {"carrier": "AL1", "booking_class": "Y1", "avg_sold": 50.83}, {"carrier": "AL1", "booking_class": "Y2", "avg_sold": 27.97125}, {"carrier": "AL1", "booking_class": "Y3", "avg_sold": 10.9825}, {"carrier": "AL1", "booking_class": "Y4", "avg_sold": 104.61875}, {"carrier": "AL1", "booking_class": "Y5", "avg_sold": 38.81125}, {"carrier": "AL2", "booking_class": "Y0", "avg_sold": 52.7925}, {"carrier": "AL2", "booking_class": "Y1", "avg_sold": 50.2425}, {"carrier": "AL2", "booking_class": "Y2", "avg_sold": 27.525}, {"carrier": "AL2", "booking_class": "Y3", "avg_sold": 10.92}, {"carrier": "AL2", "booking_class": "Y4", "avg_sold": 104.4375}, {"carrier": "AL2", "booking_class": "Y5", "avg_sold": 39.11125}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "axis": {"labelFontSize": 12, "titleFontSize": 12}, "legend": {"labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "booking_class", "type": "nominal"}, "tooltip": [{"field": "carrier", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "title": "Fare Class Mix", "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 3}, "encoding": {"opacity": {"condition": {"test": "datum.avg_sold < 17.118", "value": 0}, "value": 1}, "order": {"field": "booking_class", "sort": "descending", "type": "nominal"}, "text": {"field": "avg_sold", "format": ".2f", "type": "quantitative"}, "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "title": "Fare Class Mix", "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}], "data": {"name": "data-a2c387466bc2fd5ce0904e6589ceafe6"}, "height": 300, "width": 400, "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-a2c387466bc2fd5ce0904e6589ceafe6": [{"carrier": "AL1", "booking_class": "Y0", "avg_sold": 52.17875}, {"carrier": "AL1", "booking_class": "Y1", "avg_sold": 50.86375}, {"carrier": "AL1", "booking_class": "Y2", "avg_sold": 28.07875}, {"carrier": "AL1", "booking_class": "Y3", "avg_sold": 10.865}, {"carrier": "AL1", "booking_class": "Y4", "avg_sold": 104.5825}, {"carrier": "AL1", "booking_class": "Y5", "avg_sold": 38.73375}, {"carrier": "AL2", "booking_class": "Y0", "avg_sold": 52.3475}, {"carrier": "AL2", "booking_class": "Y1", "avg_sold": 50.255}, {"carrier": "AL2", "booking_class": "Y2", "avg_sold": 27.65625}, {"carrier": "AL2", "booking_class": "Y3", "avg_sold": 11.19375}, {"carrier": "AL2", "booking_class": "Y4", "avg_sold": 104.6425}, {"carrier": "AL2", "booking_class": "Y5", "avg_sold": 39.04625}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
@@ -2753,8 +2818,8 @@ comps = Contrast(
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="revenues">Revenues<a class="anchor-link" href="#revenues">¶</a></h3><p>Display the average revenues by carrier with
-<a href="../../API/contrast.html#passengersim.contrast.Contrast.fig_carrier_revenues"><code>Contrast.fig_carrier_revenues</code></a>.</p>
+<h3 id="revenues">Revenues<a class="anchor-link" href="#revenues">¶</a></h3><p><a href="../../API/contrast.html#passengersim.contrast.fig_carrier_revenues"><code>Contrast.fig_carrier_revenues</code></a>.</p>
+<p>Display the average revenues by carrier.</p>
 </div>
 </div>
 </div>
@@ -2792,23 +2857,23 @@ comps = Contrast(
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-835b576ae0da4472bcd0738a41363876.vega-embed {
+  #altair-viz-fccf4768aae64b32bc017272fb31f813.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-835b576ae0da4472bcd0738a41363876.vega-embed details,
-  #altair-viz-835b576ae0da4472bcd0738a41363876.vega-embed details summary {
+  #altair-viz-fccf4768aae64b32bc017272fb31f813.vega-embed details,
+  #altair-viz-fccf4768aae64b32bc017272fb31f813.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-835b576ae0da4472bcd0738a41363876"></div>
+<div id="altair-viz-fccf4768aae64b32bc017272fb31f813"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-835b576ae0da4472bcd0738a41363876") {
-      outputDiv = document.getElementById("altair-viz-835b576ae0da4472bcd0738a41363876");
+    if (outputDiv.id !== "altair-viz-fccf4768aae64b32bc017272fb31f813") {
+      outputDiv = document.getElementById("altair-viz-fccf4768aae64b32bc017272fb31f813");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2854,7 +2919,7 @@ comps = Contrast(
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "title": {"fontSize": 18}}, "data": {"name": "data-67a63ac0fae7cd81fa542a1a1b84c58e"}, "facet": {"row": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "source", "title": "Source", "type": "nominal"}, "tooltip": [{"field": "source", "title": null, "type": "nominal"}, {"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Revenue ($)", "type": "quantitative"}, {"field": "ratio", "format": ".3%", "title": "vs Simple", "type": "quantitative"}], "x": {"field": "avg_rev", "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"field": "avg_rev", "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}], "height": 50, "width": 500}, "title": "Carrier Revenues", "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-67a63ac0fae7cd81fa542a1a1b84c58e": [{"source": "Simple", "carrier": "AL1", "avg_rev": 89012.0, "ratio": 0.0}, {"source": "Simple", "carrier": "AL2", "avg_rev": 89211.0, "ratio": 0.0}, {"source": "Untruncated", "carrier": "AL1", "avg_rev": 90170.0, "ratio": 0.013009481867613415}, {"source": "Untruncated", "carrier": "AL2", "avg_rev": 90098.0, "ratio": 0.009942720068153}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "title": {"fontSize": 18}}, "data": {"name": "data-ae1a81a59281a0ed198641a08c8ac8f4"}, "facet": {"row": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "source", "title": "Source", "type": "nominal"}, "tooltip": [{"field": "source", "title": null, "type": "nominal"}, {"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Revenue ($)", "type": "quantitative"}, {"field": "ratio", "format": ".3%", "title": "vs Simple", "type": "quantitative"}], "x": {"field": "avg_rev", "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"field": "avg_rev", "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}], "height": 50, "width": 500}, "title": "Carrier Revenues", "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-ae1a81a59281a0ed198641a08c8ac8f4": [{"source": "Simple", "carrier": "AL1", "avg_rev": 89150.0, "ratio": 0.0}, {"source": "Simple", "carrier": "AL2", "avg_rev": 89029.0, "ratio": 0.0}, {"source": "Untruncated", "carrier": "AL1", "avg_rev": 90195.0, "ratio": 0.011721817162086312}, {"source": "Untruncated", "carrier": "AL2", "avg_rev": 90236.0, "ratio": 0.013557380179492151}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
@@ -2868,7 +2933,8 @@ comps = Contrast(
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="load-factors">Load Factors<a class="anchor-link" href="#load-factors">¶</a></h3><p>Display the average system load factors by carrier.  The system load factor
+<h3 id="load-factors">Load Factors<a class="anchor-link" href="#load-factors">¶</a></h3><p><a href="../../API/contrast.html#passengersim.contrast.fig_carrier_load_factors"><code>Contrast.fig_carrier_load_factors</code></a>.</p>
+<p>Display the average system load factors by carrier.  The system load factor
 is calculated based on ASM and RPM figures for the carrier, which weights
 larger capacity vehicles and longer distance legs more heavily, to reflect
 their larger relative importance in evaluating carrier performance.</p>
@@ -2909,23 +2975,23 @@ their larger relative importance in evaluating carrier performance.</p>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-6600a3c8832d4f6b82c8d5f3953fb067.vega-embed {
+  #altair-viz-4713c6d3fadc434186bf07a9a81c3b18.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-6600a3c8832d4f6b82c8d5f3953fb067.vega-embed details,
-  #altair-viz-6600a3c8832d4f6b82c8d5f3953fb067.vega-embed details summary {
+  #altair-viz-4713c6d3fadc434186bf07a9a81c3b18.vega-embed details,
+  #altair-viz-4713c6d3fadc434186bf07a9a81c3b18.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-6600a3c8832d4f6b82c8d5f3953fb067"></div>
+<div id="altair-viz-4713c6d3fadc434186bf07a9a81c3b18"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-6600a3c8832d4f6b82c8d5f3953fb067") {
-      outputDiv = document.getElementById("altair-viz-6600a3c8832d4f6b82c8d5f3953fb067");
+    if (outputDiv.id !== "altair-viz-4713c6d3fadc434186bf07a9a81c3b18") {
+      outputDiv = document.getElementById("altair-viz-4713c6d3fadc434186bf07a9a81c3b18");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2971,7 +3037,7 @@ their larger relative importance in evaluating carrier performance.</p>
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "title": {"fontSize": 18}}, "data": {"name": "data-04b3efc7848bb2b42ee88f58e49c14c5"}, "facet": {"row": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "source", "title": "Source", "type": "nominal"}, "tooltip": [{"field": "source", "title": null, "type": "nominal"}, {"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "sys_lf", "format": ".2f", "title": "System Load Factor", "type": "quantitative"}, {"field": "ratio", "format": ".3%", "title": "vs Simple", "type": "quantitative"}], "x": {"field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "sys_lf", "format": ".2f", "type": "quantitative"}, "x": {"field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}], "height": 50, "width": 500}, "title": "Carrier System Load Factors", "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-04b3efc7848bb2b42ee88f58e49c14c5": [{"source": "Simple", "carrier": "AL1", "sys_lf": 87.918, "ratio": 0.0}, {"source": "Simple", "carrier": "AL2", "sys_lf": 88.085, "ratio": 0.0}, {"source": "Untruncated", "carrier": "AL1", "sys_lf": 87.598, "ratio": -0.0036397552264610944}, {"source": "Untruncated", "carrier": "AL2", "sys_lf": 87.563, "ratio": -0.00592609411364009}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "title": {"fontSize": 18}}, "data": {"name": "data-d766ff959ddd902bc4fb725f5dd9243e"}, "facet": {"row": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "source", "title": "Source", "type": "nominal"}, "tooltip": [{"field": "source", "title": null, "type": "nominal"}, {"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "sys_lf", "format": ".2f", "title": "System Load Factor", "type": "quantitative"}, {"field": "ratio", "format": ".3%", "title": "vs Simple", "type": "quantitative"}], "x": {"field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "sys_lf", "format": ".2f", "type": "quantitative"}, "x": {"field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}], "height": 50, "width": 500}, "title": "Carrier System Load Factors", "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-d766ff959ddd902bc4fb725f5dd9243e": [{"source": "Simple", "carrier": "AL1", "sys_lf": 87.994, "ratio": 0.0}, {"source": "Simple", "carrier": "AL2", "sys_lf": 88.053, "ratio": 0.0}, {"source": "Untruncated", "carrier": "AL1", "sys_lf": 87.659, "ratio": -0.0038070777553014246}, {"source": "Untruncated", "carrier": "AL2", "sys_lf": 87.592, "ratio": -0.005235483174905964}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
@@ -3012,23 +3078,23 @@ their larger relative importance in evaluating carrier performance.</p>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-1304c02df34440f1aabbf89f0a2a60bd.vega-embed {
+  #altair-viz-d75984b82d3b4027a59d4c814a355aed.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-1304c02df34440f1aabbf89f0a2a60bd.vega-embed details,
-  #altair-viz-1304c02df34440f1aabbf89f0a2a60bd.vega-embed details summary {
+  #altair-viz-d75984b82d3b4027a59d4c814a355aed.vega-embed details,
+  #altair-viz-d75984b82d3b4027a59d4c814a355aed.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-1304c02df34440f1aabbf89f0a2a60bd"></div>
+<div id="altair-viz-d75984b82d3b4027a59d4c814a355aed"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-1304c02df34440f1aabbf89f0a2a60bd") {
-      outputDiv = document.getElementById("altair-viz-1304c02df34440f1aabbf89f0a2a60bd");
+    if (outputDiv.id !== "altair-viz-d75984b82d3b4027a59d4c814a355aed") {
+      outputDiv = document.getElementById("altair-viz-d75984b82d3b4027a59d4c814a355aed");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -3074,7 +3140,7 @@ their larger relative importance in evaluating carrier performance.</p>
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "title": {"fontSize": 18}}, "data": {"name": "data-8e307be27c0f4777e10d5cf904987f6b"}, "facet": {"row": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "source", "title": "Source", "type": "nominal"}, "tooltip": [{"field": "source", "title": null, "type": "nominal"}, {"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_leg_lf", "format": ".2f", "title": "Leg Load factor", "type": "quantitative"}, {"field": "ratio", "format": ".3%", "title": "vs Simple", "type": "quantitative"}], "x": {"field": "avg_leg_lf", "stack": "zero", "title": "Leg Load factor", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_leg_lf", "format": ".2f", "type": "quantitative"}, "x": {"field": "avg_leg_lf", "stack": "zero", "title": "Leg Load factor", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}], "height": 50, "width": 500}, "title": "Carrier Leg Load factors", "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-8e307be27c0f4777e10d5cf904987f6b": [{"source": "Simple", "carrier": "AL1", "avg_leg_lf": 86.883, "ratio": 0.0}, {"source": "Simple", "carrier": "AL2", "avg_leg_lf": 86.926, "ratio": 0.0}, {"source": "Untruncated", "carrier": "AL1", "avg_leg_lf": 86.5, "ratio": -0.004408227156060374}, {"source": "Untruncated", "carrier": "AL2", "avg_leg_lf": 86.487, "ratio": -0.0050502726456986835}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "title": {"fontSize": 18}}, "data": {"name": "data-0ae123ed2f5d3d9b16ff9467426b0065"}, "facet": {"row": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "source", "title": "Source", "type": "nominal"}, "tooltip": [{"field": "source", "title": null, "type": "nominal"}, {"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_leg_lf", "format": ".2f", "title": "Leg Load factor", "type": "quantitative"}, {"field": "ratio", "format": ".3%", "title": "vs Simple", "type": "quantitative"}], "x": {"field": "avg_leg_lf", "stack": "zero", "title": "Leg Load factor", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_leg_lf", "format": ".2f", "type": "quantitative"}, "x": {"field": "avg_leg_lf", "stack": "zero", "title": "Leg Load factor", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}], "height": 50, "width": 500}, "title": "Carrier Leg Load factors", "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-0ae123ed2f5d3d9b16ff9467426b0065": [{"source": "Simple", "carrier": "AL1", "avg_leg_lf": 86.934, "ratio": 0.0}, {"source": "Simple", "carrier": "AL2", "avg_leg_lf": 86.914, "ratio": 0.0}, {"source": "Untruncated", "carrier": "AL1", "avg_leg_lf": 86.589, "ratio": -0.003968527848712822}, {"source": "Untruncated", "carrier": "AL2", "avg_leg_lf": 86.487, "ratio": -0.004912902409278219}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
@@ -3088,7 +3154,8 @@ their larger relative importance in evaluating carrier performance.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="yields">Yields<a class="anchor-link" href="#yields">¶</a></h3><p>Display the average yield (revenue per passenger mile) by carrier.</p>
+<h3 id="yields">Yields<a class="anchor-link" href="#yields">¶</a></h3><p><a href="../../API/contrast.html#passengersim.contrast.fig_carrier_yields"><code>Contrast.fig_carrier_yields</code></a>.</p>
+<p>Display the average yield (revenue per passenger mile) by carrier.</p>
 </div>
 </div>
 </div>
@@ -3126,23 +3193,23 @@ their larger relative importance in evaluating carrier performance.</p>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-6b3a6e2f7698480f86987b6523c1b5ab.vega-embed {
+  #altair-viz-a4015b91e2d446c9bbcb27252a55e0e0.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-6b3a6e2f7698480f86987b6523c1b5ab.vega-embed details,
-  #altair-viz-6b3a6e2f7698480f86987b6523c1b5ab.vega-embed details summary {
+  #altair-viz-a4015b91e2d446c9bbcb27252a55e0e0.vega-embed details,
+  #altair-viz-a4015b91e2d446c9bbcb27252a55e0e0.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-6b3a6e2f7698480f86987b6523c1b5ab"></div>
+<div id="altair-viz-a4015b91e2d446c9bbcb27252a55e0e0"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-6b3a6e2f7698480f86987b6523c1b5ab") {
-      outputDiv = document.getElementById("altair-viz-6b3a6e2f7698480f86987b6523c1b5ab");
+    if (outputDiv.id !== "altair-viz-a4015b91e2d446c9bbcb27252a55e0e0") {
+      outputDiv = document.getElementById("altair-viz-a4015b91e2d446c9bbcb27252a55e0e0");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -3188,7 +3255,7 @@ their larger relative importance in evaluating carrier performance.</p>
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "title": {"fontSize": 18}}, "data": {"name": "data-f3b4df513106744125ac5ffba8f8f998"}, "facet": {"row": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "source", "title": "Source", "type": "nominal"}, "tooltip": [{"field": "source", "title": null, "type": "nominal"}, {"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "yield", "format": "$.4f", "title": "Yield ($)", "type": "quantitative"}, {"field": "ratio", "format": ".3%", "title": "vs Simple", "type": "quantitative"}], "x": {"field": "yield", "stack": "zero", "title": "Yield ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "yield", "format": "$.4f", "type": "quantitative"}, "x": {"field": "yield", "stack": "zero", "title": "Yield ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}], "height": 50, "width": 500}, "title": "Carrier Yields", "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-f3b4df513106744125ac5ffba8f8f998": [{"source": "Simple", "carrier": "AL1", "yield": 0.1715, "ratio": 0.0}, {"source": "Simple", "carrier": "AL2", "yield": 0.1716, "ratio": 0.0}, {"source": "Untruncated", "carrier": "AL1", "yield": 0.1744, "ratio": 0.016909620991253593}, {"source": "Untruncated", "carrier": "AL2", "yield": 0.1743, "ratio": 0.01573426573426584}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "title": {"fontSize": 18}}, "data": {"name": "data-78b5612adc34d0b5ebc9b5ec12cdad59"}, "facet": {"row": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "source", "title": "Source", "type": "nominal"}, "tooltip": [{"field": "source", "title": null, "type": "nominal"}, {"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "yield", "format": "$.4f", "title": "Yield ($)", "type": "quantitative"}, {"field": "ratio", "format": ".3%", "title": "vs Simple", "type": "quantitative"}], "x": {"field": "yield", "stack": "zero", "title": "Yield ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "yield", "format": "$.4f", "type": "quantitative"}, "x": {"field": "yield", "stack": "zero", "title": "Yield ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}], "height": 50, "width": 500}, "title": "Carrier Yields", "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-78b5612adc34d0b5ebc9b5ec12cdad59": [{"source": "Simple", "carrier": "AL1", "yield": 0.1716, "ratio": 0.0}, {"source": "Simple", "carrier": "AL2", "yield": 0.1713, "ratio": 0.0}, {"source": "Untruncated", "carrier": "AL1", "yield": 0.1743, "ratio": 0.01573426573426584}, {"source": "Untruncated", "carrier": "AL2", "yield": 0.1745, "ratio": 0.018680677174547355}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
@@ -3202,7 +3269,8 @@ their larger relative importance in evaluating carrier performance.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="fare-class-mix">Fare Class Mix<a class="anchor-link" href="#fare-class-mix">¶</a></h3><p>Display the fare class mix by carrier.</p>
+<h3 id="fare-class-mix">Fare Class Mix<a class="anchor-link" href="#fare-class-mix">¶</a></h3><p><a href="../../API/contrast.html#passengersim.contrast.fig_fare_class_mix"><code>Contrast.fig_fare_class_mix</code></a>.</p>
+<p>Display the fare class mix by carrier.</p>
 </div>
 </div>
 </div>
@@ -3240,23 +3308,23 @@ their larger relative importance in evaluating carrier performance.</p>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-8b27d62d961643d6bf3466ed4ed2493d.vega-embed {
+  #altair-viz-51a06fb42ea1444594acff51538cc651.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-8b27d62d961643d6bf3466ed4ed2493d.vega-embed details,
-  #altair-viz-8b27d62d961643d6bf3466ed4ed2493d.vega-embed details summary {
+  #altair-viz-51a06fb42ea1444594acff51538cc651.vega-embed details,
+  #altair-viz-51a06fb42ea1444594acff51538cc651.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-8b27d62d961643d6bf3466ed4ed2493d"></div>
+<div id="altair-viz-51a06fb42ea1444594acff51538cc651"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-8b27d62d961643d6bf3466ed4ed2493d") {
-      outputDiv = document.getElementById("altair-viz-8b27d62d961643d6bf3466ed4ed2493d");
+    if (outputDiv.id !== "altair-viz-51a06fb42ea1444594acff51538cc651") {
+      outputDiv = document.getElementById("altair-viz-51a06fb42ea1444594acff51538cc651");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -3302,7 +3370,7 @@ their larger relative importance in evaluating carrier performance.</p>
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "title": {"fontSize": 18}}, "data": {"name": "data-293cb30c625561e24c82883b3e0c5c35"}, "facet": {"column": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "booking_class", "type": "nominal"}, "tooltip": [{"field": "source", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "source", "sort": ["Simple", "Untruncated"], "title": "Source", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 3}, "encoding": {"opacity": {"condition": {"test": "datum.avg_sold < 17.115", "value": 0}, "value": 1}, "order": {"field": "booking_class", "sort": "descending", "type": "nominal"}, "text": {"field": "avg_sold", "format": ".2f", "type": "quantitative"}, "x": {"field": "source", "sort": ["Simple", "Untruncated"], "title": "Source", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}], "height": 300, "width": 200}, "title": "Carrier Fare Class Mix", "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-293cb30c625561e24c82883b3e0c5c35": [{"source": "Simple", "carrier": "AL1", "booking_class": "Y0", "avg_sold": 52.03125}, {"source": "Simple", "carrier": "AL1", "booking_class": "Y1", "avg_sold": 50.83}, {"source": "Simple", "carrier": "AL1", "booking_class": "Y2", "avg_sold": 27.97125}, {"source": "Simple", "carrier": "AL1", "booking_class": "Y3", "avg_sold": 10.9825}, {"source": "Simple", "carrier": "AL1", "booking_class": "Y4", "avg_sold": 104.61875}, {"source": "Simple", "carrier": "AL1", "booking_class": "Y5", "avg_sold": 38.81125}, {"source": "Simple", "carrier": "AL2", "booking_class": "Y0", "avg_sold": 52.7925}, {"source": "Simple", "carrier": "AL2", "booking_class": "Y1", "avg_sold": 50.2425}, {"source": "Simple", "carrier": "AL2", "booking_class": "Y2", "avg_sold": 27.525}, {"source": "Simple", "carrier": "AL2", "booking_class": "Y3", "avg_sold": 10.92}, {"source": "Simple", "carrier": "AL2", "booking_class": "Y4", "avg_sold": 104.4375}, {"source": "Simple", "carrier": "AL2", "booking_class": "Y5", "avg_sold": 39.11125}, {"source": "Untruncated", "carrier": "AL1", "booking_class": "Y0", "avg_sold": 53.75875}, {"source": "Untruncated", "carrier": "AL1", "booking_class": "Y1", "avg_sold": 51.73875}, {"source": "Untruncated", "carrier": "AL1", "booking_class": "Y2", "avg_sold": 28.6025}, {"source": "Untruncated", "carrier": "AL1", "booking_class": "Y3", "avg_sold": 12.62625}, {"source": "Untruncated", "carrier": "AL1", "booking_class": "Y4", "avg_sold": 103.2175}, {"source": "Untruncated", "carrier": "AL1", "booking_class": "Y5", "avg_sold": 34.3575}, {"source": "Untruncated", "carrier": "AL2", "booking_class": "Y0", "avg_sold": 53.9425}, {"source": "Untruncated", "carrier": "AL2", "booking_class": "Y1", "avg_sold": 51.61}, {"source": "Untruncated", "carrier": "AL2", "booking_class": "Y2", "avg_sold": 28.2475}, {"source": "Untruncated", "carrier": "AL2", "booking_class": "Y3", "avg_sold": 12.45375}, {"source": "Untruncated", "carrier": "AL2", "booking_class": "Y4", "avg_sold": 103.22375}, {"source": "Untruncated", "carrier": "AL2", "booking_class": "Y5", "avg_sold": 34.8975}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "title": {"fontSize": 18}}, "data": {"name": "data-294896607f4a9c410876f59bb0e1431b"}, "facet": {"column": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "booking_class", "type": "nominal"}, "tooltip": [{"field": "source", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "source", "sort": ["Simple", "Untruncated"], "title": "Source", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 3}, "encoding": {"opacity": {"condition": {"test": "datum.avg_sold < 17.118", "value": 0}, "value": 1}, "order": {"field": "booking_class", "sort": "descending", "type": "nominal"}, "text": {"field": "avg_sold", "format": ".2f", "type": "quantitative"}, "x": {"field": "source", "sort": ["Simple", "Untruncated"], "title": "Source", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}], "height": 300, "width": 200}, "title": "Carrier Fare Class Mix", "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json", "datasets": {"data-294896607f4a9c410876f59bb0e1431b": [{"source": "Simple", "carrier": "AL1", "booking_class": "Y0", "avg_sold": 52.17875}, {"source": "Simple", "carrier": "AL1", "booking_class": "Y1", "avg_sold": 50.86375}, {"source": "Simple", "carrier": "AL1", "booking_class": "Y2", "avg_sold": 28.07875}, {"source": "Simple", "carrier": "AL1", "booking_class": "Y3", "avg_sold": 10.865}, {"source": "Simple", "carrier": "AL1", "booking_class": "Y4", "avg_sold": 104.5825}, {"source": "Simple", "carrier": "AL1", "booking_class": "Y5", "avg_sold": 38.73375}, {"source": "Simple", "carrier": "AL2", "booking_class": "Y0", "avg_sold": 52.3475}, {"source": "Simple", "carrier": "AL2", "booking_class": "Y1", "avg_sold": 50.255}, {"source": "Simple", "carrier": "AL2", "booking_class": "Y2", "avg_sold": 27.65625}, {"source": "Simple", "carrier": "AL2", "booking_class": "Y3", "avg_sold": 11.19375}, {"source": "Simple", "carrier": "AL2", "booking_class": "Y4", "avg_sold": 104.6425}, {"source": "Simple", "carrier": "AL2", "booking_class": "Y5", "avg_sold": 39.04625}, {"source": "Untruncated", "carrier": "AL1", "booking_class": "Y0", "avg_sold": 53.83125}, {"source": "Untruncated", "carrier": "AL1", "booking_class": "Y1", "avg_sold": 51.81375}, {"source": "Untruncated", "carrier": "AL1", "booking_class": "Y2", "avg_sold": 28.405}, {"source": "Untruncated", "carrier": "AL1", "booking_class": "Y3", "avg_sold": 12.83125}, {"source": "Untruncated", "carrier": "AL1", "booking_class": "Y4", "avg_sold": 103.145}, {"source": "Untruncated", "carrier": "AL1", "booking_class": "Y5", "avg_sold": 34.60625}, {"source": "Untruncated", "carrier": "AL2", "booking_class": "Y0", "avg_sold": 54.17625}, {"source": "Untruncated", "carrier": "AL2", "booking_class": "Y1", "avg_sold": 51.53}, {"source": "Untruncated", "carrier": "AL2", "booking_class": "Y2", "avg_sold": 28.1225}, {"source": "Untruncated", "carrier": "AL2", "booking_class": "Y3", "avg_sold": 12.4725}, {"source": "Untruncated", "carrier": "AL2", "booking_class": "Y4", "avg_sold": 103.29125}, {"source": "Untruncated", "carrier": "AL2", "booking_class": "Y5", "avg_sold": 34.64375}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
