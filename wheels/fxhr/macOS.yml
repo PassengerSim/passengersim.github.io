@@ -1,6 +1,6 @@
 # This is the user's environment.
 #
-# mamba env update -p ./SKY -f https://www.passengersim.com/wheels/fxhr/environment.yml
+# mamba env update -p ./SKY -f https://www.passengersim.com/wheels/fxhr/macOS.yml
 channels:
 - conda-forge
 - nodefaults
@@ -26,5 +26,5 @@ dependencies:
 - xmle
 - pip:
   - ortools
-  - https://www.passengersim.com/wheels/fxhr/passengersim_core-0.21.0-cp311-cp311-manylinux_2_31_aarch64.whl
+  - https://www.passengersim.com/wheels/fxhr/passengersim_core-0.21.0-cp311-cp311-macosx_13_0_arm64.whl
   - https://www.passengersim.com/wheels/fxhr/passengersim-0.21.0-py3-none-any.whl
