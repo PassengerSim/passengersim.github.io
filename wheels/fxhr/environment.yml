@@ -1,0 +1,30 @@
+# This is the user's environment.
+#
+# mamba env update -p ./SKY -f https://www.passengersim.com/wheels/fxhr/environment.yaml
+channels:
+- conda-forge
+- nodefaults
+dependencies:
+- python=3.11
+- pip
+- addicty
+- altair
+- cryptography
+- jupyter
+- jupyterlab
+- matplotlib
+- notebook
+- numba
+- numpy
+- openpyxl
+- ortools-python
+- pandas >=2.0,<2.1
+- pydantic >=2.0
+- pyyaml
+- scipy
+- tabulate
+- typer
+- xmle
+- pip:
+  - https://www.passengersim.com/wheels/fxhr/passengersim_core-0.21.0-cp311-cp311-manylinux_2_31_aarch64.whl
+  - https://www.passengersim.com/wheels/fxhr/passengersim-0.21.0-py3-none-any.whl
