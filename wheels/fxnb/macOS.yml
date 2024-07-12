@@ -27,5 +27,5 @@ dependencies:
 - xmle
 - pip:
   - ortools
-  - https://www.passengersim.com/wheels/fxjw/passengersim_core-0.23.0-cp311-cp311-macosx_14_0_arm64.whl
-  - https://www.passengersim.com/wheels/fxjw/passengersim-0.23.0-py3-none-any.whl
+  - https://www.passengersim.com/wheels/fxnb/passengersim_core-0.23.0-cp311-cp311-macosx_14_0_arm64.whl
+  - https://www.passengersim.com/wheels/fxnb/passengersim-0.23.0-py3-none-any.whl
