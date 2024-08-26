@@ -1,0 +1,31 @@
+# This is the user's environment.  Install it with:
+#
+#   conda env update -p ./SKY -f https://www.passengersim.com/wheels/fxpq/macOS.yml
+#
+channels:
+- conda-forge
+- nodefaults
+dependencies:
+- python=3.12
+- pip
+- addicty
+- altair
+- cryptography
+- jupyter
+- jupyterlab
+- matplotlib
+- notebook
+- numba
+- numpy
+- openpyxl
+- pandas >=2.0
+- pydantic >=2.7
+- pyyaml
+- scipy
+- tabulate
+- typer
+- xmle
+- pip:
+  - ortools
+  - https://www.passengersim.com/wheels/fxjw/passengersim_core-0.30-cp312-cp312-macosx_14_0_arm64.whl
+  - https://www.passengersim.com/wheels/fxjw/passengersim-0.30-py3-none-any.whl
