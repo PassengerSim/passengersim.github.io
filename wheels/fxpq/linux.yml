@@ -12,6 +12,7 @@ dependencies:
 - cryptography
 - jupyter
 - jupyterlab
+- jupyterlab_execute_time
 - matplotlib
 - notebook
 - numba
@@ -26,5 +27,5 @@ dependencies:
 - xmle
 - pip:
   - ortools
-  - https://www.passengersim.com/wheels/msng/passengersim_core-0.30-cp312-cp312-linux_aarch64.whl
+  - https://www.passengersim.com/wheels/fxpq/passengersim_core-0.30-cp312-cp312-linux_aarch64.whl
   - https://www.passengersim.com/wheels/fxpq/passengersim-0.30-py3-none-any.whl

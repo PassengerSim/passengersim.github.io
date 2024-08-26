@@ -13,6 +13,7 @@ dependencies:
 - cryptography
 - jupyter
 - jupyterlab
+- jupyterlab_execute_time
 - matplotlib
 - notebook
 - numba
