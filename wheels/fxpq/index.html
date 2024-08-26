@@ -1,0 +1,39 @@
+<style>
+body {
+    margin: 10px;
+}
+pre {
+    padding: 10px;
+    background-color: #fffff0;
+    border: solid black 1px;
+}
+</style>
+<body>
+<h1 id="passengersim-user-instructions">PassengerSim User Instructions</h1>
+<h2 id="install-conda-miniforge-">Install Conda (Miniforge)</h2>
+<p>If you do not already have <code>conda</code> installed on your computer, you can install 
+it by running the code below.  This should only be necessary once per computer
+(or per user account on the computer).</p>
+<pre><code class="lang-{bash}">curl -L -O <span class="hljs-string">"https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"</span>
+bash Mi<span class="hljs-symbol">niforge3</span>-$<span class="hljs-comment">(uname)</span>-$<span class="hljs-comment">(uname -m)</span>.sh
+</code></pre>
+<h2 id="install-the-environment">Install the Environment</h2>
+<p>If you are installing on MacOS, run this command in the Terminal:</p>
+<pre><code class="lang-{bash}">conda env <span class="hljs-keyword">update</span> -n SKY -<span class="hljs-keyword">f</span> http<span class="hljs-variable">s:</span>//www.passengersim.<span class="hljs-keyword">com</span>/wheels/fxpq/macOS.yml
+</code></pre>
+<p>Or, if you are installing for Linux, run this command: </p>
+<pre><code class="lang-{bash}">conda env <span class="hljs-keyword">update</span> -<span class="hljs-keyword">m</span> SKY -<span class="hljs-keyword">f</span> http<span class="hljs-variable">s:</span>//www.passengersim.<span class="hljs-keyword">com</span>/wheels/fxpq/linux.yml
+</code></pre>
+<p>The command will install a conda environment called <code>SKY</code> that contains the
+<code>passengersim</code> package. To confirm that the environment was installed correctly, 
+run the following command:</p>
+<pre><code class="lang-{bash}">conda <span class="hljs-keyword">run</span><span class="bash"> -n SKY python -m passengersim info</span>
+</code></pre>
+<p>You should see a report showing the version of the <code>passengersim</code> package that is
+installed, as well as its expiration date.</p>
+<h2 id="running-passengersim">Running PassengerSim</h2>
+<p>To use PassengerSim, first change to the directory where you want to work, then
+run Jupyter lab from your terminal like this:</p>
+<pre><code class="lang-{bash}">conda <span class="hljs-keyword">run</span><span class="bash"> -n SKY jupyter lab</span>
+</code></pre>
+</body>
