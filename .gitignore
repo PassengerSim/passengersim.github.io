@@ -5,3 +5,6 @@ Tutorials/verification/snapshots
 Tutorials/3MKT/snapshots
 **/*.pyc
 __pycache__
+*.pkl.lz4
+*.ipynb
+*.hash.txt

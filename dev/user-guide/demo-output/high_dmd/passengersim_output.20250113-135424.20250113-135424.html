@@ -1,0 +1,467 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script><script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/vega@5"></script><script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script><script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/floatthead/1.4.0/jquery.floatThead.min.js"></script><script>
+			$( document ).ready(function() {
+				var $table = $('table.floatinghead');
+				$table.floatThead({ position: 'absolute' });
+				var $tabledf = $('table.dataframe');
+				$tabledf.floatThead({ position: 'absolute' });
+			});
+			$(window).on("hashchange", function () {
+				window.scrollTo(window.scrollX, window.scrollY - 50);
+			});
+			</script><title>high_dmd</title><style>  @import url(https://fonts.googleapis.com/css?family=Roboto:400,700,500italic,100italic|Roboto+Mono:300,400,700);  .error_report {color:red; font-family:monospace;}  body {font-family: "Book-Antiqua", "Palatino", serif;}  div.xmle_title {  font-family: "Book-Antiqua", "Palatino", serif;  font-size:200%;   font-weight:900;  font-style:normal;   color: #444444; }   .xmle_signature {font-size:70%; font-weight:100; font-style:italic; font-family: Roboto, Helvetica, sans-serif;} .xmle_name_signature {font-weight:400; font-style:normal; font-family: "Roboto Slab", Roboto, Helvetica, sans-serif;}  a.parameter_reference {font-style: italic; text-decoration: none}  .strut2 {min-width:1in}  .histogram_cell { padding-top:1; padding-bottom:1; vertical-align:center; }  .dicta pre {  margin:0;  font-family:"Roboto Mono", monospace;  font-weight:300;  font-size:70%; }  .raw_log pre {  font-family:"Roboto Mono", monospace;  font-weight:300;  font-size:70%;  }  caption {     caption-side: bottom;  text-align: left;  font-family: Roboto;  font-style: italic;  font-weight: 100;  font-size: 80%; }  table.dictionary { border:0px hidden !important; border-collapse: collapse !important; } div.blurb {  margin-top: 15px;  max-width: 6.5in; }  div.note {  font-size:90%;  padding-left:1em;  padding-right:1em;  border: 1px solid #999999;  border-radius: 4px; }  p.admonition-title {  font-weight: 700; }  .tooltipped {  position: relative;  display: inline-block; }  .tooltipped .tooltiptext {  visibility: hidden;  width: 180px;  background-color: black;  color: #fff;  text-align: center;  border-radius: 6px;  padding: 5px 0;  position: absolute;  z-index: 1;  top: -5px;  left: 110%; }  .tooltipped .tooltiptext::after {  content: "";  position: absolute;  top: 50%;  right: 100%;  margin-top: -5px;  border-width: 5px;  border-style: solid;  border-color: transparent black transparent transparent; } .tooltipped:hover .tooltiptext {  visibility: visible; }       body { margin-left: 200px; }    .table_of_contents_frame { width: 187px; position: fixed; margin-left: -200px; top:0; padding-top:10px; z-index:2000;}    .table_of_contents { width: 187px; position: fixed; margin-left: -200px; font-size:85%;}    .table_of_contents_head { font-weight:700; padding-left:25px;  }    .table_of_contents ul { padding-left:25px;  }    .table_of_contents ul ul { font-size:75%; padding-left:15px; }    .xmle_signature {font-size:70%; font-weight:100; font-style:italic; font-family: Roboto, Helvetica, sans-serif; width: 170px; position: fixed; left: 0px; bottom: 0px; padding-left:20px; padding-bottom:2px; background-color:rgba(255,255,255,0.9);}    .xmle_name_signature {font-weight:400; font-style:normal; font-family: "Roboto Slab", Roboto, Helvetica, sans-serif;}    a.parameter_reference {font-style: italic; text-decoration: none}    .strut2 {min-width:2in}    .histogram_cell { padding-top:1; padding-bottom:1; vertical-align:center; }    table.floatinghead thead {background-color:#FFF;}    table.dataframe thead {background-color:#FFF;}    @media print {       body { color: #000; background: #fff; width: 100%; margin: 0; padding: 0;}       /*.table_of_contents { display: none; }*/       @page {       margin: 1in;       }       h1, h2, h3 { page-break-after: avoid; }       img { max-width: 100% !important; }       ul, img, table { page-break-inside: avoid; }       .xmle_signature {font-size:70%; font-weight:100; font-style:italic; font-family: Roboto, Helvetica, sans-serif; padding:0; background-color:#fff; position: fixed; bottom: 0;}       .xmle_name_signature {font-weight:400; font-style:normal; font-family: "Roboto Slab", Roboto, Helvetica, sans-serif;}       .xmle_signature img {display:none;}       .xmle_signature .noprint {display:none;}    }             @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap');          body {           font-family: "Roboto", Arial, Helvetica, sans-serif;           font-weight: 400;           font-style: normal;         }          div.xmle_title {           font-size: 200%;           font-family: "Roboto", Arial, Helvetica, sans-serif;           font-weight: 300;           font-style: normal;           color: goldenrod;         }          .table_of_contents {           font-size: 85%;           font-family: "Roboto", Arial, Helvetica, sans-serif;           font-weight: 400;           font-style: normal;         }          table.dataframe {           font-family: Arial, Helvetica, sans-serif;           border-collapse: collapse;         }          table.dataframe td, table.dataframe th {           border: 1px solid #ddd;           padding: 2px;         }          table.dataframe tr:nth-child(even){background-color: #f2f2f2;}          table.dataframe tr:hover {background-color: #ddd;}          table.dataframe thead th {           padding-top: 6px;           padding-bottom: 6px;           text-align: left;           background-color: goldenrod;           color: white;         }          .sticky-header {           position: sticky;           top: 0;           background: white;           z-index: 9;         }         </style></head><body><iframe class="table_of_contents_frame" style="height:calc(100% - 100px); border:none; /*background-color:rgba(128,189,1, 0.95);*/
+			  background: -webkit-linear-gradient(rgba(218,165,32, 0.95), rgba(255, 255, 255, 0.95)); /* For Safari 5.1 to 6.0 */
+			  background: -o-linear-gradient(rgba(218,165,32, 0.95), rgba(255, 255, 255, 0.95)); /* For Opera 11.1 to 12.0 */
+			  background: -moz-linear-gradient(rgba(218,165,32, 0.95), rgba(255, 255, 255, 0.95)); /* For Firefox 3.6 to 15 */
+			  background: linear-gradient(rgba(218,165,32, 0.95), rgba(255, 255, 255, 0.95)); /* Standard syntax */
+			" srcdoc="<html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;<head&gt;<script src=&quot;https://code.jquery.com/jquery-3.0.0.min.js&quot; integrity=&quot;sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=&quot; crossorigin=&quot;anonymous&quot;&gt;</script&gt;<script src=&quot;https://code.jquery.com/ui/1.11.4/jquery-ui.min.js&quot; integrity=&quot;sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw=&quot; crossorigin=&quot;anonymous&quot;&gt;</script&gt;<script src=&quot;https://cdn.jsdelivr.net/npm/vega@5&quot;&gt;</script&gt;<script src=&quot;https://cdn.jsdelivr.net/npm/vega-lite@5&quot;&gt;</script&gt;<script src=&quot;https://cdn.jsdelivr.net/npm/vega-embed@6&quot;&gt;</script&gt;<script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/floatthead/1.4.0/jquery.floatThead.min.js&quot;&gt;</script&gt;<script&gt;
+			$( document ).ready(function() {
+				var $table = $('table.floatinghead');
+				$table.floatThead({ position: 'absolute' });
+				var $tabledf = $('table.dataframe');
+				$tabledf.floatThead({ position: 'absolute' });
+			});
+			$(window).on(&quot;hashchange&quot;, function () {
+				window.scrollTo(window.scrollX, window.scrollY - 50);
+			});
+			</script&gt;<title&gt;Untitled</title&gt;<style&gt;   .table_of_contents { font-size:85%; font-family: Roboto, Arial, Helvetica, sans-serif; }   .table_of_contents a:link { text-decoration: none; }   .table_of_contents a:visited { text-decoration: none; }   .table_of_contents a:hover { text-decoration: underline; }   .table_of_contents a:active { text-decoration: underline; }   .table_of_contents_head { font-weight:700; padding-left:20px }   .table_of_contents ul { padding-left:20px; }   .table_of_contents ul ul { font-size:75%; padding-left:15px; }   ::-webkit-scrollbar {    -webkit-appearance: none;    width: 7px;   }   ::-webkit-scrollbar-thumb {    border-radius: 4px;    background-color: rgba(0,0,0,.5);    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);   </style&gt;<base target=&quot;_parent&quot;&gt;</head&gt;<body&gt;<div class=&quot;table_of_contents&quot;&gt;<p class=&quot;table_of_contents_head&quot;&gt;Table of Contents</p&gt;<div&gt;<ul&gt;<li&gt;<a href=&quot;#rx33&quot;&gt;Results</a&gt;</li&gt;<ul&gt;<li&gt;<a href=&quot;#rx34&quot;&gt;Carrier Revenues</a&gt;</li&gt;<li&gt;<a href=&quot;#rx35&quot;&gt;Carrier System Load Factors</a&gt;</li&gt;<li&gt;<a href=&quot;#rx36&quot;&gt;Carrier Yields</a&gt;</li&gt;<li&gt;<a href=&quot;#rx37&quot;&gt;Carrier Data</a&gt;</li&gt;<li&gt;<a href=&quot;#rx38&quot;&gt;Fare Class Mix</a&gt;</li&gt;<li&gt;<a href=&quot;#rx39&quot;&gt;Bookings by Timeframe and Booking Class (AL1)</a&gt;</li&gt;<li&gt;<a href=&quot;#rx40&quot;&gt;Bookings by Timeframe and Booking Class (AL2)</a&gt;</li&gt;<li&gt;<a href=&quot;#rx41&quot;&gt;Load Factor Frequency by Carrier</a&gt;</li&gt;</ul&gt;<li&gt;<a href=&quot;#rx42&quot;&gt;Run Configuration</a&gt;</li&gt;<ul&gt;<li&gt;<a href=&quot;#rx43&quot;&gt;carriers:</a&gt;</li&gt;<li&gt;<a href=&quot;#rx44&quot;&gt;rm_systems:</a&gt;</li&gt;<li&gt;<a href=&quot;#rx45&quot;&gt;simulation_controls:</a&gt;</li&gt;<li&gt;<a href=&quot;#rx46&quot;&gt;db:</a&gt;</li&gt;<li&gt;<a href=&quot;#rx47&quot;&gt;outputs:</a&gt;</li&gt;</ul&gt;<li&gt;<a href=&quot;#rx48&quot;&gt;Run Metadata</a&gt;</li&gt;</ul&gt;</div&gt;</div&gt;</body&gt;</html&gt;"></iframe><div class="xmle_html_report"><div class="xmle_title">high_dmd</div><div class="sticky-header"><h1><a name="rx33" reftxt="Results" class="toc" toclevel="1"></a>Results</h1></div><h2><a name="rx34" reftxt="Carrier Revenues" class="toc" toclevel="2"></a><span class="xmle_figure_caption xmle_caption" xmle_caption="Figure">Figure 1: </span>Carrier Revenues</h2><div class="altair-figure"><div id="vis_eq1SLLBt"></div><script type="text/javascript">vegaEmbed('#vis_eq1SLLBt', {"$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "config": {"axis": {"labelFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFont": "Roboto, Arial, sans-serif", "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFont": "Roboto, Arial, sans-serif", "titleFontSize": 12}, "range": {"Sequential": "plasma", "category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99"]}, "title": {"anchor": "start", "font": "Roboto, Arial, sans-serif", "fontSize": 18, "offset": 8}, "view": {"continuousHeight": 300, "continuousWidth": 400}}, "data": {"name": "data-720fd0db2c8610c3fc58c46aa256224d"}, "datasets": {"data-720fd0db2c8610c3fc58c46aa256224d": [{"avg_rev": 96575.25, "carrier": "AL1"}, {"avg_rev": 96319.3125, "carrier": "AL2"}]}, "height": 50, "layer": [{"encoding": {"color": {"field": "carrier", "legend": null, "title": "Carrier", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Average Revenue", "type": "quantitative"}], "x": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "mark": {"type": "bar"}}, {"encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "mark": {"align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0, "type": "text"}}], "title": "", "width": 500}).catch(console.error);</script></div><h2><a name="rx35" reftxt="Carrier System Load Factors" class="toc" toclevel="2"></a><span class="xmle_figure_caption xmle_caption" xmle_caption="Figure">Figure 2: </span>Carrier System Load Factors</h2><div class="altair-figure"><div id="vis_V6luWBz1"></div><script type="text/javascript">vegaEmbed('#vis_V6luWBz1', {"$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "config": {"axis": {"labelFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFont": "Roboto, Arial, sans-serif", "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFont": "Roboto, Arial, sans-serif", "titleFontSize": 12}, "range": {"Sequential": "plasma", "category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99"]}, "title": {"anchor": "start", "font": "Roboto, Arial, sans-serif", "fontSize": 18, "offset": 8}, "view": {"continuousHeight": 300, "continuousWidth": 400}}, "data": {"name": "data-a7b238e7dd196e8d04e361eb6f8bfe4a"}, "datasets": {"data-a7b238e7dd196e8d04e361eb6f8bfe4a": [{"carrier": "AL1", "sys_lf": 90.2574097072176}, {"carrier": "AL2", "sys_lf": 90.2837584106978}]}, "height": 50, "layer": [{"encoding": {"color": {"field": "carrier", "legend": null, "title": "Carrier", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "sys_lf", "format": ".2f", "title": "System Load Factor", "type": "quantitative"}], "x": {"field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "mark": {"type": "bar"}}, {"encoding": {"text": {"field": "sys_lf", "format": ".2f", "type": "quantitative"}, "x": {"field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "mark": {"align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0, "type": "text"}}], "title": "", "width": 500}).catch(console.error);</script></div><h2><a name="rx36" reftxt="Carrier Yields" class="toc" toclevel="2"></a><span class="xmle_figure_caption xmle_caption" xmle_caption="Figure">Figure 3: </span>Carrier Yields</h2><div class="altair-figure"><div id="vis_sQUKiX9T"></div><script type="text/javascript">vegaEmbed('#vis_sQUKiX9T', {"$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "config": {"axis": {"labelFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFont": "Roboto, Arial, sans-serif", "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFont": "Roboto, Arial, sans-serif", "titleFontSize": 12}, "range": {"Sequential": "plasma", "category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99"]}, "title": {"anchor": "start", "font": "Roboto, Arial, sans-serif", "fontSize": 18, "offset": 8}, "view": {"continuousHeight": 300, "continuousWidth": 400}}, "data": {"name": "data-30ac0cbcb35d539106561788bde3e809"}, "datasets": {"data-30ac0cbcb35d539106561788bde3e809": [{"carrier": "AL1", "yield": 0.18126266252919368}, {"carrier": "AL2", "yield": 0.18072953182186915}]}, "height": 50, "layer": [{"encoding": {"color": {"field": "carrier", "legend": null, "title": "Carrier", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "yield", "format": "$.4f", "title": "Average Yield", "type": "quantitative"}], "x": {"field": "yield", "stack": "zero", "title": "Average Yield", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "mark": {"type": "bar"}}, {"encoding": {"text": {"field": "yield", "format": "$.4f", "type": "quantitative"}, "x": {"field": "yield", "stack": "zero", "title": "Average Yield", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "mark": {"align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0, "type": "text"}}], "title": "", "width": 500}).catch(console.error);</script></div><h2><a name="rx37" reftxt="Carrier Data" class="toc" toclevel="2"></a><span class="xmle_table_caption xmle_caption" xmle_caption="Table">Table 1: </span>Carrier Data</h2><div>
+<style scoped="1">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>carrier</th>
+      <th>AL1</th>
+      <th>AL2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>control</th>
+      <td>leg</td>
+      <td>leg</td>
+    </tr>
+    <tr>
+      <th>truncation_rule</th>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>avg_rev</th>
+      <td>96575.25</td>
+      <td>96319.3125</td>
+    </tr>
+    <tr>
+      <th>avg_sold</th>
+      <td>295.945</td>
+      <td>295.68</td>
+    </tr>
+    <tr>
+      <th>avg_leg_lf</th>
+      <td>89.264063</td>
+      <td>89.307604</td>
+    </tr>
+    <tr>
+      <th>asm</th>
+      <td>590302.497298</td>
+      <td>590302.497298</td>
+    </tr>
+    <tr>
+      <th>rpm</th>
+      <td>532791.743498</td>
+      <td>532947.280553</td>
+    </tr>
+    <tr>
+      <th>ancillary_rev</th>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>avg_local_leg_pax</th>
+      <td>198.17</td>
+      <td>197.465</td>
+    </tr>
+    <tr>
+      <th>avg_total_leg_pax</th>
+      <td>393.72</td>
+      <td>393.895</td>
+    </tr>
+    <tr>
+      <th>avg_price</th>
+      <td>326.328372</td>
+      <td>325.755251</td>
+    </tr>
+    <tr>
+      <th>yield</th>
+      <td>0.181263</td>
+      <td>0.18073</td>
+    </tr>
+    <tr>
+      <th>sys_lf</th>
+      <td>90.25741</td>
+      <td>90.283758</td>
+    </tr>
+    <tr>
+      <th>local_pct_leg_pax</th>
+      <td>50.332724</td>
+      <td>50.13138</td>
+    </tr>
+    <tr>
+      <th>local_pct_bookings</th>
+      <td>66.961767</td>
+      <td>66.783347</td>
+    </tr>
+  </tbody>
+</table>
+</div><h2><a name="rx38" reftxt="Fare Class Mix" class="toc" toclevel="2"></a><span class="xmle_figure_caption xmle_caption" xmle_caption="Figure">Figure 4: </span>Fare Class Mix</h2><div class="altair-figure"><div id="vis_l0uAuous"></div><script type="text/javascript">vegaEmbed('#vis_l0uAuous', {"$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "config": {"axis": {"labelFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFont": "Roboto, Arial, sans-serif", "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFont": "Roboto, Arial, sans-serif", "titleFontSize": 12}, "range": {"Sequential": "plasma", "category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99"]}, "title": {"anchor": "start", "font": "Roboto, Arial, sans-serif", "fontSize": 18, "offset": 8}, "view": {"continuousHeight": 300, "continuousWidth": 400}}, "data": {"name": "data-0540cf7c77845faab18d37228c899be3"}, "datasets": {"data-0540cf7c77845faab18d37228c899be3": [{"avg_sold": 59.7125, "booking_class": "Y0", "carrier": "AL1"}, {"avg_sold": 56.765, "booking_class": "Y1", "carrier": "AL1"}, {"avg_sold": 31.8325, "booking_class": "Y2", "carrier": "AL1"}, {"avg_sold": 17.13, "booking_class": "Y3", "carrier": "AL1"}, {"avg_sold": 107.935, "booking_class": "Y4", "carrier": "AL1"}, {"avg_sold": 22.57, "booking_class": "Y5", "carrier": "AL1"}, {"avg_sold": 59.3725, "booking_class": "Y0", "carrier": "AL2"}, {"avg_sold": 56.635, "booking_class": "Y1", "carrier": "AL2"}, {"avg_sold": 31.5375, "booking_class": "Y2", "carrier": "AL2"}, {"avg_sold": 17.2875, "booking_class": "Y3", "carrier": "AL2"}, {"avg_sold": 107.6, "booking_class": "Y4", "carrier": "AL2"}, {"avg_sold": 23.2475, "booking_class": "Y5", "carrier": "AL2"}]}, "height": 300, "layer": [{"encoding": {"color": {"field": "booking_class", "type": "nominal"}, "tooltip": [{"field": "carrier", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "mark": {"type": "bar"}, "title": "", "transform": [{"as": "halfsold", "calculate": "datum.avg_sold / 2.0"}]}, {"encoding": {"opacity": {"condition": {"test": "datum.avg_sold < 17.757", "value": 0}, "value": 1}, "order": {"field": "booking_class", "sort": "descending", "type": "nominal"}, "text": {"field": "avg_sold", "format": ".2f", "type": "quantitative"}, "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "mark": {"baseline": "top", "color": "white", "dx": 0, "dy": 3, "type": "text"}, "title": "", "transform": [{"as": "halfsold", "calculate": "datum.avg_sold / 2.0"}]}], "title": "", "width": 400}).catch(console.error);</script></div><h2><a name="rx39" reftxt="Bookings by Timeframe and Booking Class (AL1)" class="toc" toclevel="2"></a><span class="xmle_figure_caption xmle_caption" xmle_caption="Figure">Figure 5: </span>Bookings by Timeframe and Booking Class (AL1)</h2><div class="altair-figure"><div id="vis_R5au7-jN"></div><script type="text/javascript">vegaEmbed('#vis_R5au7-jN', {"$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "config": {"axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "range": {"Sequential": "plasma", "category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99"]}, "title": {"anchor": "start", "font": "Roboto, Arial, sans-serif", "fontSize": 18, "offset": 8}, "view": {"continuousHeight": 300, "continuousWidth": 400}}, "data": {"name": "data-bfbc75bed89fd40edb7670ae89efe460"}, "datasets": {"data-bfbc75bed89fd40edb7670ae89efe460": [{"booking_class": "Y0", "bookings": 1.93, "days_prior": 1, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0025, "days_prior": 1, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 9.3325, "days_prior": 3, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.025, "days_prior": 3, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 4.83, "days_prior": 5, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.045, "days_prior": 5, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 4.9375, "days_prior": 7, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0025, "days_prior": 7, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 7.61, "days_prior": 10, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 10, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 6.095, "days_prior": 14, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 14, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 3.225, "days_prior": 17, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 17, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 2.475, "days_prior": 21, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 21, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 1.8625, "days_prior": 24, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 24, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 1.9175, "days_prior": 28, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 28, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 1.275, "days_prior": 31, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 31, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 1.855, "days_prior": 35, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 35, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 3.0425, "days_prior": 42, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 42, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 2.4125, "days_prior": 49, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 49, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 3.1125, "days_prior": 56, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 56, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 3.725, "days_prior": 63, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 63, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 1.985, "days_prior": 1, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.3025, "days_prior": 1, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 8.7775, "days_prior": 3, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.5475, "days_prior": 3, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 4.255, "days_prior": 5, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.3025, "days_prior": 5, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 4.425, "days_prior": 7, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.1075, "days_prior": 7, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 6.93, "days_prior": 10, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0975, "days_prior": 10, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 5.78, "days_prior": 14, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.06, "days_prior": 14, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 2.935, "days_prior": 17, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0175, "days_prior": 17, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 2.385, "days_prior": 21, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.02, "days_prior": 21, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 1.7, "days_prior": 24, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0075, "days_prior": 24, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 1.81, "days_prior": 28, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0025, "days_prior": 28, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 1.2, "days_prior": 31, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0, "days_prior": 31, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 1.835, "days_prior": 35, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0025, "days_prior": 35, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 2.73, "days_prior": 42, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0, "days_prior": 42, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 2.315, "days_prior": 49, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0, "days_prior": 49, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 2.85, "days_prior": 56, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0, "days_prior": 56, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 3.385, "days_prior": 63, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0, "days_prior": 63, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 2.235, "days_prior": 5, "segment": "business"}, {"booking_class": "Y2", "bookings": 2.045, "days_prior": 5, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 2.5125, "days_prior": 7, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.94, "days_prior": 7, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 4.1325, "days_prior": 10, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.575, "days_prior": 10, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 3.775, "days_prior": 14, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.88, "days_prior": 14, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 1.8425, "days_prior": 17, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.475, "days_prior": 17, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 1.5025, "days_prior": 21, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.415, "days_prior": 21, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 1.1025, "days_prior": 24, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.3325, "days_prior": 24, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 0.97, "days_prior": 28, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.1175, "days_prior": 28, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 0.6825, "days_prior": 31, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.0025, "days_prior": 31, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 0.945, "days_prior": 35, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.005, "days_prior": 35, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 1.62, "days_prior": 42, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.0025, "days_prior": 42, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 1.295, "days_prior": 49, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.0, "days_prior": 49, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 1.6225, "days_prior": 56, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.0, "days_prior": 56, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 1.805, "days_prior": 63, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.0, "days_prior": 63, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.2775, "days_prior": 10, "segment": "business"}, {"booking_class": "Y3", "bookings": 2.13, "days_prior": 10, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.33, "days_prior": 14, "segment": "business"}, {"booking_class": "Y3", "bookings": 3.695, "days_prior": 14, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.135, "days_prior": 17, "segment": "business"}, {"booking_class": "Y3", "bookings": 1.78, "days_prior": 17, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.1575, "days_prior": 21, "segment": "business"}, {"booking_class": "Y3", "bookings": 2.2575, "days_prior": 21, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.115, "days_prior": 24, "segment": "business"}, {"booking_class": "Y3", "bookings": 2.56, "days_prior": 24, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.1325, "days_prior": 28, "segment": "business"}, {"booking_class": "Y3", "bookings": 1.2375, "days_prior": 28, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.0775, "days_prior": 31, "segment": "business"}, {"booking_class": "Y3", "bookings": 0.4, "days_prior": 31, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.1475, "days_prior": 35, "segment": "business"}, {"booking_class": "Y3", "bookings": 0.3375, "days_prior": 35, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.1825, "days_prior": 42, "segment": "business"}, {"booking_class": "Y3", "bookings": 0.1475, "days_prior": 42, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.145, "days_prior": 49, "segment": "business"}, {"booking_class": "Y3", "bookings": 0.1375, "days_prior": 49, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.1825, "days_prior": 56, "segment": "business"}, {"booking_class": "Y3", "bookings": 0.125, "days_prior": 56, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.2225, "days_prior": 63, "segment": "business"}, {"booking_class": "Y3", "bookings": 0.2175, "days_prior": 63, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.1925, "days_prior": 17, "segment": "business"}, {"booking_class": "Y4", "bookings": 3.85, "days_prior": 17, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.15, "days_prior": 21, "segment": "business"}, {"booking_class": "Y4", "bookings": 5.2875, "days_prior": 21, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.1275, "days_prior": 24, "segment": "business"}, {"booking_class": "Y4", "bookings": 7.9325, "days_prior": 24, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.235, "days_prior": 28, "segment": "business"}, {"booking_class": "Y4", "bookings": 10.1125, "days_prior": 28, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.12, "days_prior": 31, "segment": "business"}, {"booking_class": "Y4", "bookings": 5.6475, "days_prior": 31, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.2375, "days_prior": 35, "segment": "business"}, {"booking_class": "Y4", "bookings": 8.87, "days_prior": 35, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.3375, "days_prior": 42, "segment": "business"}, {"booking_class": "Y4", "bookings": 13.4525, "days_prior": 42, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.3025, "days_prior": 49, "segment": "business"}, {"booking_class": "Y4", "bookings": 13.195, "days_prior": 49, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.3975, "days_prior": 56, "segment": "business"}, {"booking_class": "Y4", "bookings": 11.695, "days_prior": 56, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.49, "days_prior": 63, "segment": "business"}, {"booking_class": "Y4", "bookings": 25.3025, "days_prior": 63, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 24, "segment": "business"}, {"booking_class": "Y5", "bookings": 2.115, "days_prior": 24, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 28, "segment": "business"}, {"booking_class": "Y5", "bookings": 2.32, "days_prior": 28, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 31, "segment": "business"}, {"booking_class": "Y5", "bookings": 1.2725, "days_prior": 31, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 35, "segment": "business"}, {"booking_class": "Y5", "bookings": 1.8175, "days_prior": 35, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 42, "segment": "business"}, {"booking_class": "Y5", "bookings": 2.9525, "days_prior": 42, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 49, "segment": "business"}, {"booking_class": "Y5", "bookings": 3.3025, "days_prior": 49, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 56, "segment": "business"}, {"booking_class": "Y5", "bookings": 2.99, "days_prior": 56, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 63, "segment": "business"}, {"booking_class": "Y5", "bookings": 5.8, "days_prior": 63, "segment": "leisure"}]}, "facet": {"row": {"field": "segment", "title": "Passenger Type", "type": "nominal"}}, "spec": {"encoding": {"color": {"field": "booking_class", "title": "Booking Class", "type": "nominal"}, "tooltip": [{"field": "booking_class", "title": "Booking Class", "type": "nominal"}, {"field": "segment", "title": "Passenger Type", "type": "nominal"}, {"field": "days_prior", "title": "Days Prior", "type": "quantitative"}, {"field": "bookings", "format": ",.2f", "title": "Bookings", "type": "quantitative"}], "x": {"field": "days_prior", "scale": {"reverse": true}, "title": "Days Prior to Departure", "type": "ordinal"}, "y": {"field": "bookings", "type": "quantitative"}}, "height": 200, "mark": {"type": "bar"}, "width": 500}, "title": ""}).catch(console.error);</script></div><h2><a name="rx40" reftxt="Bookings by Timeframe and Booking Class (AL2)" class="toc" toclevel="2"></a><span class="xmle_figure_caption xmle_caption" xmle_caption="Figure">Figure 6: </span>Bookings by Timeframe and Booking Class (AL2)</h2><div class="altair-figure"><div id="vis_7v0ORsK5"></div><script type="text/javascript">vegaEmbed('#vis_7v0ORsK5', {"$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "config": {"axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "range": {"Sequential": "plasma", "category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99"]}, "title": {"anchor": "start", "font": "Roboto, Arial, sans-serif", "fontSize": 18, "offset": 8}, "view": {"continuousHeight": 300, "continuousWidth": 400}}, "data": {"name": "data-96f0afd530c76eb71a31b16d8cf35bf9"}, "datasets": {"data-96f0afd530c76eb71a31b16d8cf35bf9": [{"booking_class": "Y0", "bookings": 1.935, "days_prior": 1, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 1, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 9.835, "days_prior": 3, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.02, "days_prior": 3, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 5.0475, "days_prior": 5, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0425, "days_prior": 5, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 5.0325, "days_prior": 7, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0025, "days_prior": 7, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 7.085, "days_prior": 10, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 10, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 5.99, "days_prior": 14, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 14, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 3.1275, "days_prior": 17, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 17, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 2.415, "days_prior": 21, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 21, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 1.8025, "days_prior": 24, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 24, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 1.8275, "days_prior": 28, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 28, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 1.24, "days_prior": 31, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 31, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 1.7575, "days_prior": 35, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 35, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 3.0175, "days_prior": 42, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 42, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 2.3425, "days_prior": 49, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 49, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 3.14, "days_prior": 56, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 56, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 3.7125, "days_prior": 63, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 63, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 2.1225, "days_prior": 1, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.25, "days_prior": 1, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 8.8475, "days_prior": 3, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.5425, "days_prior": 3, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 4.435, "days_prior": 5, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.315, "days_prior": 5, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 4.6475, "days_prior": 7, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.105, "days_prior": 7, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 6.8625, "days_prior": 10, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0725, "days_prior": 10, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 5.595, "days_prior": 14, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.07, "days_prior": 14, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 2.9875, "days_prior": 17, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0175, "days_prior": 17, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 2.2825, "days_prior": 21, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.03, "days_prior": 21, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 1.6475, "days_prior": 24, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0075, "days_prior": 24, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 1.71, "days_prior": 28, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0025, "days_prior": 28, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 1.22, "days_prior": 31, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0, "days_prior": 31, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 1.53, "days_prior": 35, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0025, "days_prior": 35, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 2.81, "days_prior": 42, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0, "days_prior": 42, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 2.33, "days_prior": 49, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0, "days_prior": 49, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 2.7475, "days_prior": 56, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0025, "days_prior": 56, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 3.4425, "days_prior": 63, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0, "days_prior": 63, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 2.2625, "days_prior": 5, "segment": "business"}, {"booking_class": "Y2", "bookings": 1.92, "days_prior": 5, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 2.66, "days_prior": 7, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.9525, "days_prior": 7, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 4.2825, "days_prior": 10, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.5525, "days_prior": 10, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 3.6525, "days_prior": 14, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.88, "days_prior": 14, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 1.7225, "days_prior": 17, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.5825, "days_prior": 17, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 1.3975, "days_prior": 21, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.405, "days_prior": 21, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 0.955, "days_prior": 24, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.27, "days_prior": 24, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 0.9575, "days_prior": 28, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.1175, "days_prior": 28, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 0.7075, "days_prior": 31, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.01, "days_prior": 31, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 0.945, "days_prior": 35, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.0025, "days_prior": 35, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 1.6575, "days_prior": 42, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.0025, "days_prior": 42, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 1.29, "days_prior": 49, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.0, "days_prior": 49, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 1.4925, "days_prior": 56, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.0, "days_prior": 56, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 1.86, "days_prior": 63, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.0, "days_prior": 63, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.3025, "days_prior": 10, "segment": "business"}, {"booking_class": "Y3", "bookings": 2.09, "days_prior": 10, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.295, "days_prior": 14, "segment": "business"}, {"booking_class": "Y3", "bookings": 3.84, "days_prior": 14, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.1575, "days_prior": 17, "segment": "business"}, {"booking_class": "Y3", "bookings": 1.8075, "days_prior": 17, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.145, "days_prior": 21, "segment": "business"}, {"booking_class": "Y3", "bookings": 2.325, "days_prior": 21, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.125, "days_prior": 24, "segment": "business"}, {"booking_class": "Y3", "bookings": 2.485, "days_prior": 24, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.1125, "days_prior": 28, "segment": "business"}, {"booking_class": "Y3", "bookings": 1.395, "days_prior": 28, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.0575, "days_prior": 31, "segment": "business"}, {"booking_class": "Y3", "bookings": 0.3175, "days_prior": 31, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.1325, "days_prior": 35, "segment": "business"}, {"booking_class": "Y3", "bookings": 0.3, "days_prior": 35, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.18, "days_prior": 42, "segment": "business"}, {"booking_class": "Y3", "bookings": 0.1675, "days_prior": 42, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.11, "days_prior": 49, "segment": "business"}, {"booking_class": "Y3", "bookings": 0.1375, "days_prior": 49, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.245, "days_prior": 56, "segment": "business"}, {"booking_class": "Y3", "bookings": 0.105, "days_prior": 56, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.245, "days_prior": 63, "segment": "business"}, {"booking_class": "Y3", "bookings": 0.21, "days_prior": 63, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.21, "days_prior": 17, "segment": "business"}, {"booking_class": "Y4", "bookings": 3.67, "days_prior": 17, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.1375, "days_prior": 21, "segment": "business"}, {"booking_class": "Y4", "bookings": 5.215, "days_prior": 21, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.13, "days_prior": 24, "segment": "business"}, {"booking_class": "Y4", "bookings": 7.8725, "days_prior": 24, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.23, "days_prior": 28, "segment": "business"}, {"booking_class": "Y4", "bookings": 10.0175, "days_prior": 28, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.14, "days_prior": 31, "segment": "business"}, {"booking_class": "Y4", "bookings": 5.365, "days_prior": 31, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.1975, "days_prior": 35, "segment": "business"}, {"booking_class": "Y4", "bookings": 8.4925, "days_prior": 35, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.345, "days_prior": 42, "segment": "business"}, {"booking_class": "Y4", "bookings": 13.52, "days_prior": 42, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.325, "days_prior": 49, "segment": "business"}, {"booking_class": "Y4", "bookings": 13.41, "days_prior": 49, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.3675, "days_prior": 56, "segment": "business"}, {"booking_class": "Y4", "bookings": 11.7725, "days_prior": 56, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.5025, "days_prior": 63, "segment": "business"}, {"booking_class": "Y4", "bookings": 25.68, "days_prior": 63, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 24, "segment": "business"}, {"booking_class": "Y5", "bookings": 2.1875, "days_prior": 24, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 28, "segment": "business"}, {"booking_class": "Y5", "bookings": 2.305, "days_prior": 28, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 31, "segment": "business"}, {"booking_class": "Y5", "bookings": 1.3375, "days_prior": 31, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 35, "segment": "business"}, {"booking_class": "Y5", "bookings": 2.035, "days_prior": 35, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 42, "segment": "business"}, {"booking_class": "Y5", "bookings": 3.0, "days_prior": 42, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0025, "days_prior": 49, "segment": "business"}, {"booking_class": "Y5", "bookings": 3.1475, "days_prior": 49, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 56, "segment": "business"}, {"booking_class": "Y5", "bookings": 3.155, "days_prior": 56, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 63, "segment": "business"}, {"booking_class": "Y5", "bookings": 6.0775, "days_prior": 63, "segment": "leisure"}]}, "facet": {"row": {"field": "segment", "title": "Passenger Type", "type": "nominal"}}, "spec": {"encoding": {"color": {"field": "booking_class", "title": "Booking Class", "type": "nominal"}, "tooltip": [{"field": "booking_class", "title": "Booking Class", "type": "nominal"}, {"field": "segment", "title": "Passenger Type", "type": "nominal"}, {"field": "days_prior", "title": "Days Prior", "type": "quantitative"}, {"field": "bookings", "format": ",.2f", "title": "Bookings", "type": "quantitative"}], "x": {"field": "days_prior", "scale": {"reverse": true}, "title": "Days Prior to Departure", "type": "ordinal"}, "y": {"field": "bookings", "type": "quantitative"}}, "height": 200, "mark": {"type": "bar"}, "width": 500}, "title": ""}).catch(console.error);</script></div><h2><a name="rx41" reftxt="Load Factor Frequency by Carrier" class="toc" toclevel="2"></a><span class="xmle_figure_caption xmle_caption" xmle_caption="Figure">Figure 7: </span>Load Factor Frequency by Carrier</h2><div class="altair-figure"><div id="vis_KvEeFxIP"></div><script type="text/javascript">vegaEmbed('#vis_KvEeFxIP', {"$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "config": {"axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "range": {"Sequential": "plasma", "category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99"]}, "title": {"anchor": "start", "font": "Roboto, Arial, sans-serif", "fontSize": 18, "offset": 8}, "view": {"continuousHeight": 300, "continuousWidth": 400}}, "data": {"name": "data-4d604b72da8d8f14eaadcbb15f137df5"}, "datasets": {"data-4d604b72da8d8f14eaadcbb15f137df5": [{"avg_load_factor_category": "0-24", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "25-29", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "30-34", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "35-39", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "40-44", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "45-49", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "50-54", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "55-59", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "60-64", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "65-69", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "70-74", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "75-79", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "80-84", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "85-89", "carrier": "AL1", "frequency": 2}, {"avg_load_factor_category": "90-94", "carrier": "AL1", "frequency": 2}, {"avg_load_factor_category": "95-100", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "0-24", "carrier": "AL2", "frequency": 0}, {"avg_load_factor_category": "25-29", "carrier": "AL2", "frequency": 0}, {"avg_load_factor_category": "30-34", "carrier": "AL2", "frequency": 0}, {"avg_load_factor_category": "35-39", "carrier": "AL2", "frequency": 0}, {"avg_load_factor_category": "40-44", "carrier": "AL2", "frequency": 0}, {"avg_load_factor_category": "45-49", "carrier": "AL2", "frequency": 0}, {"avg_load_factor_category": "50-54", "carrier": "AL2", "frequency": 0}, {"avg_load_factor_category": "55-59", "carrier": "AL2", "frequency": 0}, {"avg_load_factor_category": "60-64", "carrier": "AL2", "frequency": 0}, {"avg_load_factor_category": "65-69", "carrier": "AL2", "frequency": 0}, {"avg_load_factor_category": "70-74", "carrier": "AL2", "frequency": 0}, {"avg_load_factor_category": "75-79", "carrier": "AL2", "frequency": 0}, {"avg_load_factor_category": "80-84", "carrier": "AL2", "frequency": 0}, {"avg_load_factor_category": "85-89", "carrier": "AL2", "frequency": 2}, {"avg_load_factor_category": "90-94", "carrier": "AL2", "frequency": 2}, {"avg_load_factor_category": "95-100", "carrier": "AL2", "frequency": 0}]}, "encoding": {"color": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "facet": {"columns": 2, "field": "carrier", "title": "Carrier", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_load_factor_category", "title": "Load Factor Range", "type": "ordinal"}, {"field": "frequency", "title": "Count", "type": "quantitative"}], "x": {"field": "avg_load_factor_category", "sort": ["0-24", "25-29", "30-34", "35-39", "40-44", "45-49", "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80-84", "85-89", "90-94", "95-100"], "title": "Load Factor Range", "type": "ordinal"}, "y": {"field": "frequency", "title": "Count", "type": "quantitative"}}, "height": 250, "mark": {"type": "bar"}, "title": "", "width": 300}).catch(console.error);</script></div><div class="sticky-header"><h1><a name="rx42" reftxt="Run Configuration" class="toc" toclevel="1"></a>Run Configuration</h1></div><h2><a name="rx43" reftxt="carriers:" class="toc" toclevel="2"></a>carriers:</h2><pre>  AL1:
+    ancillaries: {}
+    brand_preference: 1.0
+    classes:
+    - Y0
+    - Y1
+    - Y2
+    - Y3
+    - Y4
+    - Y5
+    continuous_pricing: None
+    control: ''
+    cp_bounds: 0.5
+    cp_quantize: 0
+    cp_record: highest_closed
+    cp_scale: 1.0
+    fare_adjustment_scale: 1.0
+    frat5: ''
+    load_factor_curve: null
+    name: AL1
+    rm_system: rm_test1
+    truncation_rule: 3
+  AL2:
+    ancillaries: {}
+    brand_preference: 1.0
+    classes:
+    - Y0
+    - Y1
+    - Y2
+    - Y3
+    - Y4
+    - Y5
+    continuous_pricing: None
+    control: ''
+    cp_bounds: 0.5
+    cp_quantize: 0
+    cp_record: highest_closed
+    cp_scale: 1.0
+    fare_adjustment_scale: 1.0
+    frat5: ''
+    load_factor_curve: null
+    name: AL2
+    rm_system: rm_test1
+    truncation_rule: 3
+  </pre><h2><a name="rx44" reftxt="rm_systems:" class="toc" toclevel="2"></a>rm_systems:</h2><pre>  rm_no_detruncation:
+    availability_control: leg
+    name: rm_no_detruncation
+    processes:
+      dcp:
+      - algorithm: none
+        debug_filters: []
+        initialization_method: default
+        kind: leg
+        maxiter: 20
+        minimum_mu: 0.01
+        minimum_sigma: 0.1
+        name: untruncation
+        step_type: untruncation
+        tolerance: 0.01
+      - algorithm: additive_pickup
+        alpha: 0.1
+        debug_filters: []
+        detruncation_algorithm: em
+        fare_adjustment: null
+        fare_adjustment_scale: 1.0
+        kind: leg
+        max_cap: 10.0
+        name: forecast
+        step_type: forecast
+        weighted_by_ratio: true
+      - algorithm: emsrb
+        debug_filters: []
+        kind: leg
+        name: optimization
+        snapshot_filters: []
+        step_type: emsr
+  rm_test1:
+    availability_control: leg
+    name: rm_test1
+    processes:
+      dcp:
+      - algorithm: em
+        debug_filters: []
+        initialization_method: default
+        kind: leg
+        maxiter: 20
+        minimum_mu: 0.01
+        minimum_sigma: 0.1
+        name: untruncation
+        step_type: untruncation
+        tolerance: 0.01
+      - algorithm: additive_pickup
+        alpha: 0.15
+        debug_filters: []
+        detruncation_algorithm: em
+        fare_adjustment: null
+        fare_adjustment_scale: 1.0
+        kind: leg
+        max_cap: 10.0
+        name: forecast
+        step_type: forecast
+        weighted_by_ratio: true
+      - algorithm: emsrb
+        debug_filters: []
+        kind: leg
+        name: optimization
+        snapshot_filters: []
+        step_type: emsr
+  rm_test2:
+    availability_control: bp
+    name: rm_test2
+    processes:
+      dcp:
+      - algorithm: em
+        debug_filters: []
+        initialization_method: default
+        kind: path
+        maxiter: 20
+        minimum_mu: 0.01
+        minimum_sigma: 0.1
+        name: untruncation
+        step_type: untruncation
+        tolerance: 0.01
+      - algorithm: exp_smoothing
+        alpha: 0.15
+        debug_filters: []
+        detruncation_algorithm: em
+        fare_adjustment: null
+        fare_adjustment_scale: 1.0
+        kind: path
+        max_cap: 10.0
+        name: path_forecast
+        step_type: forecast
+        weighted_by_ratio: true
+      - bid_price_vector: false
+        debug_filters: []
+        kind: path
+        maxiter: 10
+        name: optimization
+        snapshot_filters: []
+        step_type: probp
+        use_adjusted_fares: false
+      - debug_filters: []
+        name: aggregate
+        step_type: aggregation
+      - algorithm: emsrb
+        debug_filters: []
+        kind: leg
+        name: optimization
+        snapshot_filters: []
+        step_type: emsr
+  </pre><h2><a name="rx45" reftxt="simulation_controls:" class="toc" toclevel="2"></a>simulation_controls:</h2><pre>  base_date: '2020-03-01'
+  burn_samples: 100
+  capacity_multiplier: 1.0
+  capture_choice_set_file: ''
+  capture_choice_set_obs: null
+  capture_competitor_data: false
+  controller_time_zone: -21600
+  dcp_hour: 0.0
+  debug_availability: false
+  debug_choice: false
+  debug_connections: false
+  debug_events: false
+  debug_fares: false
+  debug_offers: false
+  debug_orders: false
+  demand_multiplier: 1.1
+  disable_ap: false
+  double_capacity_until: null
+  dwm_lite: false
+  generate_3seg: false
+  manual_paths: false
+  max_connect_time: 120
+  mkt_k_factor: 0.15
+  num_samples: 500
+  num_trials: 1
+  pax_type_k_factor: 0.0
+  prorate_revenue: true
+  random_seed: 42
+  show_progress_bar: true
+  simple_k_factor: 0.2
+  sys_k_factor: 0.1
+  tf_k_factor: 0.1
+  tf_z_factor: 1.0
+  timeframe_demand_allocation: pods
+  tot_z_factor: 2.0
+  update_frequency: null
+  use_3seg: false
+  write_raw_files: false
+  </pre><h2><a name="rx46" reftxt="db:" class="toc" toclevel="2"></a>db:</h2><pre>  commit_count_delay: 250
+  dcp_write_hooks: []
+  engine: sqlite
+  fast: true
+  filename: ':memory:'
+  pragmas: []
+  store_displacements: true
+  store_leg_bid_prices: true
+  write_items: !!set
+    bookings: null
+    bucket: null
+    demand: null
+    fare: null
+    leg: null
+    pathclass: null
+  </pre><h2><a name="rx47" reftxt="outputs:" class="toc" toclevel="2"></a>outputs:</h2><pre>  excel: null
+  html:
+    bid_price_history: true
+    bookings_by_timeframe: true
+    carrier_load_factors: true
+    carrier_revenue_distribution: false
+    carrier_revenues: true
+    carrier_table: true
+    carrier_yields: true
+    configs:
+    - carriers
+    - rm_systems
+    - simulation_controls
+    - db
+    - outputs
+    displacement_history: true
+    fare_class_mix: true
+    filename: demo-output/high_dmd/passengersim_output
+    leg_load_factor_distribution: true
+    metadata: true
+    other: []
+    title: high_dmd
+  log_reports: false
+  pickle: demo-output/high_dmd/passengersim_output
+  reports:
+  - bookings_by_timeframe
+  - carrier_history
+  - demand_to_come
+  - fare_class_mix
+  - leg_forecasts
+  - load_factors
+  - total_demand
+  </pre><div class="sticky-header"><h1><a name="rx48" reftxt="Run Metadata" class="toc" toclevel="1"></a>Run Metadata</h1></div><div>
+<style scoped="1">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>key</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>time.created</td>
+      <td>2025-01-13T19:54:23.962320+00:00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>machine.system</td>
+      <td>Darwin</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>machine.release</td>
+      <td>24.1.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>machine.version</td>
+      <td>Darwin Kernel Version 24.1.0: Thu Oct 10 21:02...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>machine.machine</td>
+      <td>arm64</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>machine.processor</td>
+      <td>arm</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>machine.architecture</td>
+      <td>(64bit, )</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>machine.node</td>
+      <td>Nightshade.local</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>machine.platform</td>
+      <td>macOS-15.1.1-arm64-arm-64bit</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>machine.python_version</td>
+      <td>3.12.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>machine.cpu_count</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>version.passengersim</td>
+      <td>0.42.dev37+gf0e367c</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>version.passengersim_core</td>
+      <td>0.42.dev89+g5ac994e</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>time.started</td>
+      <td>2025-01-13T19:54:19.651049+00:00</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>time.runtime</td>
+      <td>4.335751</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>time.finished</td>
+      <td>2025-01-13T19:54:23.986800+00:00</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="xmle_signature"><p><span class="xmle_name_signature">PassengerSim v0.42.dev37+gf0e367c<br>Core v0.42.dev89+g5ac994e</span><br>Report generated on <br class="noprint">Monday 13 January 2025 <br class="noprint">01:54:24 PM</p></div></body></html>

@@ -1,0 +1,4563 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="index.html">
+      
+      
+        <link rel="next" href="Carrier.html">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>Simulation Engine - PassengerSim</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+      
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#simulation-engine" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="PassengerSim" class="md-header__button md-logo" aria-label="PassengerSim" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.35 5.64c-.9-.64-1.12-1.88-.49-2.79.64-.9 1.88-1.12 2.79-.49.9.64 1.12 1.88.49 2.79-.64.9-1.88 1.12-2.79.49M16 19H8.93c-1.48 0-2.74-1.08-2.96-2.54L4 7H2l2 9.76A4.99 4.99 0 0 0 8.94 21H16m.23-6h-4.88l-1.03-4.1c1.58.89 3.28 1.54 5.15 1.22V10c-1.63.3-3.44-.28-4.69-1.26L9.14 7.47c-.23-.18-.49-.3-.76-.38a2.2 2.2 0 0 0-.99-.06h-.02a2.27 2.27 0 0 0-1.84 2.61l1.35 5.92A2.99 2.99 0 0 0 9.83 18h6.85l3.82 3 1.5-1.5"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PassengerSim
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Simulation Engine
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/PassengerSim/passengersim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    PassengerSim/passengersim
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../user-guide/installation.html" class="md-tabs__link">
+          
+  
+    
+  
+  User Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Tutorials/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../index.html" class="md-tabs__link">
+          
+  
+    
+  
+  API
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="PassengerSim" class="md-nav__button md-logo" aria-label="PassengerSim" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.35 5.64c-.9-.64-1.12-1.88-.49-2.79.64-.9 1.88-1.12 2.79-.49.9.64 1.12 1.88.49 2.79-.64.9-1.88 1.12-2.79.49M16 19H8.93c-1.48 0-2.74-1.08-2.96-2.54L4 7H2l2 9.76A4.99 4.99 0 0 0 8.94 21H16m.23-6h-4.88l-1.03-4.1c1.58.89 3.28 1.54 5.15 1.22V10c-1.63.3-3.44-.28-4.69-1.26L9.14 7.47c-.23-.18-.49-.3-.76-.38a2.2 2.2 0 0 0-.99-.06h-.02a2.27 2.27 0 0 0-1.84 2.61l1.35 5.92A2.99 2.99 0 0 0 9.83 18h6.85l3.82 3 1.5-1.5"/></svg>
+
+    </a>
+    PassengerSim
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/PassengerSim/passengersim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    PassengerSim/passengersim
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../user-guide/installation.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    User Guide
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Tutorials/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Tutorials
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    API
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../simulation.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Simulation
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../config/00-configs.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Config
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../database/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Database
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../summary.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Summary Results
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contrast.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contrasting Results
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Core
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Core
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Simulation Engine
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="00-SimulationEngine.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Simulation Engine
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine" class="md-nav__link">
+    <span class="md-ellipsis">
+      SimulationEngine
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attributes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Attributes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.base_time" class="md-nav__link">
+    <span class="md-ellipsis">
+      base_time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.bucketnames" class="md-nav__link">
+    <span class="md-ellipsis">
+      bucketnames
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.buckets" class="md-nav__link">
+    <span class="md-ellipsis">
+      buckets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.burn_samples" class="md-nav__link">
+    <span class="md-ellipsis">
+      burn_samples
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.carriers" class="md-nav__link">
+    <span class="md-ellipsis">
+      carriers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.choice_set_sampling_probability" class="md-nav__link">
+    <span class="md-ellipsis">
+      choice_set_sampling_probability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.config" class="md-nav__link">
+    <span class="md-ellipsis">
+      config
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.demands" class="md-nav__link">
+    <span class="md-ellipsis">
+      demands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.disable_ap" class="md-nav__link">
+    <span class="md-ellipsis">
+      disable_ap
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.dwm_lite" class="md-nav__link">
+    <span class="md-ellipsis">
+      dwm_lite
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.fares" class="md-nav__link">
+    <span class="md-ellipsis">
+      fares
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.iteration" class="md-nav__link">
+    <span class="md-ellipsis">
+      iteration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.last_dcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      last_dcp
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.last_dcp_index" class="md-nav__link">
+    <span class="md-ellipsis">
+      last_dcp_index
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.last_event_time" class="md-nav__link">
+    <span class="md-ellipsis">
+      last_event_time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.legs" class="md-nav__link">
+    <span class="md-ellipsis">
+      legs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.manual_paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      manual_paths
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.markets" class="md-nav__link">
+    <span class="md-ellipsis">
+      markets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.max_connect_time" class="md-nav__link">
+    <span class="md-ellipsis">
+      max_connect_time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.mkt_k_factor" class="md-nav__link">
+    <span class="md-ellipsis">
+      mkt_k_factor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.name" class="md-nav__link">
+    <span class="md-ellipsis">
+      name
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.num_dcps" class="md-nav__link">
+    <span class="md-ellipsis">
+      num_dcps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.num_samples" class="md-nav__link">
+    <span class="md-ellipsis">
+      num_samples
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.num_trials" class="md-nav__link">
+    <span class="md-ellipsis">
+      num_trials
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.num_trials_completed" class="md-nav__link">
+    <span class="md-ellipsis">
+      num_trials_completed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.pathclasses" class="md-nav__link">
+    <span class="md-ellipsis">
+      pathclasses
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      paths
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.pax_type_k_factor" class="md-nav__link">
+    <span class="md-ellipsis">
+      pax_type_k_factor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.prorate_revenue" class="md-nav__link">
+    <span class="md-ellipsis">
+      prorate_revenue
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.random_generator" class="md-nav__link">
+    <span class="md-ellipsis">
+      random_generator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.revenue" class="md-nav__link">
+    <span class="md-ellipsis">
+      revenue
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.rm_start_sample" class="md-nav__link">
+    <span class="md-ellipsis">
+      rm_start_sample
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.sample" class="md-nav__link">
+    <span class="md-ellipsis">
+      sample
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.save_timeframe_details" class="md-nav__link">
+    <span class="md-ellipsis">
+      save_timeframe_details
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.snapshot_filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      snapshot_filters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.sys_k_factor" class="md-nav__link">
+    <span class="md-ellipsis">
+      sys_k_factor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.tf_k_factor" class="md-nav__link">
+    <span class="md-ellipsis">
+      tf_k_factor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.tf_z_factor" class="md-nav__link">
+    <span class="md-ellipsis">
+      tf_z_factor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.trial" class="md-nav__link">
+    <span class="md-ellipsis">
+      trial
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      __init__
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine._book_offer" class="md-nav__link">
+    <span class="md-ellipsis">
+      _book_offer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine._get_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      _get_event
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.add_airport" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_airport
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.add_carrier" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_carrier
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.add_dcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_dcp
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.add_demand" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_demand
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.add_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_event
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.add_fare" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_fare
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.add_frat5" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_frat5
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.add_leg" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_leg
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.add_path" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_path
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.allocate_demand_to_tf" class="md-nav__link">
+    <span class="md-ellipsis">
+      allocate_demand_to_tf
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.allocate_demand_to_tf_pods" class="md-nav__link">
+    <span class="md-ellipsis">
+      allocate_demand_to_tf_pods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.build_connections" class="md-nav__link">
+    <span class="md-ellipsis">
+      build_connections
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.build_expiration" class="md-nav__link">
+    <span class="md-ellipsis">
+      build_expiration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.choice_set_columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      choice_set_columns
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.clear_choice_set" class="md-nav__link">
+    <span class="md-ellipsis">
+      clear_choice_set
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.compute_hhi" class="md-nav__link">
+    <span class="md-ellipsis">
+      compute_hhi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.distribution_local_leg_passengers" class="md-nav__link">
+    <span class="md-ellipsis">
+      distribution_local_leg_passengers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.final_write_to_sqlite" class="md-nav__link">
+    <span class="md-ellipsis">
+      final_write_to_sqlite
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.fraction_local_by_carrier_and_place" class="md-nav__link">
+    <span class="md-ellipsis">
+      fraction_local_by_carrier_and_place
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.get_airport_carrier_share" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_airport_carrier_share
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.get_choice_set" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_choice_set
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.get_days_prior" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_days_prior
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.get_preferred_carrier" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_preferred_carrier
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.go" class="md-nav__link">
+    <span class="md-ellipsis">
+      go
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.license_info" class="md-nav__link">
+    <span class="md-ellipsis">
+      license_info
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.num_events" class="md-nav__link">
+    <span class="md-ellipsis">
+      num_events
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.path_2_leg" class="md-nav__link">
+    <span class="md-ellipsis">
+      path_2_leg
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.record_daily_statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      record_daily_statistics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.record_dcp_statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      record_dcp_statistics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.record_departure_statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      record_departure_statistics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.reset_counters" class="md-nav__link">
+    <span class="md-ellipsis">
+      reset_counters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.set_parm" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_parm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.shop" class="md-nav__link">
+    <span class="md-ellipsis">
+      shop
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.update_db_write_flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      update_db_write_flags
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.validate_license" class="md-nav__link">
+    <span class="md-ellipsis">
+      validate_license
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.write_to_sqlite" class="md-nav__link">
+    <span class="md-ellipsis">
+      write_to_sqlite
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Carrier.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Carrier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="BookingCurves.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Booking Curves
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Bucket.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bucket
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ChoiceModel.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Choice Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Demand.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Demand
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Fare.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Generator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Leg.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Leg
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Path.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Path
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="PathClass.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Path Class
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine" class="md-nav__link">
+    <span class="md-ellipsis">
+      SimulationEngine
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Attributes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Attributes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.base_time" class="md-nav__link">
+    <span class="md-ellipsis">
+      base_time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.bucketnames" class="md-nav__link">
+    <span class="md-ellipsis">
+      bucketnames
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.buckets" class="md-nav__link">
+    <span class="md-ellipsis">
+      buckets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.burn_samples" class="md-nav__link">
+    <span class="md-ellipsis">
+      burn_samples
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.carriers" class="md-nav__link">
+    <span class="md-ellipsis">
+      carriers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.choice_set_sampling_probability" class="md-nav__link">
+    <span class="md-ellipsis">
+      choice_set_sampling_probability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.config" class="md-nav__link">
+    <span class="md-ellipsis">
+      config
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.demands" class="md-nav__link">
+    <span class="md-ellipsis">
+      demands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.disable_ap" class="md-nav__link">
+    <span class="md-ellipsis">
+      disable_ap
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.dwm_lite" class="md-nav__link">
+    <span class="md-ellipsis">
+      dwm_lite
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.fares" class="md-nav__link">
+    <span class="md-ellipsis">
+      fares
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.iteration" class="md-nav__link">
+    <span class="md-ellipsis">
+      iteration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.last_dcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      last_dcp
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.last_dcp_index" class="md-nav__link">
+    <span class="md-ellipsis">
+      last_dcp_index
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.last_event_time" class="md-nav__link">
+    <span class="md-ellipsis">
+      last_event_time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.legs" class="md-nav__link">
+    <span class="md-ellipsis">
+      legs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.manual_paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      manual_paths
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.markets" class="md-nav__link">
+    <span class="md-ellipsis">
+      markets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.max_connect_time" class="md-nav__link">
+    <span class="md-ellipsis">
+      max_connect_time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.mkt_k_factor" class="md-nav__link">
+    <span class="md-ellipsis">
+      mkt_k_factor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.name" class="md-nav__link">
+    <span class="md-ellipsis">
+      name
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.num_dcps" class="md-nav__link">
+    <span class="md-ellipsis">
+      num_dcps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.num_samples" class="md-nav__link">
+    <span class="md-ellipsis">
+      num_samples
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.num_trials" class="md-nav__link">
+    <span class="md-ellipsis">
+      num_trials
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.num_trials_completed" class="md-nav__link">
+    <span class="md-ellipsis">
+      num_trials_completed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.pathclasses" class="md-nav__link">
+    <span class="md-ellipsis">
+      pathclasses
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      paths
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.pax_type_k_factor" class="md-nav__link">
+    <span class="md-ellipsis">
+      pax_type_k_factor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.prorate_revenue" class="md-nav__link">
+    <span class="md-ellipsis">
+      prorate_revenue
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.random_generator" class="md-nav__link">
+    <span class="md-ellipsis">
+      random_generator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.revenue" class="md-nav__link">
+    <span class="md-ellipsis">
+      revenue
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.rm_start_sample" class="md-nav__link">
+    <span class="md-ellipsis">
+      rm_start_sample
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.sample" class="md-nav__link">
+    <span class="md-ellipsis">
+      sample
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.save_timeframe_details" class="md-nav__link">
+    <span class="md-ellipsis">
+      save_timeframe_details
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.snapshot_filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      snapshot_filters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.sys_k_factor" class="md-nav__link">
+    <span class="md-ellipsis">
+      sys_k_factor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.tf_k_factor" class="md-nav__link">
+    <span class="md-ellipsis">
+      tf_k_factor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.tf_z_factor" class="md-nav__link">
+    <span class="md-ellipsis">
+      tf_z_factor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.trial" class="md-nav__link">
+    <span class="md-ellipsis">
+      trial
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      __init__
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine._book_offer" class="md-nav__link">
+    <span class="md-ellipsis">
+      _book_offer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine._get_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      _get_event
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.add_airport" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_airport
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.add_carrier" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_carrier
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.add_dcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_dcp
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.add_demand" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_demand
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.add_event" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_event
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.add_fare" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_fare
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.add_frat5" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_frat5
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.add_leg" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_leg
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.add_path" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_path
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.allocate_demand_to_tf" class="md-nav__link">
+    <span class="md-ellipsis">
+      allocate_demand_to_tf
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.allocate_demand_to_tf_pods" class="md-nav__link">
+    <span class="md-ellipsis">
+      allocate_demand_to_tf_pods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.build_connections" class="md-nav__link">
+    <span class="md-ellipsis">
+      build_connections
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.build_expiration" class="md-nav__link">
+    <span class="md-ellipsis">
+      build_expiration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.choice_set_columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      choice_set_columns
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.clear_choice_set" class="md-nav__link">
+    <span class="md-ellipsis">
+      clear_choice_set
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.compute_hhi" class="md-nav__link">
+    <span class="md-ellipsis">
+      compute_hhi
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.distribution_local_leg_passengers" class="md-nav__link">
+    <span class="md-ellipsis">
+      distribution_local_leg_passengers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.final_write_to_sqlite" class="md-nav__link">
+    <span class="md-ellipsis">
+      final_write_to_sqlite
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.fraction_local_by_carrier_and_place" class="md-nav__link">
+    <span class="md-ellipsis">
+      fraction_local_by_carrier_and_place
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.get_airport_carrier_share" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_airport_carrier_share
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.get_choice_set" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_choice_set
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.get_days_prior" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_days_prior
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.get_preferred_carrier" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_preferred_carrier
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.go" class="md-nav__link">
+    <span class="md-ellipsis">
+      go
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.license_info" class="md-nav__link">
+    <span class="md-ellipsis">
+      license_info
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.num_events" class="md-nav__link">
+    <span class="md-ellipsis">
+      num_events
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.path_2_leg" class="md-nav__link">
+    <span class="md-ellipsis">
+      path_2_leg
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.record_daily_statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      record_daily_statistics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.record_dcp_statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      record_dcp_statistics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.record_departure_statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      record_departure_statistics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.reset_counters" class="md-nav__link">
+    <span class="md-ellipsis">
+      reset_counters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.set_parm" class="md-nav__link">
+    <span class="md-ellipsis">
+      set_parm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.shop" class="md-nav__link">
+    <span class="md-ellipsis">
+      shop
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.update_db_write_flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      update_db_write_flags
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.validate_license" class="md-nav__link">
+    <span class="md-ellipsis">
+      validate_license
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.write_to_sqlite" class="md-nav__link">
+    <span class="md-ellipsis">
+      write_to_sqlite
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="simulation-engine">Simulation Engine</h1>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<a id="passengersim_core.SimulationEngine"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+<h2 id="passengersim_core.SimulationEngine-attributes">Attributes</h2>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.base_time" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">base_time</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">base_time</span><span class="p">:</span> <span class="n">int</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>The base time of the simulation.</p>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.bucketnames" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">bucketnames</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">bucketnames</span><span class="p">:</span> <span class="n"><span title="collections.abc.Sequence">Sequence</span></span><span class="p">[</span><span class="n">str</span><span class="p">]</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.buckets" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">buckets</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">buckets</span><span class="p">:</span> <span class="n"><span title="collections.abc.Sequence">Sequence</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="passengersim_core._Zoo.Bucket" href="Bucket.html#passengersim_core.Bucket">Bucket</a></span><span class="p">]</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.burn_samples" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">burn_samples</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.carriers" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">carriers</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">carriers</span><span class="p">:</span> <span class="n"><span title="collections.abc.Sequence">Sequence</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="passengersim_core._Zoo.Carrier" href="Carrier.html#passengersim_core.Carrier">Carrier</a></span><span class="p">]</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.choice_set_sampling_probability" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">choice_set_sampling_probability</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">choice_set_sampling_probability</span><span class="p">:</span> <span class="n">float</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Used to randomly sample the choice set, especially useful for large networks</p>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.config" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">config</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">config</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.config.Config" href="../config/00-configs.html#passengersim.config.base.Config">Config</a></span> <span class="o">|</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.demands" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">demands</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">demands</span><span class="p">:</span> <span class="n"><span title="collections.abc.Sequence">Sequence</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="passengersim_core._Zoo.Demand" href="Demand.html#passengersim_core.Demand">Demand</a></span><span class="p">]</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.disable_ap" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">disable_ap</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">disable_ap</span><span class="p">:</span> <span class="n">bool</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.dwm_lite" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">dwm_lite</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">dwm_lite</span><span class="p">:</span> <span class="n">bool</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.fares" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">fares</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">fares</span><span class="p">:</span> <span class="n"><span title="collections.abc.Sequence">Sequence</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="passengersim_core._Zoo.Fare" href="Fare.html#passengersim_core.Fare">Fare</a></span><span class="p">]</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.iteration" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">iteration</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">iteration</span><span class="p">:</span> <span class="n">int</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.last_dcp" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">last_dcp</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">last_dcp</span><span class="p">:</span> <span class="n">int</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.last_dcp_index" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">last_dcp_index</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">last_dcp_index</span><span class="p">:</span> <span class="n">int</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.last_event_time" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">last_event_time</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">last_event_time</span><span class="p">:</span> <span class="n">int</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.legs" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">legs</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">legs</span><span class="p">:</span> <span class="n"><span title="collections.abc.Sequence">Sequence</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="passengersim_core._Zoo.Leg" href="Leg.html#passengersim_core.Leg">Leg</a></span><span class="p">]</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.manual_paths" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">manual_paths</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">manual_paths</span><span class="p">:</span> <span class="n">bool</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.markets" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">markets</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">markets</span><span class="p">:</span> <span class="n"><span title="collections.abc.Mapping">Mapping</span></span><span class="p">[</span><span class="n">str</span><span class="p">,</span> <span class="n"><span title="passengersim_core._Zoo.Market">Market</span></span><span class="p">]</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.max_connect_time" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">max_connect_time</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">max_connect_time</span><span class="p">:</span> <span class="n">int</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.mkt_k_factor" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">mkt_k_factor</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">mkt_k_factor</span><span class="p">:</span> <span class="n">float</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.name" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">name</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">name</span><span class="p">:</span> <span class="n">str</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.num_dcps" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">num_dcps</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">num_dcps</span><span class="p">:</span> <span class="n">int</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.num_samples" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">num_samples</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">num_samples</span><span class="p">:</span> <span class="n">int</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.num_trials" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">num_trials</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">num_trials</span><span class="p">:</span> <span class="n">int</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.num_trials_completed" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">num_trials_completed</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">num_trials_completed</span><span class="p">:</span> <span class="n">int</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Number of trials actually completed with this simulation.</p>
+<p>When multiprocessing, this typically will be just 1, as each process will
+complete only one trial.</p>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.pathclasses" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">pathclasses</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">pathclasses</span><span class="p">:</span> <span class="n"><span title="collections.abc.Sequence">Sequence</span></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="passengersim_core._Zoo.PathClass" href="PathClass.html#passengersim_core.PathClass">PathClass</a></span><span class="p">]</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.paths" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">paths</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">paths</span><span class="p">:</span> <span class="n"><span title="passengersim_core._Zoo.PathIterator">PathIterator</span></span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.pax_type_k_factor" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">pax_type_k_factor</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">pax_type_k_factor</span><span class="p">:</span> <span class="n">float</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.prorate_revenue" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">prorate_revenue</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">prorate_revenue</span><span class="p">:</span> <span class="n">bool</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>When set to True, O&amp;D revenue is prorated by mileage to the leg level</p>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.random_generator" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">random_generator</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">random_generator</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim_core._Zoo.Generator" href="Generator.html#passengersim_core.Generator">Generator</a></span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.revenue" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">revenue</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">revenue</span><span class="p">:</span> <span class="n">float</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.rm_start_sample" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">rm_start_sample</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">rm_start_sample</span><span class="p">:</span> <span class="n">int</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.sample" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">sample</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">sample</span><span class="p">:</span> <span class="n">int</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.save_timeframe_details" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">save_timeframe_details</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">save_timeframe_details</span><span class="p">:</span> <span class="n">bool</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.snapshot_filters" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">snapshot_filters</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">snapshot_filters</span><span class="p">:</span> <span class="n">list</span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="passengersim.config.snapshot_filter.SnapshotFilter" href="../config/snapshot_filter.html#passengersim.config.snapshot_filter.SnapshotFilter">SnapshotFilter</a></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.sys_k_factor" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">sys_k_factor</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">sys_k_factor</span><span class="p">:</span> <span class="n">float</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.tf_k_factor" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">tf_k_factor</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">tf_k_factor</span><span class="p">:</span> <span class="n">float</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Timeframe k-factor, controls variance in the passenger arrival curves</p>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.tf_z_factor" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">tf_z_factor</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">tf_z_factor</span><span class="p">:</span> <span class="n">float</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim_core.SimulationEngine.trial" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">trial</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">trial</span><span class="p">:</span> <span class="n">int</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+    </div>
+
+</div>
+
+<h2 id="passengersim_core.SimulationEngine-functions">Functions</h2>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.__init__" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">__init__</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="fm">__init__</span><span class="p">(</span><span class="nf">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="s1">&#39;Incognito&#39;</span><span class="p">,</span> <span class="n">random_generator</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine._book_offer" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">_book_offer</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">_book_offer</span><span class="p">(</span><span class="n">dmd</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim_core._Zoo.Demand" href="Demand.html#passengersim_core.Demand">Demand</a></span><span class="p">,</span> <span class="n">offer</span><span class="p">:</span> <span class="n"><span title="passengersim_core._Zoo.Offer">Offer</span></span><span class="p">,</span> <span class="n">num_pax</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Exercise the bookOffer method in CoreSim, this is ONLY for unit testing !!!</p>
+<p>Trying to do anything else with this method may result in pain, mental anguish and gnashing of teeth</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine._get_event" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">_get_event</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">_get_event</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">float</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Pop the next event from the queue and return the timestamp.</p>
+<p>Only used for unit testing.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.add_airport" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">add_airport</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_airport</span><span class="p">(</span><span class="n">airport</span><span class="p">:</span> <span class="n"><span title="passengersim_core._Zoo.Airport">Airport</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Add an Airport to the simulation</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.add_carrier" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">add_carrier</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_carrier</span><span class="p">(</span><span class="n">carrier</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim_core._Zoo.Carrier" href="Carrier.html#passengersim_core.Carrier">Carrier</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Add a Carrier to the simulation</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.add_dcp" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">add_dcp</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_dcp</span><span class="p">(</span><span class="n">dcp_index</span><span class="p">:</span> <span class="n">int</span><span class="p">,</span> <span class="n">days_prior</span><span class="p">:</span> <span class="n">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Add dcp_index and days_prior.  Must be added in ascending order of dcp_index</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.add_demand" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">add_demand</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_demand</span><span class="p">(</span><span class="n">dmd</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim_core._Zoo.Demand" href="Demand.html#passengersim_core.Demand">Demand</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Add a Market Segment demand to the simulation.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.add_event" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">add_event</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_event</span><span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="n"><span title="passengersim_core._Zoo.Event">Event</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Add a user Event to the simulation.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.add_fare" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">add_fare</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_fare</span><span class="p">(</span><span class="n">fare</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim_core._Zoo.Fare" href="Fare.html#passengersim_core.Fare">Fare</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Add a Fare to the simulation.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.add_frat5" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">add_frat5</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_frat5</span><span class="p">(</span><span class="n">frat5</span><span class="p">:</span> <span class="n"><span title="passengersim_core._Zoo.Frat5">Frat5</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Add a Frat5 curve to the simulation.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.add_leg" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">add_leg</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_leg</span><span class="p">(</span><span class="n">leg</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim_core._Zoo.Leg" href="Leg.html#passengersim_core.Leg">Leg</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Add a Leg to the simulation.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.add_path" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">add_path</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_path</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim_core._Zoo.Path" href="Path.html#passengersim_core.Path">Path</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Add a Path to the simulation.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.allocate_demand_to_tf" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">allocate_demand_to_tf</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">allocate_demand_to_tf</span><span class="p">(</span><span class="n">dmd</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim_core._Zoo.Demand" href="Demand.html#passengersim_core.Demand">Demand</a></span><span class="p">,</span> <span class="n">num_pax</span><span class="p">:</span> <span class="n">int</span><span class="p">,</span> <span class="n">tf_k_factor</span><span class="p">:</span> <span class="n">float</span><span class="p">,</span> <span class="n">endTS</span><span class="p">:</span> <span class="n">int</span><span class="p">,</span> <span class="n">debug</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">tuple</span><span class="p">[</span><span class="n">int</span><span class="p">]</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Generate events for a single demand</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+            <b><code>dmd</code></b>
+              (<code><a class="autorefs autorefs-internal" title="passengersim_core._Zoo.Demand" href="Demand.html#passengersim_core.Demand">Demand</a></code>)
+          –
+          <div class="doc-md-description">
+            
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>num_pax</code></b>
+              (<code>int</code>)
+          –
+          <div class="doc-md-description">
+            
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>tf_k_factor</code></b>
+              (<code>float</code>)
+          –
+          <div class="doc-md-description">
+            
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>endTS</code></b>
+              (<code>int</code>)
+          –
+          <div class="doc-md-description">
+            
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>debug</code></b>
+              (<code>bool</code>, default:
+                  <code>False</code>
+)
+          –
+          <div class="doc-md-description">
+            
+          </div>
+        </li>
+    </ul>
+
+
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code>int</code>
+          –
+          <div class="doc-md-description">
+            <p>Number of events allocated.</p>
+          </div>
+        </li>
+    </ul>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.allocate_demand_to_tf_pods" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">allocate_demand_to_tf_pods</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">allocate_demand_to_tf_pods</span><span class="p">(</span><span class="n">dmd</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim_core._Zoo.Demand" href="Demand.html#passengersim_core.Demand">Demand</a></span><span class="p">,</span> <span class="n">num_pax</span><span class="p">:</span> <span class="n">int</span><span class="p">,</span> <span class="n">tf_k_factor</span><span class="p">:</span> <span class="n">float</span><span class="p">,</span> <span class="n">endTS</span><span class="p">:</span> <span class="n">int</span><span class="p">,</span> <span class="n">debug</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">tuple</span><span class="p">[</span><span class="n">int</span><span class="p">]</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Generate events for a single demand (used to simulate PODS processing)</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+            <b><code>dmd</code></b>
+              (<code><a class="autorefs autorefs-internal" title="passengersim_core._Zoo.Demand" href="Demand.html#passengersim_core.Demand">Demand</a></code>)
+          –
+          <div class="doc-md-description">
+            
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>num_pax</code></b>
+              (<code>int</code>)
+          –
+          <div class="doc-md-description">
+            
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>tf_k_factor</code></b>
+              (<code>float</code>)
+          –
+          <div class="doc-md-description">
+            
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>endTS</code></b>
+              (<code>int</code>)
+          –
+          <div class="doc-md-description">
+            
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>debug</code></b>
+              (<code>bool</code>, default:
+                  <code>False</code>
+)
+          –
+          <div class="doc-md-description">
+            
+          </div>
+        </li>
+    </ul>
+
+
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code>tuple[int]</code>
+          –
+          <div class="doc-md-description">
+            <p>Number of events allocated by DCP.</p>
+          </div>
+        </li>
+    </ul>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.build_connections" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">build_connections</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">build_connections</span><span class="p">(</span><span class="n">dmd</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim_core._Zoo.Demand" href="Demand.html#passengersim_core.Demand">Demand</a></span><span class="p">,</span> <span class="n">debug</span><span class="p">:</span> <span class="n">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Build connections for the demands.</p>
+<p>This will create <code>Path</code> objects for each demand, if the network is given
+only by the <code>Leg</code> objects.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.build_expiration" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">build_expiration</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">build_expiration</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="datetime.datetime">datetime</span></span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Get the expiration time for this build.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.choice_set_columns" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">choice_set_columns</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">choice_set_columns</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">list</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Return a list of column names for the choice set</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.clear_choice_set" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">clear_choice_set</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">clear_choice_set</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Delete the choice set data that is stored in memory</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.compute_hhi" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">compute_hhi</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">compute_hhi</span><span class="p">(</span><span class="n">debug</span><span class="p">:</span> <span class="n">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.distribution_local_leg_passengers" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">distribution_local_leg_passengers</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">distribution_local_leg_passengers</span><span class="p">(</span><span class="n">carrier</span><span class="p">:</span> <span class="n">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="numpy.ndarray">ndarray</span></span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Return the distribution of percent local passengers by leg for this carrier.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.final_write_to_sqlite" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">final_write_to_sqlite</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">final_write_to_sqlite</span><span class="p">(</span><span class="n">cnx</span><span class="p">:</span> <span class="n"><span title="sqlite3.Connection">Connection</span></span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Write final summary details to sqlite</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.fraction_local_by_carrier_and_place" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">fraction_local_by_carrier_and_place</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">fraction_local_by_carrier_and_place</span><span class="p">(</span><span class="n">carrier</span><span class="p">:</span> <span class="n">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">dict</span><span class="p">[</span><span class="n">str</span><span class="p">,</span> <span class="n">float</span><span class="p">]</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Return the fraction of local passengers by place for this carrier.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.get_airport_carrier_share" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">get_airport_carrier_share</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">get_airport_carrier_share</span><span class="p">(</span><span class="n">selfself</span><span class="p">,</span> <span class="n">airport</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span> <span class="n">carrier</span><span class="p">:</span> <span class="n">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">float</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Get the seat share for this carrier at the specified airport</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.get_choice_set" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">get_choice_set</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">get_choice_set</span><span class="p">(</span><span class="n">carrier</span><span class="p">:</span> <span class="n">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">list</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Get the choice set for the all, or subset for the specified carrier</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.get_days_prior" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">get_days_prior</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">get_days_prior</span><span class="p">(</span><span class="n">dcp_index</span><span class="p">:</span> <span class="n">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">int</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Get days_prior for this dcp_index</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.get_preferred_carrier" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">get_preferred_carrier</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">get_preferred_carrier</span><span class="p">(</span><span class="n">dmd</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim_core._Zoo.Demand" href="Demand.html#passengersim_core.Demand">Demand</a></span><span class="p">,</span> <span class="n">z_val</span><span class="p">:</span> <span class="n">float</span><span class="p">,</span> <span class="n">debug</span><span class="p">:</span> <span class="n">bool</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Calls the code to set preferred carrier. This is for unit tests</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.go" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">go</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">go</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="typing.Any">Any</span></span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Run the simulation.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.license_info" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">license_info</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">license_info</span><span class="p">(</span><span class="n">user_cert</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">str</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Access license info as a human-readable string.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+            <b><code>user_cert</code></b>
+              (<code><span title="x509.Certificate">Certificate</span></code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>The license.</p>
+          </div>
+        </li>
+    </ul>
+
+
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code>str</code>
+          –
+          <div class="doc-md-description">
+            
+          </div>
+        </li>
+    </ul>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.num_events" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">num_events</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">num_events</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">int</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Return the number of events currently on the event queue.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.path_2_leg" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">path_2_leg</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">path_2_leg</span><span class="p">(</span><span class="n">carrier</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span> <span class="n">dcp_index</span><span class="p">:</span> <span class="n">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Aggregate PathClass forecasts to Leg/Bucket</p>
+<p>The dcp_index is used to adjust forecast revenues when fare adjustment is used.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.record_daily_statistics" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">record_daily_statistics</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">record_daily_statistics</span><span class="p">(</span><span class="n">days_prior</span><span class="p">:</span> <span class="n">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">int</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Record daily statistics.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+            <b><code>days_prior</code></b>
+              (<code>int</code>)
+          –
+          <div class="doc-md-description">
+            <p>The current number of days prior to departure.</p>
+          </div>
+        </li>
+    </ul>
+
+
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code>int</code>
+          –
+          <div class="doc-md-description">
+            <p>1 if statistics were recorded (i.e. the sample is after
+the burn period), or 0 otherwise.</p>
+          </div>
+        </li>
+    </ul>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.record_dcp_statistics" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">record_dcp_statistics</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">record_dcp_statistics</span><span class="p">(</span><span class="n">days_prior</span><span class="p">:</span> <span class="n">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">int</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Record DCP statistics.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+            <b><code>days_prior</code></b>
+              (<code>int</code>)
+          –
+          <div class="doc-md-description">
+            <p>The current number of days prior to departure.</p>
+          </div>
+        </li>
+    </ul>
+
+
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code>int</code>
+          –
+          <div class="doc-md-description">
+            <p>1 if statistics were recorded (i.e. the sample is after
+the burn period), or 0 otherwise.</p>
+          </div>
+        </li>
+    </ul>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.record_departure_statistics" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">record_departure_statistics</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">record_departure_statistics</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">int</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Record departure statistics.</p>
+
+
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code>int</code>
+          –
+          <div class="doc-md-description">
+            <p>1 if statistics were recorded (i.e. the sample is after
+the burn period), or 0 otherwise.</p>
+          </div>
+        </li>
+    </ul>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.reset_counters" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">reset_counters</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">reset_counters</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Reset counters for sold &amp; revenue, for demands and legs.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.set_parm" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">set_parm</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">set_parm</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Set a simulation parameter by name and value</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.shop" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">shop</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">shop</span><span class="p">(</span><span class="n">orig</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span> <span class="n">dest</span><span class="p">:</span> <span class="n">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">list</span><span class="p">[</span><span class="n">tuple</span><span class="p">]</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Shop all carriers for this O-D pair, return a list of (carrier, price)</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.update_db_write_flags" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">update_db_write_flags</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">update_db_write_flags</span><span class="p">()</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Update database writing flags based on config.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.validate_license" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">validate_license</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">validate_license</span><span class="p">(</span><span class="n">user_cert</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">future</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Validate a user's license certificate.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+            <b><code>user_cert</code></b>
+              (<code><span title="x509.Certificate">Certificate</span></code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>The license.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>future</code></b>
+              (<code>int</code>, default:
+                  <code>0</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Validate as if it is this many days in the future.  This
+is primarily used for debugging and testing. This is treated as
+an unsigned integer internally, so negative values will not go
+back in time.</p>
+          </div>
+        </li>
+    </ul>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code>RuntimeError</code>
+            –
+          <div class="doc-md-description">
+            <p>If the license certificate is not valid.</p>
+          </div>
+        </li>
+    </ul>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.write_to_sqlite" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">write_to_sqlite</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">write_to_sqlite</span><span class="p">(</span><span class="n">cnx</span><span class="p">:</span> <span class="n"><span title="sqlite3.Connection">Connection</span></span><span class="p">,</span> <span class="n">dcp</span><span class="p">:</span> <span class="n">int</span><span class="p">,</span> <span class="n">store_bid_prices</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">intermediate_day</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">store_displacements</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Write details to sqlite</p>
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.annotate", "navigation.tabs", "navigation.indexes", "navigation.prune"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
