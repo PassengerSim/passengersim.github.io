@@ -1097,6 +1097,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
                     processEnvironments: true
                 },
                 displayAlign: 'center',
+                messageStyle: 'none',
                 CommonHTML: {
                     linebreaks: {
                     automatic: true
@@ -1323,7 +1324,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">passengersim</span> <span class="k">as</span> <span class="nn">pax</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">passengersim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pax</span>
 
 <span class="n">pax</span><span class="o">.</span><span class="n">versions</span><span class="p">()</span>
 </pre></div>
@@ -1424,7 +1425,7 @@ set a directory where all experimental output will be stored.</p>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">passengersim.experiments</span> <span class="kn">import</span> <span class="n">Experiments</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">passengersim.experiments</span><span class="w"> </span><span class="kn">import</span> <span class="n">Experiments</span>
 
 <span class="n">experiments</span> <span class="o">=</span> <span class="n">Experiments</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="s2">"demo-output"</span><span class="p">)</span>
 </pre></div>
@@ -1475,18 +1476,18 @@ that will be used to identify it.</p>
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="nd">@experiments</span>
-<span class="k">def</span> <span class="nf">baseline</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">pax</span><span class="o">.</span><span class="n">Config</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pax</span><span class="o">.</span><span class="n">Config</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">baseline</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">pax</span><span class="o">.</span><span class="n">Config</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pax</span><span class="o">.</span><span class="n">Config</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">cfg</span>
 
 
 <span class="nd">@experiments</span>
-<span class="k">def</span> <span class="nf">low_dmd</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">pax</span><span class="o">.</span><span class="n">Config</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pax</span><span class="o">.</span><span class="n">Config</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">low_dmd</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">pax</span><span class="o">.</span><span class="n">Config</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pax</span><span class="o">.</span><span class="n">Config</span><span class="p">:</span>
     <span class="n">cfg</span><span class="o">.</span><span class="n">simulation_controls</span><span class="o">.</span><span class="n">demand_multiplier</span> <span class="o">=</span> <span class="mf">0.9</span>
     <span class="k">return</span> <span class="n">cfg</span>
 
 
 <span class="nd">@experiments</span>
-<span class="k">def</span> <span class="nf">high_dmd</span><span class="p">(</span><span class="n">cfg</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">high_dmd</span><span class="p">(</span><span class="n">cfg</span><span class="p">):</span>
     <span class="n">cfg</span><span class="o">.</span><span class="n">simulation_controls</span><span class="o">.</span><span class="n">demand_multiplier</span> <span class="o">=</span> <span class="mf">1.1</span>
     <span class="k">return</span> <span class="n">cfg</span>
 </pre></div>
@@ -1553,9 +1554,9 @@ def high_dmd(cfg):
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jupyter-widgets jp-OutputArea-output" id="6b53f615-0dd9-45a7-8541-d10fded846fd" tabindex="0">
+<div class="jupyter-widgets jp-OutputArea-output" id="e272a0bc-2e21-4dd9-a95f-d3c9b85bd579" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('6b53f615-0dd9-45a7-8541-d10fded846fd');
+var element = document.getElementById('e272a0bc-2e21-4dd9-a95f-d3c9b85bd579');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "8f04503b6eb54ac5a8e70954b998b22b", "version_major": 2, "version_minor": 0}
@@ -1825,7 +1826,7 @@ file that includes key figures and metadata describing the results from that exp
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">passengersim.utils.show_dir</span> <span class="kn">import</span> <span class="n">display_directory_contents</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">passengersim.utils.show_dir</span><span class="w"> </span><span class="kn">import</span> <span class="n">display_directory_contents</span>
 
 <span class="n">display_directory_contents</span><span class="p">(</span><span class="s2">"demo-output"</span><span class="p">)</span>
 </pre></div>
@@ -1892,7 +1893,7 @@ we will just edit one experiment by overwriting it (note we do get a warning whe
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="nd">@experiments</span>
-<span class="k">def</span> <span class="nf">high_dmd</span><span class="p">(</span><span class="n">cfg</span><span class="p">):</span>  <span class="c1"># noqa: F811</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">high_dmd</span><span class="p">(</span><span class="n">cfg</span><span class="p">):</span>  <span class="c1"># noqa: F811</span>
     <span class="n">cfg</span><span class="o">.</span><span class="n">simulation_controls</span><span class="o">.</span><span class="n">demand_multiplier</span> <span class="o">=</span> <span class="mf">1.2</span>
     <span class="k">return</span> <span class="n">cfg</span>
 </pre></div>
@@ -1967,9 +1968,9 @@ are then discarded in favor of re-running the simulation.</p>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jupyter-widgets jp-OutputArea-output" id="746278fc-4abf-48c9-ad7c-72582bb5bdfe" tabindex="0">
+<div class="jupyter-widgets jp-OutputArea-output" id="32557481-9345-480e-ac78-2c9d7013236f" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('746278fc-4abf-48c9-ad7c-72582bb5bdfe');
+var element = document.getElementById('32557481-9345-480e-ac78-2c9d7013236f');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "0e7dfbcc729643d997e149b693d7f458", "version_major": 2, "version_minor": 0}

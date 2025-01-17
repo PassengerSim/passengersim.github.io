@@ -451,6 +451,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Installing PassengerSim">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changing-the-conda-environment-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changing the conda environment name
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -903,6 +918,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Installing PassengerSim">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changing-the-conda-environment-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changing the conda environment name
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -962,22 +992,27 @@ you can use it to install PassengerSim in a conda environment.  To do so, open a
 and navigate to the directory where the file is located.  Then, run the following command:</p>
 <div class="language-shell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>bash<span class="w"> </span>install-passengersim-mac-v0.0-20240101.sh
 </span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Don&#39;t copy-paste the command above, as the exact filename of the installation script
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>will vary based on the version of PassengerSim and the release data.  Instead, use the
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>filename of the file you have received.
-</span></code></pre></div>
-<p>This should install PassengerSim in a conda environment named <code>SKY</code>.  If you already
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Don't copy-paste the command above, as the exact filename of the installation script
+will vary based on the version of PassengerSim and the release data.  Instead, use the
+filename of the file you have received.</p>
+</div>
+<h3 id="changing-the-conda-environment-name">Changing the conda environment name</h3>
+<p>The default install will put PassengerSim in a conda environment named <code>SKY</code>.  If you already
 have a conda environment named <code>SKY</code>, the installation script will update the environment
 to the relevant version of PassengerSim.  If you prefer to install PassengerSim in a
 different environment (e.g. <code>myenv</code>), you can specify the environment name as an argument
 to the installation script:</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>bash<span class="w"> </span>install-passengersim-mac-v0.0-20240101.sh<span class="w"> </span>-n<span class="w"> </span>myenv
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>bash<span class="w"> </span>install-passengersim-mac-v0.0-20240101.sh<span class="w"> </span>-n<span class="w"> </span>myenv
 </span></code></pre></div>
 <h2 id="running-passengersim">Running PassengerSim</h2>
 <p>After the installation is complete, you can start a Jupyter Lab session from the environment
 by running the following command:</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>conda<span class="w"> </span>run<span class="w"> </span>-n<span class="w"> </span>SKY<span class="w"> </span>jupyter<span class="w"> </span>lab
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>conda<span class="w"> </span>run<span class="w"> </span>-n<span class="w"> </span>SKY<span class="w"> </span>jupyter<span class="w"> </span>lab
 </span></code></pre></div>
+<p>If you installed PassengerSim in an environment named something other than <code>SKY</code>, replace
+<code>SKY</code> in the command above with the name of the environment you used.</p>
 <h2 id="alternative-installation-docker">Alternative Installation: Docker</h2>
 <p>Do you have a link to a <code>sky</code> docker image file? If not, these are not the install
 instructions you are looking for. If you do have a link, go ahead and download
@@ -991,7 +1026,7 @@ sure it's running (you should be able to open and see Docker's dashboard).</p>
 <code>sky.tar</code> file has been saved.  It might be named something slightly different from
 <code>sky.tar</code>, in which case change the filename in the commands you type to match
 the filename of the image file you have.  The first step is to run</p>
-<div class="language-shell highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>docker<span class="w"> </span>load<span class="w"> </span>--input<span class="w"> </span>sky.tar
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>load<span class="w"> </span>--input<span class="w"> </span>sky.tar
 </span></code></pre></div>
 <p>This command may take a few moments to complete, as the content of the downloaded
 image file will be imported into docker.  You'll need several free gigabytes of
@@ -1003,11 +1038,11 @@ this image using the following command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Mac/Linux</label><label for="__tabbed_1_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">8899</span>:8899<span class="w"> </span>--rm<span class="w"> </span>--volume<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>:/tmp/workplace/work<span class="w"> </span>sky:latest
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">8899</span>:8899<span class="w"> </span>--rm<span class="w"> </span>--volume<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">&quot;</span>:/tmp/workplace/work<span class="w"> </span>sky:latest
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">8899</span>:8899<span class="w"> </span>--rm<span class="w"> </span>--volume<span class="w"> </span><span class="s2">&quot;%cd%&quot;</span>:/tmp/workplace/work<span class="w"> </span>sky:latest
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">8899</span>:8899<span class="w"> </span>--rm<span class="w"> </span>--volume<span class="w"> </span><span class="s2">&quot;%cd%&quot;</span>:/tmp/workplace/work<span class="w"> </span>sky:latest
 </span></code></pre></div>
 </div>
 </div>

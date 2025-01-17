@@ -863,6 +863,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#passengersim.database.common_queries.edgar" class="md-nav__link">
+    <span class="md-ellipsis">
+      edgar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#passengersim.database.common_queries.fare_class_mix" class="md-nav__link">
     <span class="md-ellipsis">
       fare_class_mix
@@ -1197,6 +1206,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#passengersim.database.common_queries.edgar" class="md-nav__link">
+    <span class="md-ellipsis">
+      edgar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#passengersim.database.common_queries.fare_class_mix" class="md-nav__link">
     <span class="md-ellipsis">
       fare_class_mix
@@ -1348,7 +1366,16 @@
 
 
 </h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">_leg_bucket_trace</span><span class="p">(</span><span class="n">target_cols</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span> <span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">carrier</span><span class="p">:</span> <span class="n">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">leg_id</span><span class="p">:</span> <span class="n">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">booking_class</span><span class="p">:</span> <span class="n">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">days_prior</span><span class="p">:</span> <span class="n">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">_leg_bucket_trace</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">target_cols</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">carrier</span><span class="p">:</span> <span class="n">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">leg_id</span><span class="p">:</span> <span class="n">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">booking_class</span><span class="p">:</span> <span class="n">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">days_prior</span><span class="p">:</span> <span class="n">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -1552,7 +1579,7 @@ these columns:
 <span class="normal"><a href="#__codelineno-0-489">489</a></span>
 <span class="normal"><a href="#__codelineno-0-490">490</a></span>
 <span class="normal"><a href="#__codelineno-0-491">491</a></span>
-<span class="normal"><a href="#__codelineno-0-492">492</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-394"><a id="__codelineno-0-394" name="__codelineno-0-394"></a><span class="k">def</span> <span class="nf">_leg_bucket_trace</span><span class="p">(</span>
+<span class="normal"><a href="#__codelineno-0-492">492</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-394"><a id="__codelineno-0-394" name="__codelineno-0-394"></a><span class="k">def</span><span class="w"> </span><span class="nf">_leg_bucket_trace</span><span class="p">(</span>
 </span><span id="__span-0-395"><a id="__codelineno-0-395" name="__codelineno-0-395"></a>    <span class="n">target_cols</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="__span-0-396"><a id="__codelineno-0-396" name="__codelineno-0-396"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="s2">&quot;Database&quot;</span><span class="p">,</span>
 </span><span id="__span-0-397"><a id="__codelineno-0-397" name="__codelineno-0-397"></a>    <span class="n">scenario</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1665,7 +1692,12 @@ these columns:
 
 
 </h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">bid_price_history</span><span class="p">(</span><span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">weighting</span><span class="p">:</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="s1">&#39;capacity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;equal&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">bid_price_history</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">weighting</span><span class="p">:</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;equal&quot;</span><span class="p">,</span> <span class="s2">&quot;capacity&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;equal&quot;</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -1882,7 +1914,7 @@ these columns:</p>
 <span class="normal"><a href="#__codelineno-0-1002">1002</a></span>
 <span class="normal"><a href="#__codelineno-0-1003">1003</a></span>
 <span class="normal"><a href="#__codelineno-0-1004">1004</a></span>
-<span class="normal"><a href="#__codelineno-0-1005">1005</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-871"><a id="__codelineno-0-871" name="__codelineno-0-871"></a><span class="k">def</span> <span class="nf">bid_price_history</span><span class="p">(</span>
+<span class="normal"><a href="#__codelineno-0-1005">1005</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-871"><a id="__codelineno-0-871" name="__codelineno-0-871"></a><span class="k">def</span><span class="w"> </span><span class="nf">bid_price_history</span><span class="p">(</span>
 </span><span id="__span-0-872"><a id="__codelineno-0-872" name="__codelineno-0-872"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n">Database</span><span class="p">,</span>
 </span><span id="__span-0-873"><a id="__codelineno-0-873" name="__codelineno-0-873"></a>    <span class="n">scenario</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="__span-0-874"><a id="__codelineno-0-874" name="__codelineno-0-874"></a>    <span class="n">burn_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
@@ -2031,7 +2063,12 @@ these columns:</p>
 
 
 </h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">bookings_by_timeframe</span><span class="p">(</span><span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span> <span class="n">from_fare_detail</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">bookings_by_timeframe</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">from_fare_detail</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -2201,7 +2238,7 @@ and <code>days_prior</code>, and has these columns:</p>
 <span class="normal"><a href="#__codelineno-0-329">329</a></span>
 <span class="normal"><a href="#__codelineno-0-330">330</a></span>
 <span class="normal"><a href="#__codelineno-0-331">331</a></span>
-<span class="normal"><a href="#__codelineno-0-332">332</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-242"><a id="__codelineno-0-242" name="__codelineno-0-242"></a><span class="k">def</span> <span class="nf">bookings_by_timeframe</span><span class="p">(</span>
+<span class="normal"><a href="#__codelineno-0-332">332</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-242"><a id="__codelineno-0-242" name="__codelineno-0-242"></a><span class="k">def</span><span class="w"> </span><span class="nf">bookings_by_timeframe</span><span class="p">(</span>
 </span><span id="__span-0-243"><a id="__codelineno-0-243" name="__codelineno-0-243"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n">Database</span><span class="p">,</span>
 </span><span id="__span-0-244"><a id="__codelineno-0-244" name="__codelineno-0-244"></a>    <span class="n">scenario</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="__span-0-245"><a id="__codelineno-0-245" name="__codelineno-0-245"></a>    <span class="n">from_fare_detail</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -2306,7 +2343,12 @@ and <code>days_prior</code>, and has these columns:</p>
 
 
 </h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">carrier_history</span><span class="p">(</span><span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">carrier_history</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="o">*</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -2465,7 +2507,7 @@ includes these columns:</p>
 <span class="normal"><a href="#__codelineno-0-865">865</a></span>
 <span class="normal"><a href="#__codelineno-0-866">866</a></span>
 <span class="normal"><a href="#__codelineno-0-867">867</a></span>
-<span class="normal"><a href="#__codelineno-0-868">868</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-780"><a id="__codelineno-0-780" name="__codelineno-0-780"></a><span class="k">def</span> <span class="nf">carrier_history</span><span class="p">(</span>
+<span class="normal"><a href="#__codelineno-0-868">868</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-780"><a id="__codelineno-0-780" name="__codelineno-0-780"></a><span class="k">def</span><span class="w"> </span><span class="nf">carrier_history</span><span class="p">(</span>
 </span><span id="__span-0-781"><a id="__codelineno-0-781" name="__codelineno-0-781"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n">Database</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span>
 </span><span id="__span-0-782"><a id="__codelineno-0-782" name="__codelineno-0-782"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 </span><span id="__span-0-783"><a id="__codelineno-0-783" name="__codelineno-0-783"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -2568,7 +2610,12 @@ includes these columns:</p>
 
 
 </h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">demand_to_come</span><span class="p">(</span><span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">demand_to_come</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="o">*</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -2679,7 +2726,7 @@ The values stored are the total remaining demand to come at each DCP.</p>
 <span class="normal"><a href="#__codelineno-0-709">709</a></span>
 <span class="normal"><a href="#__codelineno-0-710">710</a></span>
 <span class="normal"><a href="#__codelineno-0-711">711</a></span>
-<span class="normal"><a href="#__codelineno-0-712">712</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-662"><a id="__codelineno-0-662" name="__codelineno-0-662"></a><span class="k">def</span> <span class="nf">demand_to_come</span><span class="p">(</span>
+<span class="normal"><a href="#__codelineno-0-712">712</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-662"><a id="__codelineno-0-662" name="__codelineno-0-662"></a><span class="k">def</span><span class="w"> </span><span class="nf">demand_to_come</span><span class="p">(</span>
 </span><span id="__span-0-663"><a id="__codelineno-0-663" name="__codelineno-0-663"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n">Database</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span>
 </span><span id="__span-0-664"><a id="__codelineno-0-664" name="__codelineno-0-664"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 </span><span id="__span-0-665"><a id="__codelineno-0-665" name="__codelineno-0-665"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -2744,7 +2791,9 @@ The values stored are the total remaining demand to come at each DCP.</p>
 
 
 </h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">demand_to_come_summary</span><span class="p">(</span><span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">demand_to_come_summary</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -2865,7 +2914,7 @@ The values stored are the total remaining demand to come at each DCP.</p>
 <span class="normal"><a href="#__codelineno-0-774">774</a></span>
 <span class="normal"><a href="#__codelineno-0-775">775</a></span>
 <span class="normal"><a href="#__codelineno-0-776">776</a></span>
-<span class="normal"><a href="#__codelineno-0-777">777</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-715"><a id="__codelineno-0-715" name="__codelineno-0-715"></a><span class="k">def</span> <span class="nf">demand_to_come_summary</span><span class="p">(</span>
+<span class="normal"><a href="#__codelineno-0-777">777</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-715"><a id="__codelineno-0-715" name="__codelineno-0-715"></a><span class="k">def</span><span class="w"> </span><span class="nf">demand_to_come_summary</span><span class="p">(</span>
 </span><span id="__span-0-716"><a id="__codelineno-0-716" name="__codelineno-0-716"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n">Database</span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span>
 </span><span id="__span-0-717"><a id="__codelineno-0-717" name="__codelineno-0-717"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 </span><span id="__span-0-718"><a id="__codelineno-0-718" name="__codelineno-0-718"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -2942,7 +2991,9 @@ The values stored are the total remaining demand to come at each DCP.</p>
 
 
 </h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">displacement_history</span><span class="p">(</span><span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">displacement_history</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -3071,7 +3122,7 @@ these columns:</p>
 <span class="normal"><a href="#__codelineno-0-1071">1071</a></span>
 <span class="normal"><a href="#__codelineno-0-1072">1072</a></span>
 <span class="normal"><a href="#__codelineno-0-1073">1073</a></span>
-<span class="normal"><a href="#__codelineno-0-1074">1074</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1008"><a id="__codelineno-0-1008" name="__codelineno-0-1008"></a><span class="k">def</span> <span class="nf">displacement_history</span><span class="p">(</span>
+<span class="normal"><a href="#__codelineno-0-1074">1074</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1008"><a id="__codelineno-0-1008" name="__codelineno-0-1008"></a><span class="k">def</span><span class="w"> </span><span class="nf">displacement_history</span><span class="p">(</span>
 </span><span id="__span-0-1009"><a id="__codelineno-0-1009" name="__codelineno-0-1009"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n">Database</span><span class="p">,</span>
 </span><span id="__span-0-1010"><a id="__codelineno-0-1010" name="__codelineno-0-1010"></a>    <span class="n">scenario</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="__span-0-1011"><a id="__codelineno-0-1011" name="__codelineno-0-1011"></a>    <span class="n">burn_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
@@ -3147,12 +3198,171 @@ these columns:</p>
 <div class="doc doc-object doc-function">
 
 
+<h2 id="passengersim.database.common_queries.edgar" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">edgar</span>
+
+
+</h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">edgar</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="o">*</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Forecast accuracy information.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+            <b><code>cnx</code></b>
+              (<code><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></code>)
+          –
+          <div class="doc-md-description">
+            
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>scenario</code></b>
+              (<code>str</code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>burn_samples</code></b>
+              (<code>int</code>, default:
+                  <code>100</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>The demand will be returned ignoring this many samples from the
+beginning of each trial.</p>
+          </div>
+        </li>
+    </ul>
+
+
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><span title="pandas.DataFrame">DataFrame</span></code>
+          –
+          <div class="doc-md-description">
+            <p>The resulting dataframe is indexed by <code>iteration</code>, <code>trial</code>, <code>sample</code>,
+<code>segment</code>, <code>orig</code>, and <code>dest</code>; and has columns defined by the DCPs.
+The values stored are the total remaining demand to come at each DCP.</p>
+          </div>
+        </li>
+    </ul>
+
+            <details class="quote">
+              <summary>Source code in <code>passengersim/database/common_queries.py</code></summary>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1235">1235</a></span>
+<span class="normal"><a href="#__codelineno-0-1236">1236</a></span>
+<span class="normal"><a href="#__codelineno-0-1237">1237</a></span>
+<span class="normal"><a href="#__codelineno-0-1238">1238</a></span>
+<span class="normal"><a href="#__codelineno-0-1239">1239</a></span>
+<span class="normal"><a href="#__codelineno-0-1240">1240</a></span>
+<span class="normal"><a href="#__codelineno-0-1241">1241</a></span>
+<span class="normal"><a href="#__codelineno-0-1242">1242</a></span>
+<span class="normal"><a href="#__codelineno-0-1243">1243</a></span>
+<span class="normal"><a href="#__codelineno-0-1244">1244</a></span>
+<span class="normal"><a href="#__codelineno-0-1245">1245</a></span>
+<span class="normal"><a href="#__codelineno-0-1246">1246</a></span>
+<span class="normal"><a href="#__codelineno-0-1247">1247</a></span>
+<span class="normal"><a href="#__codelineno-0-1248">1248</a></span>
+<span class="normal"><a href="#__codelineno-0-1249">1249</a></span>
+<span class="normal"><a href="#__codelineno-0-1250">1250</a></span>
+<span class="normal"><a href="#__codelineno-0-1251">1251</a></span>
+<span class="normal"><a href="#__codelineno-0-1252">1252</a></span>
+<span class="normal"><a href="#__codelineno-0-1253">1253</a></span>
+<span class="normal"><a href="#__codelineno-0-1254">1254</a></span>
+<span class="normal"><a href="#__codelineno-0-1255">1255</a></span>
+<span class="normal"><a href="#__codelineno-0-1256">1256</a></span>
+<span class="normal"><a href="#__codelineno-0-1257">1257</a></span>
+<span class="normal"><a href="#__codelineno-0-1258">1258</a></span>
+<span class="normal"><a href="#__codelineno-0-1259">1259</a></span>
+<span class="normal"><a href="#__codelineno-0-1260">1260</a></span>
+<span class="normal"><a href="#__codelineno-0-1261">1261</a></span>
+<span class="normal"><a href="#__codelineno-0-1262">1262</a></span>
+<span class="normal"><a href="#__codelineno-0-1263">1263</a></span>
+<span class="normal"><a href="#__codelineno-0-1264">1264</a></span>
+<span class="normal"><a href="#__codelineno-0-1265">1265</a></span>
+<span class="normal"><a href="#__codelineno-0-1266">1266</a></span>
+<span class="normal"><a href="#__codelineno-0-1267">1267</a></span>
+<span class="normal"><a href="#__codelineno-0-1268">1268</a></span>
+<span class="normal"><a href="#__codelineno-0-1269">1269</a></span>
+<span class="normal"><a href="#__codelineno-0-1270">1270</a></span>
+<span class="normal"><a href="#__codelineno-0-1271">1271</a></span>
+<span class="normal"><a href="#__codelineno-0-1272">1272</a></span>
+<span class="normal"><a href="#__codelineno-0-1273">1273</a></span>
+<span class="normal"><a href="#__codelineno-0-1274">1274</a></span>
+<span class="normal"><a href="#__codelineno-0-1275">1275</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1235"><a id="__codelineno-0-1235" name="__codelineno-0-1235"></a><span class="k">def</span><span class="w"> </span><span class="nf">edgar</span><span class="p">(</span>
+</span><span id="__span-0-1236"><a id="__codelineno-0-1236" name="__codelineno-0-1236"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n">Database</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span>
+</span><span id="__span-0-1237"><a id="__codelineno-0-1237" name="__codelineno-0-1237"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+</span><span id="__span-0-1238"><a id="__codelineno-0-1238" name="__codelineno-0-1238"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-0-1239"><a id="__codelineno-0-1239" name="__codelineno-0-1239"></a><span class="sd">    Forecast accuracy information.</span>
+</span><span id="__span-0-1240"><a id="__codelineno-0-1240" name="__codelineno-0-1240"></a>
+</span><span id="__span-0-1241"><a id="__codelineno-0-1241" name="__codelineno-0-1241"></a><span class="sd">    Parameters</span>
+</span><span id="__span-0-1242"><a id="__codelineno-0-1242" name="__codelineno-0-1242"></a><span class="sd">    ----------</span>
+</span><span id="__span-0-1243"><a id="__codelineno-0-1243" name="__codelineno-0-1243"></a><span class="sd">    cnx : Database</span>
+</span><span id="__span-0-1244"><a id="__codelineno-0-1244" name="__codelineno-0-1244"></a><span class="sd">    scenario : str, optional</span>
+</span><span id="__span-0-1245"><a id="__codelineno-0-1245" name="__codelineno-0-1245"></a><span class="sd">    burn_samples : int, default 100</span>
+</span><span id="__span-0-1246"><a id="__codelineno-0-1246" name="__codelineno-0-1246"></a><span class="sd">        The demand will be returned ignoring this many samples from the</span>
+</span><span id="__span-0-1247"><a id="__codelineno-0-1247" name="__codelineno-0-1247"></a><span class="sd">        beginning of each trial.</span>
+</span><span id="__span-0-1248"><a id="__codelineno-0-1248" name="__codelineno-0-1248"></a>
+</span><span id="__span-0-1249"><a id="__codelineno-0-1249" name="__codelineno-0-1249"></a><span class="sd">    Returns</span>
+</span><span id="__span-0-1250"><a id="__codelineno-0-1250" name="__codelineno-0-1250"></a><span class="sd">    -------</span>
+</span><span id="__span-0-1251"><a id="__codelineno-0-1251" name="__codelineno-0-1251"></a><span class="sd">    pandas.DataFrame</span>
+</span><span id="__span-0-1252"><a id="__codelineno-0-1252" name="__codelineno-0-1252"></a><span class="sd">        The resulting dataframe is indexed by `iteration`, `trial`, `sample`,</span>
+</span><span id="__span-0-1253"><a id="__codelineno-0-1253" name="__codelineno-0-1253"></a><span class="sd">        `segment`, `orig`, and `dest`; and has columns defined by the DCPs.</span>
+</span><span id="__span-0-1254"><a id="__codelineno-0-1254" name="__codelineno-0-1254"></a><span class="sd">        The values stored are the total remaining demand to come at each DCP.</span>
+</span><span id="__span-0-1255"><a id="__codelineno-0-1255" name="__codelineno-0-1255"></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-0-1256"><a id="__codelineno-0-1256" name="__codelineno-0-1256"></a>    <span class="c1"># Provides content similar to PODS *.DHS output file, but with market level detail</span>
+</span><span id="__span-0-1257"><a id="__codelineno-0-1257" name="__codelineno-0-1257"></a>
+</span><span id="__span-0-1258"><a id="__codelineno-0-1258" name="__codelineno-0-1258"></a>    <span class="n">qry</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+</span><span id="__span-0-1259"><a id="__codelineno-0-1259" name="__codelineno-0-1259"></a><span class="s2">        SELECT</span>
+</span><span id="__span-0-1260"><a id="__codelineno-0-1260" name="__codelineno-0-1260"></a><span class="s2">            iteration, trial, sample, timeframe, path_id, booking_class, sold,</span>
+</span><span id="__span-0-1261"><a id="__codelineno-0-1261" name="__codelineno-0-1261"></a><span class="s2">            sold_priceable, forecast_mean, forecast_stdev, closed</span>
+</span><span id="__span-0-1262"><a id="__codelineno-0-1262" name="__codelineno-0-1262"></a><span class="s2">        FROM</span>
+</span><span id="__span-0-1263"><a id="__codelineno-0-1263" name="__codelineno-0-1263"></a><span class="s2">            edgar</span>
+</span><span id="__span-0-1264"><a id="__codelineno-0-1264" name="__codelineno-0-1264"></a><span class="s2">        WHERE</span>
+</span><span id="__span-0-1265"><a id="__codelineno-0-1265" name="__codelineno-0-1265"></a><span class="s2">            sample &gt;= ?1</span>
+</span><span id="__span-0-1266"><a id="__codelineno-0-1266" name="__codelineno-0-1266"></a><span class="s2">            AND scenario = ?2</span>
+</span><span id="__span-0-1267"><a id="__codelineno-0-1267" name="__codelineno-0-1267"></a><span class="s2">        &quot;&quot;&quot;</span>
+</span><span id="__span-0-1268"><a id="__codelineno-0-1268" name="__codelineno-0-1268"></a>
+</span><span id="__span-0-1269"><a id="__codelineno-0-1269" name="__codelineno-0-1269"></a>    <span class="k">if</span> <span class="n">scenario</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-0-1270"><a id="__codelineno-0-1270" name="__codelineno-0-1270"></a>        <span class="n">qry</span> <span class="o">=</span> <span class="n">qry</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;AND scenario = ?2&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+</span><span id="__span-0-1271"><a id="__codelineno-0-1271" name="__codelineno-0-1271"></a>        <span class="n">params</span> <span class="o">=</span> <span class="p">(</span><span class="n">burn_samples</span><span class="p">,)</span>
+</span><span id="__span-0-1272"><a id="__codelineno-0-1272" name="__codelineno-0-1272"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-0-1273"><a id="__codelineno-0-1273" name="__codelineno-0-1273"></a>        <span class="n">params</span> <span class="o">=</span> <span class="p">(</span><span class="n">burn_samples</span><span class="p">,</span> <span class="n">scenario</span><span class="p">)</span>
+</span><span id="__span-0-1274"><a id="__codelineno-0-1274" name="__codelineno-0-1274"></a>    <span class="n">e</span> <span class="o">=</span> <span class="n">cnx</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span><span class="n">qry</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>  <span class="c1"># , dtype={&quot;edgar&quot;: np.int32})</span>
+</span><span id="__span-0-1275"><a id="__codelineno-0-1275" name="__codelineno-0-1275"></a>    <span class="k">return</span> <span class="n">e</span>
+</span></code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
 <h2 id="passengersim.database.common_queries.fare_class_mix" class="doc doc-heading">
             <span class="doc doc-object-name doc-function-name">fare_class_mix</span>
 
 
 </h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">fare_class_mix</span><span class="p">(</span><span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">fare_class_mix</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -3275,7 +3485,7 @@ has these columns:</p>
 <span class="normal"><a href="#__codelineno-0-70">70</a></span>
 <span class="normal"><a href="#__codelineno-0-71">71</a></span>
 <span class="normal"><a href="#__codelineno-0-72">72</a></span>
-<span class="normal"><a href="#__codelineno-0-73">73</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="k">def</span> <span class="nf">fare_class_mix</span><span class="p">(</span>
+<span class="normal"><a href="#__codelineno-0-73">73</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="k">def</span><span class="w"> </span><span class="nf">fare_class_mix</span><span class="p">(</span>
 </span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n">Database</span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span>
 </span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 </span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -3350,7 +3560,15 @@ has these columns:</p>
 
 
 </h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">leg_forecast_trace</span><span class="p">(</span><span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">carrier</span><span class="p">:</span> <span class="n">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">leg_id</span><span class="p">:</span> <span class="n">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">booking_class</span><span class="p">:</span> <span class="n">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">days_prior</span><span class="p">:</span> <span class="n">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">leg_forecast_trace</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">carrier</span><span class="p">:</span> <span class="n">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">leg_id</span><span class="p">:</span> <span class="n">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">booking_class</span><span class="p">:</span> <span class="n">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">days_prior</span><span class="p">:</span> <span class="n">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -3511,7 +3729,7 @@ these columns:
 <span class="normal"><a href="#__codelineno-0-547">547</a></span>
 <span class="normal"><a href="#__codelineno-0-548">548</a></span>
 <span class="normal"><a href="#__codelineno-0-549">549</a></span>
-<span class="normal"><a href="#__codelineno-0-550">550</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-495"><a id="__codelineno-0-495" name="__codelineno-0-495"></a><span class="k">def</span> <span class="nf">leg_forecast_trace</span><span class="p">(</span>
+<span class="normal"><a href="#__codelineno-0-550">550</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-495"><a id="__codelineno-0-495" name="__codelineno-0-495"></a><span class="k">def</span><span class="w"> </span><span class="nf">leg_forecast_trace</span><span class="p">(</span>
 </span><span id="__span-0-496"><a id="__codelineno-0-496" name="__codelineno-0-496"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="s2">&quot;Database&quot;</span><span class="p">,</span>
 </span><span id="__span-0-497"><a id="__codelineno-0-497" name="__codelineno-0-497"></a>    <span class="n">scenario</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="__span-0-498"><a id="__codelineno-0-498" name="__codelineno-0-498"></a>    <span class="n">burn_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
@@ -3581,7 +3799,12 @@ these columns:
 
 
 </h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">leg_forecasts</span><span class="p">(</span><span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">leg_forecasts</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="o">*</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -3703,7 +3926,7 @@ beginning of each trial.</p>
 <span class="normal"><a href="#__codelineno-0-388">388</a></span>
 <span class="normal"><a href="#__codelineno-0-389">389</a></span>
 <span class="normal"><a href="#__codelineno-0-390">390</a></span>
-<span class="normal"><a href="#__codelineno-0-391">391</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-335"><a id="__codelineno-0-335" name="__codelineno-0-335"></a><span class="k">def</span> <span class="nf">leg_forecasts</span><span class="p">(</span>
+<span class="normal"><a href="#__codelineno-0-391">391</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-335"><a id="__codelineno-0-335" name="__codelineno-0-335"></a><span class="k">def</span><span class="w"> </span><span class="nf">leg_forecasts</span><span class="p">(</span>
 </span><span id="__span-0-336"><a id="__codelineno-0-336" name="__codelineno-0-336"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n">Database</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span>
 </span><span id="__span-0-337"><a id="__codelineno-0-337" name="__codelineno-0-337"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 </span><span id="__span-0-338"><a id="__codelineno-0-338" name="__codelineno-0-338"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -3774,7 +3997,9 @@ beginning of each trial.</p>
 
 
 </h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">leg_local_and_flow_by_class</span><span class="p">(</span><span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">leg_local_and_flow_by_class</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -3850,7 +4075,7 @@ beginning of each trial.</p>
 <span class="normal"><a href="#__codelineno-0-1229">1229</a></span>
 <span class="normal"><a href="#__codelineno-0-1230">1230</a></span>
 <span class="normal"><a href="#__codelineno-0-1231">1231</a></span>
-<span class="normal"><a href="#__codelineno-0-1232">1232</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1163"><a id="__codelineno-0-1163" name="__codelineno-0-1163"></a><span class="k">def</span> <span class="nf">leg_local_and_flow_by_class</span><span class="p">(</span>
+<span class="normal"><a href="#__codelineno-0-1232">1232</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1163"><a id="__codelineno-0-1163" name="__codelineno-0-1163"></a><span class="k">def</span><span class="w"> </span><span class="nf">leg_local_and_flow_by_class</span><span class="p">(</span>
 </span><span id="__span-0-1164"><a id="__codelineno-0-1164" name="__codelineno-0-1164"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n">Database</span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span>
 </span><span id="__span-0-1165"><a id="__codelineno-0-1165" name="__codelineno-0-1165"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 </span><span id="__span-0-1166"><a id="__codelineno-0-1166" name="__codelineno-0-1166"></a>    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;creating pthcls temp table&quot;</span><span class="p">)</span>
@@ -3934,7 +4159,15 @@ beginning of each trial.</p>
 
 
 </h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">leg_sales_trace</span><span class="p">(</span><span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">carrier</span><span class="p">:</span> <span class="n">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">leg_id</span><span class="p">:</span> <span class="n">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">booking_class</span><span class="p">:</span> <span class="n">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">days_prior</span><span class="p">:</span> <span class="n">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">leg_sales_trace</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">carrier</span><span class="p">:</span> <span class="n">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">leg_id</span><span class="p">:</span> <span class="n">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">booking_class</span><span class="p">:</span> <span class="n">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">days_prior</span><span class="p">:</span> <span class="n">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -4082,7 +4315,7 @@ these columns: <code>sold</code>, <code>revenue</code>, <code>auth</code></p>
 <span class="normal"><a href="#__codelineno-0-598">598</a></span>
 <span class="normal"><a href="#__codelineno-0-599">599</a></span>
 <span class="normal"><a href="#__codelineno-0-600">600</a></span>
-<span class="normal"><a href="#__codelineno-0-601">601</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-553"><a id="__codelineno-0-553" name="__codelineno-0-553"></a><span class="k">def</span> <span class="nf">leg_sales_trace</span><span class="p">(</span>
+<span class="normal"><a href="#__codelineno-0-601">601</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-553"><a id="__codelineno-0-553" name="__codelineno-0-553"></a><span class="k">def</span><span class="w"> </span><span class="nf">leg_sales_trace</span><span class="p">(</span>
 </span><span id="__span-0-554"><a id="__codelineno-0-554" name="__codelineno-0-554"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="s2">&quot;Database&quot;</span><span class="p">,</span>
 </span><span id="__span-0-555"><a id="__codelineno-0-555" name="__codelineno-0-555"></a>    <span class="n">scenario</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="__span-0-556"><a id="__codelineno-0-556" name="__codelineno-0-556"></a>    <span class="n">burn_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
@@ -4145,7 +4378,12 @@ these columns: <code>sold</code>, <code>revenue</code>, <code>auth</code></p>
 
 
 </h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">load_factor_distribution</span><span class="p">(</span><span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">cutoffs</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">load_factor_distribution</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">cutoffs</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">),</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -4188,7 +4426,7 @@ these columns: <code>sold</code>, <code>revenue</code>, <code>auth</code></p>
 <span class="normal"><a href="#__codelineno-0-199">199</a></span>
 <span class="normal"><a href="#__codelineno-0-200">200</a></span>
 <span class="normal"><a href="#__codelineno-0-201">201</a></span>
-<span class="normal"><a href="#__codelineno-0-202">202</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-166"><a id="__codelineno-0-166" name="__codelineno-0-166"></a><span class="k">def</span> <span class="nf">load_factor_distribution</span><span class="p">(</span>
+<span class="normal"><a href="#__codelineno-0-202">202</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-166"><a id="__codelineno-0-166" name="__codelineno-0-166"></a><span class="k">def</span><span class="w"> </span><span class="nf">load_factor_distribution</span><span class="p">(</span>
 </span><span id="__span-0-167"><a id="__codelineno-0-167" name="__codelineno-0-167"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n">Database</span><span class="p">,</span>
 </span><span id="__span-0-168"><a id="__codelineno-0-168" name="__codelineno-0-168"></a>    <span class="n">scenario</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 </span><span id="__span-0-169"><a id="__codelineno-0-169" name="__codelineno-0-169"></a>    <span class="n">burn_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
@@ -4239,7 +4477,9 @@ these columns: <code>sold</code>, <code>revenue</code>, <code>auth</code></p>
 
 
 </h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">load_factors</span><span class="p">(</span><span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">load_factors</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -4271,7 +4511,7 @@ these columns: <code>sold</code>, <code>revenue</code>, <code>auth</code></p>
 <span class="normal"><a href="#__codelineno-0-160">160</a></span>
 <span class="normal"><a href="#__codelineno-0-161">161</a></span>
 <span class="normal"><a href="#__codelineno-0-162">162</a></span>
-<span class="normal"><a href="#__codelineno-0-163">163</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-138"><a id="__codelineno-0-138" name="__codelineno-0-138"></a><span class="k">def</span> <span class="nf">load_factors</span><span class="p">(</span><span class="n">cnx</span><span class="p">:</span> <span class="n">Database</span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="normal"><a href="#__codelineno-0-163">163</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-138"><a id="__codelineno-0-138" name="__codelineno-0-138"></a><span class="k">def</span><span class="w"> </span><span class="nf">load_factors</span><span class="p">(</span><span class="n">cnx</span><span class="p">:</span> <span class="n">Database</span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 </span><span id="__span-0-139"><a id="__codelineno-0-139" name="__codelineno-0-139"></a>    <span class="n">qry</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 </span><span id="__span-0-140"><a id="__codelineno-0-140" name="__codelineno-0-140"></a><span class="s2">    SELECT carrier,</span>
 </span><span id="__span-0-141"><a id="__codelineno-0-141" name="__codelineno-0-141"></a><span class="s2">           ROUND(AVG(sold)) AS avg_legs_sold,</span>
@@ -4311,7 +4551,12 @@ these columns: <code>sold</code>, <code>revenue</code>, <code>auth</code></p>
 
 
 </h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">local_and_flow_yields</span><span class="p">(</span><span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">local_and_flow_yields</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="o">*</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -4452,7 +4697,7 @@ beginning of each trial.</p>
 <span class="normal"><a href="#__codelineno-0-1157">1157</a></span>
 <span class="normal"><a href="#__codelineno-0-1158">1158</a></span>
 <span class="normal"><a href="#__codelineno-0-1159">1159</a></span>
-<span class="normal"><a href="#__codelineno-0-1160">1160</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1077"><a id="__codelineno-0-1077" name="__codelineno-0-1077"></a><span class="k">def</span> <span class="nf">local_and_flow_yields</span><span class="p">(</span>
+<span class="normal"><a href="#__codelineno-0-1160">1160</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1077"><a id="__codelineno-0-1077" name="__codelineno-0-1077"></a><span class="k">def</span><span class="w"> </span><span class="nf">local_and_flow_yields</span><span class="p">(</span>
 </span><span id="__span-0-1078"><a id="__codelineno-0-1078" name="__codelineno-0-1078"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n">Database</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span>
 </span><span id="__span-0-1079"><a id="__codelineno-0-1079" name="__codelineno-0-1079"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 </span><span id="__span-0-1080"><a id="__codelineno-0-1080" name="__codelineno-0-1080"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -4550,7 +4795,13 @@ beginning of each trial.</p>
 
 
 </h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">od_fare_class_mix</span><span class="p">(</span><span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span> <span class="n">orig</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span> <span class="n">dest</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">od_fare_class_mix</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">orig</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">dest</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -4688,7 +4939,7 @@ has these columns:</p>
 <span class="normal"><a href="#__codelineno-0-132">132</a></span>
 <span class="normal"><a href="#__codelineno-0-133">133</a></span>
 <span class="normal"><a href="#__codelineno-0-134">134</a></span>
-<span class="normal"><a href="#__codelineno-0-135">135</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-76"><a id="__codelineno-0-76" name="__codelineno-0-76"></a><span class="k">def</span> <span class="nf">od_fare_class_mix</span><span class="p">(</span>
+<span class="normal"><a href="#__codelineno-0-135">135</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-76"><a id="__codelineno-0-76" name="__codelineno-0-76"></a><span class="k">def</span><span class="w"> </span><span class="nf">od_fare_class_mix</span><span class="p">(</span>
 </span><span id="__span-0-77"><a id="__codelineno-0-77" name="__codelineno-0-77"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n">Database</span><span class="p">,</span> <span class="n">orig</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dest</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span>
 </span><span id="__span-0-78"><a id="__codelineno-0-78" name="__codelineno-0-78"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 </span><span id="__span-0-79"><a id="__codelineno-0-79" name="__codelineno-0-79"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -4762,7 +5013,12 @@ has these columns:</p>
 
 
 </h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">path_forecasts</span><span class="p">(</span><span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">path_forecasts</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="o">*</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="pandas.DataFrame">DataFrame</span></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -4883,7 +5139,7 @@ beginning of each trial.</p>
 <span class="normal"><a href="#__codelineno-0-656">656</a></span>
 <span class="normal"><a href="#__codelineno-0-657">657</a></span>
 <span class="normal"><a href="#__codelineno-0-658">658</a></span>
-<span class="normal"><a href="#__codelineno-0-659">659</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-604"><a id="__codelineno-0-604" name="__codelineno-0-604"></a><span class="k">def</span> <span class="nf">path_forecasts</span><span class="p">(</span>
+<span class="normal"><a href="#__codelineno-0-659">659</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-604"><a id="__codelineno-0-604" name="__codelineno-0-604"></a><span class="k">def</span><span class="w"> </span><span class="nf">path_forecasts</span><span class="p">(</span>
 </span><span id="__span-0-605"><a id="__codelineno-0-605" name="__codelineno-0-605"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n">Database</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span>
 </span><span id="__span-0-606"><a id="__codelineno-0-606" name="__codelineno-0-606"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
 </span><span id="__span-0-607"><a id="__codelineno-0-607" name="__codelineno-0-607"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -4953,7 +5209,9 @@ beginning of each trial.</p>
 
 
 </h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">total_demand</span><span class="p">(</span><span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">float</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">total_demand</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">cnx</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="passengersim.database.database.Database" href="index.html#passengersim.database.database.Database">Database</a></span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="n">str</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="mi">100</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">float</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -5043,7 +5301,7 @@ beginning of each trial.</p>
 <span class="normal"><a href="#__codelineno-0-236">236</a></span>
 <span class="normal"><a href="#__codelineno-0-237">237</a></span>
 <span class="normal"><a href="#__codelineno-0-238">238</a></span>
-<span class="normal"><a href="#__codelineno-0-239">239</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-205"><a id="__codelineno-0-205" name="__codelineno-0-205"></a><span class="k">def</span> <span class="nf">total_demand</span><span class="p">(</span><span class="n">cnx</span><span class="p">:</span> <span class="n">Database</span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="normal"><a href="#__codelineno-0-239">239</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-205"><a id="__codelineno-0-205" name="__codelineno-0-205"></a><span class="k">def</span><span class="w"> </span><span class="nf">total_demand</span><span class="p">(</span><span class="n">cnx</span><span class="p">:</span> <span class="n">Database</span><span class="p">,</span> <span class="n">scenario</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">burn_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 </span><span id="__span-0-206"><a id="__codelineno-0-206" name="__codelineno-0-206"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="__span-0-207"><a id="__codelineno-0-207" name="__codelineno-0-207"></a><span class="sd">    Average total demand.</span>
 </span><span id="__span-0-208"><a id="__codelineno-0-208" name="__codelineno-0-208"></a>

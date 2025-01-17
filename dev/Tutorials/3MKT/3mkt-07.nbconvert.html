@@ -1175,6 +1175,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
                     processEnvironments: true
                 },
                 displayAlign: 'center',
+                messageStyle: 'none',
                 CommonHTML: {
                     linebreaks: {
                     automatic: true
@@ -1406,7 +1407,7 @@ Demand is simulated at a level 50% lower than normal.</p>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">passengersim</span> <span class="k">as</span> <span class="nn">pax</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">passengersim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pax</span>
 
 <span class="n">pax</span><span class="o">.</span><span class="n">versions</span><span class="p">()</span>
 </pre></div>
@@ -1451,7 +1452,7 @@ passengersim.core 0.42.dev89+g5ac994e
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">passengersim.utils.codeview</span> <span class="kn">import</span> <span class="n">show_file</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">passengersim.utils.codeview</span><span class="w"> </span><span class="kn">import</span> <span class="n">show_file</span>
 
 <span class="n">show_file</span><span class="p">(</span><span class="s2">"network/07-untrunc-em-low-demand.yaml"</span><span class="p">)</span>
 </pre></div>
@@ -1624,9 +1625,9 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jupyter-widgets jp-OutputArea-output" id="c5dfbf8e-fa19-4cfa-9e46-c92cee4afe10" tabindex="0">
+<div class="jupyter-widgets jp-OutputArea-output" id="dfa167ad-026c-44b1-9a09-2ea5395caf0c" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('c5dfbf8e-fa19-4cfa-9e46-c92cee4afe10');
+var element = document.getElementById('dfa167ad-026c-44b1-9a09-2ea5395caf0c');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "52c96bd4fe1845b6b019233915bfa1e2", "version_major": 2, "version_minor": 0}
@@ -2126,7 +2127,7 @@ var element = document.getElementById('c5dfbf8e-fa19-4cfa-9e46-c92cee4afe10');
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">targets</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">targets</span>
 
 <span class="n">target</span> <span class="o">=</span> <span class="n">targets</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">sim</span><span class="o">.</span><span class="n">config</span><span class="p">)</span>
 </pre></div>
@@ -2157,7 +2158,7 @@ target = targets.load(7, sim.config)</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">passengersim</span> <span class="kn">import</span> <span class="n">contrast</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">passengersim</span><span class="w"> </span><span class="kn">import</span> <span class="n">contrast</span>
 
 <span class="n">comps</span> <span class="o">=</span> <span class="n">contrast</span><span class="o">.</span><span class="n">Contrast</span><span class="p">(</span>
     <span class="p">{</span>

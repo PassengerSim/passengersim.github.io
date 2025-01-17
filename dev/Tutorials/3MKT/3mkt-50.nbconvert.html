@@ -1175,6 +1175,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
                     processEnvironments: true
                 },
                 displayAlign: 'center',
+                messageStyle: 'none',
                 CommonHTML: {
                     linebreaks: {
                     automatic: true
@@ -1405,7 +1406,7 @@ and lowest, and taking the mean of the remaining 24 values.</p>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">passengersim</span> <span class="k">as</span> <span class="nn">pax</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">passengersim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pax</span>
 
 <span class="n">pax</span><span class="o">.</span><span class="n">versions</span><span class="p">()</span>
 </pre></div>
@@ -1507,9 +1508,9 @@ baseline_summary = sim.run()</div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jupyter-widgets jp-OutputArea-output" id="150bb024-39ac-47ef-85ca-67a0fd734a99" tabindex="0">
+<div class="jupyter-widgets jp-OutputArea-output" id="14e08a4a-d2ad-4796-9e77-4f4dbb152049" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('150bb024-39ac-47ef-85ca-67a0fd734a99');
+var element = document.getElementById('14e08a4a-d2ad-4796-9e77-4f4dbb152049');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "166e3651b6364532a6ebb9b49f1c3757", "version_major": 2, "version_minor": 0}
@@ -1667,7 +1668,7 @@ var element = document.getElementById('150bb024-39ac-47ef-85ca-67a0fd734a99');
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">passengersim.extra.olympic_forecast</span> <span class="kn">import</span> <span class="n">OlympicForecastStep</span>  <span class="c1"># noqa: F401</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">passengersim.extra.olympic_forecast</span><span class="w"> </span><span class="kn">import</span> <span class="n">OlympicForecastStep</span>  <span class="c1"># noqa: F401</span>
 
 <span class="n">extra_config</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">rm_systems:</span>
@@ -1788,9 +1789,9 @@ cfg.simulation_controls.num_trials = 1</div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jupyter-widgets jp-OutputArea-output" id="5481c0a0-6c1b-472c-a9e7-82ea83a0578c" tabindex="0">
+<div class="jupyter-widgets jp-OutputArea-output" id="24d43bdd-63da-4b2b-b27c-b71a24f1601a" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('5481c0a0-6c1b-472c-a9e7-82ea83a0578c');
+var element = document.getElementById('24d43bdd-63da-4b2b-b27c-b71a24f1601a');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "69fd39ffa794438a9b876ea264ae17a4", "version_major": 2, "version_minor": 0}
@@ -1948,7 +1949,7 @@ var element = document.getElementById('5481c0a0-6c1b-472c-a9e7-82ea83a0578c');
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">passengersim.contrast</span> <span class="kn">import</span> <span class="n">Contrast</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">passengersim.contrast</span><span class="w"> </span><span class="kn">import</span> <span class="n">Contrast</span>
 
 <span class="n">comp</span> <span class="o">=</span> <span class="n">Contrast</span><span class="p">(</span><span class="n">Baseline</span><span class="o">=</span><span class="n">baseline_summary</span><span class="p">,</span> <span class="n">Olympic</span><span class="o">=</span><span class="n">summary</span><span class="p">)</span>
 </pre></div>

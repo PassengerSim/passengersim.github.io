@@ -1414,6 +1414,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
                     processEnvironments: true
                 },
                 displayAlign: 'center',
+                messageStyle: 'none',
                 CommonHTML: {
                     linebreaks: {
                     automatic: true
@@ -1658,7 +1659,7 @@ of the simulation.</p>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">passengersim</span> <span class="kn">import</span> <span class="n">SimulationTables</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">passengersim</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimulationTables</span>
 
 <span class="n">summary</span> <span class="o">=</span> <span class="n">SimulationTables</span><span class="o">.</span><span class="n">from_pickle</span><span class="p">(</span><span class="s2">"saved-output/simple-sim"</span><span class="p">)</span>
 </pre></div>
@@ -2756,7 +2757,7 @@ objects in a
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">passengersim.contrast</span> <span class="kn">import</span> <span class="n">Contrast</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">passengersim.contrast</span><span class="w"> </span><span class="kn">import</span> <span class="n">Contrast</span>
 
 <span class="n">comps</span> <span class="o">=</span> <span class="n">Contrast</span><span class="p">(</span>
     <span class="n">Simple</span><span class="o">=</span><span class="n">summary</span><span class="p">,</span>
