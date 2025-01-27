@@ -791,18 +791,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#passengersim.config.carriers.Carrier.continuous_pricing" class="md-nav__link">
+  <a href="#passengersim.config.carriers.Carrier.control" class="md-nav__link">
     <span class="md-ellipsis">
-      continuous_pricing
+      control
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#passengersim.config.carriers.Carrier.control" class="md-nav__link">
+  <a href="#passengersim.config.carriers.Carrier.cp_algorithm" class="md-nav__link">
     <span class="md-ellipsis">
-      control
+      cp_algorithm
     </span>
   </a>
   
@@ -866,6 +866,15 @@
   <a href="#passengersim.config.carriers.Carrier.load_factor_curve" class="md-nav__link">
     <span class="md-ellipsis">
       load_factor_curve
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.carriers.Carrier.proration_rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      proration_rule
     </span>
   </a>
   
@@ -1470,18 +1479,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#passengersim.config.carriers.Carrier.continuous_pricing" class="md-nav__link">
+  <a href="#passengersim.config.carriers.Carrier.control" class="md-nav__link">
     <span class="md-ellipsis">
-      continuous_pricing
+      control
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#passengersim.config.carriers.Carrier.control" class="md-nav__link">
+  <a href="#passengersim.config.carriers.Carrier.cp_algorithm" class="md-nav__link">
     <span class="md-ellipsis">
-      control
+      cp_algorithm
     </span>
   </a>
   
@@ -1545,6 +1554,15 @@
   <a href="#passengersim.config.carriers.Carrier.load_factor_curve" class="md-nav__link">
     <span class="md-ellipsis">
       load_factor_curve
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.carriers.Carrier.proration_rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      proration_rule
     </span>
   </a>
   
@@ -1738,7 +1756,20 @@
 <span class="normal"><a href="#__codelineno-0-102">102</a></span>
 <span class="normal"><a href="#__codelineno-0-103">103</a></span>
 <span class="normal"><a href="#__codelineno-0-104">104</a></span>
-<span class="normal"><a href="#__codelineno-0-105">105</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="k">class</span><span class="w"> </span><span class="nc">Carrier</span><span class="p">(</span><span class="n">Named</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="s2">&quot;forbid&quot;</span><span class="p">):</span>
+<span class="normal"><a href="#__codelineno-0-105">105</a></span>
+<span class="normal"><a href="#__codelineno-0-106">106</a></span>
+<span class="normal"><a href="#__codelineno-0-107">107</a></span>
+<span class="normal"><a href="#__codelineno-0-108">108</a></span>
+<span class="normal"><a href="#__codelineno-0-109">109</a></span>
+<span class="normal"><a href="#__codelineno-0-110">110</a></span>
+<span class="normal"><a href="#__codelineno-0-111">111</a></span>
+<span class="normal"><a href="#__codelineno-0-112">112</a></span>
+<span class="normal"><a href="#__codelineno-0-113">113</a></span>
+<span class="normal"><a href="#__codelineno-0-114">114</a></span>
+<span class="normal"><a href="#__codelineno-0-115">115</a></span>
+<span class="normal"><a href="#__codelineno-0-116">116</a></span>
+<span class="normal"><a href="#__codelineno-0-117">117</a></span>
+<span class="normal"><a href="#__codelineno-0-118">118</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="k">class</span><span class="w"> </span><span class="nc">Carrier</span><span class="p">(</span><span class="n">Named</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="s2">&quot;forbid&quot;</span><span class="p">):</span>
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Configuration for passengersim.Carrier object.&quot;&quot;&quot;</span>
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a>
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a>    <span class="n">rm_system</span><span class="p">:</span> <span class="nb">str</span>
@@ -1747,7 +1778,7 @@
 </span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a>    <span class="n">control</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 </span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Deprecated.  No effect&quot;&quot;&quot;</span>
 </span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17"></a>    <span class="n">continuous_pricing</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s2">&quot;None&quot;</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17"></a>    <span class="n">cp_algorithm</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s2">&quot;None&quot;</span>
 </span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Used to select continuous pricing&quot;&quot;&quot;</span>
 </span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19"></a>
 </span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20"></a>    <span class="n">cp_quantize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span>
@@ -1836,6 +1867,19 @@
 </span><span id="__span-0-103"><a id="__codelineno-0-103" name="__codelineno-0-103"></a><span class="sd">    If 3, then the demand is marked as truncated if the bucket or pathclass is closed at</span>
 </span><span id="__span-0-104"><a id="__codelineno-0-104" name="__codelineno-0-104"></a><span class="sd">    either of the DCPs that are at the beginning or the end of the timeframe.</span>
 </span><span id="__span-0-105"><a id="__codelineno-0-105" name="__codelineno-0-105"></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-0-106"><a id="__codelineno-0-106" name="__codelineno-0-106"></a>
+</span><span id="__span-0-107"><a id="__codelineno-0-107" name="__codelineno-0-107"></a>    <span class="n">proration_rule</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">,</span> <span class="s2">&quot;sqrt_distance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;distance&quot;</span>
+</span><span id="__span-0-108"><a id="__codelineno-0-108" name="__codelineno-0-108"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;How to prorate revenue to legs and buckets for connecting paths.</span>
+</span><span id="__span-0-109"><a id="__codelineno-0-109" name="__codelineno-0-109"></a>
+</span><span id="__span-0-110"><a id="__codelineno-0-110" name="__codelineno-0-110"></a><span class="sd">    If &quot;distance&quot;, then the revenue is prorated based on the relatives distance</span>
+</span><span id="__span-0-111"><a id="__codelineno-0-111" name="__codelineno-0-111"></a><span class="sd">    of the legs.  So if the first leg is 100 miles and the second leg is 400 miles,</span>
+</span><span id="__span-0-112"><a id="__codelineno-0-112" name="__codelineno-0-112"></a><span class="sd">    then the first leg gets 20% of the revenue and the second leg gets 80%.</span>
+</span><span id="__span-0-113"><a id="__codelineno-0-113" name="__codelineno-0-113"></a>
+</span><span id="__span-0-114"><a id="__codelineno-0-114" name="__codelineno-0-114"></a><span class="sd">    If &quot;sqrt_distance&quot;, then the revenue is prorated based on the relative square</span>
+</span><span id="__span-0-115"><a id="__codelineno-0-115" name="__codelineno-0-115"></a><span class="sd">    root of distance of the legs.  So if the first leg is 100 miles and the</span>
+</span><span id="__span-0-116"><a id="__codelineno-0-116" name="__codelineno-0-116"></a><span class="sd">    second leg is 400 miles, then the first leg gets 1/3 of the revenue and the</span>
+</span><span id="__span-0-117"><a id="__codelineno-0-117" name="__codelineno-0-117"></a><span class="sd">    second leg gets 2/3.</span>
+</span><span id="__span-0-118"><a id="__codelineno-0-118" name="__codelineno-0-118"></a><span class="sd">    &quot;&quot;&quot;</span>
 </span></code></pre></div></td></tr></table></div>
               </details>
 
@@ -1954,30 +1998,6 @@ identically for classes that share a cabin.  Thus the list might look like this:
 
 
 
-<h3 id="passengersim.config.carriers.Carrier.continuous_pricing" class="doc doc-heading">
-            <span class="doc doc-object-name doc-attribute-name">continuous_pricing</span>
-
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
-  </span>
-
-</h3>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">continuous_pricing</span><span class="p">:</span> <span class="n">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;None&#39;</span>
-</span></code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Used to select continuous pricing</p>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-attribute">
-
-
-
 <h3 id="passengersim.config.carriers.Carrier.control" class="doc doc-heading">
             <span class="doc doc-object-name doc-attribute-name">control</span>
 
@@ -1994,6 +2014,30 @@ identically for classes that share a cabin.  Thus the list might look like this:
     <div class="doc doc-contents ">
 
         <p>Deprecated.  No effect</p>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim.config.carriers.Carrier.cp_algorithm" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">cp_algorithm</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">cp_algorithm</span><span class="p">:</span> <span class="n">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="s1">&#39;None&#39;</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Used to select continuous pricing</p>
     </div>
 
 </div>
@@ -2167,6 +2211,39 @@ If not specified, the default frat5 from the carrier's RM system is used.</p>
 
         <p>Named Load Factor curve.
 This is the default that will be applied if not found at a more detailed level</p>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim.config.carriers.Carrier.proration_rule" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">proration_rule</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">proration_rule</span><span class="p">:</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">,</span> <span class="s2">&quot;sqrt_distance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="s2">&quot;distance&quot;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>How to prorate revenue to legs and buckets for connecting paths.</p>
+<p>If "distance", then the revenue is prorated based on the relatives distance
+of the legs.  So if the first leg is 100 miles and the second leg is 400 miles,
+then the first leg gets 20% of the revenue and the second leg gets 80%.</p>
+<p>If "sqrt_distance", then the revenue is prorated based on the relative square
+root of distance of the legs.  So if the first leg is 100 miles and the
+second leg is 400 miles, then the first leg gets 1/3 of the revenue and the
+second leg gets 2/3.</p>
     </div>
 
 </div>
