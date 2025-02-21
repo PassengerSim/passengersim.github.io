@@ -15,7 +15,7 @@
         <link rel="next" href="../viz/carriers.nbconvert.html">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
     
     
@@ -1176,34 +1176,6 @@
         }, 1000)
       })
 </script>
-<script>
-(function() {
-  function addWidgetsRenderer() {
-    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
-    var scriptElement = document.createElement('script');
-    
-    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
-    
-    var widgetState;
-
-    // Fallback for older version:
-    try {
-      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
-
-      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
-        
-        var widgetRendererSrc = 'https://unpkg.com/@jupyter-js-widgets@*/dist/embed.js';
-        
-      }
-    } catch(e) {}
-
-    scriptElement.src = widgetRendererSrc;
-    document.body.appendChild(scriptElement);
-  }
-
-  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
-}());
-</script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -1532,8 +1504,8 @@ pax.versions()</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>passengersim 0.46.dev30+g3f4104a.d20250127
-passengersim.core 0.46.dev45+gdc44d5b.d20250127
+<pre>passengersim 0.50.dev2+g747d55d
+passengersim.core 0.49.dev53+g305d020.d20250217
 </pre>
 </div>
 </div>
@@ -1765,26 +1737,34 @@ will overwrite one another.</p>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jupyter-widgets jp-OutputArea-output" id="7fcee2fd-442c-4dc4-aa06-5a9846786c8f" tabindex="0">
-<script type="text/javascript">
-var element = document.getElementById('7fcee2fd-442c-4dc4-aa06-5a9846786c8f');
-</script>
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "5199ce6e2ae349eead106e2f32997019", "version_major": 2, "version_minor": 0}
-</script>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Task Completed after <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1.33</span> seconds
-</pre>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[5], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> summary <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">sim</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">run</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/Git/umbrella/passengersim-public/passengersim/driver.py:2308</span>, in <span class="ansi-cyan-fg">Simulation.run</span><span class="ansi-blue-fg">(self, log_reports, single_trial, summarizer, rich_progress)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2300</span>     warnings<span style="color: rgb(98,98,98)">.</span>warn(
+<span class="ansi-green-intense-fg ansi-bold">   2301</span>         <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">Using SummaryTables to compute reports is deprecated, </span><span style="color: rgb(175,0,0)">"</span>
+<span class="ansi-green-intense-fg ansi-bold">   2302</span>         <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">prefer SimulationTables in new code.</span><span style="color: rgb(175,0,0)">"</span>,
+<span class="ansi-green-intense-fg ansi-bold">   2303</span>         <span class="ansi-bold" style="color: rgb(215,95,95)">DeprecationWarning</span>,
+<span class="ansi-green-intense-fg ansi-bold">   2304</span>         stacklevel<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">2</span>,
+<span class="ansi-green-intense-fg ansi-bold">   2305</span>     )
+<span class="ansi-green-intense-fg ansi-bold">   2307</span> start_time <span style="color: rgb(98,98,98)">=</span> time<span style="color: rgb(98,98,98)">.</span>time()
+<span class="ansi-green-fg">-&gt; 2308</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">setup_scenario</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2309</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> single_trial <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
+<span class="ansi-green-intense-fg ansi-bold">   2310</span>     <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>_run_sim_single_trial(single_trial, rich_progress<span style="color: rgb(98,98,98)">=</span>rich_progress)
+
+File <span class="ansi-green-fg">~/Git/umbrella/passengersim-public/passengersim/driver.py:890</span>, in <span class="ansi-cyan-fg">Simulation.setup_scenario</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-intense-fg ansi-bold">    887</span>     <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>sim<span style="color: rgb(98,98,98)">.</span>initialize_pathclasses(carrier<span style="color: rgb(98,98,98)">.</span>get_history_def(), carrier<span style="color: rgb(98,98,98)">.</span>name)
+<span class="ansi-green-intense-fg ansi-bold">    889</span> <span style="color: rgb(95,135,135)"># TODO: only initialize nonstop linkage when needed?</span>
+<span class="ansi-green-fg">--&gt; 890</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">sim</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">initialize_nonstop_path_linkage</span>()
+<span class="ansi-green-intense-fg ansi-bold">    892</span> <span style="color: rgb(95,135,135)"># Airlines using Q-forecasting need to have pathclasses set up for all paths</span>
+<span class="ansi-green-intense-fg ansi-bold">    893</span> <span style="color: rgb(95,135,135)"># so Q-demand can be forecasted by pathclass even in the absence of bookings</span>
+<span class="ansi-green-intense-fg ansi-bold">    894</span> <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> carrier <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>sim<span style="color: rgb(98,98,98)">.</span>carriers:
+
+<span class="ansi-red-fg">AttributeError</span>: 'passengersim.SimulationEngine' object has no attribute 'initialize_nonstop_path_linkage'</pre>
 </div>
 </div>
 </div>
@@ -1801,13 +1781,13 @@ var element = document.getElementById('7fcee2fd-442c-4dc4-aa06-5a9846786c8f');
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-6">
@@ -1827,84 +1807,6 @@ var element = document.getElementById('7fcee2fd-442c-4dc4-aa06-5a9846786c8f');
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<style>
-  #altair-viz-bfbf1088a87f45c3b74c1417c31b0abf.vega-embed {
-    width: 100%;
-    display: flex;
-  }
-
-  #altair-viz-bfbf1088a87f45c3b74c1417c31b0abf.vega-embed details,
-  #altair-viz-bfbf1088a87f45c3b74c1417c31b0abf.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-bfbf1088a87f45c3b74c1417c31b0abf"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-bfbf1088a87f45c3b74c1417c31b0abf") {
-      outputDiv = document.getElementById("altair-viz-bfbf1088a87f45c3b74c1417c31b0abf");
-    }
-
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
-
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
-
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
-
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
-
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      let deps = ["vega-embed"];
-      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFontSize": 12}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "carrier", "legend": null, "title": "Carrier", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Average Revenue", "type": "quantitative"}], "x": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-5ceb81dc38987a52046d2f7bc60ab97b"}, "height": 50, "title": "Carrier Revenues", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-5ceb81dc38987a52046d2f7bc60ab97b": [{"carrier": "AL1", "avg_rev": 92308.0}, {"carrier": "AL2", "avg_rev": 90336.5}]}}, {"mode": "vega-lite"});
-</script>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
@@ -1918,13 +1820,13 @@ our callback functions.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-7">
@@ -1944,18 +1846,6 @@ our callback functions.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;passengersim.callbacks.CallbackData from end_sample, daily&gt;</pre>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
@@ -1969,13 +1859,13 @@ our callback functions.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-8">
@@ -1995,22 +1885,6 @@ our callback functions.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>[{'trial': 0, 'sample': 56, 'days_prior': 63, 'AL1': 0.0, 'AL2': 0.0},
- {'trial': 0, 'sample': 56, 'days_prior': 62, 'AL1': 600.0, 'AL2': 2125.0},
- {'trial': 0, 'sample': 56, 'days_prior': 61, 'AL1': 1350.0, 'AL2': 4225.0},
- {'trial': 0, 'sample': 56, 'days_prior': 60, 'AL1': 2025.0, 'AL2': 6250.0},
- {'trial': 0, 'sample': 56, 'days_prior': 59, 'AL1': 3125.0, 'AL2': 6825.0}]</pre>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
@@ -2025,13 +1899,13 @@ respectively.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-9">
@@ -2047,22 +1921,6 @@ respectively.</p>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">callback_data</span><span class="o">.</span><span class="n">end_sample</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-9">summary.callback_data.end_sample[:5]</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>[{'trial': 0, 'sample': 50, 'AL1': 100475.0, 'AL2': 103700.0},
- {'trial': 0, 'sample': 51, 'AL1': 101475.0, 'AL2': 97425.0},
- {'trial': 0, 'sample': 52, 'AL1': 108575.0, 'AL2': 95000.0},
- {'trial': 0, 'sample': 53, 'AL1': 104275.0, 'AL2': 98825.0},
- {'trial': 0, 'sample': 54, 'AL1': 101300.0, 'AL2': 97000.0}]</pre>
 </div>
 </div>
 </div>
@@ -2083,13 +1941,13 @@ on the <code>callback_data</code> attribute.  This may make subsequent analysis 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-10">
@@ -2109,135 +1967,6 @@ on the <code>callback_data</code> attribute.  This may make subsequent analysis 
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>trial</th>
-<th>sample</th>
-<th>days_prior</th>
-<th>AL1</th>
-<th>AL2</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>0</td>
-<td>56</td>
-<td>63</td>
-<td>0.0</td>
-<td>0.0</td>
-</tr>
-<tr>
-<th>1</th>
-<td>0</td>
-<td>56</td>
-<td>62</td>
-<td>600.0</td>
-<td>2125.0</td>
-</tr>
-<tr>
-<th>2</th>
-<td>0</td>
-<td>56</td>
-<td>61</td>
-<td>1350.0</td>
-<td>4225.0</td>
-</tr>
-<tr>
-<th>3</th>
-<td>0</td>
-<td>56</td>
-<td>60</td>
-<td>2025.0</td>
-<td>6250.0</td>
-</tr>
-<tr>
-<th>4</th>
-<td>0</td>
-<td>56</td>
-<td>59</td>
-<td>3125.0</td>
-<td>6825.0</td>
-</tr>
-<tr>
-<th>...</th>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr>
-<th>443</th>
-<td>0</td>
-<td>98</td>
-<td>4</td>
-<td>51800.0</td>
-<td>61225.0</td>
-</tr>
-<tr>
-<th>444</th>
-<td>0</td>
-<td>98</td>
-<td>3</td>
-<td>53800.0</td>
-<td>63225.0</td>
-</tr>
-<tr>
-<th>445</th>
-<td>0</td>
-<td>98</td>
-<td>2</td>
-<td>56225.0</td>
-<td>66400.0</td>
-</tr>
-<tr>
-<th>446</th>
-<td>0</td>
-<td>98</td>
-<td>1</td>
-<td>61025.0</td>
-<td>70050.0</td>
-</tr>
-<tr>
-<th>447</th>
-<td>0</td>
-<td>98</td>
-<td>0</td>
-<td>62450.0</td>
-<td>73450.0</td>
-</tr>
-</tbody>
-</table>
-<p>448 rows × 5 columns</p>
-</div>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
@@ -2251,13 +1980,13 @@ Python tools: analyze, visualize, interpret, etc.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-11">
@@ -2293,91 +2022,10 @@ alt.Chart(
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<style>
-  #altair-viz-6d28144097704758b4abec801159af10.vega-embed {
-    width: 100%;
-    display: flex;
-  }
-
-  #altair-viz-6d28144097704758b4abec801159af10.vega-embed details,
-  #altair-viz-6d28144097704758b4abec801159af10.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-6d28144097704758b4abec801159af10"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-6d28144097704758b4abec801159af10") {
-      outputDiv = document.getElementById("altair-viz-6d28144097704758b4abec801159af10");
-    }
-
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
-
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
-
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
-
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
-
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      let deps = ["vega-embed"];
-      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "data": {"name": "data-86a05f6340e26685fd91cb75cbd45848"}, "mark": {"type": "line"}, "encoding": {"color": {"field": "sample", "type": "nominal"}, "x": {"field": "days_prior", "scale": {"reverse": true}, "type": "quantitative"}, "y": {"field": "DIFF", "type": "quantitative"}}, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-86a05f6340e26685fd91cb75cbd45848": [{"trial": 0, "sample": 56, "days_prior": 63, "AL1": 0.0, "AL2": 0.0, "DIFF": 0.0}, {"trial": 0, "sample": 56, "days_prior": 62, "AL1": 600.0, "AL2": 2125.0, "DIFF": -1525.0}, {"trial": 0, "sample": 56, "days_prior": 61, "AL1": 1350.0, "AL2": 4225.0, "DIFF": -2875.0}, {"trial": 0, "sample": 56, "days_prior": 60, "AL1": 2025.0, "AL2": 6250.0, "DIFF": -4225.0}, {"trial": 0, "sample": 56, "days_prior": 59, "AL1": 3125.0, "AL2": 6825.0, "DIFF": -3700.0}, {"trial": 0, "sample": 56, "days_prior": 58, "AL1": 3475.0, "AL2": 8675.0, "DIFF": -5200.0}, {"trial": 0, "sample": 56, "days_prior": 57, "AL1": 4100.0, "AL2": 9750.0, "DIFF": -5650.0}, {"trial": 0, "sample": 56, "days_prior": 56, "AL1": 4500.0, "AL2": 11600.0, "DIFF": -7100.0}, {"trial": 0, "sample": 56, "days_prior": 55, "AL1": 5400.0, "AL2": 12050.0, "DIFF": -6650.0}, {"trial": 0, "sample": 56, "days_prior": 54, "AL1": 6150.0, "AL2": 12650.0, "DIFF": -6500.0}, {"trial": 0, "sample": 56, "days_prior": 53, "AL1": 6800.0, "AL2": 13025.0, "DIFF": -6225.0}, {"trial": 0, "sample": 56, "days_prior": 52, "AL1": 7400.0, "AL2": 13450.0, "DIFF": -6050.0}, {"trial": 0, "sample": 56, "days_prior": 51, "AL1": 7775.0, "AL2": 13875.0, "DIFF": -6100.0}, {"trial": 0, "sample": 56, "days_prior": 50, "AL1": 8200.0, "AL2": 14250.0, "DIFF": -6050.0}, {"trial": 0, "sample": 56, "days_prior": 49, "AL1": 8875.0, "AL2": 15625.0, "DIFF": -6750.0}, {"trial": 0, "sample": 56, "days_prior": 48, "AL1": 9375.0, "AL2": 16850.0, "DIFF": -7475.0}, {"trial": 0, "sample": 56, "days_prior": 47, "AL1": 10550.0, "AL2": 17975.0, "DIFF": -7425.0}, {"trial": 0, "sample": 56, "days_prior": 46, "AL1": 10775.0, "AL2": 18625.0, "DIFF": -7850.0}, {"trial": 0, "sample": 56, "days_prior": 45, "AL1": 12100.0, "AL2": 19000.0, "DIFF": -6900.0}, {"trial": 0, "sample": 56, "days_prior": 44, "AL1": 12600.0, "AL2": 21675.0, "DIFF": -9075.0}, {"trial": 0, "sample": 56, "days_prior": 43, "AL1": 13525.0, "AL2": 22875.0, "DIFF": -9350.0}, {"trial": 0, "sample": 56, "days_prior": 42, "AL1": 13675.0, "AL2": 23350.0, "DIFF": -9675.0}, {"trial": 0, "sample": 56, "days_prior": 41, "AL1": 14575.0, "AL2": 24000.0, "DIFF": -9425.0}, {"trial": 0, "sample": 56, "days_prior": 40, "AL1": 14750.0, "AL2": 24300.0, "DIFF": -9550.0}, {"trial": 0, "sample": 56, "days_prior": 39, "AL1": 15925.0, "AL2": 25525.0, "DIFF": -9600.0}, {"trial": 0, "sample": 56, "days_prior": 38, "AL1": 17225.0, "AL2": 26450.0, "DIFF": -9225.0}, {"trial": 0, "sample": 56, "days_prior": 37, "AL1": 17650.0, "AL2": 27275.0, "DIFF": -9625.0}, {"trial": 0, "sample": 56, "days_prior": 36, "AL1": 18375.0, "AL2": 27975.0, "DIFF": -9600.0}, {"trial": 0, "sample": 56, "days_prior": 35, "AL1": 19025.0, "AL2": 29100.0, "DIFF": -10075.0}, {"trial": 0, "sample": 56, "days_prior": 34, "AL1": 22025.0, "AL2": 31025.0, "DIFF": -9000.0}, {"trial": 0, "sample": 56, "days_prior": 33, "AL1": 22750.0, "AL2": 31775.0, "DIFF": -9025.0}, {"trial": 0, "sample": 56, "days_prior": 32, "AL1": 24300.0, "AL2": 34025.0, "DIFF": -9725.0}, {"trial": 0, "sample": 56, "days_prior": 31, "AL1": 25575.0, "AL2": 35525.0, "DIFF": -9950.0}, {"trial": 0, "sample": 56, "days_prior": 30, "AL1": 26225.0, "AL2": 36000.0, "DIFF": -9775.0}, {"trial": 0, "sample": 56, "days_prior": 29, "AL1": 27475.0, "AL2": 37275.0, "DIFF": -9800.0}, {"trial": 0, "sample": 56, "days_prior": 28, "AL1": 28125.0, "AL2": 37450.0, "DIFF": -9325.0}, {"trial": 0, "sample": 56, "days_prior": 27, "AL1": 29600.0, "AL2": 38875.0, "DIFF": -9275.0}, {"trial": 0, "sample": 56, "days_prior": 26, "AL1": 31150.0, "AL2": 40825.0, "DIFF": -9675.0}, {"trial": 0, "sample": 56, "days_prior": 25, "AL1": 32350.0, "AL2": 42150.0, "DIFF": -9800.0}, {"trial": 0, "sample": 56, "days_prior": 24, "AL1": 32600.0, "AL2": 42575.0, "DIFF": -9975.0}, {"trial": 0, "sample": 56, "days_prior": 23, "AL1": 35350.0, "AL2": 43250.0, "DIFF": -7900.0}, {"trial": 0, "sample": 56, "days_prior": 22, "AL1": 36675.0, "AL2": 43425.0, "DIFF": -6750.0}, {"trial": 0, "sample": 56, "days_prior": 21, "AL1": 39275.0, "AL2": 44575.0, "DIFF": -5300.0}, {"trial": 0, "sample": 56, "days_prior": 20, "AL1": 39925.0, "AL2": 45125.0, "DIFF": -5200.0}, {"trial": 0, "sample": 56, "days_prior": 19, "AL1": 40450.0, "AL2": 46550.0, "DIFF": -6100.0}, {"trial": 0, "sample": 56, "days_prior": 18, "AL1": 41525.0, "AL2": 46675.0, "DIFF": -5150.0}, {"trial": 0, "sample": 56, "days_prior": 17, "AL1": 42725.0, "AL2": 46925.0, "DIFF": -4200.0}, {"trial": 0, "sample": 56, "days_prior": 16, "AL1": 43075.0, "AL2": 49400.0, "DIFF": -6325.0}, {"trial": 0, "sample": 56, "days_prior": 15, "AL1": 45900.0, "AL2": 50800.0, "DIFF": -4900.0}, {"trial": 0, "sample": 56, "days_prior": 14, "AL1": 48500.0, "AL2": 52375.0, "DIFF": -3875.0}, {"trial": 0, "sample": 56, "days_prior": 13, "AL1": 49475.0, "AL2": 54700.0, "DIFF": -5225.0}, {"trial": 0, "sample": 56, "days_prior": 12, "AL1": 52600.0, "AL2": 56325.0, "DIFF": -3725.0}, {"trial": 0, "sample": 56, "days_prior": 11, "AL1": 54400.0, "AL2": 56750.0, "DIFF": -2350.0}, {"trial": 0, "sample": 56, "days_prior": 10, "AL1": 55800.0, "AL2": 59800.0, "DIFF": -4000.0}, {"trial": 0, "sample": 56, "days_prior": 9, "AL1": 58900.0, "AL2": 62550.0, "DIFF": -3650.0}, {"trial": 0, "sample": 56, "days_prior": 8, "AL1": 60200.0, "AL2": 63225.0, "DIFF": -3025.0}, {"trial": 0, "sample": 56, "days_prior": 7, "AL1": 63075.0, "AL2": 65600.0, "DIFF": -2525.0}, {"trial": 0, "sample": 56, "days_prior": 6, "AL1": 65900.0, "AL2": 67925.0, "DIFF": -2025.0}, {"trial": 0, "sample": 56, "days_prior": 5, "AL1": 67750.0, "AL2": 71875.0, "DIFF": -4125.0}, {"trial": 0, "sample": 56, "days_prior": 4, "AL1": 70950.0, "AL2": 76275.0, "DIFF": -5325.0}, {"trial": 0, "sample": 56, "days_prior": 3, "AL1": 74900.0, "AL2": 78625.0, "DIFF": -3725.0}, {"trial": 0, "sample": 56, "days_prior": 2, "AL1": 78725.0, "AL2": 82825.0, "DIFF": -4100.0}, {"trial": 0, "sample": 56, "days_prior": 1, "AL1": 84725.0, "AL2": 86250.0, "DIFF": -1525.0}, {"trial": 0, "sample": 56, "days_prior": 0, "AL1": 88425.0, "AL2": 87575.0, "DIFF": 850.0}, {"trial": 0, "sample": 63, "days_prior": 63, "AL1": 0.0, "AL2": 0.0, "DIFF": 0.0}, {"trial": 0, "sample": 63, "days_prior": 62, "AL1": 450.0, "AL2": 1225.0, "DIFF": -775.0}, {"trial": 0, "sample": 63, "days_prior": 61, "AL1": 2100.0, "AL2": 2325.0, "DIFF": -225.0}, {"trial": 0, "sample": 63, "days_prior": 60, "AL1": 2825.0, "AL2": 3675.0, "DIFF": -850.0}, {"trial": 0, "sample": 63, "days_prior": 59, "AL1": 3250.0, "AL2": 5775.0, "DIFF": -2525.0}, {"trial": 0, "sample": 63, "days_prior": 58, "AL1": 5575.0, "AL2": 7425.0, "DIFF": -1850.0}, {"trial": 0, "sample": 63, "days_prior": 57, "AL1": 6750.0, "AL2": 8000.0, "DIFF": -1250.0}, {"trial": 0, "sample": 63, "days_prior": 56, "AL1": 7550.0, "AL2": 10225.0, "DIFF": -2675.0}, {"trial": 0, "sample": 63, "days_prior": 55, "AL1": 7650.0, "AL2": 10600.0, "DIFF": -2950.0}, {"trial": 0, "sample": 63, "days_prior": 54, "AL1": 8325.0, "AL2": 11175.0, "DIFF": -2850.0}, {"trial": 0, "sample": 63, "days_prior": 53, "AL1": 9200.0, "AL2": 11575.0, "DIFF": -2375.0}, {"trial": 0, "sample": 63, "days_prior": 52, "AL1": 10350.0, "AL2": 11775.0, "DIFF": -1425.0}, {"trial": 0, "sample": 63, "days_prior": 51, "AL1": 11100.0, "AL2": 13900.0, "DIFF": -2800.0}, {"trial": 0, "sample": 63, "days_prior": 50, "AL1": 12575.0, "AL2": 15050.0, "DIFF": -2475.0}, {"trial": 0, "sample": 63, "days_prior": 49, "AL1": 13700.0, "AL2": 16225.0, "DIFF": -2525.0}, {"trial": 0, "sample": 63, "days_prior": 48, "AL1": 13825.0, "AL2": 16225.0, "DIFF": -2400.0}, {"trial": 0, "sample": 63, "days_prior": 47, "AL1": 14550.0, "AL2": 18450.0, "DIFF": -3900.0}, {"trial": 0, "sample": 63, "days_prior": 46, "AL1": 14550.0, "AL2": 19050.0, "DIFF": -4500.0}, {"trial": 0, "sample": 63, "days_prior": 45, "AL1": 15925.0, "AL2": 19650.0, "DIFF": -3725.0}, {"trial": 0, "sample": 63, "days_prior": 44, "AL1": 16100.0, "AL2": 20400.0, "DIFF": -4300.0}, {"trial": 0, "sample": 63, "days_prior": 43, "AL1": 17025.0, "AL2": 20875.0, "DIFF": -3850.0}, {"trial": 0, "sample": 63, "days_prior": 42, "AL1": 18625.0, "AL2": 21950.0, "DIFF": -3325.0}, {"trial": 0, "sample": 63, "days_prior": 41, "AL1": 18875.0, "AL2": 23625.0, "DIFF": -4750.0}, {"trial": 0, "sample": 63, "days_prior": 40, "AL1": 19925.0, "AL2": 24000.0, "DIFF": -4075.0}, {"trial": 0, "sample": 63, "days_prior": 39, "AL1": 20750.0, "AL2": 25125.0, "DIFF": -4375.0}, {"trial": 0, "sample": 63, "days_prior": 38, "AL1": 21125.0, "AL2": 26450.0, "DIFF": -5325.0}, {"trial": 0, "sample": 63, "days_prior": 37, "AL1": 21950.0, "AL2": 27000.0, "DIFF": -5050.0}, {"trial": 0, "sample": 63, "days_prior": 36, "AL1": 22450.0, "AL2": 27950.0, "DIFF": -5500.0}, {"trial": 0, "sample": 63, "days_prior": 35, "AL1": 22900.0, "AL2": 28700.0, "DIFF": -5800.0}, {"trial": 0, "sample": 63, "days_prior": 34, "AL1": 24850.0, "AL2": 29350.0, "DIFF": -4500.0}, {"trial": 0, "sample": 63, "days_prior": 33, "AL1": 24975.0, "AL2": 29475.0, "DIFF": -4500.0}, {"trial": 0, "sample": 63, "days_prior": 32, "AL1": 24975.0, "AL2": 29650.0, "DIFF": -4675.0}, {"trial": 0, "sample": 63, "days_prior": 31, "AL1": 26525.0, "AL2": 30650.0, "DIFF": -4125.0}, {"trial": 0, "sample": 63, "days_prior": 30, "AL1": 26950.0, "AL2": 32325.0, "DIFF": -5375.0}, {"trial": 0, "sample": 63, "days_prior": 29, "AL1": 26950.0, "AL2": 33350.0, "DIFF": -6400.0}, {"trial": 0, "sample": 63, "days_prior": 28, "AL1": 27200.0, "AL2": 35125.0, "DIFF": -7925.0}, {"trial": 0, "sample": 63, "days_prior": 27, "AL1": 28500.0, "AL2": 38600.0, "DIFF": -10100.0}, {"trial": 0, "sample": 63, "days_prior": 26, "AL1": 30275.0, "AL2": 39550.0, "DIFF": -9275.0}, {"trial": 0, "sample": 63, "days_prior": 25, "AL1": 32775.0, "AL2": 40400.0, "DIFF": -7625.0}, {"trial": 0, "sample": 63, "days_prior": 24, "AL1": 34550.0, "AL2": 41575.0, "DIFF": -7025.0}, {"trial": 0, "sample": 63, "days_prior": 23, "AL1": 35500.0, "AL2": 41875.0, "DIFF": -6375.0}, {"trial": 0, "sample": 63, "days_prior": 22, "AL1": 36750.0, "AL2": 41875.0, "DIFF": -5125.0}, {"trial": 0, "sample": 63, "days_prior": 21, "AL1": 38225.0, "AL2": 42225.0, "DIFF": -4000.0}, {"trial": 0, "sample": 63, "days_prior": 20, "AL1": 38725.0, "AL2": 42650.0, "DIFF": -3925.0}, {"trial": 0, "sample": 63, "days_prior": 19, "AL1": 39750.0, "AL2": 43150.0, "DIFF": -3400.0}, {"trial": 0, "sample": 63, "days_prior": 18, "AL1": 41125.0, "AL2": 43900.0, "DIFF": -2775.0}, {"trial": 0, "sample": 63, "days_prior": 17, "AL1": 43450.0, "AL2": 44225.0, "DIFF": -775.0}, {"trial": 0, "sample": 63, "days_prior": 16, "AL1": 46575.0, "AL2": 46550.0, "DIFF": 25.0}, {"trial": 0, "sample": 63, "days_prior": 15, "AL1": 48425.0, "AL2": 47350.0, "DIFF": 1075.0}, {"trial": 0, "sample": 63, "days_prior": 14, "AL1": 49175.0, "AL2": 49175.0, "DIFF": 0.0}, {"trial": 0, "sample": 63, "days_prior": 13, "AL1": 52925.0, "AL2": 50075.0, "DIFF": 2850.0}, {"trial": 0, "sample": 63, "days_prior": 12, "AL1": 55700.0, "AL2": 52575.0, "DIFF": 3125.0}, {"trial": 0, "sample": 63, "days_prior": 11, "AL1": 58500.0, "AL2": 54375.0, "DIFF": 4125.0}, {"trial": 0, "sample": 63, "days_prior": 10, "AL1": 59125.0, "AL2": 55025.0, "DIFF": 4100.0}, {"trial": 0, "sample": 63, "days_prior": 9, "AL1": 60925.0, "AL2": 57025.0, "DIFF": 3900.0}, {"trial": 0, "sample": 63, "days_prior": 8, "AL1": 63050.0, "AL2": 59175.0, "DIFF": 3875.0}, {"trial": 0, "sample": 63, "days_prior": 7, "AL1": 67350.0, "AL2": 59675.0, "DIFF": 7675.0}, {"trial": 0, "sample": 63, "days_prior": 6, "AL1": 68950.0, "AL2": 63625.0, "DIFF": 5325.0}, {"trial": 0, "sample": 63, "days_prior": 5, "AL1": 70450.0, "AL2": 65500.0, "DIFF": 4950.0}, {"trial": 0, "sample": 63, "days_prior": 4, "AL1": 73400.0, "AL2": 68350.0, "DIFF": 5050.0}, {"trial": 0, "sample": 63, "days_prior": 3, "AL1": 77750.0, "AL2": 68950.0, "DIFF": 8800.0}, {"trial": 0, "sample": 63, "days_prior": 2, "AL1": 83850.0, "AL2": 73225.0, "DIFF": 10625.0}, {"trial": 0, "sample": 63, "days_prior": 1, "AL1": 87625.0, "AL2": 75525.0, "DIFF": 12100.0}, {"trial": 0, "sample": 63, "days_prior": 0, "AL1": 88625.0, "AL2": 76525.0, "DIFF": 12100.0}, {"trial": 0, "sample": 70, "days_prior": 63, "AL1": 0.0, "AL2": 0.0, "DIFF": 0.0}, {"trial": 0, "sample": 70, "days_prior": 62, "AL1": 850.0, "AL2": 575.0, "DIFF": 275.0}, {"trial": 0, "sample": 70, "days_prior": 61, "AL1": 2000.0, "AL2": 1700.0, "DIFF": 300.0}, {"trial": 0, "sample": 70, "days_prior": 60, "AL1": 2825.0, "AL2": 3000.0, "DIFF": -175.0}, {"trial": 0, "sample": 70, "days_prior": 59, "AL1": 3450.0, "AL2": 4800.0, "DIFF": -1350.0}, {"trial": 0, "sample": 70, "days_prior": 58, "AL1": 4350.0, "AL2": 6100.0, "DIFF": -1750.0}, {"trial": 0, "sample": 70, "days_prior": 57, "AL1": 4675.0, "AL2": 7450.0, "DIFF": -2775.0}, {"trial": 0, "sample": 70, "days_prior": 56, "AL1": 5600.0, "AL2": 7975.0, "DIFF": -2375.0}, {"trial": 0, "sample": 70, "days_prior": 55, "AL1": 6475.0, "AL2": 8275.0, "DIFF": -1800.0}, {"trial": 0, "sample": 70, "days_prior": 54, "AL1": 7575.0, "AL2": 8650.0, "DIFF": -1075.0}, {"trial": 0, "sample": 70, "days_prior": 53, "AL1": 8950.0, "AL2": 9550.0, "DIFF": -600.0}, {"trial": 0, "sample": 70, "days_prior": 52, "AL1": 9050.0, "AL2": 10600.0, "DIFF": -1550.0}, {"trial": 0, "sample": 70, "days_prior": 51, "AL1": 9050.0, "AL2": 11150.0, "DIFF": -2100.0}, {"trial": 0, "sample": 70, "days_prior": 50, "AL1": 9450.0, "AL2": 11650.0, "DIFF": -2200.0}, {"trial": 0, "sample": 70, "days_prior": 49, "AL1": 11550.0, "AL2": 13025.0, "DIFF": -1475.0}, {"trial": 0, "sample": 70, "days_prior": 48, "AL1": 12250.0, "AL2": 14025.0, "DIFF": -1775.0}, {"trial": 0, "sample": 70, "days_prior": 47, "AL1": 13150.0, "AL2": 14350.0, "DIFF": -1200.0}, {"trial": 0, "sample": 70, "days_prior": 46, "AL1": 13400.0, "AL2": 15450.0, "DIFF": -2050.0}, {"trial": 0, "sample": 70, "days_prior": 45, "AL1": 14725.0, "AL2": 15650.0, "DIFF": -925.0}, {"trial": 0, "sample": 70, "days_prior": 44, "AL1": 14900.0, "AL2": 15925.0, "DIFF": -1025.0}, {"trial": 0, "sample": 70, "days_prior": 43, "AL1": 15825.0, "AL2": 16075.0, "DIFF": -250.0}, {"trial": 0, "sample": 70, "days_prior": 42, "AL1": 16500.0, "AL2": 16825.0, "DIFF": -325.0}, {"trial": 0, "sample": 70, "days_prior": 41, "AL1": 17900.0, "AL2": 17925.0, "DIFF": -25.0}, {"trial": 0, "sample": 70, "days_prior": 40, "AL1": 18400.0, "AL2": 19425.0, "DIFF": -1025.0}, {"trial": 0, "sample": 70, "days_prior": 39, "AL1": 19000.0, "AL2": 20050.0, "DIFF": -1050.0}, {"trial": 0, "sample": 70, "days_prior": 38, "AL1": 19225.0, "AL2": 20500.0, "DIFF": -1275.0}, {"trial": 0, "sample": 70, "days_prior": 37, "AL1": 20625.0, "AL2": 21100.0, "DIFF": -475.0}, {"trial": 0, "sample": 70, "days_prior": 36, "AL1": 21250.0, "AL2": 21925.0, "DIFF": -675.0}, {"trial": 0, "sample": 70, "days_prior": 35, "AL1": 21375.0, "AL2": 22925.0, "DIFF": -1550.0}, {"trial": 0, "sample": 70, "days_prior": 34, "AL1": 22375.0, "AL2": 24150.0, "DIFF": -1775.0}, {"trial": 0, "sample": 70, "days_prior": 33, "AL1": 23000.0, "AL2": 24625.0, "DIFF": -1625.0}, {"trial": 0, "sample": 70, "days_prior": 32, "AL1": 23500.0, "AL2": 26025.0, "DIFF": -2525.0}, {"trial": 0, "sample": 70, "days_prior": 31, "AL1": 24450.0, "AL2": 26700.0, "DIFF": -2250.0}, {"trial": 0, "sample": 70, "days_prior": 30, "AL1": 24775.0, "AL2": 27325.0, "DIFF": -2550.0}, {"trial": 0, "sample": 70, "days_prior": 29, "AL1": 25475.0, "AL2": 27325.0, "DIFF": -1850.0}, {"trial": 0, "sample": 70, "days_prior": 28, "AL1": 26000.0, "AL2": 28875.0, "DIFF": -2875.0}, {"trial": 0, "sample": 70, "days_prior": 27, "AL1": 26000.0, "AL2": 29550.0, "DIFF": -3550.0}, {"trial": 0, "sample": 70, "days_prior": 26, "AL1": 26175.0, "AL2": 30650.0, "DIFF": -4475.0}, {"trial": 0, "sample": 70, "days_prior": 25, "AL1": 26600.0, "AL2": 32300.0, "DIFF": -5700.0}, {"trial": 0, "sample": 70, "days_prior": 24, "AL1": 28375.0, "AL2": 33400.0, "DIFF": -5025.0}, {"trial": 0, "sample": 70, "days_prior": 23, "AL1": 28800.0, "AL2": 33825.0, "DIFF": -5025.0}, {"trial": 0, "sample": 70, "days_prior": 22, "AL1": 32300.0, "AL2": 35225.0, "DIFF": -2925.0}, {"trial": 0, "sample": 70, "days_prior": 21, "AL1": 33775.0, "AL2": 37000.0, "DIFF": -3225.0}, {"trial": 0, "sample": 70, "days_prior": 20, "AL1": 34325.0, "AL2": 38550.0, "DIFF": -4225.0}, {"trial": 0, "sample": 70, "days_prior": 19, "AL1": 35250.0, "AL2": 38750.0, "DIFF": -3500.0}, {"trial": 0, "sample": 70, "days_prior": 18, "AL1": 35925.0, "AL2": 40250.0, "DIFF": -4325.0}, {"trial": 0, "sample": 70, "days_prior": 17, "AL1": 36275.0, "AL2": 41025.0, "DIFF": -4750.0}, {"trial": 0, "sample": 70, "days_prior": 16, "AL1": 37475.0, "AL2": 43000.0, "DIFF": -5525.0}, {"trial": 0, "sample": 70, "days_prior": 15, "AL1": 38375.0, "AL2": 43750.0, "DIFF": -5375.0}, {"trial": 0, "sample": 70, "days_prior": 14, "AL1": 39475.0, "AL2": 45975.0, "DIFF": -6500.0}, {"trial": 0, "sample": 70, "days_prior": 13, "AL1": 40525.0, "AL2": 47425.0, "DIFF": -6900.0}, {"trial": 0, "sample": 70, "days_prior": 12, "AL1": 43375.0, "AL2": 49850.0, "DIFF": -6475.0}, {"trial": 0, "sample": 70, "days_prior": 11, "AL1": 44750.0, "AL2": 50925.0, "DIFF": -6175.0}, {"trial": 0, "sample": 70, "days_prior": 10, "AL1": 46900.0, "AL2": 52200.0, "DIFF": -5300.0}, {"trial": 0, "sample": 70, "days_prior": 9, "AL1": 50025.0, "AL2": 54475.0, "DIFF": -4450.0}, {"trial": 0, "sample": 70, "days_prior": 8, "AL1": 52725.0, "AL2": 55425.0, "DIFF": -2700.0}, {"trial": 0, "sample": 70, "days_prior": 7, "AL1": 54025.0, "AL2": 56075.0, "DIFF": -2050.0}, {"trial": 0, "sample": 70, "days_prior": 6, "AL1": 57050.0, "AL2": 59075.0, "DIFF": -2025.0}, {"trial": 0, "sample": 70, "days_prior": 5, "AL1": 60625.0, "AL2": 60075.0, "DIFF": 550.0}, {"trial": 0, "sample": 70, "days_prior": 4, "AL1": 63175.0, "AL2": 62025.0, "DIFF": 1150.0}, {"trial": 0, "sample": 70, "days_prior": 3, "AL1": 64725.0, "AL2": 63025.0, "DIFF": 1700.0}, {"trial": 0, "sample": 70, "days_prior": 2, "AL1": 69625.0, "AL2": 65750.0, "DIFF": 3875.0}, {"trial": 0, "sample": 70, "days_prior": 1, "AL1": 73825.0, "AL2": 72750.0, "DIFF": 1075.0}, {"trial": 0, "sample": 70, "days_prior": 0, "AL1": 78400.0, "AL2": 75100.0, "DIFF": 3300.0}, {"trial": 0, "sample": 77, "days_prior": 63, "AL1": 0.0, "AL2": 0.0, "DIFF": 0.0}, {"trial": 0, "sample": 77, "days_prior": 62, "AL1": 3775.0, "AL2": 750.0, "DIFF": 3025.0}, {"trial": 0, "sample": 77, "days_prior": 61, "AL1": 5675.0, "AL2": 2400.0, "DIFF": 3275.0}, {"trial": 0, "sample": 77, "days_prior": 60, "AL1": 7450.0, "AL2": 5100.0, "DIFF": 2350.0}, {"trial": 0, "sample": 77, "days_prior": 59, "AL1": 9900.0, "AL2": 7450.0, "DIFF": 2450.0}, {"trial": 0, "sample": 77, "days_prior": 58, "AL1": 12325.0, "AL2": 8775.0, "DIFF": 3550.0}, {"trial": 0, "sample": 77, "days_prior": 57, "AL1": 13950.0, "AL2": 11650.0, "DIFF": 2300.0}, {"trial": 0, "sample": 77, "days_prior": 56, "AL1": 16150.0, "AL2": 13125.0, "DIFF": 3025.0}, {"trial": 0, "sample": 77, "days_prior": 55, "AL1": 17325.0, "AL2": 14275.0, "DIFF": 3050.0}, {"trial": 0, "sample": 77, "days_prior": 54, "AL1": 19100.0, "AL2": 15250.0, "DIFF": 3850.0}, {"trial": 0, "sample": 77, "days_prior": 53, "AL1": 19925.0, "AL2": 16325.0, "DIFF": 3600.0}, {"trial": 0, "sample": 77, "days_prior": 52, "AL1": 20575.0, "AL2": 17550.0, "DIFF": 3025.0}, {"trial": 0, "sample": 77, "days_prior": 51, "AL1": 22100.0, "AL2": 18675.0, "DIFF": 3425.0}, {"trial": 0, "sample": 77, "days_prior": 50, "AL1": 23175.0, "AL2": 19400.0, "DIFF": 3775.0}, {"trial": 0, "sample": 77, "days_prior": 49, "AL1": 24475.0, "AL2": 20175.0, "DIFF": 4300.0}, {"trial": 0, "sample": 77, "days_prior": 48, "AL1": 25075.0, "AL2": 21875.0, "DIFF": 3200.0}, {"trial": 0, "sample": 77, "days_prior": 47, "AL1": 26100.0, "AL2": 22950.0, "DIFF": 3150.0}, {"trial": 0, "sample": 77, "days_prior": 46, "AL1": 27150.0, "AL2": 26375.0, "DIFF": 775.0}, {"trial": 0, "sample": 77, "days_prior": 45, "AL1": 27650.0, "AL2": 28675.0, "DIFF": -1025.0}, {"trial": 0, "sample": 77, "days_prior": 44, "AL1": 29225.0, "AL2": 29775.0, "DIFF": -550.0}, {"trial": 0, "sample": 77, "days_prior": 43, "AL1": 29400.0, "AL2": 30650.0, "DIFF": -1250.0}, {"trial": 0, "sample": 77, "days_prior": 42, "AL1": 30075.0, "AL2": 31275.0, "DIFF": -1200.0}, {"trial": 0, "sample": 77, "days_prior": 41, "AL1": 31750.0, "AL2": 33275.0, "DIFF": -1525.0}, {"trial": 0, "sample": 77, "days_prior": 40, "AL1": 32275.0, "AL2": 34350.0, "DIFF": -2075.0}, {"trial": 0, "sample": 77, "days_prior": 39, "AL1": 34725.0, "AL2": 35550.0, "DIFF": -825.0}, {"trial": 0, "sample": 77, "days_prior": 38, "AL1": 35725.0, "AL2": 36800.0, "DIFF": -1075.0}, {"trial": 0, "sample": 77, "days_prior": 37, "AL1": 37025.0, "AL2": 37100.0, "DIFF": -75.0}, {"trial": 0, "sample": 77, "days_prior": 36, "AL1": 37450.0, "AL2": 37750.0, "DIFF": -300.0}, {"trial": 0, "sample": 77, "days_prior": 35, "AL1": 38625.0, "AL2": 39500.0, "DIFF": -875.0}, {"trial": 0, "sample": 77, "days_prior": 34, "AL1": 39350.0, "AL2": 42025.0, "DIFF": -2675.0}, {"trial": 0, "sample": 77, "days_prior": 33, "AL1": 39450.0, "AL2": 43200.0, "DIFF": -3750.0}, {"trial": 0, "sample": 77, "days_prior": 32, "AL1": 40025.0, "AL2": 47600.0, "DIFF": -7575.0}, {"trial": 0, "sample": 77, "days_prior": 31, "AL1": 42325.0, "AL2": 49575.0, "DIFF": -7250.0}, {"trial": 0, "sample": 77, "days_prior": 30, "AL1": 43675.0, "AL2": 50975.0, "DIFF": -7300.0}, {"trial": 0, "sample": 77, "days_prior": 29, "AL1": 44500.0, "AL2": 50975.0, "DIFF": -6475.0}, {"trial": 0, "sample": 77, "days_prior": 28, "AL1": 46125.0, "AL2": 52275.0, "DIFF": -6150.0}, {"trial": 0, "sample": 77, "days_prior": 27, "AL1": 47050.0, "AL2": 52725.0, "DIFF": -5675.0}, {"trial": 0, "sample": 77, "days_prior": 26, "AL1": 49375.0, "AL2": 53475.0, "DIFF": -4100.0}, {"trial": 0, "sample": 77, "days_prior": 25, "AL1": 50650.0, "AL2": 54500.0, "DIFF": -3850.0}, {"trial": 0, "sample": 77, "days_prior": 24, "AL1": 52025.0, "AL2": 55350.0, "DIFF": -3325.0}, {"trial": 0, "sample": 77, "days_prior": 23, "AL1": 54225.0, "AL2": 56625.0, "DIFF": -2400.0}, {"trial": 0, "sample": 77, "days_prior": 22, "AL1": 57100.0, "AL2": 57350.0, "DIFF": -250.0}, {"trial": 0, "sample": 77, "days_prior": 21, "AL1": 60100.0, "AL2": 58075.0, "DIFF": 2025.0}, {"trial": 0, "sample": 77, "days_prior": 20, "AL1": 62075.0, "AL2": 58075.0, "DIFF": 4000.0}, {"trial": 0, "sample": 77, "days_prior": 19, "AL1": 65350.0, "AL2": 58675.0, "DIFF": 6675.0}, {"trial": 0, "sample": 77, "days_prior": 18, "AL1": 66600.0, "AL2": 60950.0, "DIFF": 5650.0}, {"trial": 0, "sample": 77, "days_prior": 17, "AL1": 67650.0, "AL2": 62100.0, "DIFF": 5550.0}, {"trial": 0, "sample": 77, "days_prior": 16, "AL1": 70000.0, "AL2": 64675.0, "DIFF": 5325.0}, {"trial": 0, "sample": 77, "days_prior": 15, "AL1": 72500.0, "AL2": 66975.0, "DIFF": 5525.0}, {"trial": 0, "sample": 77, "days_prior": 14, "AL1": 74450.0, "AL2": 68825.0, "DIFF": 5625.0}, {"trial": 0, "sample": 77, "days_prior": 13, "AL1": 80725.0, "AL2": 70825.0, "DIFF": 9900.0}, {"trial": 0, "sample": 77, "days_prior": 12, "AL1": 82875.0, "AL2": 71925.0, "DIFF": 10950.0}, {"trial": 0, "sample": 77, "days_prior": 11, "AL1": 85750.0, "AL2": 74400.0, "DIFF": 11350.0}, {"trial": 0, "sample": 77, "days_prior": 10, "AL1": 88200.0, "AL2": 77125.0, "DIFF": 11075.0}, {"trial": 0, "sample": 77, "days_prior": 9, "AL1": 90825.0, "AL2": 80625.0, "DIFF": 10200.0}, {"trial": 0, "sample": 77, "days_prior": 8, "AL1": 91425.0, "AL2": 82750.0, "DIFF": 8675.0}, {"trial": 0, "sample": 77, "days_prior": 7, "AL1": 93025.0, "AL2": 85950.0, "DIFF": 7075.0}, {"trial": 0, "sample": 77, "days_prior": 6, "AL1": 96450.0, "AL2": 87575.0, "DIFF": 8875.0}, {"trial": 0, "sample": 77, "days_prior": 5, "AL1": 100200.0, "AL2": 89525.0, "DIFF": 10675.0}, {"trial": 0, "sample": 77, "days_prior": 4, "AL1": 106375.0, "AL2": 94850.0, "DIFF": 11525.0}, {"trial": 0, "sample": 77, "days_prior": 3, "AL1": 114525.0, "AL2": 99975.0, "DIFF": 14550.0}, {"trial": 0, "sample": 77, "days_prior": 2, "AL1": 114525.0, "AL2": 102375.0, "DIFF": 12150.0}, {"trial": 0, "sample": 77, "days_prior": 1, "AL1": 116425.0, "AL2": 103075.0, "DIFF": 13350.0}, {"trial": 0, "sample": 77, "days_prior": 0, "AL1": 117925.0, "AL2": 104075.0, "DIFF": 13850.0}, {"trial": 0, "sample": 84, "days_prior": 63, "AL1": 0.0, "AL2": 0.0, "DIFF": 0.0}, {"trial": 0, "sample": 84, "days_prior": 62, "AL1": 2150.0, "AL2": 725.0, "DIFF": 1425.0}, {"trial": 0, "sample": 84, "days_prior": 61, "AL1": 4175.0, "AL2": 2675.0, "DIFF": 1500.0}, {"trial": 0, "sample": 84, "days_prior": 60, "AL1": 5350.0, "AL2": 4400.0, "DIFF": 950.0}, {"trial": 0, "sample": 84, "days_prior": 59, "AL1": 8150.0, "AL2": 5375.0, "DIFF": 2775.0}, {"trial": 0, "sample": 84, "days_prior": 58, "AL1": 9025.0, "AL2": 6575.0, "DIFF": 2450.0}, {"trial": 0, "sample": 84, "days_prior": 57, "AL1": 10125.0, "AL2": 7600.0, "DIFF": 2525.0}, {"trial": 0, "sample": 84, "days_prior": 56, "AL1": 10250.0, "AL2": 10425.0, "DIFF": -175.0}, {"trial": 0, "sample": 84, "days_prior": 55, "AL1": 11325.0, "AL2": 10825.0, "DIFF": 500.0}, {"trial": 0, "sample": 84, "days_prior": 54, "AL1": 12000.0, "AL2": 11700.0, "DIFF": 300.0}, {"trial": 0, "sample": 84, "days_prior": 53, "AL1": 12000.0, "AL2": 12750.0, "DIFF": -750.0}, {"trial": 0, "sample": 84, "days_prior": 52, "AL1": 13500.0, "AL2": 13000.0, "DIFF": 500.0}, {"trial": 0, "sample": 84, "days_prior": 51, "AL1": 15325.0, "AL2": 13500.0, "DIFF": 1825.0}, {"trial": 0, "sample": 84, "days_prior": 50, "AL1": 17175.0, "AL2": 14325.0, "DIFF": 2850.0}, {"trial": 0, "sample": 84, "days_prior": 49, "AL1": 17175.0, "AL2": 16450.0, "DIFF": 725.0}, {"trial": 0, "sample": 84, "days_prior": 48, "AL1": 17500.0, "AL2": 16775.0, "DIFF": 725.0}, {"trial": 0, "sample": 84, "days_prior": 47, "AL1": 17625.0, "AL2": 17475.0, "DIFF": 150.0}, {"trial": 0, "sample": 84, "days_prior": 46, "AL1": 18100.0, "AL2": 18550.0, "DIFF": -450.0}, {"trial": 0, "sample": 84, "days_prior": 45, "AL1": 19700.0, "AL2": 19650.0, "DIFF": 50.0}, {"trial": 0, "sample": 84, "days_prior": 44, "AL1": 21425.0, "AL2": 20950.0, "DIFF": 475.0}, {"trial": 0, "sample": 84, "days_prior": 43, "AL1": 23425.0, "AL2": 21650.0, "DIFF": 1775.0}, {"trial": 0, "sample": 84, "days_prior": 42, "AL1": 23850.0, "AL2": 23175.0, "DIFF": 675.0}, {"trial": 0, "sample": 84, "days_prior": 41, "AL1": 23850.0, "AL2": 23975.0, "DIFF": -125.0}, {"trial": 0, "sample": 84, "days_prior": 40, "AL1": 24050.0, "AL2": 24750.0, "DIFF": -700.0}, {"trial": 0, "sample": 84, "days_prior": 39, "AL1": 25225.0, "AL2": 25700.0, "DIFF": -475.0}, {"trial": 0, "sample": 84, "days_prior": 38, "AL1": 27200.0, "AL2": 26850.0, "DIFF": 350.0}, {"trial": 0, "sample": 84, "days_prior": 37, "AL1": 27600.0, "AL2": 27775.0, "DIFF": -175.0}, {"trial": 0, "sample": 84, "days_prior": 36, "AL1": 29850.0, "AL2": 28475.0, "DIFF": 1375.0}, {"trial": 0, "sample": 84, "days_prior": 35, "AL1": 31050.0, "AL2": 28950.0, "DIFF": 2100.0}, {"trial": 0, "sample": 84, "days_prior": 34, "AL1": 31700.0, "AL2": 30025.0, "DIFF": 1675.0}, {"trial": 0, "sample": 84, "days_prior": 33, "AL1": 32825.0, "AL2": 31225.0, "DIFF": 1600.0}, {"trial": 0, "sample": 84, "days_prior": 32, "AL1": 33425.0, "AL2": 32800.0, "DIFF": 625.0}, {"trial": 0, "sample": 84, "days_prior": 31, "AL1": 33800.0, "AL2": 33825.0, "DIFF": -25.0}, {"trial": 0, "sample": 84, "days_prior": 30, "AL1": 35375.0, "AL2": 34500.0, "DIFF": 875.0}, {"trial": 0, "sample": 84, "days_prior": 29, "AL1": 36450.0, "AL2": 35850.0, "DIFF": 600.0}, {"trial": 0, "sample": 84, "days_prior": 28, "AL1": 37750.0, "AL2": 36700.0, "DIFF": 1050.0}, {"trial": 0, "sample": 84, "days_prior": 27, "AL1": 38525.0, "AL2": 37875.0, "DIFF": 650.0}, {"trial": 0, "sample": 84, "days_prior": 26, "AL1": 39450.0, "AL2": 39025.0, "DIFF": 425.0}, {"trial": 0, "sample": 84, "days_prior": 25, "AL1": 40325.0, "AL2": 39975.0, "DIFF": 350.0}, {"trial": 0, "sample": 84, "days_prior": 24, "AL1": 41325.0, "AL2": 40750.0, "DIFF": 575.0}, {"trial": 0, "sample": 84, "days_prior": 23, "AL1": 43175.0, "AL2": 42700.0, "DIFF": 475.0}, {"trial": 0, "sample": 84, "days_prior": 22, "AL1": 44625.0, "AL2": 43100.0, "DIFF": 1525.0}, {"trial": 0, "sample": 84, "days_prior": 21, "AL1": 45425.0, "AL2": 44550.0, "DIFF": 875.0}, {"trial": 0, "sample": 84, "days_prior": 20, "AL1": 48650.0, "AL2": 45225.0, "DIFF": 3425.0}, {"trial": 0, "sample": 84, "days_prior": 19, "AL1": 49725.0, "AL2": 46575.0, "DIFF": 3150.0}, {"trial": 0, "sample": 84, "days_prior": 18, "AL1": 51300.0, "AL2": 47750.0, "DIFF": 3550.0}, {"trial": 0, "sample": 84, "days_prior": 17, "AL1": 51600.0, "AL2": 50125.0, "DIFF": 1475.0}, {"trial": 0, "sample": 84, "days_prior": 16, "AL1": 52700.0, "AL2": 51450.0, "DIFF": 1250.0}, {"trial": 0, "sample": 84, "days_prior": 15, "AL1": 54125.0, "AL2": 52075.0, "DIFF": 2050.0}, {"trial": 0, "sample": 84, "days_prior": 14, "AL1": 56650.0, "AL2": 54000.0, "DIFF": 2650.0}, {"trial": 0, "sample": 84, "days_prior": 13, "AL1": 60250.0, "AL2": 56225.0, "DIFF": 4025.0}, {"trial": 0, "sample": 84, "days_prior": 12, "AL1": 62250.0, "AL2": 57750.0, "DIFF": 4500.0}, {"trial": 0, "sample": 84, "days_prior": 11, "AL1": 66200.0, "AL2": 58825.0, "DIFF": 7375.0}, {"trial": 0, "sample": 84, "days_prior": 10, "AL1": 67325.0, "AL2": 59725.0, "DIFF": 7600.0}, {"trial": 0, "sample": 84, "days_prior": 9, "AL1": 69850.0, "AL2": 62775.0, "DIFF": 7075.0}, {"trial": 0, "sample": 84, "days_prior": 8, "AL1": 74275.0, "AL2": 66750.0, "DIFF": 7525.0}, {"trial": 0, "sample": 84, "days_prior": 7, "AL1": 78425.0, "AL2": 69925.0, "DIFF": 8500.0}, {"trial": 0, "sample": 84, "days_prior": 6, "AL1": 80475.0, "AL2": 73775.0, "DIFF": 6700.0}, {"trial": 0, "sample": 84, "days_prior": 5, "AL1": 82950.0, "AL2": 76875.0, "DIFF": 6075.0}, {"trial": 0, "sample": 84, "days_prior": 4, "AL1": 85525.0, "AL2": 79425.0, "DIFF": 6100.0}, {"trial": 0, "sample": 84, "days_prior": 3, "AL1": 88725.0, "AL2": 80675.0, "DIFF": 8050.0}, {"trial": 0, "sample": 84, "days_prior": 2, "AL1": 95125.0, "AL2": 87725.0, "DIFF": 7400.0}, {"trial": 0, "sample": 84, "days_prior": 1, "AL1": 103075.0, "AL2": 92275.0, "DIFF": 10800.0}, {"trial": 0, "sample": 84, "days_prior": 0, "AL1": 110350.0, "AL2": 97450.0, "DIFF": 12900.0}, {"trial": 0, "sample": 91, "days_prior": 63, "AL1": 0.0, "AL2": 0.0, "DIFF": 0.0}, {"trial": 0, "sample": 91, "days_prior": 62, "AL1": 1150.0, "AL2": 1625.0, "DIFF": -475.0}, {"trial": 0, "sample": 91, "days_prior": 61, "AL1": 3075.0, "AL2": 3725.0, "DIFF": -650.0}, {"trial": 0, "sample": 91, "days_prior": 60, "AL1": 3800.0, "AL2": 5500.0, "DIFF": -1700.0}, {"trial": 0, "sample": 91, "days_prior": 59, "AL1": 6975.0, "AL2": 6850.0, "DIFF": 125.0}, {"trial": 0, "sample": 91, "days_prior": 58, "AL1": 9025.0, "AL2": 7675.0, "DIFF": 1350.0}, {"trial": 0, "sample": 91, "days_prior": 57, "AL1": 9900.0, "AL2": 9700.0, "DIFF": 200.0}, {"trial": 0, "sample": 91, "days_prior": 56, "AL1": 11200.0, "AL2": 11000.0, "DIFF": 200.0}, {"trial": 0, "sample": 91, "days_prior": 55, "AL1": 12575.0, "AL2": 11525.0, "DIFF": 1050.0}, {"trial": 0, "sample": 91, "days_prior": 54, "AL1": 14125.0, "AL2": 12675.0, "DIFF": 1450.0}, {"trial": 0, "sample": 91, "days_prior": 53, "AL1": 16150.0, "AL2": 13550.0, "DIFF": 2600.0}, {"trial": 0, "sample": 91, "days_prior": 52, "AL1": 17175.0, "AL2": 13725.0, "DIFF": 3450.0}, {"trial": 0, "sample": 91, "days_prior": 51, "AL1": 17975.0, "AL2": 15000.0, "DIFF": 2975.0}, {"trial": 0, "sample": 91, "days_prior": 50, "AL1": 19225.0, "AL2": 17825.0, "DIFF": 1400.0}, {"trial": 0, "sample": 91, "days_prior": 49, "AL1": 20325.0, "AL2": 19350.0, "DIFF": 975.0}, {"trial": 0, "sample": 91, "days_prior": 48, "AL1": 22700.0, "AL2": 20750.0, "DIFF": 1950.0}, {"trial": 0, "sample": 91, "days_prior": 47, "AL1": 23600.0, "AL2": 21950.0, "DIFF": 1650.0}, {"trial": 0, "sample": 91, "days_prior": 46, "AL1": 23950.0, "AL2": 23300.0, "DIFF": 650.0}, {"trial": 0, "sample": 91, "days_prior": 45, "AL1": 25800.0, "AL2": 23725.0, "DIFF": 2075.0}, {"trial": 0, "sample": 91, "days_prior": 44, "AL1": 26275.0, "AL2": 25600.0, "DIFF": 675.0}, {"trial": 0, "sample": 91, "days_prior": 43, "AL1": 26700.0, "AL2": 26275.0, "DIFF": 425.0}, {"trial": 0, "sample": 91, "days_prior": 42, "AL1": 26825.0, "AL2": 26500.0, "DIFF": 325.0}, {"trial": 0, "sample": 91, "days_prior": 41, "AL1": 28375.0, "AL2": 27050.0, "DIFF": 1325.0}, {"trial": 0, "sample": 91, "days_prior": 40, "AL1": 28975.0, "AL2": 27875.0, "DIFF": 1100.0}, {"trial": 0, "sample": 91, "days_prior": 39, "AL1": 29425.0, "AL2": 30525.0, "DIFF": -1100.0}, {"trial": 0, "sample": 91, "days_prior": 38, "AL1": 30175.0, "AL2": 30800.0, "DIFF": -625.0}, {"trial": 0, "sample": 91, "days_prior": 37, "AL1": 31225.0, "AL2": 32800.0, "DIFF": -1575.0}, {"trial": 0, "sample": 91, "days_prior": 36, "AL1": 32425.0, "AL2": 32900.0, "DIFF": -475.0}, {"trial": 0, "sample": 91, "days_prior": 35, "AL1": 32775.0, "AL2": 33600.0, "DIFF": -825.0}, {"trial": 0, "sample": 91, "days_prior": 34, "AL1": 34125.0, "AL2": 34525.0, "DIFF": -400.0}, {"trial": 0, "sample": 91, "days_prior": 33, "AL1": 34300.0, "AL2": 35250.0, "DIFF": -950.0}, {"trial": 0, "sample": 91, "days_prior": 32, "AL1": 35350.0, "AL2": 35900.0, "DIFF": -550.0}, {"trial": 0, "sample": 91, "days_prior": 31, "AL1": 35850.0, "AL2": 36275.0, "DIFF": -425.0}, {"trial": 0, "sample": 91, "days_prior": 30, "AL1": 36925.0, "AL2": 36800.0, "DIFF": 125.0}, {"trial": 0, "sample": 91, "days_prior": 29, "AL1": 38300.0, "AL2": 36800.0, "DIFF": 1500.0}, {"trial": 0, "sample": 91, "days_prior": 28, "AL1": 38950.0, "AL2": 37475.0, "DIFF": 1475.0}, {"trial": 0, "sample": 91, "days_prior": 27, "AL1": 39875.0, "AL2": 39075.0, "DIFF": 800.0}, {"trial": 0, "sample": 91, "days_prior": 26, "AL1": 41400.0, "AL2": 39625.0, "DIFF": 1775.0}, {"trial": 0, "sample": 91, "days_prior": 25, "AL1": 43025.0, "AL2": 40775.0, "DIFF": 2250.0}, {"trial": 0, "sample": 91, "days_prior": 24, "AL1": 43925.0, "AL2": 41775.0, "DIFF": 2150.0}, {"trial": 0, "sample": 91, "days_prior": 23, "AL1": 46000.0, "AL2": 42450.0, "DIFF": 3550.0}, {"trial": 0, "sample": 91, "days_prior": 22, "AL1": 47675.0, "AL2": 43200.0, "DIFF": 4475.0}, {"trial": 0, "sample": 91, "days_prior": 21, "AL1": 48250.0, "AL2": 44700.0, "DIFF": 3550.0}, {"trial": 0, "sample": 91, "days_prior": 20, "AL1": 49300.0, "AL2": 45575.0, "DIFF": 3725.0}, {"trial": 0, "sample": 91, "days_prior": 19, "AL1": 50200.0, "AL2": 46350.0, "DIFF": 3850.0}, {"trial": 0, "sample": 91, "days_prior": 18, "AL1": 50775.0, "AL2": 48000.0, "DIFF": 2775.0}, {"trial": 0, "sample": 91, "days_prior": 17, "AL1": 52275.0, "AL2": 48575.0, "DIFF": 3700.0}, {"trial": 0, "sample": 91, "days_prior": 16, "AL1": 53700.0, "AL2": 52350.0, "DIFF": 1350.0}, {"trial": 0, "sample": 91, "days_prior": 15, "AL1": 54800.0, "AL2": 54175.0, "DIFF": 625.0}, {"trial": 0, "sample": 91, "days_prior": 14, "AL1": 58300.0, "AL2": 56600.0, "DIFF": 1700.0}, {"trial": 0, "sample": 91, "days_prior": 13, "AL1": 61100.0, "AL2": 60725.0, "DIFF": 375.0}, {"trial": 0, "sample": 91, "days_prior": 12, "AL1": 64000.0, "AL2": 63050.0, "DIFF": 950.0}, {"trial": 0, "sample": 91, "days_prior": 11, "AL1": 65800.0, "AL2": 64450.0, "DIFF": 1350.0}, {"trial": 0, "sample": 91, "days_prior": 10, "AL1": 67825.0, "AL2": 66675.0, "DIFF": 1150.0}, {"trial": 0, "sample": 91, "days_prior": 9, "AL1": 69875.0, "AL2": 71450.0, "DIFF": -1575.0}, {"trial": 0, "sample": 91, "days_prior": 8, "AL1": 72250.0, "AL2": 73200.0, "DIFF": -950.0}, {"trial": 0, "sample": 91, "days_prior": 7, "AL1": 75300.0, "AL2": 76525.0, "DIFF": -1225.0}, {"trial": 0, "sample": 91, "days_prior": 6, "AL1": 78625.0, "AL2": 79200.0, "DIFF": -575.0}, {"trial": 0, "sample": 91, "days_prior": 5, "AL1": 81925.0, "AL2": 81700.0, "DIFF": 225.0}, {"trial": 0, "sample": 91, "days_prior": 4, "AL1": 85775.0, "AL2": 85375.0, "DIFF": 400.0}, {"trial": 0, "sample": 91, "days_prior": 3, "AL1": 90425.0, "AL2": 86825.0, "DIFF": 3600.0}, {"trial": 0, "sample": 91, "days_prior": 2, "AL1": 95125.0, "AL2": 91875.0, "DIFF": 3250.0}, {"trial": 0, "sample": 91, "days_prior": 1, "AL1": 101850.0, "AL2": 96900.0, "DIFF": 4950.0}, {"trial": 0, "sample": 91, "days_prior": 0, "AL1": 102450.0, "AL2": 97400.0, "DIFF": 5050.0}, {"trial": 0, "sample": 98, "days_prior": 63, "AL1": 0.0, "AL2": 0.0, "DIFF": 0.0}, {"trial": 0, "sample": 98, "days_prior": 62, "AL1": 975.0, "AL2": 1600.0, "DIFF": -625.0}, {"trial": 0, "sample": 98, "days_prior": 61, "AL1": 1825.0, "AL2": 2175.0, "DIFF": -350.0}, {"trial": 0, "sample": 98, "days_prior": 60, "AL1": 2200.0, "AL2": 2900.0, "DIFF": -700.0}, {"trial": 0, "sample": 98, "days_prior": 59, "AL1": 3275.0, "AL2": 4150.0, "DIFF": -875.0}, {"trial": 0, "sample": 98, "days_prior": 58, "AL1": 3275.0, "AL2": 5075.0, "DIFF": -1800.0}, {"trial": 0, "sample": 98, "days_prior": 57, "AL1": 3625.0, "AL2": 6275.0, "DIFF": -2650.0}, {"trial": 0, "sample": 98, "days_prior": 56, "AL1": 3875.0, "AL2": 7025.0, "DIFF": -3150.0}, {"trial": 0, "sample": 98, "days_prior": 55, "AL1": 3875.0, "AL2": 7375.0, "DIFF": -3500.0}, {"trial": 0, "sample": 98, "days_prior": 54, "AL1": 4400.0, "AL2": 8175.0, "DIFF": -3775.0}, {"trial": 0, "sample": 98, "days_prior": 53, "AL1": 5075.0, "AL2": 8825.0, "DIFF": -3750.0}, {"trial": 0, "sample": 98, "days_prior": 52, "AL1": 5250.0, "AL2": 9100.0, "DIFF": -3850.0}, {"trial": 0, "sample": 98, "days_prior": 51, "AL1": 5875.0, "AL2": 9100.0, "DIFF": -3225.0}, {"trial": 0, "sample": 98, "days_prior": 50, "AL1": 6125.0, "AL2": 9350.0, "DIFF": -3225.0}, {"trial": 0, "sample": 98, "days_prior": 49, "AL1": 7250.0, "AL2": 9350.0, "DIFF": -2100.0}, {"trial": 0, "sample": 98, "days_prior": 48, "AL1": 7375.0, "AL2": 10700.0, "DIFF": -3325.0}, {"trial": 0, "sample": 98, "days_prior": 47, "AL1": 7825.0, "AL2": 11550.0, "DIFF": -3725.0}, {"trial": 0, "sample": 98, "days_prior": 46, "AL1": 8000.0, "AL2": 12325.0, "DIFF": -4325.0}, {"trial": 0, "sample": 98, "days_prior": 45, "AL1": 8700.0, "AL2": 12875.0, "DIFF": -4175.0}, {"trial": 0, "sample": 98, "days_prior": 44, "AL1": 8950.0, "AL2": 13325.0, "DIFF": -4375.0}, {"trial": 0, "sample": 98, "days_prior": 43, "AL1": 10025.0, "AL2": 13675.0, "DIFF": -3650.0}, {"trial": 0, "sample": 98, "days_prior": 42, "AL1": 10400.0, "AL2": 13850.0, "DIFF": -3450.0}, {"trial": 0, "sample": 98, "days_prior": 41, "AL1": 10575.0, "AL2": 14025.0, "DIFF": -3450.0}, {"trial": 0, "sample": 98, "days_prior": 40, "AL1": 10575.0, "AL2": 15150.0, "DIFF": -4575.0}, {"trial": 0, "sample": 98, "days_prior": 39, "AL1": 11325.0, "AL2": 16500.0, "DIFF": -5175.0}, {"trial": 0, "sample": 98, "days_prior": 38, "AL1": 12350.0, "AL2": 17425.0, "DIFF": -5075.0}, {"trial": 0, "sample": 98, "days_prior": 37, "AL1": 12700.0, "AL2": 18075.0, "DIFF": -5375.0}, {"trial": 0, "sample": 98, "days_prior": 36, "AL1": 12700.0, "AL2": 18950.0, "DIFF": -6250.0}, {"trial": 0, "sample": 98, "days_prior": 35, "AL1": 14100.0, "AL2": 19200.0, "DIFF": -5100.0}, {"trial": 0, "sample": 98, "days_prior": 34, "AL1": 14350.0, "AL2": 19575.0, "DIFF": -5225.0}, {"trial": 0, "sample": 98, "days_prior": 33, "AL1": 14350.0, "AL2": 20300.0, "DIFF": -5950.0}, {"trial": 0, "sample": 98, "days_prior": 32, "AL1": 15500.0, "AL2": 20850.0, "DIFF": -5350.0}, {"trial": 0, "sample": 98, "days_prior": 31, "AL1": 16450.0, "AL2": 22050.0, "DIFF": -5600.0}, {"trial": 0, "sample": 98, "days_prior": 30, "AL1": 17975.0, "AL2": 23300.0, "DIFF": -5325.0}, {"trial": 0, "sample": 98, "days_prior": 29, "AL1": 19525.0, "AL2": 24475.0, "DIFF": -4950.0}, {"trial": 0, "sample": 98, "days_prior": 28, "AL1": 20250.0, "AL2": 24925.0, "DIFF": -4675.0}, {"trial": 0, "sample": 98, "days_prior": 27, "AL1": 21075.0, "AL2": 26975.0, "DIFF": -5900.0}, {"trial": 0, "sample": 98, "days_prior": 26, "AL1": 22125.0, "AL2": 27775.0, "DIFF": -5650.0}, {"trial": 0, "sample": 98, "days_prior": 25, "AL1": 22675.0, "AL2": 28850.0, "DIFF": -6175.0}, {"trial": 0, "sample": 98, "days_prior": 24, "AL1": 23325.0, "AL2": 29975.0, "DIFF": -6650.0}, {"trial": 0, "sample": 98, "days_prior": 23, "AL1": 24050.0, "AL2": 30250.0, "DIFF": -6200.0}, {"trial": 0, "sample": 98, "days_prior": 22, "AL1": 25250.0, "AL2": 30375.0, "DIFF": -5125.0}, {"trial": 0, "sample": 98, "days_prior": 21, "AL1": 26800.0, "AL2": 31825.0, "DIFF": -5025.0}, {"trial": 0, "sample": 98, "days_prior": 20, "AL1": 27175.0, "AL2": 33175.0, "DIFF": -6000.0}, {"trial": 0, "sample": 98, "days_prior": 19, "AL1": 27675.0, "AL2": 34300.0, "DIFF": -6625.0}, {"trial": 0, "sample": 98, "days_prior": 18, "AL1": 29075.0, "AL2": 35000.0, "DIFF": -5925.0}, {"trial": 0, "sample": 98, "days_prior": 17, "AL1": 29425.0, "AL2": 36125.0, "DIFF": -6700.0}, {"trial": 0, "sample": 98, "days_prior": 16, "AL1": 29725.0, "AL2": 36425.0, "DIFF": -6700.0}, {"trial": 0, "sample": 98, "days_prior": 15, "AL1": 31450.0, "AL2": 38175.0, "DIFF": -6725.0}, {"trial": 0, "sample": 98, "days_prior": 14, "AL1": 33150.0, "AL2": 40025.0, "DIFF": -6875.0}, {"trial": 0, "sample": 98, "days_prior": 13, "AL1": 34175.0, "AL2": 43000.0, "DIFF": -8825.0}, {"trial": 0, "sample": 98, "days_prior": 12, "AL1": 34850.0, "AL2": 45100.0, "DIFF": -10250.0}, {"trial": 0, "sample": 98, "days_prior": 11, "AL1": 38150.0, "AL2": 47775.0, "DIFF": -9625.0}, {"trial": 0, "sample": 98, "days_prior": 10, "AL1": 39375.0, "AL2": 49875.0, "DIFF": -10500.0}, {"trial": 0, "sample": 98, "days_prior": 9, "AL1": 42875.0, "AL2": 52025.0, "DIFF": -9150.0}, {"trial": 0, "sample": 98, "days_prior": 8, "AL1": 43925.0, "AL2": 52925.0, "DIFF": -9000.0}, {"trial": 0, "sample": 98, "days_prior": 7, "AL1": 44800.0, "AL2": 53975.0, "DIFF": -9175.0}, {"trial": 0, "sample": 98, "days_prior": 6, "AL1": 48150.0, "AL2": 57325.0, "DIFF": -9175.0}, {"trial": 0, "sample": 98, "days_prior": 5, "AL1": 50500.0, "AL2": 58975.0, "DIFF": -8475.0}, {"trial": 0, "sample": 98, "days_prior": 4, "AL1": 51800.0, "AL2": 61225.0, "DIFF": -9425.0}, {"trial": 0, "sample": 98, "days_prior": 3, "AL1": 53800.0, "AL2": 63225.0, "DIFF": -9425.0}, {"trial": 0, "sample": 98, "days_prior": 2, "AL1": 56225.0, "AL2": 66400.0, "DIFF": -10175.0}, {"trial": 0, "sample": 98, "days_prior": 1, "AL1": 61025.0, "AL2": 70050.0, "DIFF": -9025.0}, {"trial": 0, "sample": 98, "days_prior": 0, "AL1": 62450.0, "AL2": 73450.0, "DIFF": -11000.0}]}}, {"mode": "vega-lite"});
-</script>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div> <!-- jp-Notebook -->
 </div> <!-- jupyter-wrapper -->
-<script type="application/vnd.jupyter.widget-state+json">
-{"state": {"165a4ca0a6294b05a646bb9d7b662ef2": {"model_module": "@jupyter-widgets\/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets\/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets\/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "5199ce6e2ae349eead106e2f32997019": {"model_module": "@jupyter-widgets\/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets\/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets\/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_165a4ca0a6294b05a646bb9d7b662ef2", "msg_id": "", "outputs": [{"data": {"text\/html": "<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\">samples <span style=\"color: #f92672; text-decoration-color: #f92672\">\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501<\/span><span style=\"color: #3a3a3a; text-decoration-color: #3a3a3a\">\u257a<\/span> <span style=\"color: #800080; text-decoration-color: #800080\"> 98%<\/span> <span style=\"color: #008080; text-decoration-color: #008080\">0:00:01<\/span>\n<\/pre>\n", "text\/plain": "samples \u001b[38;2;249;38;114m\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u001b[0m\u001b[38;5;237m\u257a\u001b[0m \u001b[35m 98%\u001b[0m \u001b[36m0:00:01\u001b[0m\n"}, "metadata": {}, "output_type": "display_data"}], "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}
-</script>
 
         <style>
         ['pre { line-height: 125%; }\ntd.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }\nspan.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }\ntd.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }\nspan.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }\n.highlight-ipynb .hll { background-color: var(--jp-cell-editor-active-background) }\n.highlight-ipynb { background: var(--jp-cell-editor-background); color: var(--jp-mirror-editor-variable-color) }\n.highlight-ipynb .c { color: var(--jp-mirror-editor-comment-color); font-style: italic } /* Comment */\n.highlight-ipynb .err { color: var(--jp-mirror-editor-error-color) } /* Error */\n.highlight-ipynb .k { color: var(--jp-mirror-editor-keyword-color); font-weight: bold } /* Keyword */\n.highlight-ipynb .o { color: var(--jp-mirror-editor-operator-color); font-weight: bold } /* Operator */\n.highlight-ipynb .p { color: var(--jp-mirror-editor-punctuation-color) } /* Punctuation */\n.highlight-ipynb .ch { color: var(--jp-mirror-editor-comment-color); font-style: italic } /* Comment.Hashbang */\n.highlight-ipynb .cm { color: var(--jp-mirror-editor-comment-color); font-style: italic } /* Comment.Multiline */\n.highlight-ipynb .cp { color: var(--jp-mirror-editor-comment-color); font-style: italic } /* Comment.Preproc */\n.highlight-ipynb .cpf { color: var(--jp-mirror-editor-comment-color); font-style: italic } /* Comment.PreprocFile */\n.highlight-ipynb .c1 { color: var(--jp-mirror-editor-comment-color); font-style: italic } /* Comment.Single */\n.highlight-ipynb .cs { color: var(--jp-mirror-editor-comment-color); font-style: italic } /* Comment.Special */\n.highlight-ipynb .kc { color: var(--jp-mirror-editor-keyword-color); font-weight: bold } /* Keyword.Constant */\n.highlight-ipynb .kd { color: var(--jp-mirror-editor-keyword-color); font-weight: bold } /* Keyword.Declaration */\n.highlight-ipynb .kn { color: var(--jp-mirror-editor-keyword-color); font-weight: bold } /* Keyword.Namespace */\n.highlight-ipynb .kp { color: var(--jp-mirror-editor-keyword-color); font-weight: bold } /* Keyword.Pseudo */\n.highlight-ipynb .kr { color: var(--jp-mirror-editor-keyword-color); font-weight: bold } /* Keyword.Reserved */\n.highlight-ipynb .kt { color: var(--jp-mirror-editor-keyword-color); font-weight: bold } /* Keyword.Type */\n.highlight-ipynb .m { color: var(--jp-mirror-editor-number-color) } /* Literal.Number */\n.highlight-ipynb .s { color: var(--jp-mirror-editor-string-color) } /* Literal.String */\n.highlight-ipynb .ow { color: var(--jp-mirror-editor-operator-color); font-weight: bold } /* Operator.Word */\n.highlight-ipynb .pm { color: var(--jp-mirror-editor-punctuation-color) } /* Punctuation.Marker */\n.highlight-ipynb .w { color: var(--jp-mirror-editor-variable-color) } /* Text.Whitespace */\n.highlight-ipynb .mb { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Bin */\n.highlight-ipynb .mf { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Float */\n.highlight-ipynb .mh { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Hex */\n.highlight-ipynb .mi { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Integer */\n.highlight-ipynb .mo { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Oct */\n.highlight-ipynb .sa { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Affix */\n.highlight-ipynb .sb { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Backtick */\n.highlight-ipynb .sc { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Char */\n.highlight-ipynb .dl { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Delimiter */\n.highlight-ipynb .sd { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Doc */\n.highlight-ipynb .s2 { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Double */\n.highlight-ipynb .se { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Escape */\n.highlight-ipynb .sh { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Heredoc */\n.highlight-ipynb .si { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Interpol */\n.highlight-ipynb .sx { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Other */\n.highlight-ipynb .sr { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Regex */\n.highlight-ipynb .s1 { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Single */\n.highlight-ipynb .ss { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Symbol */\n.highlight-ipynb .il { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Integer.Long */']

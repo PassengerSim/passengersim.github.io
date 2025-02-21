@@ -15,7 +15,7 @@
         <link rel="next" href="../experiments.nbconvert.html">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
     
     
@@ -1680,8 +1680,50 @@ of the simulation.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_hidden">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs celltag_hidden" id="cell-id=045f43f6-efc4-4265-8741-a5afc7f41a65">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell celltag_hidden">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell celltag_hidden" id="cell-id=045f43f6-efc4-4265-8741-a5afc7f41a65">
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[1], line 11</span>
+<span class="ansi-green-intense-fg ansi-bold">      9</span> cfg<span style="color: rgb(98,98,98)">.</span>db <span style="color: rgb(98,98,98)">=</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>
+<span class="ansi-green-intense-fg ansi-bold">     10</span> cfg<span style="color: rgb(98,98,98)">.</span>outputs<span style="color: rgb(98,98,98)">.</span>reports<span style="color: rgb(98,98,98)">.</span>clear()
+<span class="ansi-green-fg">---&gt; 11</span> untrunc <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">pax</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">Simulation</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">cfg</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">run</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     12</span> untrunc<span style="color: rgb(98,98,98)">.</span>to_pickle(<span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">saved-output/untruncated-sim</span><span style="color: rgb(175,0,0)">"</span>)
+<span class="ansi-green-intense-fg ansi-bold">     14</span> cfg <span style="color: rgb(98,98,98)">=</span> pax<span style="color: rgb(98,98,98)">.</span>Config<span style="color: rgb(98,98,98)">.</span>from_yaml(<span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">../../Tutorials/3MKT/network/05-emsrb.yaml</span><span style="color: rgb(175,0,0)">"</span>)
+
+File <span class="ansi-green-fg">~/Git/umbrella/passengersim-public/passengersim/driver.py:2308</span>, in <span class="ansi-cyan-fg">Simulation.run</span><span class="ansi-blue-fg">(self, log_reports, single_trial, summarizer, rich_progress)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2300</span>     warnings<span style="color: rgb(98,98,98)">.</span>warn(
+<span class="ansi-green-intense-fg ansi-bold">   2301</span>         <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">Using SummaryTables to compute reports is deprecated, </span><span style="color: rgb(175,0,0)">"</span>
+<span class="ansi-green-intense-fg ansi-bold">   2302</span>         <span style="color: rgb(175,0,0)">"</span><span style="color: rgb(175,0,0)">prefer SimulationTables in new code.</span><span style="color: rgb(175,0,0)">"</span>,
+<span class="ansi-green-intense-fg ansi-bold">   2303</span>         <span class="ansi-bold" style="color: rgb(215,95,95)">DeprecationWarning</span>,
+<span class="ansi-green-intense-fg ansi-bold">   2304</span>         stacklevel<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">2</span>,
+<span class="ansi-green-intense-fg ansi-bold">   2305</span>     )
+<span class="ansi-green-intense-fg ansi-bold">   2307</span> start_time <span style="color: rgb(98,98,98)">=</span> time<span style="color: rgb(98,98,98)">.</span>time()
+<span class="ansi-green-fg">-&gt; 2308</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">setup_scenario</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2309</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> single_trial <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
+<span class="ansi-green-intense-fg ansi-bold">   2310</span>     <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>_run_sim_single_trial(single_trial, rich_progress<span style="color: rgb(98,98,98)">=</span>rich_progress)
+
+File <span class="ansi-green-fg">~/Git/umbrella/passengersim-public/passengersim/driver.py:890</span>, in <span class="ansi-cyan-fg">Simulation.setup_scenario</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-intense-fg ansi-bold">    887</span>     <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>sim<span style="color: rgb(98,98,98)">.</span>initialize_pathclasses(carrier<span style="color: rgb(98,98,98)">.</span>get_history_def(), carrier<span style="color: rgb(98,98,98)">.</span>name)
+<span class="ansi-green-intense-fg ansi-bold">    889</span> <span style="color: rgb(95,135,135)"># TODO: only initialize nonstop linkage when needed?</span>
+<span class="ansi-green-fg">--&gt; 890</span> <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">sim</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">initialize_nonstop_path_linkage</span>()
+<span class="ansi-green-intense-fg ansi-bold">    892</span> <span style="color: rgb(95,135,135)"># Airlines using Q-forecasting need to have pathclasses set up for all paths</span>
+<span class="ansi-green-intense-fg ansi-bold">    893</span> <span style="color: rgb(95,135,135)"># so Q-demand can be forecasted by pathclass even in the absence of bookings</span>
+<span class="ansi-green-intense-fg ansi-bold">    894</span> <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> carrier <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> <span style="color: rgb(0,135,0)">self</span><span style="color: rgb(98,98,98)">.</span>sim<span style="color: rgb(98,98,98)">.</span>carriers:
+
+<span class="ansi-red-fg">AttributeError</span>: 'passengersim.SimulationEngine' object has no attribute 'initialize_nonstop_path_linkage'</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=24db419b-0c04-4053-aaef-31270af5ddb9">
@@ -1689,7 +1731,7 @@ of the simulation.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-1">
@@ -1726,13 +1768,13 @@ summary = SimulationTables.from_pickle("saved-output/simple-sim")</div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=12b2ad4d-6283-4182-baee-1d703275819e">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=12b2ad4d-6283-4182-baee-1d703275819e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-2">
@@ -1752,84 +1794,6 @@ summary = SimulationTables.from_pickle("saved-output/simple-sim")</div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<style>
-  #altair-viz-bfab658a9fd44a65942bb2c5f7c98144.vega-embed {
-    width: 100%;
-    display: flex;
-  }
-
-  #altair-viz-bfab658a9fd44a65942bb2c5f7c98144.vega-embed details,
-  #altair-viz-bfab658a9fd44a65942bb2c5f7c98144.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-bfab658a9fd44a65942bb2c5f7c98144"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-bfab658a9fd44a65942bb2c5f7c98144") {
-      outputDiv = document.getElementById("altair-viz-bfab658a9fd44a65942bb2c5f7c98144");
-    }
-
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
-
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
-
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
-
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
-
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      let deps = ["vega-embed"];
-      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99"], "Sequential": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "carrier", "legend": null, "title": "Carrier", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Average Revenue", "type": "quantitative"}], "x": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-f2e2c9a749caebe0580640bb8d62dcaa"}, "height": 50, "title": "Carrier Revenues", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-f2e2c9a749caebe0580640bb8d62dcaa": [{"carrier": "AL1", "avg_rev": 88922.375}, {"carrier": "AL2", "avg_rev": 89409.59375}]}}, {"mode": "vega-lite"});
-</script>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1ccc81c5-3e00-4873-80cc-15c0d2f88b17">
@@ -1843,13 +1807,13 @@ summary = SimulationTables.from_pickle("saved-output/simple-sim")</div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=138423da-98d8-4625-a3b3-27ead847341f">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=138423da-98d8-4625-a3b3-27ead847341f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-3">
@@ -1865,84 +1829,6 @@ summary = SimulationTables.from_pickle("saved-output/simple-sim")</div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">fig_carrier_mileage</span><span class="p">()</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-3">summary.fig_carrier_mileage()</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<style>
-  #altair-viz-4f220344f198498281a6a82fa3981e5e.vega-embed {
-    width: 100%;
-    display: flex;
-  }
-
-  #altair-viz-4f220344f198498281a6a82fa3981e5e.vega-embed details,
-  #altair-viz-4f220344f198498281a6a82fa3981e5e.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-4f220344f198498281a6a82fa3981e5e"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-4f220344f198498281a6a82fa3981e5e") {
-      outputDiv = document.getElementById("altair-viz-4f220344f198498281a6a82fa3981e5e");
-    }
-
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
-
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
-
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
-
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
-
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      let deps = ["vega-embed"];
-      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99"], "Sequential": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "measure", "type": "nominal"}, "tooltip": [{"field": "carrier", "type": "nominal"}, {"field": "measure", "type": "nominal"}, {"field": "value", "format": ".4s", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "value", "stack": null, "title": "miles", "type": "quantitative"}}, "title": "Carrier Loads"}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 5}, "encoding": {"text": {"field": "value", "format": ".4s", "type": "quantitative"}, "x": {"field": "carrier", "type": "nominal"}, "y": {"field": "value", "stack": null, "type": "quantitative"}}, "title": "Carrier Loads"}], "data": {"name": "data-ad665a28bdbca1281a15879341fa0a9d"}, "height": 300, "width": 400, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-ad665a28bdbca1281a15879341fa0a9d": [{"measure": "asm", "carrier": "AL1", "value": 590302.4972976719}, {"measure": "asm", "carrier": "AL2", "value": 590302.4972976719}, {"measure": "rpm", "carrier": "AL1", "value": 519428.4831635456}, {"measure": "rpm", "carrier": "AL2", "value": 520556.0562678885}]}}, {"mode": "vega-lite"});
-</script>
 </div>
 </div>
 </div>
@@ -1963,13 +1849,13 @@ their larger relative importance in evaluating carrier performance.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=499688f9-bc1b-4644-a9a9-076eb9888ed0">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=499688f9-bc1b-4644-a9a9-076eb9888ed0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-4">
@@ -1989,84 +1875,6 @@ their larger relative importance in evaluating carrier performance.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<style>
-  #altair-viz-fdd5d51b191a4ee3ad169ffa8d2ed5f3.vega-embed {
-    width: 100%;
-    display: flex;
-  }
-
-  #altair-viz-fdd5d51b191a4ee3ad169ffa8d2ed5f3.vega-embed details,
-  #altair-viz-fdd5d51b191a4ee3ad169ffa8d2ed5f3.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-fdd5d51b191a4ee3ad169ffa8d2ed5f3"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-fdd5d51b191a4ee3ad169ffa8d2ed5f3") {
-      outputDiv = document.getElementById("altair-viz-fdd5d51b191a4ee3ad169ffa8d2ed5f3");
-    }
-
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
-
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
-
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
-
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
-
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      let deps = ["vega-embed"];
-      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99"], "Sequential": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "carrier", "legend": null, "title": "Carrier", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "sys_lf", "format": ".2f", "title": "System Load Factor", "type": "quantitative"}], "x": {"field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "sys_lf", "format": ".2f", "type": "quantitative"}, "x": {"field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-caeefc8e42afe3065df0693676101b86"}, "height": 50, "title": "Carrier System Load Factors", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-caeefc8e42afe3065df0693676101b86": [{"carrier": "AL1", "sys_lf": 87.9936109946039}, {"carrier": "AL2", "sys_lf": 88.1846271447142}]}}, {"mode": "vega-lite"});
-</script>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e3a8b1e3-699e-4866-ad1f-f47d02efdc55">
@@ -2081,13 +1889,13 @@ legs uniformly.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e90f98da-5f0a-4023-9531-4c2643edc675">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=e90f98da-5f0a-4023-9531-4c2643edc675">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-5">
@@ -2103,84 +1911,6 @@ legs uniformly.</p>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">fig_carrier_load_factors</span><span class="p">(</span><span class="n">load_measure</span><span class="o">=</span><span class="s2">"avg_leg_lf"</span><span class="p">)</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-5">summary.fig_carrier_load_factors(load_measure="avg_leg_lf")</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<style>
-  #altair-viz-d87897e8b0f1424dba328b4c557179d3.vega-embed {
-    width: 100%;
-    display: flex;
-  }
-
-  #altair-viz-d87897e8b0f1424dba328b4c557179d3.vega-embed details,
-  #altair-viz-d87897e8b0f1424dba328b4c557179d3.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-d87897e8b0f1424dba328b4c557179d3"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-d87897e8b0f1424dba328b4c557179d3") {
-      outputDiv = document.getElementById("altair-viz-d87897e8b0f1424dba328b4c557179d3");
-    }
-
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
-
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
-
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
-
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
-
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      let deps = ["vega-embed"];
-      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99"], "Sequential": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "carrier", "legend": null, "title": "Carrier", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_leg_lf", "format": ".2f", "title": "Leg Load Factor", "type": "quantitative"}], "x": {"field": "avg_leg_lf", "stack": "zero", "title": "Leg Load Factor", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_leg_lf", "format": ".2f", "type": "quantitative"}, "x": {"field": "avg_leg_lf", "stack": "zero", "title": "Leg Load Factor", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-03a0f9b297d6c203eee344ed3d37ce00"}, "height": 50, "title": "Carrier Leg Load Factors", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-03a0f9b297d6c203eee344ed3d37ce00": [{"carrier": "AL1", "avg_leg_lf": 86.89822916666668}, {"carrier": "AL2", "avg_leg_lf": 87.05999999999999}]}}, {"mode": "vega-lite"});
-</script>
 </div>
 </div>
 </div>
@@ -2201,13 +1931,13 @@ this is the default), or across carriers in aggregate
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e8bfa031-916b-4d13-908b-b0971ba0bd77">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=e8bfa031-916b-4d13-908b-b0971ba0bd77">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-6">
@@ -2223,84 +1953,6 @@ this is the default), or across carriers in aggregate
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">fig_leg_load_factor_distribution</span><span class="p">()</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-6">summary.fig_leg_load_factor_distribution()</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<style>
-  #altair-viz-c68435ee7c2f41bf9d5e848f2ce2c5fa.vega-embed {
-    width: 100%;
-    display: flex;
-  }
-
-  #altair-viz-c68435ee7c2f41bf9d5e848f2ce2c5fa.vega-embed details,
-  #altair-viz-c68435ee7c2f41bf9d5e848f2ce2c5fa.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-c68435ee7c2f41bf9d5e848f2ce2c5fa"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-c68435ee7c2f41bf9d5e848f2ce2c5fa") {
-      outputDiv = document.getElementById("altair-viz-c68435ee7c2f41bf9d5e848f2ce2c5fa");
-    }
-
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
-
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
-
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
-
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
-
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      let deps = ["vega-embed"];
-      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99"], "Sequential": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}}, "data": {"name": "data-d86ed6c5db9d283b306f0187178b3371"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "facet": {"columns": 2, "field": "carrier", "title": "Carrier", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_load_factor_category", "title": "Load Factor Range", "type": "ordinal"}, {"field": "frequency", "title": "Count", "type": "quantitative"}], "x": {"field": "avg_load_factor_category", "sort": ["0-24", "25-29", "30-34", "35-39", "40-44", "45-49", "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80-84", "85-89", "90-94", "95-100"], "title": "Load Factor Range", "type": "ordinal"}, "y": {"field": "frequency", "title": "Count", "type": "quantitative"}}, "height": 250, "title": "Load Factor Frequency by Carrier", "width": 300, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-d86ed6c5db9d283b306f0187178b3371": [{"carrier": "AL1", "avg_load_factor_category": "0-24", "frequency": 0}, {"carrier": "AL1", "avg_load_factor_category": "25-29", "frequency": 0}, {"carrier": "AL1", "avg_load_factor_category": "30-34", "frequency": 0}, {"carrier": "AL1", "avg_load_factor_category": "35-39", "frequency": 0}, {"carrier": "AL1", "avg_load_factor_category": "40-44", "frequency": 0}, {"carrier": "AL1", "avg_load_factor_category": "45-49", "frequency": 0}, {"carrier": "AL1", "avg_load_factor_category": "50-54", "frequency": 0}, {"carrier": "AL1", "avg_load_factor_category": "55-59", "frequency": 0}, {"carrier": "AL1", "avg_load_factor_category": "60-64", "frequency": 0}, {"carrier": "AL1", "avg_load_factor_category": "65-69", "frequency": 0}, {"carrier": "AL1", "avg_load_factor_category": "70-74", "frequency": 0}, {"carrier": "AL1", "avg_load_factor_category": "75-79", "frequency": 0}, {"carrier": "AL1", "avg_load_factor_category": "80-84", "frequency": 2}, {"carrier": "AL1", "avg_load_factor_category": "85-89", "frequency": 2}, {"carrier": "AL1", "avg_load_factor_category": "90-94", "frequency": 0}, {"carrier": "AL1", "avg_load_factor_category": "95-100", "frequency": 0}, {"carrier": "AL2", "avg_load_factor_category": "0-24", "frequency": 0}, {"carrier": "AL2", "avg_load_factor_category": "25-29", "frequency": 0}, {"carrier": "AL2", "avg_load_factor_category": "30-34", "frequency": 0}, {"carrier": "AL2", "avg_load_factor_category": "35-39", "frequency": 0}, {"carrier": "AL2", "avg_load_factor_category": "40-44", "frequency": 0}, {"carrier": "AL2", "avg_load_factor_category": "45-49", "frequency": 0}, {"carrier": "AL2", "avg_load_factor_category": "50-54", "frequency": 0}, {"carrier": "AL2", "avg_load_factor_category": "55-59", "frequency": 0}, {"carrier": "AL2", "avg_load_factor_category": "60-64", "frequency": 0}, {"carrier": "AL2", "avg_load_factor_category": "65-69", "frequency": 0}, {"carrier": "AL2", "avg_load_factor_category": "70-74", "frequency": 0}, {"carrier": "AL2", "avg_load_factor_category": "75-79", "frequency": 0}, {"carrier": "AL2", "avg_load_factor_category": "80-84", "frequency": 2}, {"carrier": "AL2", "avg_load_factor_category": "85-89", "frequency": 2}, {"carrier": "AL2", "avg_load_factor_category": "90-94", "frequency": 0}, {"carrier": "AL2", "avg_load_factor_category": "95-100", "frequency": 0}]}}, {"mode": "vega-lite"});
-</script>
 </div>
 </div>
 </div>
@@ -2322,13 +1974,13 @@ is larger (assuming there are any connecting passengers in the network).</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=706e6471">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=706e6471">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-7">
@@ -2348,92 +2000,14 @@ is larger (assuming there are any connecting passengers in the network).</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<style>
-  #altair-viz-4691e343765a44d98b4623fa3d0a748c.vega-embed {
-    width: 100%;
-    display: flex;
-  }
-
-  #altair-viz-4691e343765a44d98b4623fa3d0a748c.vega-embed details,
-  #altair-viz-4691e343765a44d98b4623fa3d0a748c.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-4691e343765a44d98b4623fa3d0a748c"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-4691e343765a44d98b4623fa3d0a748c") {
-      outputDiv = document.getElementById("altair-viz-4691e343765a44d98b4623fa3d0a748c");
-    }
-
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
-
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
-
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
-
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
-
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      let deps = ["vega-embed"];
-      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99"], "Sequential": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "carrier", "legend": null, "title": "Carrier", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "local_pct_bookings", "format": ".2f", "title": "Local Percent of Bookings", "type": "quantitative"}], "x": {"field": "local_pct_bookings", "stack": "zero", "title": "Local Percent of Bookings", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "local_pct_bookings", "format": ".2f", "type": "quantitative"}, "x": {"field": "local_pct_bookings", "stack": "zero", "title": "Local Percent of Bookings", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-667bd36595b7846a5349cfc54170896f"}, "height": 50, "title": "Carrier Local Percent of Bookings", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-667bd36595b7846a5349cfc54170896f": [{"carrier": "AL1", "local_pct_bookings": 65.43520224620514}, {"carrier": "AL2", "local_pct_bookings": 65.65407078408057}]}}, {"mode": "vega-lite"});
-</script>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=24427783">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=24427783">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-8">
@@ -2453,84 +2027,6 @@ is larger (assuming there are any connecting passengers in the network).</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<style>
-  #altair-viz-d2f9ca51b2814c0e9b460334850b3bb6.vega-embed {
-    width: 100%;
-    display: flex;
-  }
-
-  #altair-viz-d2f9ca51b2814c0e9b460334850b3bb6.vega-embed details,
-  #altair-viz-d2f9ca51b2814c0e9b460334850b3bb6.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-d2f9ca51b2814c0e9b460334850b3bb6"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-d2f9ca51b2814c0e9b460334850b3bb6") {
-      outputDiv = document.getElementById("altair-viz-d2f9ca51b2814c0e9b460334850b3bb6");
-    }
-
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
-
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
-
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
-
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
-
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      let deps = ["vega-embed"];
-      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99"], "Sequential": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "carrier", "legend": null, "title": "Carrier", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "local_pct_leg_pax", "format": ".2f", "title": "Local Percent of Leg Passengers", "type": "quantitative"}], "x": {"field": "local_pct_leg_pax", "stack": "zero", "title": "Local Percent of Leg Passengers", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "local_pct_leg_pax", "format": ".2f", "type": "quantitative"}, "x": {"field": "local_pct_leg_pax", "stack": "zero", "title": "Local Percent of Leg Passengers", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-ac491aed8377b9d9bc3d2b07549f47fe"}, "height": 50, "title": "Carrier Local Percent of Leg Passengers", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-ac491aed8377b9d9bc3d2b07549f47fe": [{"carrier": "AL1", "local_pct_leg_pax": 48.62728093711998}, {"carrier": "AL2", "local_pct_leg_pax": 48.86941581874209}]}}, {"mode": "vega-lite"});
-</script>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b593f2e6-42be-4ec4-af9f-bcc19ccadf13">
@@ -2544,13 +2040,13 @@ is larger (assuming there are any connecting passengers in the network).</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=16f0f28c-b0f5-4620-98f3-9ce71e1d9393">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=16f0f28c-b0f5-4620-98f3-9ce71e1d9393">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-9">
@@ -2570,84 +2066,6 @@ is larger (assuming there are any connecting passengers in the network).</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<style>
-  #altair-viz-14562c88bb314c5d81bdd36b4d96cb86.vega-embed {
-    width: 100%;
-    display: flex;
-  }
-
-  #altair-viz-14562c88bb314c5d81bdd36b4d96cb86.vega-embed details,
-  #altair-viz-14562c88bb314c5d81bdd36b4d96cb86.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-14562c88bb314c5d81bdd36b4d96cb86"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-14562c88bb314c5d81bdd36b4d96cb86") {
-      outputDiv = document.getElementById("altair-viz-14562c88bb314c5d81bdd36b4d96cb86");
-    }
-
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
-
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
-
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
-
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
-
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      let deps = ["vega-embed"];
-      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99"], "Sequential": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "carrier", "legend": null, "title": "Carrier", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "yield", "format": "$.4f", "title": "Average Yield", "type": "quantitative"}], "x": {"field": "yield", "stack": "zero", "title": "Average Yield", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "yield", "format": "$.4f", "type": "quantitative"}, "x": {"field": "yield", "stack": "zero", "title": "Average Yield", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-c211dd647d5fc99ae0e622a0bfa67828"}, "height": 50, "title": "Carrier Yields", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-c211dd647d5fc99ae0e622a0bfa67828": [{"carrier": "AL1", "yield": 0.17119272023440846}, {"carrier": "AL2", "yield": 0.1717578590690491}]}}, {"mode": "vega-lite"});
-</script>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=565d75dd-4d6b-40da-a541-81b2addfc055">
@@ -2661,13 +2079,13 @@ is larger (assuming there are any connecting passengers in the network).</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=51fec88f-fd68-4439-b228-00946a120f5c">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=51fec88f-fd68-4439-b228-00946a120f5c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-10">
@@ -2683,84 +2101,6 @@ is larger (assuming there are any connecting passengers in the network).</p>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">summary</span><span class="o">.</span><span class="n">fig_fare_class_mix</span><span class="p">()</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-10">summary.fig_fare_class_mix()</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<style>
-  #altair-viz-c9fd7b399397487ebfffe23572ced81a.vega-embed {
-    width: 100%;
-    display: flex;
-  }
-
-  #altair-viz-c9fd7b399397487ebfffe23572ced81a.vega-embed details,
-  #altair-viz-c9fd7b399397487ebfffe23572ced81a.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-c9fd7b399397487ebfffe23572ced81a"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-c9fd7b399397487ebfffe23572ced81a") {
-      outputDiv = document.getElementById("altair-viz-c9fd7b399397487ebfffe23572ced81a");
-    }
-
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
-
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
-
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
-
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
-
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      let deps = ["vega-embed"];
-      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99"], "Sequential": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFontSize": 12}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "booking_class", "type": "nominal"}, "tooltip": [{"field": "carrier", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "title": "Fare Class Mix", "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 3}, "encoding": {"opacity": {"condition": {"test": "datum.avg_sold < 17.156", "value": 0}, "value": 1}, "order": {"field": "booking_class", "sort": "descending", "type": "nominal"}, "text": {"field": "avg_sold", "format": ".2f", "type": "quantitative"}, "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "title": "Fare Class Mix", "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}], "data": {"name": "data-6d45511a2149ae5521e6895f964baf84"}, "height": 300, "width": 400, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-6d45511a2149ae5521e6895f964baf84": [{"carrier": "AL1", "booking_class": "Y0", "avg_sold": 52.15625}, {"carrier": "AL1", "booking_class": "Y1", "avg_sold": 50.1925}, {"carrier": "AL1", "booking_class": "Y2", "avg_sold": 27.46375}, {"carrier": "AL1", "booking_class": "Y3", "avg_sold": 11.30375}, {"carrier": "AL1", "booking_class": "Y4", "avg_sold": 104.62125}, {"carrier": "AL1", "booking_class": "Y5", "avg_sold": 39.1875}, {"carrier": "AL2", "booking_class": "Y0", "avg_sold": 52.7}, {"carrier": "AL2", "booking_class": "Y1", "avg_sold": 50.86125}, {"carrier": "AL2", "booking_class": "Y2", "avg_sold": 27.93875}, {"carrier": "AL2", "booking_class": "Y3", "avg_sold": 10.99125}, {"carrier": "AL2", "booking_class": "Y4", "avg_sold": 104.67875}, {"carrier": "AL2", "booking_class": "Y5", "avg_sold": 38.77}]}}, {"mode": "vega-lite"});
-</script>
 </div>
 </div>
 </div>
@@ -2787,7 +2127,7 @@ objects in a
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-11">
@@ -2830,13 +2170,13 @@ comps = Contrast(
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e1ab1041">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=e1ab1041">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-12">
@@ -2852,84 +2192,6 @@ comps = Contrast(
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">comps</span><span class="o">.</span><span class="n">fig_carrier_revenues</span><span class="p">()</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-12">comps.fig_carrier_revenues()</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<style>
-  #altair-viz-78452a56d1174daaadb91724f16d825c.vega-embed {
-    width: 100%;
-    display: flex;
-  }
-
-  #altair-viz-78452a56d1174daaadb91724f16d825c.vega-embed details,
-  #altair-viz-78452a56d1174daaadb91724f16d825c.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-78452a56d1174daaadb91724f16d825c"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-78452a56d1174daaadb91724f16d825c") {
-      outputDiv = document.getElementById("altair-viz-78452a56d1174daaadb91724f16d825c");
-    }
-
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
-
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
-
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
-
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
-
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      let deps = ["vega-embed"];
-      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99"], "Sequential": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}}, "data": {"name": "data-96ba418aac2456fb7d611eca7e1e56a9"}, "facet": {"row": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "source", "title": "Source", "type": "nominal"}, "tooltip": [{"field": "source", "title": null, "type": "nominal"}, {"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Revenue ($)", "type": "quantitative"}, {"field": "ratio_0", "format": ".3%", "title": "vs Simple", "type": "quantitative"}, {"field": "ratio_1", "format": ".3%", "title": "vs Untruncated", "type": "quantitative"}], "x": {"field": "avg_rev", "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"field": "avg_rev", "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 5, "dy": 0}, "encoding": {"text": {"field": "reference_source", "type": "nominal"}, "x": {"field": "avg_rev", "scale": {"domain": [0, 96572.515625]}, "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}, "transform": [{"calculate": "datum[\"ratio_label_\" + ref_source]", "as": "reference_source"}]}], "height": 50, "width": 500}, "params": [{"name": "ref_source", "bind": {"input": "radio", "options": ["0", "1"], "labels": ["Simple", "Untruncated"], "name": "Reference Source: "}, "value": "0"}], "title": "Carrier Revenues", "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-96ba418aac2456fb7d611eca7e1e56a9": [{"source": "Simple", "carrier": "AL1", "avg_rev": 88922.375, "ratio_0": null, "ratio_1": -0.014761698665235579, "ratio_label": " ", "ratio_label_0": " ", "ratio_label_1": "-1.5%"}, {"source": "Simple", "carrier": "AL2", "avg_rev": 89409.59375, "ratio_0": null, "ratio_1": -0.007818899216064046, "ratio_label": " ", "ratio_label_0": " ", "ratio_label_1": "-0.8%"}, {"source": "Untruncated", "carrier": "AL1", "avg_rev": 90254.6875, "ratio_0": 0.014982871296453704, "ratio_1": null, "ratio_label": "+1.5%", "ratio_label_0": "+1.5%", "ratio_label_1": " "}, {"source": "Untruncated", "carrier": "AL2", "avg_rev": 90114.1875, "ratio_0": 0.007880516177829033, "ratio_1": null, "ratio_label": "+0.8%", "ratio_label_0": "+0.8%", "ratio_label_1": " "}]}}, {"mode": "vega-lite"});
-</script>
 </div>
 </div>
 </div>
@@ -2950,13 +2212,13 @@ their larger relative importance in evaluating carrier performance.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7b3d0737">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=7b3d0737">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-13">
@@ -2976,92 +2238,14 @@ their larger relative importance in evaluating carrier performance.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<style>
-  #altair-viz-5b0b733d14f9461e970018811a2d129c.vega-embed {
-    width: 100%;
-    display: flex;
-  }
-
-  #altair-viz-5b0b733d14f9461e970018811a2d129c.vega-embed details,
-  #altair-viz-5b0b733d14f9461e970018811a2d129c.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-5b0b733d14f9461e970018811a2d129c"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-5b0b733d14f9461e970018811a2d129c") {
-      outputDiv = document.getElementById("altair-viz-5b0b733d14f9461e970018811a2d129c");
-    }
-
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
-
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
-
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
-
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
-
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      let deps = ["vega-embed"];
-      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99"], "Sequential": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}}, "data": {"name": "data-7a122eb26de90d4f01b1f2965b5c8a60"}, "facet": {"row": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "source", "title": "Source", "type": "nominal"}, "tooltip": [{"field": "source", "title": null, "type": "nominal"}, {"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "sys_lf", "format": ".2f", "title": "System Load Factor", "type": "quantitative"}, {"field": "ratio_0", "format": ".3%", "title": "vs Simple", "type": "quantitative"}, {"field": "ratio_1", "format": ".3%", "title": "vs Untruncated", "type": "quantitative"}], "x": {"field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "sys_lf", "format": ".2f", "type": "quantitative"}, "x": {"field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 5, "dy": 0}, "encoding": {"text": {"field": "reference_source", "type": "nominal"}, "x": {"field": "sys_lf", "scale": {"domain": [0, 94.3575510448442]}, "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}, "transform": [{"calculate": "datum[\"ratio_label_\" + ref_source]", "as": "reference_source"}]}], "height": 50, "width": 500}, "params": [{"name": "ref_source", "bind": {"input": "radio", "options": ["0", "1"], "labels": ["Simple", "Untruncated"], "name": "Reference Source: "}, "value": "0"}], "title": "Carrier System Load Factors", "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-7a122eb26de90d4f01b1f2965b5c8a60": [{"source": "Simple", "carrier": "AL1", "sys_lf": 87.9936109946039, "ratio_0": null, "ratio_1": 0.0032178190511915616, "ratio_label": " ", "ratio_label_0": " ", "ratio_label_1": "+0.3%"}, {"source": "Simple", "carrier": "AL2", "sys_lf": 88.1846271447142, "ratio_0": null, "ratio_1": 0.007095798383318197, "ratio_label": " ", "ratio_label_0": " ", "ratio_label_1": "+0.7%"}, {"source": "Untruncated", "carrier": "AL1", "sys_lf": 87.71137167183214, "ratio_0": -0.0032074979033315243, "ratio_1": null, "ratio_label": "-0.3%", "ratio_label_0": "-0.3%", "ratio_label_1": " "}, {"source": "Untruncated", "carrier": "AL2", "sys_lf": 87.56329565298176, "ratio_0": -0.0070458027872908335, "ratio_1": null, "ratio_label": "-0.7%", "ratio_label_0": "-0.7%", "ratio_label_1": " "}]}}, {"mode": "vega-lite"});
-</script>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8768670b-e89a-4c12-ae49-9c0b64314e81">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=8768670b-e89a-4c12-ae49-9c0b64314e81">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-14">
@@ -3081,84 +2265,6 @@ their larger relative importance in evaluating carrier performance.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<style>
-  #altair-viz-9f19cb48e63846ab8b715a45303e738f.vega-embed {
-    width: 100%;
-    display: flex;
-  }
-
-  #altair-viz-9f19cb48e63846ab8b715a45303e738f.vega-embed details,
-  #altair-viz-9f19cb48e63846ab8b715a45303e738f.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-9f19cb48e63846ab8b715a45303e738f"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-9f19cb48e63846ab8b715a45303e738f") {
-      outputDiv = document.getElementById("altair-viz-9f19cb48e63846ab8b715a45303e738f");
-    }
-
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
-
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
-
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
-
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
-
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      let deps = ["vega-embed"];
-      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99"], "Sequential": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}}, "data": {"name": "data-21ec4f494031d45180217a68142a9306"}, "facet": {"row": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "source", "title": "Source", "type": "nominal"}, "tooltip": [{"field": "source", "title": null, "type": "nominal"}, {"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_leg_lf", "format": ".2f", "title": "Leg Load factor", "type": "quantitative"}, {"field": "ratio_0", "format": ".3%", "title": "vs Simple", "type": "quantitative"}, {"field": "ratio_1", "format": ".3%", "title": "vs Untruncated", "type": "quantitative"}], "x": {"field": "avg_leg_lf", "stack": "zero", "title": "Leg Load factor", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_leg_lf", "format": ".2f", "type": "quantitative"}, "x": {"field": "avg_leg_lf", "stack": "zero", "title": "Leg Load factor", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 5, "dy": 0}, "encoding": {"text": {"field": "reference_source", "type": "nominal"}, "x": {"field": "avg_leg_lf", "scale": {"domain": [0, 93.15419999999999]}, "stack": "zero", "title": "Leg Load factor", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}, "transform": [{"calculate": "datum[\"ratio_label_\" + ref_source]", "as": "reference_source"}]}], "height": 50, "width": 500}, "params": [{"name": "ref_source", "bind": {"input": "radio", "options": ["0", "1"], "labels": ["Simple", "Untruncated"], "name": "Reference Source: "}, "value": "0"}], "title": "Carrier Leg Load factors", "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-21ec4f494031d45180217a68142a9306": [{"source": "Simple", "carrier": "AL1", "avg_leg_lf": 86.89822916666668, "ratio_0": null, "ratio_1": 0.002843636079497003, "ratio_label": " ", "ratio_label_0": " ", "ratio_label_1": "+0.3%"}, {"source": "Simple", "carrier": "AL2", "avg_leg_lf": 87.05999999999999, "ratio_0": null, "ratio_1": 0.007175032717859908, "ratio_label": " ", "ratio_label_0": " ", "ratio_label_1": "+0.7%"}, {"source": "Untruncated", "carrier": "AL1", "avg_leg_lf": 86.65182291666666, "ratio_0": -0.0028355727425403154, "ratio_1": null, "ratio_label": "-0.3%", "ratio_label_0": "-0.3%", "ratio_label_1": " "}, {"source": "Untruncated", "carrier": "AL2", "avg_leg_lf": 86.43979166666666, "ratio_0": -0.007123918370472326, "ratio_1": null, "ratio_label": "-0.7%", "ratio_label_0": "-0.7%", "ratio_label_1": " "}]}}, {"mode": "vega-lite"});
-</script>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ba7928e3-47b3-44ab-947e-229b2cfa71cd">
@@ -3172,13 +2278,13 @@ their larger relative importance in evaluating carrier performance.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=f6ad3059-4c6a-4c4b-9711-73a243c0b30a">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=f6ad3059-4c6a-4c4b-9711-73a243c0b30a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-15">
@@ -3198,84 +2304,6 @@ their larger relative importance in evaluating carrier performance.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<style>
-  #altair-viz-48a00a4ff0eb43efa6be4dfbc27d8740.vega-embed {
-    width: 100%;
-    display: flex;
-  }
-
-  #altair-viz-48a00a4ff0eb43efa6be4dfbc27d8740.vega-embed details,
-  #altair-viz-48a00a4ff0eb43efa6be4dfbc27d8740.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-48a00a4ff0eb43efa6be4dfbc27d8740"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-48a00a4ff0eb43efa6be4dfbc27d8740") {
-      outputDiv = document.getElementById("altair-viz-48a00a4ff0eb43efa6be4dfbc27d8740");
-    }
-
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
-
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
-
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
-
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
-
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      let deps = ["vega-embed"];
-      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99"], "Sequential": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}}, "data": {"name": "data-5255112f1bb8d332f60c4147f3eacb12"}, "facet": {"row": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "source", "title": "Source", "type": "nominal"}, "tooltip": [{"field": "source", "title": null, "type": "nominal"}, {"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "yield", "format": "$.4f", "title": "Yield ($)", "type": "quantitative"}, {"field": "ratio_0", "format": ".3%", "title": "vs Simple", "type": "quantitative"}, {"field": "ratio_1", "format": ".3%", "title": "vs Untruncated", "type": "quantitative"}], "x": {"field": "yield", "stack": "zero", "title": "Yield ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "yield", "format": "$.4f", "type": "quantitative"}, "x": {"field": "yield", "stack": "zero", "title": "Yield ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 5, "dy": 0}, "encoding": {"text": {"field": "reference_source", "type": "nominal"}, "x": {"field": "yield", "scale": {"domain": [0, 0.18654354667314063]}, "stack": "zero", "title": "Yield ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["Simple", "Untruncated"], "title": null, "type": "nominal"}}, "transform": [{"calculate": "datum[\"ratio_label_\" + ref_source]", "as": "reference_source"}]}], "height": 50, "width": 500}, "params": [{"name": "ref_source", "bind": {"input": "radio", "options": ["0", "1"], "labels": ["Simple", "Untruncated"], "name": "Reference Source: "}, "value": "0"}], "title": "Carrier Yields", "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-5255112f1bb8d332f60c4147f3eacb12": [{"source": "Simple", "carrier": "AL1", "yield": 0.17119272023440846, "ratio_0": null, "ratio_1": -0.017921848451048716, "ratio_label": " ", "ratio_label_0": " ", "ratio_label_1": "-1.8%"}, {"source": "Simple", "carrier": "AL2", "yield": 0.1717578590690491, "ratio_0": null, "ratio_1": -0.014809611581464877, "ratio_label": " ", "ratio_label_0": " ", "ratio_label_1": "-1.5%"}, {"source": "Untruncated", "carrier": "AL1", "yield": 0.17431679949747403, "ratio_0": 0.01824890251634459, "ratio_1": null, "ratio_label": "+1.8%", "ratio_label_0": "+1.8%", "ratio_label_1": " "}, {"source": "Untruncated", "carrier": "AL2", "yield": 0.17433976324592582, "ratio_0": 0.015032233115101601, "ratio_1": null, "ratio_label": "+1.5%", "ratio_label_0": "+1.5%", "ratio_label_1": " "}]}}, {"mode": "vega-lite"});
-</script>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=605c1d04-6472-4a0c-9048-0119aaf48f03">
@@ -3289,13 +2317,13 @@ their larger relative importance in evaluating carrier performance.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=0a6d85d5-6975-4981-9834-ab1d46c8da2c">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=0a6d85d5-6975-4981-9834-ab1d46c8da2c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-16">
@@ -3311,84 +2339,6 @@ their larger relative importance in evaluating carrier performance.</p>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">comps</span><span class="o">.</span><span class="n">fig_fare_class_mix</span><span class="p">()</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-16">comps.fig_fare_class_mix()</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[17]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<style>
-  #altair-viz-bb928ffc673b4ca5828ef738f0929b3f.vega-embed {
-    width: 100%;
-    display: flex;
-  }
-
-  #altair-viz-bb928ffc673b4ca5828ef738f0929b3f.vega-embed details,
-  #altair-viz-bb928ffc673b4ca5828ef738f0929b3f.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-bb928ffc673b4ca5828ef738f0929b3f"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-bb928ffc673b4ca5828ef738f0929b3f") {
-      outputDiv = document.getElementById("altair-viz-bb928ffc673b4ca5828ef738f0929b3f");
-    }
-
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
-
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
-
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
-
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
-
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      let deps = ["vega-embed"];
-      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99"], "Sequential": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}}, "data": {"name": "data-6679d666adcc7aac6ebd0d5a540fa77c"}, "facet": {"column": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "booking_class", "type": "nominal"}, "tooltip": [{"field": "source", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "source", "sort": ["Simple", "Untruncated"], "title": "Source", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 3}, "encoding": {"opacity": {"condition": {"test": "datum.avg_sold < 17.156", "value": 0}, "value": 1}, "order": {"field": "booking_class", "sort": "descending", "type": "nominal"}, "text": {"field": "avg_sold", "format": ".2f", "type": "quantitative"}, "x": {"field": "source", "sort": ["Simple", "Untruncated"], "title": "Source", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}], "height": 300, "width": 200}, "title": "Carrier Fare Class Mix", "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-6679d666adcc7aac6ebd0d5a540fa77c": [{"source": "Simple", "carrier": "AL1", "booking_class": "Y0", "avg_sold": 52.15625}, {"source": "Simple", "carrier": "AL1", "booking_class": "Y1", "avg_sold": 50.1925}, {"source": "Simple", "carrier": "AL1", "booking_class": "Y2", "avg_sold": 27.46375}, {"source": "Simple", "carrier": "AL1", "booking_class": "Y3", "avg_sold": 11.30375}, {"source": "Simple", "carrier": "AL1", "booking_class": "Y4", "avg_sold": 104.62125}, {"source": "Simple", "carrier": "AL1", "booking_class": "Y5", "avg_sold": 39.1875}, {"source": "Simple", "carrier": "AL2", "booking_class": "Y0", "avg_sold": 52.7}, {"source": "Simple", "carrier": "AL2", "booking_class": "Y1", "avg_sold": 50.86125}, {"source": "Simple", "carrier": "AL2", "booking_class": "Y2", "avg_sold": 27.93875}, {"source": "Simple", "carrier": "AL2", "booking_class": "Y3", "avg_sold": 10.99125}, {"source": "Simple", "carrier": "AL2", "booking_class": "Y4", "avg_sold": 104.67875}, {"source": "Simple", "carrier": "AL2", "booking_class": "Y5", "avg_sold": 38.77}, {"source": "Untruncated", "carrier": "AL1", "booking_class": "Y0", "avg_sold": 54.23375}, {"source": "Untruncated", "carrier": "AL1", "booking_class": "Y1", "avg_sold": 51.31625}, {"source": "Untruncated", "carrier": "AL1", "booking_class": "Y2", "avg_sold": 28.09625}, {"source": "Untruncated", "carrier": "AL1", "booking_class": "Y3", "avg_sold": 12.77125}, {"source": "Untruncated", "carrier": "AL1", "booking_class": "Y4", "avg_sold": 102.9475}, {"source": "Untruncated", "carrier": "AL1", "booking_class": "Y5", "avg_sold": 35.2625}, {"source": "Untruncated", "carrier": "AL2", "booking_class": "Y0", "avg_sold": 53.76}, {"source": "Untruncated", "carrier": "AL2", "booking_class": "Y1", "avg_sold": 51.665}, {"source": "Untruncated", "carrier": "AL2", "booking_class": "Y2", "avg_sold": 28.56375}, {"source": "Untruncated", "carrier": "AL2", "booking_class": "Y3", "avg_sold": 12.8075}, {"source": "Untruncated", "carrier": "AL2", "booking_class": "Y4", "avg_sold": 103.08375}, {"source": "Untruncated", "carrier": "AL2", "booking_class": "Y5", "avg_sold": 34.35625}]}}, {"mode": "vega-lite"});
-</script>
 </div>
 </div>
 </div>
