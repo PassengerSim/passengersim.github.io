@@ -1,0 +1,5453 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/2000/svg" lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>baseline</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"><style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap');
+    @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+    :root {
+      --bs-font-sans-serif:
+            Roboto, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial,
+            "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji",
+            "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    }
+    body {
+        position: relative;
+    }
+    .navbar {
+        background-color: #6a3d9a;
+        margin: 0 0 10px;
+        padding: .5rem 1.5rem;
+    }
+    .nav-link, .navbar-brand {
+        color: white;
+    }
+    .nav-link:hover {
+        color: #b2df8a;
+    }
+    .nav-link-side {
+        color: black;
+        border-radius: 3px;
+    }
+    .nav-link-side:hover {
+        color: #33a02c;
+    }
+    .nav-link-side.active {
+        color: #6a3d9a;
+        background-color: #f8ebff;
+    }
+    :target::before {
+      content: "";
+      display: block;
+      height: 65px; /* fixed header height*/
+      margin: -65px 0 0; /* negative fixed header height */
+    }
+    .sticky-top-offset {
+        top: 65px;
+    }
+    .nav-link {
+        border-radius: 10px;
+    }
+    .nav-link.active {
+        color: #b2df8a;
+    }
+    h1 {
+        margin-top: 1rem;
+        font-size: 135%;
+        font-weight: 700;
+    }
+    h2 {
+        margin-top: 1rem;
+        font-size: 120%;
+        font-weight: 300;
+    }
+    .scrolly-sidebar {
+        position: -webkit-sticky;
+        position: sticky;
+        height: calc(100vh - 65px);
+        overflow-y: auto;
+        font-size: 85%;
+    }
+    </style><script src="https://cdn.jsdelivr.net/npm/vega@5"></script><script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script><script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script></head><body data-bs-spy="scroll" data-bs-target="#toc"><nav id="top-nav" class="navbar sticky-top navbar-expand-lg navbar-light"><a class="navbar-brand" href="https://www.passengersim.com"><svg width="180px" height="25px" viewBox="0 0 164.29388 29.74363" version="1.1" id="svg1" xml:space="preserve" style="margin-top: -7px;"><defs id="defs1"></defs><ellipse style="display:inline;fill:#34a02c;fill-opacity:1;stroke:none;stroke-width:2.68684;stroke-dasharray:none;stroke-opacity:1" id="path3" cx="90.03743" cy="17.662586" rx="3.0747285" ry="4.3231125"></ellipse><path style="font-weight:900;font-size:25.4px;font-family:Roboto;-inkscape-font-specification:'Roboto Heavy';display:inline;fill:#ffffff;fill-opacity:1;stroke-width:0.264583" d="m 4.3532208,18.333479 v 6.12675 H -5.8889739e-7 V 6.4024205 H 7.2057598 c 1.380795,0 2.600359,0.256315 3.6586922,0.768946 1.066601,0.504362 1.88929,1.227832 2.468066,2.17041 0.587045,0.9343085 0.880567,1.9967765 0.880567,3.1874025 0,1.76113 -0.63252,3.17087 -1.897559,4.2292 -1.256771,1.05007 -2.9848312,1.5751 -5.1841802,1.5751 z m 0,-3.36104 h 2.852539 c 0.84336,0 1.484148,-0.21084 1.922364,-0.63252 0.446484,-0.42168 0.669726,-1.01699 0.669726,-1.78594 0,-0.84336 -0.227376,-1.517216 -0.682129,-2.021578 -0.454752,-0.504362 -1.074869,-0.7606765 -1.860351,-0.7689455 h -2.902149 z m 19.4096692,9.48779 c -0.148828,-0.27285 -0.28112,-0.67385 -0.396875,-1.20302 -0.768945,0.96738 -1.843815,1.45107 -3.22461,1.45107 -1.265039,0 -2.339908,-0.38034 -3.224609,-1.14102 -0.884701,-0.76894 -1.327051,-1.73219 -1.327051,-2.88974 0,-1.45521 0.537435,-2.55488 1.612305,-3.29902 1.07487,-0.74415 2.637565,-1.11622 4.688086,-1.11622 h 1.289844 v -0.70693 c 0,-1.23197 -0.533301,-1.84795 -1.599903,-1.84795 -0.992187,0 -1.488281,0.48783 -1.488281,1.46348 h -4.17959 c 0,-1.29811 0.549837,-2.35231 1.649512,-3.1626 1.107943,-0.810286 2.517676,-1.215429 4.229199,-1.215429 1.711523,0 3.063379,0.417546 4.055567,1.252639 0.992187,0.83509 1.500683,1.98024 1.525488,3.43545 v 5.94072 c 0.01653,1.23197 0.206703,2.17454 0.570508,2.82773 v 0.21084 z m -2.616895,-2.72851 c 0.520899,0 0.950847,-0.11162 1.289844,-0.33487 0.347265,-0.22324 0.595312,-0.47542 0.744141,-0.75654 v -2.1456 h -1.21543 c -1.455208,0 -2.182812,0.65319 -2.182812,1.95957 0,0.38033 0.128157,0.69039 0.384472,0.93017 0.256315,0.23151 0.58291,0.34727 0.979785,0.34727 z m 15.564942,-1.0418 c 0,-0.35553 -0.186035,-0.64079 -0.558105,-0.85576 -0.372071,-0.21497 -1.079004,-0.43822 -2.120801,-0.66973 -1.041797,-0.23151 -1.901693,-0.5333 -2.579688,-0.90537 -0.677995,-0.38034 -1.194759,-0.83923 -1.550293,-1.37666 -0.355533,-0.53743 -0.5333,-1.15342 -0.5333,-1.84795 0,-1.23197 0.508496,-2.24482 1.525488,-3.03857 1.016992,-0.802019 2.348177,-1.203029 3.993555,-1.203029 1.769401,0 3.191536,0.40101 4.266406,1.203029 1.074869,0.80202 1.612304,1.85622 1.612304,3.1626 h -4.191992 c 0,-1.07487 -0.566374,-1.61231 -1.699121,-1.61231 -0.438216,0 -0.806152,0.12402 -1.103808,0.37207 -0.297657,0.23978 -0.446485,0.54157 -0.446485,0.90537 0,0.37207 0.181901,0.67386 0.545703,0.90537 0.363802,0.23151 0.942578,0.42168 1.736328,0.57051 0.802019,0.14883 1.504818,0.32659 2.108399,0.5333 2.017448,0.69453 3.026172,1.9389 3.026172,3.73311 0,1.22369 -0.545703,2.22001 -1.63711,2.98896 -1.083138,0.76895 -2.488737,1.15342 -4.216796,1.15342 -1.149284,0 -2.174545,-0.20671 -3.075782,-0.62012 -0.901237,-0.41341 -1.604036,-0.97565 -2.108398,-1.68672 -0.504362,-0.71107 -0.756543,-1.45934 -0.756543,-2.24482 h 3.906738 c 0.01654,0.62012 0.223246,1.07487 0.620117,1.36426 0.396875,0.28112 0.905372,0.42168 1.525489,0.42168 0.570507,0 0.996321,-0.11576 1.277441,-0.34727 0.289388,-0.23151 0.434082,-0.5333 0.434082,-0.90537 z m 13.010055,0 c 0,-0.35553 -0.18603,-0.64079 -0.5581,-0.85576 -0.37207,-0.21497 -1.07901,-0.43822 -2.1208,-0.66973 -1.0418,-0.23151 -1.9017,-0.5333 -2.57969,-0.90537 -0.67799,-0.38034 -1.19476,-0.83923 -1.55029,-1.37666 -0.35553,-0.53743 -0.5333,-1.15342 -0.5333,-1.84795 0,-1.23197 0.5085,-2.24482 1.52549,-3.03857 1.01699,-0.802019 2.34817,-1.203029 3.99355,-1.203029 1.7694,0 3.19154,0.40101 4.26641,1.203029 1.07487,0.80202 1.6123,1.85622 1.6123,3.1626 h -4.19199 c 0,-1.07487 -0.56637,-1.61231 -1.69912,-1.61231 -0.43822,0 -0.80616,0.12402 -1.10381,0.37207 -0.29766,0.23978 -0.44649,0.54157 -0.44649,0.90537 0,0.37207 0.1819,0.67386 0.54571,0.90537 0.3638,0.23151 0.94258,0.42168 1.73633,0.57051 0.80201,0.14883 1.50481,0.32659 2.10839,0.5333 2.01745,0.69453 3.02618,1.9389 3.02618,3.73311 0,1.22369 -0.5457,2.22001 -1.63711,2.98896 -1.08314,0.76895 -2.48874,1.15342 -4.2168,1.15342 -1.14929,0 -2.17455,-0.20671 -3.07578,-0.62012 -0.90124,-0.41341 -1.60404,-0.97565 -2.1084,-1.68672 -0.50436,-0.71107 -0.75654,-1.45934 -0.75654,-2.24482 h 3.90674 c 0.0165,0.62012 0.22324,1.07487 0.62011,1.36426 0.39688,0.28112 0.90538,0.42168 1.52549,0.42168 0.57051,0 0.99632,-0.11576 1.27744,-0.34727 0.28939,-0.23151 0.43408,-0.5333 0.43408,-0.90537 z m 12.47676,4.01836 c -2.05879,0 -3.72484,-0.61185 -4.99815,-1.83555 -1.27331,-1.23197 -1.90996,-2.83187 -1.90996,-4.7997 v -0.34727 c 0,-1.37253 0.25218,-2.58382 0.75655,-3.63389 0.51263,-1.05006 1.25677,-1.86035 2.23242,-2.43086 0.97565,-0.578773 2.1332,-0.868159 3.47265,-0.868159 1.88516,0 3.37344,0.587043 4.46485,1.761129 1.09141,1.16582 1.63711,2.79466 1.63711,4.88653 v 1.6247 h -8.30957 c 0.14883,0.75241 0.47542,1.34359 0.97978,1.77354 0.50437,0.42995 1.15756,0.64492 1.95957,0.64492 1.32292,0 2.35645,-0.46302 3.10059,-1.38906 l 1.90996,2.25723 c -0.5209,0.71933 -1.26091,1.29397 -2.22002,1.72392 -0.95085,0.42168 -1.97611,0.63252 -3.07578,0.63252 z m -0.47129,-10.69082 c -1.2237,0 -1.9513,0.81029 -2.18281,2.43086 h 4.21679 v -0.32246 c 0.0165,-0.66973 -0.15296,-1.18649 -0.50849,-1.55029 -0.35553,-0.37207 -0.86403,-0.55811 -1.52549,-0.55811 z m 11.6458,-2.976562 0.13643,1.575102 c 0.92604,-1.215433 2.20348,-1.823149 3.83232,-1.823149 1.39733,0 2.43913,0.417546 3.12539,1.252639 0.69453,0.83509 1.0542,2.09186 1.07901,3.77031 v 8.64443 h -4.192 v -8.4708 c 0,-0.67799 -0.13642,-1.17409 -0.40927,-1.48828 -0.27285,-0.32246 -0.76895,-0.48369 -1.48829,-0.48369 -0.81855,0 -1.42627,0.32246 -1.82314,0.96738 v 9.47539 h -4.17959 V 11.040897 Z m 9.99629,6.610452 c 0,-1.35599 0.22324,-2.55489 0.66973,-3.59668 0.44648,-1.0418 1.08727,-1.84382 1.92236,-2.40606 0.83509,-0.570506 1.80661,-0.855759 2.91455,-0.855759 1.39733,0 2.48874,0.47129 3.27422,1.413869 l 0.14883,-1.165822 h 3.795115 v 12.910842 c 0,1.18235 -0.27698,2.20761 -0.83095,3.07578 -0.54571,0.87643 -1.33946,1.54616 -2.38125,2.00918 -1.041805,0.47129 -2.248965,0.70693 -3.621495,0.70693 -0.98392,0 -1.9389,-0.18603 -2.86494,-0.5581 -0.91777,-0.37207 -1.62057,-0.85577 -2.1084,-1.45108 l 1.74873,-2.45566 c 0.77721,0.91777 1.80248,1.37666 3.07579,1.37666 1.85208,0 2.77812,-0.95085 2.77812,-2.85254 v -0.42168 c -0.80202,0.8847 -1.81488,1.32705 -3.03857,1.32705 -1.63711,0 -2.96003,-0.62425 -3.96875,-1.87275 -1.00873,-1.25677 -1.51309,-2.93523 -1.51309,-5.03536 z m 4.19199,0.26045 c 0,1.09967 0.20671,1.97197 0.62012,2.61689 0.41341,0.63665 0.99219,0.95498 1.73633,0.95498 0.90123,0 1.55856,-0.30179 1.97197,-0.90537 v -5.64307 c -0.40514,-0.61185 -1.0542,-0.91777 -1.94717,-0.91777 -0.74414,0 -1.32705,0.33486 -1.74873,1.00459 -0.42168,0.66146 -0.63252,1.62471 -0.63252,2.88975 z m 17.400498,6.79648 c -2.05879,0 -3.72483,-0.61185 -4.998143,-1.83555 -1.27331,-1.23197 -1.90996,-2.83187 -1.90996,-4.7997 v -0.34727 c 0,-1.37253 0.25218,-2.58382 0.75654,-3.63389 0.51263,-1.05006 1.256773,-1.86035 2.232423,-2.43086 0.97565,-0.578773 2.13321,-0.868159 3.47266,-0.868159 1.88515,0 3.37343,0.587043 4.46484,1.761129 1.09141,1.16582 1.63711,2.79466 1.63711,4.88653 v 1.6247 h -8.30957 c 0.14883,0.75241 0.47542,1.34359 0.97979,1.77354 0.50436,0.42995 1.15755,0.64492 1.95957,0.64492 1.32291,0 2.35644,-0.46302 3.10058,-1.38906 l 1.90996,2.25723 c -0.52089,0.71933 -1.2609,1.29397 -2.22002,1.72392 -0.95085,0.42168 -1.97611,0.63252 -3.07578,0.63252 z m -0.47129,-10.69082 c -1.22369,0 -1.9513,0.81029 -2.18281,2.43086 h 4.2168 v -0.32246 c 0.0165,-0.66973 -0.15297,-1.18649 -0.5085,-1.55029 -0.35553,-0.37207 -0.86403,-0.55811 -1.52549,-0.55811 z m 15.92461,0.80615 -1.37666,-0.0992 c -1.31465,0 -2.15801,0.41341 -2.53008,1.24024 v 8.4956 h -4.17959 V 11.040897 h 3.91914 l 0.13643,1.723922 c 0.7028,-1.314646 1.68259,-1.971969 2.93936,-1.971969 0.44648,0 0.83509,0.04961 1.16582,0.148828 z m 11.01329,4.83692 c 0,-0.63665 -0.22738,-1.13275 -0.68213,-1.48828 -0.44649,-0.35554 -1.2361,-0.72348 -2.36885,-1.10381 -1.13275,-0.38034 -2.05879,-0.74828 -2.77812,-1.10381 -2.33991,-1.14929 -3.50987,-2.72852 -3.50987,-4.737697 0,-1.000456 0.28939,-1.8810215 0.86817,-2.6416985 0.58704,-0.768945 1.41386,-1.364258 2.48046,-1.785938 1.06661,-0.429948 2.2655,-0.644923 3.59668,-0.644923 1.29811,0 2.4598,0.231512 3.48506,0.694533 1.03353,0.463021 1.83555,1.124479 2.40606,1.984375 0.57051,0.851627 0.85576,1.8272765 0.85576,2.9269485 h -4.34082 c 0,-0.73587 -0.22738,-1.306377 -0.68213,-1.71152 -0.44649,-0.4051425 -1.0542,-0.6077145 -1.82314,-0.6077145 -0.77721,0 -1.3932,0.173633 -1.84795,0.520899 -0.44649,0.3389965 -0.66973,0.7730785 -0.66973,1.3022455 0,0.46302 0.24805,0.8847 0.74414,1.26504 0.49609,0.37207 1.36839,0.76067 2.61689,1.16582 1.24851,0.39687 2.27377,0.82682 3.07579,1.28984 1.9513,1.12448 2.92695,2.67477 2.92695,4.65088 0,1.57923 -0.59531,2.81947 -1.78594,3.7207 -1.19063,0.90124 -2.8236,1.35186 -4.89892,1.35186 -1.46348,0 -2.79053,-0.26045 -3.98116,-0.78135 -1.18235,-0.52917 -2.07532,-1.2485 -2.6789,-2.15801 -0.59531,-0.91777 -0.89297,-1.97197 -0.89297,-3.16259 h 4.36562 c 0,0.96738 0.24805,1.68258 0.74414,2.1456 0.50437,0.45475 1.31879,0.68213 2.44327,0.68213 0.71933,0 1.28571,-0.15296 1.69912,-0.45889 0.42168,-0.31419 0.63252,-0.7524 0.63252,-1.31464 z m 10.80243,4.7997 h -4.19199 V 11.040897 h 4.19199 z M 137.79004,7.5806435 c 0,-0.595313 0.21497,-1.083138 0.64492,-1.463478 0.42995,-0.3803375 0.98805,-0.5705065 1.67432,-0.5705065 0.68626,0 1.24436,0.190169 1.67431,0.5705065 0.42995,0.38034 0.64493,0.868165 0.64493,1.463478 0,0.595313 -0.21498,1.083138 -0.64493,1.463476 -0.42995,0.380339 -0.98805,0.570508 -1.67431,0.570508 -0.68627,0 -1.24437,-0.190169 -1.67432,-0.570508 -0.42995,-0.380338 -0.64492,-0.868163 -0.64492,-1.463476 z m 10.96368,3.4602535 0.13643,1.575102 c 0.95085,-1.215433 2.22829,-1.823149 3.83232,-1.823149 1.69499,0 2.84014,0.67386 3.43545,2.021579 0.90951,-1.347719 2.22416,-2.021579 3.94395,-2.021579 2.72025,0 4.11758,1.645379 4.19199,4.936129 v 8.73125 h -4.19199 v -8.4708 c 0,-0.68626 -0.11576,-1.18649 -0.34727,-1.50068 -0.23151,-0.31419 -0.65319,-0.47129 -1.26504,-0.47129 -0.82682,0 -1.4428,0.36794 -1.84795,1.10381 l 0.0124,0.17363 v 9.16533 h -4.19199 v -8.44599 c 0,-0.7028 -0.11162,-1.2113 -0.33486,-1.52549 -0.22325,-0.31419 -0.64906,-0.47129 -1.27744,-0.47129 -0.80202,0 -1.41387,0.36794 -1.83555,1.10381 v 9.33896 h -4.17959 V 11.040897 Z" id="path5" aria-label="PassengerSim"></path><g id="layer1" style="display:inline" transform="translate(-6.9051332,-3.9107985)"><path style="display:inline;fill:none;stroke:#34a02c;stroke-width:1.265;stroke-dasharray:none;stroke-opacity:1" d="M 19.931273,15.609328 C 41.529674,0.06140243 72.628775,1.0947244 96.845375,19.804618" id="path2"></path><path style="fill:none;stroke:#34a02c;stroke-width:1.265;stroke-dasharray:none;stroke-opacity:1" d="m 56.020705,21.808438 c 11.29923,-5.24876 22.21612,-7.336395 40.5029,0.13804" id="path2-0"></path><path style="fill:none;stroke:#34a02c;stroke-width:1.265;stroke-dasharray:none;stroke-opacity:1" d="M 32.830576,16.953138 C 46.418509,7.7511705 76.581335,7.3280495 96.844715,21.148428" id="path2-05"></path><path style="fill:none;stroke:#34a02c;stroke-width:1.265;stroke-dasharray:none;stroke-opacity:1" d="m 97.052275,22.141698 c 9.634725,-5.24877 34.804005,-3.59125 42.167435,2.21868" id="path2-06"></path><path style="fill:none;stroke:#34a02c;stroke-width:1.265;stroke-dasharray:none;stroke-opacity:1" d="M 96.936505,21.241678 C 108.13172,13.392118 135.79776,4.7504635 146.69827,11.288616" id="path2-4"></path><path style="fill:none;stroke:#34a02c;stroke-width:1.265;stroke-dasharray:none;stroke-opacity:1" d="M 96.621925,20.699448 C 111.87438,4.4233035 148.48718,-3.4901265 166.14977,16.052028" id="path2-8"></path></g><path style="font-weight:900;font-size:25.4px;font-family:Roboto;-inkscape-font-specification:'Roboto Heavy';display:inline;fill:#ffffff;fill-opacity:1;stroke-width:0.264583" d="m 4.3532208,18.333479 v 6.12675 H -5.8889739e-7 V 6.4024205 H 7.2057598 c 1.380795,0 2.600359,0.256315 3.6586922,0.768946 1.066601,0.504362 1.88929,1.227832 2.468066,2.17041 0.587045,0.9343085 0.880567,1.9967765 0.880567,3.1874025 0,1.76113 -0.63252,3.17087 -1.897559,4.2292 -1.256771,1.05007 -2.9848312,1.5751 -5.1841802,1.5751 z m 0,-3.36104 h 2.852539 c 0.84336,0 1.484148,-0.21084 1.922364,-0.63252 0.446484,-0.42168 0.669726,-1.01699 0.669726,-1.78594 0,-0.84336 -0.227376,-1.517216 -0.682129,-2.021578 -0.454752,-0.504362 -1.074869,-0.7606765 -1.860351,-0.7689455 h -2.902149 z m 19.4096692,9.48779 c -0.148828,-0.27285 -0.28112,-0.67385 -0.396875,-1.20302 -0.768945,0.96738 -1.843815,1.45107 -3.22461,1.45107 -1.265039,0 -2.339908,-0.38034 -3.224609,-1.14102 -0.884701,-0.76894 -1.327051,-1.73219 -1.327051,-2.88974 0,-1.45521 0.537435,-2.55488 1.612305,-3.29902 1.07487,-0.74415 2.637565,-1.11622 4.688086,-1.11622 h 1.289844 v -0.70693 c 0,-1.23197 -0.533301,-1.84795 -1.599903,-1.84795 -0.992187,0 -1.488281,0.48783 -1.488281,1.46348 h -4.17959 c 0,-1.29811 0.549837,-2.35231 1.649512,-3.1626 1.107943,-0.810286 2.517676,-1.215429 4.229199,-1.215429 1.711523,0 3.063379,0.417546 4.055567,1.252639 0.992187,0.83509 1.500683,1.98024 1.525488,3.43545 v 5.94072 c 0.01653,1.23197 0.206703,2.17454 0.570508,2.82773 v 0.21084 z m -2.616895,-2.72851 c 0.520899,0 0.950847,-0.11162 1.289844,-0.33487 0.347265,-0.22324 0.595312,-0.47542 0.744141,-0.75654 v -2.1456 h -1.21543 c -1.455208,0 -2.182812,0.65319 -2.182812,1.95957 0,0.38033 0.128157,0.69039 0.384472,0.93017 0.256315,0.23151 0.58291,0.34727 0.979785,0.34727 z m 15.564942,-1.0418 c 0,-0.35553 -0.186035,-0.64079 -0.558105,-0.85576 -0.372071,-0.21497 -1.079004,-0.43822 -2.120801,-0.66973 -1.041797,-0.23151 -1.901693,-0.5333 -2.579688,-0.90537 -0.677995,-0.38034 -1.194759,-0.83923 -1.550293,-1.37666 -0.355533,-0.53743 -0.5333,-1.15342 -0.5333,-1.84795 0,-1.23197 0.508496,-2.24482 1.525488,-3.03857 1.016992,-0.802019 2.348177,-1.203029 3.993555,-1.203029 1.769401,0 3.191536,0.40101 4.266406,1.203029 1.074869,0.80202 1.612304,1.85622 1.612304,3.1626 h -4.191992 c 0,-1.07487 -0.566374,-1.61231 -1.699121,-1.61231 -0.438216,0 -0.806152,0.12402 -1.103808,0.37207 -0.297657,0.23978 -0.446485,0.54157 -0.446485,0.90537 0,0.37207 0.181901,0.67386 0.545703,0.90537 0.363802,0.23151 0.942578,0.42168 1.736328,0.57051 0.802019,0.14883 1.504818,0.32659 2.108399,0.5333 2.017448,0.69453 3.026172,1.9389 3.026172,3.73311 0,1.22369 -0.545703,2.22001 -1.63711,2.98896 -1.083138,0.76895 -2.488737,1.15342 -4.216796,1.15342 -1.149284,0 -2.174545,-0.20671 -3.075782,-0.62012 -0.901237,-0.41341 -1.604036,-0.97565 -2.108398,-1.68672 -0.504362,-0.71107 -0.756543,-1.45934 -0.756543,-2.24482 h 3.906738 c 0.01654,0.62012 0.223246,1.07487 0.620117,1.36426 0.396875,0.28112 0.905372,0.42168 1.525489,0.42168 0.570507,0 0.996321,-0.11576 1.277441,-0.34727 0.289388,-0.23151 0.434082,-0.5333 0.434082,-0.90537 z m 13.010055,0 c 0,-0.35553 -0.18603,-0.64079 -0.5581,-0.85576 -0.37207,-0.21497 -1.07901,-0.43822 -2.1208,-0.66973 -1.0418,-0.23151 -1.9017,-0.5333 -2.57969,-0.90537 -0.67799,-0.38034 -1.19476,-0.83923 -1.55029,-1.37666 -0.35553,-0.53743 -0.5333,-1.15342 -0.5333,-1.84795 0,-1.23197 0.5085,-2.24482 1.52549,-3.03857 1.01699,-0.802019 2.34817,-1.203029 3.99355,-1.203029 1.7694,0 3.19154,0.40101 4.26641,1.203029 1.07487,0.80202 1.6123,1.85622 1.6123,3.1626 h -4.19199 c 0,-1.07487 -0.56637,-1.61231 -1.69912,-1.61231 -0.43822,0 -0.80616,0.12402 -1.10381,0.37207 -0.29766,0.23978 -0.44649,0.54157 -0.44649,0.90537 0,0.37207 0.1819,0.67386 0.54571,0.90537 0.3638,0.23151 0.94258,0.42168 1.73633,0.57051 0.80201,0.14883 1.50481,0.32659 2.10839,0.5333 2.01745,0.69453 3.02618,1.9389 3.02618,3.73311 0,1.22369 -0.5457,2.22001 -1.63711,2.98896 -1.08314,0.76895 -2.48874,1.15342 -4.2168,1.15342 -1.14929,0 -2.17455,-0.20671 -3.07578,-0.62012 -0.90124,-0.41341 -1.60404,-0.97565 -2.1084,-1.68672 -0.50436,-0.71107 -0.75654,-1.45934 -0.75654,-2.24482 h 3.90674 c 0.0165,0.62012 0.22324,1.07487 0.62011,1.36426 0.39688,0.28112 0.90538,0.42168 1.52549,0.42168 0.57051,0 0.99632,-0.11576 1.27744,-0.34727 0.28939,-0.23151 0.43408,-0.5333 0.43408,-0.90537 z m 81.706658,-1.02939 c 0,-0.63665 -0.22738,-1.13275 -0.68213,-1.48828 -0.44649,-0.35554 -1.2361,-0.72348 -2.36885,-1.10381 -1.13275,-0.38034 -2.05879,-0.74828 -2.77812,-1.10381 -2.33991,-1.14929 -3.50987,-2.72852 -3.50987,-4.737697 0,-1.000456 0.28939,-1.8810215 0.86817,-2.6416985 0.58704,-0.768945 1.41386,-1.364258 2.48046,-1.785938 1.06661,-0.429948 2.2655,-0.644923 3.59668,-0.644923 1.29811,0 2.4598,0.231512 3.48506,0.694533 1.03353,0.463021 1.83555,1.124479 2.40606,1.984375 0.57051,0.851627 0.85576,1.8272765 0.85576,2.9269485 h -4.34082 c 0,-0.73587 -0.22738,-1.306377 -0.68213,-1.71152 -0.44649,-0.4051425 -1.0542,-0.6077145 -1.82314,-0.6077145 -0.77721,0 -1.3932,0.173633 -1.84795,0.520899 -0.44649,0.3389965 -0.66973,0.7730785 -0.66973,1.3022455 0,0.46302 0.24805,0.8847 0.74414,1.26504 0.49609,0.37207 1.36839,0.76067 2.61689,1.16582 1.24851,0.39687 2.27377,0.82682 3.07579,1.28984 1.9513,1.12448 2.92695,2.67477 2.92695,4.65088 0,1.57923 -0.59531,2.81947 -1.78594,3.7207 -1.19063,0.90124 -2.8236,1.35186 -4.89892,1.35186 -1.46348,0 -2.79053,-0.26045 -3.98116,-0.78135 -1.18235,-0.52917 -2.07532,-1.2485 -2.6789,-2.15801 -0.59531,-0.91777 -0.89297,-1.97197 -0.89297,-3.16259 h 4.36562 c 0,0.96738 0.24805,1.68258 0.74414,2.1456 0.50437,0.45475 1.31879,0.68213 2.44327,0.68213 0.71933,0 1.28571,-0.15296 1.69912,-0.45889 0.42168,-0.31419 0.63252,-0.7524 0.63252,-1.31464 z m 10.80243,4.7997 h -4.19199 V 11.040897 h 4.19199 z M 137.79004,7.5806435 c 0,-0.595313 0.21497,-1.083138 0.64492,-1.463478 0.42995,-0.3803375 0.98805,-0.5705065 1.67432,-0.5705065 0.68626,0 1.24436,0.190169 1.67431,0.5705065 0.42995,0.38034 0.64493,0.868165 0.64493,1.463478 0,0.595313 -0.21498,1.083138 -0.64493,1.463476 -0.42995,0.380339 -0.98805,0.570508 -1.67431,0.570508 -0.68627,0 -1.24437,-0.190169 -1.67432,-0.570508 -0.42995,-0.380338 -0.64492,-0.868163 -0.64492,-1.463476 z m 10.96368,3.4602535 0.13643,1.575102 c 0.95085,-1.215433 2.22829,-1.823149 3.83232,-1.823149 1.69499,0 2.84014,0.67386 3.43545,2.021579 0.90951,-1.347719 2.22416,-2.021579 3.94395,-2.021579 2.72025,0 4.11758,1.645379 4.19199,4.936129 v 8.73125 h -4.19199 v -8.4708 c 0,-0.68626 -0.11576,-1.18649 -0.34727,-1.50068 -0.23151,-0.31419 -0.65319,-0.47129 -1.26504,-0.47129 -0.82682,0 -1.4428,0.36794 -1.84795,1.10381 l 0.0124,0.17363 v 9.16533 h -4.19199 v -8.44599 c 0,-0.7028 -0.11162,-1.2113 -0.33486,-1.52549 -0.22325,-0.31419 -0.64906,-0.47129 -1.27744,-0.47129 -0.80202,0 -1.41387,0.36794 -1.83555,1.10381 v 9.33896 h -4.17959 V 11.040897 Z" id="path11" aria-label="PassengerSim"></path></svg></a><ul class="navbar-nav mr-auto"><li class="nav-item"><a class="nav-link pt-1" href="#">baseline</a></li></ul></nav><div class="container"><div class="row"><div class="col-lg-3 scrolly-sidebar sticky-top sticky-top-offset d-none d-lg-inline-flex"><nav id="toc"><div class="fw-bold mt-3 ms-1 ps-1">Table of Contents</div><nav class="nav nav-pills flex-column pb-3"><a class="nav-link-side ms-1 ps-1" href="#results">Results</a><nav class="nav nav-pills flex-column ms-1 ps-1"><a class="nav-link-side ms-1 ps-1" href="#rx1">Carrier Revenues</a><a class="nav-link-side ms-1 ps-1" href="#rx3">Carrier Total Bookings</a><a class="nav-link-side ms-1 ps-1" href="#rx5">Carrier System Load Factors</a><a class="nav-link-side ms-1 ps-1" href="#rx7">Carrier Yields</a><a class="nav-link-side ms-1 ps-1" href="#rx9">Carrier Revenue per Available Seat Mile (RASM)</a><a class="nav-link-side ms-1 ps-1" href="#rx11">Carrier Data</a><a class="nav-link-side ms-1 ps-1" href="#rx13">Fare Class Mix</a><a class="nav-link-side ms-1 ps-1" href="#rx15">Bookings by Timeframe</a><a class="nav-link-side ms-1 ps-1" href="#rx17">Bookings by Timeframe (AL1)</a><a class="nav-link-side ms-1 ps-1" href="#rx19">Bookings by Timeframe and Booking Class (AL1)</a><a class="nav-link-side ms-1 ps-1" href="#rx21">Bookings by Timeframe (AL2)</a><a class="nav-link-side ms-1 ps-1" href="#rx23">Bookings by Timeframe and Booking Class (AL2)</a><a class="nav-link-side ms-1 ps-1" href="#rx25">Segmentation by Timeframe Data</a><a class="nav-link-side ms-1 ps-1" href="#rx27">Load Factor Frequency by Carrier</a><a class="nav-link-side ms-1 ps-1" href="#rx29">Carrier Local Percent of Bookings</a><a class="nav-link-side ms-1 ps-1" href="#rx31">Carrier Local Percent of Leg Passengers</a></nav><a class="nav-link-side ms-1 ps-1" href="#configuration">Configuration</a><nav class="nav nav-pills flex-column ms-1 ps-1"><a class="nav-link-side ms-1 ps-1" href="#carriers:">carriers:</a><a class="nav-link-side ms-1 ps-1" href="#rm_systems:">rm_systems:</a><a class="nav-link-side ms-1 ps-1" href="#simulation_controls:">simulation_controls:</a><a class="nav-link-side ms-1 ps-1" href="#db:">db:</a><a class="nav-link-side ms-1 ps-1" href="#outputs:">outputs:</a></nav><a class="nav-link-side ms-1 ps-1" href="#metadata">Metadata</a></nav></nav></div><div class="col-12 col-lg-9"><div></div><div><h1 id="results">Results<a name="results" reftxt="Results" class="{}" toclevel="1"></a></h1><h2 id="rx1"><a name="rx1" reftxt="Carrier Revenues" class="toc" toclevel="2"></a><span class="xmle_figure_caption xmle_caption" xmle_caption="Figure">Figure 1: </span>Carrier Revenues</h2><div class="altair-figure"><div id="vis_kIfepuZt"></div><script type="text/javascript">vegaEmbed('#vis_kIfepuZt', {"$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "config": {"axis": {"labelFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFont": "Roboto, Arial, sans-serif", "titleFontSize": 12}, "bar": {"color": "#6a3d9a"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFont": "Roboto, Arial, sans-serif", "titleFontSize": 12}, "line": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"anchor": "start", "font": "Roboto, Arial, sans-serif", "fontSize": 18, "offset": 8}, "view": {"continuousHeight": 300, "continuousWidth": 400}}, "data": {"name": "data-b552f297be972dc737a94868c42f68c7"}, "datasets": {"data-b552f297be972dc737a94868c42f68c7": [{"avg_rev": 90442.0625, "carrier": "AL1"}, {"avg_rev": 90303.9375, "carrier": "AL2"}]}, "height": 50, "layer": [{"encoding": {"color": {"field": "carrier", "legend": null, "title": "Carrier", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Average Revenue", "type": "quantitative"}], "x": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "mark": {"type": "bar"}}, {"encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "mark": {"align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0, "type": "text"}}], "title": "", "width": 500}).catch(console.error);</script></div><button class="btn btn-default btn-xs fst-italic text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#rx2" aria-expanded="false" aria-controls="rx2"><i class="bi bi-eye me-1" aria-hidden="true"></i>View Underlying Data</button><div class="collapse" id="rx2"><div>
+<style scoped="1">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carrier</th>
+      <th>avg_rev</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AL1</td>
+      <td>90442.0625</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AL2</td>
+      <td>90303.9375</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><h2 id="rx3"><a name="rx3" reftxt="Carrier Total Bookings" class="toc" toclevel="2"></a><span class="xmle_figure_caption xmle_caption" xmle_caption="Figure">Figure 2: </span>Carrier Total Bookings</h2><div class="altair-figure"><div id="vis_Rcoye4i5"></div><script type="text/javascript">vegaEmbed('#vis_Rcoye4i5', {"$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "config": {"axis": {"labelFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFont": "Roboto, Arial, sans-serif", "titleFontSize": 12}, "bar": {"color": "#6a3d9a"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFont": "Roboto, Arial, sans-serif", "titleFontSize": 12}, "line": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"anchor": "start", "font": "Roboto, Arial, sans-serif", "fontSize": 18, "offset": 8}, "view": {"continuousHeight": 300, "continuousWidth": 400}}, "data": {"name": "data-b8e5ebd2f506e18b11c3e18fcb1d1e34"}, "datasets": {"data-b8e5ebd2f506e18b11c3e18fcb1d1e34": [{"avg_sold": 285.05, "carrier": "AL1"}, {"avg_sold": 284.5875, "carrier": "AL2"}]}, "height": 50, "layer": [{"encoding": {"color": {"field": "carrier", "legend": null, "title": "Carrier", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_sold", "format": ".4s", "title": "Total Bookings", "type": "quantitative"}], "x": {"field": "avg_sold", "stack": "zero", "title": "Total Bookings", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "mark": {"type": "bar"}}, {"encoding": {"text": {"field": "avg_sold", "format": ".4s", "type": "quantitative"}, "x": {"field": "avg_sold", "stack": "zero", "title": "Total Bookings", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "mark": {"align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0, "type": "text"}}], "title": "", "width": 500}).catch(console.error);</script></div><button class="btn btn-default btn-xs fst-italic text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#rx4" aria-expanded="false" aria-controls="rx4"><i class="bi bi-eye me-1" aria-hidden="true"></i>View Underlying Data</button><div class="collapse" id="rx4"><div>
+<style scoped="1">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carrier</th>
+      <th>avg_sold</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AL1</td>
+      <td>285.0500</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AL2</td>
+      <td>284.5875</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><h2 id="rx5"><a name="rx5" reftxt="Carrier System Load Factors" class="toc" toclevel="2"></a><span class="xmle_figure_caption xmle_caption" xmle_caption="Figure">Figure 3: </span>Carrier System Load Factors</h2><div class="altair-figure"><div id="vis_FbQdTKqC"></div><script type="text/javascript">vegaEmbed('#vis_FbQdTKqC', {"$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "config": {"axis": {"labelFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFont": "Roboto, Arial, sans-serif", "titleFontSize": 12}, "bar": {"color": "#6a3d9a"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFont": "Roboto, Arial, sans-serif", "titleFontSize": 12}, "line": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"anchor": "start", "font": "Roboto, Arial, sans-serif", "fontSize": 18, "offset": 8}, "view": {"continuousHeight": 300, "continuousWidth": 400}}, "data": {"name": "data-f7822d3e88e3b4de7aeab2f2d92a3565"}, "datasets": {"data-f7822d3e88e3b4de7aeab2f2d92a3565": [{"carrier": "AL1", "sys_lf": 87.83786009319469}, {"carrier": "AL2", "sys_lf": 87.68207205870253}]}, "height": 50, "layer": [{"encoding": {"color": {"field": "carrier", "legend": null, "title": "Carrier", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "sys_lf", "format": ".2f", "title": "System Load Factor", "type": "quantitative"}], "x": {"field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "mark": {"type": "bar"}}, {"encoding": {"text": {"field": "sys_lf", "format": ".2f", "type": "quantitative"}, "x": {"field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "mark": {"align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0, "type": "text"}}], "title": "", "width": 500}).catch(console.error);</script></div><button class="btn btn-default btn-xs fst-italic text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#rx6" aria-expanded="false" aria-controls="rx6"><i class="bi bi-eye me-1" aria-hidden="true"></i>View Underlying Data</button><div class="collapse" id="rx6"><div>
+<style scoped="1">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carrier</th>
+      <th>sys_lf</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AL1</td>
+      <td>87.837860</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AL2</td>
+      <td>87.682072</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><h2 id="rx7"><a name="rx7" reftxt="Carrier Yields" class="toc" toclevel="2"></a><span class="xmle_figure_caption xmle_caption" xmle_caption="Figure">Figure 4: </span>Carrier Yields</h2><div class="altair-figure"><div id="vis_2fY4eaw5"></div><script type="text/javascript">vegaEmbed('#vis_2fY4eaw5', {"$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "config": {"axis": {"labelFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFont": "Roboto, Arial, sans-serif", "titleFontSize": 12}, "bar": {"color": "#6a3d9a"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFont": "Roboto, Arial, sans-serif", "titleFontSize": 12}, "line": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"anchor": "start", "font": "Roboto, Arial, sans-serif", "fontSize": 18, "offset": 8}, "view": {"continuousHeight": 300, "continuousWidth": 400}}, "data": {"name": "data-3538fbd12bc40cfaae460a891d48098a"}, "datasets": {"data-3538fbd12bc40cfaae460a891d48098a": [{"carrier": "AL1", "yield": 0.17442715217823562}, {"carrier": "AL2", "yield": 0.1744702013787185}]}, "height": 50, "layer": [{"encoding": {"color": {"field": "carrier", "legend": null, "title": "Carrier", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "yield", "format": "$.4f", "title": "Average Yield", "type": "quantitative"}], "x": {"field": "yield", "stack": "zero", "title": "Average Yield", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "mark": {"type": "bar"}}, {"encoding": {"text": {"field": "yield", "format": "$.4f", "type": "quantitative"}, "x": {"field": "yield", "stack": "zero", "title": "Average Yield", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "mark": {"align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0, "type": "text"}}], "title": "", "width": 500}).catch(console.error);</script></div><button class="btn btn-default btn-xs fst-italic text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#rx8" aria-expanded="false" aria-controls="rx8"><i class="bi bi-eye me-1" aria-hidden="true"></i>View Underlying Data</button><div class="collapse" id="rx8"><div>
+<style scoped="1">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carrier</th>
+      <th>yield</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AL1</td>
+      <td>0.174427</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AL2</td>
+      <td>0.174470</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><h2 id="rx9"><a name="rx9" reftxt="Carrier Revenue per Available Seat Mile (RASM)" class="toc" toclevel="2"></a><span class="xmle_figure_caption xmle_caption" xmle_caption="Figure">Figure 5: </span>Carrier Revenue per Available Seat Mile (RASM)</h2><div class="altair-figure"><div id="vis_dRHRwx8M"></div><script type="text/javascript">vegaEmbed('#vis_dRHRwx8M', {"$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "config": {"axis": {"labelFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFont": "Roboto, Arial, sans-serif", "titleFontSize": 12}, "bar": {"color": "#6a3d9a"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFont": "Roboto, Arial, sans-serif", "titleFontSize": 12}, "line": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"anchor": "start", "font": "Roboto, Arial, sans-serif", "fontSize": 18, "offset": 8}, "view": {"continuousHeight": 300, "continuousWidth": 400}}, "data": {"name": "data-9776cb252fcdf31d44f17a9b2dba38ce"}, "datasets": {"data-9776cb252fcdf31d44f17a9b2dba38ce": [{"carrier": "AL1", "rasm": 0.1532130778948624}, {"carrier": "AL2", "rasm": 0.15297908769385135}]}, "height": 50, "layer": [{"encoding": {"color": {"field": "carrier", "legend": null, "title": "Carrier", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "rasm", "format": "$.4f", "title": "Revenue per Available Seat Mile", "type": "quantitative"}], "x": {"field": "rasm", "stack": "zero", "title": "Revenue per Available Seat Mile", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "mark": {"type": "bar"}}, {"encoding": {"text": {"field": "rasm", "format": "$.4f", "type": "quantitative"}, "x": {"field": "rasm", "stack": "zero", "title": "Revenue per Available Seat Mile", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "mark": {"align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0, "type": "text"}}], "title": "", "width": 500}).catch(console.error);</script></div><button class="btn btn-default btn-xs fst-italic text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#rx10" aria-expanded="false" aria-controls="rx10"><i class="bi bi-eye me-1" aria-hidden="true"></i>View Underlying Data</button><div class="collapse" id="rx10"><div>
+<style scoped="1">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carrier</th>
+      <th>rasm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AL1</td>
+      <td>0.153213</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AL2</td>
+      <td>0.152979</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><h2 id="rx11"><a name="rx11" reftxt="Carrier Data" class="toc" toclevel="2"></a><span class="xmle_table_caption xmle_caption" xmle_caption="Table">Table 1: </span>Carrier Data</h2><button class="btn btn-default btn-xs " type="button" data-bs-toggle="collapse" data-bs-target="#rx12" aria-expanded="false" aria-controls="rx12"><i class="bi bi-eye me-1" aria-hidden="true"></i>View Table</button><div class="collapse" id="rx12"><div>
+<style scoped="1">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>carrier</th>
+      <th>AL1</th>
+      <th>AL2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>control</th>
+      <td>leg</td>
+      <td>leg</td>
+    </tr>
+    <tr>
+      <th>truncation_rule</th>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>avg_rev</th>
+      <td>90442.0625</td>
+      <td>90303.9375</td>
+    </tr>
+    <tr>
+      <th>avg_sold</th>
+      <td>285.05</td>
+      <td>284.5875</td>
+    </tr>
+    <tr>
+      <th>avg_leg_lf</th>
+      <td>86.646146</td>
+      <td>86.373333</td>
+    </tr>
+    <tr>
+      <th>asm</th>
+      <td>590302.497298</td>
+      <td>590302.497298</td>
+    </tr>
+    <tr>
+      <th>rpm</th>
+      <td>518509.081703</td>
+      <td>517589.461045</td>
+    </tr>
+    <tr>
+      <th>ancillary_rev</th>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>avg_local_leg_pax</th>
+      <td>187.7075</td>
+      <td>187.87</td>
+    </tr>
+    <tr>
+      <th>avg_total_leg_pax</th>
+      <td>382.3925</td>
+      <td>381.305</td>
+    </tr>
+    <tr>
+      <th>cp_sold</th>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>cp_revenue</th>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>avg_price</th>
+      <td>317.284906</td>
+      <td>317.315193</td>
+    </tr>
+    <tr>
+      <th>yield</th>
+      <td>0.174427</td>
+      <td>0.17447</td>
+    </tr>
+    <tr>
+      <th>rasm</th>
+      <td>0.153213</td>
+      <td>0.152979</td>
+    </tr>
+    <tr>
+      <th>sys_lf</th>
+      <td>87.83786</td>
+      <td>87.682072</td>
+    </tr>
+    <tr>
+      <th>local_pct_leg_pax</th>
+      <td>49.087652</td>
+      <td>49.270269</td>
+    </tr>
+    <tr>
+      <th>local_pct_bookings</th>
+      <td>65.850728</td>
+      <td>66.014846</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><h2 id="rx13"><a name="rx13" reftxt="Fare Class Mix" class="toc" toclevel="2"></a><span class="xmle_figure_caption xmle_caption" xmle_caption="Figure">Figure 6: </span>Fare Class Mix</h2><div class="altair-figure"><div id="vis_mJ1e_KWV"></div><script type="text/javascript">vegaEmbed('#vis_mJ1e_KWV', {"$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "config": {"axis": {"labelFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFont": "Roboto, Arial, sans-serif", "titleFontSize": 12}, "bar": {"color": "#6a3d9a"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFont": "Roboto, Arial, sans-serif", "titleFontSize": 12}, "line": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"anchor": "start", "font": "Roboto, Arial, sans-serif", "fontSize": 18, "offset": 8}, "view": {"continuousHeight": 300, "continuousWidth": 400}}, "data": {"name": "data-cfb0eb199f65b79515fb3b9776989ba1"}, "datasets": {"data-cfb0eb199f65b79515fb3b9776989ba1": [{"avg_sold": 54.6975, "booking_class": "Y0", "carrier": "AL1"}, {"avg_sold": 51.3925, "booking_class": "Y1", "carrier": "AL1"}, {"avg_sold": 28.01, "booking_class": "Y2", "carrier": "AL1"}, {"avg_sold": 12.83, "booking_class": "Y3", "carrier": "AL1"}, {"avg_sold": 103.5175, "booking_class": "Y4", "carrier": "AL1"}, {"avg_sold": 34.6025, "booking_class": "Y5", "carrier": "AL1"}, {"avg_sold": 54.0, "booking_class": "Y0", "carrier": "AL2"}, {"avg_sold": 51.92, "booking_class": "Y1", "carrier": "AL2"}, {"avg_sold": 28.2275, "booking_class": "Y2", "carrier": "AL2"}, {"avg_sold": 12.9875, "booking_class": "Y3", "carrier": "AL2"}, {"avg_sold": 103.535, "booking_class": "Y4", "carrier": "AL2"}, {"avg_sold": 33.9175, "booking_class": "Y5", "carrier": "AL2"}]}, "height": 300, "layer": [{"encoding": {"color": {"field": "booking_class", "type": "nominal"}, "tooltip": [{"field": "carrier", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "mark": {"type": "bar"}, "title": "", "transform": [{"as": "halfsold", "calculate": "datum.avg_sold / 2.0"}]}, {"encoding": {"opacity": {"condition": {"test": "datum.avg_sold < 17.103", "value": 0}, "value": 1}, "order": {"field": "booking_class", "sort": "descending", "type": "nominal"}, "text": {"field": "avg_sold", "format": ".2f", "type": "quantitative"}, "tooltip": [{"field": "carrier", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "mark": {"baseline": "top", "color": "white", "dx": 0, "dy": 3, "type": "text"}, "title": "", "transform": [{"as": "halfsold", "calculate": "datum.avg_sold / 2.0"}]}], "title": "", "width": 400}).catch(console.error);</script></div><button class="btn btn-default btn-xs fst-italic text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#rx14" aria-expanded="false" aria-controls="rx14"><i class="bi bi-eye me-1" aria-hidden="true"></i>View Underlying Data</button><div class="collapse" id="rx14"><div>
+<style scoped="1">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carrier</th>
+      <th>booking_class</th>
+      <th>avg_sold</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AL1</td>
+      <td>Y0</td>
+      <td>54.6975</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AL1</td>
+      <td>Y1</td>
+      <td>51.3925</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AL1</td>
+      <td>Y2</td>
+      <td>28.0100</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>AL1</td>
+      <td>Y3</td>
+      <td>12.8300</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>AL1</td>
+      <td>Y4</td>
+      <td>103.5175</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>AL1</td>
+      <td>Y5</td>
+      <td>34.6025</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>AL2</td>
+      <td>Y0</td>
+      <td>54.0000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>AL2</td>
+      <td>Y1</td>
+      <td>51.9200</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>AL2</td>
+      <td>Y2</td>
+      <td>28.2275</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>AL2</td>
+      <td>Y3</td>
+      <td>12.9875</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>AL2</td>
+      <td>Y4</td>
+      <td>103.5350</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>AL2</td>
+      <td>Y5</td>
+      <td>33.9175</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><h2 id="rx15"><a name="rx15" reftxt="Bookings by Timeframe" class="toc" toclevel="2"></a><span class="xmle_figure_caption xmle_caption" xmle_caption="Figure">Figure 7: </span>Bookings by Timeframe</h2><div class="altair-figure"><div id="vis_UYYj0Qlz"></div><script type="text/javascript">vegaEmbed('#vis_UYYj0Qlz', {"$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "config": {"axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "bar": {"color": "#6a3d9a"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "line": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"anchor": "start", "font": "Roboto, Arial, sans-serif", "fontSize": 18, "offset": 8}, "view": {"continuousHeight": 300, "continuousWidth": 400}}, "data": {"name": "data-198972499e1f92e3a63831818d6fb607"}, "datasets": {"data-198972499e1f92e3a63831818d6fb607": [{"bookings": 3.9050000000000002, "carrier": "AL1", "days_prior": 1, "segment": "business"}, {"bookings": 0.2825, "carrier": "AL1", "days_prior": 1, "segment": "leisure"}, {"bookings": 17.002499999999998, "carrier": "AL1", "days_prior": 3, "segment": "business"}, {"bookings": 0.5025, "carrier": "AL1", "days_prior": 3, "segment": "leisure"}, {"bookings": 11.057500000000001, "carrier": "AL1", "days_prior": 5, "segment": "business"}, {"bookings": 2.27, "carrier": "AL1", "days_prior": 5, "segment": "leisure"}, {"bookings": 11.06, "carrier": "AL1", "days_prior": 7, "segment": "business"}, {"bookings": 0.885, "carrier": "AL1", "days_prior": 7, "segment": "leisure"}, {"bookings": 16.515, "carrier": "AL1", "days_prior": 10, "segment": "business"}, {"bookings": 2.5375, "carrier": "AL1", "days_prior": 10, "segment": "leisure"}, {"bookings": 14.585, "carrier": "AL1", "days_prior": 14, "segment": "business"}, {"bookings": 4.4825, "carrier": "AL1", "days_prior": 14, "segment": "leisure"}, {"bookings": 7.17, "carrier": "AL1", "days_prior": 17, "segment": "business"}, {"bookings": 6.23, "carrier": "AL1", "days_prior": 17, "segment": "leisure"}, {"bookings": 5.8475, "carrier": "AL1", "days_prior": 21, "segment": "business"}, {"bookings": 7.9325, "carrier": "AL1", "days_prior": 21, "segment": "leisure"}, {"bookings": 4.445, "carrier": "AL1", "days_prior": 24, "segment": "business"}, {"bookings": 13.270000000000001, "carrier": "AL1", "days_prior": 24, "segment": "leisure"}, {"bookings": 4.4475, "carrier": "AL1", "days_prior": 28, "segment": "business"}, {"bookings": 14.177499999999998, "carrier": "AL1", "days_prior": 28, "segment": "leisure"}, {"bookings": 3.085, "carrier": "AL1", "days_prior": 31, "segment": "business"}, {"bookings": 7.3225, "carrier": "AL1", "days_prior": 31, "segment": "leisure"}, {"bookings": 4.425, "carrier": "AL1", "days_prior": 35, "segment": "business"}, {"bookings": 10.8025, "carrier": "AL1", "days_prior": 35, "segment": "leisure"}, {"bookings": 7.4, "carrier": "AL1", "days_prior": 42, "segment": "business"}, {"bookings": 16.5325, "carrier": "AL1", "days_prior": 42, "segment": "leisure"}, {"bookings": 6.04, "carrier": "AL1", "days_prior": 49, "segment": "business"}, {"bookings": 17.0975, "carrier": "AL1", "days_prior": 49, "segment": "leisure"}, {"bookings": 7.3149999999999995, "carrier": "AL1", "days_prior": 56, "segment": "business"}, {"bookings": 15.375, "carrier": "AL1", "days_prior": 56, "segment": "leisure"}, {"bookings": 8.8775, "carrier": "AL1", "days_prior": 63, "segment": "business"}, {"bookings": 32.1725, "carrier": "AL1", "days_prior": 63, "segment": "leisure"}, {"bookings": 4.0325, "carrier": "AL2", "days_prior": 1, "segment": "business"}, {"bookings": 0.3075, "carrier": "AL2", "days_prior": 1, "segment": "leisure"}, {"bookings": 17.072499999999998, "carrier": "AL2", "days_prior": 3, "segment": "business"}, {"bookings": 0.5075, "carrier": "AL2", "days_prior": 3, "segment": "leisure"}, {"bookings": 10.6175, "carrier": "AL2", "days_prior": 5, "segment": "business"}, {"bookings": 2.4275, "carrier": "AL2", "days_prior": 5, "segment": "leisure"}, {"bookings": 11.455, "carrier": "AL2", "days_prior": 7, "segment": "business"}, {"bookings": 0.97, "carrier": "AL2", "days_prior": 7, "segment": "leisure"}, {"bookings": 17.1725, "carrier": "AL2", "days_prior": 10, "segment": "business"}, {"bookings": 2.8425, "carrier": "AL2", "days_prior": 10, "segment": "leisure"}, {"bookings": 14.23, "carrier": "AL2", "days_prior": 14, "segment": "business"}, {"bookings": 4.46, "carrier": "AL2", "days_prior": 14, "segment": "leisure"}, {"bookings": 7.1450000000000005, "carrier": "AL2", "days_prior": 17, "segment": "business"}, {"bookings": 6.2575, "carrier": "AL2", "days_prior": 17, "segment": "leisure"}, {"bookings": 5.9425, "carrier": "AL2", "days_prior": 21, "segment": "business"}, {"bookings": 7.8774999999999995, "carrier": "AL2", "days_prior": 21, "segment": "leisure"}, {"bookings": 4.4, "carrier": "AL2", "days_prior": 24, "segment": "business"}, {"bookings": 13.52, "carrier": "AL2", "days_prior": 24, "segment": "leisure"}, {"bookings": 4.345, "carrier": "AL2", "days_prior": 28, "segment": "business"}, {"bookings": 13.8325, "carrier": "AL2", "days_prior": 28, "segment": "leisure"}, {"bookings": 3.035, "carrier": "AL2", "days_prior": 31, "segment": "business"}, {"bookings": 6.99, "carrier": "AL2", "days_prior": 31, "segment": "leisure"}, {"bookings": 4.355, "carrier": "AL2", "days_prior": 35, "segment": "business"}, {"bookings": 10.592500000000001, "carrier": "AL2", "days_prior": 35, "segment": "leisure"}, {"bookings": 7.26, "carrier": "AL2", "days_prior": 42, "segment": "business"}, {"bookings": 16.619999999999997, "carrier": "AL2", "days_prior": 42, "segment": "leisure"}, {"bookings": 5.825, "carrier": "AL2", "days_prior": 49, "segment": "business"}, {"bookings": 16.447499999999998, "carrier": "AL2", "days_prior": 49, "segment": "leisure"}, {"bookings": 7.235, "carrier": "AL2", "days_prior": 56, "segment": "business"}, {"bookings": 14.950000000000001, "carrier": "AL2", "days_prior": 56, "segment": "leisure"}, {"bookings": 8.7625, "carrier": "AL2", "days_prior": 63, "segment": "business"}, {"bookings": 33.1, "carrier": "AL2", "days_prior": 63, "segment": "leisure"}]}, "facet": {"row": {"field": "segment", "title": "Passenger Type", "type": "nominal"}}, "spec": {"encoding": {"color": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "segment", "title": "Passenger Type", "type": "nominal"}, {"field": "days_prior", "title": "Days Prior", "type": "quantitative"}, {"field": "bookings", "format": ",.2f", "title": "Bookings", "type": "quantitative"}], "x": {"field": "days_prior", "scale": {"reverse": true}, "title": "Days Prior to Departure", "type": "ordinal"}, "y": {"field": "bookings", "type": "quantitative"}}, "height": 200, "mark": {"type": "bar"}, "width": 500}, "title": ""}).catch(console.error);</script></div><button class="btn btn-default btn-xs fst-italic text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#rx16" aria-expanded="false" aria-controls="rx16"><i class="bi bi-eye me-1" aria-hidden="true"></i>View Underlying Data</button><div class="collapse" id="rx16"><div>
+<style scoped="1">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carrier</th>
+      <th>days_prior</th>
+      <th>segment</th>
+      <th>bookings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AL1</td>
+      <td>1</td>
+      <td>business</td>
+      <td>3.9050</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AL1</td>
+      <td>1</td>
+      <td>leisure</td>
+      <td>0.2825</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AL1</td>
+      <td>3</td>
+      <td>business</td>
+      <td>17.0025</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>AL1</td>
+      <td>3</td>
+      <td>leisure</td>
+      <td>0.5025</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>AL1</td>
+      <td>5</td>
+      <td>business</td>
+      <td>11.0575</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>AL1</td>
+      <td>5</td>
+      <td>leisure</td>
+      <td>2.2700</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>AL1</td>
+      <td>7</td>
+      <td>business</td>
+      <td>11.0600</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>AL1</td>
+      <td>7</td>
+      <td>leisure</td>
+      <td>0.8850</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>AL1</td>
+      <td>10</td>
+      <td>business</td>
+      <td>16.5150</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>AL1</td>
+      <td>10</td>
+      <td>leisure</td>
+      <td>2.5375</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>AL1</td>
+      <td>14</td>
+      <td>business</td>
+      <td>14.5850</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>AL1</td>
+      <td>14</td>
+      <td>leisure</td>
+      <td>4.4825</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>AL1</td>
+      <td>17</td>
+      <td>business</td>
+      <td>7.1700</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>AL1</td>
+      <td>17</td>
+      <td>leisure</td>
+      <td>6.2300</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>AL1</td>
+      <td>21</td>
+      <td>business</td>
+      <td>5.8475</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>AL1</td>
+      <td>21</td>
+      <td>leisure</td>
+      <td>7.9325</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>AL1</td>
+      <td>24</td>
+      <td>business</td>
+      <td>4.4450</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>AL1</td>
+      <td>24</td>
+      <td>leisure</td>
+      <td>13.2700</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>AL1</td>
+      <td>28</td>
+      <td>business</td>
+      <td>4.4475</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>AL1</td>
+      <td>28</td>
+      <td>leisure</td>
+      <td>14.1775</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>AL1</td>
+      <td>31</td>
+      <td>business</td>
+      <td>3.0850</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>AL1</td>
+      <td>31</td>
+      <td>leisure</td>
+      <td>7.3225</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>AL1</td>
+      <td>35</td>
+      <td>business</td>
+      <td>4.4250</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>AL1</td>
+      <td>35</td>
+      <td>leisure</td>
+      <td>10.8025</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>AL1</td>
+      <td>42</td>
+      <td>business</td>
+      <td>7.4000</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>AL1</td>
+      <td>42</td>
+      <td>leisure</td>
+      <td>16.5325</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>AL1</td>
+      <td>49</td>
+      <td>business</td>
+      <td>6.0400</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>AL1</td>
+      <td>49</td>
+      <td>leisure</td>
+      <td>17.0975</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>AL1</td>
+      <td>56</td>
+      <td>business</td>
+      <td>7.3150</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>AL1</td>
+      <td>56</td>
+      <td>leisure</td>
+      <td>15.3750</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>AL1</td>
+      <td>63</td>
+      <td>business</td>
+      <td>8.8775</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>AL1</td>
+      <td>63</td>
+      <td>leisure</td>
+      <td>32.1725</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>AL2</td>
+      <td>1</td>
+      <td>business</td>
+      <td>4.0325</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>AL2</td>
+      <td>1</td>
+      <td>leisure</td>
+      <td>0.3075</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>AL2</td>
+      <td>3</td>
+      <td>business</td>
+      <td>17.0725</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>AL2</td>
+      <td>3</td>
+      <td>leisure</td>
+      <td>0.5075</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>AL2</td>
+      <td>5</td>
+      <td>business</td>
+      <td>10.6175</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>AL2</td>
+      <td>5</td>
+      <td>leisure</td>
+      <td>2.4275</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>AL2</td>
+      <td>7</td>
+      <td>business</td>
+      <td>11.4550</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>AL2</td>
+      <td>7</td>
+      <td>leisure</td>
+      <td>0.9700</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>AL2</td>
+      <td>10</td>
+      <td>business</td>
+      <td>17.1725</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>AL2</td>
+      <td>10</td>
+      <td>leisure</td>
+      <td>2.8425</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>AL2</td>
+      <td>14</td>
+      <td>business</td>
+      <td>14.2300</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>AL2</td>
+      <td>14</td>
+      <td>leisure</td>
+      <td>4.4600</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>AL2</td>
+      <td>17</td>
+      <td>business</td>
+      <td>7.1450</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>AL2</td>
+      <td>17</td>
+      <td>leisure</td>
+      <td>6.2575</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>AL2</td>
+      <td>21</td>
+      <td>business</td>
+      <td>5.9425</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>AL2</td>
+      <td>21</td>
+      <td>leisure</td>
+      <td>7.8775</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>AL2</td>
+      <td>24</td>
+      <td>business</td>
+      <td>4.4000</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>AL2</td>
+      <td>24</td>
+      <td>leisure</td>
+      <td>13.5200</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>AL2</td>
+      <td>28</td>
+      <td>business</td>
+      <td>4.3450</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>AL2</td>
+      <td>28</td>
+      <td>leisure</td>
+      <td>13.8325</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>AL2</td>
+      <td>31</td>
+      <td>business</td>
+      <td>3.0350</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>AL2</td>
+      <td>31</td>
+      <td>leisure</td>
+      <td>6.9900</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>AL2</td>
+      <td>35</td>
+      <td>business</td>
+      <td>4.3550</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>AL2</td>
+      <td>35</td>
+      <td>leisure</td>
+      <td>10.5925</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>AL2</td>
+      <td>42</td>
+      <td>business</td>
+      <td>7.2600</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>AL2</td>
+      <td>42</td>
+      <td>leisure</td>
+      <td>16.6200</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>AL2</td>
+      <td>49</td>
+      <td>business</td>
+      <td>5.8250</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>AL2</td>
+      <td>49</td>
+      <td>leisure</td>
+      <td>16.4475</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>AL2</td>
+      <td>56</td>
+      <td>business</td>
+      <td>7.2350</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>AL2</td>
+      <td>56</td>
+      <td>leisure</td>
+      <td>14.9500</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>AL2</td>
+      <td>63</td>
+      <td>business</td>
+      <td>8.7625</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>AL2</td>
+      <td>63</td>
+      <td>leisure</td>
+      <td>33.1000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><h2 id="rx17"><a name="rx17" reftxt="Bookings by Timeframe (AL1)" class="toc" toclevel="2"></a><span class="xmle_figure_caption xmle_caption" xmle_caption="Figure">Figure 8: </span>Bookings by Timeframe (AL1)</h2><div class="altair-figure"><div id="vis_is3uL6G-"></div><script type="text/javascript">vegaEmbed('#vis_is3uL6G-', {"$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "config": {"axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "bar": {"color": "#6a3d9a"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "line": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"anchor": "start", "font": "Roboto, Arial, sans-serif", "fontSize": 18, "offset": 8}, "view": {"continuousHeight": 300, "continuousWidth": 400}}, "data": {"name": "data-d2a7e2e2aeee4f97e5a4c4b6d6ce0118"}, "datasets": {"data-d2a7e2e2aeee4f97e5a4c4b6d6ce0118": [{"bookings": 3.9050000000000002, "days_prior": 1, "segment": "business"}, {"bookings": 0.2825, "days_prior": 1, "segment": "leisure"}, {"bookings": 17.002499999999998, "days_prior": 3, "segment": "business"}, {"bookings": 0.5025, "days_prior": 3, "segment": "leisure"}, {"bookings": 11.057500000000001, "days_prior": 5, "segment": "business"}, {"bookings": 2.27, "days_prior": 5, "segment": "leisure"}, {"bookings": 11.06, "days_prior": 7, "segment": "business"}, {"bookings": 0.885, "days_prior": 7, "segment": "leisure"}, {"bookings": 16.515, "days_prior": 10, "segment": "business"}, {"bookings": 2.5375, "days_prior": 10, "segment": "leisure"}, {"bookings": 14.585, "days_prior": 14, "segment": "business"}, {"bookings": 4.4825, "days_prior": 14, "segment": "leisure"}, {"bookings": 7.17, "days_prior": 17, "segment": "business"}, {"bookings": 6.23, "days_prior": 17, "segment": "leisure"}, {"bookings": 5.8475, "days_prior": 21, "segment": "business"}, {"bookings": 7.9325, "days_prior": 21, "segment": "leisure"}, {"bookings": 4.445, "days_prior": 24, "segment": "business"}, {"bookings": 13.270000000000001, "days_prior": 24, "segment": "leisure"}, {"bookings": 4.4475, "days_prior": 28, "segment": "business"}, {"bookings": 14.177499999999998, "days_prior": 28, "segment": "leisure"}, {"bookings": 3.085, "days_prior": 31, "segment": "business"}, {"bookings": 7.3225, "days_prior": 31, "segment": "leisure"}, {"bookings": 4.425, "days_prior": 35, "segment": "business"}, {"bookings": 10.8025, "days_prior": 35, "segment": "leisure"}, {"bookings": 7.4, "days_prior": 42, "segment": "business"}, {"bookings": 16.5325, "days_prior": 42, "segment": "leisure"}, {"bookings": 6.04, "days_prior": 49, "segment": "business"}, {"bookings": 17.0975, "days_prior": 49, "segment": "leisure"}, {"bookings": 7.3149999999999995, "days_prior": 56, "segment": "business"}, {"bookings": 15.375, "days_prior": 56, "segment": "leisure"}, {"bookings": 8.8775, "days_prior": 63, "segment": "business"}, {"bookings": 32.1725, "days_prior": 63, "segment": "leisure"}]}, "encoding": {"color": {"field": "segment", "title": "Passenger Type", "type": "nominal"}, "tooltip": [{"field": "segment", "title": "Passenger Type", "type": "nominal"}, {"field": "days_prior", "title": "Days Prior", "type": "quantitative"}, {"field": "bookings", "format": ",.2f", "title": "Bookings", "type": "quantitative"}], "x": {"field": "days_prior", "scale": {"reverse": true}, "title": "Days Prior to Departure", "type": "ordinal"}, "y": {"field": "bookings", "type": "quantitative"}}, "height": 200, "mark": {"type": "bar"}, "title": "", "width": 500}).catch(console.error);</script></div><button class="btn btn-default btn-xs fst-italic text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#rx18" aria-expanded="false" aria-controls="rx18"><i class="bi bi-eye me-1" aria-hidden="true"></i>View Underlying Data</button><div class="collapse" id="rx18"><div>
+<style scoped="1">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>days_prior</th>
+      <th>segment</th>
+      <th>bookings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>business</td>
+      <td>3.9050</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>leisure</td>
+      <td>0.2825</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>business</td>
+      <td>17.0025</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>leisure</td>
+      <td>0.5025</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>business</td>
+      <td>11.0575</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5</td>
+      <td>leisure</td>
+      <td>2.2700</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>business</td>
+      <td>11.0600</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7</td>
+      <td>leisure</td>
+      <td>0.8850</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>10</td>
+      <td>business</td>
+      <td>16.5150</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>leisure</td>
+      <td>2.5375</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>14</td>
+      <td>business</td>
+      <td>14.5850</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>14</td>
+      <td>leisure</td>
+      <td>4.4825</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>17</td>
+      <td>business</td>
+      <td>7.1700</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>17</td>
+      <td>leisure</td>
+      <td>6.2300</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>21</td>
+      <td>business</td>
+      <td>5.8475</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>21</td>
+      <td>leisure</td>
+      <td>7.9325</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>24</td>
+      <td>business</td>
+      <td>4.4450</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>24</td>
+      <td>leisure</td>
+      <td>13.2700</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>28</td>
+      <td>business</td>
+      <td>4.4475</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>28</td>
+      <td>leisure</td>
+      <td>14.1775</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>31</td>
+      <td>business</td>
+      <td>3.0850</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>31</td>
+      <td>leisure</td>
+      <td>7.3225</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>35</td>
+      <td>business</td>
+      <td>4.4250</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>35</td>
+      <td>leisure</td>
+      <td>10.8025</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>42</td>
+      <td>business</td>
+      <td>7.4000</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>42</td>
+      <td>leisure</td>
+      <td>16.5325</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>49</td>
+      <td>business</td>
+      <td>6.0400</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>49</td>
+      <td>leisure</td>
+      <td>17.0975</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>56</td>
+      <td>business</td>
+      <td>7.3150</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>56</td>
+      <td>leisure</td>
+      <td>15.3750</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>63</td>
+      <td>business</td>
+      <td>8.8775</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>63</td>
+      <td>leisure</td>
+      <td>32.1725</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><h2 id="rx19"><a name="rx19" reftxt="Bookings by Timeframe and Booking Class (AL1)" class="toc" toclevel="2"></a><span class="xmle_figure_caption xmle_caption" xmle_caption="Figure">Figure 9: </span>Bookings by Timeframe and Booking Class (AL1)</h2><div class="altair-figure"><div id="vis_j0AlFMqB"></div><script type="text/javascript">vegaEmbed('#vis_j0AlFMqB', {"$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "config": {"axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "bar": {"color": "#6a3d9a"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "line": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"anchor": "start", "font": "Roboto, Arial, sans-serif", "fontSize": 18, "offset": 8}, "view": {"continuousHeight": 300, "continuousWidth": 400}}, "data": {"name": "data-a984a1e51219f8f8dab729de7f8dba67"}, "datasets": {"data-a984a1e51219f8f8dab729de7f8dba67": [{"booking_class": "Y0", "bookings": 1.89, "days_prior": 1, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 1, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 8.8125, "days_prior": 3, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.015, "days_prior": 3, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 4.7275, "days_prior": 5, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0075, "days_prior": 5, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 4.5125, "days_prior": 7, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 7, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 6.4725, "days_prior": 10, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 10, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 5.585, "days_prior": 14, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 14, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 2.77, "days_prior": 17, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 17, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 2.3075, "days_prior": 21, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 21, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 1.6875, "days_prior": 24, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 24, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 1.6875, "days_prior": 28, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 28, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 1.2125, "days_prior": 31, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 31, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 1.7175, "days_prior": 35, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 35, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 2.8325, "days_prior": 42, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 42, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 2.3, "days_prior": 49, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 49, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 2.7375, "days_prior": 56, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 56, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 3.4225, "days_prior": 63, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 63, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 2.015, "days_prior": 1, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.2825, "days_prior": 1, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 8.19, "days_prior": 3, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.4875, "days_prior": 3, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 4.0475, "days_prior": 5, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.255, "days_prior": 5, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 4.1725, "days_prior": 7, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.085, "days_prior": 7, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 6.005, "days_prior": 10, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0575, "days_prior": 10, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 5.1875, "days_prior": 14, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0325, "days_prior": 14, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 2.4675, "days_prior": 17, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0125, "days_prior": 17, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 1.9625, "days_prior": 21, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0125, "days_prior": 21, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 1.605, "days_prior": 24, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.005, "days_prior": 24, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 1.5725, "days_prior": 28, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0, "days_prior": 28, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 1.035, "days_prior": 31, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0, "days_prior": 31, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 1.5675, "days_prior": 35, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0, "days_prior": 35, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 2.595, "days_prior": 42, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0, "days_prior": 42, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 2.045, "days_prior": 49, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0, "days_prior": 49, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 2.515, "days_prior": 56, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0, "days_prior": 56, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 3.175, "days_prior": 63, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.005, "days_prior": 63, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 2.2825, "days_prior": 5, "segment": "business"}, {"booking_class": "Y2", "bookings": 2.0075, "days_prior": 5, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 2.375, "days_prior": 7, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.8, "days_prior": 7, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 3.685, "days_prior": 10, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.3525, "days_prior": 10, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 3.5525, "days_prior": 14, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.5375, "days_prior": 14, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 1.535, "days_prior": 17, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.345, "days_prior": 17, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 1.245, "days_prior": 21, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.225, "days_prior": 21, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 0.885, "days_prior": 24, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.075, "days_prior": 24, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 0.8575, "days_prior": 28, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.015, "days_prior": 28, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 0.5875, "days_prior": 31, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.0, "days_prior": 31, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 0.805, "days_prior": 35, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.0, "days_prior": 35, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 1.4275, "days_prior": 42, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.0, "days_prior": 42, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 1.235, "days_prior": 49, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.0, "days_prior": 49, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 1.525, "days_prior": 56, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.0, "days_prior": 56, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 1.655, "days_prior": 63, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.0, "days_prior": 63, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.3525, "days_prior": 10, "segment": "business"}, {"booking_class": "Y3", "bookings": 2.1275, "days_prior": 10, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.26, "days_prior": 14, "segment": "business"}, {"booking_class": "Y3", "bookings": 3.9125, "days_prior": 14, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.155, "days_prior": 17, "segment": "business"}, {"booking_class": "Y3", "bookings": 1.1625, "days_prior": 17, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.1375, "days_prior": 21, "segment": "business"}, {"booking_class": "Y3", "bookings": 1.3425, "days_prior": 21, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.0875, "days_prior": 24, "segment": "business"}, {"booking_class": "Y3", "bookings": 1.2225, "days_prior": 24, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.14, "days_prior": 28, "segment": "business"}, {"booking_class": "Y3", "bookings": 0.48, "days_prior": 28, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.09, "days_prior": 31, "segment": "business"}, {"booking_class": "Y3", "bookings": 0.0525, "days_prior": 31, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.1125, "days_prior": 35, "segment": "business"}, {"booking_class": "Y3", "bookings": 0.05, "days_prior": 35, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.165, "days_prior": 42, "segment": "business"}, {"booking_class": "Y3", "bookings": 0.09, "days_prior": 42, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.15, "days_prior": 49, "segment": "business"}, {"booking_class": "Y3", "bookings": 0.0975, "days_prior": 49, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.165, "days_prior": 56, "segment": "business"}, {"booking_class": "Y3", "bookings": 0.07, "days_prior": 56, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.22, "days_prior": 63, "segment": "business"}, {"booking_class": "Y3", "bookings": 0.1875, "days_prior": 63, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.2425, "days_prior": 17, "segment": "business"}, {"booking_class": "Y4", "bookings": 4.71, "days_prior": 17, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.195, "days_prior": 21, "segment": "business"}, {"booking_class": "Y4", "bookings": 6.3525, "days_prior": 21, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.18, "days_prior": 24, "segment": "business"}, {"booking_class": "Y4", "bookings": 8.9975, "days_prior": 24, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.19, "days_prior": 28, "segment": "business"}, {"booking_class": "Y4", "bookings": 10.42, "days_prior": 28, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.16, "days_prior": 31, "segment": "business"}, {"booking_class": "Y4", "bookings": 5.4875, "days_prior": 31, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.2225, "days_prior": 35, "segment": "business"}, {"booking_class": "Y4", "bookings": 8.0575, "days_prior": 35, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.38, "days_prior": 42, "segment": "business"}, {"booking_class": "Y4", "bookings": 11.9575, "days_prior": 42, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.31, "days_prior": 49, "segment": "business"}, {"booking_class": "Y4", "bookings": 12.1825, "days_prior": 49, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.3725, "days_prior": 56, "segment": "business"}, {"booking_class": "Y4", "bookings": 10.6225, "days_prior": 56, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.405, "days_prior": 63, "segment": "business"}, {"booking_class": "Y4", "bookings": 22.0725, "days_prior": 63, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 24, "segment": "business"}, {"booking_class": "Y5", "bookings": 2.97, "days_prior": 24, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 28, "segment": "business"}, {"booking_class": "Y5", "bookings": 3.2625, "days_prior": 28, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 31, "segment": "business"}, {"booking_class": "Y5", "bookings": 1.7825, "days_prior": 31, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 35, "segment": "business"}, {"booking_class": "Y5", "bookings": 2.695, "days_prior": 35, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 42, "segment": "business"}, {"booking_class": "Y5", "bookings": 4.485, "days_prior": 42, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 49, "segment": "business"}, {"booking_class": "Y5", "bookings": 4.8175, "days_prior": 49, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 56, "segment": "business"}, {"booking_class": "Y5", "bookings": 4.6825, "days_prior": 56, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 63, "segment": "business"}, {"booking_class": "Y5", "bookings": 9.9075, "days_prior": 63, "segment": "leisure"}]}, "facet": {"row": {"field": "segment", "title": "Passenger Type", "type": "nominal"}}, "spec": {"encoding": {"color": {"field": "booking_class", "title": "Booking Class", "type": "nominal"}, "tooltip": [{"field": "booking_class", "title": "Booking Class", "type": "nominal"}, {"field": "segment", "title": "Passenger Type", "type": "nominal"}, {"field": "days_prior", "title": "Days Prior", "type": "quantitative"}, {"field": "bookings", "format": ",.2f", "title": "Bookings", "type": "quantitative"}], "x": {"field": "days_prior", "scale": {"reverse": true}, "title": "Days Prior to Departure", "type": "ordinal"}, "y": {"field": "bookings", "type": "quantitative"}}, "height": 200, "mark": {"type": "bar"}, "width": 500}, "title": ""}).catch(console.error);</script></div><button class="btn btn-default btn-xs fst-italic text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#rx20" aria-expanded="false" aria-controls="rx20"><i class="bi bi-eye me-1" aria-hidden="true"></i>View Underlying Data</button><div class="collapse" id="rx20"><div>
+<style scoped="1">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>booking_class</th>
+      <th>days_prior</th>
+      <th>segment</th>
+      <th>bookings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Y0</td>
+      <td>1</td>
+      <td>business</td>
+      <td>1.8900</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Y0</td>
+      <td>1</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Y0</td>
+      <td>3</td>
+      <td>business</td>
+      <td>8.8125</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Y0</td>
+      <td>3</td>
+      <td>leisure</td>
+      <td>0.0150</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Y0</td>
+      <td>5</td>
+      <td>business</td>
+      <td>4.7275</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Y0</td>
+      <td>5</td>
+      <td>leisure</td>
+      <td>0.0075</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Y0</td>
+      <td>7</td>
+      <td>business</td>
+      <td>4.5125</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Y0</td>
+      <td>7</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Y0</td>
+      <td>10</td>
+      <td>business</td>
+      <td>6.4725</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Y0</td>
+      <td>10</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Y0</td>
+      <td>14</td>
+      <td>business</td>
+      <td>5.5850</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Y0</td>
+      <td>14</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Y0</td>
+      <td>17</td>
+      <td>business</td>
+      <td>2.7700</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Y0</td>
+      <td>17</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Y0</td>
+      <td>21</td>
+      <td>business</td>
+      <td>2.3075</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Y0</td>
+      <td>21</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Y0</td>
+      <td>24</td>
+      <td>business</td>
+      <td>1.6875</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Y0</td>
+      <td>24</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Y0</td>
+      <td>28</td>
+      <td>business</td>
+      <td>1.6875</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Y0</td>
+      <td>28</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Y0</td>
+      <td>31</td>
+      <td>business</td>
+      <td>1.2125</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Y0</td>
+      <td>31</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Y0</td>
+      <td>35</td>
+      <td>business</td>
+      <td>1.7175</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Y0</td>
+      <td>35</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Y0</td>
+      <td>42</td>
+      <td>business</td>
+      <td>2.8325</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Y0</td>
+      <td>42</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Y0</td>
+      <td>49</td>
+      <td>business</td>
+      <td>2.3000</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Y0</td>
+      <td>49</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Y0</td>
+      <td>56</td>
+      <td>business</td>
+      <td>2.7375</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Y0</td>
+      <td>56</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>Y0</td>
+      <td>63</td>
+      <td>business</td>
+      <td>3.4225</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Y0</td>
+      <td>63</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Y1</td>
+      <td>1</td>
+      <td>business</td>
+      <td>2.0150</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>Y1</td>
+      <td>1</td>
+      <td>leisure</td>
+      <td>0.2825</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>Y1</td>
+      <td>3</td>
+      <td>business</td>
+      <td>8.1900</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Y1</td>
+      <td>3</td>
+      <td>leisure</td>
+      <td>0.4875</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Y1</td>
+      <td>5</td>
+      <td>business</td>
+      <td>4.0475</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>Y1</td>
+      <td>5</td>
+      <td>leisure</td>
+      <td>0.2550</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Y1</td>
+      <td>7</td>
+      <td>business</td>
+      <td>4.1725</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Y1</td>
+      <td>7</td>
+      <td>leisure</td>
+      <td>0.0850</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>Y1</td>
+      <td>10</td>
+      <td>business</td>
+      <td>6.0050</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>Y1</td>
+      <td>10</td>
+      <td>leisure</td>
+      <td>0.0575</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>Y1</td>
+      <td>14</td>
+      <td>business</td>
+      <td>5.1875</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>Y1</td>
+      <td>14</td>
+      <td>leisure</td>
+      <td>0.0325</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>Y1</td>
+      <td>17</td>
+      <td>business</td>
+      <td>2.4675</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>Y1</td>
+      <td>17</td>
+      <td>leisure</td>
+      <td>0.0125</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>Y1</td>
+      <td>21</td>
+      <td>business</td>
+      <td>1.9625</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>Y1</td>
+      <td>21</td>
+      <td>leisure</td>
+      <td>0.0125</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>Y1</td>
+      <td>24</td>
+      <td>business</td>
+      <td>1.6050</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>Y1</td>
+      <td>24</td>
+      <td>leisure</td>
+      <td>0.0050</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>Y1</td>
+      <td>28</td>
+      <td>business</td>
+      <td>1.5725</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>Y1</td>
+      <td>28</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>Y1</td>
+      <td>31</td>
+      <td>business</td>
+      <td>1.0350</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>Y1</td>
+      <td>31</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>Y1</td>
+      <td>35</td>
+      <td>business</td>
+      <td>1.5675</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>Y1</td>
+      <td>35</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>Y1</td>
+      <td>42</td>
+      <td>business</td>
+      <td>2.5950</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>Y1</td>
+      <td>42</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>Y1</td>
+      <td>49</td>
+      <td>business</td>
+      <td>2.0450</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>Y1</td>
+      <td>49</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>Y1</td>
+      <td>56</td>
+      <td>business</td>
+      <td>2.5150</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>Y1</td>
+      <td>56</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>Y1</td>
+      <td>63</td>
+      <td>business</td>
+      <td>3.1750</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>Y1</td>
+      <td>63</td>
+      <td>leisure</td>
+      <td>0.0050</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>Y2</td>
+      <td>5</td>
+      <td>business</td>
+      <td>2.2825</td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>Y2</td>
+      <td>5</td>
+      <td>leisure</td>
+      <td>2.0075</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>Y2</td>
+      <td>7</td>
+      <td>business</td>
+      <td>2.3750</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>Y2</td>
+      <td>7</td>
+      <td>leisure</td>
+      <td>0.8000</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>Y2</td>
+      <td>10</td>
+      <td>business</td>
+      <td>3.6850</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>Y2</td>
+      <td>10</td>
+      <td>leisure</td>
+      <td>0.3525</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>Y2</td>
+      <td>14</td>
+      <td>business</td>
+      <td>3.5525</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>Y2</td>
+      <td>14</td>
+      <td>leisure</td>
+      <td>0.5375</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>Y2</td>
+      <td>17</td>
+      <td>business</td>
+      <td>1.5350</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>Y2</td>
+      <td>17</td>
+      <td>leisure</td>
+      <td>0.3450</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>Y2</td>
+      <td>21</td>
+      <td>business</td>
+      <td>1.2450</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>Y2</td>
+      <td>21</td>
+      <td>leisure</td>
+      <td>0.2250</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>Y2</td>
+      <td>24</td>
+      <td>business</td>
+      <td>0.8850</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>Y2</td>
+      <td>24</td>
+      <td>leisure</td>
+      <td>0.0750</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>Y2</td>
+      <td>28</td>
+      <td>business</td>
+      <td>0.8575</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>Y2</td>
+      <td>28</td>
+      <td>leisure</td>
+      <td>0.0150</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>Y2</td>
+      <td>31</td>
+      <td>business</td>
+      <td>0.5875</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>Y2</td>
+      <td>31</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>Y2</td>
+      <td>35</td>
+      <td>business</td>
+      <td>0.8050</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>Y2</td>
+      <td>35</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>Y2</td>
+      <td>42</td>
+      <td>business</td>
+      <td>1.4275</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>Y2</td>
+      <td>42</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>86</th>
+      <td>Y2</td>
+      <td>49</td>
+      <td>business</td>
+      <td>1.2350</td>
+    </tr>
+    <tr>
+      <th>87</th>
+      <td>Y2</td>
+      <td>49</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>Y2</td>
+      <td>56</td>
+      <td>business</td>
+      <td>1.5250</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>Y2</td>
+      <td>56</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>Y2</td>
+      <td>63</td>
+      <td>business</td>
+      <td>1.6550</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>Y2</td>
+      <td>63</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>Y3</td>
+      <td>10</td>
+      <td>business</td>
+      <td>0.3525</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>Y3</td>
+      <td>10</td>
+      <td>leisure</td>
+      <td>2.1275</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>Y3</td>
+      <td>14</td>
+      <td>business</td>
+      <td>0.2600</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>Y3</td>
+      <td>14</td>
+      <td>leisure</td>
+      <td>3.9125</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>Y3</td>
+      <td>17</td>
+      <td>business</td>
+      <td>0.1550</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>Y3</td>
+      <td>17</td>
+      <td>leisure</td>
+      <td>1.1625</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>Y3</td>
+      <td>21</td>
+      <td>business</td>
+      <td>0.1375</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>Y3</td>
+      <td>21</td>
+      <td>leisure</td>
+      <td>1.3425</td>
+    </tr>
+    <tr>
+      <th>100</th>
+      <td>Y3</td>
+      <td>24</td>
+      <td>business</td>
+      <td>0.0875</td>
+    </tr>
+    <tr>
+      <th>101</th>
+      <td>Y3</td>
+      <td>24</td>
+      <td>leisure</td>
+      <td>1.2225</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>Y3</td>
+      <td>28</td>
+      <td>business</td>
+      <td>0.1400</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>Y3</td>
+      <td>28</td>
+      <td>leisure</td>
+      <td>0.4800</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>Y3</td>
+      <td>31</td>
+      <td>business</td>
+      <td>0.0900</td>
+    </tr>
+    <tr>
+      <th>105</th>
+      <td>Y3</td>
+      <td>31</td>
+      <td>leisure</td>
+      <td>0.0525</td>
+    </tr>
+    <tr>
+      <th>106</th>
+      <td>Y3</td>
+      <td>35</td>
+      <td>business</td>
+      <td>0.1125</td>
+    </tr>
+    <tr>
+      <th>107</th>
+      <td>Y3</td>
+      <td>35</td>
+      <td>leisure</td>
+      <td>0.0500</td>
+    </tr>
+    <tr>
+      <th>108</th>
+      <td>Y3</td>
+      <td>42</td>
+      <td>business</td>
+      <td>0.1650</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>Y3</td>
+      <td>42</td>
+      <td>leisure</td>
+      <td>0.0900</td>
+    </tr>
+    <tr>
+      <th>110</th>
+      <td>Y3</td>
+      <td>49</td>
+      <td>business</td>
+      <td>0.1500</td>
+    </tr>
+    <tr>
+      <th>111</th>
+      <td>Y3</td>
+      <td>49</td>
+      <td>leisure</td>
+      <td>0.0975</td>
+    </tr>
+    <tr>
+      <th>112</th>
+      <td>Y3</td>
+      <td>56</td>
+      <td>business</td>
+      <td>0.1650</td>
+    </tr>
+    <tr>
+      <th>113</th>
+      <td>Y3</td>
+      <td>56</td>
+      <td>leisure</td>
+      <td>0.0700</td>
+    </tr>
+    <tr>
+      <th>114</th>
+      <td>Y3</td>
+      <td>63</td>
+      <td>business</td>
+      <td>0.2200</td>
+    </tr>
+    <tr>
+      <th>115</th>
+      <td>Y3</td>
+      <td>63</td>
+      <td>leisure</td>
+      <td>0.1875</td>
+    </tr>
+    <tr>
+      <th>116</th>
+      <td>Y4</td>
+      <td>17</td>
+      <td>business</td>
+      <td>0.2425</td>
+    </tr>
+    <tr>
+      <th>117</th>
+      <td>Y4</td>
+      <td>17</td>
+      <td>leisure</td>
+      <td>4.7100</td>
+    </tr>
+    <tr>
+      <th>118</th>
+      <td>Y4</td>
+      <td>21</td>
+      <td>business</td>
+      <td>0.1950</td>
+    </tr>
+    <tr>
+      <th>119</th>
+      <td>Y4</td>
+      <td>21</td>
+      <td>leisure</td>
+      <td>6.3525</td>
+    </tr>
+    <tr>
+      <th>120</th>
+      <td>Y4</td>
+      <td>24</td>
+      <td>business</td>
+      <td>0.1800</td>
+    </tr>
+    <tr>
+      <th>121</th>
+      <td>Y4</td>
+      <td>24</td>
+      <td>leisure</td>
+      <td>8.9975</td>
+    </tr>
+    <tr>
+      <th>122</th>
+      <td>Y4</td>
+      <td>28</td>
+      <td>business</td>
+      <td>0.1900</td>
+    </tr>
+    <tr>
+      <th>123</th>
+      <td>Y4</td>
+      <td>28</td>
+      <td>leisure</td>
+      <td>10.4200</td>
+    </tr>
+    <tr>
+      <th>124</th>
+      <td>Y4</td>
+      <td>31</td>
+      <td>business</td>
+      <td>0.1600</td>
+    </tr>
+    <tr>
+      <th>125</th>
+      <td>Y4</td>
+      <td>31</td>
+      <td>leisure</td>
+      <td>5.4875</td>
+    </tr>
+    <tr>
+      <th>126</th>
+      <td>Y4</td>
+      <td>35</td>
+      <td>business</td>
+      <td>0.2225</td>
+    </tr>
+    <tr>
+      <th>127</th>
+      <td>Y4</td>
+      <td>35</td>
+      <td>leisure</td>
+      <td>8.0575</td>
+    </tr>
+    <tr>
+      <th>128</th>
+      <td>Y4</td>
+      <td>42</td>
+      <td>business</td>
+      <td>0.3800</td>
+    </tr>
+    <tr>
+      <th>129</th>
+      <td>Y4</td>
+      <td>42</td>
+      <td>leisure</td>
+      <td>11.9575</td>
+    </tr>
+    <tr>
+      <th>130</th>
+      <td>Y4</td>
+      <td>49</td>
+      <td>business</td>
+      <td>0.3100</td>
+    </tr>
+    <tr>
+      <th>131</th>
+      <td>Y4</td>
+      <td>49</td>
+      <td>leisure</td>
+      <td>12.1825</td>
+    </tr>
+    <tr>
+      <th>132</th>
+      <td>Y4</td>
+      <td>56</td>
+      <td>business</td>
+      <td>0.3725</td>
+    </tr>
+    <tr>
+      <th>133</th>
+      <td>Y4</td>
+      <td>56</td>
+      <td>leisure</td>
+      <td>10.6225</td>
+    </tr>
+    <tr>
+      <th>134</th>
+      <td>Y4</td>
+      <td>63</td>
+      <td>business</td>
+      <td>0.4050</td>
+    </tr>
+    <tr>
+      <th>135</th>
+      <td>Y4</td>
+      <td>63</td>
+      <td>leisure</td>
+      <td>22.0725</td>
+    </tr>
+    <tr>
+      <th>136</th>
+      <td>Y5</td>
+      <td>24</td>
+      <td>business</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>137</th>
+      <td>Y5</td>
+      <td>24</td>
+      <td>leisure</td>
+      <td>2.9700</td>
+    </tr>
+    <tr>
+      <th>138</th>
+      <td>Y5</td>
+      <td>28</td>
+      <td>business</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>139</th>
+      <td>Y5</td>
+      <td>28</td>
+      <td>leisure</td>
+      <td>3.2625</td>
+    </tr>
+    <tr>
+      <th>140</th>
+      <td>Y5</td>
+      <td>31</td>
+      <td>business</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>141</th>
+      <td>Y5</td>
+      <td>31</td>
+      <td>leisure</td>
+      <td>1.7825</td>
+    </tr>
+    <tr>
+      <th>142</th>
+      <td>Y5</td>
+      <td>35</td>
+      <td>business</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>143</th>
+      <td>Y5</td>
+      <td>35</td>
+      <td>leisure</td>
+      <td>2.6950</td>
+    </tr>
+    <tr>
+      <th>144</th>
+      <td>Y5</td>
+      <td>42</td>
+      <td>business</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>Y5</td>
+      <td>42</td>
+      <td>leisure</td>
+      <td>4.4850</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>Y5</td>
+      <td>49</td>
+      <td>business</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>Y5</td>
+      <td>49</td>
+      <td>leisure</td>
+      <td>4.8175</td>
+    </tr>
+    <tr>
+      <th>148</th>
+      <td>Y5</td>
+      <td>56</td>
+      <td>business</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>Y5</td>
+      <td>56</td>
+      <td>leisure</td>
+      <td>4.6825</td>
+    </tr>
+    <tr>
+      <th>150</th>
+      <td>Y5</td>
+      <td>63</td>
+      <td>business</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>151</th>
+      <td>Y5</td>
+      <td>63</td>
+      <td>leisure</td>
+      <td>9.9075</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><h2 id="rx21"><a name="rx21" reftxt="Bookings by Timeframe (AL2)" class="toc" toclevel="2"></a><span class="xmle_figure_caption xmle_caption" xmle_caption="Figure">Figure 10: </span>Bookings by Timeframe (AL2)</h2><div class="altair-figure"><div id="vis_AUFSuXNW"></div><script type="text/javascript">vegaEmbed('#vis_AUFSuXNW', {"$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "config": {"axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "bar": {"color": "#6a3d9a"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "line": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"anchor": "start", "font": "Roboto, Arial, sans-serif", "fontSize": 18, "offset": 8}, "view": {"continuousHeight": 300, "continuousWidth": 400}}, "data": {"name": "data-f84a1e5cb597d408fd67dc03c18a6b79"}, "datasets": {"data-f84a1e5cb597d408fd67dc03c18a6b79": [{"bookings": 4.0325, "days_prior": 1, "segment": "business"}, {"bookings": 0.3075, "days_prior": 1, "segment": "leisure"}, {"bookings": 17.072499999999998, "days_prior": 3, "segment": "business"}, {"bookings": 0.5075, "days_prior": 3, "segment": "leisure"}, {"bookings": 10.6175, "days_prior": 5, "segment": "business"}, {"bookings": 2.4275, "days_prior": 5, "segment": "leisure"}, {"bookings": 11.455, "days_prior": 7, "segment": "business"}, {"bookings": 0.97, "days_prior": 7, "segment": "leisure"}, {"bookings": 17.1725, "days_prior": 10, "segment": "business"}, {"bookings": 2.8425, "days_prior": 10, "segment": "leisure"}, {"bookings": 14.23, "days_prior": 14, "segment": "business"}, {"bookings": 4.46, "days_prior": 14, "segment": "leisure"}, {"bookings": 7.1450000000000005, "days_prior": 17, "segment": "business"}, {"bookings": 6.2575, "days_prior": 17, "segment": "leisure"}, {"bookings": 5.9425, "days_prior": 21, "segment": "business"}, {"bookings": 7.8774999999999995, "days_prior": 21, "segment": "leisure"}, {"bookings": 4.4, "days_prior": 24, "segment": "business"}, {"bookings": 13.52, "days_prior": 24, "segment": "leisure"}, {"bookings": 4.345, "days_prior": 28, "segment": "business"}, {"bookings": 13.8325, "days_prior": 28, "segment": "leisure"}, {"bookings": 3.035, "days_prior": 31, "segment": "business"}, {"bookings": 6.99, "days_prior": 31, "segment": "leisure"}, {"bookings": 4.355, "days_prior": 35, "segment": "business"}, {"bookings": 10.592500000000001, "days_prior": 35, "segment": "leisure"}, {"bookings": 7.26, "days_prior": 42, "segment": "business"}, {"bookings": 16.619999999999997, "days_prior": 42, "segment": "leisure"}, {"bookings": 5.825, "days_prior": 49, "segment": "business"}, {"bookings": 16.447499999999998, "days_prior": 49, "segment": "leisure"}, {"bookings": 7.235, "days_prior": 56, "segment": "business"}, {"bookings": 14.950000000000001, "days_prior": 56, "segment": "leisure"}, {"bookings": 8.7625, "days_prior": 63, "segment": "business"}, {"bookings": 33.1, "days_prior": 63, "segment": "leisure"}]}, "encoding": {"color": {"field": "segment", "title": "Passenger Type", "type": "nominal"}, "tooltip": [{"field": "segment", "title": "Passenger Type", "type": "nominal"}, {"field": "days_prior", "title": "Days Prior", "type": "quantitative"}, {"field": "bookings", "format": ",.2f", "title": "Bookings", "type": "quantitative"}], "x": {"field": "days_prior", "scale": {"reverse": true}, "title": "Days Prior to Departure", "type": "ordinal"}, "y": {"field": "bookings", "type": "quantitative"}}, "height": 200, "mark": {"type": "bar"}, "title": "", "width": 500}).catch(console.error);</script></div><button class="btn btn-default btn-xs fst-italic text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#rx22" aria-expanded="false" aria-controls="rx22"><i class="bi bi-eye me-1" aria-hidden="true"></i>View Underlying Data</button><div class="collapse" id="rx22"><div>
+<style scoped="1">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>days_prior</th>
+      <th>segment</th>
+      <th>bookings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>32</th>
+      <td>1</td>
+      <td>business</td>
+      <td>4.0325</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>1</td>
+      <td>leisure</td>
+      <td>0.3075</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>3</td>
+      <td>business</td>
+      <td>17.0725</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>3</td>
+      <td>leisure</td>
+      <td>0.5075</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>5</td>
+      <td>business</td>
+      <td>10.6175</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>5</td>
+      <td>leisure</td>
+      <td>2.4275</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>7</td>
+      <td>business</td>
+      <td>11.4550</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>7</td>
+      <td>leisure</td>
+      <td>0.9700</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>10</td>
+      <td>business</td>
+      <td>17.1725</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>10</td>
+      <td>leisure</td>
+      <td>2.8425</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>14</td>
+      <td>business</td>
+      <td>14.2300</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>14</td>
+      <td>leisure</td>
+      <td>4.4600</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>17</td>
+      <td>business</td>
+      <td>7.1450</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>17</td>
+      <td>leisure</td>
+      <td>6.2575</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>21</td>
+      <td>business</td>
+      <td>5.9425</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>21</td>
+      <td>leisure</td>
+      <td>7.8775</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>24</td>
+      <td>business</td>
+      <td>4.4000</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>24</td>
+      <td>leisure</td>
+      <td>13.5200</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>28</td>
+      <td>business</td>
+      <td>4.3450</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>28</td>
+      <td>leisure</td>
+      <td>13.8325</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>31</td>
+      <td>business</td>
+      <td>3.0350</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>31</td>
+      <td>leisure</td>
+      <td>6.9900</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>35</td>
+      <td>business</td>
+      <td>4.3550</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>35</td>
+      <td>leisure</td>
+      <td>10.5925</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>42</td>
+      <td>business</td>
+      <td>7.2600</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>42</td>
+      <td>leisure</td>
+      <td>16.6200</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>49</td>
+      <td>business</td>
+      <td>5.8250</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>49</td>
+      <td>leisure</td>
+      <td>16.4475</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>56</td>
+      <td>business</td>
+      <td>7.2350</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>56</td>
+      <td>leisure</td>
+      <td>14.9500</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>63</td>
+      <td>business</td>
+      <td>8.7625</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>63</td>
+      <td>leisure</td>
+      <td>33.1000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><h2 id="rx23"><a name="rx23" reftxt="Bookings by Timeframe and Booking Class (AL2)" class="toc" toclevel="2"></a><span class="xmle_figure_caption xmle_caption" xmle_caption="Figure">Figure 11: </span>Bookings by Timeframe and Booking Class (AL2)</h2><div class="altair-figure"><div id="vis_K3Vo8-hC"></div><script type="text/javascript">vegaEmbed('#vis_K3Vo8-hC', {"$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "config": {"axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "bar": {"color": "#6a3d9a"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "line": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"anchor": "start", "font": "Roboto, Arial, sans-serif", "fontSize": 18, "offset": 8}, "view": {"continuousHeight": 300, "continuousWidth": 400}}, "data": {"name": "data-6eeb6fec0900b91cafb5be457486106f"}, "datasets": {"data-6eeb6fec0900b91cafb5be457486106f": [{"booking_class": "Y0", "bookings": 1.93, "days_prior": 1, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0025, "days_prior": 1, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 8.6875, "days_prior": 3, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0225, "days_prior": 3, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 4.4325, "days_prior": 5, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.015, "days_prior": 5, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 4.575, "days_prior": 7, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 7, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 6.85, "days_prior": 10, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 10, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 5.3375, "days_prior": 14, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 14, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 2.6425, "days_prior": 17, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 17, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 2.175, "days_prior": 21, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 21, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 1.715, "days_prior": 24, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 24, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 1.585, "days_prior": 28, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 28, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 1.1625, "days_prior": 31, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 31, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 1.665, "days_prior": 35, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 35, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 2.7475, "days_prior": 42, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 42, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 2.1625, "days_prior": 49, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 49, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 2.915, "days_prior": 56, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 56, "segment": "leisure"}, {"booking_class": "Y0", "bookings": 3.3775, "days_prior": 63, "segment": "business"}, {"booking_class": "Y0", "bookings": 0.0, "days_prior": 63, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 2.1025, "days_prior": 1, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.305, "days_prior": 1, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 8.385, "days_prior": 3, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.485, "days_prior": 3, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 3.865, "days_prior": 5, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.295, "days_prior": 5, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 4.445, "days_prior": 7, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.08, "days_prior": 7, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 6.08, "days_prior": 10, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.075, "days_prior": 10, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 5.18, "days_prior": 14, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0475, "days_prior": 14, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 2.5575, "days_prior": 17, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.005, "days_prior": 17, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 2.19, "days_prior": 21, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0025, "days_prior": 21, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 1.5675, "days_prior": 24, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0025, "days_prior": 24, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 1.5775, "days_prior": 28, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0025, "days_prior": 28, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 1.0475, "days_prior": 31, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0025, "days_prior": 31, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 1.4975, "days_prior": 35, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0, "days_prior": 35, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 2.59, "days_prior": 42, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0, "days_prior": 42, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 2.0925, "days_prior": 49, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0025, "days_prior": 49, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 2.495, "days_prior": 56, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0, "days_prior": 56, "segment": "leisure"}, {"booking_class": "Y1", "bookings": 2.9425, "days_prior": 63, "segment": "business"}, {"booking_class": "Y1", "bookings": 0.0, "days_prior": 63, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 2.32, "days_prior": 5, "segment": "business"}, {"booking_class": "Y2", "bookings": 2.1175, "days_prior": 5, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 2.435, "days_prior": 7, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.89, "days_prior": 7, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 3.905, "days_prior": 10, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.4275, "days_prior": 10, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 3.3625, "days_prior": 14, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.62, "days_prior": 14, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 1.56, "days_prior": 17, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.3525, "days_prior": 17, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 1.225, "days_prior": 21, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.2, "days_prior": 21, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 0.835, "days_prior": 24, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.06, "days_prior": 24, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 0.9, "days_prior": 28, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.0075, "days_prior": 28, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 0.5775, "days_prior": 31, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.0, "days_prior": 31, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 0.8475, "days_prior": 35, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.0, "days_prior": 35, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 1.3575, "days_prior": 42, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.0, "days_prior": 42, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 1.1425, "days_prior": 49, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.0, "days_prior": 49, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 1.2875, "days_prior": 56, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.0, "days_prior": 56, "segment": "leisure"}, {"booking_class": "Y2", "bookings": 1.7975, "days_prior": 63, "segment": "business"}, {"booking_class": "Y2", "bookings": 0.0, "days_prior": 63, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.3375, "days_prior": 10, "segment": "business"}, {"booking_class": "Y3", "bookings": 2.34, "days_prior": 10, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.35, "days_prior": 14, "segment": "business"}, {"booking_class": "Y3", "bookings": 3.7925, "days_prior": 14, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.175, "days_prior": 17, "segment": "business"}, {"booking_class": "Y3", "bookings": 1.2075, "days_prior": 17, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.1375, "days_prior": 21, "segment": "business"}, {"booking_class": "Y3", "bookings": 1.3575, "days_prior": 21, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.12, "days_prior": 24, "segment": "business"}, {"booking_class": "Y3", "bookings": 1.13, "days_prior": 24, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.125, "days_prior": 28, "segment": "business"}, {"booking_class": "Y3", "bookings": 0.4925, "days_prior": 28, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.0625, "days_prior": 31, "segment": "business"}, {"booking_class": "Y3", "bookings": 0.0575, "days_prior": 31, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.1, "days_prior": 35, "segment": "business"}, {"booking_class": "Y3", "bookings": 0.065, "days_prior": 35, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.1925, "days_prior": 42, "segment": "business"}, {"booking_class": "Y3", "bookings": 0.0975, "days_prior": 42, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.1425, "days_prior": 49, "segment": "business"}, {"booking_class": "Y3", "bookings": 0.0975, "days_prior": 49, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.17, "days_prior": 56, "segment": "business"}, {"booking_class": "Y3", "bookings": 0.0775, "days_prior": 56, "segment": "leisure"}, {"booking_class": "Y3", "bookings": 0.2125, "days_prior": 63, "segment": "business"}, {"booking_class": "Y3", "bookings": 0.1475, "days_prior": 63, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.21, "days_prior": 17, "segment": "business"}, {"booking_class": "Y4", "bookings": 4.6925, "days_prior": 17, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.215, "days_prior": 21, "segment": "business"}, {"booking_class": "Y4", "bookings": 6.3175, "days_prior": 21, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.1625, "days_prior": 24, "segment": "business"}, {"booking_class": "Y4", "bookings": 9.1975, "days_prior": 24, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.1575, "days_prior": 28, "segment": "business"}, {"booking_class": "Y4", "bookings": 10.1675, "days_prior": 28, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.185, "days_prior": 31, "segment": "business"}, {"booking_class": "Y4", "bookings": 5.315, "days_prior": 31, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.245, "days_prior": 35, "segment": "business"}, {"booking_class": "Y4", "bookings": 7.8675, "days_prior": 35, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.3725, "days_prior": 42, "segment": "business"}, {"booking_class": "Y4", "bookings": 12.0475, "days_prior": 42, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.285, "days_prior": 49, "segment": "business"}, {"booking_class": "Y4", "bookings": 11.7225, "days_prior": 49, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.3675, "days_prior": 56, "segment": "business"}, {"booking_class": "Y4", "bookings": 10.605, "days_prior": 56, "segment": "leisure"}, {"booking_class": "Y4", "bookings": 0.43, "days_prior": 63, "segment": "business"}, {"booking_class": "Y4", "bookings": 22.9725, "days_prior": 63, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 24, "segment": "business"}, {"booking_class": "Y5", "bookings": 3.13, "days_prior": 24, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 28, "segment": "business"}, {"booking_class": "Y5", "bookings": 3.1625, "days_prior": 28, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 31, "segment": "business"}, {"booking_class": "Y5", "bookings": 1.615, "days_prior": 31, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 35, "segment": "business"}, {"booking_class": "Y5", "bookings": 2.66, "days_prior": 35, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 42, "segment": "business"}, {"booking_class": "Y5", "bookings": 4.475, "days_prior": 42, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 49, "segment": "business"}, {"booking_class": "Y5", "bookings": 4.625, "days_prior": 49, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0, "days_prior": 56, "segment": "business"}, {"booking_class": "Y5", "bookings": 4.2675, "days_prior": 56, "segment": "leisure"}, {"booking_class": "Y5", "bookings": 0.0025, "days_prior": 63, "segment": "business"}, {"booking_class": "Y5", "bookings": 9.98, "days_prior": 63, "segment": "leisure"}]}, "facet": {"row": {"field": "segment", "title": "Passenger Type", "type": "nominal"}}, "spec": {"encoding": {"color": {"field": "booking_class", "title": "Booking Class", "type": "nominal"}, "tooltip": [{"field": "booking_class", "title": "Booking Class", "type": "nominal"}, {"field": "segment", "title": "Passenger Type", "type": "nominal"}, {"field": "days_prior", "title": "Days Prior", "type": "quantitative"}, {"field": "bookings", "format": ",.2f", "title": "Bookings", "type": "quantitative"}], "x": {"field": "days_prior", "scale": {"reverse": true}, "title": "Days Prior to Departure", "type": "ordinal"}, "y": {"field": "bookings", "type": "quantitative"}}, "height": 200, "mark": {"type": "bar"}, "width": 500}, "title": ""}).catch(console.error);</script></div><button class="btn btn-default btn-xs fst-italic text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#rx24" aria-expanded="false" aria-controls="rx24"><i class="bi bi-eye me-1" aria-hidden="true"></i>View Underlying Data</button><div class="collapse" id="rx24"><div>
+<style scoped="1">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>booking_class</th>
+      <th>days_prior</th>
+      <th>segment</th>
+      <th>bookings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>152</th>
+      <td>Y0</td>
+      <td>1</td>
+      <td>business</td>
+      <td>1.9300</td>
+    </tr>
+    <tr>
+      <th>153</th>
+      <td>Y0</td>
+      <td>1</td>
+      <td>leisure</td>
+      <td>0.0025</td>
+    </tr>
+    <tr>
+      <th>154</th>
+      <td>Y0</td>
+      <td>3</td>
+      <td>business</td>
+      <td>8.6875</td>
+    </tr>
+    <tr>
+      <th>155</th>
+      <td>Y0</td>
+      <td>3</td>
+      <td>leisure</td>
+      <td>0.0225</td>
+    </tr>
+    <tr>
+      <th>156</th>
+      <td>Y0</td>
+      <td>5</td>
+      <td>business</td>
+      <td>4.4325</td>
+    </tr>
+    <tr>
+      <th>157</th>
+      <td>Y0</td>
+      <td>5</td>
+      <td>leisure</td>
+      <td>0.0150</td>
+    </tr>
+    <tr>
+      <th>158</th>
+      <td>Y0</td>
+      <td>7</td>
+      <td>business</td>
+      <td>4.5750</td>
+    </tr>
+    <tr>
+      <th>159</th>
+      <td>Y0</td>
+      <td>7</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>160</th>
+      <td>Y0</td>
+      <td>10</td>
+      <td>business</td>
+      <td>6.8500</td>
+    </tr>
+    <tr>
+      <th>161</th>
+      <td>Y0</td>
+      <td>10</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>162</th>
+      <td>Y0</td>
+      <td>14</td>
+      <td>business</td>
+      <td>5.3375</td>
+    </tr>
+    <tr>
+      <th>163</th>
+      <td>Y0</td>
+      <td>14</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>164</th>
+      <td>Y0</td>
+      <td>17</td>
+      <td>business</td>
+      <td>2.6425</td>
+    </tr>
+    <tr>
+      <th>165</th>
+      <td>Y0</td>
+      <td>17</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>166</th>
+      <td>Y0</td>
+      <td>21</td>
+      <td>business</td>
+      <td>2.1750</td>
+    </tr>
+    <tr>
+      <th>167</th>
+      <td>Y0</td>
+      <td>21</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>168</th>
+      <td>Y0</td>
+      <td>24</td>
+      <td>business</td>
+      <td>1.7150</td>
+    </tr>
+    <tr>
+      <th>169</th>
+      <td>Y0</td>
+      <td>24</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>170</th>
+      <td>Y0</td>
+      <td>28</td>
+      <td>business</td>
+      <td>1.5850</td>
+    </tr>
+    <tr>
+      <th>171</th>
+      <td>Y0</td>
+      <td>28</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>172</th>
+      <td>Y0</td>
+      <td>31</td>
+      <td>business</td>
+      <td>1.1625</td>
+    </tr>
+    <tr>
+      <th>173</th>
+      <td>Y0</td>
+      <td>31</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>174</th>
+      <td>Y0</td>
+      <td>35</td>
+      <td>business</td>
+      <td>1.6650</td>
+    </tr>
+    <tr>
+      <th>175</th>
+      <td>Y0</td>
+      <td>35</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>176</th>
+      <td>Y0</td>
+      <td>42</td>
+      <td>business</td>
+      <td>2.7475</td>
+    </tr>
+    <tr>
+      <th>177</th>
+      <td>Y0</td>
+      <td>42</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>Y0</td>
+      <td>49</td>
+      <td>business</td>
+      <td>2.1625</td>
+    </tr>
+    <tr>
+      <th>179</th>
+      <td>Y0</td>
+      <td>49</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>180</th>
+      <td>Y0</td>
+      <td>56</td>
+      <td>business</td>
+      <td>2.9150</td>
+    </tr>
+    <tr>
+      <th>181</th>
+      <td>Y0</td>
+      <td>56</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>182</th>
+      <td>Y0</td>
+      <td>63</td>
+      <td>business</td>
+      <td>3.3775</td>
+    </tr>
+    <tr>
+      <th>183</th>
+      <td>Y0</td>
+      <td>63</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>184</th>
+      <td>Y1</td>
+      <td>1</td>
+      <td>business</td>
+      <td>2.1025</td>
+    </tr>
+    <tr>
+      <th>185</th>
+      <td>Y1</td>
+      <td>1</td>
+      <td>leisure</td>
+      <td>0.3050</td>
+    </tr>
+    <tr>
+      <th>186</th>
+      <td>Y1</td>
+      <td>3</td>
+      <td>business</td>
+      <td>8.3850</td>
+    </tr>
+    <tr>
+      <th>187</th>
+      <td>Y1</td>
+      <td>3</td>
+      <td>leisure</td>
+      <td>0.4850</td>
+    </tr>
+    <tr>
+      <th>188</th>
+      <td>Y1</td>
+      <td>5</td>
+      <td>business</td>
+      <td>3.8650</td>
+    </tr>
+    <tr>
+      <th>189</th>
+      <td>Y1</td>
+      <td>5</td>
+      <td>leisure</td>
+      <td>0.2950</td>
+    </tr>
+    <tr>
+      <th>190</th>
+      <td>Y1</td>
+      <td>7</td>
+      <td>business</td>
+      <td>4.4450</td>
+    </tr>
+    <tr>
+      <th>191</th>
+      <td>Y1</td>
+      <td>7</td>
+      <td>leisure</td>
+      <td>0.0800</td>
+    </tr>
+    <tr>
+      <th>192</th>
+      <td>Y1</td>
+      <td>10</td>
+      <td>business</td>
+      <td>6.0800</td>
+    </tr>
+    <tr>
+      <th>193</th>
+      <td>Y1</td>
+      <td>10</td>
+      <td>leisure</td>
+      <td>0.0750</td>
+    </tr>
+    <tr>
+      <th>194</th>
+      <td>Y1</td>
+      <td>14</td>
+      <td>business</td>
+      <td>5.1800</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>Y1</td>
+      <td>14</td>
+      <td>leisure</td>
+      <td>0.0475</td>
+    </tr>
+    <tr>
+      <th>196</th>
+      <td>Y1</td>
+      <td>17</td>
+      <td>business</td>
+      <td>2.5575</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>Y1</td>
+      <td>17</td>
+      <td>leisure</td>
+      <td>0.0050</td>
+    </tr>
+    <tr>
+      <th>198</th>
+      <td>Y1</td>
+      <td>21</td>
+      <td>business</td>
+      <td>2.1900</td>
+    </tr>
+    <tr>
+      <th>199</th>
+      <td>Y1</td>
+      <td>21</td>
+      <td>leisure</td>
+      <td>0.0025</td>
+    </tr>
+    <tr>
+      <th>200</th>
+      <td>Y1</td>
+      <td>24</td>
+      <td>business</td>
+      <td>1.5675</td>
+    </tr>
+    <tr>
+      <th>201</th>
+      <td>Y1</td>
+      <td>24</td>
+      <td>leisure</td>
+      <td>0.0025</td>
+    </tr>
+    <tr>
+      <th>202</th>
+      <td>Y1</td>
+      <td>28</td>
+      <td>business</td>
+      <td>1.5775</td>
+    </tr>
+    <tr>
+      <th>203</th>
+      <td>Y1</td>
+      <td>28</td>
+      <td>leisure</td>
+      <td>0.0025</td>
+    </tr>
+    <tr>
+      <th>204</th>
+      <td>Y1</td>
+      <td>31</td>
+      <td>business</td>
+      <td>1.0475</td>
+    </tr>
+    <tr>
+      <th>205</th>
+      <td>Y1</td>
+      <td>31</td>
+      <td>leisure</td>
+      <td>0.0025</td>
+    </tr>
+    <tr>
+      <th>206</th>
+      <td>Y1</td>
+      <td>35</td>
+      <td>business</td>
+      <td>1.4975</td>
+    </tr>
+    <tr>
+      <th>207</th>
+      <td>Y1</td>
+      <td>35</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>208</th>
+      <td>Y1</td>
+      <td>42</td>
+      <td>business</td>
+      <td>2.5900</td>
+    </tr>
+    <tr>
+      <th>209</th>
+      <td>Y1</td>
+      <td>42</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>210</th>
+      <td>Y1</td>
+      <td>49</td>
+      <td>business</td>
+      <td>2.0925</td>
+    </tr>
+    <tr>
+      <th>211</th>
+      <td>Y1</td>
+      <td>49</td>
+      <td>leisure</td>
+      <td>0.0025</td>
+    </tr>
+    <tr>
+      <th>212</th>
+      <td>Y1</td>
+      <td>56</td>
+      <td>business</td>
+      <td>2.4950</td>
+    </tr>
+    <tr>
+      <th>213</th>
+      <td>Y1</td>
+      <td>56</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>214</th>
+      <td>Y1</td>
+      <td>63</td>
+      <td>business</td>
+      <td>2.9425</td>
+    </tr>
+    <tr>
+      <th>215</th>
+      <td>Y1</td>
+      <td>63</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>216</th>
+      <td>Y2</td>
+      <td>5</td>
+      <td>business</td>
+      <td>2.3200</td>
+    </tr>
+    <tr>
+      <th>217</th>
+      <td>Y2</td>
+      <td>5</td>
+      <td>leisure</td>
+      <td>2.1175</td>
+    </tr>
+    <tr>
+      <th>218</th>
+      <td>Y2</td>
+      <td>7</td>
+      <td>business</td>
+      <td>2.4350</td>
+    </tr>
+    <tr>
+      <th>219</th>
+      <td>Y2</td>
+      <td>7</td>
+      <td>leisure</td>
+      <td>0.8900</td>
+    </tr>
+    <tr>
+      <th>220</th>
+      <td>Y2</td>
+      <td>10</td>
+      <td>business</td>
+      <td>3.9050</td>
+    </tr>
+    <tr>
+      <th>221</th>
+      <td>Y2</td>
+      <td>10</td>
+      <td>leisure</td>
+      <td>0.4275</td>
+    </tr>
+    <tr>
+      <th>222</th>
+      <td>Y2</td>
+      <td>14</td>
+      <td>business</td>
+      <td>3.3625</td>
+    </tr>
+    <tr>
+      <th>223</th>
+      <td>Y2</td>
+      <td>14</td>
+      <td>leisure</td>
+      <td>0.6200</td>
+    </tr>
+    <tr>
+      <th>224</th>
+      <td>Y2</td>
+      <td>17</td>
+      <td>business</td>
+      <td>1.5600</td>
+    </tr>
+    <tr>
+      <th>225</th>
+      <td>Y2</td>
+      <td>17</td>
+      <td>leisure</td>
+      <td>0.3525</td>
+    </tr>
+    <tr>
+      <th>226</th>
+      <td>Y2</td>
+      <td>21</td>
+      <td>business</td>
+      <td>1.2250</td>
+    </tr>
+    <tr>
+      <th>227</th>
+      <td>Y2</td>
+      <td>21</td>
+      <td>leisure</td>
+      <td>0.2000</td>
+    </tr>
+    <tr>
+      <th>228</th>
+      <td>Y2</td>
+      <td>24</td>
+      <td>business</td>
+      <td>0.8350</td>
+    </tr>
+    <tr>
+      <th>229</th>
+      <td>Y2</td>
+      <td>24</td>
+      <td>leisure</td>
+      <td>0.0600</td>
+    </tr>
+    <tr>
+      <th>230</th>
+      <td>Y2</td>
+      <td>28</td>
+      <td>business</td>
+      <td>0.9000</td>
+    </tr>
+    <tr>
+      <th>231</th>
+      <td>Y2</td>
+      <td>28</td>
+      <td>leisure</td>
+      <td>0.0075</td>
+    </tr>
+    <tr>
+      <th>232</th>
+      <td>Y2</td>
+      <td>31</td>
+      <td>business</td>
+      <td>0.5775</td>
+    </tr>
+    <tr>
+      <th>233</th>
+      <td>Y2</td>
+      <td>31</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>234</th>
+      <td>Y2</td>
+      <td>35</td>
+      <td>business</td>
+      <td>0.8475</td>
+    </tr>
+    <tr>
+      <th>235</th>
+      <td>Y2</td>
+      <td>35</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>236</th>
+      <td>Y2</td>
+      <td>42</td>
+      <td>business</td>
+      <td>1.3575</td>
+    </tr>
+    <tr>
+      <th>237</th>
+      <td>Y2</td>
+      <td>42</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>238</th>
+      <td>Y2</td>
+      <td>49</td>
+      <td>business</td>
+      <td>1.1425</td>
+    </tr>
+    <tr>
+      <th>239</th>
+      <td>Y2</td>
+      <td>49</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>240</th>
+      <td>Y2</td>
+      <td>56</td>
+      <td>business</td>
+      <td>1.2875</td>
+    </tr>
+    <tr>
+      <th>241</th>
+      <td>Y2</td>
+      <td>56</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>242</th>
+      <td>Y2</td>
+      <td>63</td>
+      <td>business</td>
+      <td>1.7975</td>
+    </tr>
+    <tr>
+      <th>243</th>
+      <td>Y2</td>
+      <td>63</td>
+      <td>leisure</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>244</th>
+      <td>Y3</td>
+      <td>10</td>
+      <td>business</td>
+      <td>0.3375</td>
+    </tr>
+    <tr>
+      <th>245</th>
+      <td>Y3</td>
+      <td>10</td>
+      <td>leisure</td>
+      <td>2.3400</td>
+    </tr>
+    <tr>
+      <th>246</th>
+      <td>Y3</td>
+      <td>14</td>
+      <td>business</td>
+      <td>0.3500</td>
+    </tr>
+    <tr>
+      <th>247</th>
+      <td>Y3</td>
+      <td>14</td>
+      <td>leisure</td>
+      <td>3.7925</td>
+    </tr>
+    <tr>
+      <th>248</th>
+      <td>Y3</td>
+      <td>17</td>
+      <td>business</td>
+      <td>0.1750</td>
+    </tr>
+    <tr>
+      <th>249</th>
+      <td>Y3</td>
+      <td>17</td>
+      <td>leisure</td>
+      <td>1.2075</td>
+    </tr>
+    <tr>
+      <th>250</th>
+      <td>Y3</td>
+      <td>21</td>
+      <td>business</td>
+      <td>0.1375</td>
+    </tr>
+    <tr>
+      <th>251</th>
+      <td>Y3</td>
+      <td>21</td>
+      <td>leisure</td>
+      <td>1.3575</td>
+    </tr>
+    <tr>
+      <th>252</th>
+      <td>Y3</td>
+      <td>24</td>
+      <td>business</td>
+      <td>0.1200</td>
+    </tr>
+    <tr>
+      <th>253</th>
+      <td>Y3</td>
+      <td>24</td>
+      <td>leisure</td>
+      <td>1.1300</td>
+    </tr>
+    <tr>
+      <th>254</th>
+      <td>Y3</td>
+      <td>28</td>
+      <td>business</td>
+      <td>0.1250</td>
+    </tr>
+    <tr>
+      <th>255</th>
+      <td>Y3</td>
+      <td>28</td>
+      <td>leisure</td>
+      <td>0.4925</td>
+    </tr>
+    <tr>
+      <th>256</th>
+      <td>Y3</td>
+      <td>31</td>
+      <td>business</td>
+      <td>0.0625</td>
+    </tr>
+    <tr>
+      <th>257</th>
+      <td>Y3</td>
+      <td>31</td>
+      <td>leisure</td>
+      <td>0.0575</td>
+    </tr>
+    <tr>
+      <th>258</th>
+      <td>Y3</td>
+      <td>35</td>
+      <td>business</td>
+      <td>0.1000</td>
+    </tr>
+    <tr>
+      <th>259</th>
+      <td>Y3</td>
+      <td>35</td>
+      <td>leisure</td>
+      <td>0.0650</td>
+    </tr>
+    <tr>
+      <th>260</th>
+      <td>Y3</td>
+      <td>42</td>
+      <td>business</td>
+      <td>0.1925</td>
+    </tr>
+    <tr>
+      <th>261</th>
+      <td>Y3</td>
+      <td>42</td>
+      <td>leisure</td>
+      <td>0.0975</td>
+    </tr>
+    <tr>
+      <th>262</th>
+      <td>Y3</td>
+      <td>49</td>
+      <td>business</td>
+      <td>0.1425</td>
+    </tr>
+    <tr>
+      <th>263</th>
+      <td>Y3</td>
+      <td>49</td>
+      <td>leisure</td>
+      <td>0.0975</td>
+    </tr>
+    <tr>
+      <th>264</th>
+      <td>Y3</td>
+      <td>56</td>
+      <td>business</td>
+      <td>0.1700</td>
+    </tr>
+    <tr>
+      <th>265</th>
+      <td>Y3</td>
+      <td>56</td>
+      <td>leisure</td>
+      <td>0.0775</td>
+    </tr>
+    <tr>
+      <th>266</th>
+      <td>Y3</td>
+      <td>63</td>
+      <td>business</td>
+      <td>0.2125</td>
+    </tr>
+    <tr>
+      <th>267</th>
+      <td>Y3</td>
+      <td>63</td>
+      <td>leisure</td>
+      <td>0.1475</td>
+    </tr>
+    <tr>
+      <th>268</th>
+      <td>Y4</td>
+      <td>17</td>
+      <td>business</td>
+      <td>0.2100</td>
+    </tr>
+    <tr>
+      <th>269</th>
+      <td>Y4</td>
+      <td>17</td>
+      <td>leisure</td>
+      <td>4.6925</td>
+    </tr>
+    <tr>
+      <th>270</th>
+      <td>Y4</td>
+      <td>21</td>
+      <td>business</td>
+      <td>0.2150</td>
+    </tr>
+    <tr>
+      <th>271</th>
+      <td>Y4</td>
+      <td>21</td>
+      <td>leisure</td>
+      <td>6.3175</td>
+    </tr>
+    <tr>
+      <th>272</th>
+      <td>Y4</td>
+      <td>24</td>
+      <td>business</td>
+      <td>0.1625</td>
+    </tr>
+    <tr>
+      <th>273</th>
+      <td>Y4</td>
+      <td>24</td>
+      <td>leisure</td>
+      <td>9.1975</td>
+    </tr>
+    <tr>
+      <th>274</th>
+      <td>Y4</td>
+      <td>28</td>
+      <td>business</td>
+      <td>0.1575</td>
+    </tr>
+    <tr>
+      <th>275</th>
+      <td>Y4</td>
+      <td>28</td>
+      <td>leisure</td>
+      <td>10.1675</td>
+    </tr>
+    <tr>
+      <th>276</th>
+      <td>Y4</td>
+      <td>31</td>
+      <td>business</td>
+      <td>0.1850</td>
+    </tr>
+    <tr>
+      <th>277</th>
+      <td>Y4</td>
+      <td>31</td>
+      <td>leisure</td>
+      <td>5.3150</td>
+    </tr>
+    <tr>
+      <th>278</th>
+      <td>Y4</td>
+      <td>35</td>
+      <td>business</td>
+      <td>0.2450</td>
+    </tr>
+    <tr>
+      <th>279</th>
+      <td>Y4</td>
+      <td>35</td>
+      <td>leisure</td>
+      <td>7.8675</td>
+    </tr>
+    <tr>
+      <th>280</th>
+      <td>Y4</td>
+      <td>42</td>
+      <td>business</td>
+      <td>0.3725</td>
+    </tr>
+    <tr>
+      <th>281</th>
+      <td>Y4</td>
+      <td>42</td>
+      <td>leisure</td>
+      <td>12.0475</td>
+    </tr>
+    <tr>
+      <th>282</th>
+      <td>Y4</td>
+      <td>49</td>
+      <td>business</td>
+      <td>0.2850</td>
+    </tr>
+    <tr>
+      <th>283</th>
+      <td>Y4</td>
+      <td>49</td>
+      <td>leisure</td>
+      <td>11.7225</td>
+    </tr>
+    <tr>
+      <th>284</th>
+      <td>Y4</td>
+      <td>56</td>
+      <td>business</td>
+      <td>0.3675</td>
+    </tr>
+    <tr>
+      <th>285</th>
+      <td>Y4</td>
+      <td>56</td>
+      <td>leisure</td>
+      <td>10.6050</td>
+    </tr>
+    <tr>
+      <th>286</th>
+      <td>Y4</td>
+      <td>63</td>
+      <td>business</td>
+      <td>0.4300</td>
+    </tr>
+    <tr>
+      <th>287</th>
+      <td>Y4</td>
+      <td>63</td>
+      <td>leisure</td>
+      <td>22.9725</td>
+    </tr>
+    <tr>
+      <th>288</th>
+      <td>Y5</td>
+      <td>24</td>
+      <td>business</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>289</th>
+      <td>Y5</td>
+      <td>24</td>
+      <td>leisure</td>
+      <td>3.1300</td>
+    </tr>
+    <tr>
+      <th>290</th>
+      <td>Y5</td>
+      <td>28</td>
+      <td>business</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>291</th>
+      <td>Y5</td>
+      <td>28</td>
+      <td>leisure</td>
+      <td>3.1625</td>
+    </tr>
+    <tr>
+      <th>292</th>
+      <td>Y5</td>
+      <td>31</td>
+      <td>business</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>293</th>
+      <td>Y5</td>
+      <td>31</td>
+      <td>leisure</td>
+      <td>1.6150</td>
+    </tr>
+    <tr>
+      <th>294</th>
+      <td>Y5</td>
+      <td>35</td>
+      <td>business</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>295</th>
+      <td>Y5</td>
+      <td>35</td>
+      <td>leisure</td>
+      <td>2.6600</td>
+    </tr>
+    <tr>
+      <th>296</th>
+      <td>Y5</td>
+      <td>42</td>
+      <td>business</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>297</th>
+      <td>Y5</td>
+      <td>42</td>
+      <td>leisure</td>
+      <td>4.4750</td>
+    </tr>
+    <tr>
+      <th>298</th>
+      <td>Y5</td>
+      <td>49</td>
+      <td>business</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>299</th>
+      <td>Y5</td>
+      <td>49</td>
+      <td>leisure</td>
+      <td>4.6250</td>
+    </tr>
+    <tr>
+      <th>300</th>
+      <td>Y5</td>
+      <td>56</td>
+      <td>business</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>301</th>
+      <td>Y5</td>
+      <td>56</td>
+      <td>leisure</td>
+      <td>4.2675</td>
+    </tr>
+    <tr>
+      <th>302</th>
+      <td>Y5</td>
+      <td>63</td>
+      <td>business</td>
+      <td>0.0025</td>
+    </tr>
+    <tr>
+      <th>303</th>
+      <td>Y5</td>
+      <td>63</td>
+      <td>leisure</td>
+      <td>9.9800</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><h2 id="rx25"><a name="rx25" reftxt="Segmentation by Timeframe Data" class="toc" toclevel="2"></a><span class="xmle_table_caption xmle_caption" xmle_caption="Table">Table 2: </span>Segmentation by Timeframe Data</h2><button class="btn btn-default btn-xs " type="button" data-bs-toggle="collapse" data-bs-target="#rx26" aria-expanded="false" aria-controls="rx26"><i class="bi bi-eye me-1" aria-hidden="true"></i>View Table</button><div class="collapse" id="rx26"><table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>metric</th>
+      <th colspan="2" halign="left">bookings</th>
+      <th colspan="2" halign="left">revenue</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>segment</th>
+      <th>business</th>
+      <th>leisure</th>
+      <th>business</th>
+      <th>leisure</th>
+    </tr>
+    <tr>
+      <th>trial</th>
+      <th>carrier</th>
+      <th>booking_class</th>
+      <th>days_prior</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="168" valign="top">0</th>
+      <th rowspan="76" valign="top">AL1</th>
+      <th rowspan="16" valign="top">Y0</th>
+      <th>1</th>
+      <td>1.8900</td>
+      <td>0.0000</td>
+      <td>1063.0000</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>8.8125</td>
+      <td>0.0150</td>
+      <td>5137.5000</td>
+      <td>7.6250</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>4.7275</td>
+      <td>0.0075</td>
+      <td>2768.0000</td>
+      <td>4.3750</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>4.5125</td>
+      <td>0.0000</td>
+      <td>2673.3750</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>6.4725</td>
+      <td>0.0000</td>
+      <td>3802.7500</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>5.5850</td>
+      <td>0.0000</td>
+      <td>3296.1250</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>2.7700</td>
+      <td>0.0000</td>
+      <td>1623.5000</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>2.3075</td>
+      <td>0.0000</td>
+      <td>1346.6250</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>1.6875</td>
+      <td>0.0000</td>
+      <td>1004.7500</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>1.6875</td>
+      <td>0.0000</td>
+      <td>986.0000</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>1.2125</td>
+      <td>0.0000</td>
+      <td>709.3750</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>1.7175</td>
+      <td>0.0000</td>
+      <td>989.8750</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>2.8325</td>
+      <td>0.0000</td>
+      <td>1655.1250</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>2.3000</td>
+      <td>0.0000</td>
+      <td>1351.6250</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>2.7375</td>
+      <td>0.0000</td>
+      <td>1608.1250</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>3.4225</td>
+      <td>0.0000</td>
+      <td>2008.7500</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th rowspan="16" valign="top">Y1</th>
+      <th>1</th>
+      <td>2.0150</td>
+      <td>0.2825</td>
+      <td>800.6250</td>
+      <td>119.1250</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>8.1900</td>
+      <td>0.4875</td>
+      <td>3319.1250</td>
+      <td>209.2500</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>4.0475</td>
+      <td>0.2550</td>
+      <td>1682.3750</td>
+      <td>119.1250</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>4.1725</td>
+      <td>0.0850</td>
+      <td>1738.1250</td>
+      <td>40.8125</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>6.0050</td>
+      <td>0.0575</td>
+      <td>2526.9375</td>
+      <td>25.5625</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>5.1875</td>
+      <td>0.0325</td>
+      <td>2173.9375</td>
+      <td>14.4375</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>2.4675</td>
+      <td>0.0125</td>
+      <td>1031.5000</td>
+      <td>5.5625</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>1.9625</td>
+      <td>0.0125</td>
+      <td>813.2500</td>
+      <td>5.0000</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>1.6050</td>
+      <td>0.0050</td>
+      <td>666.2500</td>
+      <td>2.0000</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>1.5725</td>
+      <td>0.0000</td>
+      <td>660.3750</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>1.0350</td>
+      <td>0.0000</td>
+      <td>433.7500</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>1.5675</td>
+      <td>0.0000</td>
+      <td>641.3125</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>2.5950</td>
+      <td>0.0000</td>
+      <td>1095.6875</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>2.0450</td>
+      <td>0.0000</td>
+      <td>865.3750</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>2.5150</td>
+      <td>0.0000</td>
+      <td>1035.1250</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>3.1750</td>
+      <td>0.0050</td>
+      <td>1309.2500</td>
+      <td>2.0000</td>
+    </tr>
+    <tr>
+      <th rowspan="14" valign="top">Y2</th>
+      <th>5</th>
+      <td>2.2825</td>
+      <td>2.0075</td>
+      <td>715.2500</td>
+      <td>615.1250</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2.3750</td>
+      <td>0.8000</td>
+      <td>758.6250</td>
+      <td>252.7500</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>3.6850</td>
+      <td>0.3525</td>
+      <td>1174.8750</td>
+      <td>113.0000</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>3.5525</td>
+      <td>0.5375</td>
+      <td>1145.8750</td>
+      <td>181.6250</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>1.5350</td>
+      <td>0.3450</td>
+      <td>502.5000</td>
+      <td>120.6250</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>1.2450</td>
+      <td>0.2250</td>
+      <td>402.0000</td>
+      <td>81.5000</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>0.8850</td>
+      <td>0.0750</td>
+      <td>282.7500</td>
+      <td>25.6250</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>0.8575</td>
+      <td>0.0150</td>
+      <td>276.2500</td>
+      <td>4.8750</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>0.5875</td>
+      <td>0.0000</td>
+      <td>184.3750</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>0.8050</td>
+      <td>0.0000</td>
+      <td>249.1250</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>1.4275</td>
+      <td>0.0000</td>
+      <td>440.3750</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>1.2350</td>
+      <td>0.0000</td>
+      <td>388.0000</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>1.5250</td>
+      <td>0.0000</td>
+      <td>480.3750</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>1.6550</td>
+      <td>0.0000</td>
+      <td>532.7500</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th rowspan="12" valign="top">Y3</th>
+      <th>10</th>
+      <td>0.3525</td>
+      <td>2.1275</td>
+      <td>94.4375</td>
+      <td>500.6250</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>0.2600</td>
+      <td>3.9125</td>
+      <td>70.1250</td>
+      <td>914.8125</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>0.1550</td>
+      <td>1.1625</td>
+      <td>39.3750</td>
+      <td>299.5625</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>0.1375</td>
+      <td>1.3425</td>
+      <td>38.7500</td>
+      <td>353.2500</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>0.0875</td>
+      <td>1.2225</td>
+      <td>23.0000</td>
+      <td>316.9375</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>0.1400</td>
+      <td>0.4800</td>
+      <td>37.6250</td>
+      <td>120.8125</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>0.0900</td>
+      <td>0.0525</td>
+      <td>24.9375</td>
+      <td>11.2500</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>0.1125</td>
+      <td>0.0500</td>
+      <td>31.5625</td>
+      <td>9.0000</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>0.1650</td>
+      <td>0.0900</td>
+      <td>44.7500</td>
+      <td>18.0000</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>0.1500</td>
+      <td>0.0975</td>
+      <td>39.7500</td>
+      <td>18.0000</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>0.1650</td>
+      <td>0.0700</td>
+      <td>43.3125</td>
+      <td>13.8750</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>0.2200</td>
+      <td>0.1875</td>
+      <td>62.9375</td>
+      <td>33.8750</td>
+    </tr>
+    <tr>
+      <th rowspan="10" valign="top">Y4</th>
+      <th>17</th>
+      <td>0.2425</td>
+      <td>4.7100</td>
+      <td>48.6250</td>
+      <td>857.1875</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>0.1950</td>
+      <td>6.3525</td>
+      <td>41.0000</td>
+      <td>1171.6875</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>0.1800</td>
+      <td>8.9975</td>
+      <td>37.3750</td>
+      <td>1690.9375</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>0.1900</td>
+      <td>10.4200</td>
+      <td>40.6250</td>
+      <td>1988.3750</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>0.1600</td>
+      <td>5.4875</td>
+      <td>33.8750</td>
+      <td>1038.5000</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>0.2225</td>
+      <td>8.0575</td>
+      <td>46.1250</td>
+      <td>1533.7500</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>0.3800</td>
+      <td>11.9575</td>
+      <td>81.5625</td>
+      <td>2287.1250</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>0.3100</td>
+      <td>12.1825</td>
+      <td>65.1250</td>
+      <td>2307.0000</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>0.3725</td>
+      <td>10.6225</td>
+      <td>80.5625</td>
+      <td>2013.6250</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>0.4050</td>
+      <td>22.0725</td>
+      <td>86.8750</td>
+      <td>4181.5625</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">Y5</th>
+      <th>24</th>
+      <td>0.0000</td>
+      <td>2.9700</td>
+      <td>0.0000</td>
+      <td>440.5000</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>0.0000</td>
+      <td>3.2625</td>
+      <td>0.0000</td>
+      <td>489.1250</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>0.0000</td>
+      <td>1.7825</td>
+      <td>0.0000</td>
+      <td>266.6250</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>0.0000</td>
+      <td>2.6950</td>
+      <td>0.0000</td>
+      <td>411.5000</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>0.0000</td>
+      <td>4.4850</td>
+      <td>0.0000</td>
+      <td>691.1250</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>0.0000</td>
+      <td>4.8175</td>
+      <td>0.0000</td>
+      <td>750.1250</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>0.0000</td>
+      <td>4.6825</td>
+      <td>0.0000</td>
+      <td>734.5000</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>0.0000</td>
+      <td>9.9075</td>
+      <td>0.0000</td>
+      <td>1565.8750</td>
+    </tr>
+    <tr>
+      <th rowspan="76" valign="top">AL2</th>
+      <th rowspan="16" valign="top">Y0</th>
+      <th>1</th>
+      <td>1.9300</td>
+      <td>0.0025</td>
+      <td>1106.8750</td>
+      <td>1.2500</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>8.6875</td>
+      <td>0.0225</td>
+      <td>5068.2500</td>
+      <td>12.8750</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>4.4325</td>
+      <td>0.0150</td>
+      <td>2628.5000</td>
+      <td>8.7500</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>4.5750</td>
+      <td>0.0000</td>
+      <td>2708.6250</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>6.8500</td>
+      <td>0.0000</td>
+      <td>4023.5000</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>5.3375</td>
+      <td>0.0000</td>
+      <td>3147.6250</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>2.6425</td>
+      <td>0.0000</td>
+      <td>1533.1250</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>2.1750</td>
+      <td>0.0000</td>
+      <td>1273.5000</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>1.7150</td>
+      <td>0.0000</td>
+      <td>1008.5000</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>1.5850</td>
+      <td>0.0000</td>
+      <td>928.6250</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>1.1625</td>
+      <td>0.0000</td>
+      <td>684.3750</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>1.6650</td>
+      <td>0.0000</td>
+      <td>971.2500</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>2.7475</td>
+      <td>0.0000</td>
+      <td>1618.5000</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>2.1625</td>
+      <td>0.0000</td>
+      <td>1264.5000</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>2.9150</td>
+      <td>0.0000</td>
+      <td>1710.3750</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>3.3775</td>
+      <td>0.0000</td>
+      <td>1981.2500</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th rowspan="16" valign="top">Y1</th>
+      <th>1</th>
+      <td>2.1025</td>
+      <td>0.3050</td>
+      <td>842.5625</td>
+      <td>122.6250</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>8.3850</td>
+      <td>0.4850</td>
+      <td>3387.5000</td>
+      <td>218.3125</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>3.8650</td>
+      <td>0.2950</td>
+      <td>1607.3750</td>
+      <td>139.8125</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>4.4450</td>
+      <td>0.0800</td>
+      <td>1874.6875</td>
+      <td>35.7500</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>6.0800</td>
+      <td>0.0750</td>
+      <td>2547.2500</td>
+      <td>36.7500</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>5.1800</td>
+      <td>0.0475</td>
+      <td>2165.0625</td>
+      <td>20.1875</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>2.5575</td>
+      <td>0.0050</td>
+      <td>1066.1875</td>
+      <td>2.0000</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>2.1900</td>
+      <td>0.0025</td>
+      <td>902.3125</td>
+      <td>1.0000</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>1.5675</td>
+      <td>0.0025</td>
+      <td>652.0000</td>
+      <td>1.0000</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>1.5775</td>
+      <td>0.0025</td>
+      <td>649.1250</td>
+      <td>1.0000</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>1.0475</td>
+      <td>0.0025</td>
+      <td>435.7500</td>
+      <td>1.0000</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>1.4975</td>
+      <td>0.0000</td>
+      <td>629.2500</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>2.5900</td>
+      <td>0.0000</td>
+      <td>1082.1250</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>2.0925</td>
+      <td>0.0025</td>
+      <td>862.6875</td>
+      <td>1.0000</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>2.4950</td>
+      <td>0.0000</td>
+      <td>1020.6250</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>2.9425</td>
+      <td>0.0000</td>
+      <td>1213.3125</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th rowspan="14" valign="top">Y2</th>
+      <th>5</th>
+      <td>2.3200</td>
+      <td>2.1175</td>
+      <td>729.5000</td>
+      <td>660.7500</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2.4350</td>
+      <td>0.8900</td>
+      <td>778.3750</td>
+      <td>278.2500</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>3.9050</td>
+      <td>0.4275</td>
+      <td>1295.7500</td>
+      <td>145.1250</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>3.3625</td>
+      <td>0.6200</td>
+      <td>1103.3750</td>
+      <td>207.3750</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>1.5600</td>
+      <td>0.3525</td>
+      <td>498.0000</td>
+      <td>124.8750</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>1.2250</td>
+      <td>0.2000</td>
+      <td>393.2500</td>
+      <td>68.0000</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>0.8350</td>
+      <td>0.0600</td>
+      <td>266.6250</td>
+      <td>20.5000</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>0.9000</td>
+      <td>0.0075</td>
+      <td>285.3750</td>
+      <td>2.2500</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>0.5775</td>
+      <td>0.0000</td>
+      <td>184.0000</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>0.8475</td>
+      <td>0.0000</td>
+      <td>259.2500</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>1.3575</td>
+      <td>0.0000</td>
+      <td>421.1250</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>1.1425</td>
+      <td>0.0000</td>
+      <td>359.3750</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>1.2875</td>
+      <td>0.0000</td>
+      <td>408.5000</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>1.7975</td>
+      <td>0.0000</td>
+      <td>553.1250</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th rowspan="12" valign="top">Y3</th>
+      <th>10</th>
+      <td>0.3375</td>
+      <td>2.3400</td>
+      <td>93.0625</td>
+      <td>543.3125</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>0.3500</td>
+      <td>3.7925</td>
+      <td>94.5000</td>
+      <td>885.0000</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>0.1750</td>
+      <td>1.2075</td>
+      <td>49.8125</td>
+      <td>316.5000</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>0.1375</td>
+      <td>1.3575</td>
+      <td>38.1875</td>
+      <td>356.0625</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>0.1200</td>
+      <td>1.1300</td>
+      <td>34.7500</td>
+      <td>295.9375</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>0.1250</td>
+      <td>0.4925</td>
+      <td>33.0000</td>
+      <td>124.4375</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>0.0625</td>
+      <td>0.0575</td>
+      <td>17.5000</td>
+      <td>10.9375</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>0.1000</td>
+      <td>0.0650</td>
+      <td>28.8750</td>
+      <td>12.7500</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>0.1925</td>
+      <td>0.0975</td>
+      <td>54.6875</td>
+      <td>16.6875</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>0.1425</td>
+      <td>0.0975</td>
+      <td>38.4375</td>
+      <td>18.8125</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>0.1700</td>
+      <td>0.0775</td>
+      <td>45.7500</td>
+      <td>14.8750</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>0.2125</td>
+      <td>0.1475</td>
+      <td>57.0000</td>
+      <td>28.2500</td>
+    </tr>
+    <tr>
+      <th rowspan="10" valign="top">Y4</th>
+      <th>17</th>
+      <td>0.2100</td>
+      <td>4.6925</td>
+      <td>43.3125</td>
+      <td>848.4375</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>0.2150</td>
+      <td>6.3175</td>
+      <td>44.2500</td>
+      <td>1173.1875</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>0.1625</td>
+      <td>9.1975</td>
+      <td>33.5625</td>
+      <td>1723.6250</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>0.1575</td>
+      <td>10.1675</td>
+      <td>33.2500</td>
+      <td>1927.0625</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>0.1850</td>
+      <td>5.3150</td>
+      <td>38.1250</td>
+      <td>1008.7500</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>0.2450</td>
+      <td>7.8675</td>
+      <td>51.3750</td>
+      <td>1498.4375</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>0.3725</td>
+      <td>12.0475</td>
+      <td>79.3125</td>
+      <td>2301.7500</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>0.2850</td>
+      <td>11.7225</td>
+      <td>60.5625</td>
+      <td>2215.4375</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>0.3675</td>
+      <td>10.6050</td>
+      <td>81.0625</td>
+      <td>2029.3750</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>0.4300</td>
+      <td>22.9725</td>
+      <td>91.0000</td>
+      <td>4350.4375</td>
+    </tr>
+    <tr>
+      <th rowspan="8" valign="top">Y5</th>
+      <th>24</th>
+      <td>0.0000</td>
+      <td>3.1300</td>
+      <td>0.0000</td>
+      <td>459.3750</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>0.0000</td>
+      <td>3.1625</td>
+      <td>0.0000</td>
+      <td>467.0000</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>0.0000</td>
+      <td>1.6150</td>
+      <td>0.0000</td>
+      <td>241.0000</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>0.0000</td>
+      <td>2.6600</td>
+      <td>0.0000</td>
+      <td>401.1250</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>0.0000</td>
+      <td>4.4750</td>
+      <td>0.0000</td>
+      <td>690.6250</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>0.0000</td>
+      <td>4.6250</td>
+      <td>0.0000</td>
+      <td>715.8750</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>0.0000</td>
+      <td>4.2675</td>
+      <td>0.0000</td>
+      <td>667.2500</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>0.0025</td>
+      <td>9.9800</td>
+      <td>0.5000</td>
+      <td>1578.5000</td>
+    </tr>
+    <tr>
+      <th rowspan="16" valign="top">NONE</th>
+      <th rowspan="16" valign="top">XX</th>
+      <th>1</th>
+      <td>6.3350</td>
+      <td>6.9575</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>14.6925</td>
+      <td>10.4075</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1.4450</td>
+      <td>14.7725</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.8675</td>
+      <td>5.5575</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0.4375</td>
+      <td>6.1175</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>0.0650</td>
+      <td>10.0375</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>NaN</td>
+      <td>6.5475</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>NaN</td>
+      <td>7.1300</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>NaN</td>
+      <td>3.7925</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>NaN</td>
+      <td>2.5425</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>NaN</td>
+      <td>0.9400</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>NaN</td>
+      <td>1.1000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>NaN</td>
+      <td>1.2675</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>NaN</td>
+      <td>0.7275</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>NaN</td>
+      <td>0.2425</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>NaN</td>
+      <td>0.2225</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table></div><h2 id="rx27"><a name="rx27" reftxt="Load Factor Frequency by Carrier" class="toc" toclevel="2"></a><span class="xmle_figure_caption xmle_caption" xmle_caption="Figure">Figure 12: </span>Load Factor Frequency by Carrier</h2><div class="altair-figure"><div id="vis_eXTMZi4g"></div><script type="text/javascript">vegaEmbed('#vis_eXTMZi4g', {"$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "config": {"axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "bar": {"color": "#6a3d9a"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "line": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"anchor": "start", "font": "Roboto, Arial, sans-serif", "fontSize": 18, "offset": 8}, "view": {"continuousHeight": 300, "continuousWidth": 400}}, "data": {"name": "data-d86ed6c5db9d283b306f0187178b3371"}, "datasets": {"data-d86ed6c5db9d283b306f0187178b3371": [{"avg_load_factor_category": "0-24", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "25-29", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "30-34", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "35-39", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "40-44", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "45-49", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "50-54", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "55-59", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "60-64", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "65-69", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "70-74", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "75-79", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "80-84", "carrier": "AL1", "frequency": 2}, {"avg_load_factor_category": "85-89", "carrier": "AL1", "frequency": 2}, {"avg_load_factor_category": "90-94", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "95-100", "carrier": "AL1", "frequency": 0}, {"avg_load_factor_category": "0-24", "carrier": "AL2", "frequency": 0}, {"avg_load_factor_category": "25-29", "carrier": "AL2", "frequency": 0}, {"avg_load_factor_category": "30-34", "carrier": "AL2", "frequency": 0}, {"avg_load_factor_category": "35-39", "carrier": "AL2", "frequency": 0}, {"avg_load_factor_category": "40-44", "carrier": "AL2", "frequency": 0}, {"avg_load_factor_category": "45-49", "carrier": "AL2", "frequency": 0}, {"avg_load_factor_category": "50-54", "carrier": "AL2", "frequency": 0}, {"avg_load_factor_category": "55-59", "carrier": "AL2", "frequency": 0}, {"avg_load_factor_category": "60-64", "carrier": "AL2", "frequency": 0}, {"avg_load_factor_category": "65-69", "carrier": "AL2", "frequency": 0}, {"avg_load_factor_category": "70-74", "carrier": "AL2", "frequency": 0}, {"avg_load_factor_category": "75-79", "carrier": "AL2", "frequency": 0}, {"avg_load_factor_category": "80-84", "carrier": "AL2", "frequency": 2}, {"avg_load_factor_category": "85-89", "carrier": "AL2", "frequency": 2}, {"avg_load_factor_category": "90-94", "carrier": "AL2", "frequency": 0}, {"avg_load_factor_category": "95-100", "carrier": "AL2", "frequency": 0}]}, "encoding": {"color": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "facet": {"columns": 2, "field": "carrier", "title": "Carrier", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_load_factor_category", "title": "Load Factor Range", "type": "ordinal"}, {"field": "frequency", "title": "Count", "type": "quantitative"}], "x": {"field": "avg_load_factor_category", "sort": ["0-24", "25-29", "30-34", "35-39", "40-44", "45-49", "50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80-84", "85-89", "90-94", "95-100"], "title": "Load Factor Range", "type": "ordinal"}, "y": {"field": "frequency", "title": "Count", "type": "quantitative"}}, "height": 250, "mark": {"type": "bar"}, "title": "", "width": 300}).catch(console.error);</script></div><button class="btn btn-default btn-xs fst-italic text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#rx28" aria-expanded="false" aria-controls="rx28"><i class="bi bi-eye me-1" aria-hidden="true"></i>View Underlying Data</button><div class="collapse" id="rx28"><div>
+<style scoped="1">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carrier</th>
+      <th>avg_load_factor_category</th>
+      <th>frequency</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AL1</td>
+      <td>0-24</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AL1</td>
+      <td>25-29</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AL1</td>
+      <td>30-34</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>AL1</td>
+      <td>35-39</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>AL1</td>
+      <td>40-44</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>AL1</td>
+      <td>45-49</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>AL1</td>
+      <td>50-54</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>AL1</td>
+      <td>55-59</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>AL1</td>
+      <td>60-64</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>AL1</td>
+      <td>65-69</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>AL1</td>
+      <td>70-74</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>AL1</td>
+      <td>75-79</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>AL1</td>
+      <td>80-84</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>AL1</td>
+      <td>85-89</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>AL1</td>
+      <td>90-94</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>AL1</td>
+      <td>95-100</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>AL2</td>
+      <td>0-24</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>AL2</td>
+      <td>25-29</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>AL2</td>
+      <td>30-34</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>AL2</td>
+      <td>35-39</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>AL2</td>
+      <td>40-44</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>AL2</td>
+      <td>45-49</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>AL2</td>
+      <td>50-54</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>AL2</td>
+      <td>55-59</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>AL2</td>
+      <td>60-64</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>AL2</td>
+      <td>65-69</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>AL2</td>
+      <td>70-74</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>AL2</td>
+      <td>75-79</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>AL2</td>
+      <td>80-84</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>AL2</td>
+      <td>85-89</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>AL2</td>
+      <td>90-94</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>AL2</td>
+      <td>95-100</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><h2 id="rx29"><a name="rx29" reftxt="Carrier Local Percent of Bookings" class="toc" toclevel="2"></a><span class="xmle_figure_caption xmle_caption" xmle_caption="Figure">Figure 13: </span>Carrier Local Percent of Bookings</h2><div class="altair-figure"><div id="vis_DZWk5IUd"></div><script type="text/javascript">vegaEmbed('#vis_DZWk5IUd', {"$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "config": {"axis": {"labelFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFont": "Roboto, Arial, sans-serif", "titleFontSize": 12}, "bar": {"color": "#6a3d9a"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFont": "Roboto, Arial, sans-serif", "titleFontSize": 12}, "line": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"anchor": "start", "font": "Roboto, Arial, sans-serif", "fontSize": 18, "offset": 8}, "view": {"continuousHeight": 300, "continuousWidth": 400}}, "data": {"name": "data-287450dca645dccdd9185e1db832d670"}, "datasets": {"data-287450dca645dccdd9185e1db832d670": [{"carrier": "AL1", "local_pct_bookings": 65.85072794246624}, {"carrier": "AL2", "local_pct_bookings": 66.01484604910617}]}, "height": 50, "layer": [{"encoding": {"color": {"field": "carrier", "legend": null, "title": "Carrier", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "local_pct_bookings", "format": ".2f", "title": "Local Percent of Bookings", "type": "quantitative"}], "x": {"field": "local_pct_bookings", "stack": "zero", "title": "Local Percent of Bookings", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "mark": {"type": "bar"}}, {"encoding": {"text": {"field": "local_pct_bookings", "format": ".2f", "type": "quantitative"}, "x": {"field": "local_pct_bookings", "stack": "zero", "title": "Local Percent of Bookings", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "mark": {"align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0, "type": "text"}}], "title": "", "width": 500}).catch(console.error);</script></div><button class="btn btn-default btn-xs fst-italic text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#rx30" aria-expanded="false" aria-controls="rx30"><i class="bi bi-eye me-1" aria-hidden="true"></i>View Underlying Data</button><div class="collapse" id="rx30"><div>
+<style scoped="1">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carrier</th>
+      <th>local_pct_bookings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AL1</td>
+      <td>65.850728</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AL2</td>
+      <td>66.014846</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><h2 id="rx31"><a name="rx31" reftxt="Carrier Local Percent of Leg Passengers" class="toc" toclevel="2"></a><span class="xmle_figure_caption xmle_caption" xmle_caption="Figure">Figure 14: </span>Carrier Local Percent of Leg Passengers</h2><div class="altair-figure"><div id="vis_DFjvRAe7"></div><script type="text/javascript">vegaEmbed('#vis_DFjvRAe7', {"$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "config": {"axis": {"labelFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFont": "Roboto, Arial, sans-serif", "titleFontSize": 12}, "bar": {"color": "#6a3d9a"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFont": "Roboto, Arial, sans-serif", "titleFontSize": 12}, "line": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"anchor": "start", "font": "Roboto, Arial, sans-serif", "fontSize": 18, "offset": 8}, "view": {"continuousHeight": 300, "continuousWidth": 400}}, "data": {"name": "data-1b4eb606749ccfd55d5ec6c00bccfdde"}, "datasets": {"data-1b4eb606749ccfd55d5ec6c00bccfdde": [{"carrier": "AL1", "local_pct_leg_pax": 49.087652085226566}, {"carrier": "AL2", "local_pct_leg_pax": 49.27026920706521}]}, "height": 50, "layer": [{"encoding": {"color": {"field": "carrier", "legend": null, "title": "Carrier", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "local_pct_leg_pax", "format": ".2f", "title": "Local Percent of Leg Passengers", "type": "quantitative"}], "x": {"field": "local_pct_leg_pax", "stack": "zero", "title": "Local Percent of Leg Passengers", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "mark": {"type": "bar"}}, {"encoding": {"text": {"field": "local_pct_leg_pax", "format": ".2f", "type": "quantitative"}, "x": {"field": "local_pct_leg_pax", "stack": "zero", "title": "Local Percent of Leg Passengers", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "mark": {"align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0, "type": "text"}}], "title": "", "width": 500}).catch(console.error);</script></div><button class="btn btn-default btn-xs fst-italic text-muted" type="button" data-bs-toggle="collapse" data-bs-target="#rx32" aria-expanded="false" aria-controls="rx32"><i class="bi bi-eye me-1" aria-hidden="true"></i>View Underlying Data</button><div class="collapse" id="rx32"><div>
+<style scoped="1">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carrier</th>
+      <th>local_pct_leg_pax</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AL1</td>
+      <td>49.087652</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AL2</td>
+      <td>49.270269</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div><div><h1 id="configuration">Configuration<a name="configuration" reftxt="Configuration" class="{}" toclevel="1"></a></h1><div><h2 id="carriers:">carriers:<a name="carriers:" reftxt="carriers:" class="{}" toclevel="2"></a></h2><pre>  AL1:
+    ancillaries: {}
+    brand_preference: 1.0
+    classes:
+    - Y0
+    - Y1
+    - Y2
+    - Y3
+    - Y4
+    - Y5
+    control: ''
+    cp_algorithm: null
+    cp_bounds: 1.0
+    cp_elasticity: null
+    cp_quantize: 0
+    cp_record: highest_closed
+    cp_record_highest_closed_as_open: false
+    cp_scale: 1.0
+    cp_upper_bound: 1.0
+    fare_adjustment_scale: 1.0
+    frat5: ''
+    frat5_map: {}
+    history_length: 26
+    load_factor_curve: null
+    name: AL1
+    proration_rule: distance
+    rm_system: rm_test1
+    rm_system_options: null
+    truncation_rule: 3
+  AL2:
+    ancillaries: {}
+    brand_preference: 1.0
+    classes:
+    - Y0
+    - Y1
+    - Y2
+    - Y3
+    - Y4
+    - Y5
+    control: ''
+    cp_algorithm: null
+    cp_bounds: 1.0
+    cp_elasticity: null
+    cp_quantize: 0
+    cp_record: highest_closed
+    cp_record_highest_closed_as_open: false
+    cp_scale: 1.0
+    cp_upper_bound: 1.0
+    fare_adjustment_scale: 1.0
+    frat5: ''
+    frat5_map: {}
+    history_length: 26
+    load_factor_curve: null
+    name: AL2
+    proration_rule: distance
+    rm_system: rm_test1
+    rm_system_options: null
+    truncation_rule: 3
+  </pre><div><h2 id="rm_systems:">rm_systems:<a name="rm_systems:" reftxt="rm_systems:" class="{}" toclevel="2"></a></h2><pre>  rm_no_detruncation:
+    availability_control: leg
+    description: ''
+    frat5: null
+    name: rm_no_detruncation
+    processes:
+      dcp:
+      - algorithm: none
+        debug_filters: []
+        initialization_method: default
+        kind: leg
+        maxiter: 20
+        minimum_mu: 0.01
+        minimum_sigma: 0.1
+        name: untruncation
+        step_type: untruncation
+        tolerance: 0.01
+        which_data: total
+      - algorithm: additive_pickup
+        alpha: 0.1
+        debug_filters: []
+        fare_adjustment: null
+        fare_adjustment_scale: 1.0
+        kind: leg
+        max_cap: 0.0
+        name: forecast
+        q_allocation_algorithm: tf
+        regression_weight: sellup
+        step_type: forecast
+        variance_is_ratio_of_mean: 0.0
+        variance_rollup_algorithm: tf
+        weighted_by_ratio: true
+      - algorithm: emsrb
+        cabins: null
+        debug_filters: []
+        kind: leg
+        name: optimization
+        snapshot_filters: []
+        step_type: emsr
+  rm_test1:
+    availability_control: leg
+    description: ''
+    frat5: null
+    name: rm_test1
+    processes:
+      dcp:
+      - algorithm: em
+        debug_filters: []
+        initialization_method: default
+        kind: leg
+        maxiter: 20
+        minimum_mu: 0.01
+        minimum_sigma: 0.1
+        name: untruncation
+        step_type: untruncation
+        tolerance: 0.01
+        which_data: total
+      - algorithm: additive_pickup
+        alpha: 0.15
+        debug_filters: []
+        fare_adjustment: null
+        fare_adjustment_scale: 1.0
+        kind: leg
+        max_cap: 0.0
+        name: forecast
+        q_allocation_algorithm: tf
+        regression_weight: sellup
+        step_type: forecast
+        variance_is_ratio_of_mean: 0.0
+        variance_rollup_algorithm: tf
+        weighted_by_ratio: true
+      - algorithm: emsrb
+        cabins: null
+        debug_filters: []
+        kind: leg
+        name: optimization
+        snapshot_filters: []
+        step_type: emsr
+  rm_test2:
+    availability_control: bp
+    description: ''
+    frat5: null
+    name: rm_test2
+    processes:
+      dcp:
+      - algorithm: em
+        debug_filters: []
+        initialization_method: default
+        kind: path
+        maxiter: 20
+        minimum_mu: 0.01
+        minimum_sigma: 0.1
+        name: untruncation
+        step_type: untruncation
+        tolerance: 0.01
+        which_data: total
+      - algorithm: exp_smoothing
+        alpha: 0.15
+        debug_filters: []
+        fare_adjustment: null
+        fare_adjustment_scale: 1.0
+        kind: path
+        max_cap: 0.0
+        name: path_forecast
+        q_allocation_algorithm: tf
+        regression_weight: sellup
+        step_type: forecast
+        variance_is_ratio_of_mean: 0.0
+        variance_rollup_algorithm: tf
+        weighted_by_ratio: true
+      - bid_price_vector: false
+        cabins: []
+        capacity_sharing: false
+        capacity_sharing_start_dcp_index: 0
+        debug_filters: []
+        kind: path
+        maxiter: 10
+        name: optimization
+        snapshot_filters: []
+        step_type: probp
+        use_adjusted_fares: false
+      - debug_filters: []
+        name: aggregate
+        step_type: aggregation
+      - algorithm: emsrb
+        cabins: null
+        debug_filters: []
+        kind: leg
+        name: optimization
+        snapshot_filters: []
+        step_type: emsr
+  </pre><div><h2 id="simulation_controls:">simulation_controls:<a name="simulation_controls:" reftxt="simulation_controls:" class="{}" toclevel="2"></a></h2><pre>  additional_settings: {}
+  allow_unused_restrictions: false
+  base_date: '2020-03-01'
+  burn_samples: 100
+  capacity_multiplier: 1.0
+  capture_choice_set_file: ''
+  capture_choice_set_mkts: []
+  capture_choice_set_obs: null
+  capture_competitor_data: false
+  controller_time_zone: -21600
+  dcp_hour: 0.0
+  debug_availability: false
+  debug_choice: false
+  debug_connections: false
+  debug_events: false
+  debug_fares: false
+  debug_offers: false
+  debug_orders: false
+  demand_multiplier: 1.0
+  disable_ap: false
+  double_capacity_until: null
+  dwm_lite: false
+  generate_3seg: false
+  manual_paths: false
+  max_connect_time: 120
+  mkt_k_factor: 0.15
+  num_samples: 500
+  num_trials: 1
+  pax_type_k_factor: 0.0
+  prorate_revenue: true
+  random_seed: 42
+  save_all_offers: false
+  save_orders: false
+  segment_k_factor: 0.0
+  show_progress_bar: true
+  simple_cv100: 0.0
+  simple_k_factor: 0.2
+  sys_k_factor: 0.1
+  tf_k_factor: 0.1
+  tf_z_factor: 1.0
+  timeframe_demand_allocation: pods
+  tot_z_factor: 2.0
+  update_frequency: null
+  write_raw_files: false
+  </pre><div><h2 id="db:">db:<a name="db:" reftxt="db:" class="{}" toclevel="2"></a></h2><pre>  commit_count_delay: 250
+  dcp_write_hooks: []
+  engine: sqlite
+  fast: true
+  filename: ':memory:'
+  pragmas: []
+  store_displacements: true
+  store_leg_bid_prices: true
+  write_items: !!set
+    bookings: null
+    bucket: null
+    demand: null
+    fare: null
+    leg: null
+    pathclass: null
+  </pre><div><h2 id="outputs:">outputs:<a name="outputs:" reftxt="outputs:" class="{}" toclevel="2"></a></h2><pre>  disk: true
+  excel: null
+  html:
+    bid_price_history: true
+    bookings_by_timeframe: true
+    carrier_load_factors: true
+    carrier_local_share: true
+    carrier_rasm: true
+    carrier_revenue_distribution: false
+    carrier_revenues: true
+    carrier_table: true
+    carrier_total_bookings: true
+    carrier_yields: true
+    configs:
+    - carriers
+    - rm_systems
+    - simulation_controls
+    - db
+    - outputs
+    displacement_history: true
+    fare_class_mix: true
+    filename: demo-output/baseline/passengersim_output
+    leg_load_factor_distribution: true
+    metadata: true
+    other: []
+    segmentation_by_timeframe_table: true
+    title: baseline
+  log_reports: false
+  pickle: null
+  reports:
+  - bookings_by_timeframe
+  - carrier_history
+  - demand_to_come
+  - fare_class_mix
+  - leg_forecasts
+  - load_factors
+  - total_demand
+  </pre></div></div></div></div></div></div><div><h1 id="metadata">Metadata<a name="metadata" reftxt="Metadata" class="{}" toclevel="1"></a></h1><div>
+<style scoped="1">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>key</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>time.created</td>
+      <td>2025-11-12T15:04:24.230298+00:00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>machine.system</td>
+      <td>Darwin</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>machine.release</td>
+      <td>24.5.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>machine.version</td>
+      <td>Darwin Kernel Version 24.5.0: Tue Apr 22 19:54...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>machine.machine</td>
+      <td>arm64</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>machine.processor</td>
+      <td>arm</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>machine.architecture</td>
+      <td>(64bit, )</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>machine.node</td>
+      <td>Nightshade.local</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>machine.platform</td>
+      <td>macOS-15.5-arm64-arm-64bit</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>machine.python_version</td>
+      <td>3.12.11</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>machine.cpu_count</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>version.passengersim</td>
+      <td>0.58</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>version.passengersim_core</td>
+      <td>0.59.dev1+g671876c7d</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>time.started</td>
+      <td>2025-11-12T15:04:19.943662+00:00</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>time.runtime</td>
+      <td>4.310435</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>time.finished</td>
+      <td>2025-11-12T15:04:24.254097+00:00</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div></div></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script></body></html>
