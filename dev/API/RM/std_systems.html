@@ -362,6 +362,8 @@
       
         
       
+        
+      
     
     
     
@@ -985,6 +987,30 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#passengersim.rm.standard_systems.L" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;L
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=" L">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.rm.standard_systems.L.availability_control" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;availability_control
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#passengersim.rm.standard_systems.M" class="md-nav__link">
     <span class="md-ellipsis">
       <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;M
@@ -1354,6 +1380,30 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#passengersim.rm.standard_systems.L" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;L
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=" L">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.rm.standard_systems.L.availability_control" class="md-nav__link">
+    <span class="md-ellipsis">
+      <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;availability_control
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#passengersim.rm.standard_systems.M" class="md-nav__link">
     <span class="md-ellipsis">
       <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;M
@@ -1485,13 +1535,13 @@ EMSR-B, or 'a' for EMSR-A.  At this time only 'b' is supported.</p>
         </li>
         <li class="doc-section-item field-body">
             <b><code>forecast_algorithm</code></b>
-              (<code>(<span title="additive_pickup">additive_pickup</span>, <span title="multiplicative_pickup">multiplicative_pickup</span>)</code>, default:
+              (<code>(<span title="additive_pickup">additive_pickup</span>, <span title="exp_smoothing">exp_smoothing</span>, <span title="multiplicative_pickup">multiplicative_pickup</span>)</code>, default:
                   <code>&#39;additive_pickup&#39;</code>
 )
           –
           <div class="doc-md-description">
             <p>Specifies which leg-level forecasting algorithm to use for generating
-leg demand forecasts.  Options are 'additive_pickup' or
+leg demand forecasts.  Options are 'additive_pickup', 'exp_smoothing', or
 'multiplicative_pickup'.  The default is 'additive_pickup'.</p>
           </div>
         </li>
@@ -1606,13 +1656,13 @@ optimization, along with EM untruncation and standard leg forecasting.</p>
     <ul>
         <li class="doc-section-item field-body">
             <b><code>forecast_algorithm</code></b>
-              (<code>(<span title="additive_pickup">additive_pickup</span>, <span title="multiplicative_pickup">multiplicative_pickup</span>)</code>, default:
+              (<code>(<span title="additive_pickup">additive_pickup</span>, <span title="exp_smoothing">exp_smoothing</span>, <span title="multiplicative_pickup">multiplicative_pickup</span>)</code>, default:
                   <code>&#39;additive_pickup&#39;</code>
 )
           –
           <div class="doc-md-description">
             <p>Specifies which leg-level forecasting algorithm to use for generating
-leg demand forecasts.  Options are 'additive_pickup' or
+leg demand forecasts.  Options are 'additive_pickup', 'exp_smoothing', or
 'multiplicative_pickup'.  The default is 'additive_pickup'.</p>
           </div>
         </li>
@@ -1745,20 +1795,20 @@ optimization, along with EM untruncation and standard leg forecasting.</p>
     <ul>
         <li class="doc-section-item field-body">
             <b><code>forecast_algorithm</code></b>
-              (<code>(<span title="additive_pickup">additive_pickup</span>, <span title="multiplicative_pickup">multiplicative_pickup</span>)</code>, default:
+              (<code>(<span title="additive_pickup">additive_pickup</span>, <span title="exp_smoothing">exp_smoothing</span>, <span title="multiplicative_pickup">multiplicative_pickup</span>)</code>, default:
                   <code>&#39;additive_pickup&#39;</code>
 )
           –
           <div class="doc-md-description">
             <p>Specifies which leg-level forecasting algorithm to use for generating
-leg demand forecasts.  Options are 'additive_pickup' or
+leg demand forecasts.  Options are 'additive_pickup', 'exp_smoothing', or
 'multiplicative_pickup'.  The default is 'additive_pickup'.</p>
           </div>
         </li>
         <li class="doc-section-item field-body">
             <b><code>arrivals_per_time_slice</code></b>
               (<code><span title="float">float</span></code>, default:
-                  <code>1.0</code>
+                  <code>0.5</code>
 )
           –
           <div class="doc-md-description">
@@ -1770,8 +1820,8 @@ to the theoretical continuous-time model, but increased computational
 time. Note that achieving a closer match to the continuous-time model
 may not always lead to better RM performance, as the actual customer
 arrival process may deviate from the Poisson assumption in practice
-(and in PassengerSim simulations). The default value is 1.0, which
-provides the fastest computational speed, while still capturing all
+(and in PassengerSim simulations). The default value is 0.5, which
+provides reasonably fast computational speed, while still capturing all
 forecast demand in the dynamic program.</p>
           </div>
         </li>
@@ -1866,6 +1916,249 @@ forecast demand in the dynamic program.</p>
 
 
 
+<h2 id="passengersim.rm.standard_systems.L" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code>            <span class="doc doc-object-name doc-class-name">L</span>
+
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="            RmSys (passengersim.rm.systems.RmSys)" href="bases.html#passengersim.rm.systems.RmSys">RmSys</a></code></p>
+
+
+        <p>A standard RM system of type "L".</p>
+<p>This RM system uses leg-level seat allocation controls with EMSR-B
+optimization, along with EM untruncation of yieldable demand and hybrid
+conditional leg forecasting.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+            <b><code>emsr_variant</code></b>
+              (<code>(<span title="b">b</span>, <span title="a">a</span>)</code>, default:
+                  <code>&#39;b&#39;</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Specifies which variant of the EMSR algorithm to use, either 'b' for
+EMSR-B, or 'a' for EMSR-A.  At this time only 'b' is supported.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>forecast_algorithm</code></b>
+              (<code>(<span title="additive_pickup">additive_pickup</span>, <span title="exp_smoothing">exp_smoothing</span>, <span title="multiplicative_pickup">multiplicative_pickup</span>)</code>, default:
+                  <code>&#39;additive_pickup&#39;</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Specifies which leg-level forecasting algorithm to use for generating
+leg demand forecasts.  Options are 'additive_pickup', 'exp_smoothing', or
+'multiplicative_pickup'.  The default is 'additive_pickup'.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>fare_adjustment</code></b>
+              (<code>(<span title="mr">mr</span>, <span title="ki">ki</span>, None)</code>, default:
+                  <code>&#39;mr&#39;</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Specifies the type of fare adjustment to apply in the conditional path
+forecasting algorithm. The first option is 'mr' for marginal revenue
+adjustment, inspired by the work of Fiig, Isler, Hopperstad, and Belobaba (2010),
+which assumes a continuous pricing curve with a negative exponential
+customer sellup function. The second option is 'ki' for Karl Isler's method,
+which is a discrete pricing adjustment method that assumes no particular
+functional form of the customer sellup function. It is also possible to select
+<code>None</code> for no fare adjustment, although this is not usually recommended
+except for restricted product sets.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>fare_adjustment_scale</code></b>
+              (<code><span title="float">float</span></code>, default:
+                  <code>0.5</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Specifies the scale factor to use for fare adjustment in the conditional
+path forecasting algorithm. This factor determines the magnitude of the
+fare adjustment applied to the forecasts. A value of 1.0 applies the full
+adjustment, while values less than 1.0 scale down the adjustment. In
+practice, smaller values are used when the product sets are more restricted,
+and higher values are used when the product sets are less restricted.
+Theoretically, the full fare adjustment scale of 1.0 would be appropriate
+for completely unrestricted product sets, while no fare adjustment (0.0)
+should be used for heavily restricted product sets.  The default setting
+of 0.5 is a moderate adjustment that works reasonably well in cases with
+semi-restricted product sets.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>regression_weight</code></b>
+              (<code>(None, <span title="sellup">sellup</span>, <span title="sellup">sellup</span> ^ 2, <span title="fare">fare</span>, <span title="none">none</span>)</code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Specifies the type of regression weight to use in the conditional path
+forecasting algorithm. Options are 'sellup' to weight by sellup factor,
+'sellup^2' to weight by the square of the sellup factor, 'fare' to weight
+by fare amount, 'none' for no weighting.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>variance_rollup_algorithm</code></b>
+              (<code>(<span title="tf">tf</span>, <span title="dep">dep</span>)</code>, default:
+                  <code>&#39;tf&#39;</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Specifies how to roll up variance when combining priceable and yieldable forecasts.
+Options are 'tf' to roll up variance by time frame, or 'dep' to roll up variance
+to departure. This setting has no effect if the <code>variance_is_ratio_of_mean</code>
+parameter is set to a value greater than zero.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>variance_is_ratio_of_mean</code></b>
+              (<code><span title="float">float</span></code>, default:
+                  <code>2.0</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Assume that the variance is this ratio of the mean. When this is set to a
+value greater than zero, the variance of the forecast is set to this fixed
+ratio of the mean.  Note that many algorithms for optimization use the
+forecast standard deviation, which is the square root of the variance, but it is
+the variance that is set to this ratio times the mean.
+When set to zero (the default), the variance is computed from mean squared error
+of the linear regression model used to compute the mean, and is not a fixed ratio
+of the mean. The default value of 2.0 is reflective of methods used in practice.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>max_cap</code></b>
+              (<code><span title="float">float</span></code>, default:
+                  <code>0.0</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Maximum weighting factor for the conditional forecast. If set to a value
+greater than zero, the weighting factor used in the conditional forecast is
+capped at this maximum value to prevent excessively high weights from extreme
+sellup factors.  The max cap will be more important when the regression weight
+is set to 'sellup^2', as this weighting can grow very large for extreme sellup
+factors. If this is applied, it is recommended to set the cap to 10.0, which is
+consistent with prior work on hybrid forecasting methods.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>q_allocation_algorithm</code></b>
+              (<code>(<span title="tf">tf</span>, <span title="dep">dep</span>)</code>, default:
+                  <code>&#39;tf&#39;</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Specifies how to allocate variance from aggregate Q forecasts to
+class-level forecasts. Options are 'tf' to allocate variance by time frame,
+or 'dep' to allocate variance to departure. This setting has no effect if
+the <code>variance_is_ratio_of_mean</code> parameter is set to a value greater than zero.</p>
+          </div>
+        </li>
+    </ul>
+
+
+<details class="note" open>
+  <summary>Notes</summary>
+  <p>This RM system consists of the following actions executed in order:</p>
+<ol>
+<li>
+<p><strong>EM Untruncation of Leg Demands</strong>
+    This step applies the EM algorithm to untruncate observed leg
+    sales into inferred true demand levels.  It runs only once at the
+    beginning of each sample day, and detruncates demand for all timeframes.</p>
+</li>
+<li>
+<p><strong>Standard Leg Forecasting</strong>
+    This step generates leg-level demand forecasts using a standard
+    class-based forecasting algorithm (additive pickup by default). It
+    runs full computations to produce leg forecasts for the entire
+    booking horizon in one pass at the beginning of each sample day,
+    and on later DCPs it simply moves a pointer forward through that
+    array of forecasts to provide the correct forecast values at that
+    time.</p>
+</li>
+<li>
+<p><strong>EMSR-B Optimization</strong>
+    Optimizes leg-level seat availability using the Expected Marginal
+    Seat Revenue Version B (EMSR-B) algorithm. This step runs on each
+    DCP to update the seat availability controls based on the current
+    leg forecasts, current sales, and the EMSR optimization logic.</p>
+</li>
+</ol>
+</details>
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="passengersim.rm.standard_systems.L.availability_control" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">availability_control</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">availability_control</span> <span class="o">=</span> <span class="s1">&#39;leg&#39;</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>This RM system uses leg-level class allocation availability controls.</p>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
 <h2 id="passengersim.rm.standard_systems.M" class="doc doc-heading">
 <code class="doc-symbol doc-symbol-heading doc-symbol-class"></code>            <span class="doc doc-object-name doc-class-name">M</span>
 
@@ -1888,25 +2181,25 @@ conditional path forecasting.</p>
     <ul>
         <li class="doc-section-item field-body">
             <b><code>forecast_algorithm</code></b>
-              (<code>(<span title="additive_pickup">additive_pickup</span>, <span title="multiplicative_pickup">multiplicative_pickup</span>)</code>, default:
+              (<code>(<span title="additive_pickup">additive_pickup</span>, <span title="exp_smoothing">exp_smoothing</span>, <span title="multiplicative_pickup">multiplicative_pickup</span>)</code>, default:
                   <code>&#39;additive_pickup&#39;</code>
 )
           –
           <div class="doc-md-description">
             <p>Specifies which leg-level forecasting algorithm to use for generating
-leg demand forecasts.  Options are 'additive_pickup' or
+leg demand forecasts.  Options are 'additive_pickup', 'exp_smoothing', or
 'multiplicative_pickup'.  The default is 'additive_pickup'.</p>
           </div>
         </li>
         <li class="doc-section-item field-body">
             <b><code>bid_price_vector</code></b>
               (<code><span title="bool">bool</span></code>, default:
-                  <code>False</code>
+                  <code>True</code>
 )
           –
           <div class="doc-md-description">
             <p>If True, enables bid price vector optimization in ProBP.  If False,
-uses scalar bid prices.  Default is False.</p>
+uses scalar bid prices.</p>
           </div>
         </li>
         <li class="doc-section-item field-body">
@@ -1917,14 +2210,20 @@ uses scalar bid prices.  Default is False.</p>
           –
           <div class="doc-md-description">
             <p>Specifies the type of fare adjustment to apply in the conditional path
-forecasting algorithm. Options are 'mr' for marginal revenue adjustment,
-'ki' for Karl Isler's method, or None for no fare adjustment.</p>
+forecasting algorithm. The first option is 'mr' for marginal revenue
+adjustment, inspired by the work of Fiig, Isler, Hopperstad, and Belobaba (2010),
+which assumes a continuous pricing curve with a negative exponential
+customer sellup function. The second option is 'ki' for Karl Isler's method,
+which is a discrete pricing adjustment method that assumes no particular
+functional form of the customer sellup function. It is also possible to select
+<code>None</code> for no fare adjustment, although this is not usually recommended
+except for restricted product sets.</p>
           </div>
         </li>
         <li class="doc-section-item field-body">
             <b><code>fare_adjustment_scale</code></b>
               (<code><span title="float">float</span></code>, default:
-                  <code>0.25</code>
+                  <code>0.5</code>
 )
           –
           <div class="doc-md-description">
@@ -1932,21 +2231,26 @@ forecasting algorithm. Options are 'mr' for marginal revenue adjustment,
 path forecasting algorithm. This factor determines the magnitude of the
 fare adjustment applied to the forecasts. A value of 1.0 applies the full
 adjustment, while values less than 1.0 scale down the adjustment. In
-practice, values between 0.1 and 0.5 are commonly used to avoid being too
-aggressive, given the competitive environment.</p>
+practice, smaller values are used when the product sets are more restricted,
+and higher values are used when the product sets are less restricted.
+Theoretically, the full fare adjustment scale of 1.0 would be appropriate
+for completely unrestricted product sets, while no fare adjustment (0.0)
+should be used for heavily restricted product sets.  The default setting
+of 0.5 is a moderate adjustment that works reasonably well in cases with
+semi-restricted product sets.</p>
           </div>
         </li>
         <li class="doc-section-item field-body">
             <b><code>regression_weight</code></b>
-              (<code>(<span title="sellup">sellup</span>, <span title="sellup">sellup</span> ^ 2, <span title="fare">fare</span>, <span title="none">none</span>, None)</code>, default:
-                  <code>&#39;sellup&#39;</code>
+              (<code>(None, <span title="sellup">sellup</span>, <span title="sellup">sellup</span> ^ 2, <span title="fare">fare</span>, <span title="none">none</span>)</code>, default:
+                  <code>None</code>
 )
           –
           <div class="doc-md-description">
             <p>Specifies the type of regression weight to use in the conditional path
 forecasting algorithm. Options are 'sellup' to weight by sellup factor,
-'sellup^2' to weight by the square of the sellup factor, 'fare' to weight by fare amount,
-'none' for no weighting.</p>
+'sellup^2' to weight by the square of the sellup factor, 'fare' to weight
+by fare amount, 'none' for no weighting.</p>
           </div>
         </li>
         <li class="doc-section-item field-body">
@@ -1958,13 +2262,14 @@ forecasting algorithm. Options are 'sellup' to weight by sellup factor,
           <div class="doc-md-description">
             <p>Specifies how to roll up variance when combining priceable and yieldable forecasts.
 Options are 'tf' to roll up variance by time frame, or 'dep' to roll up variance
-to departure.</p>
+to departure. This setting has no effect if the <code>variance_is_ratio_of_mean</code>
+parameter is set to a value greater than zero.</p>
           </div>
         </li>
         <li class="doc-section-item field-body">
             <b><code>variance_is_ratio_of_mean</code></b>
               (<code><span title="float">float</span></code>, default:
-                  <code>0.0</code>
+                  <code>2.0</code>
 )
           –
           <div class="doc-md-description">
@@ -1975,7 +2280,7 @@ forecast standard deviation, which is the square root of the variance, but it is
 the variance that is set to this ratio times the mean.
 When set to zero (the default), the variance is computed from mean squared error
 of the linear regression model used to compute the mean, and is not a fixed ratio
-of the mean.</p>
+of the mean. The default value of 2.0 is reflective of methods used in practice.</p>
           </div>
         </li>
         <li class="doc-section-item field-body">
@@ -1985,12 +2290,13 @@ of the mean.</p>
 )
           –
           <div class="doc-md-description">
-            <p>Maximum sellup weighting factor for the conditional forecast.
-If set to a value greater than zero, the weighting factor used in
-the conditional forecast is capped at this maximum value to prevent
-excessively high weights from extreme sellup factors.  The max cap will
-be more important when the regression weight is set to 'sellup^2', as
-this weighting can grow very large for extreme sellup factors.</p>
+            <p>Maximum weighting factor for the conditional forecast. If set to a value
+greater than zero, the weighting factor used in the conditional forecast is
+capped at this maximum value to prevent excessively high weights from extreme
+sellup factors.  The max cap will be more important when the regression weight
+is set to 'sellup^2', as this weighting can grow very large for extreme sellup
+factors. If this is applied, it is recommended to set the cap to 10.0, which is
+consistent with prior work on hybrid forecasting methods.</p>
           </div>
         </li>
         <li class="doc-section-item field-body">
@@ -2002,7 +2308,8 @@ this weighting can grow very large for extreme sellup factors.</p>
           <div class="doc-md-description">
             <p>Specifies how to allocate variance from aggregate Q forecasts to
 class-level forecasts. Options are 'tf' to allocate variance by time frame,
-or 'dep' to allocate variance to departure.</p>
+or 'dep' to allocate variance to departure. This setting has no effect if
+the <code>variance_is_ratio_of_mean</code> parameter is set to a value greater than zero.</p>
           </div>
         </li>
     </ul>
@@ -2043,6 +2350,13 @@ or 'dep' to allocate variance to departure.</p>
     ProBP optimization logic.</p>
 </li>
 </ol>
+</details>
+
+<details class="references" open>
+  <summary>References</summary>
+  <p>Fiig, T., Isler, K., Hopperstad, C., &amp; Belobaba, P. (2010). "Optimization
+of mixed fare structures: Theory and applications." Journal of Revenue
+and Pricing Management, 9(1/2), 152-170.</p>
 </details>
 
 
@@ -2114,27 +2428,28 @@ or 'dep' to allocate variance to departure.</p>
 
         <p>A standard RM system of type "V".</p>
 <p>This RM system uses path-level bid price controls with UDP
-optimization, along with EM untruncation and standard leg forecasting.</p>
+optimization, along with EM untruncation of yieldable demand and hybrid
+conditional path forecasting.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
     <ul>
         <li class="doc-section-item field-body">
             <b><code>forecast_algorithm</code></b>
-              (<code>(<span title="additive_pickup">additive_pickup</span>, <span title="multiplicative_pickup">multiplicative_pickup</span>)</code>, default:
+              (<code>(<span title="additive_pickup">additive_pickup</span>, <span title="exp_smoothing">exp_smoothing</span>, <span title="multiplicative_pickup">multiplicative_pickup</span>)</code>, default:
                   <code>&#39;additive_pickup&#39;</code>
 )
           –
           <div class="doc-md-description">
             <p>Specifies which leg-level forecasting algorithm to use for generating
-leg demand forecasts.  Options are 'additive_pickup' or
+leg demand forecasts.  Options are 'additive_pickup', 'exp_smoothing', or
 'multiplicative_pickup'.  The default is 'additive_pickup'.</p>
           </div>
         </li>
         <li class="doc-section-item field-body">
             <b><code>arrivals_per_time_slice</code></b>
               (<code><span title="float">float</span></code>, default:
-                  <code>1.0</code>
+                  <code>0.5</code>
 )
           –
           <div class="doc-md-description">
@@ -2146,8 +2461,8 @@ to the theoretical continuous-time model, but increased computational
 time. Note that achieving a closer match to the continuous-time model
 may not always lead to better RM performance, as the actual customer
 arrival process may deviate from the Poisson assumption in practice
-(and in PassengerSim simulations). The default value is 1.0, which
-provides the fastest computational speed, while still capturing all
+(and in PassengerSim simulations). The default value is 0.5, which
+provides reasonably fast computational speed, while still capturing all
 forecast demand in the dynamic program.</p>
           </div>
         </li>
@@ -2159,14 +2474,20 @@ forecast demand in the dynamic program.</p>
           –
           <div class="doc-md-description">
             <p>Specifies the type of fare adjustment to apply in the conditional path
-forecasting algorithm. Options are 'mr' for marginal revenue adjustment,
-'ki' for Karl Isler's method, or None for no fare adjustment.</p>
+forecasting algorithm. The first option is 'mr' for marginal revenue
+adjustment, inspired by the work of Fiig, Isler, Hopperstad, and Belobaba (2010),
+which assumes a continuous pricing curve with a negative exponential
+customer sellup function. The second option is 'ki' for Karl Isler's method,
+which is a discrete pricing adjustment method that assumes no particular
+functional form of the customer sellup function. It is also possible to select
+<code>None</code> for no fare adjustment, although this is not usually recommended
+except for restricted product sets.</p>
           </div>
         </li>
         <li class="doc-section-item field-body">
             <b><code>fare_adjustment_scale</code></b>
               (<code><span title="float">float</span></code>, default:
-                  <code>0.25</code>
+                  <code>0.5</code>
 )
           –
           <div class="doc-md-description">
@@ -2174,21 +2495,26 @@ forecasting algorithm. Options are 'mr' for marginal revenue adjustment,
 path forecasting algorithm. This factor determines the magnitude of the
 fare adjustment applied to the forecasts. A value of 1.0 applies the full
 adjustment, while values less than 1.0 scale down the adjustment. In
-practice, values between 0.1 and 0.5 are commonly used to avoid being too
-aggressive, given the competitive environment.</p>
+practice, smaller values are used when the product sets are more restricted,
+and higher values are used when the product sets are less restricted.
+Theoretically, the full fare adjustment scale of 1.0 would be appropriate
+for completely unrestricted product sets, while no fare adjustment (0.0)
+should be used for heavily restricted product sets.  The default setting
+of 0.5 is a moderate adjustment that works reasonably well in cases with
+semi-restricted product sets.</p>
           </div>
         </li>
         <li class="doc-section-item field-body">
             <b><code>regression_weight</code></b>
-              (<code>(<span title="sellup">sellup</span>, <span title="sellup">sellup</span> ^ 2, <span title="fare">fare</span>, <span title="none">none</span>, None)</code>, default:
-                  <code>&#39;sellup&#39;</code>
+              (<code>(None, <span title="sellup">sellup</span>, <span title="sellup">sellup</span> ^ 2, <span title="fare">fare</span>, <span title="none">none</span>)</code>, default:
+                  <code>None</code>
 )
           –
           <div class="doc-md-description">
             <p>Specifies the type of regression weight to use in the conditional path
 forecasting algorithm. Options are 'sellup' to weight by sellup factor,
-'sellup^2' to weight by the square of the sellup factor, 'fare' to weight by fare amount,
-'none' for no weighting.</p>
+'sellup^2' to weight by the square of the sellup factor, 'fare' to weight
+by fare amount, 'none' for no weighting.</p>
           </div>
         </li>
         <li class="doc-section-item field-body">
@@ -2200,13 +2526,14 @@ forecasting algorithm. Options are 'sellup' to weight by sellup factor,
           <div class="doc-md-description">
             <p>Specifies how to roll up variance when combining priceable and yieldable forecasts.
 Options are 'tf' to roll up variance by time frame, or 'dep' to roll up variance
-to departure.</p>
+to departure. This setting has no effect if the <code>variance_is_ratio_of_mean</code>
+parameter is set to a value greater than zero.</p>
           </div>
         </li>
         <li class="doc-section-item field-body">
             <b><code>variance_is_ratio_of_mean</code></b>
               (<code><span title="float">float</span></code>, default:
-                  <code>0.0</code>
+                  <code>2.0</code>
 )
           –
           <div class="doc-md-description">
@@ -2217,7 +2544,7 @@ forecast standard deviation, which is the square root of the variance, but it is
 the variance that is set to this ratio times the mean.
 When set to zero (the default), the variance is computed from mean squared error
 of the linear regression model used to compute the mean, and is not a fixed ratio
-of the mean.</p>
+of the mean. The default value of 2.0 is reflective of methods used in practice.</p>
           </div>
         </li>
         <li class="doc-section-item field-body">
@@ -2227,12 +2554,13 @@ of the mean.</p>
 )
           –
           <div class="doc-md-description">
-            <p>Maximum sellup weighting factor for the conditional forecast.
-If set to a value greater than zero, the weighting factor used in
-the conditional forecast is capped at this maximum value to prevent
-excessively high weights from extreme sellup factors.  The max cap will
-be more important when the regression weight is set to 'sellup^2', as
-this weighting can grow very large for extreme sellup factors.</p>
+            <p>Maximum weighting factor for the conditional forecast. If set to a value
+greater than zero, the weighting factor used in the conditional forecast is
+capped at this maximum value to prevent excessively high weights from extreme
+sellup factors.  The max cap will be more important when the regression weight
+is set to 'sellup^2', as this weighting can grow very large for extreme sellup
+factors. If this is applied, it is recommended to set the cap to 10.0, which is
+consistent with prior work on hybrid forecasting methods.</p>
           </div>
         </li>
         <li class="doc-section-item field-body">
@@ -2244,7 +2572,8 @@ this weighting can grow very large for extreme sellup factors.</p>
           <div class="doc-md-description">
             <p>Specifies how to allocate variance from aggregate Q forecasts to
 class-level forecasts. Options are 'tf' to allocate variance by time frame,
-or 'dep' to allocate variance to departure.</p>
+or 'dep' to allocate variance to departure. This setting has no effect if
+the <code>variance_is_ratio_of_mean</code> parameter is set to a value greater than zero.</p>
           </div>
         </li>
     </ul>
