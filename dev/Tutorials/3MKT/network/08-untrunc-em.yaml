@@ -6,27 +6,8 @@ include:
 simulation_controls:
   demand_multiplier: 1.0
 
-rm_systems:
-  rm_test1:
-    availability_control: leg
-    processes:
-      DCP:
-      - step_type: untruncation
-        name: untruncation
-        algorithm: em
-        kind: leg
-      - step_type: forecast
-        name: forecast
-        algorithm: additive_pickup
-        alpha: 0.15
-        kind: leg
-      - step_type: emsr
-        name: optimization
-        algorithm: emsrb
-        kind: leg
-
 carriers:
   - name: AL1
-    rm_system: rm_test1
+    rm_system: E
   - name: AL2
-    rm_system: rm_test1
+    rm_system: E

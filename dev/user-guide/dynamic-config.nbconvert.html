@@ -213,8 +213,6 @@
           
   
   
-    
-  
   User Guide
 
         </a>
@@ -235,8 +233,6 @@
           
   
   
-    
-  
   Tutorials
 
         </a>
@@ -256,8 +252,6 @@
         <a href="../API/index.html" class="md-tabs__link">
           
   
-  
-    
   
   API
 
@@ -287,7 +281,9 @@
   
 
 
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../index.html" title="PassengerSim" class="md-nav__button md-logo" aria-label="PassengerSim" data-md-component="logo">
       
@@ -342,30 +338,6 @@
   
   
     
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
     
     
     
@@ -458,22 +430,6 @@
   
   
     
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
     
     
     
@@ -578,32 +534,6 @@
   
     
     
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
     
     
       
@@ -673,14 +603,6 @@
   
   
     
-    
-      
-        
-      
-        
-      
-        
-      
     
     
     
@@ -805,18 +727,6 @@
   
     
     
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
     
     
       
@@ -863,26 +773,6 @@
   
     
     
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
     
     
       
@@ -927,24 +817,6 @@
                 </div>
               </div>
             
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-</nav>
-                  </div>
-                </div>
-              </div>
             
           
           
@@ -1476,8 +1348,8 @@ pax.versions()</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>passengersim 0.59.dev9+ga3f6c1b98
-passengersim.core 0.59.dev1+g671876c7d
+<pre>passengersim 0.62
+passengersim.core 0.62
 </pre>
 </div>
 </div>
@@ -1570,14 +1442,14 @@ a look at the flight legs in this network.</p>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>[Leg(leg_id=None, carrier='AL1', fltno=101, orig='BOS', orig_timezone='America/New_York', dest='ORD', dest_timezone='America/Chicago', date=datetime.datetime(2020, 3, 1, 0, 0, tzinfo=datetime.timezone.utc), arr_day=0, dep_time=1583067600, dep_time_offset=-18000, arr_time=1583078400, arr_time_offset=-21600, time_adjusted=True, capacity=100, distance=863.7532821438833),
- Leg(leg_id=None, carrier='AL1', fltno=102, orig='BOS', orig_timezone='America/New_York', dest='ORD', dest_timezone='America/Chicago', date=datetime.datetime(2020, 3, 1, 0, 0, tzinfo=datetime.timezone.utc), arr_day=0, dep_time=1583089200, dep_time_offset=-18000, arr_time=1583100000, arr_time_offset=-21600, time_adjusted=True, capacity=100, distance=863.7532821438833),
- Leg(leg_id=None, carrier='AL2', fltno=201, orig='BOS', orig_timezone='America/New_York', dest='ORD', dest_timezone='America/Chicago', date=datetime.datetime(2020, 3, 1, 0, 0, tzinfo=datetime.timezone.utc), arr_day=0, dep_time=1583067600, dep_time_offset=-18000, arr_time=1583078400, arr_time_offset=-21600, time_adjusted=True, capacity=100, distance=863.7532821438833),
- Leg(leg_id=None, carrier='AL2', fltno=202, orig='BOS', orig_timezone='America/New_York', dest='ORD', dest_timezone='America/Chicago', date=datetime.datetime(2020, 3, 1, 0, 0, tzinfo=datetime.timezone.utc), arr_day=0, dep_time=1583089200, dep_time_offset=-18000, arr_time=1583100000, arr_time_offset=-21600, time_adjusted=True, capacity=100, distance=863.7532821438833),
- Leg(leg_id=None, carrier='AL1', fltno=111, orig='ORD', orig_timezone='America/Chicago', dest='LAX', dest_timezone='America/Los_Angeles', date=datetime.datetime(2020, 3, 1, 0, 0, tzinfo=datetime.timezone.utc), arr_day=0, dep_time=1583082000, dep_time_offset=-21600, arr_time=1583096400, arr_time_offset=-28800, time_adjusted=True, capacity=120, distance=1739.79933695373),
- Leg(leg_id=None, carrier='AL1', fltno=112, orig='ORD', orig_timezone='America/Chicago', dest='LAX', dest_timezone='America/Los_Angeles', date=datetime.datetime(2020, 3, 1, 0, 0, tzinfo=datetime.timezone.utc), arr_day=0, dep_time=1583103600, dep_time_offset=-21600, arr_time=1583118000, arr_time_offset=-28800, time_adjusted=True, capacity=120, distance=1739.79933695373),
- Leg(leg_id=None, carrier='AL2', fltno=211, orig='ORD', orig_timezone='America/Chicago', dest='LAX', dest_timezone='America/Los_Angeles', date=datetime.datetime(2020, 3, 1, 0, 0, tzinfo=datetime.timezone.utc), arr_day=0, dep_time=1583082000, dep_time_offset=-21600, arr_time=1583096400, arr_time_offset=-28800, time_adjusted=True, capacity=120, distance=1739.79933695373),
- Leg(leg_id=None, carrier='AL2', fltno=212, orig='ORD', orig_timezone='America/Chicago', dest='LAX', dest_timezone='America/Los_Angeles', date=datetime.datetime(2020, 3, 1, 0, 0, tzinfo=datetime.timezone.utc), arr_day=0, dep_time=1583103600, dep_time_offset=-21600, arr_time=1583118000, arr_time_offset=-28800, time_adjusted=True, capacity=120, distance=1739.79933695373)]</pre>
+<pre>[Leg(leg_id=None, carrier='AL1', fltno=101, orig='BOS', orig_timezone='America/New_York', dest='ORD', dest_timezone='America/Chicago', date=datetime.datetime(2020, 3, 1, 0, 0, tzinfo=datetime.timezone.utc), arr_day=0, dep_time=1583067600, dep_time_offset=-18000, arr_time=1583078400, arr_time_offset=-21600, time_adjusted=True, capacity=100, distance=863.7532821438833, tags={}),
+ Leg(leg_id=None, carrier='AL1', fltno=102, orig='BOS', orig_timezone='America/New_York', dest='ORD', dest_timezone='America/Chicago', date=datetime.datetime(2020, 3, 1, 0, 0, tzinfo=datetime.timezone.utc), arr_day=0, dep_time=1583089200, dep_time_offset=-18000, arr_time=1583100000, arr_time_offset=-21600, time_adjusted=True, capacity=100, distance=863.7532821438833, tags={}),
+ Leg(leg_id=None, carrier='AL2', fltno=201, orig='BOS', orig_timezone='America/New_York', dest='ORD', dest_timezone='America/Chicago', date=datetime.datetime(2020, 3, 1, 0, 0, tzinfo=datetime.timezone.utc), arr_day=0, dep_time=1583067600, dep_time_offset=-18000, arr_time=1583078400, arr_time_offset=-21600, time_adjusted=True, capacity=100, distance=863.7532821438833, tags={}),
+ Leg(leg_id=None, carrier='AL2', fltno=202, orig='BOS', orig_timezone='America/New_York', dest='ORD', dest_timezone='America/Chicago', date=datetime.datetime(2020, 3, 1, 0, 0, tzinfo=datetime.timezone.utc), arr_day=0, dep_time=1583089200, dep_time_offset=-18000, arr_time=1583100000, arr_time_offset=-21600, time_adjusted=True, capacity=100, distance=863.7532821438833, tags={}),
+ Leg(leg_id=None, carrier='AL1', fltno=111, orig='ORD', orig_timezone='America/Chicago', dest='LAX', dest_timezone='America/Los_Angeles', date=datetime.datetime(2020, 3, 1, 0, 0, tzinfo=datetime.timezone.utc), arr_day=0, dep_time=1583082000, dep_time_offset=-21600, arr_time=1583096400, arr_time_offset=-28800, time_adjusted=True, capacity=120, distance=1739.79933695373, tags={}),
+ Leg(leg_id=None, carrier='AL1', fltno=112, orig='ORD', orig_timezone='America/Chicago', dest='LAX', dest_timezone='America/Los_Angeles', date=datetime.datetime(2020, 3, 1, 0, 0, tzinfo=datetime.timezone.utc), arr_day=0, dep_time=1583103600, dep_time_offset=-21600, arr_time=1583118000, arr_time_offset=-28800, time_adjusted=True, capacity=120, distance=1739.79933695373, tags={}),
+ Leg(leg_id=None, carrier='AL2', fltno=211, orig='ORD', orig_timezone='America/Chicago', dest='LAX', dest_timezone='America/Los_Angeles', date=datetime.datetime(2020, 3, 1, 0, 0, tzinfo=datetime.timezone.utc), arr_day=0, dep_time=1583082000, dep_time_offset=-21600, arr_time=1583096400, arr_time_offset=-28800, time_adjusted=True, capacity=120, distance=1739.79933695373, tags={}),
+ Leg(leg_id=None, carrier='AL2', fltno=212, orig='ORD', orig_timezone='America/Chicago', dest='LAX', dest_timezone='America/Los_Angeles', date=datetime.datetime(2020, 3, 1, 0, 0, tzinfo=datetime.timezone.utc), arr_day=0, dep_time=1583103600, dep_time_offset=-21600, arr_time=1583118000, arr_time_offset=-28800, time_adjusted=True, capacity=120, distance=1739.79933695373, tags={})]</pre>
 </div>
 </div>
 </div>
@@ -1843,12 +1715,12 @@ summary = sim.run()</div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jupyter-widgets jp-OutputArea-output" id="5167d8f1-c4ed-4ae8-bf5c-e0e8b635c405" tabindex="0">
+<div class="jupyter-widgets jp-OutputArea-output" id="8daae9a8-abc8-4364-8fe7-0d134ad4e05f" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('5167d8f1-c4ed-4ae8-bf5c-e0e8b635c405');
+var element = document.getElementById('8daae9a8-abc8-4364-8fe7-0d134ad4e05f');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "22424994a879402dbbc84a9f1cccdd3a", "version_major": 2, "version_minor": 0}
+{"model_id": "c509c39993c2430bac7a0674cbcc5005", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 </div>
@@ -1861,7 +1733,7 @@ var element = document.getElementById('5167d8f1-c4ed-4ae8-bf5c-e0e8b635c405');
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Task Completed after <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">1.89</span> seconds
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Task Completed after <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">2.87</span> seconds
 </pre>
 </div>
 </div>
@@ -1913,23 +1785,23 @@ var element = document.getElementById('5167d8f1-c4ed-4ae8-bf5c-e0e8b635c405');
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-d8a49ab7ea0746dbb883af7970a6d419.vega-embed {
+  #altair-viz-f068e09fea06421f87cb6619ef9c7542.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-d8a49ab7ea0746dbb883af7970a6d419.vega-embed details,
-  #altair-viz-d8a49ab7ea0746dbb883af7970a6d419.vega-embed details summary {
+  #altair-viz-f068e09fea06421f87cb6619ef9c7542.vega-embed details,
+  #altair-viz-f068e09fea06421f87cb6619ef9c7542.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-d8a49ab7ea0746dbb883af7970a6d419"></div>
+<div id="altair-viz-f068e09fea06421f87cb6619ef9c7542"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-d8a49ab7ea0746dbb883af7970a6d419") {
-      outputDiv = document.getElementById("altair-viz-d8a49ab7ea0746dbb883af7970a6d419");
+    if (outputDiv.id !== "altair-viz-f068e09fea06421f87cb6619ef9c7542") {
+      outputDiv = document.getElementById("altair-viz-f068e09fea06421f87cb6619ef9c7542");
     }
 
     const paths = {
@@ -1977,7 +1849,7 @@ var element = document.getElementById('5167d8f1-c4ed-4ae8-bf5c-e0e8b635c405');
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFontSize": 12}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "carrier", "legend": null, "title": "Carrier", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Average Revenue", "type": "quantitative"}], "x": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-464287befe34fd86cd19a1b755d0fb50"}, "height": 50, "title": "Carrier Revenues", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-464287befe34fd86cd19a1b755d0fb50": [{"carrier": "AL1", "avg_rev": 102435.75}, {"carrier": "AL2", "avg_rev": 78268.875}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFontSize": 12}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "carrier", "legend": null, "title": "Carrier", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Average Revenue", "type": "quantitative"}], "x": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-809355fbf6196ee55c918a72ab0f5537"}, "height": 50, "title": "Carrier Revenues", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-809355fbf6196ee55c918a72ab0f5537": [{"carrier": "AL1", "avg_rev": 102971.7}, {"carrier": "AL2", "avg_rev": 78052.25}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
@@ -2018,23 +1890,23 @@ var element = document.getElementById('5167d8f1-c4ed-4ae8-bf5c-e0e8b635c405');
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-f7e73f846da042548c0f399679ef62d6.vega-embed {
+  #altair-viz-75055087a5bc4e828ec1a5bda5d787e5.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-f7e73f846da042548c0f399679ef62d6.vega-embed details,
-  #altair-viz-f7e73f846da042548c0f399679ef62d6.vega-embed details summary {
+  #altair-viz-75055087a5bc4e828ec1a5bda5d787e5.vega-embed details,
+  #altair-viz-75055087a5bc4e828ec1a5bda5d787e5.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-f7e73f846da042548c0f399679ef62d6"></div>
+<div id="altair-viz-75055087a5bc4e828ec1a5bda5d787e5"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-f7e73f846da042548c0f399679ef62d6") {
-      outputDiv = document.getElementById("altair-viz-f7e73f846da042548c0f399679ef62d6");
+    if (outputDiv.id !== "altair-viz-75055087a5bc4e828ec1a5bda5d787e5") {
+      outputDiv = document.getElementById("altair-viz-75055087a5bc4e828ec1a5bda5d787e5");
     }
 
     const paths = {
@@ -2082,7 +1954,7 @@ var element = document.getElementById('5167d8f1-c4ed-4ae8-bf5c-e0e8b635c405');
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFontSize": 12}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "carrier", "legend": null, "title": "Carrier", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "rasm", "format": "$.4f", "title": "Revenue per Available Seat Mile", "type": "quantitative"}], "x": {"field": "rasm", "stack": "zero", "title": "Revenue per Available Seat Mile", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "rasm", "format": "$.4f", "type": "quantitative"}, "x": {"field": "rasm", "stack": "zero", "title": "Revenue per Available Seat Mile", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-a09c5a6b48c2e9445fc07a27724f425c"}, "height": 50, "title": "Carrier Revenue per Available Seat Mile (RASM)", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-a09c5a6b48c2e9445fc07a27724f425c": [{"carrier": "AL1", "rasm": 0.1553462560883458}, {"carrier": "AL2", "rasm": 0.13259112973145928}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFontSize": 12}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "carrier", "legend": null, "title": "Carrier", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "rasm", "format": "$.4f", "title": "Revenue per Available Seat Mile", "type": "quantitative"}], "x": {"field": "rasm", "stack": "zero", "title": "Revenue per Available Seat Mile", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "rasm", "format": "$.4f", "type": "quantitative"}, "x": {"field": "rasm", "stack": "zero", "title": "Revenue per Available Seat Mile", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-44a96de09bb9787bdde2ef6b0fbd1eba"}, "height": 50, "title": "Carrier Revenue per Available Seat Mile (RASM)", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-44a96de09bb9787bdde2ef6b0fbd1eba": [{"carrier": "AL1", "rasm": 0.1561590370359207}, {"carrier": "AL2", "rasm": 0.1322241568641723}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
@@ -2123,23 +1995,23 @@ var element = document.getElementById('5167d8f1-c4ed-4ae8-bf5c-e0e8b635c405');
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-e9346e1c4a014010a768fd1d19749bba.vega-embed {
+  #altair-viz-7696a0aed10e4354aa6cb81b663dd5c2.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-e9346e1c4a014010a768fd1d19749bba.vega-embed details,
-  #altair-viz-e9346e1c4a014010a768fd1d19749bba.vega-embed details summary {
+  #altair-viz-7696a0aed10e4354aa6cb81b663dd5c2.vega-embed details,
+  #altair-viz-7696a0aed10e4354aa6cb81b663dd5c2.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-e9346e1c4a014010a768fd1d19749bba"></div>
+<div id="altair-viz-7696a0aed10e4354aa6cb81b663dd5c2"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-e9346e1c4a014010a768fd1d19749bba") {
-      outputDiv = document.getElementById("altair-viz-e9346e1c4a014010a768fd1d19749bba");
+    if (outputDiv.id !== "altair-viz-7696a0aed10e4354aa6cb81b663dd5c2") {
+      outputDiv = document.getElementById("altair-viz-7696a0aed10e4354aa6cb81b663dd5c2");
     }
 
     const paths = {
@@ -2187,7 +2059,7 @@ var element = document.getElementById('5167d8f1-c4ed-4ae8-bf5c-e0e8b635c405');
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFontSize": 12}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "booking_class", "type": "nominal"}, "tooltip": [{"field": "carrier", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "title": "Fare Class Mix", "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 3}, "encoding": {"opacity": {"condition": {"test": "datum.avg_sold < 21.122", "value": 0}, "value": 1}, "order": {"field": "booking_class", "sort": "descending", "type": "nominal"}, "text": {"field": "avg_sold", "format": ".2f", "type": "quantitative"}, "tooltip": [{"field": "carrier", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "title": "Fare Class Mix", "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}], "data": {"name": "data-b3a1a96bd9a27c30cb55a429cf63590f"}, "height": 300, "width": 400, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-b3a1a96bd9a27c30cb55a429cf63590f": [{"carrier": "AL1", "booking_class": "Y0", "avg_sold": 58.58}, {"carrier": "AL1", "booking_class": "Y1", "avg_sold": 70.87}, {"carrier": "AL1", "booking_class": "Y2", "avg_sold": 37.585}, {"carrier": "AL1", "booking_class": "Y3", "avg_sold": 15.53}, {"carrier": "AL1", "booking_class": "Y4", "avg_sold": 127.435}, {"carrier": "AL1", "booking_class": "Y5", "avg_sold": 42.04}, {"carrier": "AL2", "booking_class": "Y0", "avg_sold": 49.74}, {"carrier": "AL2", "booking_class": "Y1", "avg_sold": 34.375}, {"carrier": "AL2", "booking_class": "Y2", "avg_sold": 19.47}, {"carrier": "AL2", "booking_class": "Y3", "avg_sold": 10.76}, {"carrier": "AL2", "booking_class": "Y4", "avg_sold": 82.295}, {"carrier": "AL2", "booking_class": "Y5", "avg_sold": 23.46}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFontSize": 12}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "booking_class", "type": "nominal"}, "tooltip": [{"field": "carrier", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "title": "Fare Class Mix", "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 3}, "encoding": {"opacity": {"condition": {"test": "datum.avg_sold < 21.153", "value": 0}, "value": 1}, "order": {"field": "booking_class", "sort": "descending", "type": "nominal"}, "text": {"field": "avg_sold", "format": ".2f", "type": "quantitative"}, "tooltip": [{"field": "carrier", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "title": "Fare Class Mix", "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}], "data": {"name": "data-65a5dd995bda4a89160b4a0fa11d6fe6"}, "height": 300, "width": 400, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-65a5dd995bda4a89160b4a0fa11d6fe6": [{"carrier": "AL1", "booking_class": "Y0", "avg_sold": 59.635}, {"carrier": "AL1", "booking_class": "Y1", "avg_sold": 71.02}, {"carrier": "AL1", "booking_class": "Y2", "avg_sold": 37.245}, {"carrier": "AL1", "booking_class": "Y3", "avg_sold": 16.32}, {"carrier": "AL1", "booking_class": "Y4", "avg_sold": 128.21}, {"carrier": "AL1", "booking_class": "Y5", "avg_sold": 40.12}, {"carrier": "AL2", "booking_class": "Y0", "avg_sold": 49.335}, {"carrier": "AL2", "booking_class": "Y1", "avg_sold": 34.42}, {"carrier": "AL2", "booking_class": "Y2", "avg_sold": 19.385}, {"carrier": "AL2", "booking_class": "Y3", "avg_sold": 10.865}, {"carrier": "AL2", "booking_class": "Y4", "avg_sold": 81.65}, {"carrier": "AL2", "booking_class": "Y5", "avg_sold": 24.02}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
@@ -2198,7 +2070,7 @@ var element = document.getElementById('5167d8f1-c4ed-4ae8-bf5c-e0e8b635c405');
 </div> <!-- jp-Notebook -->
 </div> <!-- jupyter-wrapper -->
 <script type="application/vnd.jupyter.widget-state+json">
-{"state": {"22424994a879402dbbc84a9f1cccdd3a": {"model_module": "@jupyter-widgets\/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets\/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets\/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_3ab8e24a135e47cab40b28c90decdd90", "msg_id": "", "outputs": [{"data": {"text\/html": "<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\">samples <span style=\"color: #f92672; text-decoration-color: #f92672\">\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2578<\/span> <span style=\"color: #800080; text-decoration-color: #800080\">100%<\/span> <span style=\"color: #008080; text-decoration-color: #008080\">0:00:01<\/span>\n<\/pre>\n", "text\/plain": "samples \u001b[38;2;249;38;114m\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u001b[0m\u001b[38;2;249;38;114m\u2578\u001b[0m \u001b[35m100%\u001b[0m \u001b[36m0:00:01\u001b[0m\n"}, "metadata": {}, "output_type": "display_data"}], "tabbable": null, "tooltip": null}}, "3ab8e24a135e47cab40b28c90decdd90": {"model_module": "@jupyter-widgets\/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets\/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets\/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}}, "version_major": 2, "version_minor": 0}
+{"state": {"0a474513916d4063bd5e754329e03c09": {"model_module": "@jupyter-widgets\/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets\/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets\/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "c509c39993c2430bac7a0674cbcc5005": {"model_module": "@jupyter-widgets\/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets\/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets\/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_0a474513916d4063bd5e754329e03c09", "msg_id": "", "outputs": [{"data": {"text\/html": "<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\">samples <span style=\"color: #f92672; text-decoration-color: #f92672\">\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501<\/span><span style=\"color: #3a3a3a; text-decoration-color: #3a3a3a\">\u257a<\/span> <span style=\"color: #800080; text-decoration-color: #800080\"> 98%<\/span> <span style=\"color: #008080; text-decoration-color: #008080\">0:00:01<\/span>\n<\/pre>\n", "text\/plain": "samples \u001b[38;2;249;38;114m\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u001b[0m\u001b[38;5;237m\u257a\u001b[0m \u001b[35m 98%\u001b[0m \u001b[36m0:00:01\u001b[0m\n"}, "metadata": {}, "output_type": "display_data"}], "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}
 </script>
 
         <style>
@@ -2253,7 +2125,7 @@ var element = document.getElementById('5167d8f1-c4ed-4ae8-bf5c-e0e8b635c405');
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.annotate", "navigation.tabs", "navigation.indexes", "navigation.prune"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.annotate", "navigation.tabs", "navigation.prune", "toc.integrate"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>

@@ -213,8 +213,6 @@
           
   
   
-    
-  
   User Guide
 
         </a>
@@ -235,8 +233,6 @@
           
   
   
-    
-  
   Tutorials
 
         </a>
@@ -256,8 +252,6 @@
         <a href="../../API/index.html" class="md-tabs__link">
           
   
-  
-    
   
   API
 
@@ -287,7 +281,9 @@
   
 
 
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../../index.html" title="PassengerSim" class="md-nav__button md-logo" aria-label="PassengerSim" data-md-component="logo">
       
@@ -342,30 +338,6 @@
   
   
     
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
     
     
     
@@ -461,22 +433,6 @@
   
     
     
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
     
     
       
@@ -492,9 +448,8 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
         
           
-          <div class="md-nav__link md-nav__container">
-            <a href="index.html" class="md-nav__link ">
-              
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
@@ -503,14 +458,8 @@
   </span>
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_3">
@@ -519,6 +468,27 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RM Systems
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -579,7 +549,7 @@
   
   
   <span class="md-ellipsis">
-    FCFS Allocation
+    Specialty Systems
     
   </span>
   
@@ -647,37 +617,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#passengersim._old_rm.EmsrStep" class="md-nav__link">
+  <a href="#passengersim.rm.emsr.ExpectedMarginalSeatRevenue" class="md-nav__link">
     <span class="md-ellipsis">
-      EmsrStep
+      ExpectedMarginalSeatRevenue
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="EmsrStep">
+    <nav class="md-nav" aria-label="ExpectedMarginalSeatRevenue">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#passengersim._old_rm.EmsrStep.algorithm" class="md-nav__link">
+  <a href="#passengersim.rm.emsr.ExpectedMarginalSeatRevenue.variant" class="md-nav__link">
     <span class="md-ellipsis">
-      algorithm
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#passengersim._old_rm.EmsrStep.kind" class="md-nav__link">
-    <span class="md-ellipsis">
-      kind
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#passengersim._old_rm.EmsrStep.snapshot_filters" class="md-nav__link">
-    <span class="md-ellipsis">
-      snapshot_filters
+      variant
     </span>
   </a>
   
@@ -782,32 +734,6 @@
   
     
     
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
     
     
       
@@ -877,14 +803,6 @@
   
   
     
-    
-      
-        
-      
-        
-      
-        
-      
     
     
     
@@ -1009,18 +927,6 @@
   
     
     
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
     
     
       
@@ -1067,26 +973,6 @@
   
     
     
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
     
     
       
@@ -1132,74 +1018,6 @@
               </div>
             
             
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#passengersim._old_rm.EmsrStep" class="md-nav__link">
-    <span class="md-ellipsis">
-      EmsrStep
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="EmsrStep">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#passengersim._old_rm.EmsrStep.algorithm" class="md-nav__link">
-    <span class="md-ellipsis">
-      algorithm
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#passengersim._old_rm.EmsrStep.kind" class="md-nav__link">
-    <span class="md-ellipsis">
-      kind
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#passengersim._old_rm.EmsrStep.snapshot_filters" class="md-nav__link">
-    <span class="md-ellipsis">
-      snapshot_filters
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           
             <div class="md-content" data-md-component="content">
@@ -1219,32 +1037,14 @@ It typically occurs after untruncation and forecasting.</p>
 <p>PassengerSim offers several different optimization algorithms. One widely used
 algorithm is called EMSR (expected marginal seat revenue), which has a few variants,
 generally labels as "A", "B", and "C".</p>
-<p class="annotate"><div class="language-yaml highlight"><span class="filename">example.yaml</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">rm_systems</span><span class="p">:</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">basic_emsr_b</span><span class="p">:</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">processes</span><span class="p">:</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">      </span><span class="nt">DCP</span><span class="p">:</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">step_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">untruncation</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="nt">algorithm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">em</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">leg</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">step_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">forecast</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="nt">algorithm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">additive_pickup</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">leg</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="hll"><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">step_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">emsr</span><span class="w"> </span><span class="c1">#(1)!</span>
-</span></span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="hll"><span class="w">        </span><span class="nt">algorithm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">b</span>
-</span></span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="hll"><span class="w">        </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">leg</span>
-</span></span></code></pre></div></p>
-<ol>
-<li>The <code>step_type</code> for EMSR optimization is <code>emsr</code>, this is how PassengerSim
-    identifies what to do in this step.</li>
-</ol>
 
 
 <div class="doc doc-object doc-class">
 
 
 
-<h2 id="passengersim._old_rm.EmsrStep" class="doc doc-heading">
-            <span class="doc doc-object-name doc-class-name">EmsrStep</span>
+<h2 id="passengersim.rm.emsr.ExpectedMarginalSeatRevenue" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">ExpectedMarginalSeatRevenue</span>
 
 
 </h2>
@@ -1252,8 +1052,26 @@ generally labels as "A", "B", and "C".</p>
 
     <div class="doc doc-contents first">
             <p class="doc doc-class-bases">
-              Bases: <code><span title="passengersim.rm_steps.RmStep">RmStep</span></code></p>
+              Bases: <code><a class="autorefs autorefs-internal" title="            RmAction (passengersim.rm._common.RmAction)" href="../../API/RM/bases.html#passengersim.rm.systems.RmAction">RmAction</a></code></p>
 
+
+        <p>EMSR (Expected Marginal Seat Revenue) is a leg-based optimization algorithm.</p>
+<p>The EMSR (Expected Marginal Seat Revenue) algorithm is a widely adopted
+heuristic for capacity allocation in revenue management, primarily used to
+determine how many seats to protect for higher-fare classes in a restricted
+product marketplace. It works by calculating a booking limit for each fare
+class, starting with the lowest, to maximize expected revenue.</p>
+<p>The "A" algorithm compares each class individually, and is not generally used
+in practice. The "B" algorithm, often called EMSR-B, aggregates displaced
+low-fare passengers. This method uses Littlewood's rule with the aggregate
+demand and average fare to statistically determine optimal protection levels
+for the remaining higher-priced inventory, effectively balancing the risk of
+selling a seat cheaply now versus the potential of selling it at a higher
+price later.</p>
+<p>Applying the EMSR algorithm requires a forecast of leg demand by fare class.
+Protection levels are updated at each decision control point (DCP) based on the
+latest sales and demand forecasts, allowing for dynamic adjustment to changing
+booking patterns.</p>
 
 
 
@@ -1277,8 +1095,8 @@ generally labels as "A", "B", and "C".</p>
 
 
 
-<h3 id="passengersim._old_rm.EmsrStep.algorithm" class="doc doc-heading">
-            <span class="doc doc-object-name doc-attribute-name">algorithm</span>
+<h3 id="passengersim.rm.emsr.ExpectedMarginalSeatRevenue.variant" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">variant</span>
 
 
   <span class="doc doc-labels">
@@ -1286,67 +1104,12 @@ generally labels as "A", "B", and "C".</p>
   </span>
 
 </h3>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">algorithm</span><span class="p">:</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;emsra&quot;</span><span class="p">,</span> <span class="s2">&quot;emsrb&quot;</span><span class="p">,</span> <span class="s2">&quot;emsrc&quot;</span><span class="p">,</span> <span class="s2">&quot;emsrg&quot;</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">]</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">variant</span> <span class="o">=</span> <span class="n"><span title="passengersim.rm.emsr.ExpectedMarginalSeatRevenue(variant)">variant</span></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Which variant of the EMSR optimization algorithm should be applied.</p>
-<p>Currently the "A" and "B" variants are implemented.
-EMSRc computes the critical EMSR value as a proxy for displacement or bid price
-The "G" variant is EMSRb using a Gamma distribution (experimental)</p>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-attribute">
-
-
-
-<h3 id="passengersim._old_rm.EmsrStep.kind" class="doc doc-heading">
-            <span class="doc doc-object-name doc-attribute-name">kind</span>
-
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
-  </span>
-
-</h3>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">kind</span><span class="p">:</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s1">&#39;leg&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;leg&#39;</span>
-</span></code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>EMSR (Expected Marginal Seat Revenue) is a leg-based optimization algorithm.</p>
-<p>The <code>kind</code> parameter is included in the interface for compatability, but setting
-any value here other than <code>leg</code> will result in an error.</p>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-attribute">
-
-
-
-<h3 id="passengersim._old_rm.EmsrStep.snapshot_filters" class="doc doc-heading">
-            <span class="doc doc-object-name doc-attribute-name">snapshot_filters</span>
-
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
-  </span>
-
-</h3>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">snapshot_filters</span><span class="p">:</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><span title="typing.Any">Any</span></span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
-</span></code></pre></div>
-
-    <div class="doc doc-contents ">
+        <p>EMSR variant to use: "a", "b", or "c".</p>
 
     </div>
 
@@ -1410,7 +1173,7 @@ any value here other than <code>leg</code> will result in an error.</p>
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.annotate", "navigation.tabs", "navigation.indexes", "navigation.prune"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.annotate", "navigation.tabs", "navigation.prune", "toc.integrate"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
