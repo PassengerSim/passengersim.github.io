@@ -30,7 +30,7 @@ div.has-actions details {
     font-size: var(--jp-code-font-size);
 }
 
-.md-header__topic:first-child {
+.md-header__topic:first-child span.md-ellipsis {
     display: none;
 }
 
