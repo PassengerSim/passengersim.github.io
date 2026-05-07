@@ -866,6 +866,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="firehose.nbconvert.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Firehose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1792,8 +1820,8 @@ pax.versions()</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>passengersim 0.65.dev59+gd35e5aa96
-passengersim.core 0.65.dev47+gdb9319e94.d20260203
+<pre>passengersim 0.76.dev0+gf3d1cf663.d20260507
+passengersim.core 0.76.dev0+gf3d1cf663.d20260507
 </pre>
 </div>
 </div>
@@ -1841,18 +1869,18 @@ summary = sim.run()</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>database filename ':memory:' is not supported, using temporary file-based database at /var/folders/l1/yt63lf3n60b1dc25d_y2d1q80000gn/T/tmpcceio6z0/passengersim_temp_db.sqlite
+<pre>database filename ':memory:' is not supported, using temporary file-based database at /var/folders/sb/mb_3f0t16lx0wm3tr8r5g9rm0000gn/T/tmpa4quadai/passengersim_temp_db.sqlite
 </pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jupyter-widgets jp-OutputArea-output" id="1e94535d-a1b9-4afd-a490-d0227f2e3cdc" tabindex="0">
+<div class="jupyter-widgets jp-OutputArea-output" id="a7112b3f-e0af-4a84-9fd2-e0ca2e468bc3" tabindex="0">
 <script type="text/javascript">
-var element = document.getElementById('1e94535d-a1b9-4afd-a490-d0227f2e3cdc');
+var element = document.getElementById('a7112b3f-e0af-4a84-9fd2-e0ca2e468bc3');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "6efe0f2d7f7649ec83704a5df4c834c4", "version_major": 2, "version_minor": 0}
+{"model_id": "dfdacfcf82ad4981bc3a15ddd5a66418", "version_major": 2, "version_minor": 0}
 </script>
 </div>
 </div>
@@ -1865,7 +1893,7 @@ var element = document.getElementById('1e94535d-a1b9-4afd-a490-d0227f2e3cdc');
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Task Completed after <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3.47</span> seconds
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">Task Completed after <span style="color: #008080; text-decoration-color: #008080; font-weight: bold">3.44</span> seconds
 </pre>
 </div>
 </div>
@@ -1918,7 +1946,7 @@ You can view this in a Jupyter notebook by putting the object as the last line o
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;passengersim.summaries.SimulationTables created on 2026-02-04&gt;
+<pre>&lt;passengersim.summaries.SimulationTables created on 2026-05-07&gt;
  * bid_price_history (256 row DataFrame)
  * cabins (3200 row DataFrame)
  * carriers (2 row DataFrame)
@@ -1927,6 +1955,7 @@ You can view this in a Jupyter notebook by putting the object as the last line o
  * cp_segmentation (12 row DataFrame)
  * demand_to_come_summary (34 row DataFrame)
  * demands (6 row DataFrame)
+ * demand_history (NoneType)
  * displacement_history (68 row DataFrame)
  * fare_class_mix (12 row DataFrame)
  * legbuckets (48 row DataFrame)
@@ -2017,6 +2046,7 @@ attribute on the <code>SimulationTables</code> object.</p>
 <th>avg_total_leg_pax</th>
 <th>cp_sold</th>
 <th>cp_revenue</th>
+<th>rm_system</th>
 <th>avg_price</th>
 <th>yield</th>
 <th>rasm</th>
@@ -2044,50 +2074,53 @@ attribute on the <code>SimulationTables</code> object.</p>
 <th></th>
 <th></th>
 <th></th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <th>AL1</th>
 <td>leg</td>
-<td>90523.1875</td>
-<td>285.0625</td>
+<td>90528.9375</td>
+<td>284.7775</td>
 <td>3</td>
-<td>86.595521</td>
+<td>86.390937</td>
 <td>590302.497298</td>
-<td>518762.573736</td>
+<td>516913.330106</td>
 <td>0.0</td>
-<td>187.865</td>
-<td>382.260</td>
+<td>188.3000</td>
+<td>381.2550</td>
 <td>0.0</td>
 <td>0.0</td>
-<td>317.55558</td>
-<td>0.174498</td>
-<td>0.153351</td>
-<td>87.880803</td>
-<td>49.145869</td>
-<td>65.903091</td>
+<td>E</td>
+<td>317.893575</td>
+<td>0.175134</td>
+<td>0.153360</td>
+<td>87.567532</td>
+<td>49.389516</td>
+<td>66.121797</td>
 </tr>
 <tr>
 <th>AL2</th>
 <td>leg</td>
-<td>91018.0000</td>
-<td>286.0075</td>
+<td>90241.0000</td>
+<td>285.0250</td>
 <td>3</td>
-<td>86.806250</td>
+<td>86.536354</td>
 <td>590302.497298</td>
-<td>519870.597612</td>
+<td>517512.647067</td>
 <td>0.0</td>
-<td>188.850</td>
-<td>383.165</td>
+<td>188.1975</td>
+<td>381.8525</td>
 <td>0.0</td>
 <td>0.0</td>
-<td>318.23641</td>
-<td>0.175078</td>
-<td>0.154189</td>
-<td>88.068507</td>
-<td>49.286861</td>
-<td>66.029737</td>
+<td>E</td>
+<td>316.607315</td>
+<td>0.174374</td>
+<td>0.152872</td>
+<td>87.669059</td>
+<td>49.285392</td>
+<td>66.028419</td>
 </tr>
 </tbody>
 </table>
@@ -2141,19 +2174,20 @@ attribute on the <code>SimulationTables</code> object.</p>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>{'time.created': '2026-02-04T02:59:07.835922+00:00',
+<pre>{'time.created': '2026-05-07T21:28:36.322635+00:00',
  'machine.system': 'Darwin',
- 'machine.release': '24.6.0',
- 'machine.version': 'Darwin Kernel Version 24.6.0: Wed Nov  5 21:28:03 PST 2025; root:xnu-11417.140.69.705.2~1/RELEASE_ARM64_T8122',
+ 'machine.release': '25.4.0',
+ 'machine.version': 'Darwin Kernel Version 25.4.0: Thu Mar 19 19:33:50 PDT 2026; root:xnu-12377.101.15~1/RELEASE_ARM64_T6050',
  'machine.machine': 'arm64',
  'machine.processor': 'arm',
  'machine.architecture': ('64bit', ''),
- 'machine.node': 'Nightshade.local',
- 'machine.platform': 'macOS-15.7.3-arm64-arm-64bit',
- 'machine.python_version': '3.12.11',
- 'machine.cpu_count': 8,
- 'version.passengersim': '0.65.dev59+gd35e5aa96',
- 'version.passengersim_core': '0.65.dev47+gdb9319e94.d20260203'}</pre>
+ 'machine.node': 'Driftless.local',
+ 'machine.platform': 'macOS-26.4.1-arm64-arm-64bit',
+ 'machine.python_version': '3.12.13',
+ 'machine.cpu_count': 18,
+ 'version.passengersim': '0.76.dev0+gf3d1cf663.d20260507',
+ 'version.passengersim_core': '0.76.dev0+gf3d1cf663.d20260507',
+ 'outputs.disk_filename': PosixPath('/Users/jpn/Git/pax/packages/passengersim-public/docs/user-guide/processing-outputs/passengersim-output.20260507-162832.pxsim')}</pre>
 </div>
 </div>
 </div>
@@ -2203,7 +2237,7 @@ attribute on the <code>SimulationTables</code> object.</p>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>{'created': '2026-02-04T02:59:07.835922+00:00'}</pre>
+<pre>{'created': '2026-05-07T21:28:36.322635+00:00'}</pre>
 </div>
 </div>
 </div>
@@ -2282,7 +2316,7 @@ if needed.</p>
   demands: &lt;list of 6 demands&gt;
   fares: &lt;list of 36 fares&gt;
   paths: &lt;list of 0 paths&gt;
-  markets: []
+  markets: [Market(orig='BOS', dest='ORD', demand_multiplier=1.0, delta_t=None), Market(orig='ORD', dest='LAX', demand_multiplier=1.0, delta_t=None), Market(orig='BOS', dest='LAX', demand_multiplier=1.0, delta_t=None)]
   other_controls: 
   snapshot_filters: []
   dwm_tolerance: []</pre>
@@ -2342,7 +2376,7 @@ permutations.  Results can be saved using the
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>PosixPath('saved-outputs/summary.20260203-215907.pxsim')</pre>
+<pre>PosixPath('saved-outputs/summary.20260507-162836.pxsim')</pre>
 </div>
 </div>
 </div>
@@ -2399,7 +2433,7 @@ display_directory_contents("saved-outputs")</div>
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre><span class="ansi-cyan-intense-fg ansi-bold">saved-outputs/</span>
-  <span class="ansi-green-intense-fg ansi-bold">summary.20260203-215907.pxsim</span>
+  <span class="ansi-green-intense-fg ansi-bold">summary.20260507-162836.pxsim</span>
 </pre>
 </div>
 </div>
@@ -2457,12 +2491,13 @@ resummary</div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;passengersim.summaries.SimulationTables created on 2026-02-04&gt;
+<pre>&lt;passengersim.summaries.SimulationTables created on 2026-05-07&gt;
  * bid_price_history (available in file storage)
  * cabins (available in file storage)
  * carrier_history2 (available in file storage)
  * carriers (available in file storage)
  * cp_segmentation (available in file storage)
+ * demand_history (available in file storage)
  * demand_to_come_summary (available in file storage)
  * demands (available in file storage)
  * displacement_history (available in file storage)
@@ -2526,7 +2561,7 @@ You can confirm which file is used as the storage, as that is added to the metad
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>{'filename': 'saved-outputs/summary.20260203-215907.pxsim'}</pre>
+<pre>{'filename': 'saved-outputs/summary.20260507-162836.pxsim'}</pre>
 </div>
 </div>
 </div>
@@ -2609,6 +2644,7 @@ it will just happen automatically as needed.</p>
 <th>avg_total_leg_pax</th>
 <th>cp_sold</th>
 <th>cp_revenue</th>
+<th>rm_system</th>
 <th>avg_price</th>
 <th>yield</th>
 <th>rasm</th>
@@ -2636,50 +2672,53 @@ it will just happen automatically as needed.</p>
 <th></th>
 <th></th>
 <th></th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <th>AL1</th>
 <td>leg</td>
-<td>90523.1875</td>
-<td>285.0625</td>
+<td>90528.9375</td>
+<td>284.7775</td>
 <td>3</td>
-<td>86.595521</td>
+<td>86.390937</td>
 <td>590302.497298</td>
-<td>518762.573736</td>
+<td>516913.330106</td>
 <td>0.0</td>
-<td>187.865</td>
-<td>382.260</td>
+<td>188.3000</td>
+<td>381.2550</td>
 <td>0.0</td>
 <td>0.0</td>
-<td>317.55558</td>
-<td>0.174498</td>
-<td>0.153351</td>
-<td>87.880803</td>
-<td>49.145869</td>
-<td>65.903091</td>
+<td>E</td>
+<td>317.893575</td>
+<td>0.175134</td>
+<td>0.153360</td>
+<td>87.567532</td>
+<td>49.389516</td>
+<td>66.121797</td>
 </tr>
 <tr>
 <th>AL2</th>
 <td>leg</td>
-<td>91018.0000</td>
-<td>286.0075</td>
+<td>90241.0000</td>
+<td>285.0250</td>
 <td>3</td>
-<td>86.806250</td>
+<td>86.536354</td>
 <td>590302.497298</td>
-<td>519870.597612</td>
+<td>517512.647067</td>
 <td>0.0</td>
-<td>188.850</td>
-<td>383.165</td>
+<td>188.1975</td>
+<td>381.8525</td>
 <td>0.0</td>
 <td>0.0</td>
-<td>318.23641</td>
-<td>0.175078</td>
-<td>0.154189</td>
-<td>88.068507</td>
-<td>49.286861</td>
-<td>66.029737</td>
+<td>E</td>
+<td>316.607315</td>
+<td>0.174374</td>
+<td>0.152872</td>
+<td>87.669059</td>
+<td>49.285392</td>
+<td>66.028419</td>
 </tr>
 </tbody>
 </table>
@@ -2723,23 +2762,23 @@ it will just happen automatically as needed.</p>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-700135ce332f451b88a70725b2de05fc.vega-embed {
+  #altair-viz-5844d944bd994065929704b4e78c9e8a.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-700135ce332f451b88a70725b2de05fc.vega-embed details,
-  #altair-viz-700135ce332f451b88a70725b2de05fc.vega-embed details summary {
+  #altair-viz-5844d944bd994065929704b4e78c9e8a.vega-embed details,
+  #altair-viz-5844d944bd994065929704b4e78c9e8a.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-700135ce332f451b88a70725b2de05fc"></div>
+<div id="altair-viz-5844d944bd994065929704b4e78c9e8a"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-700135ce332f451b88a70725b2de05fc") {
-      outputDiv = document.getElementById("altair-viz-700135ce332f451b88a70725b2de05fc");
+    if (outputDiv.id !== "altair-viz-5844d944bd994065929704b4e78c9e8a") {
+      outputDiv = document.getElementById("altair-viz-5844d944bd994065929704b4e78c9e8a");
     }
 
     const paths = {
@@ -2787,7 +2826,7 @@ it will just happen automatically as needed.</p>
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFontSize": 12}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "booking_class", "type": "nominal"}, "tooltip": [{"field": "carrier", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "title": "Fare Class Mix", "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 3}, "encoding": {"opacity": {"condition": {"test": "datum.avg_sold < 17.160", "value": 0}, "value": 1}, "order": {"field": "booking_class", "sort": "descending", "type": "nominal"}, "text": {"field": "avg_sold", "format": ".2f", "type": "quantitative"}, "tooltip": [{"field": "carrier", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "title": "Fare Class Mix", "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}], "data": {"name": "data-1dcbf2fc55cd1a87e0f90b5f3de1cf55"}, "height": 300, "width": 400, "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json", "datasets": {"data-1dcbf2fc55cd1a87e0f90b5f3de1cf55": [{"carrier": "AL1", "booking_class": "Y0", "avg_sold": 53.98}, {"carrier": "AL1", "booking_class": "Y1", "avg_sold": 52.0325}, {"carrier": "AL1", "booking_class": "Y2", "avg_sold": 28.24}, {"carrier": "AL1", "booking_class": "Y3", "avg_sold": 13.4775}, {"carrier": "AL1", "booking_class": "Y4", "avg_sold": 103.69}, {"carrier": "AL1", "booking_class": "Y5", "avg_sold": 33.6425}, {"carrier": "AL2", "booking_class": "Y0", "avg_sold": 54.9125}, {"carrier": "AL2", "booking_class": "Y1", "avg_sold": 52.055}, {"carrier": "AL2", "booking_class": "Y2", "avg_sold": 28.6225}, {"carrier": "AL2", "booking_class": "Y3", "avg_sold": 13.0975}, {"carrier": "AL2", "booking_class": "Y4", "avg_sold": 103.59}, {"carrier": "AL2", "booking_class": "Y5", "avg_sold": 33.73}]}}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFontSize": 12}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "booking_class", "type": "nominal"}, "tooltip": [{"field": "carrier", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "title": "Fare Class Mix", "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 3}, "encoding": {"opacity": {"condition": {"test": "datum.avg_sold < 17.101", "value": 0}, "value": 1}, "order": {"field": "booking_class", "sort": "descending", "type": "nominal"}, "text": {"field": "avg_sold", "format": ".2f", "type": "quantitative"}, "tooltip": [{"field": "carrier", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "title": "Fare Class Mix", "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}], "data": {"name": "data-5819c2c3268bf2c3f0cd12dd7deef2ad"}, "height": 300, "width": 400, "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json", "datasets": {"data-5819c2c3268bf2c3f0cd12dd7deef2ad": [{"carrier": "AL1", "booking_class": "Y0", "avg_sold": 54.48}, {"carrier": "AL1", "booking_class": "Y1", "avg_sold": 52.365}, {"carrier": "AL1", "booking_class": "Y2", "avg_sold": 28.315}, {"carrier": "AL1", "booking_class": "Y3", "avg_sold": 13.245}, {"carrier": "AL1", "booking_class": "Y4", "avg_sold": 102.305}, {"carrier": "AL1", "booking_class": "Y5", "avg_sold": 34.0675}, {"carrier": "AL2", "booking_class": "Y0", "avg_sold": 53.9875}, {"carrier": "AL2", "booking_class": "Y1", "avg_sold": 52.0975}, {"carrier": "AL2", "booking_class": "Y2", "avg_sold": 28.2925}, {"carrier": "AL2", "booking_class": "Y3", "avg_sold": 12.8725}, {"carrier": "AL2", "booking_class": "Y4", "avg_sold": 102.645}, {"carrier": "AL2", "booking_class": "Y5", "avg_sold": 35.13}]}}, {"mode": "vega-lite"});
 </script>
 </div>
 </div>
@@ -2839,13 +2878,14 @@ but the rest are still only in the storage file.</p>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;passengersim.summaries.SimulationTables created on 2026-02-04&gt;
+<pre>&lt;passengersim.summaries.SimulationTables created on 2026-05-07&gt;
  * carriers (2 row DataFrame)
  * fare_class_mix (12 row DataFrame)
  * bid_price_history (available in file storage)
  * cabins (available in file storage)
  * carrier_history2 (available in file storage)
  * cp_segmentation (available in file storage)
+ * demand_history (available in file storage)
  * demand_to_come_summary (available in file storage)
  * demands (available in file storage)
  * displacement_history (available in file storage)
@@ -2931,7 +2971,7 @@ in case it is needed.</p>
   demands: &lt;list of 6 demands&gt;
   fares: &lt;list of 36 fares&gt;
   paths: &lt;list of 0 paths&gt;
-  markets: []
+  markets: [Market(orig='BOS', dest='ORD', demand_multiplier=1.0, delta_t=None), Market(orig='ORD', dest='LAX', demand_multiplier=1.0, delta_t=None), Market(orig='BOS', dest='LAX', demand_multiplier=1.0, delta_t=None)]
   other_controls: 
   snapshot_filters: []
   dwm_tolerance: []</pre>
@@ -2994,8 +3034,8 @@ display_directory_contents("saved-outputs")</div>
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre><span class="ansi-cyan-intense-fg ansi-bold">saved-outputs/</span>
-  <span class="ansi-green-intense-fg ansi-bold">summary.20260203-215907.pkl.lz4</span>
-  <span class="ansi-green-intense-fg ansi-bold">summary.20260203-215907.pxsim</span>
+  <span class="ansi-green-intense-fg ansi-bold">summary.20260507-162836.pxsim</span>
+  <span class="ansi-green-intense-fg ansi-bold">summary.20260507-162836.pkl.lz4</span>
 </pre>
 </div>
 </div>
@@ -3054,7 +3094,7 @@ resummary2</div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[19]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;passengersim.summaries.SimulationTables created on 2026-02-04&gt;
+<pre>&lt;passengersim.summaries.SimulationTables created on 2026-05-07&gt;
  * bid_price_history (256 row DataFrame)
  * cabins (3200 row DataFrame)
  * carriers (2 row DataFrame)
@@ -3063,6 +3103,7 @@ resummary2</div>
  * cp_segmentation (12 row DataFrame)
  * demand_to_come_summary (34 row DataFrame)
  * demands (6 row DataFrame)
+ * demand_history (NoneType)
  * displacement_history (68 row DataFrame)
  * fare_class_mix (12 row DataFrame)
  * legbuckets (48 row DataFrame)
@@ -3096,7 +3137,7 @@ simulations.</p>
 </div> <!-- jp-Notebook -->
 </div> <!-- jupyter-wrapper -->
 <script type="application/vnd.jupyter.widget-state+json">
-{"state": {"6efe0f2d7f7649ec83704a5df4c834c4": {"model_module": "@jupyter-widgets\/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets\/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets\/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_ec2159c602bb4e198eac3342c6e587e5", "msg_id": "", "outputs": [{"data": {"text\/html": "<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\">samples <span style=\"color: #729c1f; text-decoration-color: #729c1f\">\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501<\/span> <span style=\"color: #800080; text-decoration-color: #800080\">100%<\/span> <span style=\"color: #008080; text-decoration-color: #008080\">0:00:00<\/span>\n<\/pre>\n", "text\/plain": "samples \u001b[38;2;114;156;31m\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u001b[0m \u001b[35m100%\u001b[0m \u001b[36m0:00:00\u001b[0m\n"}, "metadata": {}, "output_type": "display_data"}], "tabbable": null, "tooltip": null}}, "ec2159c602bb4e198eac3342c6e587e5": {"model_module": "@jupyter-widgets\/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets\/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets\/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}}, "version_major": 2, "version_minor": 0}
+{"state": {"4d1d83f8152c4eb79a1cb79d32b18814": {"model_module": "@jupyter-widgets\/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets\/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets\/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "dfdacfcf82ad4981bc3a15ddd5a66418": {"model_module": "@jupyter-widgets\/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets\/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets\/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_4d1d83f8152c4eb79a1cb79d32b18814", "msg_id": "", "outputs": [{"data": {"text\/html": "<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\">samples <span style=\"color: #f92672; text-decoration-color: #f92672\">\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2578<\/span> <span style=\"color: #800080; text-decoration-color: #800080\"> 99%<\/span> <span style=\"color: #008080; text-decoration-color: #008080\">0:00:01<\/span>\n<\/pre>\n", "text\/plain": "samples \u001b[38;2;249;38;114m\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u001b[0m\u001b[38;2;249;38;114m\u2578\u001b[0m \u001b[35m 99%\u001b[0m \u001b[36m0:00:01\u001b[0m\n"}, "metadata": {}, "output_type": "display_data"}], "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}
 </script>
 
         <style>

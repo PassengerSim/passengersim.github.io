@@ -1429,6 +1429,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine._flush_firehoses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        _flush_firehoses
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#passengersim_core.SimulationEngine._get_event" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1565,6 +1576,17 @@
     <span class="md-ellipsis">
       
         allocate_demand_to_tf_pods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.attach_firehose_logger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        attach_firehose_logger
       
     </span>
   </a>
@@ -1840,6 +1862,17 @@
     <span class="md-ellipsis">
       
         validate_license
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim_core.SimulationEngine.write_to_firehose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        write_to_firehose
       
     </span>
   </a>
@@ -3133,6 +3166,28 @@ complete only one trial.</p>
 <div class="doc doc-object doc-function">
 
 
+<h3 id="passengersim_core.SimulationEngine._flush_firehoses" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">_flush_firehoses</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">_flush_firehoses</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Flush all currently attached firehose loggers.</p>
+<p>This forces any buffered firehose output for the configured debug topics to
+be written to their underlying destinations.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
 <h3 id="passengersim_core.SimulationEngine._get_event" class="doc doc-heading">
             <span class="doc doc-object-name doc-function-name">_get_event</span>
 
@@ -3523,21 +3578,319 @@ complete only one trial.</p>
 <div class="doc doc-object doc-function">
 
 
+<h3 id="passengersim_core.SimulationEngine.attach_firehose_logger" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">attach_firehose_logger</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">attach_firehose_logger</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">topic</span><span class="p">:</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        <span class="s2">&quot;orders&quot;</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        <span class="s2">&quot;offers&quot;</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        <span class="s2">&quot;choice&quot;</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="s2">&quot;connections&quot;</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        <span class="s2">&quot;events&quot;</span><span class="p">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        <span class="s2">&quot;demand&quot;</span><span class="p">,</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        <span class="s2">&quot;proration&quot;</span><span class="p">,</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="p">],</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">destination</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="n"><span title="typing.TextIO">TextIO</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Attach or detach a firehose logger for a debug topic.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+            <b><code>topic</code></b>
+              (<code>(<span title="orders">orders</span>, <span title="offers">offers</span>, <span title="choice">choice</span>, <span title="connections">connections</span>, <span title="events">events</span>, <span title="demand">demand</span>, <span title="proration">proration</span>)</code>, default:
+                  <code>&#34;orders&#34;</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>The firehose topic to configure.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>destination</code></b>
+              (<code>str or bool or file-like object or None</code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Where log output should be written.</p>
+<ul>
+<li><code>True</code> or <code>"stdout"</code> attaches the topic to Python's standard output.</li>
+<li><code>"stderr"</code> attaches the topic to Python's standard error.</li>
+<li>Any other string is treated as a filename.</li>
+<li>Any object with a <code>write()</code> method is used as the destination stream.</li>
+<li><code>False</code> or <code>None</code> detaches the logger for that topic.</li>
+</ul>
+          </div>
+        </li>
+    </ul>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><span title="TypeError">TypeError</span></code>
+            –
+          <div class="doc-md-description">
+            <p>If <code>destination</code> is not a bool, string, or object with a <code>write()</code> method.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+              <code><span title="ValueError">ValueError</span></code>
+            –
+          <div class="doc-md-description">
+            <p>If <code>topic</code> is not a recognized firehose topic.</p>
+          </div>
+        </li>
+    </ul>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
 <h3 id="passengersim_core.SimulationEngine.build_connections" class="doc doc-heading">
             <span class="doc doc-object-name doc-function-name">build_connections</span>
 
 
 </h3>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">build_connections</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">dmd</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="Demand (passengersim_core._Zoo.Demand)" href="Demand.html#passengersim_core.Demand">Demand</a></span><span class="p">,</span> <span class="n">debug</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">circuity_func</span><span class="p">:</span> <span class="n"><span title="collections.abc.Callable">Callable</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">verbosity</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">logfile</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="n"><span title="typing.TextIO">TextIO</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="o">*</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">max_legs</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">max_legs_if_nonstop_exists</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">nonstop_leg_path_id_alignment</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">circuity_function</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="n">existing_paths</span><span class="p">:</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        <span class="s2">&quot;keep&quot;</span><span class="p">,</span> <span class="s2">&quot;replace&quot;</span><span class="p">,</span> <span class="s2">&quot;required&quot;</span><span class="p">,</span> <span class="s2">&quot;none&quot;</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;keep&quot;</span><span class="p">,</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="n">min_paths_per_market</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">market</span><span class="p">:</span> <span class="n"><span title="str">str</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="int">int</span></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Build connections for the demands.</p>
-<p>This will create <code>Path</code> objects for each demand, if the network is given
-only by the <code>Leg</code> objects.</p>
+        <p>Build connection paths for markets in a simulation engine.</p>
+<p>This function automatically generates connection paths (itineraries) for all
+markets in the simulation by analyzing flight legs and constructing valid
+connections based on timing, circuity, and other constraints. Paths can include
+direct flights (non-stops) and connections with up to a specified number of legs.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+            <b><code>engine</code></b>
+              (<code><a class="autorefs autorefs-internal" title="SimulationEngine (passengersim_core._SimulationEngine.SimulationEngine)" href="#passengersim_core.SimulationEngine">SimulationEngine</a></code>)
+          –
+          <div class="doc-md-description">
+            <p>The simulation engine containing flights, demands, and markets for which
+to build connection paths.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>circuity_func</code></b>
+              (<code><span title="callable">callable</span></code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>A callable function to validate path circuity. The function should accept
+arguments (places_dict, legs, destination, iteration) and return a boolean
+indicating whether the proposed path satisfies circuity constraints.
+If not provided but circuity_function is specified, that named registered
+circuity function is used, otherwise the connection builder uses the default
+circuity function from <code>passengersim.connection_builder.circuity</code>.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>verbosity</code></b>
+              (<code><span title="int">int</span></code>, default:
+                  <code>0</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Logging verbosity level. Higher values produce more detailed logging output:
+- 0: No logging
+- 1: Basic market-level information
+- 2: Path-level details
+- 3+: Connection validation details</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>logfile</code></b>
+              (<code>str or file-like object</code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Destination for log output. Can be a file path string or a file-like object
+with a write() method. If not provided and verbosity &gt; 0, logs are written
+to stdout.</p>
+          </div>
+        </li>
+    </ul>
+
+
+<p><span class="doc-section-title">Other Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+          <b><code>max_legs</code></b>
+              (<code><span title="int">int</span></code>)
+          –
+          <div class="doc-md-description">
+            <p>Maximum number of legs (flight segments) allowed in a connection path.
+This limit applies when no non-stop path exists for a market.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+          <b><code>max_legs_if_nonstop_exists</code></b>
+              (<code><span title="int">int</span></code>)
+          –
+          <div class="doc-md-description">
+            <p>Maximum number of legs allowed in connection paths when a non-stop path
+already exists for the market. This is typically set lower than max_legs
+to avoid generating excessive long connections when direct service is available.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+          <b><code>nonstop_leg_path_id_alignment</code></b>
+              (<code><span title="bool">bool</span></code>)
+          –
+          <div class="doc-md-description">
+            <p>If True, assigns path IDs for non-stop paths to match their leg IDs,
+creating a 1-to-1 ID correspondence between single-leg paths and their
+constituent legs. This can simplify path identification and debugging.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+          <b><code>circuity_function</code></b>
+              (<code><span title="str">str</span></code>)
+          –
+          <div class="doc-md-description">
+            <p>Name of a registered circuity function to use instead of providing a
+callable via circuity_func. The function is looked up from the
+<code>passengersim.connection_builder.circuity</code> module's registered functions.
+This is particularly useful when setting up the connection builder in
+simulation YAML settings.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+          <b><code>existing_paths</code></b>
+              (<code>(<span title="keep">keep</span>, <span title="replace">replace</span>, <span title="required">required</span>, <span title="none">none</span>)</code>)
+          –
+          <div class="doc-md-description">
+            <p>Controls how to handle markets that already have paths defined:
+- "keep": Skip path generation for markets with existing paths
+- "replace": Clear existing paths and generate new ones
+- "required": Existing paths must be present; raise error if missing
+- "none": Existing paths must not be present; raise error if found</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+          <b><code>min_paths_per_market</code></b>
+              (<code><span title="int">int</span></code>)
+          –
+          <div class="doc-md-description">
+            <p>Minimum number of paths required per market. The function will iterate,
+potentially relaxing constraints, and attempt to generate additional
+paths if this minimum is not met. The iteration continues until either
+the minimum is satisfied or the search space is exhausted.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+          <b><code>market</code></b>
+              (<code><span title="str">str</span></code>)
+          –
+          <div class="doc-md-description">
+            <p>A single market identifier string (e.g. "JFK~LAX"). If given, the
+connection builder runs only for that one market, skipping all others.</p>
+          </div>
+        </li>
+    </ul>
+
+
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><span title="int">int</span></code>
+          –
+          <div class="doc-md-description">
+            <p>The total number of paths created across all markets.</p>
+          </div>
+        </li>
+    </ul>
+
+
+<details class="note" open>
+  <summary>Notes</summary>
+  <p>The path building algorithm uses a priority queue-based search to construct
+valid connections. For each origin-destination market, it:</p>
+<ol>
+<li>Starts with all direct flights from the origin</li>
+<li>Extends partial paths by considering connecting flights</li>
+<li>Validates connections based on:</li>
+<li>Minimum connection time (MCT)</li>
+<li>Maximum connection time</li>
+<li>Circuity constraints</li>
+<li>Online connection rules (same carrier)</li>
+<li>Continues until all valid paths up to max_legs are found</li>
+</ol>
+<p>Path IDs are automatically assigned, with special handling for non-stop paths
+when nonstop_leg_path_id_alignment is enabled. The function reserves existing
+path IDs and leg IDs to avoid conflicts.</p>
+<p>If a market's demand has a distance specified but the market does not, the
+distance is automatically copied from demand to market.</p>
+</details>
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <p>Build connections with default settings:</p>
+    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">passengersim.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_connections</span><span class="p">,</span> <span class="n">SimulationEngine</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">sim</span> <span class="o">=</span> <span class="n">SimulationEngine</span><span class="p">()</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gp">&gt;&gt;&gt; </span><span class="c1"># ... configure sim with flights and demands ...</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">num_paths</span> <span class="o">=</span> <span class="n">build_connections</span><span class="p">(</span><span class="n">sim</span><span class="p">)</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Created </span><span class="si">{</span><span class="n">num_paths</span><span class="si">}</span><span class="s2"> paths&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+    <p>Build connections with increased verbosity and custom path limits:</p>
+    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">num_paths</span> <span class="o">=</span> <span class="n">build_connections</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">... </span>    <span class="n">sim</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gp">... </span>    <span class="n">verbosity</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="gp">... </span>    <span class="n">max_legs</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="gp">... </span>    <span class="n">max_legs_if_nonstop_exists</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="gp">... </span>    <span class="n">logfile</span><span class="o">=</span><span class="s2">&quot;connection_log.txt&quot;</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="gp">... </span><span class="p">)</span>
+</span></code></pre></div>
+    <p>Replace existing paths with custom circuity function:</p>
+    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">custom_circuity</span><span class="p">(</span><span class="n">places</span><span class="p">,</span> <span class="n">legs</span><span class="p">,</span> <span class="n">dest</span><span class="p">,</span> <span class="n">iteration</span><span class="p">):</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">... </span>    <span class="c1"># Custom circuity logic</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gp">... </span>    <span class="k">return</span> <span class="kc">True</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">num_paths</span> <span class="o">=</span> <span class="n">build_connections</span><span class="p">(</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="gp">... </span>    <span class="n">sim</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="gp">... </span>    <span class="n">circuity_func</span><span class="o">=</span><span class="n">custom_circuity</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="gp">... </span>    <span class="n">existing_paths</span><span class="o">=</span><span class="s2">&quot;replace&quot;</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="gp">... </span><span class="p">)</span>
+</span></code></pre></div>
+    <p>Require at least 3 paths per market:</p>
+    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">num_paths</span> <span class="o">=</span> <span class="n">build_connections</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">... </span>    <span class="n">sim</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gp">... </span>    <span class="n">min_paths_per_market</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="gp">... </span>    <span class="n">verbosity</span><span class="o">=</span><span class="mi">1</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="gp">... </span><span class="p">)</span>
+</span></code></pre></div>
 
 
     </div>
@@ -4155,6 +4508,38 @@ back in time.</p>
           </div>
         </li>
     </ul>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="passengersim_core.SimulationEngine.write_to_firehose" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">write_to_firehose</span>
+
+
+</h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">write_to_firehose</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">topic</span><span class="p">:</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        <span class="s2">&quot;orders&quot;</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        <span class="s2">&quot;offers&quot;</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        <span class="s2">&quot;choice&quot;</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="s2">&quot;connections&quot;</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        <span class="s2">&quot;events&quot;</span><span class="p">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        <span class="s2">&quot;demand&quot;</span><span class="p">,</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        <span class="s2">&quot;proration&quot;</span><span class="p">,</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="p">],</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">message</span><span class="p">:</span> <span class="n"><span title="str">str</span></span><span class="p">,</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Write a message to the given firehose logger.</p>
 
 
     </div>

@@ -1605,6 +1605,19 @@ leg demand forecasts.  Options are 'additive_pickup', 'exp_smoothing', or
 uses scalar bid prices.</p>
           </div>
         </li>
+        <li class="doc-section-item field-body">
+            <b><code>sub_bp</code></b>
+              (<code><span title="bool">bool</span></code>, default:
+                  <code>False</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>If True, use SubBP instead of ProBP.  Under ProBP the revenue from
+a connecting fare is prorated among the legs to determine the displacement
+cost, while for SubBP the displacement costs for each leg are found
+by using the bid prices from the other legs directly without proration.</p>
+          </div>
+        </li>
     </ul>
 
 
@@ -2760,6 +2773,19 @@ consistent with prior work on hybrid forecasting methods.</p>
 class-level forecasts. Options are 'tf' to allocate variance by time frame,
 or 'dep' to allocate variance to departure. This setting has no effect if
 the <code>variance_is_ratio_of_mean</code> parameter is set to a value greater than zero.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>sub_bp</code></b>
+              (<code><span title="bool">bool</span></code>, default:
+                  <code>False</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>If True, use SubBP instead of ProBP.  Under ProBP the revenue from
+a connecting fare is prorated among the legs to determine the displacement
+cost, while for SubBP the displacement costs for each leg are found
+by using the bid prices from the other legs directly without proration.</p>
           </div>
         </li>
     </ul>

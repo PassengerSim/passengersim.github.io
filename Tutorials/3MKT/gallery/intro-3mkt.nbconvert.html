@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://www.passengersim.com/Tutorials/3MKT/gallery/intro-3mkt.nbconvert.html">
       
       
-        <link rel="prev" href="../../../user-guide/processing-outputs/tracers.nbconvert.html">
+        <link rel="prev" href="../../../user-guide/processing-outputs/firehose.nbconvert.html">
       
       
         <link rel="next" href="EE.nbconvert.html">
@@ -1499,8 +1499,8 @@ pax.versions()</div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>passengersim 0.65.dev59+gd35e5aa96.d20260204
-passengersim.core 0.65.dev47+gdb9319e94.d20260203
+<pre>passengersim 0.76.dev0+gf3d1cf663.d20260507
+passengersim.core 0.76.dev0+gf3d1cf663.d20260507
 </pre>
 </div>
 </div>
@@ -1613,7 +1613,7 @@ demands_to_dataframe(cfg.demands)</div>
 <th>dest</th>
 <th>segment</th>
 <th>base_demand</th>
-<th>reference_fare</th>
+<th>reference_price</th>
 <th>distance</th>
 <th>choice_model</th>
 <th>dwm_tolerance</th>
@@ -1769,12 +1769,12 @@ demands_to_dataframe(cfg.demands)</div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>[Demand(orig='BOS', dest='ORD', segment='business', base_demand=70.0, reference_fare=250.0, distance=863.7532821438833, choice_model='business', dwm_tolerance=0.0, todd_curve=None, curve='c1', group_sizes=None, prob_saturday_night=False, prob_num_days=[], deterministic=False, overrides=[]),
- Demand(orig='BOS', dest='ORD', segment='leisure', base_demand=90.0, reference_fare=100.0, distance=863.7532821438833, choice_model='leisure', dwm_tolerance=0.0, todd_curve=None, curve='c2', group_sizes=None, prob_saturday_night=False, prob_num_days=[], deterministic=False, overrides=[]),
- Demand(orig='ORD', dest='LAX', segment='business', base_demand=120.0, reference_fare=375.0, distance=1739.79933695373, choice_model='business', dwm_tolerance=0.0, todd_curve=None, curve='c1', group_sizes=None, prob_saturday_night=False, prob_num_days=[], deterministic=False, overrides=[]),
- Demand(orig='ORD', dest='LAX', segment='leisure', base_demand=150.0, reference_fare=150.0, distance=1739.79933695373, choice_model='leisure', dwm_tolerance=0.0, todd_curve=None, curve='c2', group_sizes=None, prob_saturday_night=False, prob_num_days=[], deterministic=False, overrides=[]),
- Demand(orig='BOS', dest='LAX', segment='business', base_demand=100.0, reference_fare=500.0, distance=2603.4491052979865, choice_model='business', dwm_tolerance=0.0, todd_curve=None, curve='c1', group_sizes=None, prob_saturday_night=False, prob_num_days=[], deterministic=False, overrides=[]),
- Demand(orig='BOS', dest='LAX', segment='leisure', base_demand=140.0, reference_fare=200.0, distance=2603.4491052979865, choice_model='leisure', dwm_tolerance=0.0, todd_curve=None, curve='c2', group_sizes=None, prob_saturday_night=False, prob_num_days=[], deterministic=False, overrides=[])]</pre>
+<pre>[Demand(orig='BOS', dest='ORD', segment='business', base_demand=70.0, reference_price=250.0, distance=863.7532821438833, choice_model='business', dwm_tolerance=0.0, todd_curve=None, curve='c1', group_sizes=None, prob_saturday_night=False, prob_num_days=[], deterministic=False, overrides=[]),
+ Demand(orig='BOS', dest='ORD', segment='leisure', base_demand=90.0, reference_price=100.0, distance=863.7532821438833, choice_model='leisure', dwm_tolerance=0.0, todd_curve=None, curve='c2', group_sizes=None, prob_saturday_night=False, prob_num_days=[], deterministic=False, overrides=[]),
+ Demand(orig='ORD', dest='LAX', segment='business', base_demand=120.0, reference_price=375.0, distance=1739.79933695373, choice_model='business', dwm_tolerance=0.0, todd_curve=None, curve='c1', group_sizes=None, prob_saturday_night=False, prob_num_days=[], deterministic=False, overrides=[]),
+ Demand(orig='ORD', dest='LAX', segment='leisure', base_demand=150.0, reference_price=150.0, distance=1739.79933695373, choice_model='leisure', dwm_tolerance=0.0, todd_curve=None, curve='c2', group_sizes=None, prob_saturday_night=False, prob_num_days=[], deterministic=False, overrides=[]),
+ Demand(orig='BOS', dest='LAX', segment='business', base_demand=100.0, reference_price=500.0, distance=2603.4491052979865, choice_model='business', dwm_tolerance=0.0, todd_curve=None, curve='c1', group_sizes=None, prob_saturday_night=False, prob_num_days=[], deterministic=False, overrides=[]),
+ Demand(orig='BOS', dest='LAX', segment='leisure', base_demand=140.0, reference_price=200.0, distance=2603.4491052979865, choice_model='leisure', dwm_tolerance=0.0, todd_curve=None, curve='c2', group_sizes=None, prob_saturday_night=False, prob_num_days=[], deterministic=False, overrides=[])]</pre>
 </div>
 </div>
 </div>
@@ -1827,23 +1827,23 @@ time distributions.</p>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-1dabed272c954157a07df5e818096d1d.vega-embed {
+  #altair-viz-0402f69987d34e25bc25d2ef05f7df3f.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-1dabed272c954157a07df5e818096d1d.vega-embed details,
-  #altair-viz-1dabed272c954157a07df5e818096d1d.vega-embed details summary {
+  #altair-viz-0402f69987d34e25bc25d2ef05f7df3f.vega-embed details,
+  #altair-viz-0402f69987d34e25bc25d2ef05f7df3f.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-1dabed272c954157a07df5e818096d1d"></div>
+<div id="altair-viz-0402f69987d34e25bc25d2ef05f7df3f"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-1dabed272c954157a07df5e818096d1d") {
-      outputDiv = document.getElementById("altair-viz-1dabed272c954157a07df5e818096d1d");
+    if (outputDiv.id !== "altair-viz-0402f69987d34e25bc25d2ef05f7df3f") {
+      outputDiv = document.getElementById("altair-viz-0402f69987d34e25bc25d2ef05f7df3f");
     }
 
     const paths = {
@@ -1972,6 +1972,7 @@ legs_to_dataframe(cfg.legs)</div>
 <th>orig_timezone</th>
 <th>dest_timezone</th>
 <th>carrier</th>
+<th>fltno</th>
 <th>distance</th>
 <th>capacity</th>
 <th>date</th>
@@ -1994,6 +1995,7 @@ legs_to_dataframe(cfg.legs)</div>
 <td>America/New_York</td>
 <td>America/Chicago</td>
 <td>AL1</td>
+<td>101</td>
 <td>863.753282</td>
 <td>100</td>
 <td>2020-03-01 00:00:00+00:00</td>
@@ -2004,7 +2006,7 @@ legs_to_dataframe(cfg.legs)</div>
 <td>True</td>
 <td>8.0</td>
 <td>10.0</td>
-<td>180.0</td>
+<td>180</td>
 </tr>
 <tr>
 <th>1</th>
@@ -2014,6 +2016,7 @@ legs_to_dataframe(cfg.legs)</div>
 <td>America/New_York</td>
 <td>America/Chicago</td>
 <td>AL1</td>
+<td>102</td>
 <td>863.753282</td>
 <td>100</td>
 <td>2020-03-01 00:00:00+00:00</td>
@@ -2024,7 +2027,7 @@ legs_to_dataframe(cfg.legs)</div>
 <td>True</td>
 <td>14.0</td>
 <td>16.0</td>
-<td>180.0</td>
+<td>180</td>
 </tr>
 <tr>
 <th>2</th>
@@ -2034,6 +2037,7 @@ legs_to_dataframe(cfg.legs)</div>
 <td>America/New_York</td>
 <td>America/Chicago</td>
 <td>AL2</td>
+<td>201</td>
 <td>863.753282</td>
 <td>100</td>
 <td>2020-03-01 00:00:00+00:00</td>
@@ -2044,7 +2048,7 @@ legs_to_dataframe(cfg.legs)</div>
 <td>True</td>
 <td>8.0</td>
 <td>10.0</td>
-<td>180.0</td>
+<td>180</td>
 </tr>
 <tr>
 <th>3</th>
@@ -2054,6 +2058,7 @@ legs_to_dataframe(cfg.legs)</div>
 <td>America/New_York</td>
 <td>America/Chicago</td>
 <td>AL2</td>
+<td>202</td>
 <td>863.753282</td>
 <td>100</td>
 <td>2020-03-01 00:00:00+00:00</td>
@@ -2064,7 +2069,7 @@ legs_to_dataframe(cfg.legs)</div>
 <td>True</td>
 <td>14.0</td>
 <td>16.0</td>
-<td>180.0</td>
+<td>180</td>
 </tr>
 <tr>
 <th>4</th>
@@ -2074,6 +2079,7 @@ legs_to_dataframe(cfg.legs)</div>
 <td>America/Chicago</td>
 <td>America/Los_Angeles</td>
 <td>AL1</td>
+<td>111</td>
 <td>1739.799337</td>
 <td>120</td>
 <td>2020-03-01 00:00:00+00:00</td>
@@ -2084,7 +2090,7 @@ legs_to_dataframe(cfg.legs)</div>
 <td>True</td>
 <td>11.0</td>
 <td>13.0</td>
-<td>240.0</td>
+<td>240</td>
 </tr>
 <tr>
 <th>5</th>
@@ -2094,6 +2100,7 @@ legs_to_dataframe(cfg.legs)</div>
 <td>America/Chicago</td>
 <td>America/Los_Angeles</td>
 <td>AL1</td>
+<td>112</td>
 <td>1739.799337</td>
 <td>120</td>
 <td>2020-03-01 00:00:00+00:00</td>
@@ -2104,7 +2111,7 @@ legs_to_dataframe(cfg.legs)</div>
 <td>True</td>
 <td>17.0</td>
 <td>19.0</td>
-<td>240.0</td>
+<td>240</td>
 </tr>
 <tr>
 <th>6</th>
@@ -2114,6 +2121,7 @@ legs_to_dataframe(cfg.legs)</div>
 <td>America/Chicago</td>
 <td>America/Los_Angeles</td>
 <td>AL2</td>
+<td>211</td>
 <td>1739.799337</td>
 <td>120</td>
 <td>2020-03-01 00:00:00+00:00</td>
@@ -2124,7 +2132,7 @@ legs_to_dataframe(cfg.legs)</div>
 <td>True</td>
 <td>11.0</td>
 <td>13.0</td>
-<td>240.0</td>
+<td>240</td>
 </tr>
 <tr>
 <th>7</th>
@@ -2134,6 +2142,7 @@ legs_to_dataframe(cfg.legs)</div>
 <td>America/Chicago</td>
 <td>America/Los_Angeles</td>
 <td>AL2</td>
+<td>212</td>
 <td>1739.799337</td>
 <td>120</td>
 <td>2020-03-01 00:00:00+00:00</td>
@@ -2144,7 +2153,7 @@ legs_to_dataframe(cfg.legs)</div>
 <td>True</td>
 <td>17.0</td>
 <td>19.0</td>
-<td>240.0</td>
+<td>240</td>
 </tr>
 </tbody>
 </table>
@@ -2188,23 +2197,23 @@ legs_to_dataframe(cfg.legs)</div>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <style>
-  #altair-viz-5e136eefda8f4a6a804627f8d5cb5e0f.vega-embed {
+  #altair-viz-d8a93b4bed2a438c8a1002979857ba70.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-5e136eefda8f4a6a804627f8d5cb5e0f.vega-embed details,
-  #altair-viz-5e136eefda8f4a6a804627f8d5cb5e0f.vega-embed details summary {
+  #altair-viz-d8a93b4bed2a438c8a1002979857ba70.vega-embed details,
+  #altair-viz-d8a93b4bed2a438c8a1002979857ba70.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-5e136eefda8f4a6a804627f8d5cb5e0f"></div>
+<div id="altair-viz-d8a93b4bed2a438c8a1002979857ba70"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-5e136eefda8f4a6a804627f8d5cb5e0f") {
-      outputDiv = document.getElementById("altair-viz-5e136eefda8f4a6a804627f8d5cb5e0f");
+    if (outputDiv.id !== "altair-viz-d8a93b4bed2a438c8a1002979857ba70") {
+      outputDiv = document.getElementById("altair-viz-d8a93b4bed2a438c8a1002979857ba70");
     }
 
     const paths = {

@@ -1107,6 +1107,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#passengersim_core.Demand.choice_model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        choice_model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#passengersim_core.Demand.curve_number" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1144,6 +1155,17 @@
     <span class="md-ellipsis">
       
         distance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core.Demand.dwm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dwm
       
     </span>
   </a>
@@ -1272,6 +1294,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#passengersim_core.Demand.market_identifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        market_identifier
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#passengersim_core.Demand.orig" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1327,10 +1360,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#passengersim_core.Demand.reference_fare" class="md-nav__link">
+  <a href="#passengersim_core.Demand.reference_price" class="md-nav__link">
     <span class="md-ellipsis">
       
-        reference_fare
+        reference_price
       
     </span>
   </a>
@@ -1415,32 +1448,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#passengersim_core.Demand.add_choice_model" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        add_choice_model
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#passengersim_core.Demand.add_curve" class="md-nav__link">
     <span class="md-ellipsis">
       
         add_curve
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#passengersim_core.Demand.add_dwm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        add_dwm
       
     </span>
   </a>
@@ -1492,6 +1503,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#passengersim_core.Demand.choose_offer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        choose_offer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#passengersim_core.Demand.get_carrier_revenue" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1507,17 +1529,6 @@
     <span class="md-ellipsis">
       
         get_carrier_sold
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#passengersim_core.Demand.get_choice_model" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        get_choice_model
       
     </span>
   </a>
@@ -1584,6 +1595,17 @@
     <span class="md-ellipsis">
       
         get_paths
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core.Demand.simulate_choices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        simulate_choices
       
     </span>
   </a>
@@ -1861,6 +1883,32 @@ and network planning simulations.</p>
 
 
 
+<h2 id="passengersim_core.Demand.choice_model" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">choice_model</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">choice_model</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="ChoiceModel (passengersim_core._Zoo.ChoiceModel)" href="ChoiceModel.html#passengersim_core.ChoiceModel">ChoiceModel</a></span> <span class="o">|</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>The choice model attached to this market segment.</p>
+<p>Returns None if no choice model has been set. Assigning None clears
+any previously set choice model.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
 <h2 id="passengersim_core.Demand.curve_number" class="doc doc-heading">
             <span class="doc doc-object-name doc-attribute-name">curve_number</span>
 
@@ -1914,12 +1962,11 @@ and network planning simulations.</p>
 
 
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small>
       <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
   </span>
 
 </h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">deterministic</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">deterministic</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -1954,6 +2001,32 @@ timeframe distribution of this demand, but the total amount will be deterministi
 
         <p>Market distance in nautical miles.</p>
 <p>This is a pass-through attribute of the market object.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h2 id="passengersim_core.Demand.dwm" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">dwm</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">dwm</span><span class="p">:</span> <span class="n"><span title="passengersim_core._Zoo.DecisionWindow">DecisionWindow</span></span> <span class="o">|</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>The Decision Window Model attached to this market segment.</p>
+<p>Returns None if no Decision Window Model has been set. Assigning None
+clears any previously set Decision Window Model.</p>
 
     </div>
 
@@ -2229,6 +2302,30 @@ with replanning disutility.</p>
 
 
 
+<h2 id="passengersim_core.Demand.market_identifier" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">market_identifier</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">market_identifier</span><span class="p">:</span> <span class="n"><span title="str">str</span></span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>The unique identifier of this demand's market, in the form "origin~destination".</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
 <h2 id="passengersim_core.Demand.orig" class="doc doc-heading">
             <span class="doc doc-object-name doc-attribute-name">orig</span>
 
@@ -2353,8 +2450,8 @@ with replanning disutility.</p>
 
 
 
-<h2 id="passengersim_core.Demand.reference_fare" class="doc doc-heading">
-            <span class="doc doc-object-name doc-attribute-name">reference_fare</span>
+<h2 id="passengersim_core.Demand.reference_price" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">reference_price</span>
 
 
   <span class="doc doc-labels">
@@ -2362,7 +2459,7 @@ with replanning disutility.</p>
   </span>
 
 </h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">reference_fare</span><span class="p">:</span> <span class="n"><span title="float">float</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">reference_price</span><span class="p">:</span> <span class="n"><span title="float">float</span></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -2518,10 +2615,246 @@ Willingness To Pay (WTP) constraints.</p>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="o">*</span><span class="p">,</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">market</span><span class="p">:</span> <span class="n"><span title="passengersim_core._Zoo.Market">Market</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">deterministic</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">)</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="n">reference_price</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">price</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="n">distance</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="n">generated_demand</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">curve_number</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="n">dwm_tolerance</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="n">prob_saturday_night</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    <span class="n">prob_num_days</span><span class="p">:</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><span title="float">float</span></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="n">prob_favored_carrier</span><span class="p">:</span> <span class="n"><span title="dict">dict</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="n"><span title="float">float</span></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>    <span class="n">gt_demand</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    <span class="n">gt_sold</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    <span class="n">gt_revenue</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    <span class="n">choice_model</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="ChoiceModel (passengersim_core._Zoo.ChoiceModel)" href="ChoiceModel.html#passengersim_core.ChoiceModel">ChoiceModel</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>    <span class="n">dwm</span><span class="p">:</span> <span class="n"><span title="passengersim_core._Zoo.DecisionWindow">DecisionWindow</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
+        <p>Create a new demand object.</p>
+<p>A new market object can be created by passing the <code>orig</code> and <code>dest</code> arguments.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+            <b><code>orig</code></b>
+              (<code><span title="str">str</span></code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>The origin place code, ignored if an existing <code>market</code> argument is provided.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>dest</code></b>
+              (<code><span title="str">str</span></code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>The destination place code, ignored if an existing <code>market</code> argument is provided.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>segment</code></b>
+              (<code><span title="str">str</span></code>, default:
+                  <code>&#39;&#39;</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>The segment code, by default ""</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>base_demand</code></b>
+              (<code><span title="float">float</span></code>, default:
+                  <code>0</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>The base demand, by default 0</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>scenario_demand</code></b>
+              (<code><span title="float">float</span></code>, default:
+                  <code>0</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>The scenario demand, by default 0</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>market</code></b>
+              (<code><span title="passengersim_core._Zoo.Market">Market</span></code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>An existing market object</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>deterministic</code></b>
+              (<code><span title="bool">bool</span></code>, default:
+                  <code>False</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>If true, the total amount of simulation demand generated for each sample is
+deterministic instead of stochastic, i.e. it will always be exactly equal to
+the base demand (adjusted by any market multiplier).</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>reference_price</code></b>
+              (<code><span title="float">float</span></code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Reference fare used when computing Willingness To Pay (WTP). If not provided,
+the default value of 0.0 is used.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>price</code></b>
+              (<code><span title="float">float</span></code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Default price for this demand. If not provided, the default value of 0.0 is used.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>distance</code></b>
+              (<code><span title="float">float</span></code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Market distance in nautical miles. Requires a market to be set.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>generated_demand</code></b>
+              (<code><span title="float">float</span></code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>The amount of demand generated for this segment.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>curve_number</code></b>
+              (<code><span title="int">int</span></code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Curve number used for converting PODS input files.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>dwm_tolerance</code></b>
+              (<code><span title="float">float</span></code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Decision Window Model tolerance.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>prob_saturday_night</code></b>
+              (<code><span title="float">float</span></code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Probability of Saturday night stay.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>prob_num_days</code></b>
+              (<code>list of float</code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>List of probabilities for length of trip. Must sum to 1.0 (±0.02).</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>prob_favored_carrier</code></b>
+              (<code>dict of str to float</code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Weights to compute favored carrier preferences. Values must be in [0, 1]
+and sum to 1.0 (±0.02).</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>gt_demand</code></b>
+              (<code><span title="int">int</span></code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Grand Total demand, excluding burn samples.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>gt_sold</code></b>
+              (<code><span title="int">int</span></code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Grand Total sold, excluding burn samples.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>gt_revenue</code></b>
+              (<code><span title="float">float</span></code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Grand Total revenue, excluding burn samples.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>choice_model</code></b>
+              (<code><a class="autorefs autorefs-internal" title="ChoiceModel (passengersim_core._Zoo.ChoiceModel)" href="ChoiceModel.html#passengersim_core.ChoiceModel">ChoiceModel</a></code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>The choice model to attach to this market segment.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>dwm</code></b>
+              (<code><span title="passengersim_core._Zoo.DecisionWindow">DecisionWindow</span></code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>The Decision Window Model to attach to this market segment.</p>
+          </div>
+        </li>
+    </ul>
 
 
     </div>
@@ -2588,63 +2921,6 @@ Willingness To Pay (WTP) constraints.</p>
 <div class="doc doc-object doc-function">
 
 
-<h2 id="passengersim_core.Demand.add_choice_model" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">add_choice_model</span>
-
-
-</h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_choice_model</span><span class="p">(</span><span class="n">choice_model</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="ChoiceModel (passengersim_core._Zoo.ChoiceModel)" href="ChoiceModel.html#passengersim_core.ChoiceModel">ChoiceModel</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="str">str</span></span>
-</span></code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Add a choice model to this market segment.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <ul>
-        <li class="doc-section-item field-body">
-            <b><code>choice_model</code></b>
-              (<code><a class="autorefs autorefs-internal" title="ChoiceModel (passengersim_core._Zoo.ChoiceModel)" href="ChoiceModel.html#passengersim_core.ChoiceModel">ChoiceModel</a></code>)
-          –
-          <div class="doc-md-description">
-            <p>The choice model object to add to this market segment.</p>
-          </div>
-        </li>
-    </ul>
-
-
-<p><span class="doc-section-title">Returns:</span></p>
-    <ul>
-        <li class="doc-section-item field-body">
-              <code><span title="str">str</span></code>
-          –
-          <div class="doc-md-description">
-            <p>A confirmation message indicating the choice model was added.</p>
-          </div>
-        </li>
-    </ul>
-
-
-<p><span class="doc-section-title">Raises:</span></p>
-    <ul>
-        <li class="doc-section-item field-body">
-              <code><span title="TypeError">TypeError</span></code>
-            –
-          <div class="doc-md-description">
-            <p>If the parameter is not a ChoiceModel object.</p>
-          </div>
-        </li>
-    </ul>
-
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
 <h2 id="passengersim_core.Demand.add_curve" class="doc doc-heading">
             <span class="doc doc-object-name doc-function-name">add_curve</span>
 
@@ -2690,63 +2966,6 @@ Willingness To Pay (WTP) constraints.</p>
             –
           <div class="doc-md-description">
             <p>If the parameter is not a BookingCurve object.</p>
-          </div>
-        </li>
-    </ul>
-
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="passengersim_core.Demand.add_dwm" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">add_dwm</span>
-
-
-</h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_dwm</span><span class="p">(</span><span class="n">decision_window</span><span class="p">:</span> <span class="n"><span title="passengersim_core._Zoo.DecisionWindow">DecisionWindow</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="int">int</span></span>
-</span></code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Add a Decision Window Model to this market segment.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <ul>
-        <li class="doc-section-item field-body">
-            <b><code>decision_window</code></b>
-              (<code><span title="passengersim_core._Zoo.DecisionWindow">DecisionWindow</span></code>)
-          –
-          <div class="doc-md-description">
-            <p>The Decision Window Model object to add to this market segment.</p>
-          </div>
-        </li>
-    </ul>
-
-
-<p><span class="doc-section-title">Returns:</span></p>
-    <ul>
-        <li class="doc-section-item field-body">
-              <code><span title="int">int</span></code>
-          –
-          <div class="doc-md-description">
-            <p>Returns 0 to indicate successful addition.</p>
-          </div>
-        </li>
-    </ul>
-
-
-<p><span class="doc-section-title">Raises:</span></p>
-    <ul>
-        <li class="doc-section-item field-body">
-              <code><span title="TypeError">TypeError</span></code>
-            –
-          <div class="doc-md-description">
-            <p>If the parameter is not a DecisionWindow object.</p>
           </div>
         </li>
     </ul>
@@ -3012,6 +3231,74 @@ including discount percentages and preference adjustments.</p>
 <div class="doc doc-object doc-function">
 
 
+<h2 id="passengersim_core.Demand.choose_offer" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">choose_offer</span>
+
+
+</h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">choose_offer</span><span class="p">(</span><span class="n">offers</span><span class="p">:</span> <span class="n"><span title="list">list</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="int">int</span></span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Use this demand's choice model to choose among a sequence of offers.</p>
+<p>The method retrieves the choice model attached to this Demand and uses
+it to make a single choice among the provided offers.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+            <b><code>offers</code></b>
+              (<code><span title="Sequence">Sequence</span>[<span title="passengersim_core._Zoo.Offer">Offer</span>]</code>)
+          –
+          <div class="doc-md-description">
+            <p>A sequence of Offer objects to choose from.</p>
+          </div>
+        </li>
+    </ul>
+
+
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><span title="int">int</span></code>
+          –
+          <div class="doc-md-description">
+            <p>The index of the chosen offer within the provided sequence, or -1 if
+no offer was chosen (i.e. the "chose nothing" outcome).</p>
+          </div>
+        </li>
+    </ul>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><span title="ValueError">ValueError</span></code>
+            –
+          <div class="doc-md-description">
+            <p>If no choice model is attached to this Demand, or if the offers
+sequence is empty.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+              <code><span title="TypeError">TypeError</span></code>
+            –
+          <div class="doc-md-description">
+            <p>If offers is not a sequence, or if any element is not an Offer.</p>
+          </div>
+        </li>
+    </ul>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
 <h2 id="passengersim_core.Demand.get_carrier_revenue" class="doc doc-heading">
             <span class="doc doc-object-name doc-function-name">get_carrier_revenue</span>
 
@@ -3121,38 +3408,6 @@ including discount percentages and preference adjustments.</p>
             –
           <div class="doc-md-description">
             <p>If an error occurs during the lookup.</p>
-          </div>
-        </li>
-    </ul>
-
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="passengersim_core.Demand.get_choice_model" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">get_choice_model</span>
-
-
-</h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">get_choice_model</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="ChoiceModel (passengersim_core._Zoo.ChoiceModel)" href="ChoiceModel.html#passengersim_core.ChoiceModel">ChoiceModel</a></span> <span class="o">|</span> <span class="kc">None</span>
-</span></code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Get the choice model attached to this market segment.</p>
-
-
-<p><span class="doc-section-title">Returns:</span></p>
-    <ul>
-        <li class="doc-section-item field-body">
-              <code><a class="autorefs autorefs-internal" title="ChoiceModel (passengersim_core._Zoo.ChoiceModel)" href="ChoiceModel.html#passengersim_core.ChoiceModel">ChoiceModel</a> or None</code>
-          –
-          <div class="doc-md-description">
-            <p>The choice model object if one is attached, None otherwise.</p>
           </div>
         </li>
     </ul>
@@ -3438,6 +3693,89 @@ Returns an empty tuple if no paths are available.</p>
             –
           <div class="doc-md-description">
             <p>If an error occurs while creating path objects.</p>
+          </div>
+        </li>
+    </ul>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="passengersim_core.Demand.simulate_choices" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">simulate_choices</span>
+
+
+</h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">simulate_choices</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">offers</span><span class="p">:</span> <span class="n"><span title="list">list</span></span><span class="p">,</span> <span class="n">n_draws</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">=</span> <span class="mi">100000</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="object">object</span></span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Simulate many choices among a sequence of offers using this demand's choice model.</p>
+<p>This will approximate the probability of each of the offers being chosen,
+given the set of offers.</p>
+<p>This method invokes the Demand's choice model to choose among the provided
+offers. "Chose nothing" outcomes are not counted in the returned array, so the
+sum of choices may not equal the number of draws.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+            <b><code>offers</code></b>
+              (<code><span title="Sequence">Sequence</span>[<span title="passengersim_core._Zoo.Offer">Offer</span>]</code>)
+          –
+          <div class="doc-md-description">
+            <p>A sequence of Offer objects to choose from.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>n_draws</code></b>
+              (<code><span title="int">int</span></code>, default:
+                  <code>100000</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>The number of choice draws to simulate. Defaults to 100000.</p>
+          </div>
+        </li>
+    </ul>
+
+
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><span title="numpy.ndarray">ndarray</span></code>
+          –
+          <div class="doc-md-description">
+            <p>A 1-d numpy array of ints with length equal to the number of offers,
+where each element is the count of times that offer was chosen.</p>
+          </div>
+        </li>
+    </ul>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><span title="ValueError">ValueError</span></code>
+            –
+          <div class="doc-md-description">
+            <p>If no choice model is attached to this Demand, if the offers sequence
+is empty, or if n_draws is less than 1.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+              <code><span title="TypeError">TypeError</span></code>
+            –
+          <div class="doc-md-description">
+            <p>If offers is not a sequence, or if any element is not an Offer.</p>
           </div>
         </li>
     </ul>

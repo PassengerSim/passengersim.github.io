@@ -1818,7 +1818,10 @@
 
 
 
-        <p>Carrier objects, mostly has counters and link to RM pipeline.</p>
+        <p>Carrier object representing an airline with revenue management controls.</p>
+<p>Represents an airline carrier with counters for tracking sales, revenue, and
+bookings, along with configuration for revenue management systems, pricing
+strategies, and forecasting.</p>
 
 
 
@@ -2579,7 +2582,25 @@
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        <span class="s2">&quot;none&quot;</span><span class="p">,</span>
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;leg&quot;</span><span class="p">,</span>
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="n">store_q_history</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="o">*</span><span class="p">,</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">truncation_rule</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="n">proration_rule</span><span class="p">:</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        <span class="s2">&quot;distance&quot;</span><span class="p">,</span> <span class="s2">&quot;sqrt_distance&quot;</span><span class="p">,</span> <span class="s2">&quot;off&quot;</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    <span class="p">]</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>    <span class="n">history_length</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    <span class="n">brand_preference</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    <span class="n">cp_algorithm</span><span class="p">:</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>        <span class="s2">&quot;None&quot;</span><span class="p">,</span> <span class="s2">&quot;BP&quot;</span><span class="p">,</span> <span class="s2">&quot;CBC&quot;</span><span class="p">,</span> <span class="s2">&quot;OPT&quot;</span><span class="p">,</span> <span class="s2">&quot;CLASSLESS&quot;</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>    <span class="p">]</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    <span class="n">cp_record</span><span class="p">:</span> <span class="n"><span title="typing.Literal">Literal</span></span><span class="p">[</span><span class="s2">&quot;lowest_open&quot;</span><span class="p">,</span> <span class="s2">&quot;highest_closed&quot;</span><span class="p">]</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>    <span class="n">cp_record_highest_closed_as_open</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>    <span class="n">cp_quantize</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>    <span class="n">cp_scale</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>    <span class="n">cp_elasticity</span><span class="p">:</span> <span class="n"><span title="dict">dict</span></span><span class="p">[</span><span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="n"><span title="float">float</span></span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -2617,6 +2638,106 @@
             <p>Whether to store priceable history for this carrier.  This is off by
 default to save memory, but needs to be on for some RM systems such
 as Q forecasting.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>truncation_rule</code></b>
+              (<code><span title="int">int</span></code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Mark a TimeFrame as closed if closed at beginning (1), end (2), or either (3).</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>proration_rule</code></b>
+              (<code>(&#39;distance&#39;, &#39;sqrt_distance&#39;, &#39;off&#39;)</code>, default:
+                  <code>&#34;distance&#34;</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>How to prorate revenue between legs on connecting paths.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>history_length</code></b>
+              (<code><span title="int">int</span></code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Number of historical samples used for forecasting.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>brand_preference</code></b>
+              (<code><span title="float">float</span></code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Brand preference multiplier for this carrier.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>cp_algorithm</code></b>
+              (<code>(&#39;None&#39;, &#39;BP&#39;, &#39;CBC&#39;, &#39;OPT&#39;, &#39;CLASSLESS&#39;)</code>, default:
+                  <code>&#34;None&#34;</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Algorithm to use for Continuous Pricing.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>cp_record</code></b>
+              (<code>(&#39;lowest_open&#39;, &#39;highest_closed&#39;)</code>, default:
+                  <code>&#34;lowest_open&#34;</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>For Continuous Pricing, record in the highest_closed class or the lowest_open.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>cp_record_highest_closed_as_open</code></b>
+              (<code><span title="bool">bool</span></code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>For Continuous Pricing, record the highest closed class as open in pathclass history.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>cp_quantize</code></b>
+              (<code><span title="int">int</span></code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>For Continuous Pricing, round prices to this multiple.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>cp_scale</code></b>
+              (<code><span title="float">float</span></code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Scale the Continuous Pricing modifier.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>cp_elasticity</code></b>
+              (<code><span title="dict">dict</span></code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>For Continuous Pricing, estimate customer price elasticity.</p>
           </div>
         </li>
     </ul>

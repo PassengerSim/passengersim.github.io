@@ -1094,6 +1094,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#passengersim_core.ChoiceModel.dwm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dwm
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#passengersim_core.ChoiceModel.dwm_eliminate_outside_window" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1237,6 +1248,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#passengersim_core.ChoiceModel.preferred_carrier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        preferred_carrier
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#passengersim_core.ChoiceModel.preferred_carrier_alpha" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1292,6 +1314,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#passengersim_core.ChoiceModel.seat_share_alpha" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        seat_share_alpha
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core.ChoiceModel.seat_share_beta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        seat_share_beta
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#passengersim_core.ChoiceModel.segment" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1325,6 +1369,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#passengersim_core.ChoiceModel.add_restriction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        add_restriction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core.ChoiceModel.choose_offer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        choose_offer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#passengersim_core.ChoiceModel.get_dwm_penalty" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1336,10 +1402,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#passengersim_core.ChoiceModel.get_midpoint" class="md-nav__link">
+  <a href="#passengersim_core.ChoiceModel.get_parameters" class="md-nav__link">
     <span class="md-ellipsis">
       
-        get_midpoint
+        get_parameters
       
     </span>
   </a>
@@ -1358,10 +1424,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#passengersim_core.ChoiceModel.get_window" class="md-nav__link">
+  <a href="#passengersim_core.ChoiceModel.max_wtp" class="md-nav__link">
     <span class="md-ellipsis">
       
-        get_window
+        max_wtp
       
     </span>
   </a>
@@ -1373,6 +1439,17 @@
     <span class="md-ellipsis">
       
         serialize
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim_core.ChoiceModel.set_parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        set_parameters
       
     </span>
   </a>
@@ -1603,6 +1680,196 @@
 
 
 
+        <p>Customer choice model for simulating passenger behavior.</p>
+<p>A ChoiceModel represents the decision-making behavior associated with the
+"right to fly" (and no additional ancillaries) of a specific customer
+segment (e.g., 'business' or 'leisure'). Each customer segment typically has
+its own ChoiceModel with parameters calibrated to represent that segment's
+preferences and price sensitivity. We define the alternatives of the choice model as "offers
+presented to the customer," where each offer corresponds to an ODF (origin-destination-fare
+product) available in the market along with its associated itinerary options.  The definition
+of an offer will be expanded in future versions to include ancillaries beyond the right to fly
+as well as branded fares and matrix pricing.</p>
+<p>PassengerSim supports different forms of choice models. Currently, two types
+are available: MNL (multinomial logit) and PODS (which is a mixed MNL with random coefficients and
+latent-class where each class represents a customer segment).
+The model type is specified when creating the ChoiceModel instance.</p>
+<p>There is no limit to the number of customer segments or choice models that
+can be defined. Common practice uses two segments ('business' and 'leisure'),
+but PassengerSim supports arbitrary segment names and any number of segments.</p>
+<p>Each demand in the simulation specifies which customer segment it belongs to,
+and the corresponding ChoiceModel is used to simulate that customer's
+itinerary behavior.</p>
+
+
+<details class="choice-set-generation-process" open>
+  <summary>Choice Set Generation Process</summary>
+  <p>The ChoiceModel uses a two-step process to select an offer for a given individual.</p>
+<p><strong>Step 1: Initial Screening and Choice Set Formation</strong></p>
+<p>A maximum willingness-to-pay (WTP) is calculated for each customer based on their
+segment characteristics and a random draw. The initial screening compares each
+offer's fare against this maximum WTP to create a feasible choice set.
+Only offers where <strong>fare ≤ WTP</strong> pass this initial screen and enter the choice set.</p>
+<p><strong>Step 2: Offer Selection Using Discrete Choice Analysis (DCA)</strong></p>
+<p>From the feasible choice set, one offer is selected using a discrete choice model
+(DCA) that evaluates the relative attractiveness of each option based on fare,
+disutilities for schedule quality, carrier preference, and other attributes.</p>
+<p><strong>For MNL (Multinomial Logit) models</strong>:
+For each offer in the choice set, a utility is calculated (typically as a function of
+fare and other attributes). These utilities are exponentiated and normalized to create
+choice probabilities:</p>
+<ul>
+<li>probability(offer_i) = exp(utility_i) / Σ exp(utility_j) for all j in choice set</li>
+</ul>
+<p>A random draw is then made from this probability distribution to select one offer.
+This is implemented as a "weighted roulette wheel" where the random draw determines
+which offer is selected based on its probability mass.</p>
+<p><strong>For PODS models</strong>: The selection uses a "lowest generalized cost" approach where
+the offer with the minimum (fare + total_disutility) is selected.
+Note that disutilities are randomly generated and differ by customer segment. As
+discussed in [5]_, the PODS approach is a mixed MNL model with random coefficients,
+latent classes (customer segments), and infinite scale. That is, where logit models
+are typically normalized by setting the scale parameter to 1, PODS sets the scale to infinity,
+which results in the lowest generalized cost approach where the customer
+chooses the option with minimum (fare + disutility).</p>
+<p>If no products remain in the choice set after the initial screening (all fares exceed
+the customer's WTP), the customer is recorded as a "no-go" (no purchase).</p>
+</details>
+
+<details class="utility-and-disutility-functions" open>
+  <summary>Utility and Disutility Functions</summary>
+  <p>The ChoiceModel class is used to specify the utility (or in the context of the PODS model, the
+<em>disutility</em>) function associated with each ODF (origin-destination-fare
+product). While classic discrete choice models define a utility function for
+each itinerary or mode choice, the PODS consortium historically reversed this
+convention and instead specified a disutility function. In addition, the PODS convention
+defined reference variables and categories so that <strong>positive disutility values correspond
+to intuitive behavioral relationships for non-reference categories, and ensures that all
+randomly generated disutilities are non-negative (greater than or equal to zero)</strong>.
+For example, when comparing nonstop and connecting itineraries, customers are expected to
+prefer nonstops.
+Accordingly, connecting itineraries should have higher (more positive) disutility than nonstop
+itineraries (the reference).</p>
+<p>Several pre-programmed functions are used to construct the disutility function,
+including preferences for product restrictions (e.g., refundability), airlines,
+schedule quality (nonstop vs. connections), and other schedule attributes.
+Airline preferences are implemented as unfavored airline preference to maintain
+positive disutilities when a non-preferred airline is selected. Additional
+schedule effects are captured through replanning disutilities, which draw
+heavily on the decision window model framework described in the Boeing
+reference used in the MIT Airline Management lecture (see [1]_).</p>
+<p>Default models typically used in PODS studies include disutilities for
+unfavored airline, connections, product restrictions, and schedule replanning
+(derived from the adapted decision window approach).</p>
+</details>
+
+<details class="functional-form-and-reference-fare" open>
+  <summary>Functional Form and Reference Fare</summary>
+  <p>Many of the disutilities used in prior PODS studies follow a two-step calculation:</p>
+<ol>
+<li>Calculate a base penalty: <strong>base_penalty = alpha + beta × reference_fare</strong></li>
+<li>Apply an indicator or multiplier based on the specific disutility component</li>
+</ol>
+<p>The reference fare is the lowest fare in the market for leisure travelers
+(default basefare_mult = 1.0 for leisure) and basefare_mult × lowest_fare for business travelers
+(default basefare_mult = 2.5 for business).</p>
+<p>Examples of the complete disutility formulas:</p>
+<ul>
+<li><strong>Path quality</strong>: disutility = (PQI - 1) × base_penalty</li>
+<li><strong>Preferred carrier</strong>: disutility = indicator(non-preferred) × base_penalty</li>
+<li><strong>Elapsed time</strong>: base_penalty calculated with log(duration) included in formula</li>
+<li><strong>Buffer time</strong>: base_penalty calculated with (threshold - buffer_time) included in formula</li>
+</ul>
+<p>This scaling captures two important behavioral effects:</p>
+<ol>
+<li>
+<p><strong>Business travelers are more willing to pay for schedule and airline convenience</strong>:
+   The higher reference fare (2.5× the lowest fare) means business travelers incur
+   proportionally larger absolute disutilities, reflecting their higher willingness
+   to pay to avoid inconveniences.</p>
+</li>
+<li>
+<p><strong>Willingness to pay in absolute dollar terms is higher for longer (higher-fare)
+   itineraries than shorter (lower-fare) itineraries</strong>: The beta coefficient scales
+   penalties proportionally to the reference fare, so a $20 penalty on a $200 fare
+   (10%) is treated similarly to a $10 penalty on a $100 fare (10%), reflecting that
+   customers' tolerance for absolute dollar penalties scales with trip cost.</p>
+</li>
+</ol>
+</details>
+
+<details class="complete-example:-generating-a-full-disutility-function" open>
+  <summary>Complete Example: Generating a Full Disutility Function</summary>
+  <p>An example using concepts from this class is shown below for completeness.
+The individual concepts (basefare_mult, reference fare, k_factor, path quality,
+preferred carrier, buffer time, decision window model, etc.) are described in
+detail in the parameter documentation that follows.</p>
+<p>Consider a business traveler evaluating a connecting itinerary with these attributes:</p>
+<ul>
+<li>Reference fare (leisure): $150</li>
+<li>Business basefare_mult: 2.5</li>
+<li>Adjusted reference fare: $150 × 2.5 = $375</li>
+<li>Path Quality Index (PQI): 2.0 (single connection)</li>
+<li>Non-preferred carrier</li>
+<li>k_factor: 0.3 (typical value, but note: most PODS studies use fixed std_dev = 0.3 × mean)</li>
+</ul>
+<p><strong>Step 1: Draw base penalties (alpha + beta × reference_fare) and ensure they are greater than zero</strong></p>
+<p><em>Path Quality:</em></p>
+<ul>
+<li>mean = pqi_alpha + pqi_beta × $375 = 10 + 0.2 × 375 = $85</li>
+<li>std_dev = 0.3 × $85 = $25.50</li>
+<li>Random draw = max(0, N($85, $25.50)) → e.g., $92.30</li>
+<li>Applied penalty = (PQI - 1) × $92.30 = (2.0 - 1) × $92.30 = $92.30</li>
+</ul>
+<p>Note: The max(0, ...) operation ensures disutilities cannot be negative.</p>
+<p><em>Preferred Carrier:</em></p>
+<ul>
+<li>mean = pref_alpha + pref_beta × $375 = 5 + 0.15 × 375 = $61.25</li>
+<li>std_dev = 0.3 × $61.25 = $18.38</li>
+<li>Random draw = max(0, N($61.25, $18.38)) → e.g., $55.80</li>
+<li>Applied penalty = $55.80 (since carrier is not preferred)</li>
+</ul>
+<p><em>Buffer Time (if connection &lt; threshold):</em></p>
+<ul>
+<li>Suppose buffer_time = 30 min, threshold = 45 min</li>
+<li>mean = alpha + beta × (45 - 30) × $375</li>
+<li>std_dev = k_factor × mean</li>
+<li>Random draw = max(0, N(mean, std_dev)) → connection penalty</li>
+</ul>
+<p><strong>Step 2: Sum all disutility components</strong></p>
+<p>Total disutility = $92.30 (PQI) + $55.80 (carrier) + [buffer penalty] + [DWM penalty] + ...</p>
+<p><strong>Step 3: Compare to willingness-to-pay and fare</strong></p>
+<ul>
+<li>If (fare + total_disutility) &lt; WTP → passenger accepts offer</li>
+<li>If (fare + total_disutility) &gt; WTP → passenger rejects offer</li>
+</ul>
+</details>
+
+<details class="references" open>
+  <summary>References</summary>
+  <p>.. [1] Boeing Commercial Airplanes (1993). "The Boeing Passenger Origin-Destination
+   Simulator: A Technical Design Overview." Boeing Commercial Airplanes Marketing
+   Research and Analysis Group. (Used in MIT Airline Management lectures)
+   Available at: https://ocw.mit.edu/courses/16-75j-airline-management-spring-2006/f4cf28d87d1ac891f5fa4ebd5faa557d_lect6b.pdf
+   Accessed January 1, 2026.
+.. [2] Herring, J., Lurkin, V., Garrow, L. A., Clarke, J.-P., &amp; Bierlaire, M. (2019).
+   Airline customers' connection time preferences in domestic U.S. markets.
+   Journal of Air Transport Management, 79, Article 101688.
+   https://www.sciencedirect.com/science/article/pii/S0969699719301899
+.. [3] Theis, G., Adler, T., Clarke, J.-P., &amp; Ben-Akiva, M. (2006).
+   Risk aversion to short connections in airline itinerary choice.
+   Transportation Research Record: Journal of the Transportation Research Board,
+   1951, 28-36.
+   https://www.researchgate.net/publication/245562091_Risk_Aversion_to_Short_Connections_in_Airline_Itinerary_Choice
+.. [4] Brey, R., &amp; Walker, J. L. (2011).
+   Latent temporal preferences: An application to airline travel.
+   Transportation Research Part A: Policy and Practice, 45(9), 880-895.
+   https://doi.org/10.1016/j.tra.2011.07.003
+.. [5] Bockelie, A., &amp; Belobaba, P. (2017).
+   Incorporating ancillary services in airline passenger choice models.
+   Journal of Revenue and Pricing Management, 16(6), 553-568.
+   https://doi.org/10.1057/s41272-016-0093-8</p>
+</details>
 
 
 
@@ -1639,6 +1906,15 @@
 
     <div class="doc doc-contents ">
 
+        <p>Minimum connection time threshold in minutes.</p>
+<p>The buffer threshold captures customers' avoidance of very short connections,
+namely those that are less than a threshold value. Connections with buffer time
+below this threshold incur penalties calculated using buffer_time_alpha and
+buffer_time_beta parameters.</p>
+<p>This approach is based on research showing that airline customers exhibit risk
+aversion to short connection times due to concerns about missing connections
+(see [2]<em> and [3]</em>).</p>
+
     </div>
 
 </div>
@@ -1660,6 +1936,12 @@
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
+        <p>Alpha parameter for short connection buffer time disutility.</p>
+<p>Used in the formula: mean_disutility = alpha + beta × (threshold - buffer_time) × reference_fare.
+Applied when buffer_time &lt; buffer_threshold.</p>
+<p>Note: These parameters are not used in many PODS studies but are included to
+support future studies.</p>
 
     </div>
 
@@ -1683,6 +1965,50 @@
 
     <div class="doc doc-contents ">
 
+        <p>Beta parameter for short connection buffer time disutility.</p>
+<p>Used in the formula: mean_disutility = alpha + beta × (threshold - buffer_time) × reference_fare.
+Applied when buffer_time &lt; buffer_threshold.</p>
+<p>Note: These parameters are not used in many PODS studies but are included to
+support future studies.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h2 id="passengersim_core.ChoiceModel.dwm" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">dwm</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+      <small class="doc doc-label doc-label-writable"><code>writable</code></small>
+  </span>
+
+</h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">dwm</span><span class="p">:</span> <span class="n"><span title="passengersim_core._Zoo.DecisionWindow">DecisionWindow</span></span> <span class="o">|</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Decision Window Model attached to this ChoiceModel.</p>
+
+
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><span title="passengersim_core._Zoo.DecisionWindow">DecisionWindow</span> or None</code>
+          –
+          <div class="doc-md-description">
+            <p>The Decision Window Model configuration attached to this choice model,
+or None if no decision window model has been set.</p>
+          </div>
+        </li>
+    </ul>
+
     </div>
 
 </div>
@@ -1704,6 +2030,13 @@
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
+        <p>Eliminate offers outside the decision window.</p>
+<p>If True, eliminate offers outside the window when at least one offer
+is completely inside the window. Default is False.</p>
+<p>.. deprecated::
+    This parameter is based on the original formulation in [1]_ but is not
+    recommended for use in current studies.</p>
 
     </div>
 
@@ -1727,6 +2060,16 @@
 
     <div class="doc doc-contents ">
 
+        <p>Time of Day curve for the Decision Window Model (DWM).</p>
+<p>A list of 24 values representing hourly probability distribution.
+Must sum to 1.0 (probabilities) or 100.0 (percentages).</p>
+<p>The Decision Window Model is described in detail in its separate class functions
+but conceptually is used to create a window representing an individual's earliest
+preferred departure and latest preferred arrival. The dwm_tod is a probability distribution
+representing the center-point of this window across the 24 hours in the day. For example,
+for short-haul flights we may expect to see peak preferences centered around 8 AM morning
+periods and 5 PM afternoon periods.</p>
+
     </div>
 
 </div>
@@ -1748,6 +2091,17 @@
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
+        <p>Maximum early departure penalty coefficient.</p>
+<p>Maximum penalty is (beta × reference_fare), applied when departure time is significantly
+before the customer's preferred decision window start time (approximately 2 × offset from
+window start).</p>
+<p>The S-curve shaped penalty ranges from 0 (at or inside window start) to this maximum value,
+providing a nonlinear alternative to the binary replanning_alpha/beta approach where one
+minute outside the window receives a much smaller penalty than departures far outside the window.</p>
+<p>Note: Either use the replanning_alpha/beta parameters for the original binary penalty
+or the early_dep_<em> and late_dep_</em> parameters for the nonlinear S-curve penalty,
+but not both simultaneously.</p>
 
     </div>
 
@@ -1771,6 +2125,21 @@
 
     <div class="doc doc-contents ">
 
+        <p>Offset parameter for early departure S-curve penalty (in minutes).</p>
+<p>Provides a nonlinear alternative to the binary replanning_alpha/beta approach.
+Instead of an all-or-nothing penalty, the S-curve assigns partial penalties based
+on how far outside the decision window the departure falls.</p>
+<p>The offset defines the area where partial penalties apply. Specifically, 2 × offset
+represents the maximum replanning penalty region. For example, with offset = 60 minutes,
+departures up to 120 minutes before the window start receive increasing penalties along
+the S-curve. One minute outside the window receives a much smaller penalty than an
+itinerary that departs an hour outside the window.</p>
+<p>The offset determines where the midpoint of the S-curve is positioned relative to the
+window start.</p>
+<p>Note: Either use the replanning_alpha/beta parameters for the original binary penalty
+or the early_dep_<em> and late_dep_</em> parameters for the nonlinear S-curve penalty,
+but not both simultaneously.</p>
+
     </div>
 
 </div>
@@ -1792,6 +2161,16 @@
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
+        <p>Slope of the S-curve for early departure penalty.</p>
+<p>Controls the steepness of the S-curve, determining how quickly the penalty increases
+as departure time moves earlier before the decision window start. Applied when departure
+time is before the customer's preferred window.</p>
+<p>Used with early_dep_offset and early_dep_beta to create a smooth nonlinear penalty
+function, providing an alternative to the binary replanning_alpha/beta approach.</p>
+<p>Note: Either use the replanning_alpha/beta parameters for the original binary penalty
+or the early_dep_<em> and late_dep_</em> parameters for the nonlinear S-curve penalty,
+but not both simultaneously.</p>
 
     </div>
 
@@ -1815,6 +2194,16 @@
 
     <div class="doc doc-contents ">
 
+        <p>Alpha parameter for elapsed time disutility.</p>
+<p>Elapsed time (duration) is calculated as the final arrival time minus the first
+departure time, accounting for time zones. This represents the actual time the
+passenger spends traveling from the departure of the first leg to the arrival of
+the last leg.</p>
+<p>Used in the formula: mean_disutility = alpha + beta × log(duration_minutes) × reference_fare.</p>
+<p>Note: These parameters are not used in many PODS studies because elapsed time effects
+are implicitly captured in the decision window model framework. However, they are
+provided as an alternative approach for future studies.</p>
+
     </div>
 
 </div>
@@ -1836,6 +2225,16 @@
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
+        <p>Beta parameter for elapsed time disutility.</p>
+<p>Elapsed time (duration) is calculated as the final arrival time minus the first
+departure time, accounting for time zones. This represents the actual time the
+passenger spends traveling from the departure of the first leg to the arrival of
+the last leg.</p>
+<p>Used in the formula: mean_disutility = alpha + beta × log(duration_minutes) × reference_fare.</p>
+<p>Note: These parameters are not used in many PODS studies because elapsed time effects
+are implicitly captured in the decision window model framework. However, they are
+provided as an alternative approach for future studies.</p>
 
     </div>
 
@@ -1859,6 +2258,25 @@
 
     <div class="doc doc-contents ">
 
+        <p>K-factor parameter for choice model calibration and stochastic variation.</p>
+<p>The k_factor controls the standard deviation of the random draws used to generate
+stochastic disutility values. For most disutility components, the standard deviation
+is calculated as: std_dev = k_factor × mean_disutility.</p>
+<p>This introduces heterogeneity across passengers, so that two passengers facing the
+same itinerary attributes will have different disutility realizations, leading to
+different choice outcomes.</p>
+<p><strong>Important</strong>: All disutility random draws are constrained to be non-negative using
+max(0, random_normal(mean, std_dev)). This ensures that disutilities cannot be
+negative, which would be inconsistent with the PODS convention where positive
+disutilities represent undesirable attributes.</p>
+<p>The k_factor (or fixed 0.3 ratio) ensures that different passengers have different
+disutility draws, creating realistic heterogeneity in choice behavior. A passenger
+with a lower PQI draw might choose a connection, while another with a higher draw
+prefers a nonstop.</p>
+<p>Note: In practice, most PODS studies use a fixed std_dev = 0.3 × mean rather than
+std_dev = k_factor × mean. The k_factor parameter is provided for flexibility but
+is often set to match the 0.3 convention.</p>
+
     </div>
 
 </div>
@@ -1880,6 +2298,19 @@
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
+        <p>Maximum late arrival penalty coefficient.</p>
+<p>Maximum penalty is (beta × reference_fare), applied when arrival time is significantly
+after the customer's preferred decision window end time (approximately 2 × offset from
+window end).</p>
+<p>The S-curve shaped penalty ranges from 0 (at or inside window end) to this maximum value,
+providing a nonlinear alternative to the binary replanning_alpha/beta approach where one
+minute outside the window receives a much smaller penalty than arrivals far outside the window.</p>
+<p>Early_dep and late_arr parameters allow for differential impacts depending on whether an
+itinerary falls before or after the desired decision window.</p>
+<p>Note: Either use the replanning_alpha/beta parameters for the original binary penalty
+or the early_dep_<em> and late_dep_</em> parameters for the nonlinear S-curve penalty,
+but not both simultaneously.</p>
 
     </div>
 
@@ -1903,6 +2334,22 @@
 
     <div class="doc doc-contents ">
 
+        <p>Offset parameter for late arrival S-curve penalty (in minutes).</p>
+<p>Provides a nonlinear alternative to the binary replanning_alpha/beta approach.
+Instead of an all-or-nothing penalty, the S-curve assigns partial penalties based
+on how far outside the decision window the arrival falls.</p>
+<p>The offset defines the area where partial penalties apply. Specifically, 2 × offset
+represents the maximum replanning penalty region. For example, with offset = 60 minutes,
+arrivals up to 120 minutes after the window end receive increasing penalties along
+the S-curve. One minute outside the window receives a much smaller penalty than an
+itinerary that arrives an hour outside the window.</p>
+<p>The offset determines where the midpoint of the S-curve is positioned relative to the
+window end. Early_dep and late_arr parameters allow for differential impacts depending
+on whether an itinerary falls before or after the desired decision window.</p>
+<p>Note: Either use the replanning_alpha/beta parameters for the original binary penalty
+or the early_dep_<em> and late_dep_</em> parameters for the nonlinear S-curve penalty,
+but not both simultaneously.</p>
+
     </div>
 
 </div>
@@ -1924,6 +2371,16 @@
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
+        <p>Slope of the S-curve for late arrival penalty.</p>
+<p>Controls the steepness of the S-curve, determining how quickly the penalty increases
+as arrival time moves later after the decision window end. Applied when arrival time
+is after the customer's preferred window.</p>
+<p>Used with late_arr_offset and late_arr_beta to create a smooth nonlinear penalty
+function, providing an alternative to the binary replanning_alpha/beta approach.</p>
+<p>Note: Either use the replanning_alpha/beta parameters for the original binary penalty
+or the early_dep_<em> and late_dep_</em> parameters for the nonlinear S-curve penalty,
+but not both simultaneously.</p>
 
     </div>
 
@@ -1947,6 +2404,20 @@
 
     <div class="doc doc-contents ">
 
+        <p>Alpha parameter for path quality index disutility.</p>
+<p>The path quality index (PQI) is a numeric value assigned to each path in the
+network configuration to represent itinerary quality. The disutility calculation
+proceeds in two steps:</p>
+<ol>
+<li>Calculate base disutility per connection: base_penalty = alpha + beta × reference_fare</li>
+<li>Multiply by path quality factor: pqi_disutility = (PQI - 1) × base_penalty</li>
+</ol>
+<p>The (PQI - 1) convention was chosen so that PQI = 1.0 represents the baseline
+quality level with no penalty. Common conventions:
+- Nonstop paths: PQI = 1.0 (no penalty, since (1.0 - 1) × base_penalty = 0)
+- Single connection paths: PQI = 2.0 (penalty = (2.0 - 1) × base_penalty = 1× base_penalty)
+- Two connection paths: PQI = 3.0 (penalty = (3.0 - 1) × base_penalty = 2× base_penalty)</p>
+
     </div>
 
 </div>
@@ -1968,6 +2439,56 @@
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
+        <p>Beta parameter for path quality index disutility.</p>
+<p>Works with path_quality_alpha to define the base penalty per connection level.</p>
+<p>The complete formula is:
+pqi_disutility = (PQI - 1) × (alpha + beta × reference_fare)</p>
+<p>where PQI is the path quality index specified in the network configuration file.
+The (PQI - 1) factor means PQI = 1.0 yields zero penalty (baseline quality).</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h2 id="passengersim_core.ChoiceModel.preferred_carrier" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">preferred_carrier</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">preferred_carrier</span><span class="p">:</span> <span class="n"><span title="str">str</span></span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Preferred carrier code for this customer segment.</p>
+<p>The preferred carrier is selected dynamically for each demand using a random draw.
+Two methods are available:</p>
+<ol>
+<li>
+<p><strong>Demand-specific probabilities (default)</strong>: Probabilities are specified directly
+   on each Demand object (probFavoredCarrier), allowing different carrier preferences
+   for different customer types or markets. This is the default method.</p>
+</li>
+<li>
+<p><strong>Seat share at origin</strong>: If the SimulationEngine's preferred_airline_pct_share
+   property is set to True, carriers are selected with probabilities proportional
+   to their capacity share at the origin airport.</p>
+</li>
+</ol>
+<p>A random draw determines which carrier becomes the preferred carrier for that specific
+customer. The disutility for flying on a non-preferred carrier is then calculated
+using the preferred_carrier_alpha and preferred_carrier_beta parameters.</p>
+<p>If no probabilities are specified via either method, the preferred carrier remains
+empty and no carrier preference penalties are applied.</p>
 
     </div>
 
@@ -1991,6 +2512,11 @@
 
     <div class="doc doc-contents ">
 
+        <p>Alpha parameter for the preferred carrier disutility.</p>
+<p>Applied only when the itinerary uses a non-preferred carrier.
+The formula is: mean_disutility = alpha + beta × reference_fare (if non-preferred carrier)
+                                = 0 (if preferred carrier)</p>
+
     </div>
 
 </div>
@@ -2012,6 +2538,11 @@
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
+        <p>Beta parameter for the preferred carrier disutility.</p>
+<p>Applied only when the itinerary uses a non-preferred carrier.
+The formula is: mean_disutility = alpha + beta × reference_fare (if non-preferred carrier)
+                                = 0 (if preferred carrier)</p>
 
     </div>
 
@@ -2035,6 +2566,36 @@
 
     <div class="doc doc-contents ">
 
+        <p>Random number generator for stochastic choice simulation.</p>
+<p>The random_generator is used during the actual simulation to generate all
+stochastic disutility values (path quality, carrier preference, buffer time,
+decision window placement, etc.)</p>
+
+
+<details class="purpose:" open>
+  <summary>Purpose:</summary>
+  <ol>
+<li>
+<p><strong>Generate stochastic variation</strong>: Creates heterogeneity in passenger behavior
+   by drawing random values for each disutility component during simulation.</p>
+</li>
+<li>
+<p><strong>Enable reproducibility</strong>: By providing a seed when creating the Generator,
+   you can reproduce exact simulation results across multiple runs. Without a seed,
+   each run produces different stochastic outcomes.</p>
+</li>
+</ol>
+<p>Note: The random_generator is shared across all disutility calculations in the
+choice model, so the sequence of random draws matters for reproducibility. All
+components (PQI, carrier preference, fare restrictions, etc.) draw from the same
+generator in a fixed order.</p>
+</details>
+
+<details class="see-also:" open>
+  <summary>See Also:</summary>
+  <p>Generator : The random number generator class with seeding capabilities.
+k_factor : Parameter controlling the standard deviation of random draws.</p>
+</details>
     </div>
 
 </div>
@@ -2056,6 +2617,23 @@
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
+        <p>Alpha parameter for replanning disutility (original PODS formulation).</p>
+<p>Based on the original PODS formulation, this provides a binary all-or-nothing penalty.
+If any part of the itinerary falls outside the customer's preferred decision window,
+the full replanning penalty is applied. Under this approach, one minute outside the
+window receives the same penalty as six hours outside the window.</p>
+<p>Formula: penalty = alpha + beta × reference_fare (if any part outside window)
+                 = 0 (if completely inside window)</p>
+<p>Note 1:  The early_dep and late_arr parameters provide an alternative nonlinear S-curve
+approach that assigns partial penalties based on how far outside the window the
+itinerary falls. Separate functions for early departures and late arrivals are provided
+to capture instances where itineraries departing before the desired window may be more
+(or less) onerous than those arriving after the desired window, allowing for asymmetric
+schedule delay preferences (see [4]_).</p>
+<p>Note 2: Either use the replanning_alpha/beta parameters for the original binary penalty
+or the early_dep_<em> and late_dep_</em> parameters for the nonlinear S-curve penalty,
+but not both simultaneously.</p>
 
     </div>
 
@@ -2079,6 +2657,81 @@
 
     <div class="doc doc-contents ">
 
+        <p>Beta parameter for replanning disutility (original PODS formulation).</p>
+<p>Based on the original PODS formulation, this provides a binary all-or-nothing penalty.
+If any part of the itinerary falls outside the customer's preferred decision window,
+the full replanning penalty is applied. Under this approach, one minute outside the
+window receives the same penalty as six hours outside the window.</p>
+<p>Formula: penalty = alpha + beta × reference_fare (if any part outside window)
+                 = 0 (if completely inside window)</p>
+<p>Note 1: The early_dep and late_arr parameters provide an alternative nonlinear S-curve
+approach that assigns partial penalties based on how far outside the window the
+itinerary falls. Separate functions for early departures and late arrivals are provided
+to capture instances where itineraries departing before the desired window may be more
+(or less) onerous than those arriving after the desired window, allowing for asymmetric
+schedule delay preferences (see [4]_).</p>
+<p>Note 2: Either use the replanning_alpha/beta parameters for the original binary penalty
+or the early_dep_<em> and late_dep_</em> parameters for the nonlinear S-curve penalty,
+but not both simultaneously.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h2 id="passengersim_core.ChoiceModel.seat_share_alpha" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">seat_share_alpha</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">seat_share_alpha</span><span class="p">:</span> <span class="n"><span title="float">float</span></span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Alpha parameter for the seat-share preferred carrier model.</p>
+<p>.. deprecated::
+    This parameter is deprecated and not recommended for use. Use the standard
+    preferred_carrier_alpha and preferred_carrier_beta parameters with the
+    SimulationEngine's preferred_airline_pct_share property set to True for
+    seat-share based carrier preferences.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h2 id="passengersim_core.ChoiceModel.seat_share_beta" class="doc doc-heading">
+            <span class="doc doc-object-name doc-attribute-name">seat_share_beta</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+  </span>
+
+</h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">seat_share_beta</span><span class="p">:</span> <span class="n"><span title="float">float</span></span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Beta parameter for the seat-share preferred carrier model.</p>
+<p>.. deprecated::
+    This parameter is deprecated and not recommended for use. Use the standard
+    preferred_carrier_alpha and preferred_carrier_beta parameters with the
+    SimulationEngine's preferred_airline_pct_share property set to True for
+    seat-share based carrier preferences.</p>
+
     </div>
 
 </div>
@@ -2092,7 +2745,7 @@
 
 
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small>
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
 
 </h2>
@@ -2100,6 +2753,20 @@
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
+
+        <p>Named customer segment identifier.</p>
+
+
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><span title="str">str</span></code>
+          –
+          <div class="doc-md-description">
+            <p>The name of the customer segment, such as 'leisure' or 'business'.</p>
+          </div>
+        </li>
+    </ul>
 
     </div>
 
@@ -2135,7 +2802,10 @@
               (<code><span title="str">str</span></code>)
           –
           <div class="doc-md-description">
-            <p>Name of the choice model.</p>
+            <p>Name of the choice model, typically matching a customer segment
+identifier (e.g., 'business' or 'leisure'). There is no limit to
+the number of segments; common practice uses 'business' and 'leisure',
+but any segment names can be used.</p>
           </div>
         </li>
         <li class="doc-section-item field-body">
@@ -2143,7 +2813,8 @@
               (<code><span title="typing.Literal">Literal</span>[&#39;logit&#39;, &#39;pods&#39;]</code>)
           –
           <div class="doc-md-description">
-            <p>Type of the choice model.</p>
+            <p>Type of the choice model. "logit" for simple logit model,
+"pods" for PODS-style model.</p>
           </div>
         </li>
         <li class="doc-section-item field-body">
@@ -2153,7 +2824,7 @@
 )
           –
           <div class="doc-md-description">
-            <p>Random number generator.  If not provided, a default generator is used.</p>
+            <p>Random number generator. If not provided, a default generator is used.</p>
           </div>
         </li>
     </ul>
@@ -2171,14 +2842,194 @@
 
 
 </h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_parm</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">name</span><span class="p">:</span> <span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n"><span title="float">float</span></span><span class="p">,</span> <span class="n">value2</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">=</span> <span class="mi">0</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_parm</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n"><span title="str">str</span></span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n"><span title="float">float</span></span><span class="p">,</span> <span class="n">value2</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="str">str</span></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Add a parameter value to the choice model</p>
+        <p>Add a parameter value to the choice model.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+            <b><code>name</code></b>
+              (<code><span title="str">str</span></code>)
+          –
+          <div class="doc-md-description">
+            <p>Name of the parameter to add.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>value</code></b>
+              (<code><span title="float">float</span></code>)
+          –
+          <div class="doc-md-description">
+            <p>Primary parameter value.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>value2</code></b>
+              (<code><span title="float">float</span></code>, default:
+                  <code>0</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Secondary parameter value for parameters requiring two values.
+Default is 0.</p>
+          </div>
+        </li>
+    </ul>
+
+
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><span title="str">str</span></code>
+          –
+          <div class="doc-md-description">
+            <p>Confirmation message indicating parameter was added.</p>
+          </div>
+        </li>
+    </ul>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="passengersim_core.ChoiceModel.add_restriction" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">add_restriction</span>
+
+
+</h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_restriction</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">restriction_num</span><span class="p">:</span> <span class="n"><span title="int">int</span></span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">value</span><span class="p">:</span> <span class="n"><span title="float">float</span></span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">sigma_ratio</span><span class="p">:</span> <span class="n"><span title="float">float</span></span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Add a fare restriction disutility to the choice model.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+            <b><code>restriction_num</code></b>
+              (<code><span title="int">int</span></code>)
+          –
+          <div class="doc-md-description">
+            <p>Restriction code/index to add.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>value</code></b>
+              (<code><span title="float">float</span></code>)
+          –
+          <div class="doc-md-description">
+            <p>Disutility value for this restriction.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>sigma_ratio</code></b>
+              (<code><span title="float">float</span></code>, default:
+                  <code>0.3</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Standard deviation ratio for stochastic variation. Default is 0.3.</p>
+          </div>
+        </li>
+    </ul>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="passengersim_core.ChoiceModel.choose_offer" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">choose_offer</span>
+
+
+</h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">choose_offer</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">offers</span><span class="p">:</span> <span class="n"><span title="list">list</span></span><span class="p">[</span><span class="n"><span title="passengersim_core._Zoo.Offer">Offer</span></span><span class="p">],</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">dmd</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="Demand (passengersim_core._Zoo.Demand)" href="Demand.html#passengersim_core.Demand">Demand</a></span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="o">/</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">n_draws</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="o">*</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">snapshot_instruction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="tuple">tuple</span></span><span class="p">[</span><span class="n"><span title="int">int</span></span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Choose an offer from a list using the choice model.</p>
+<p>Simulates customer choice behavior across multiple random draws,
+returning the count of how many times each offer was selected.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+            <b><code>offers</code></b>
+              (<code><span title="list">list</span>[<span title="passengersim_core._Zoo.Offer">Offer</span>]</code>)
+          –
+          <div class="doc-md-description">
+            <p>List of available offers to choose from.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>dmd</code></b>
+              (<code><a class="autorefs autorefs-internal" title="Demand (passengersim_core._Zoo.Demand)" href="Demand.html#passengersim_core.Demand">Demand</a></code>)
+          –
+          <div class="doc-md-description">
+            <p>Demand object representing the customer request.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>n_draws</code></b>
+              (<code><span title="int">int</span></code>, default:
+                  <code>1</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Number of choice simulations to run. Default is 1.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>snapshot_instruction</code></b>
+              (<code><span title="optional">optional</span></code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Debugging/logging control parameter (keyword-only).</p>
+          </div>
+        </li>
+    </ul>
+
+
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><span title="tuple">tuple</span>[<span title="int">int</span>, ...]</code>
+          –
+          <div class="doc-md-description">
+            <p>Tuple with same length as offers, where each element is the
+count of times that offer was chosen across all draws.</p>
+          </div>
+        </li>
+    </ul>
 
 
     </div>
@@ -2194,19 +3045,102 @@
 
 </h2>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">get_dwm_penalty</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">choice_model</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="ChoiceModel (passengersim_core._ChoiceModel.ChoiceModel)" href="#passengersim_core.ChoiceModel">ChoiceModel</a></span><span class="p">,</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">decision_window</span><span class="p">:</span> <span class="n"><span title="passengersim_core._Zoo.DecisionWindow">DecisionWindow</span></span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">distance</span><span class="p">:</span> <span class="n"><span title="int">int</span></span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">startTime</span><span class="p">:</span> <span class="n"><span title="int">int</span></span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">endTime</span><span class="p">:</span> <span class="n"><span title="int">int</span></span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">start_time</span><span class="p">:</span> <span class="n"><span title="int">int</span></span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">end_time</span><span class="p">:</span> <span class="n"><span title="int">int</span></span><span class="p">,</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">path</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="Path (passengersim_core._Zoo.Path)" href="Path.html#passengersim_core.Path">Path</a></span><span class="p">,</span>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">reference_fare</span><span class="p">:</span> <span class="n"><span title="float">float</span></span><span class="p">,</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">debug</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span><span class="p">,</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="float">float</span></span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">dwm_z</span><span class="p">:</span> <span class="n"><span title="float">float</span></span><span class="p">,</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">snapshot_instruction</span><span class="p">,</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="float">float</span></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Get DWM penalty - used for Unit Tests</p>
+        <p>Get Decision Window Model penalty for departure/arrival time preferences.</p>
+<p>Calculates penalties when flight times fall outside the customer's
+preferred departure/arrival window. Used for unit tests and debugging.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+            <b><code>decision_window</code></b>
+              (<code><span title="passengersim_core._Zoo.DecisionWindow">DecisionWindow</span></code>)
+          –
+          <div class="doc-md-description">
+            <p>Decision Window Model configuration.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>distance</code></b>
+              (<code><span title="int">int</span></code>)
+          –
+          <div class="doc-md-description">
+            <p>Market distance in nautical miles.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>start_time</code></b>
+              (<code><span title="int">int</span></code>)
+          –
+          <div class="doc-md-description">
+            <p>Start time of the decision window in minutes from midnight.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>end_time</code></b>
+              (<code><span title="int">int</span></code>)
+          –
+          <div class="doc-md-description">
+            <p>End time of the decision window in minutes from midnight.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>path</code></b>
+              (<code><a class="autorefs autorefs-internal" title="Path (passengersim_core._Zoo.Path)" href="Path.html#passengersim_core.Path">Path</a></code>)
+          –
+          <div class="doc-md-description">
+            <p>Path to evaluate.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>reference_fare</code></b>
+              (<code><span title="float">float</span></code>)
+          –
+          <div class="doc-md-description">
+            <p>Reference fare for penalty scaling.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>dwm_z</code></b>
+              (<code><span title="float">float</span></code>)
+          –
+          <div class="doc-md-description">
+            <p>Random z-value for stochastic window placement.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>snapshot_instruction</code></b>
+          –
+          <div class="doc-md-description">
+            <p>Debugging/logging control parameter.</p>
+          </div>
+        </li>
+    </ul>
+
+
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><span title="float">float</span></code>
+          –
+          <div class="doc-md-description">
+            <p>DWM penalty value.</p>
+          </div>
+        </li>
+    </ul>
 
 
     </div>
@@ -2216,17 +3150,33 @@
 <div class="doc doc-object doc-function">
 
 
-<h2 id="passengersim_core.ChoiceModel.get_midpoint" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">get_midpoint</span>
+<h2 id="passengersim_core.ChoiceModel.get_parameters" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">get_parameters</span>
 
 
 </h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">get_midpoint</span><span class="p">(</span><span class="n">z_val</span><span class="p">:</span> <span class="n"><span title="float">float</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="float">float</span></span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">get_parameters</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><span title="dict">dict</span></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Get decision window midpoint - used for Unit Tests</p>
+        <p>Get current parameter values from the choice model.</p>
+
+
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><span title="dict">dict</span></code>
+          –
+          <div class="doc-md-description">
+            <p>Dictionary containing:
+- 'restrictions' : list[float] - Fare restriction disutilities
+- 'restriction_sigmas' : list[float] - Restriction sigma ratios
+- 'reference_price_multiplier' : float - Base fare multiplier
+- 'emult' : float - E-multiplier parameter</p>
+          </div>
+        </li>
+    </ul>
 
 
     </div>
@@ -2242,13 +3192,55 @@
 
 </h2>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">get_time_disutility</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">dmd</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="Demand (passengersim_core._Zoo.Demand)" href="Demand.html#passengersim_core.Demand">Demand</a></span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="Path (passengersim_core._Zoo.Path)" href="Path.html#passengersim_core.Path">Path</a></span><span class="p">,</span> <span class="n">debug</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">dmd</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="Demand (passengersim_core._Zoo.Demand)" href="Demand.html#passengersim_core.Demand">Demand</a></span><span class="p">,</span> <span class="n">offer</span><span class="p">:</span> <span class="n"><span title="passengersim_core._Zoo.Offer">Offer</span></span><span class="p">,</span> <span class="n">snapshot_instruction</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="float">float</span></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Get time (short connection and/or long elapsed) penalty - used for Unit Tests</p>
+        <p>Get time disutility penalty for short connections and elapsed time.</p>
+<p>This method calculates penalties for offers with short connection times
+or excessively long elapsed times. Used for unit tests and debugging.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+            <b><code>dmd</code></b>
+              (<code><a class="autorefs autorefs-internal" title="Demand (passengersim_core._Zoo.Demand)" href="Demand.html#passengersim_core.Demand">Demand</a></code>)
+          –
+          <div class="doc-md-description">
+            <p>Demand object representing the customer request.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>offer</code></b>
+              (<code><span title="passengersim_core._Zoo.Offer">Offer</span></code>)
+          –
+          <div class="doc-md-description">
+            <p>Offer to evaluate for time-based penalties.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>snapshot_instruction</code></b>
+          –
+          <div class="doc-md-description">
+            <p>Debugging/logging control parameter.</p>
+          </div>
+        </li>
+    </ul>
+
+
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><span title="float">float</span></code>
+          –
+          <div class="doc-md-description">
+            <p>Time disutility penalty value.</p>
+          </div>
+        </li>
+    </ul>
 
 
     </div>
@@ -2258,19 +3250,85 @@
 <div class="doc doc-object doc-function">
 
 
-<h2 id="passengersim_core.ChoiceModel.get_window" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">get_window</span>
+<h2 id="passengersim_core.ChoiceModel.max_wtp" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">max_wtp</span>
 
 
 </h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">get_window</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">dmd</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="Demand (passengersim_core._Zoo.Demand)" href="Demand.html#passengersim_core.Demand">Demand</a></span><span class="p">,</span> <span class="n">midpoint</span><span class="p">:</span> <span class="n"><span title="int">int</span></span><span class="p">,</span> <span class="n">distance</span><span class="p">:</span> <span class="n"><span title="int">int</span></span><span class="p">,</span> <span class="n">z_val</span><span class="p">:</span> <span class="n"><span title="float">float</span></span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="tuple">tuple</span></span><span class="p">[</span><span class="n"><span title="int">int</span></span><span class="p">,</span> <span class="n"><span title="int">int</span></span><span class="p">]</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">max_wtp</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">dmd</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-internal" title="Demand (passengersim_core._Zoo.Demand)" href="Demand.html#passengersim_core.Demand">Demand</a></span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="o">/</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">n_draws</span><span class="p">:</span> <span class="n"><span title="int">int</span></span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="o">*</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">snapshot_instruction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">raw</span><span class="p">:</span> <span class="n"><span title="bool">bool</span></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><span title="dict">dict</span></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Get decision window start &amp; end - used for Unit Tests</p>
+        <p>Calculate maximum willingness to pay statistics.</p>
+<p>Simulates the distribution of maximum WTP values across multiple
+random draws to understand customer price sensitivity.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+            <b><code>dmd</code></b>
+              (<code><a class="autorefs autorefs-internal" title="Demand (passengersim_core._Zoo.Demand)" href="Demand.html#passengersim_core.Demand">Demand</a></code>)
+          –
+          <div class="doc-md-description">
+            <p>Demand object representing the customer request.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>n_draws</code></b>
+              (<code><span title="int">int</span></code>, default:
+                  <code>1</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Number of random draws to simulate. Default is 1.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>snapshot_instruction</code></b>
+              (<code><span title="optional">optional</span></code>, default:
+                  <code>None</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>Debugging/logging control parameter (keyword-only).</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+            <b><code>raw</code></b>
+              (<code><span title="bool">bool</span></code>, default:
+                  <code>False</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>If True, include raw vector of all draws in output (keyword-only).
+Default is False.</p>
+          </div>
+        </li>
+    </ul>
+
+
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><span title="dict">dict</span></code>
+          –
+          <div class="doc-md-description">
+            <p>Dictionary with keys:
+- 'mean' : float - Mean of maximum WTP across draws
+- 'stdev' : float - Sample standard deviation of maximum WTP
+- 'raw' : ndarray - Raw vector of WTP values (only if raw=True)</p>
+          </div>
+        </li>
+    </ul>
 
 
     </div>
@@ -2291,6 +3349,60 @@
     <div class="doc doc-contents ">
 
         <p>Get all parameter values from the choice model.</p>
+
+
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><span title="dict">dict</span></code>
+          –
+          <div class="doc-md-description">
+            <p>Dictionary containing all choice model parameters.</p>
+          </div>
+        </li>
+    </ul>
+
+
+<details class="note" open>
+  <summary>Notes</summary>
+  <p>This method is not yet fully implemented.</p>
+</details>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="passengersim_core.ChoiceModel.set_parameters" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">set_parameters</span>
+
+
+</h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">set_parameters</span><span class="p">(</span><span class="n">parameters</span><span class="p">:</span> <span class="n"><span title="dict">dict</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Set parameter values in the choice model.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+            <b><code>parameters</code></b>
+              (<code><span title="dict">dict</span></code>)
+          –
+          <div class="doc-md-description">
+            <p>Dictionary containing parameter values to set. Valid keys:
+- 'restrictions' : list[float] - Fare restriction disutilities
+- 'restriction_sigmas' : list[float] - Restriction sigma ratios
+- 'reference_price_multiplier' : float - Base fare multiplier
+- 'emult' : float - E-multiplier parameter</p>
+          </div>
+        </li>
+    </ul>
 
 
     </div>
