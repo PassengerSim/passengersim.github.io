@@ -1632,7 +1632,7 @@ dmd = sim.demands.select(segment="leisure", orig="BOS", dest="LAX")</div>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">cm</span><span class="o">.</span><span class="n">max_wtp</span><span class="p">(</span><span class="n">dmd</span><span class="p">,</span> <span class="n">n_draws</span><span class="o">=</span><span class="mi">1_000_000</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-7">cm.max_wtp(dmd, n_draws=1_000_000, raw=True)</div>
+<div class="clipboard-copy-txt" id="cell-7">cm.max_wtp(dmd.reference_price, n_draws=1_000_000, raw=True)</div>
 </div>
 </div>
 </div>
