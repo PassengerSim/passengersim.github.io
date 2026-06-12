@@ -1,0 +1,80 @@
+Carrier
+=======
+
+.. currentmodule:: passengersim.core
+
+.. autoclass:: Carrier
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Carrier.__init__
+      ~Carrier.add_ancillary
+      ~Carrier.add_carrier_history
+      ~Carrier.add_customer_model
+      ~Carrier.add_frat5_mkt
+      ~Carrier.get_ancillary_by_index
+      ~Carrier.get_ancillary_price
+      ~Carrier.get_ancillary_sold
+      ~Carrier.get_carrier_history
+      ~Carrier.get_forecast_accuracy
+      ~Carrier.get_frat5_mkt
+      ~Carrier.get_history_def
+      ~Carrier.get_spill_counters
+      ~Carrier.raw_bid_price_trace
+      ~Carrier.raw_bookings_by_day
+      ~Carrier.raw_bookings_by_segment_fare_dcp
+      ~Carrier.raw_displacement_cost_trace
+      ~Carrier.raw_fare_class_distribution
+      ~Carrier.raw_load_factor_distribution
+      ~Carrier.raw_revenue_by_segment_fare_dcp
+      ~Carrier.reset_bid_price_trace
+      ~Carrier.reset_displacement_cost_trace
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Carrier.ancillaries
+      ~Carrier.brand_preference
+      ~Carrier.cabin_ordering
+      ~Carrier.control
+      ~Carrier.cp_algorithm
+      ~Carrier.cp_elasticity
+      ~Carrier.cp_quantize
+      ~Carrier.cp_record
+      ~Carrier.cp_record_highest_closed_as_open
+      ~Carrier.cp_scale
+      ~Carrier.current_tf_index
+      ~Carrier.dcp_days_prior
+      ~Carrier.default_booking_classes
+      ~Carrier.frat5
+      ~Carrier.gt_available_seat_miles
+      ~Carrier.gt_cp_revenue
+      ~Carrier.gt_cp_sold
+      ~Carrier.gt_demand
+      ~Carrier.gt_revenue
+      ~Carrier.gt_revenue_passenger_miles
+      ~Carrier.gt_sold
+      ~Carrier.history_length
+      ~Carrier.load_factor_curve
+      ~Carrier.metadata
+      ~Carrier.name
+      ~Carrier.num_objects
+      ~Carrier.proration_rule
+      ~Carrier.revenue
+      ~Carrier.rm_sys
+      ~Carrier.sold
+      ~Carrier.sold_priceable
+      ~Carrier.store_q_history
+      ~Carrier.truncation_rule
+   
+   

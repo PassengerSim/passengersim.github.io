@@ -1,0 +1,2453 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="intro-3mkt.html">
+      
+      
+        <link rel="next" href="PE.html">
+      
+      
+      <link rel="icon" href="../_static/favicon.png">
+    
+    
+      
+        <title>Basic Simulation - PassengerSim</title>
+      
+    
+    
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.50640b526df5ff663.min.css?v=cff97996" />
+        <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+        <link rel="stylesheet" type="text/css" href="../_static/css/extra.css?v=663c5cee" />
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+<p>
+    <span style="vertical-align: middle; color: #ffd334; font-size: 1.2em;">&#9888;</span>
+    We recently updated our website for PassengerSim v0.80.  More or less all the same content is here (and more)
+    but any pre-existing links and bookmarks may be broken.
+</p>
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="PassengerSim" class="md-header__button md-logo" aria-label="PassengerSim" data-md-component="logo">
+      <img src="../_static/logo.svg" alt="logo">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PassengerSim
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Basic Simulation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/passengersim/passengersim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    PassengerSim/passengersim
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../user-guide/welcome.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>User Guide</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../mechanics/counting-sims.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Mechanics</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="intro-3mkt.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Examples</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../api/_index.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>API</span>
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="PassengerSim" class="md-nav__button md-logo" aria-label="PassengerSim" data-md-component="logo">
+      <img src="../_static/logo.svg" alt="logo">
+    </a>
+    PassengerSim
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/passengersim/passengersim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    PassengerSim/passengersim
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>User Guide</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            <span>User Guide</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/welcome.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 10H5L3 8l2-2h6V3l1-1 1 1v1h6l2 2-2 2h-6v2h6l2 2-2 2h-6v6a2 2 0 0 1 2 2H9a2 2 0 0 1 2-2z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Wayfinding</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/installation.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m13.13 22.19-1.63-3.83c1.57-.58 3.04-1.36 4.4-2.27zM5.64 12.5l-3.83-1.63 6.1-2.77C7 9.46 6.22 10.93 5.64 12.5M21.61 2.39S16.66.269 11 5.93c-2.19 2.19-3.5 4.6-4.35 6.71-.28.75-.09 1.57.46 2.13l2.13 2.12c.55.56 1.37.74 2.12.46A19.1 19.1 0 0 0 18.07 13c5.66-5.66 3.54-10.61 3.54-10.61m-7.07 7.07c-.78-.78-.78-2.05 0-2.83s2.05-.78 2.83 0c.77.78.78 2.05 0 2.83s-2.05.78-2.83 0m-5.66 7.07-1.41-1.41zM6.24 22l3.64-3.64c-.34-.09-.67-.24-.97-.45L4.83 22zM2 22h1.41l4.77-4.76-1.42-1.41L2 20.59zm0-2.83 4.09-4.08c-.21-.3-.36-.62-.45-.97L2 17.76z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Installation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/static-config.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.5 3.5 18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2 7.5 3.5 6 2 4.5 3.5 3 2v20l1.5-1.5L6 22l1.5-1.5L9 22l1.5-1.5L12 22l1.5-1.5L15 22l1.5-1.5L18 22l1.5-1.5L21 22V2zM19 19H5V5h14zM6 15h12v2H6m0-6h12v2H6m0-6h12v2H6z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Raw Configuration</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/dynamic-config.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 2 1.5 1.5L21 2v7.13l-2 2V4.91H5v14.18h5.5v1.41L9 22l-1.5-1.5L6 22l-1.5-1.5L3 22V2l1.5 1.5L6 2l1.5 1.5L9 2l1.5 1.5L12 2l1.5 1.5L15 2l1.5 1.5zm-5 17.96 6.13-6.13 2.04 2.04L15.04 22H13zm6.83-6.83.98-.98.02-.02c.05-.04.11-.08.17-.1a.5.5 0 0 1 .53.12l1.32 1.32c.2.2.2.53 0 .72l-.98.98zm-1.83-1-.87.87H6v-2h12zM15.13 15l-2 2H6v-2zM18 9V7H6v2z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Dynamic Configuration</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/basic-usage.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m9 4 2.5 5.5L17 12l-5.5 2.5L9 20l-2.5-5.5L1 12l5.5-2.5zm0 4.83L8 11l-2.17 1L8 13l1 2.17L10 13l2.17-1L10 11zM19 9l-1.26-2.74L15 5l2.74-1.25L19 1l1.25 2.75L23 5l-2.75 1.26zm0 14-1.26-2.74L15 19l2.74-1.25L19 15l1.25 2.75L23 19l-2.75 1.26z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Summary Outputs</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/rm-systems.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 6h18v12H5zm9 3a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3M9 8a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2v-4a2 2 0 0 1-2-2zm-8 2h2v10h16v2H1z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>RM Systems</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/database/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Database</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/experiments.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 19a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1c0-.21-.07-.41-.18-.57L13 8.35V4h-2v4.35L5.18 18.43c-.11.16-.18.36-.18.57m1 3a3 3 0 0 1-3-3c0-.6.18-1.16.5-1.63L9 7.81V6a1 1 0 0 1-1-1V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1v1.81l5.5 9.56c.32.47.5 1.03.5 1.63a3 3 0 0 1-3 3zm7-6 1.34-1.34L16.27 18H7.73l2.66-4.61zm-.5-4a.5.5 0 0 1 .5.5.5.5 0 0 1-.5.5.5.5 0 0 1-.5-.5.5.5 0 0 1 .5-.5"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Experiments</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/callbacks.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.6 5.29c-1.1-.1-2.07.71-2.17 1.82L13.18 10H16v2h-3l-.44 5.07a3.986 3.986 0 0 1-4.33 3.63 4 4 0 0 1-3.06-1.87l1.5-1.5c.24.74.9 1.31 1.73 1.38 1.1.1 2.07-.71 2.17-1.82L11 12H8v-2h3.17l.27-3.07c.19-2.2 2.13-3.83 4.33-3.63 1.31.11 2.41.84 3.06 1.87l-1.5 1.5c-.24-.74-.9-1.31-1.73-1.38"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Callbacks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/tracers.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.84 2.73c-.39 0-.77.15-1.07.44l-2.12 2.12 5.3 5.31 2.12-2.1c.6-.61.6-1.56 0-2.14L17.9 3.17c-.3-.29-.68-.44-1.06-.44M12.94 6l-8.1 8.11 2.56.28.18 2.29 2.28.17.29 2.56 8.1-8.11m-14 3.74L2.5 21.73l6.7-1.79-.24-2.16-2.31-.17-.18-2.32"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Tracing</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/viz/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.45 15.18 22 7.31V21H2V3h2v12.54L9.5 6 16 9.78l4.24-7.33 1.73 1-5.23 9.05-6.51-3.75L4.31 19h2.26l4.39-7.56z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Visualizations</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/firehose.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 15v-1H4v-2h1v-1h2v4zm14-3v-1h-2v4h2v-1h1v-2zm-1-6h-2.14C15.5 4.6 14.4 3.5 13 3.14V2h-2v1.14C9.6 3.5 8.5 4.6 8.14 6H6v2h12zm0 16H6c0-1.1.9-2 2-2V9h8v11a2 2 0 0 1 2 2m-8-9a2 2 0 1 0 4 0c0-1.11-.89-2-2-2s-2 .9-2 2"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Firehose</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>Mechanics</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Mechanics</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mechanics/counting-sims.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 10.73V19h-2v-7.64L15 12v7h-2v-6.38l-2 .64V19H9v-5.11l-2 .61V19H5v-3.85l-2.43.77L2 14l3-.95V5h2v7.42l2-.63V5h2v6.16l2-.63V5h2v4.9l2-.64V5h2v3.63L21 8l.57 1.92z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Counting Simulations</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mechanics/demand-generation.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.35 5.64c-.9-.64-1.12-1.88-.49-2.79.64-.9 1.88-1.12 2.79-.49.9.64 1.12 1.88.49 2.79-.64.9-1.88 1.12-2.79.49M16 19H8.93c-1.48 0-2.74-1.08-2.96-2.54L4 7H2l2 9.76A4.99 4.99 0 0 0 8.94 21H16m.23-6h-4.88l-1.03-4.1c1.58.89 3.28 1.54 5.15 1.22V10c-1.63.3-3.44-.28-4.69-1.26L9.14 7.47c-.23-.18-.49-.3-.76-.38a2.2 2.2 0 0 0-.99-.06h-.02a2.27 2.27 0 0 0-1.84 2.61l1.35 5.92A2.99 2.99 0 0 0 9.83 18h6.85l3.82 3 1.5-1.5"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Demand Generation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mechanics/forecasting.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m9.38 8.38 2.12.96 2.12-.96-.96 2.12.96 2.12-2.12-.96-2.12.96.96-2.12zM16.5 2.5l1.09 2.91L20.5 6.5l-2.91 1.09-1.09 2.91-1.09-2.91L12.5 6.5l2.91-1.09zM6 19h1v-1a1 1 0 0 1 1-1h.26a7.47 7.47 0 0 1-3.76-6.5A7.5 7.5 0 0 1 12 3c1.05 0 2.05.22 2.96.61l-.37.98-1.42.53Q12.6 5 12 5a5.5 5.5 0 0 0-5.5 5.5A5.5 5.5 0 0 0 12 16c2.91 0 5.3-2.27 5.5-5.13l.91-2.46.71-.27c.25.74.38 1.54.38 2.36 0 2.78-1.5 5.2-3.76 6.5H16a1 1 0 0 1 1 1v1h1a2 2 0 0 1 2 2v1H4v-1a2 2 0 0 1 2-2"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Forecasting</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>Examples</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Examples</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="intro-3mkt.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>The 3MKT Network</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Basic Simulation</span>
+    
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="PE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Pro<wbr>BP Optimization</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="LL.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Unrestricted Networks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="QC.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Q vs Conditional Forecasting</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="olympic-fcst.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Custom Forecaster</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blf-curves.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Heuristic Intervention</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../labs/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Labs</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>API</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            <span>API</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Passenger<wbr>Sim</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/callbacks/passengersim.callbacks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>callbacks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/config.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>config</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/connection_builder/passengersim.connection_builder.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>connection_<wbr>builder</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/contrast/passengersim.contrast.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>contrast</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/core/passengersim.core.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>core</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/database/passengersim.database.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>database</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/driver/passengersim.driver.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>driver</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/experiments/passengersim.experiments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>experiments</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/rm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>rm</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/summaries/passengersim.summaries.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>summaries</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/tracers/passengersim.tracers.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>tracers</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/transforms/passengersim.transforms.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>transforms</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                
+                
+                  
+
+
+<style>.md-sidebar--secondary {display: none !important;}</style>
+<h1 id="basic-simulation">Basic Simulation<a class="headerlink" href="#basic-simulation" title="Link to this heading">¶</a></h1>
+<p>In this example, we will demonstrate some of the basics of PassengerSim.
+We’ll interface with the tool through the <code class="docutils literal notranslate"><span class="pre">passengersim</span></code> Python interface,
+which is imported into Python in the same manner as any other Python library.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">passengersim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pax</span>
+
+<span class="n">pax</span><span class="o">.</span><span class="n">versions</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><code>passengersim 0.80
+passengersim.core 0.80
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Using PassengerSim generally involves three steps: configuring a simulation,
+running it, and analyzing the results.  The first and last of these steps
+rely primarily on the open-source <code class="docutils literal notranslate"><span class="pre">passengersim</span></code> code that runs entirely in
+Python, while running a simulation relies on the <code class="docutils literal notranslate"><span class="pre">passengersim.core</span></code> library,
+which is the proprietary licensed code.</p>
+<p>To get started, we will load a PassengerSim configuration from YAML input
+files. These files are structured plain text inputs that define everything
+needed to run a simulation: carriers, flight legs, passenger choice models,
+simulation controls, and more.  The demo YAML file shown below shows how
+one of these YAML input files might be structured, with “include” statements
+that point to files containing much of the fundamental network configuration
+and a handful of specific settings can supplement or replace settings from the
+included files.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">passengersim.utils.codeview</span><span class="w"> </span><span class="kn">import</span> <span class="n">show_file</span>
+
+<span class="n">show_file</span><span class="p">(</span><span class="n">pax</span><span class="o">.</span><span class="n">demo_network</span><span class="p">(</span><span class="s2">&quot;3MKT/DEMO&quot;</span><span class="p">))</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+    pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.pygments .hll { background-color: #ffffcc }
+.pygments { background: #f8f8f8; }
+.pygments .c { color: #3D7B7B; font-style: italic } /* Comment */
+.pygments .err { border: 1px solid #F00 } /* Error */
+.pygments .k { color: #008000; font-weight: bold } /* Keyword */
+.pygments .o { color: #666 } /* Operator */
+.pygments .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
+.pygments .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
+.pygments .cp { color: #9C6500 } /* Comment.Preproc */
+.pygments .cpf { color: #3D7B7B; font-style: italic } /* Comment.PreprocFile */
+.pygments .c1 { color: #3D7B7B; font-style: italic } /* Comment.Single */
+.pygments .cs { color: #3D7B7B; font-style: italic } /* Comment.Special */
+.pygments .gd { color: #A00000 } /* Generic.Deleted */
+.pygments .ge { font-style: italic } /* Generic.Emph */
+.pygments .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.pygments .gr { color: #E40000 } /* Generic.Error */
+.pygments .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.pygments .gi { color: #008400 } /* Generic.Inserted */
+.pygments .go { color: #717171 } /* Generic.Output */
+.pygments .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.pygments .gs { font-weight: bold } /* Generic.Strong */
+.pygments .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.pygments .gt { color: #04D } /* Generic.Traceback */
+.pygments .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.pygments .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.pygments .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.pygments .kp { color: #008000 } /* Keyword.Pseudo */
+.pygments .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.pygments .kt { color: #B00040 } /* Keyword.Type */
+.pygments .m { color: #666 } /* Literal.Number */
+.pygments .s { color: #BA2121 } /* Literal.String */
+.pygments .na { color: #687822 } /* Name.Attribute */
+.pygments .nb { color: #008000 } /* Name.Builtin */
+.pygments .nc { color: #00F; font-weight: bold } /* Name.Class */
+.pygments .no { color: #800 } /* Name.Constant */
+.pygments .nd { color: #A2F } /* Name.Decorator */
+.pygments .ni { color: #717171; font-weight: bold } /* Name.Entity */
+.pygments .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
+.pygments .nf { color: #00F } /* Name.Function */
+.pygments .nl { color: #767600 } /* Name.Label */
+.pygments .nn { color: #00F; font-weight: bold } /* Name.Namespace */
+.pygments .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.pygments .nv { color: #19177C } /* Name.Variable */
+.pygments .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+.pygments .w { color: #BBB } /* Text.Whitespace */
+.pygments .mb { color: #666 } /* Literal.Number.Bin */
+.pygments .mf { color: #666 } /* Literal.Number.Float */
+.pygments .mh { color: #666 } /* Literal.Number.Hex */
+.pygments .mi { color: #666 } /* Literal.Number.Integer */
+.pygments .mo { color: #666 } /* Literal.Number.Oct */
+.pygments .sa { color: #BA2121 } /* Literal.String.Affix */
+.pygments .sb { color: #BA2121 } /* Literal.String.Backtick */
+.pygments .sc { color: #BA2121 } /* Literal.String.Char */
+.pygments .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.pygments .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.pygments .s2 { color: #BA2121 } /* Literal.String.Double */
+.pygments .se { color: #AA5D1F; font-weight: bold } /* Literal.String.Escape */
+.pygments .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.pygments .si { color: #A45A77; font-weight: bold } /* Literal.String.Interpol */
+.pygments .sx { color: #008000 } /* Literal.String.Other */
+.pygments .sr { color: #A45A77 } /* Literal.String.Regex */
+.pygments .s1 { color: #BA2121 } /* Literal.String.Single */
+.pygments .ss { color: #19177C } /* Literal.String.Symbol */
+.pygments .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.pygments .fm { color: #00F } /* Name.Function.Magic */
+.pygments .vc { color: #19177C } /* Name.Variable.Class */
+.pygments .vg { color: #19177C } /* Name.Variable.Global */
+.pygments .vi { color: #19177C } /* Name.Variable.Instance */
+.pygments .vm { color: #19177C } /* Name.Variable.Magic */
+.pygments .il { color: #666 } /* Literal.Number.Integer.Long */
+    </style>
+    <div class="pygments"><pre><span></span><span class="nt">include</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">01-base.yaml</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">02-buyup.yaml</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">03-ap.yaml</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">14-heur.yaml</span>
+
+<span class="nt">simulation_controls</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">demand_multiplier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">  </span><span class="nt">num_trials</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">  </span><span class="nt">num_samples</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
+<span class="w">  </span><span class="nt">burn_samples</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50</span>
+<span class="w">  </span><span class="nt">random_seed</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">314</span>
+
+<span class="nt">carriers</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">AL1</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">rm_system</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">E</span>
+<span class="w">  </span><span class="nt">AL2</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">rm_system</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">E</span>
+
+<span class="nt">db</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+
+<span class="nt">outputs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">reports</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+</pre></div>
+</div></div>
+</div>
+<p>We can load the YAML files into a <code class="docutils literal notranslate"><span class="pre">Config</span></code> object, which will both handle loading
+the raw content and validating that it includes everything necessary to prepare
+a PassengerSim simulation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">cfg</span> <span class="o">=</span> <span class="n">pax</span><span class="o">.</span><span class="n">Config</span><span class="o">.</span><span class="n">from_yaml</span><span class="p">(</span><span class="n">pax</span><span class="o">.</span><span class="n">demo_network</span><span class="p">(</span><span class="s2">&quot;3MKT/DEMO&quot;</span><span class="p">))</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>After loading, it’s possible to modify the <code class="docutils literal notranslate"><span class="pre">Config</span></code> object in Python to change aspects
+of a simulation. For this example, we won’t change anything here, and just create the
+<code class="docutils literal notranslate"><span class="pre">Simulation</span></code> object from the existing <code class="docutils literal notranslate"><span class="pre">Config</span></code>.  We can choose to create a regular
+<code class="docutils literal notranslate"><span class="pre">Simulation</span></code> which will run all trials and samples sequentially in a single process, or
+a <code class="docutils literal notranslate"><span class="pre">MultiSimulation</span></code> which will run each trial in parallel, with each trial running in
+a seperate subprocess.  The later option is generally much faster on multi-core computers,
+but detailed simulation model development or debugging can usually be done more conveniently
+in the single process workflow.</p>
+<p>Since our demo is configured to run two trials, we’ll run a <code class="docutils literal notranslate"><span class="pre">MultiSimulation</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">sim</span> <span class="o">=</span> <span class="n">pax</span><span class="o">.</span><span class="n">MultiSimulation</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Running the simulation is as simple as calling the <code class="docutils literal notranslate"><span class="pre">run</span></code> command, which runs the simulation and returns a summary output object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">summary</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "cfcbecf04c444504bc7415948ab6bf3b"}</script><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">   ╭─────────────────────────────────────╮                                                                         
+   │ <span style="color: #800080; text-decoration-color: #800080">licensed for jpn</span>                    │                                                                         
+   │ <span style="color: #800080; text-decoration-color: #800080">until 2036-05-28 15:49:32+00:00 UTC</span> │                                                                         
+   │ <span style="color: #800080; text-decoration-color: #800080">maximum 42000 legs in network</span>       │                                                                         
+   ╰─────────────────────────────────────╯                                                                         
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre>
+</div></div>
+</div>
+<p>By default, PassengerSim will generate a summary output that includes a wide variety of
+aggregated summary output data, which can be reviewed or visualized using an included
+suite of analysis tools.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">summary</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><code>&lt;passengersim.summaries.SimulationTables created on 2026-06-12&gt;
+ * bid_price_history (256 row DataFrame)
+ * cabins (5600 row DataFrame)
+ * carriers (2 row DataFrame)
+ * carrier_history (NoneType)
+ * carrier_history2 (1400 row DataFrame)
+ * forecast_accuracy (NoneType)
+ * cp_segmentation (12 row DataFrame)
+ * demand_to_come_summary (34 row DataFrame)
+ * demand_to_come (NoneType)
+ * demands (6 row DataFrame)
+ * demand_history (NoneType)
+ * displacement_history (68 row DataFrame)
+ * fare_class_mix (12 row DataFrame)
+ * path_forecasts (NoneType)
+ * leg_forecasts (NoneType)
+ * edgar (NoneType)
+ * legbuckets (48 row DataFrame)
+ * legs (8 row DataFrame)
+ * leg_detail (NoneType)
+ * local_and_flow_yields (NoneType)
+ * pathclasses (72 row DataFrame)
+ * path_legs (16 row DataFrame)
+ * paths (12 row DataFrame)
+ * segmentation_by_timeframe (335 row DataFrame)
+ * segmentation_detail (NoneType)
+&lt;*&gt;
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>The raw data of the summary tables shown can be accessed via direct attribute access
+on the <code class="docutils literal notranslate"><span class="pre">SimulationTables</span></code> object.  For example, we can see the summary data collected
+on the legs like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">summary</span><span class="o">.</span><span class="n">legs</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carrier</th>
+      <th>flt_no</th>
+      <th>orig</th>
+      <th>dest</th>
+      <th>distance</th>
+      <th>gt_sold</th>
+      <th>gt_capacity</th>
+      <th>gt_sold_local</th>
+      <th>gt_revenue</th>
+      <th>avg_load_factor</th>
+      <th>avg_local</th>
+    </tr>
+    <tr>
+      <th>leg_id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>101</th>
+      <td>AL1</td>
+      <td>101</td>
+      <td>BOS</td>
+      <td>ORD</td>
+      <td>863.753</td>
+      <td>59399</td>
+      <td>70000</td>
+      <td>25127</td>
+      <td>9.721783e+06</td>
+      <td>84.855714</td>
+      <td>42.302059</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>AL1</td>
+      <td>102</td>
+      <td>BOS</td>
+      <td>ORD</td>
+      <td>863.753</td>
+      <td>59665</td>
+      <td>70000</td>
+      <td>25093</td>
+      <td>9.702092e+06</td>
+      <td>85.235714</td>
+      <td>42.056482</td>
+    </tr>
+    <tr>
+      <th>201</th>
+      <td>AL2</td>
+      <td>201</td>
+      <td>BOS</td>
+      <td>ORD</td>
+      <td>863.753</td>
+      <td>59413</td>
+      <td>70000</td>
+      <td>24919</td>
+      <td>9.716049e+06</td>
+      <td>84.875714</td>
+      <td>41.941999</td>
+    </tr>
+    <tr>
+      <th>202</th>
+      <td>AL2</td>
+      <td>202</td>
+      <td>BOS</td>
+      <td>ORD</td>
+      <td>863.753</td>
+      <td>59434</td>
+      <td>70000</td>
+      <td>25127</td>
+      <td>9.683106e+06</td>
+      <td>84.905714</td>
+      <td>42.277148</td>
+    </tr>
+    <tr>
+      <th>111</th>
+      <td>AL1</td>
+      <td>111</td>
+      <td>ORD</td>
+      <td>LAX</td>
+      <td>1739.799</td>
+      <td>74685</td>
+      <td>84000</td>
+      <td>40413</td>
+      <td>2.193187e+07</td>
+      <td>88.910714</td>
+      <td>54.111267</td>
+    </tr>
+    <tr>
+      <th>112</th>
+      <td>AL1</td>
+      <td>112</td>
+      <td>ORD</td>
+      <td>LAX</td>
+      <td>1739.799</td>
+      <td>74926</td>
+      <td>84000</td>
+      <td>40354</td>
+      <td>2.193041e+07</td>
+      <td>89.197619</td>
+      <td>53.858474</td>
+    </tr>
+    <tr>
+      <th>211</th>
+      <td>AL2</td>
+      <td>211</td>
+      <td>ORD</td>
+      <td>LAX</td>
+      <td>1739.799</td>
+      <td>74851</td>
+      <td>84000</td>
+      <td>40357</td>
+      <td>2.201165e+07</td>
+      <td>89.108333</td>
+      <td>53.916447</td>
+    </tr>
+    <tr>
+      <th>212</th>
+      <td>AL2</td>
+      <td>212</td>
+      <td>ORD</td>
+      <td>LAX</td>
+      <td>1739.799</td>
+      <td>74848</td>
+      <td>84000</td>
+      <td>40541</td>
+      <td>2.195184e+07</td>
+      <td>89.104762</td>
+      <td>54.164440</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In addition to accessing the raw data, PassengerSim also has a built-in collection of
+visualization tools for reviewing the data.  These tools include aggregate summary
+figures, e.g. some figures showing carrier revenue, load factors, or RASM.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">summary</span><span class="o">.</span><span class="n">fig_carrier_revenues</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-e73769af7c784407aedcc5315f61d36e.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-e73769af7c784407aedcc5315f61d36e.vega-embed details,
+  #altair-viz-e73769af7c784407aedcc5315f61d36e.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-e73769af7c784407aedcc5315f61d36e"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-e73769af7c784407aedcc5315f61d36e") {
+      outputDiv = document.getElementById("altair-viz-e73769af7c784407aedcc5315f61d36e");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFontSize": 12}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "rm_system", "title": "RM System", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "rm_system", "title": "RM System", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Average Revenue", "type": "quantitative"}], "x": {"axis": {"format": "$.4s"}, "field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"axis": {"format": "$.4s"}, "field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-39f7685a6d0e001bfd79cfc02042f500"}, "height": 50, "title": "Carrier Revenues", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-39f7685a6d0e001bfd79cfc02042f500": [{"carrier": "AL1", "avg_rev": 90408.78571428571, "rm_system": "E"}, {"carrier": "AL2", "avg_rev": 90518.07142857142, "rm_system": "E"}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">summary</span><span class="o">.</span><span class="n">fig_carrier_load_factors</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-3e4de785088b415ab316be381ff1e5f4.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-3e4de785088b415ab316be381ff1e5f4.vega-embed details,
+  #altair-viz-3e4de785088b415ab316be381ff1e5f4.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-3e4de785088b415ab316be381ff1e5f4"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-3e4de785088b415ab316be381ff1e5f4") {
+      outputDiv = document.getElementById("altair-viz-3e4de785088b415ab316be381ff1e5f4");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFontSize": 12}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "rm_system", "title": "RM System", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "rm_system", "title": "RM System", "type": "nominal"}, {"field": "sys_lf", "format": ".2f", "title": "System Load Factor", "type": "quantitative"}], "x": {"axis": {"format": ".2f"}, "field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "sys_lf", "format": ".2f", "type": "quantitative"}, "x": {"axis": {"format": ".2f"}, "field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-30cb53aca52bfc93508712b401dbae5a"}, "height": 50, "title": "Carrier System Load Factors", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-30cb53aca52bfc93508712b401dbae5a": [{"carrier": "AL1", "sys_lf": 87.88110248667431, "rm_system": "E"}, {"carrier": "AL2", "sys_lf": 87.87279389013938, "rm_system": "E"}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">summary</span><span class="o">.</span><span class="n">fig_carrier_rasm</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-6b093dfd317844488cb172d27ede168d.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-6b093dfd317844488cb172d27ede168d.vega-embed details,
+  #altair-viz-6b093dfd317844488cb172d27ede168d.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-6b093dfd317844488cb172d27ede168d"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-6b093dfd317844488cb172d27ede168d") {
+      outputDiv = document.getElementById("altair-viz-6b093dfd317844488cb172d27ede168d");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFontSize": 12}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "rm_system", "title": "RM System", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "rm_system", "title": "RM System", "type": "nominal"}, {"field": "rasm", "format": "$.4f", "title": "Revenue per Available Seat Mile", "type": "quantitative"}], "x": {"axis": {"format": "$.4f"}, "field": "rasm", "stack": "zero", "title": "Revenue per Available Seat Mile", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "rasm", "format": "$.4f", "type": "quantitative"}, "x": {"axis": {"format": "$.4f"}, "field": "rasm", "stack": "zero", "title": "Revenue per Available Seat Mile", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-93fa0c5b5f5ddf8ebfbf8ed9f48bb535"}, "height": 50, "title": "Carrier Revenue per Available Seat Mile (RASM)", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-93fa0c5b5f5ddf8ebfbf8ed9f48bb535": [{"carrier": "AL1", "rasm": 0.1531567410882208, "rm_system": "E"}, {"carrier": "AL2", "rasm": 0.1533418762353778, "rm_system": "E"}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>We can also examine more detailed slices of simulation results.  One commonly
+used visualization show the fare class mix across all bookings on each carrier.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">summary</span><span class="o">.</span><span class="n">fig_fare_class_mix</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-a4f25ca68eb74c00b5f511b8ad1192a6.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-a4f25ca68eb74c00b5f511b8ad1192a6.vega-embed details,
+  #altair-viz-a4f25ca68eb74c00b5f511b8ad1192a6.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-a4f25ca68eb74c00b5f511b8ad1192a6"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-a4f25ca68eb74c00b5f511b8ad1192a6") {
+      outputDiv = document.getElementById("altair-viz-a4f25ca68eb74c00b5f511b8ad1192a6");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFontSize": 12}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "booking_class", "type": "nominal"}, "tooltip": [{"field": "carrier", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "title": "Fare Class Mix", "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 3}, "encoding": {"opacity": {"condition": {"test": "datum.avg_sold < 17.128", "value": 0}, "value": 1}, "order": {"field": "booking_class", "sort": "descending", "type": "nominal"}, "text": {"field": "avg_sold", "format": ".2f", "type": "quantitative"}, "tooltip": [{"field": "carrier", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "title": "Fare Class Mix", "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}], "data": {"name": "data-47d4ef8e3574d08c45ab81a24acd5a53"}, "height": 300, "width": 400, "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-47d4ef8e3574d08c45ab81a24acd5a53": [{"carrier": "AL1", "booking_class": "Y0", "avg_sold": 53.927142857142854}, {"carrier": "AL1", "booking_class": "Y1", "avg_sold": 51.78142857142857}, {"carrier": "AL1", "booking_class": "Y2", "avg_sold": 28.548571428571428}, {"carrier": "AL1", "booking_class": "Y3", "avg_sold": 12.904285714285715}, {"carrier": "AL1", "booking_class": "Y4", "avg_sold": 103.06142857142858}, {"carrier": "AL1", "booking_class": "Y5", "avg_sold": 35.25}, {"carrier": "AL2", "booking_class": "Y0", "avg_sold": 54.104285714285716}, {"carrier": "AL2", "booking_class": "Y1", "avg_sold": 52.01428571428571}, {"carrier": "AL2", "booking_class": "Y2", "avg_sold": 28.65142857142857}, {"carrier": "AL2", "booking_class": "Y3", "avg_sold": 12.92142857142857}, {"carrier": "AL2", "booking_class": "Y4", "avg_sold": 102.39857142857143}, {"carrier": "AL2", "booking_class": "Y5", "avg_sold": 35.26}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>We can also dive deeper into this fare class data, to look not just at
+how many bookings are in each fare class, but also when those bookings
+occured and what passenger segments they came from.  The figure below
+clearly shows that the lower fare classes are booked almost exclusively
+by leisure travlers, and primarily in the early time frames.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">summary</span><span class="o">.</span><span class="n">fig_bookings_by_timeframe</span><span class="p">(</span><span class="n">by_class</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">by_carrier</span><span class="o">=</span><span class="s2">&quot;AL1&quot;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-dfb1c55f30924f0f80f126c174412d1e.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-dfb1c55f30924f0f80f126c174412d1e.vega-embed details,
+  #altair-viz-dfb1c55f30924f0f80f126c174412d1e.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-dfb1c55f30924f0f80f126c174412d1e"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-dfb1c55f30924f0f80f126c174412d1e") {
+      outputDiv = document.getElementById("altair-viz-dfb1c55f30924f0f80f126c174412d1e");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "data": {"name": "data-89485466056b9ed867c63e6ceeeba634"}, "facet": {"row": {"field": "segment", "title": "Passenger Type", "type": "nominal"}}, "spec": {"mark": {"type": "bar"}, "encoding": {"color": {"field": "booking_class", "title": "Booking Class", "type": "nominal"}, "tooltip": [{"field": "booking_class", "title": "Booking Class", "type": "nominal"}, {"field": "segment", "title": "Passenger Type", "type": "nominal"}, {"field": "days_prior", "title": "Days Prior", "type": "quantitative"}, {"field": "bookings", "format": ",.2f", "title": "Bookings", "type": "quantitative"}], "x": {"field": "days_prior", "scale": {"reverse": true}, "title": "Days Prior to Departure", "type": "ordinal"}, "y": {"field": "bookings", "type": "quantitative"}}, "height": 200, "width": 500}, "title": "Bookings by Timeframe and Booking Class (AL1)", "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-89485466056b9ed867c63e6ceeeba634": [{"booking_class": "Y0", "days_prior": 1, "segment": "business", "bookings": 1.907142857142857}, {"booking_class": "Y0", "days_prior": 1, "segment": "leisure", "bookings": 0.004285714285714286}, {"booking_class": "Y0", "days_prior": 3, "segment": "business", "bookings": 8.934285714285714}, {"booking_class": "Y0", "days_prior": 3, "segment": "leisure", "bookings": 0.01}, {"booking_class": "Y0", "days_prior": 5, "segment": "business", "bookings": 4.427142857142857}, {"booking_class": "Y0", "days_prior": 5, "segment": "leisure", "bookings": 0.02}, {"booking_class": "Y0", "days_prior": 7, "segment": "business", "bookings": 4.555714285714286}, {"booking_class": "Y0", "days_prior": 7, "segment": "leisure", "bookings": 0.0}, {"booking_class": "Y0", "days_prior": 10, "segment": "business", "bookings": 6.797142857142857}, {"booking_class": "Y0", "days_prior": 10, "segment": "leisure", "bookings": 0.0}, {"booking_class": "Y0", "days_prior": 14, "segment": "business", "bookings": 5.472857142857142}, {"booking_class": "Y0", "days_prior": 14, "segment": "leisure", "bookings": 0.0}, {"booking_class": "Y0", "days_prior": 17, "segment": "business", "bookings": 2.7057142857142855}, {"booking_class": "Y0", "days_prior": 17, "segment": "leisure", "bookings": 0.0}, {"booking_class": "Y0", "days_prior": 21, "segment": "business", "bookings": 2.13}, {"booking_class": "Y0", "days_prior": 21, "segment": "leisure", "bookings": 0.0}, {"booking_class": "Y0", "days_prior": 24, "segment": "business", "bookings": 1.5542857142857143}, {"booking_class": "Y0", "days_prior": 24, "segment": "leisure", "bookings": 0.0}, {"booking_class": "Y0", "days_prior": 28, "segment": "business", "bookings": 1.5757142857142856}, {"booking_class": "Y0", "days_prior": 28, "segment": "leisure", "bookings": 0.0}, {"booking_class": "Y0", "days_prior": 31, "segment": "business", "bookings": 1.1628571428571428}, {"booking_class": "Y0", "days_prior": 31, "segment": "leisure", "bookings": 0.0}, {"booking_class": "Y0", "days_prior": 35, "segment": "business", "bookings": 1.657142857142857}, {"booking_class": "Y0", "days_prior": 35, "segment": "leisure", "bookings": 0.0}, {"booking_class": "Y0", "days_prior": 42, "segment": "business", "bookings": 2.802857142857143}, {"booking_class": "Y0", "days_prior": 42, "segment": "leisure", "bookings": 0.0}, {"booking_class": "Y0", "days_prior": 49, "segment": "business", "bookings": 2.208571428571428}, {"booking_class": "Y0", "days_prior": 49, "segment": "leisure", "bookings": 0.0}, {"booking_class": "Y0", "days_prior": 56, "segment": "business", "bookings": 2.7357142857142858}, {"booking_class": "Y0", "days_prior": 56, "segment": "leisure", "bookings": 0.0}, {"booking_class": "Y0", "days_prior": 63, "segment": "business", "bookings": 3.2657142857142856}, {"booking_class": "Y0", "days_prior": 63, "segment": "leisure", "bookings": 0.0}, {"booking_class": "Y1", "days_prior": 1, "segment": "business", "bookings": 2.0914285714285716}, {"booking_class": "Y1", "days_prior": 1, "segment": "leisure", "bookings": 0.28428571428571425}, {"booking_class": "Y1", "days_prior": 3, "segment": "business", "bookings": 8.32857142857143}, {"booking_class": "Y1", "days_prior": 3, "segment": "leisure", "bookings": 0.5085714285714286}, {"booking_class": "Y1", "days_prior": 5, "segment": "business", "bookings": 3.9628571428571426}, {"booking_class": "Y1", "days_prior": 5, "segment": "leisure", "bookings": 0.24285714285714285}, {"booking_class": "Y1", "days_prior": 7, "segment": "business", "bookings": 4.042857142857143}, {"booking_class": "Y1", "days_prior": 7, "segment": "leisure", "bookings": 0.08285714285714285}, {"booking_class": "Y1", "days_prior": 10, "segment": "business", "bookings": 6.321428571428571}, {"booking_class": "Y1", "days_prior": 10, "segment": "leisure", "bookings": 0.06714285714285714}, {"booking_class": "Y1", "days_prior": 14, "segment": "business", "bookings": 5.341428571428572}, {"booking_class": "Y1", "days_prior": 14, "segment": "leisure", "bookings": 0.038571428571428576}, {"booking_class": "Y1", "days_prior": 17, "segment": "business", "bookings": 2.4857142857142858}, {"booking_class": "Y1", "days_prior": 17, "segment": "leisure", "bookings": 0.008571428571428572}, {"booking_class": "Y1", "days_prior": 21, "segment": "business", "bookings": 2.178571428571429}, {"booking_class": "Y1", "days_prior": 21, "segment": "leisure", "bookings": 0.01}, {"booking_class": "Y1", "days_prior": 24, "segment": "business", "bookings": 1.5142857142857142}, {"booking_class": "Y1", "days_prior": 24, "segment": "leisure", "bookings": 0.0}, {"booking_class": "Y1", "days_prior": 28, "segment": "business", "bookings": 1.4757142857142858}, {"booking_class": "Y1", "days_prior": 28, "segment": "leisure", "bookings": 0.0}, {"booking_class": "Y1", "days_prior": 31, "segment": "business", "bookings": 1.0085714285714285}, {"booking_class": "Y1", "days_prior": 31, "segment": "leisure", "bookings": 0.0}, {"booking_class": "Y1", "days_prior": 35, "segment": "business", "bookings": 1.5071428571428571}, {"booking_class": "Y1", "days_prior": 35, "segment": "leisure", "bookings": 0.0014285714285714286}, {"booking_class": "Y1", "days_prior": 42, "segment": "business", "bookings": 2.6357142857142857}, {"booking_class": "Y1", "days_prior": 42, "segment": "leisure", "bookings": 0.0}, {"booking_class": "Y1", "days_prior": 49, "segment": "business", "bookings": 2.0842857142857145}, {"booking_class": "Y1", "days_prior": 49, "segment": "leisure", "bookings": 0.0}, {"booking_class": "Y1", "days_prior": 56, "segment": "business", "bookings": 2.55}, {"booking_class": "Y1", "days_prior": 56, "segment": "leisure", "bookings": 0.0}, {"booking_class": "Y1", "days_prior": 63, "segment": "business", "bookings": 3.007142857142857}, {"booking_class": "Y1", "days_prior": 63, "segment": "leisure", "bookings": 0.0014285714285714286}, {"booking_class": "Y2", "days_prior": 5, "segment": "business", "bookings": 2.322857142857143}, {"booking_class": "Y2", "days_prior": 5, "segment": "leisure", "bookings": 2.0300000000000002}, {"booking_class": "Y2", "days_prior": 7, "segment": "business", "bookings": 2.4657142857142857}, {"booking_class": "Y2", "days_prior": 7, "segment": "leisure", "bookings": 0.8771428571428571}, {"booking_class": "Y2", "days_prior": 10, "segment": "business", "bookings": 3.95}, {"booking_class": "Y2", "days_prior": 10, "segment": "leisure", "bookings": 0.40428571428571425}, {"booking_class": "Y2", "days_prior": 14, "segment": "business", "bookings": 3.5228571428571427}, {"booking_class": "Y2", "days_prior": 14, "segment": "leisure", "bookings": 0.6328571428571429}, {"booking_class": "Y2", "days_prior": 17, "segment": "business", "bookings": 1.5985714285714288}, {"booking_class": "Y2", "days_prior": 17, "segment": "leisure", "bookings": 0.32999999999999996}, {"booking_class": "Y2", "days_prior": 21, "segment": "business", "bookings": 1.2714285714285714}, {"booking_class": "Y2", "days_prior": 21, "segment": "leisure", "bookings": 0.1757142857142857}, {"booking_class": "Y2", "days_prior": 24, "segment": "business", "bookings": 0.8914285714285715}, {"booking_class": "Y2", "days_prior": 24, "segment": "leisure", "bookings": 0.07428571428571429}, {"booking_class": "Y2", "days_prior": 28, "segment": "business", "bookings": 0.8642857142857143}, {"booking_class": "Y2", "days_prior": 28, "segment": "leisure", "bookings": 0.024285714285714285}, {"booking_class": "Y2", "days_prior": 31, "segment": "business", "bookings": 0.5957142857142856}, {"booking_class": "Y2", "days_prior": 31, "segment": "leisure", "bookings": 0.0014285714285714286}, {"booking_class": "Y2", "days_prior": 35, "segment": "business", "bookings": 0.9514285714285714}, {"booking_class": "Y2", "days_prior": 35, "segment": "leisure", "bookings": 0.0}, {"booking_class": "Y2", "days_prior": 42, "segment": "business", "bookings": 1.3414285714285714}, {"booking_class": "Y2", "days_prior": 42, "segment": "leisure", "bookings": 0.0}, {"booking_class": "Y2", "days_prior": 49, "segment": "business", "bookings": 1.1114285714285714}, {"booking_class": "Y2", "days_prior": 49, "segment": "leisure", "bookings": 0.0}, {"booking_class": "Y2", "days_prior": 56, "segment": "business", "bookings": 1.4342857142857142}, {"booking_class": "Y2", "days_prior": 56, "segment": "leisure", "bookings": 0.0}, {"booking_class": "Y2", "days_prior": 63, "segment": "business", "bookings": 1.677142857142857}, {"booking_class": "Y2", "days_prior": 63, "segment": "leisure", "bookings": 0.0}, {"booking_class": "Y3", "days_prior": 10, "segment": "business", "bookings": 0.3385714285714286}, {"booking_class": "Y3", "days_prior": 10, "segment": "leisure", "bookings": 2.2}, {"booking_class": "Y3", "days_prior": 14, "segment": "business", "bookings": 0.34285714285714286}, {"booking_class": "Y3", "days_prior": 14, "segment": "leisure", "bookings": 3.934285714285714}, {"booking_class": "Y3", "days_prior": 17, "segment": "business", "bookings": 0.1457142857142857}, {"booking_class": "Y3", "days_prior": 17, "segment": "leisure", "bookings": 1.272857142857143}, {"booking_class": "Y3", "days_prior": 21, "segment": "business", "bookings": 0.17142857142857143}, {"booking_class": "Y3", "days_prior": 21, "segment": "leisure", "bookings": 1.4114285714285715}, {"booking_class": "Y3", "days_prior": 24, "segment": "business", "bookings": 0.11857142857142856}, {"booking_class": "Y3", "days_prior": 24, "segment": "leisure", "bookings": 1.0285714285714285}, {"booking_class": "Y3", "days_prior": 28, "segment": "business", "bookings": 0.09}, {"booking_class": "Y3", "days_prior": 28, "segment": "leisure", "bookings": 0.41000000000000003}, {"booking_class": "Y3", "days_prior": 31, "segment": "business", "bookings": 0.06571428571428571}, {"booking_class": "Y3", "days_prior": 31, "segment": "leisure", "bookings": 0.08857142857142858}, {"booking_class": "Y3", "days_prior": 35, "segment": "business", "bookings": 0.11714285714285715}, {"booking_class": "Y3", "days_prior": 35, "segment": "leisure", "bookings": 0.07}, {"booking_class": "Y3", "days_prior": 42, "segment": "business", "bookings": 0.19428571428571428}, {"booking_class": "Y3", "days_prior": 42, "segment": "leisure", "bookings": 0.09142857142857143}, {"booking_class": "Y3", "days_prior": 49, "segment": "business", "bookings": 0.11571428571428571}, {"booking_class": "Y3", "days_prior": 49, "segment": "leisure", "bookings": 0.09}, {"booking_class": "Y3", "days_prior": 56, "segment": "business", "bookings": 0.18714285714285717}, {"booking_class": "Y3", "days_prior": 56, "segment": "leisure", "bookings": 0.0757142857142857}, {"booking_class": "Y3", "days_prior": 63, "segment": "business", "bookings": 0.19428571428571428}, {"booking_class": "Y3", "days_prior": 63, "segment": "leisure", "bookings": 0.15}, {"booking_class": "Y4", "days_prior": 17, "segment": "business", "bookings": 0.2114285714285714}, {"booking_class": "Y4", "days_prior": 17, "segment": "leisure", "bookings": 4.658571428571428}, {"booking_class": "Y4", "days_prior": 21, "segment": "business", "bookings": 0.18142857142857144}, {"booking_class": "Y4", "days_prior": 21, "segment": "leisure", "bookings": 6.478571428571428}, {"booking_class": "Y4", "days_prior": 24, "segment": "business", "bookings": 0.16142857142857142}, {"booking_class": "Y4", "days_prior": 24, "segment": "leisure", "bookings": 9.214285714285715}, {"booking_class": "Y4", "days_prior": 28, "segment": "business", "bookings": 0.20857142857142857}, {"booking_class": "Y4", "days_prior": 28, "segment": "leisure", "bookings": 10.492857142857144}, {"booking_class": "Y4", "days_prior": 31, "segment": "business", "bookings": 0.12285714285714286}, {"booking_class": "Y4", "days_prior": 31, "segment": "leisure", "bookings": 5.232857142857143}, {"booking_class": "Y4", "days_prior": 35, "segment": "business", "bookings": 0.21857142857142858}, {"booking_class": "Y4", "days_prior": 35, "segment": "leisure", "bookings": 8.08}, {"booking_class": "Y4", "days_prior": 42, "segment": "business", "bookings": 0.3771428571428571}, {"booking_class": "Y4", "days_prior": 42, "segment": "leisure", "bookings": 11.801428571428572}, {"booking_class": "Y4", "days_prior": 49, "segment": "business", "bookings": 0.29428571428571426}, {"booking_class": "Y4", "days_prior": 49, "segment": "leisure", "bookings": 11.778571428571428}, {"booking_class": "Y4", "days_prior": 56, "segment": "business", "bookings": 0.3871428571428571}, {"booking_class": "Y4", "days_prior": 56, "segment": "leisure", "bookings": 10.361428571428572}, {"booking_class": "Y4", "days_prior": 63, "segment": "business", "bookings": 0.41428571428571426}, {"booking_class": "Y4", "days_prior": 63, "segment": "leisure", "bookings": 22.385714285714286}, {"booking_class": "Y5", "days_prior": 24, "segment": "business", "bookings": 0.0}, {"booking_class": "Y5", "days_prior": 24, "segment": "leisure", "bookings": 3.017142857142857}, {"booking_class": "Y5", "days_prior": 28, "segment": "business", "bookings": 0.0}, {"booking_class": "Y5", "days_prior": 28, "segment": "leisure", "bookings": 3.277142857142857}, {"booking_class": "Y5", "days_prior": 31, "segment": "business", "bookings": 0.0}, {"booking_class": "Y5", "days_prior": 31, "segment": "leisure", "bookings": 1.867142857142857}, {"booking_class": "Y5", "days_prior": 35, "segment": "business", "bookings": 0.0}, {"booking_class": "Y5", "days_prior": 35, "segment": "leisure", "bookings": 2.8757142857142854}, {"booking_class": "Y5", "days_prior": 42, "segment": "business", "bookings": 0.0}, {"booking_class": "Y5", "days_prior": 42, "segment": "leisure", "bookings": 4.627142857142857}, {"booking_class": "Y5", "days_prior": 49, "segment": "business", "bookings": 0.0}, {"booking_class": "Y5", "days_prior": 49, "segment": "leisure", "bookings": 5.0842857142857145}, {"booking_class": "Y5", "days_prior": 56, "segment": "business", "bookings": 0.0}, {"booking_class": "Y5", "days_prior": 56, "segment": "leisure", "bookings": 4.682857142857143}, {"booking_class": "Y5", "days_prior": 63, "segment": "business", "bookings": 0.0}, {"booking_class": "Y5", "days_prior": 63, "segment": "leisure", "bookings": 9.818571428571428}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>We can also do a deeper dive into the passengers on an individual leg, to look
+at the breakdown of their path origins and destinations, and the fare classes
+sold on that particular leg.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">summary</span><span class="o">.</span><span class="n">fig_select_leg_analysis</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-192579b67e2649f28fd7b10dfa4c7f06.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-192579b67e2649f28fd7b10dfa4c7f06.vega-embed details,
+  #altair-viz-192579b67e2649f28fd7b10dfa4c7f06.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-192579b67e2649f28fd7b10dfa4c7f06"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-192579b67e2649f28fd7b10dfa4c7f06") {
+      outputDiv = document.getElementById("altair-viz-192579b67e2649f28fd7b10dfa4c7f06");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "hconcat": [{"vconcat": [{"data": {"name": "data-fcc7abef2ef31f01409994df50385349"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "orig", "type": "nominal"}, "tooltip": [{"field": "orig", "title": "Orig", "type": "nominal"}, {"field": "sold", "format": ".4s", "title": "Bookings", "type": "quantitative"}, {"field": "revenue", "format": ".4s", "title": "Revenue", "type": "quantitative"}], "x": {"field": "sold", "title": "Orig", "type": "quantitative"}}, "width": 300}, {"data": {"name": "data-3fa7ac891d9cba0c26bb0c56a38cecc1"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "dest", "type": "nominal"}, "tooltip": [{"field": "dest", "title": "Dest", "type": "nominal"}, {"field": "sold", "format": ".4s", "title": "Bookings", "type": "quantitative"}, {"field": "revenue", "format": ".4s", "title": "Revenue", "type": "quantitative"}], "x": {"field": "sold", "title": "Dest", "type": "quantitative"}}, "width": 300}]}, {"data": {"name": "data-b29d8e0d9fefa2f8659fe533ed7da952"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "booking_class", "type": "nominal"}, "tooltip": [{"field": "booking_class", "title": "Booking Class", "type": "nominal"}, {"field": "sold", "format": ".4s", "title": "Bookings", "type": "quantitative"}, {"field": "revenue", "format": ".4s", "title": "Revenue", "type": "quantitative"}], "x": {"field": "sold", "title": "Booking Class", "type": "quantitative"}}, "width": 300}], "resolve": {"scale": {"color": "independent"}}, "title": {"text": ["Bookings on Leg Id 101"]}, "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-fcc7abef2ef31f01409994df50385349": [{"orig": "BOS", "gt_sold": 59399, "gt_revenue": 19303550.0, "sold": 84.85571428571428, "revenue": 27576.5}], "data-3fa7ac891d9cba0c26bb0c56a38cecc1": [{"dest": "LAX", "gt_sold": 34272, "gt_revenue": 14338800.0, "sold": 48.96, "revenue": 20484.0}, {"dest": "ORD", "gt_sold": 25127, "gt_revenue": 4964750.0, "sold": 35.895714285714284, "revenue": 7092.5}], "data-b29d8e0d9fefa2f8659fe533ed7da952": [{"booking_class": "Y0", "gt_sold": 8698, "gt_revenue": 5959650.0, "sold": 12.425714285714285, "revenue": 8513.785714285714}, {"booking_class": "Y1", "gt_sold": 11011, "gt_revenue": 4678700.0, "sold": 15.73, "revenue": 6683.857142857143}, {"booking_class": "Y2", "gt_sold": 7408, "gt_revenue": 2434100.0, "sold": 10.582857142857144, "revenue": 3477.285714285714}, {"booking_class": "Y3", "gt_sold": 2793, "gt_revenue": 730450.0, "sold": 3.99, "revenue": 1043.5}, {"booking_class": "Y4", "gt_sold": 20359, "gt_revenue": 4077250.0, "sold": 29.084285714285713, "revenue": 5824.642857142857}, {"booking_class": "Y5", "gt_sold": 9130, "gt_revenue": 1423400.0, "sold": 13.042857142857143, "revenue": 2033.4285714285713}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>A different perspective on the results can be seen in this figure of carrier
+revenue results, which are plotted sample-by-sample. Here we can see how
+carrier do against each other: if AL1 is having a good day, is AL2 also having
+a similarly good day?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">summary</span><span class="o">.</span><span class="n">fig_carrier_head_to_head_revenue</span><span class="p">(</span><span class="s2">&quot;AL1&quot;</span><span class="p">,</span> <span class="s2">&quot;AL2&quot;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-bddf341eab5e4e639601b16ec05a3042.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-bddf341eab5e4e639601b16ec05a3042.vega-embed details,
+  #altair-viz-bddf341eab5e4e639601b16ec05a3042.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-bddf341eab5e4e639601b16ec05a3042"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-bddf341eab5e4e639601b16ec05a3042") {
+      outputDiv = document.getElementById("altair-viz-bddf341eab5e4e639601b16ec05a3042");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "layer": [{"data": {"name": "data-e27cfe3fe3f21c7c1962821351c42895"}, "mark": {"type": "circle", "opacity": 0.3}, "encoding": {"x": {"axis": {"format": "%"}, "field": "AL1", "scale": {"zero": false}, "title": "AL1 Percentage of Mean Revenue", "type": "quantitative"}, "y": {"axis": {"format": "%"}, "field": "AL2", "scale": {"zero": false}, "title": "AL2 Percentage of Mean Revenue", "type": "quantitative"}}, "name": "view_7a7724dd9fd35323_0"}, {"data": {"name": "data-d5aaef934d070f849a985c8b038c534f"}, "mark": {"type": "line", "color": "red", "opacity": 0.3}, "encoding": {"x": {"field": "AL1", "type": "quantitative"}, "y": {"field": "AL2", "type": "quantitative"}}}], "params": [{"name": "param_1e9efca18e7a2868", "select": {"type": "interval", "encodings": ["x", "y"]}, "bind": "scales", "views": ["view_7a7724dd9fd35323_0"]}], "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-e27cfe3fe3f21c7c1962821351c42895": [{"trial": 0, "sample": 50, "AL1": 0.9233062842343862, "AL2": 0.9249534228760949}, {"trial": 0, "sample": 51, "AL1": 0.9562123782217753, "AL2": 0.808125922763647}, {"trial": 0, "sample": 52, "AL1": 1.0120697814608726, "AL2": 1.0279715258121305}, {"trial": 0, "sample": 53, "AL1": 1.0231306533894067, "AL2": 0.9898575896052326}, {"trial": 0, "sample": 54, "AL1": 1.1058106710551994, "AL2": 1.0862471818965904}, {"trial": 0, "sample": 55, "AL1": 1.0151115212412194, "AL2": 1.0649807102449156}, {"trial": 0, "sample": 56, "AL1": 1.1301445892979745, "AL2": 1.0448189903673535}, {"trial": 0, "sample": 57, "AL1": 0.8232053932811524, "AL2": 0.9147344689655499}, {"trial": 0, "sample": 58, "AL1": 1.0128993468555127, "AL2": 1.053380816616729}, {"trial": 0, "sample": 59, "AL1": 0.9022906275701714, "AL2": 0.8462398589705449}, {"trial": 0, "sample": 60, "AL1": 1.1027689312748525, "AL2": 0.9995241676287213}, {"trial": 0, "sample": 61, "AL1": 0.9351967215575604, "AL2": 1.0053241144428144}, {"trial": 0, "sample": 62, "AL1": 1.0068158672948189, "AL2": 1.0555903201649552}, {"trial": 0, "sample": 63, "AL1": 0.7620940758760013, "AL2": 0.7694596106696926}, {"trial": 0, "sample": 64, "AL1": 1.0068158672948189, "AL2": 1.068847341454311}, {"trial": 0, "sample": 65, "AL1": 1.097791538907012, "AL2": 1.1177326074588105}, {"trial": 0, "sample": 66, "AL1": 0.910586281516572, "AL2": 0.9539531569465607}, {"trial": 0, "sample": 67, "AL1": 0.7615410322795746, "AL2": 0.7330028021239642}, {"trial": 0, "sample": 68, "AL1": 0.9689323809395896, "AL2": 0.9616864193653516}, {"trial": 0, "sample": 69, "AL1": 0.725869720310052, "AL2": 0.9023060115067788}, {"trial": 0, "sample": 70, "AL1": 1.1378871996479483, "AL2": 1.0635997705272742}, {"trial": 0, "sample": 71, "AL1": 1.0621202269374896, "AL2": 1.1099993450400196}, {"trial": 0, "sample": 72, "AL1": 1.0433167446589815, "AL2": 1.0456475541979382}, {"trial": 0, "sample": 73, "AL1": 0.9551062910289219, "AL2": 1.0702282811719521}, {"trial": 0, "sample": 74, "AL1": 1.1035984966694925, "AL2": 1.1572274833833496}, {"trial": 0, "sample": 75, "AL1": 0.9410036793200408, "AL2": 0.9277153023113773}, {"trial": 0, "sample": 76, "AL1": 0.9257949804183064, "AL2": 0.9558864725512585}, {"trial": 0, "sample": 77, "AL1": 0.9357497651539871, "AL2": 0.8744110292104259}, {"trial": 0, "sample": 78, "AL1": 0.9893949940073776, "AL2": 0.934067625012527}, {"trial": 0, "sample": 79, "AL1": 0.9882889068145242, "AL2": 0.9890290257746479}, {"trial": 0, "sample": 80, "AL1": 1.1105115416248263, "AL2": 1.1080660294353217}, {"trial": 0, "sample": 81, "AL1": 0.9465341152843079, "AL2": 0.9296486179160751}, {"trial": 0, "sample": 82, "AL1": 0.9208175880504661, "AL2": 0.9401437597701484}, {"trial": 0, "sample": 83, "AL1": 0.7698366862259752, "AL2": 0.7863070752249156}, {"trial": 0, "sample": 84, "AL1": 1.0560367473767958, "AL2": 1.0953613840330225}, {"trial": 0, "sample": 85, "AL1": 0.9987967351466317, "AL2": 0.986819522226422}, {"trial": 0, "sample": 86, "AL1": 1.1002802350909322, "AL2": 1.0763044159295736}, {"trial": 0, "sample": 87, "AL1": 1.056313269175009, "AL2": 1.0368095400050343}, {"trial": 0, "sample": 88, "AL1": 0.8566645308649681, "AL2": 0.7705643624438056}, {"trial": 0, "sample": 89, "AL1": 1.0751167514535171, "AL2": 1.030733405247413}, {"trial": 0, "sample": 90, "AL1": 0.8738088823541961, "AL2": 0.9873718981134785}, {"trial": 0, "sample": 91, "AL1": 1.142311548419362, "AL2": 0.9771529442029334}, {"trial": 0, "sample": 92, "AL1": 1.1058106710551994, "AL2": 1.1726940082209314}, {"trial": 0, "sample": 93, "AL1": 1.0441463100536217, "AL2": 1.0995042031859463}, {"trial": 0, "sample": 94, "AL1": 1.038339352291141, "AL2": 1.0776853556472148}, {"trial": 0, "sample": 95, "AL1": 0.9197115008576127, "AL2": 1.0213430151674527}, {"trial": 0, "sample": 96, "AL1": 1.0756697950499439, "AL2": 1.0663616499625568}, {"trial": 0, "sample": 97, "AL1": 1.031149785537594, "AL2": 1.0517236889555597}, {"trial": 0, "sample": 98, "AL1": 1.1365045906568816, "AL2": 1.1279515613693556}, {"trial": 0, "sample": 99, "AL1": 0.7308471126778925, "AL2": 0.6896412949900296}, {"trial": 0, "sample": 100, "AL1": 0.8044019110026444, "AL2": 0.8020497880060256}, {"trial": 0, "sample": 101, "AL1": 0.995201951769858, "AL2": 1.0312857811344696}, {"trial": 0, "sample": 102, "AL1": 0.8345427870078999, "AL2": 0.8536969334458075}, {"trial": 0, "sample": 103, "AL1": 0.8721497515649159, "AL2": 0.9614102314218234}, {"trial": 0, "sample": 104, "AL1": 1.046911528035755, "AL2": 1.0426094868191276}, {"trial": 0, "sample": 105, "AL1": 1.0944732773284518, "AL2": 1.0798948591954407}, {"trial": 0, "sample": 106, "AL1": 1.111894150615893, "AL2": 1.1401038308845983}, {"trial": 0, "sample": 107, "AL1": 1.0126228250572993, "AL2": 0.9638959229135776}, {"trial": 0, "sample": 108, "AL1": 1.0988976260998655, "AL2": 1.1660654975762534}, {"trial": 0, "sample": 109, "AL1": 1.1215724135533605, "AL2": 1.1500465968516151}, {"trial": 0, "sample": 110, "AL1": 1.1395463304372284, "AL2": 1.2486456926911988}, {"trial": 0, "sample": 111, "AL1": 1.073457620664237, "AL2": 1.1395514549975418}, {"trial": 0, "sample": 112, "AL1": 1.0541010947893024, "AL2": 1.079066295364856}, {"trial": 0, "sample": 113, "AL1": 1.1970628644656058, "AL2": 1.2110841323713575}, {"trial": 0, "sample": 114, "AL1": 1.007645432689459, "AL2": 1.0166478201274725}, {"trial": 0, "sample": 115, "AL1": 0.9197115008576127, "AL2": 0.9876480860570067}, {"trial": 0, "sample": 116, "AL1": 1.1027689312748525, "AL2": 1.1030946464518134}, {"trial": 0, "sample": 117, "AL1": 0.979440209271697, "AL2": 1.0067050541604556}, {"trial": 0, "sample": 118, "AL1": 0.9222001970415328, "AL2": 1.0232763307721504}, {"trial": 0, "sample": 119, "AL1": 0.8577706180578215, "AL2": 0.8697158341704457}, {"trial": 0, "sample": 120, "AL1": 1.0745637078570904, "AL2": 1.060009327261407}, {"trial": 0, "sample": 121, "AL1": 0.9061619327451583, "AL2": 1.0067050541604556}, {"trial": 0, "sample": 122, "AL1": 0.7800679927598693, "AL2": 0.7084220751499503}, {"trial": 0, "sample": 123, "AL1": 1.1304211110961877, "AL2": 1.0199620754498115}, {"trial": 0, "sample": 124, "AL1": 1.1591793781103765, "AL2": 1.1555703557221801}, {"trial": 0, "sample": 125, "AL1": 1.0588019653589293, "AL2": 0.9942765967016846}, {"trial": 0, "sample": 126, "AL1": 1.1647098140746435, "AL2": 1.140932394715183}, {"trial": 0, "sample": 127, "AL1": 1.1898732977120587, "AL2": 1.1749035117691573}, {"trial": 0, "sample": 128, "AL1": 1.06626805391069, "AL2": 1.04067617121443}, {"trial": 0, "sample": 129, "AL1": 0.794723648065177, "AL2": 0.6907460467641425}, {"trial": 0, "sample": 130, "AL1": 1.2061880838066465, "AL2": 1.2265506572089393}, {"trial": 0, "sample": 131, "AL1": 1.0831358836017044, "AL2": 1.109170781209435}, {"trial": 0, "sample": 132, "AL1": 1.098621104301652, "AL2": 1.1986556749125865}, {"trial": 0, "sample": 133, "AL1": 1.0070923890930323, "AL2": 1.063323582583746}, {"trial": 0, "sample": 134, "AL1": 0.593415778965856, "AL2": 0.6175562417291575}, {"trial": 0, "sample": 135, "AL1": 1.2003811260441661, "AL2": 1.1978271110820018}, {"trial": 0, "sample": 136, "AL1": 1.1436941574104287, "AL2": 1.107237465604737}, {"trial": 0, "sample": 137, "AL1": 0.9913306465948711, "AL2": 0.904791702998533}, {"trial": 0, "sample": 138, "AL1": 1.1033219748712793, "AL2": 1.0909423769365707}, {"trial": 0, "sample": 139, "AL1": 0.8232053932811524, "AL2": 0.9274391143678491}, {"trial": 0, "sample": 140, "AL1": 1.1633272050835768, "AL2": 1.1906462245502674}, {"trial": 0, "sample": 141, "AL1": 1.2001046042459527, "AL2": 1.1467323415292763}, {"trial": 0, "sample": 142, "AL1": 1.154201985742536, "AL2": 1.1403800188281266}, {"trial": 0, "sample": 143, "AL1": 1.0195358700126331, "AL2": 0.8443065433658472}, {"trial": 0, "sample": 144, "AL1": 0.7717723388134687, "AL2": 0.7816118801849354}, {"trial": 0, "sample": 145, "AL1": 1.0908784939516782, "AL2": 1.0785139194777995}, {"trial": 0, "sample": 146, "AL1": 1.0505063114125286, "AL2": 1.0865233698401187}, {"trial": 0, "sample": 147, "AL1": 1.1130002378087465, "AL2": 1.0854186180660057}, {"trial": 0, "sample": 148, "AL1": 1.0419341356679148, "AL2": 1.1077898414917935}, {"trial": 0, "sample": 149, "AL1": 0.8682784463899289, "AL2": 0.9310295576337163}, {"trial": 0, "sample": 150, "AL1": 1.0610141397446362, "AL2": 1.1113802847576608}, {"trial": 0, "sample": 151, "AL1": 0.9363028087504138, "AL2": 0.8984393802973833}, {"trial": 0, "sample": 152, "AL1": 0.9824819490520438, "AL2": 0.9876480860570067}, {"trial": 0, "sample": 153, "AL1": 1.0864541451802645, "AL2": 1.0826567386307233}, {"trial": 0, "sample": 154, "AL1": 1.2072941709995, "AL2": 1.1784939550350244}, {"trial": 0, "sample": 155, "AL1": 0.8834871452916634, "AL2": 0.941800887431318}, {"trial": 0, "sample": 156, "AL1": 1.0247897841786868, "AL2": 1.0033907988381168}, {"trial": 0, "sample": 157, "AL1": 1.1199132827640803, "AL2": 1.1227039904423188}, {"trial": 0, "sample": 158, "AL1": 0.9885654286127376, "AL2": 1.0169240080710007}, {"trial": 0, "sample": 159, "AL1": 1.0903254503552515, "AL2": 1.1249134939905447}, {"trial": 0, "sample": 160, "AL1": 0.980269774666337, "AL2": 0.9694196817841425}, {"trial": 0, "sample": 161, "AL1": 0.9454280280914545, "AL2": 0.9998003555722496}, {"trial": 0, "sample": 162, "AL1": 1.1326332854818946, "AL2": 1.1508751606821999}, {"trial": 0, "sample": 163, "AL1": 1.1638802486800035, "AL2": 1.177941579147968}, {"trial": 0, "sample": 164, "AL1": 1.06875675009461, "AL2": 1.0961899478636072}, {"trial": 0, "sample": 165, "AL1": 0.9360262869522005, "AL2": 1.129608689030525}, {"trial": 0, "sample": 166, "AL1": 1.0590784871571426, "AL2": 1.0147145045227748}, {"trial": 0, "sample": 167, "AL1": 0.9003549749826779, "AL2": 0.9545055328336172}, {"trial": 0, "sample": 168, "AL1": 0.9824819490520438, "AL2": 0.8611540079210701}, {"trial": 0, "sample": 169, "AL1": 1.16194459609251, "AL2": 1.1425895223763525}, {"trial": 0, "sample": 170, "AL1": 1.1367811124550948, "AL2": 1.0707806570590086}, {"trial": 0, "sample": 171, "AL1": 1.0286610893536738, "AL2": 0.8807633519115756}, {"trial": 0, "sample": 172, "AL1": 0.6885392775512494, "AL2": 0.6501464190654904}, {"trial": 0, "sample": 173, "AL1": 1.174388077012111, "AL2": 1.1367895755622595}, {"trial": 0, "sample": 174, "AL1": 0.8129740867472584, "AL2": 0.8995441320714963}, {"trial": 0, "sample": 175, "AL1": 0.7761966875848824, "AL2": 0.7567549652673933}, {"trial": 0, "sample": 176, "AL1": 1.1848959053442183, "AL2": 1.2373219870065408}, {"trial": 0, "sample": 177, "AL1": 1.1425880702175752, "AL2": 1.0685711535107827}, {"trial": 0, "sample": 178, "AL1": 0.840902788366807, "AL2": 0.7109077666417045}, {"trial": 0, "sample": 179, "AL1": 1.2114419979727002, "AL2": 1.1130374124188303}, {"trial": 0, "sample": 180, "AL1": 0.9924367337877246, "AL2": 0.9848862066217242}, {"trial": 0, "sample": 181, "AL1": 1.1492245933746958, "AL2": 1.1547417918915954}, {"trial": 0, "sample": 182, "AL1": 1.0181532610215664, "AL2": 1.0254858343203763}, {"trial": 0, "sample": 183, "AL1": 0.906714976341585, "AL2": 1.0906661889930425}, {"trial": 0, "sample": 184, "AL1": 0.7792384273652292, "AL2": 0.7504026425662437}, {"trial": 0, "sample": 185, "AL1": 0.9473636806789479, "AL2": 0.9139059051349651}, {"trial": 0, "sample": 186, "AL1": 1.0665445757089032, "AL2": 1.0837614904048363}, {"trial": 0, "sample": 187, "AL1": 1.0883897977677581, "AL2": 1.0602855152049353}, {"trial": 0, "sample": 188, "AL1": 1.167475032056777, "AL2": 1.1370657635057877}, {"trial": 0, "sample": 189, "AL1": 0.9642315103699625, "AL2": 0.8594968802599007}, {"trial": 0, "sample": 190, "AL1": 1.164986335872857, "AL2": 1.1613703025362732}, {"trial": 0, "sample": 191, "AL1": 0.8555584436721148, "AL2": 0.8967822526362138}, {"trial": 0, "sample": 192, "AL1": 0.9844176016395373, "AL2": 0.8462398589705449}, {"trial": 0, "sample": 193, "AL1": 0.9573184654146287, "AL2": 0.8954013129185726}, {"trial": 0, "sample": 194, "AL1": 1.1276558931140543, "AL2": 1.1155231039105844}, {"trial": 0, "sample": 195, "AL1": 1.009304563478739, "AL2": 1.0428856747626558}, {"trial": 0, "sample": 196, "AL1": 1.1600089435050165, "AL2": 1.1544656039480672}, {"trial": 0, "sample": 197, "AL1": 1.0352976125107942, "AL2": 1.0254858343203763}, {"trial": 0, "sample": 198, "AL1": 1.1705167718371239, "AL2": 1.1367895755622595}, {"trial": 0, "sample": 199, "AL1": 0.9031201929648115, "AL2": 0.8915346817091772}, {"trial": 0, "sample": 200, "AL1": 0.9103097597183586, "AL2": 0.865573015017522}, {"trial": 0, "sample": 201, "AL1": 1.009304563478739, "AL2": 1.016095444240416}, {"trial": 0, "sample": 202, "AL1": 0.8530697474881945, "AL2": 0.8495541142928839}, {"trial": 0, "sample": 203, "AL1": 1.091431537548105, "AL2": 1.1030946464518134}, {"trial": 0, "sample": 204, "AL1": 1.0870071887766912, "AL2": 1.1326467564093357}, {"trial": 0, "sample": 205, "AL1": 0.8848697542827302, "AL2": 0.8951251249750444}, {"trial": 0, "sample": 206, "AL1": 0.7593288578938678, "AL2": 0.9031345753373635}, {"trial": 0, "sample": 207, "AL1": 1.2053585184120064, "AL2": 1.2563789551099898}, {"trial": 0, "sample": 208, "AL1": 1.0261723931697537, "AL2": 1.0213430151674527}, {"trial": 0, "sample": 209, "AL1": 1.1276558931140543, "AL2": 1.0917709407671554}, {"trial": 0, "sample": 210, "AL1": 0.9324315035754269, "AL2": 0.7810595042978788}, {"trial": 0, "sample": 211, "AL1": 1.097791538907012, "AL2": 1.0619426428661047}, {"trial": 0, "sample": 212, "AL1": 0.9570419436164154, "AL2": 0.8884966143303665}, {"trial": 0, "sample": 213, "AL1": 1.1381637214461617, "AL2": 1.1539132280610107}, {"trial": 0, "sample": 214, "AL1": 0.9166697610772657, "AL2": 0.9285438661419622}, {"trial": 0, "sample": 215, "AL1": 1.2042524312191532, "AL2": 1.1784939550350244}, {"trial": 0, "sample": 216, "AL1": 0.8677254027935023, "AL2": 0.965553050574747}, {"trial": 0, "sample": 217, "AL1": 1.111894150615893, "AL2": 1.0525522527861444}, {"trial": 0, "sample": 218, "AL1": 0.8027427802133642, "AL2": 0.8050878553848363}, {"trial": 0, "sample": 219, "AL1": 1.11493589039624, "AL2": 1.0975708875812484}, {"trial": 0, "sample": 220, "AL1": 0.7930645172758969, "AL2": 0.7167077134557976}, {"trial": 0, "sample": 221, "AL1": 0.9147341084897723, "AL2": 0.937381880334866}, {"trial": 0, "sample": 222, "AL1": 1.06626805391069, "AL2": 1.0078098059345686}, {"trial": 0, "sample": 223, "AL1": 0.8279062638507794, "AL2": 0.8951251249750444}, {"trial": 0, "sample": 224, "AL1": 0.9288367201986533, "AL2": 1.0315619690779978}, {"trial": 0, "sample": 225, "AL1": 1.1392698086390152, "AL2": 1.1575036713268778}, {"trial": 0, "sample": 226, "AL1": 0.9813758618591905, "AL2": 1.011400249200436}, {"trial": 0, "sample": 227, "AL1": 1.1276558931140543, "AL2": 1.1994842387431712}, {"trial": 0, "sample": 228, "AL1": 1.009304563478739, "AL2": 1.0647045223013873}, {"trial": 0, "sample": 229, "AL1": 1.0236836969858334, "AL2": 1.046199930084995}, {"trial": 0, "sample": 230, "AL1": 1.1840663399495783, "AL2": 1.216055515354866}, {"trial": 0, "sample": 231, "AL1": 1.1116176288176798, "AL2": 1.129608689030525}, {"trial": 0, "sample": 232, "AL1": 1.1143828467998134, "AL2": 1.0763044159295736}, {"trial": 0, "sample": 233, "AL1": 1.1268263277194142, "AL2": 1.1544656039480672}, {"trial": 0, "sample": 234, "AL1": 1.1461828535943488, "AL2": 1.1367895755622595}, {"trial": 0, "sample": 235, "AL1": 0.6868801467619693, "AL2": 0.65649874176664}, {"trial": 0, "sample": 236, "AL1": 1.2280333058655015, "AL2": 1.2428457458771058}, {"trial": 0, "sample": 237, "AL1": 1.0574193563678624, "AL2": 1.1436942741504654}, {"trial": 0, "sample": 238, "AL1": 1.105534149256986, "AL2": 1.1867795933408718}, {"trial": 0, "sample": 239, "AL1": 0.8519636602953411, "AL2": 1.0072574300475121}, {"trial": 0, "sample": 240, "AL1": 1.1605619871014432, "AL2": 1.0649807102449156}, {"trial": 0, "sample": 241, "AL1": 0.8381375703846735, "AL2": 0.9843338307346677}, {"trial": 0, "sample": 242, "AL1": 0.7717723388134687, "AL2": 0.7034506921664418}, {"trial": 0, "sample": 243, "AL1": 0.8685549681881423, "AL2": 0.8451351071964319}, {"trial": 0, "sample": 244, "AL1": 0.7850453851277096, "AL2": 0.6559463658795835}, {"trial": 0, "sample": 245, "AL1": 1.0355741343090077, "AL2": 1.0122288130310206}, {"trial": 0, "sample": 246, "AL1": 1.1763237295996043, "AL2": 1.1862272174538153}, {"trial": 0, "sample": 247, "AL1": 1.0701393590856767, "AL2": 1.1152469159670562}, {"trial": 0, "sample": 248, "AL1": 0.8821045363005966, "AL2": 0.8064687951024775}, {"trial": 0, "sample": 249, "AL1": 0.762647119472428, "AL2": 0.7147743978511}, {"trial": 0, "sample": 250, "AL1": 1.0831358836017044, "AL2": 1.0647045223013873}, {"trial": 0, "sample": 251, "AL1": 1.11493589039624, "AL2": 1.1180087954023388}, {"trial": 0, "sample": 252, "AL1": 1.0767758822427973, "AL2": 1.169103564955064}, {"trial": 0, "sample": 253, "AL1": 0.9108628033147853, "AL2": 0.9495341498501088}, {"trial": 0, "sample": 254, "AL1": 0.7463323333778402, "AL2": 0.834087589455302}, {"trial": 0, "sample": 255, "AL1": 1.089219363162398, "AL2": 0.9865433342828938}, {"trial": 0, "sample": 256, "AL1": 0.9636784667735357, "AL2": 1.0387428556097322}, {"trial": 0, "sample": 257, "AL1": 1.1058106710551994, "AL2": 1.1257420578211295}, {"trial": 0, "sample": 258, "AL1": 1.1060871928534126, "AL2": 1.1635798060844993}, {"trial": 0, "sample": 259, "AL1": 1.0767758822427973, "AL2": 1.039571419440317}, {"trial": 0, "sample": 260, "AL1": 1.0928141465391716, "AL2": 1.152256100399841}, {"trial": 0, "sample": 261, "AL1": 1.0258958713715403, "AL2": 0.9313057455772445}, {"trial": 0, "sample": 262, "AL1": 0.8616419232328085, "AL2": 0.9017536356197223}, {"trial": 0, "sample": 263, "AL1": 1.1323567636836813, "AL2": 1.1323705684658074}, {"trial": 0, "sample": 264, "AL1": 1.0081984762858858, "AL2": 1.0105716853698512}, {"trial": 0, "sample": 265, "AL1": 0.9863532542270308, "AL2": 0.9404199477136767}, {"trial": 0, "sample": 266, "AL1": 1.1702402500389106, "AL2": 1.112761224475302}, {"trial": 0, "sample": 267, "AL1": 0.8782332311256097, "AL2": 0.7454312595827352}, {"trial": 0, "sample": 268, "AL1": 0.9116923687094254, "AL2": 0.9188772881184735}, {"trial": 0, "sample": 269, "AL1": 0.7667949464456283, "AL2": 0.7506788305097719}, {"trial": 0, "sample": 270, "AL1": 1.0325323945286606, "AL2": 1.0964661358071355}, {"trial": 0, "sample": 271, "AL1": 1.0463584844393283, "AL2": 0.8490017384058274}, {"trial": 0, "sample": 272, "AL1": 1.1096819762301864, "AL2": 1.1528084762868978}, {"trial": 0, "sample": 273, "AL1": 1.108575889037333, "AL2": 1.161094114592745}, {"trial": 0, "sample": 274, "AL1": 0.8826575798970233, "AL2": 0.7404598765992267}, {"trial": 0, "sample": 275, "AL1": 0.8923358428344906, "AL2": 0.9263343625937361}, {"trial": 0, "sample": 276, "AL1": 1.0184297828197797, "AL2": 0.973286312993538}, {"trial": 0, "sample": 277, "AL1": 1.093090668337385, "AL2": 1.058904575487294}, {"trial": 0, "sample": 278, "AL1": 0.8533462692864079, "AL2": 0.9313057455772445}, {"trial": 0, "sample": 279, "AL1": 0.9808228182627637, "AL2": 1.0246572704897916}, {"trial": 0, "sample": 280, "AL1": 0.9244123714272396, "AL2": 0.9641721108571059}, {"trial": 0, "sample": 281, "AL1": 0.7106610214083177, "AL2": 0.7852023234508025}, {"trial": 0, "sample": 282, "AL1": 1.0513358768071688, "AL2": 1.0268667740380175}, {"trial": 0, "sample": 283, "AL1": 1.1981689516584593, "AL2": 1.2036270578960948}, {"trial": 0, "sample": 284, "AL1": 1.0048802147073255, "AL2": 0.8561826249375617}, {"trial": 0, "sample": 285, "AL1": 1.0247897841786868, "AL2": 0.8940203732009314}, {"trial": 0, "sample": 286, "AL1": 1.048294137026822, "AL2": 1.0100193094827945}, {"trial": 0, "sample": 287, "AL1": 1.0751167514535171, "AL2": 1.0572474478261247}, {"trial": 0, "sample": 288, "AL1": 1.0704158808838902, "AL2": 1.1558465436657084}, {"trial": 0, "sample": 289, "AL1": 1.0610141397446362, "AL2": 1.0089145577086815}, {"trial": 0, "sample": 290, "AL1": 1.156414160128243, "AL2": 1.1135897883058867}, {"trial": 0, "sample": 291, "AL1": 1.038339352291141, "AL2": 1.1077898414917935}, {"trial": 0, "sample": 292, "AL1": 0.7916819082848301, "AL2": 0.7932117738131217}, {"trial": 0, "sample": 293, "AL1": 1.0388923958875678, "AL2": 1.0089145577086815}, {"trial": 0, "sample": 294, "AL1": 1.1215724135533605, "AL2": 1.1309896287481662}, {"trial": 0, "sample": 295, "AL1": 1.0485706588250352, "AL2": 1.101437518790644}, {"trial": 0, "sample": 296, "AL1": 1.06792718469997, "AL2": 1.074371100324876}, {"trial": 0, "sample": 297, "AL1": 0.951234985853935, "AL2": 1.081275798913082}, {"trial": 0, "sample": 298, "AL1": 0.665587968299541, "AL2": 0.6573273055972249}, {"trial": 0, "sample": 299, "AL1": 1.0717984898749569, "AL2": 1.0702282811719521}, {"trial": 0, "sample": 300, "AL1": 1.101662844081999, "AL2": 1.1298848769740533}, {"trial": 0, "sample": 301, "AL1": 1.1069167582480528, "AL2": 1.0288000896427154}, {"trial": 0, "sample": 302, "AL1": 1.111064585221253, "AL2": 1.1481132812469175}, {"trial": 0, "sample": 303, "AL1": 0.7540749437278141, "AL2": 0.8481731745752427}, {"trial": 0, "sample": 304, "AL1": 0.8320540908239797, "AL2": 0.8727539015492565}, {"trial": 0, "sample": 305, "AL1": 0.924688893225453, "AL2": 0.7647644156297124}, {"trial": 0, "sample": 306, "AL1": 1.227756784067288, "AL2": 1.153084664230426}, {"trial": 0, "sample": 307, "AL1": 0.9705915117288696, "AL2": 0.9489817739630523}, {"trial": 0, "sample": 308, "AL1": 1.1152124121944533, "AL2": 1.0392952314967887}, {"trial": 0, "sample": 309, "AL1": 1.2031463440262997, "AL2": 1.2583122707146874}, {"trial": 0, "sample": 310, "AL1": 0.8995254095880378, "AL2": 0.8147544334083249}, {"trial": 0, "sample": 311, "AL1": 0.9089271507272919, "AL2": 0.7840975716766896}, {"trial": 0, "sample": 312, "AL1": 1.0798176220231441, "AL2": 1.0616664549225765}, {"trial": 0, "sample": 313, "AL1": 1.11659502118552, "AL2": 1.0978470755247767}, {"trial": 0, "sample": 314, "AL1": 0.7405253756153598, "AL2": 0.8119925539730424}, {"trial": 0, "sample": 315, "AL1": 1.1107880634230396, "AL2": 1.1006089549600593}, {"trial": 0, "sample": 316, "AL1": 1.1934680810888323, "AL2": 1.211636508258414}, {"trial": 0, "sample": 317, "AL1": 0.8680019245917157, "AL2": 0.8034307277236669}, {"trial": 0, "sample": 318, "AL1": 0.9180523700683325, "AL2": 1.0326667208521108}, {"trial": 0, "sample": 319, "AL1": 1.0137289122501527, "AL2": 1.0033907988381168}, {"trial": 0, "sample": 320, "AL1": 0.8951010608166242, "AL2": 0.9343438129560553}, {"trial": 0, "sample": 321, "AL1": 1.100003713292719, "AL2": 1.032942908795639}, {"trial": 0, "sample": 322, "AL1": 1.004603692909112, "AL2": 1.1146945400799997}, {"trial": 0, "sample": 323, "AL1": 1.1613915524960834, "AL2": 1.1561227316092366}, {"trial": 0, "sample": 324, "AL1": 1.0211950008019133, "AL2": 1.0326667208521108}, {"trial": 0, "sample": 325, "AL1": 1.1425880702175752, "AL2": 1.1017137067341722}, {"trial": 0, "sample": 326, "AL1": 1.1124471942123197, "AL2": 1.0680187776237262}, {"trial": 0, "sample": 327, "AL1": 0.6932401481208764, "AL2": 0.6625748765242615}, {"trial": 0, "sample": 328, "AL1": 0.668629708079888, "AL2": 0.6020897168915756}, {"trial": 0, "sample": 329, "AL1": 0.9083741071308652, "AL2": 0.869992022113974}, {"trial": 0, "sample": 330, "AL1": 1.1873846015281386, "AL2": 1.1447990259245786}, {"trial": 0, "sample": 331, "AL1": 0.9791636874734836, "AL2": 1.0293524655297719}, {"trial": 0, "sample": 332, "AL1": 1.109405454431973, "AL2": 1.1572274833833496}, {"trial": 0, "sample": 333, "AL1": 1.0731810988660238, "AL2": 1.1039232102823981}, {"trial": 0, "sample": 334, "AL1": 1.1511602459621892, "AL2": 1.114970728023528}, {"trial": 0, "sample": 335, "AL1": 0.9797167310699103, "AL2": 0.9547817207771455}, {"trial": 0, "sample": 336, "AL1": 1.1716228590299773, "AL2": 1.193684291929078}, {"trial": 0, "sample": 337, "AL1": 1.1378871996479483, "AL2": 1.107237465604737}, {"trial": 0, "sample": 338, "AL1": 1.1116176288176798, "AL2": 1.1075136535482653}, {"trial": 0, "sample": 339, "AL1": 1.16277416148715, "AL2": 1.095913759920079}, {"trial": 0, "sample": 340, "AL1": 0.831501047227553, "AL2": 0.875515780984539}, {"trial": 0, "sample": 341, "AL1": 0.9150106302879857, "AL2": 1.0953613840330225}, {"trial": 0, "sample": 342, "AL1": 1.0134523904519395, "AL2": 1.0727139726637065}, {"trial": 0, "sample": 343, "AL1": 1.2578976600725436, "AL2": 1.218265018903092}, {"trial": 0, "sample": 344, "AL1": 0.8743619259506227, "AL2": 0.8495541142928839}, {"trial": 0, "sample": 345, "AL1": 1.1365045906568816, "AL2": 1.1483894691904457}, {"trial": 0, "sample": 346, "AL1": 1.1295915457015477, "AL2": 1.1732463841079879}, {"trial": 0, "sample": 347, "AL1": 0.8478158333221408, "AL2": 0.8503826781234686}, {"trial": 0, "sample": 348, "AL1": 0.9393445485307608, "AL2": 0.8998203200150245}, {"trial": 0, "sample": 349, "AL1": 0.9014610621755313, "AL2": 0.7476407631309612}, {"trial": 0, "sample": 350, "AL1": 1.1506072023657625, "AL2": 1.173522572051516}, {"trial": 0, "sample": 351, "AL1": 1.02257760979298, "AL2": 1.053380816616729}, {"trial": 0, "sample": 352, "AL1": 1.1027689312748525, "AL2": 1.0243810825462634}, {"trial": 0, "sample": 353, "AL1": 1.1774298167924577, "AL2": 1.0782377315342713}, {"trial": 0, "sample": 354, "AL1": 1.096132408117732, "AL2": 1.0821043627436668}, {"trial": 0, "sample": 355, "AL1": 0.9819289054556171, "AL2": 0.9404199477136767}, {"trial": 0, "sample": 356, "AL1": 0.6755427530352218, "AL2": 0.7316218624063229}, {"trial": 0, "sample": 357, "AL1": 0.8074436507829913, "AL2": 0.8291162064717936}, {"trial": 0, "sample": 358, "AL1": 0.8892941030541438, "AL2": 0.9696958697276707}, {"trial": 0, "sample": 359, "AL1": 0.8829341016952367, "AL2": 0.9415246994877897}, {"trial": 0, "sample": 360, "AL1": 1.056313269175009, "AL2": 1.0829329265742516}, {"trial": 0, "sample": 361, "AL1": 0.8491984423132076, "AL2": 0.9473246463018828}, {"trial": 0, "sample": 362, "AL1": 0.809655825168698, "AL2": 1.0489618095202773}, {"trial": 0, "sample": 363, "AL1": 1.0159410866358596, "AL2": 0.9589245399300691}, {"trial": 0, "sample": 364, "AL1": 1.1107880634230396, "AL2": 1.1028184585082852}, {"trial": 0, "sample": 365, "AL1": 0.9122454123058521, "AL2": 0.852039805784638}, {"trial": 0, "sample": 366, "AL1": 0.7037479764529838, "AL2": 0.7852023234508025}, {"trial": 0, "sample": 367, "AL1": 1.0040506493126853, "AL2": 0.99814322791108}, {"trial": 0, "sample": 368, "AL1": 0.9882889068145242, "AL2": 0.9321343094078293}, {"trial": 0, "sample": 369, "AL1": 1.0361271779054344, "AL2": 0.9663816144053318}, {"trial": 0, "sample": 370, "AL1": 0.9841410798413239, "AL2": 0.8379542206646975}, {"trial": 0, "sample": 371, "AL1": 1.0095810852769525, "AL2": 1.0086383697651533}, {"trial": 0, "sample": 372, "AL1": 0.4814244506894479, "AL2": 0.5258618444777798}, {"trial": 0, "sample": 373, "AL1": 0.7341653742564527, "AL2": 0.7962498411919324}, {"trial": 0, "sample": 374, "AL1": 0.8281827856489927, "AL2": 0.7824404440155202}, {"trial": 0, "sample": 375, "AL1": 1.1002802350909322, "AL2": 1.091218564880099}, {"trial": 0, "sample": 376, "AL1": 0.7640297284634948, "AL2": 0.6600891850325072}, {"trial": 0, "sample": 377, "AL1": 1.106363714651626, "AL2": 1.0467523059720514}, {"trial": 0, "sample": 378, "AL1": 0.6064123034818835, "AL2": 0.5625948409670365}, {"trial": 0, "sample": 379, "AL1": 1.073457620664237, "AL2": 1.0470284939155796}, {"trial": 0, "sample": 380, "AL1": 0.9581480308092687, "AL2": 1.0415047350450146}, {"trial": 0, "sample": 381, "AL1": 0.8436680063489406, "AL2": 0.9014774476761941}, {"trial": 0, "sample": 382, "AL1": 0.9465341152843079, "AL2": 0.8838014192903864}, {"trial": 0, "sample": 383, "AL1": 0.8862523632737969, "AL2": 0.8829728554598015}, {"trial": 0, "sample": 384, "AL1": 0.9974141261555649, "AL2": 0.9614102314218234}, {"trial": 0, "sample": 385, "AL1": 1.1417585048229353, "AL2": 1.0746472882684042}, {"trial": 0, "sample": 386, "AL1": 0.6520384001870868, "AL2": 0.7937641497001782}, {"trial": 0, "sample": 387, "AL1": 1.0753932732517304, "AL2": 1.0061526782733992}, {"trial": 0, "sample": 388, "AL1": 1.0427637010625548, "AL2": 1.0218953910545092}, {"trial": 0, "sample": 389, "AL1": 0.5195844588428906, "AL2": 0.5465759402423983}, {"trial": 0, "sample": 390, "AL1": 1.0388923958875678, "AL2": 1.0439904265367688}, {"trial": 0, "sample": 391, "AL1": 0.8444975717435805, "AL2": 1.008362181821625}, {"trial": 0, "sample": 392, "AL1": 1.033638481721514, "AL2": 0.9771529442029334}, {"trial": 0, "sample": 393, "AL1": 0.9401741139254007, "AL2": 1.0403999832709017}, {"trial": 0, "sample": 394, "AL1": 0.995201951769858, "AL2": 0.9837814548476113}, {"trial": 0, "sample": 395, "AL1": 1.025619349573327, "AL2": 1.1077898414917935}, {"trial": 0, "sample": 396, "AL1": 0.9650610757646025, "AL2": 0.967762554122973}, {"trial": 0, "sample": 397, "AL1": 1.1287619803069076, "AL2": 1.1359610117316747}, {"trial": 0, "sample": 398, "AL1": 0.8077201725812047, "AL2": 0.8876680504997817}, {"trial": 0, "sample": 399, "AL1": 1.0626732705339161, "AL2": 1.1152469159670562}, {"trial": 1, "sample": 50, "AL1": 1.1566906819264564, "AL2": 1.1749035117691573}, {"trial": 1, "sample": 51, "AL1": 1.1929150374924056, "AL2": 1.1983794869690583}, {"trial": 1, "sample": 52, "AL1": 1.0596315307535693, "AL2": 1.0638759584708026}, {"trial": 1, "sample": 53, "AL1": 0.9451515062932412, "AL2": 1.0376381038356193}, {"trial": 1, "sample": 54, "AL1": 0.9611897705896156, "AL2": 1.057523635769653}, {"trial": 1, "sample": 55, "AL1": 0.8527932256899812, "AL2": 0.907001206546759}, {"trial": 1, "sample": 56, "AL1": 1.049953267816102, "AL2": 1.101437518790644}, {"trial": 1, "sample": 57, "AL1": 1.1030454530730658, "AL2": 1.0536570045602573}, {"trial": 1, "sample": 58, "AL1": 0.952894116643215, "AL2": 1.0241048946027351}, {"trial": 1, "sample": 59, "AL1": 1.098621104301652, "AL2": 1.072437784720178}, {"trial": 1, "sample": 60, "AL1": 0.8417323537614471, "AL2": 0.963343547026521}, {"trial": 1, "sample": 61, "AL1": 0.7090018906190375, "AL2": 0.90368695122442}, {"trial": 1, "sample": 62, "AL1": 1.0737341424624505, "AL2": 1.13513244790109}, {"trial": 1, "sample": 63, "AL1": 0.9730802079127898, "AL2": 1.0279715258121305}, {"trial": 1, "sample": 64, "AL1": 1.0729045770678103, "AL2": 1.1166278556846974}, {"trial": 1, "sample": 65, "AL1": 1.0720750116731703, "AL2": 1.131818192578751}, {"trial": 1, "sample": 66, "AL1": 0.9263480240147332, "AL2": 0.9152868448526064}, {"trial": 1, "sample": 67, "AL1": 0.9642315103699625, "AL2": 0.9313057455772445}, {"trial": 1, "sample": 68, "AL1": 1.1030454530730658, "AL2": 1.1845700897926459}, {"trial": 1, "sample": 69, "AL1": 1.0386158740893545, "AL2": 1.1412085826587113}, {"trial": 1, "sample": 70, "AL1": 0.956765421818202, "AL2": 0.7843737596202178}, {"trial": 1, "sample": 71, "AL1": 1.0477410934303952, "AL2": 1.0061526782733992}, {"trial": 1, "sample": 72, "AL1": 1.1188071955712269, "AL2": 1.1166278556846974}, {"trial": 1, "sample": 73, "AL1": 0.8937184518255574, "AL2": 0.7965260291354607}, {"trial": 1, "sample": 74, "AL1": 1.1691341628460572, "AL2": 1.1754558876562138}, {"trial": 1, "sample": 75, "AL1": 0.7396958102207197, "AL2": 0.6327465786232109}, {"trial": 1, "sample": 76, "AL1": 1.181577643765658, "AL2": 1.164408369915084}, {"trial": 1, "sample": 77, "AL1": 1.1182541519748002, "AL2": 1.102542270564757}, {"trial": 1, "sample": 78, "AL1": 0.9681028155449495, "AL2": 0.900372695902081}, {"trial": 1, "sample": 79, "AL1": 0.8975897570005444, "AL2": 0.8992679441279681}, {"trial": 1, "sample": 80, "AL1": 0.8873584504666503, "AL2": 0.9376580682783943}, {"trial": 1, "sample": 81, "AL1": 0.9974141261555649, "AL2": 1.0616664549225765}, {"trial": 1, "sample": 82, "AL1": 1.154201985742536, "AL2": 1.1273991854822991}, {"trial": 1, "sample": 83, "AL1": 1.1727289462228307, "AL2": 1.0061526782733992}, {"trial": 1, "sample": 84, "AL1": 0.8710436643720625, "AL2": 0.7269266673663427}, {"trial": 1, "sample": 85, "AL1": 1.1400993740336551, "AL2": 1.0942566322589096}, {"trial": 1, "sample": 86, "AL1": 1.1326332854818946, "AL2": 1.188989096889098}, {"trial": 1, "sample": 87, "AL1": 0.9343671561629203, "AL2": 0.9917909052099304}, {"trial": 1, "sample": 88, "AL1": 0.9534471602396417, "AL2": 0.9760481924288203}, {"trial": 1, "sample": 89, "AL1": 1.0599080525517828, "AL2": 1.062218830809633}, {"trial": 1, "sample": 90, "AL1": 0.9288367201986533, "AL2": 1.035152412343865}, {"trial": 1, "sample": 91, "AL1": 0.7883636467062699, "AL2": 0.7666977312344101}, {"trial": 1, "sample": 92, "AL1": 1.0148349994430061, "AL2": 0.931858121464301}, {"trial": 1, "sample": 93, "AL1": 1.1497776369711226, "AL2": 1.1575036713268778}, {"trial": 1, "sample": 94, "AL1": 0.88238105809881, "AL2": 0.9194296640055301}, {"trial": 1, "sample": 95, "AL1": 1.0701393590856767, "AL2": 1.1795987068091376}, {"trial": 1, "sample": 96, "AL1": 1.0101341288733792, "AL2": 1.0536570045602573}, {"trial": 1, "sample": 97, "AL1": 1.1685811192496305, "AL2": 1.1862272174538153}, {"trial": 1, "sample": 98, "AL1": 0.9050558455523049, "AL2": 0.7758119333708422}, {"trial": 1, "sample": 99, "AL1": 0.720339284345785, "AL2": 0.7266504794228145}, {"trial": 1, "sample": 100, "AL1": 1.046081962641115, "AL2": 1.017200196014529}, {"trial": 1, "sample": 101, "AL1": 1.0560367473767958, "AL2": 1.0473046818591079}, {"trial": 1, "sample": 102, "AL1": 0.9064384545433717, "AL2": 0.8031545397801385}, {"trial": 1, "sample": 103, "AL1": 1.0568663127714357, "AL2": 1.06111407903552}, {"trial": 1, "sample": 104, "AL1": 1.0261723931697537, "AL2": 0.9083821462644002}, {"trial": 1, "sample": 105, "AL1": 0.7206158061439983, "AL2": 0.8191734405047768}, {"trial": 1, "sample": 106, "AL1": 0.9050558455523049, "AL2": 0.8835252313468581}, {"trial": 1, "sample": 107, "AL1": 0.8715967079684892, "AL2": 0.9412485115442614}, {"trial": 1, "sample": 108, "AL1": 1.1586263345139498, "AL2": 1.1536370401174825}, {"trial": 1, "sample": 109, "AL1": 1.0712454462785301, "AL2": 1.0304572173038848}, {"trial": 1, "sample": 110, "AL1": 0.6387653538728458, "AL2": 0.6175562417291575}, {"trial": 1, "sample": 111, "AL1": 0.9302193291897201, "AL2": 0.9114202136432109}, {"trial": 1, "sample": 112, "AL1": 1.1041515402659192, "AL2": 1.0511713130685032}, {"trial": 1, "sample": 113, "AL1": 1.0281080457572471, "AL2": 1.0111240612569077}, {"trial": 1, "sample": 114, "AL1": 1.1779828603888844, "AL2": 1.1133136003623585}, {"trial": 1, "sample": 115, "AL1": 1.1793654693799513, "AL2": 1.1989318628561147}, {"trial": 1, "sample": 116, "AL1": 1.211995041569127, "AL2": 1.1693797528985923}, {"trial": 1, "sample": 117, "AL1": 0.6288105691371652, "AL2": 0.48332890117443}, {"trial": 1, "sample": 118, "AL1": 0.8953775826148376, "AL2": 0.8506588660669968}, {"trial": 1, "sample": 119, "AL1": 0.9116923687094254, "AL2": 0.9451151427536568}, {"trial": 1, "sample": 120, "AL1": 0.9094801943237186, "AL2": 0.9608578555347669}, {"trial": 1, "sample": 121, "AL1": 1.0588019653589293, "AL2": 1.0456475541979382}, {"trial": 1, "sample": 122, "AL1": 1.0532715293946622, "AL2": 1.0514475010120314}, {"trial": 1, "sample": 123, "AL1": 1.0856245797856245, "AL2": 1.0983994514118331}, {"trial": 1, "sample": 124, "AL1": 1.0192593482144199, "AL2": 1.0044955506122297}, {"trial": 1, "sample": 125, "AL1": 1.0972384953105854, "AL2": 1.1494942209645587}, {"trial": 1, "sample": 126, "AL1": 0.7742610349973889, "AL2": 0.8528683696152228}, {"trial": 1, "sample": 127, "AL1": 0.8378610485864602, "AL2": 0.9832290789605548}, {"trial": 1, "sample": 128, "AL1": 1.0494002242196754, "AL2": 1.081275798913082}, {"trial": 1, "sample": 129, "AL1": 0.9891184722091643, "AL2": 0.9650006746876906}, {"trial": 1, "sample": 130, "AL1": 1.0300436983447405, "AL2": 0.9859909583958373}, {"trial": 1, "sample": 131, "AL1": 0.770389729822402, "AL2": 0.6957174297476509}, {"trial": 1, "sample": 132, "AL1": 1.0319793509322341, "AL2": 1.0671902137931415}, {"trial": 1, "sample": 133, "AL1": 0.8660662720042221, "AL2": 0.8042592915542516}, {"trial": 1, "sample": 134, "AL1": 1.0574193563678624, "AL2": 1.0456475541979382}, {"trial": 1, "sample": 135, "AL1": 1.1442472010068554, "AL2": 1.143970462093994}, {"trial": 1, "sample": 136, "AL1": 0.7170210227672248, "AL2": 0.8304971461894349}, {"trial": 1, "sample": 137, "AL1": 0.7582227707010144, "AL2": 0.7948689014742912}, {"trial": 1, "sample": 138, "AL1": 0.9965845607609248, "AL2": 1.0271429619815458}, {"trial": 1, "sample": 139, "AL1": 0.9304958509879334, "AL2": 0.9724577491629531}, {"trial": 1, "sample": 140, "AL1": 0.7811740799527227, "AL2": 0.838506596551754}, {"trial": 1, "sample": 141, "AL1": 1.0560367473767958, "AL2": 1.0426094868191276}, {"trial": 1, "sample": 142, "AL1": 1.0535480511928756, "AL2": 0.9597531037606539}, {"trial": 1, "sample": 143, "AL1": 0.9150106302879857, "AL2": 0.8705443980010306}, {"trial": 1, "sample": 144, "AL1": 0.7537984219296008, "AL2": 0.8650206391304656}, {"trial": 1, "sample": 145, "AL1": 0.8077201725812047, "AL2": 0.7849261355072743}, {"trial": 1, "sample": 146, "AL1": 1.0314263073358074, "AL2": 1.0044955506122297}, {"trial": 1, "sample": 147, "AL1": 0.971697598921723, "AL2": 1.0158192562968877}, {"trial": 1, "sample": 148, "AL1": 1.0720750116731703, "AL2": 1.091218564880099}, {"trial": 1, "sample": 149, "AL1": 1.0723515334713836, "AL2": 1.0456475541979382}, {"trial": 1, "sample": 150, "AL1": 1.095302842723092, "AL2": 1.1215992386682059}, {"trial": 1, "sample": 151, "AL1": 1.0521654422018087, "AL2": 1.1133136003623585}, {"trial": 1, "sample": 152, "AL1": 0.8732558387577694, "AL2": 0.8277352667541524}, {"trial": 1, "sample": 153, "AL1": 1.0712454462785301, "AL2": 1.0796186712519125}, {"trial": 1, "sample": 154, "AL1": 0.9733567297110032, "AL2": 1.0075336179910404}, {"trial": 1, "sample": 155, "AL1": 1.111064585221253, "AL2": 1.1459037776986916}, {"trial": 1, "sample": 156, "AL1": 1.1082993672391195, "AL2": 1.1575036713268778}, {"trial": 1, "sample": 157, "AL1": 1.055483703780369, "AL2": 1.0536570045602573}, {"trial": 1, "sample": 158, "AL1": 1.16277416148715, "AL2": 1.1075136535482653}, {"trial": 1, "sample": 159, "AL1": 1.1680280756532038, "AL2": 1.0304572173038848}, {"trial": 1, "sample": 160, "AL1": 0.7911288646884034, "AL2": 0.6581558694278096}, {"trial": 1, "sample": 161, "AL1": 1.0690332718928233, "AL2": 1.0627712066966895}, {"trial": 1, "sample": 162, "AL1": 1.1871080797299252, "AL2": 1.1279515613693556}, {"trial": 1, "sample": 163, "AL1": 1.101662844081999, "AL2": 1.1472847174163328}, {"trial": 1, "sample": 164, "AL1": 0.942662810109321, "AL2": 0.965553050574747}, {"trial": 1, "sample": 165, "AL1": 1.0629497923321296, "AL2": 1.095913759920079}, {"trial": 1, "sample": 166, "AL1": 1.1544785075407495, "AL2": 1.1334753202399204}, {"trial": 1, "sample": 167, "AL1": 1.0189828264162064, "AL2": 1.0619426428661047}, {"trial": 1, "sample": 168, "AL1": 1.0034976057162586, "AL2": 0.9859909583958373}, {"trial": 1, "sample": 169, "AL1": 1.1569672037246697, "AL2": 1.1508751606821999}, {"trial": 1, "sample": 170, "AL1": 1.1091289326337597, "AL2": 1.1376181393928442}, {"trial": 1, "sample": 171, "AL1": 0.901184540377318, "AL2": 0.9788100718641028}, {"trial": 1, "sample": 172, "AL1": 1.1624976396889368, "AL2": 1.2193697706772049}, {"trial": 1, "sample": 173, "AL1": 0.9858002106306041, "AL2": 1.0884566854448163}, {"trial": 1, "sample": 174, "AL1": 0.966996728352096, "AL2": 0.9768767562594051}, {"trial": 1, "sample": 175, "AL1": 1.0115167378644458, "AL2": 0.9600292917041822}, {"trial": 1, "sample": 176, "AL1": 0.9600836833967622, "AL2": 0.907001206546759}, {"trial": 1, "sample": 177, "AL1": 0.984970645235964, "AL2": 0.9539531569465607}, {"trial": 1, "sample": 178, "AL1": 1.0762228386463706, "AL2": 1.1257420578211295}, {"trial": 1, "sample": 179, "AL1": 0.9197115008576127, "AL2": 0.8923632455397619}, {"trial": 1, "sample": 180, "AL1": 1.151713289558616, "AL2": 1.1304372528611097}, {"trial": 1, "sample": 181, "AL1": 1.1818541655638715, "AL2": 1.1876081571714565}, {"trial": 1, "sample": 182, "AL1": 0.9492993332664414, "AL2": 0.9630673590829928}, {"trial": 1, "sample": 183, "AL1": 1.0142819558465794, "AL2": 0.9304771817466598}, {"trial": 1, "sample": 184, "AL1": 1.049123702421462, "AL2": 0.9829528910170265}, {"trial": 1, "sample": 185, "AL1": 0.5552557708124132, "AL2": 0.5068048763743309}, {"trial": 1, "sample": 186, "AL1": 1.0836889271981311, "AL2": 1.173522572051516}, {"trial": 1, "sample": 187, "AL1": 1.1558611165318162, "AL2": 1.030733405247413}, {"trial": 1, "sample": 188, "AL1": 1.0115167378644458, "AL2": 0.8882204263868383}, {"trial": 1, "sample": 189, "AL1": 1.1027689312748525, "AL2": 1.107237465604737}, {"trial": 1, "sample": 190, "AL1": 1.0137289122501527, "AL2": 1.0177525719015854}, {"trial": 1, "sample": 191, "AL1": 1.0878367541713314, "AL2": 1.185951029510287}, {"trial": 1, "sample": 192, "AL1": 0.6871566685601826, "AL2": 0.8139258695777402}, {"trial": 1, "sample": 193, "AL1": 1.033638481721514, "AL2": 1.0942566322589096}, {"trial": 1, "sample": 194, "AL1": 1.1586263345139498, "AL2": 1.0972946996377202}, {"trial": 1, "sample": 195, "AL1": 1.0480176152286085, "AL2": 1.1315420046352227}, {"trial": 1, "sample": 196, "AL1": 1.0740106642606637, "AL2": 1.072437784720178}, {"trial": 1, "sample": 197, "AL1": 0.9479167242753747, "AL2": 1.0934280684283249}, {"trial": 1, "sample": 198, "AL1": 1.0994506696962922, "AL2": 1.0992280152424179}, {"trial": 1, "sample": 199, "AL1": 1.0762228386463706, "AL2": 1.1144183521364714}, {"trial": 1, "sample": 200, "AL1": 1.0029445621198319, "AL2": 1.0191335116192266}, {"trial": 1, "sample": 201, "AL1": 1.1121706724141065, "AL2": 1.142037146489296}, {"trial": 1, "sample": 202, "AL1": 1.1710698154335506, "AL2": 1.153084664230426}, {"trial": 1, "sample": 203, "AL1": 1.0748402296553037, "AL2": 1.0928756925412684}, {"trial": 1, "sample": 204, "AL1": 1.0267254367661802, "AL2": 1.054485568390842}, {"trial": 1, "sample": 205, "AL1": 0.6603340541334873, "AL2": 0.6647843800724874}, {"trial": 1, "sample": 206, "AL1": 0.9905010812002311, "AL2": 0.9500865257371652}, {"trial": 1, "sample": 207, "AL1": 0.827629742052566, "AL2": 0.8219353199400593}, {"trial": 1, "sample": 208, "AL1": 0.9813758618591905, "AL2": 0.9735625009370662}, {"trial": 1, "sample": 209, "AL1": 1.1550315511371763, "AL2": 1.1227039904423188}, {"trial": 1, "sample": 210, "AL1": 0.8956541044130509, "AL2": 0.937381880334866}, {"trial": 1, "sample": 211, "AL1": 0.9465341152843079, "AL2": 1.0265905860944893}, {"trial": 1, "sample": 212, "AL1": 0.8480923551203542, "AL2": 0.8915346817091772}, {"trial": 1, "sample": 213, "AL1": 1.1392698086390152, "AL2": 1.0978470755247767}, {"trial": 1, "sample": 214, "AL1": 0.8251410458686459, "AL2": 0.8346399653423586}, {"trial": 1, "sample": 215, "AL1": 0.9587010744056954, "AL2": 1.0191335116192266}, {"trial": 1, "sample": 216, "AL1": 0.8038488674062176, "AL2": 0.8945727490879879}, {"trial": 1, "sample": 217, "AL1": 1.2086767799905667, "AL2": 1.210531756484301}, {"trial": 1, "sample": 218, "AL1": 0.7985949532401639, "AL2": 0.7426693801474528}, {"trial": 1, "sample": 219, "AL1": 0.7643062502617082, "AL2": 0.773326241879088}, {"trial": 1, "sample": 220, "AL1": 1.0292141329501006, "AL2": 0.9859909583958373}, {"trial": 1, "sample": 221, "AL1": 1.1832367745549381, "AL2": 1.1641321819715558}, {"trial": 1, "sample": 222, "AL1": 0.9675497719485228, "AL2": 0.8343637773988303}, {"trial": 1, "sample": 223, "AL1": 0.8522401820935545, "AL2": 0.8412684759870365}, {"trial": 1, "sample": 224, "AL1": 0.9929897773841513, "AL2": 0.9837814548476113}, {"trial": 1, "sample": 225, "AL1": 0.8301184382364862, "AL2": 0.855354061106977}, {"trial": 1, "sample": 226, "AL1": 1.0911550157498917, "AL2": 1.0986756393553614}, {"trial": 1, "sample": 227, "AL1": 0.7969358224508838, "AL2": 0.7926593979260652}, {"trial": 1, "sample": 228, "AL1": 0.9714210771235097, "AL2": 0.8459636710270166}, {"trial": 1, "sample": 229, "AL1": 1.1146593685980266, "AL2": 1.0343238485132802}, {"trial": 1, "sample": 230, "AL1": 1.1622211178907234, "AL2": 1.1080660294353217}, {"trial": 1, "sample": 231, "AL1": 1.0723515334713836, "AL2": 0.969972057671199}, {"trial": 1, "sample": 232, "AL1": 0.9910541247966578, "AL2": 1.0660854620190285}, {"trial": 1, "sample": 233, "AL1": 0.8480923551203542, "AL2": 0.9133535292479086}, {"trial": 1, "sample": 234, "AL1": 1.1127237160105332, "AL2": 1.1249134939905447}, {"trial": 1, "sample": 235, "AL1": 1.098621104301652, "AL2": 1.105027962056511}, {"trial": 1, "sample": 236, "AL1": 0.9504054204592949, "AL2": 0.9371056923913378}, {"trial": 1, "sample": 237, "AL1": 0.8196106099043788, "AL2": 0.7940403376437064}, {"trial": 1, "sample": 238, "AL1": 1.1138298032033866, "AL2": 1.0597331393178788}, {"trial": 1, "sample": 239, "AL1": 1.084518492592771, "AL2": 1.1017137067341722}, {"trial": 1, "sample": 240, "AL1": 1.055483703780369, "AL2": 0.9843338307346677}, {"trial": 1, "sample": 241, "AL1": 1.1105115416248263, "AL2": 1.1489418450775022}, {"trial": 1, "sample": 242, "AL1": 1.0223010879947667, "AL2": 0.9337914370689988}, {"trial": 1, "sample": 243, "AL1": 1.0278315239590337, "AL2": 0.9995241676287213}, {"trial": 1, "sample": 244, "AL1": 0.9617428141860423, "AL2": 1.0111240612569077}, {"trial": 1, "sample": 245, "AL1": 0.761817554077788, "AL2": 0.646279787856095}, {"trial": 1, "sample": 246, "AL1": 1.045252397246475, "AL2": 1.1199421110070364}, {"trial": 1, "sample": 247, "AL1": 0.817398435518672, "AL2": 0.9111440256996827}, {"trial": 1, "sample": 248, "AL1": 1.06792718469997, "AL2": 1.11938973511998}, {"trial": 1, "sample": 249, "AL1": 0.9327080253736403, "AL2": 0.9503627136806936}, {"trial": 1, "sample": 250, "AL1": 1.0643324013231963, "AL2": 1.0848662421789492}, {"trial": 1, "sample": 251, "AL1": 1.1229550225444271, "AL2": 1.0738187244378194}, {"trial": 1, "sample": 252, "AL1": 1.086730666978478, "AL2": 1.0693997173413674}, {"trial": 1, "sample": 253, "AL1": 0.6473375296174598, "AL2": 0.600156401286878}, {"trial": 1, "sample": 254, "AL1": 1.0792645784267174, "AL2": 1.0009051073463624}, {"trial": 1, "sample": 255, "AL1": 0.8032958238097909, "AL2": 0.7321742382933794}, {"trial": 1, "sample": 256, "AL1": 1.173558511617471, "AL2": 1.136237199675203}, {"trial": 1, "sample": 257, "AL1": 0.8243114804740058, "AL2": 0.7415646283733398}, {"trial": 1, "sample": 258, "AL1": 1.1647098140746435, "AL2": 1.0716092208895933}, {"trial": 1, "sample": 259, "AL1": 1.0610141397446362, "AL2": 0.9652768626312188}, {"trial": 1, "sample": 260, "AL1": 0.9938193427787912, "AL2": 0.9578197881559561}, {"trial": 1, "sample": 261, "AL1": 1.166645466662137, "AL2": 1.13982764294107}, {"trial": 1, "sample": 262, "AL1": 0.8807219273095298, "AL2": 0.871096773888087}, {"trial": 1, "sample": 263, "AL1": 1.1801950347745913, "AL2": 1.146456153585748}, {"trial": 1, "sample": 264, "AL1": 1.0800941438213574, "AL2": 1.0848662421789492}, {"trial": 1, "sample": 265, "AL1": 0.9390680267325474, "AL2": 0.9906861534358175}, {"trial": 1, "sample": 266, "AL1": 1.0521654422018087, "AL2": 1.0268667740380175}, {"trial": 1, "sample": 267, "AL1": 1.0021149967251919, "AL2": 1.0392952314967887}, {"trial": 1, "sample": 268, "AL1": 0.8762975785381162, "AL2": 0.9484293980759958}, {"trial": 1, "sample": 269, "AL1": 1.132909807280108, "AL2": 1.19810329902553}, {"trial": 1, "sample": 270, "AL1": 1.2767011423510517, "AL2": 1.1878843451149848}, {"trial": 1, "sample": 271, "AL1": 1.0463584844393283, "AL2": 1.0917709407671554}, {"trial": 1, "sample": 272, "AL1": 0.9421097665128942, "AL2": 0.6929555503123686}, {"trial": 1, "sample": 273, "AL1": 0.9816523836574037, "AL2": 1.0334952846826955}, {"trial": 1, "sample": 274, "AL1": 1.174388077012111, "AL2": 1.0972946996377202}, {"trial": 1, "sample": 275, "AL1": 1.0527184857982355, "AL2": 1.143141898263409}, {"trial": 1, "sample": 276, "AL1": 0.8975897570005444, "AL2": 1.0597331393178788}, {"trial": 1, "sample": 277, "AL1": 1.2471133099422227, "AL2": 1.173522572051516}, {"trial": 1, "sample": 278, "AL1": 1.1981689516584593, "AL2": 1.1414847706022395}, {"trial": 1, "sample": 279, "AL1": 1.152542854953256, "AL2": 1.1320943805222792}, {"trial": 1, "sample": 280, "AL1": 1.1860019925370717, "AL2": 1.217160267128979}, {"trial": 1, "sample": 281, "AL1": 1.2352228726190486, "AL2": 1.1500465968516151}, {"trial": 1, "sample": 282, "AL1": 0.8514106166989144, "AL2": 0.9147344689655499}, {"trial": 1, "sample": 283, "AL1": 1.0364036997036477, "AL2": 1.0020098591204756}, {"trial": 1, "sample": 284, "AL1": 0.8840401888880901, "AL2": 0.9166677845702476}, {"trial": 1, "sample": 285, "AL1": 0.8270766984561393, "AL2": 0.9274391143678491}, {"trial": 1, "sample": 286, "AL1": 1.0145584776447927, "AL2": 1.0009051073463624}, {"trial": 1, "sample": 287, "AL1": 0.9069914981397984, "AL2": 1.0624950187531612}, {"trial": 1, "sample": 288, "AL1": 0.8268001766579259, "AL2": 0.8153068092953814}, {"trial": 1, "sample": 289, "AL1": 1.1923619938959789, "AL2": 1.1939604798726062}, {"trial": 1, "sample": 290, "AL1": 1.182960252756725, "AL2": 1.1536370401174825}, {"trial": 1, "sample": 291, "AL1": 1.1597324217068032, "AL2": 1.1514275365692563}, {"trial": 1, "sample": 292, "AL1": 1.122678500746214, "AL2": 1.1856748415667588}, {"trial": 1, "sample": 293, "AL1": 1.0065393454966056, "AL2": 0.8744110292104259}, {"trial": 1, "sample": 294, "AL1": 1.1434176356122154, "AL2": 1.1699321287856488}, {"trial": 1, "sample": 295, "AL1": 0.9647845539663892, "AL2": 0.9464960824712981}, {"trial": 1, "sample": 296, "AL1": 1.0776054476374373, "AL2": 1.1102755329835479}, {"trial": 1, "sample": 297, "AL1": 1.0034976057162586, "AL2": 0.9288200540854904}, {"trial": 1, "sample": 298, "AL1": 0.8688314899863556, "AL2": 0.987924274000535}, {"trial": 1, "sample": 299, "AL1": 1.1143828467998134, "AL2": 1.114970728023528}, {"trial": 1, "sample": 300, "AL1": 0.8945480172201975, "AL2": 0.8661253909045786}, {"trial": 1, "sample": 301, "AL1": 0.8704906207756358, "AL2": 0.7959736532484042}, {"trial": 1, "sample": 302, "AL1": 0.7455027679832001, "AL2": 0.8592206923163724}, {"trial": 1, "sample": 303, "AL1": 1.0198123918108466, "AL2": 1.0017336711769473}, {"trial": 1, "sample": 304, "AL1": 0.9910541247966578, "AL2": 0.9056202668291177}, {"trial": 1, "sample": 305, "AL1": 0.9863532542270308, "AL2": 0.9956575364193259}, {"trial": 1, "sample": 306, "AL1": 1.1442472010068554, "AL2": 1.183465338018533}, {"trial": 1, "sample": 307, "AL1": 1.1934680810888323, "AL2": 1.1547417918915954}, {"trial": 1, "sample": 308, "AL1": 0.7648592938581349, "AL2": 0.8401637242129235}, {"trial": 1, "sample": 309, "AL1": 1.0809237092159976, "AL2": 1.1185611712893953}, {"trial": 1, "sample": 310, "AL1": 1.1237845879390673, "AL2": 1.1276753734258274}, {"trial": 1, "sample": 311, "AL1": 1.0524419640000222, "AL2": 1.1022660826212287}, {"trial": 1, "sample": 312, "AL1": 1.096132408117732, "AL2": 1.0370857279485628}, {"trial": 1, "sample": 313, "AL1": 1.0220245661965532, "AL2": 0.8959536888056291}, {"trial": 1, "sample": 314, "AL1": 1.232457654636915, "AL2": 1.2132936359195834}, {"trial": 1, "sample": 315, "AL1": 1.1235080661408539, "AL2": 1.0641521464143309}, {"trial": 1, "sample": 316, "AL1": 0.9694854245360163, "AL2": 0.953124593115976}, {"trial": 1, "sample": 317, "AL1": 0.6785844928155687, "AL2": 0.676660461644202}, {"trial": 1, "sample": 318, "AL1": 1.084518492592771, "AL2": 1.0437142385932405}, {"trial": 1, "sample": 319, "AL1": 0.934920199759347, "AL2": 0.8244210114318135}, {"trial": 1, "sample": 320, "AL1": 0.9667202065538827, "AL2": 1.0315619690779978}, {"trial": 1, "sample": 321, "AL1": 0.6260453511550316, "AL2": 0.6321942027361545}, {"trial": 1, "sample": 322, "AL1": 0.7950001698633904, "AL2": 0.987924274000535}, {"trial": 1, "sample": 323, "AL1": 1.093090668337385, "AL2": 1.0760282279860454}, {"trial": 1, "sample": 324, "AL1": 1.120466326360507, "AL2": 1.1171802315717538}, {"trial": 1, "sample": 325, "AL1": 0.6401479628639126, "AL2": 0.7111839545852328}, {"trial": 1, "sample": 326, "AL1": 1.2498785279243563, "AL2": 1.1652369337456687}, {"trial": 1, "sample": 327, "AL1": 0.9545532474324951, "AL2": 0.9771529442029334}, {"trial": 1, "sample": 328, "AL1": 0.9490228114682281, "AL2": 0.96665780234886}, {"trial": 1, "sample": 329, "AL1": 1.02257760979298, "AL2": 0.9638959229135776}, {"trial": 1, "sample": 330, "AL1": 0.7985949532401639, "AL2": 0.7962498411919324}, {"trial": 1, "sample": 331, "AL1": 1.0001793441376985, "AL2": 1.0901138131059858}, {"trial": 1, "sample": 332, "AL1": 1.0709689244803169, "AL2": 1.0456475541979382}, {"trial": 1, "sample": 333, "AL1": 1.0267254367661802, "AL2": 1.0840376783483645}, {"trial": 1, "sample": 334, "AL1": 1.0737341424624505, "AL2": 1.1055803379435676}, {"trial": 1, "sample": 335, "AL1": 1.1572437255228831, "AL2": 1.1334753202399204}, {"trial": 1, "sample": 336, "AL1": 0.8032958238097909, "AL2": 0.7697357986132208}, {"trial": 1, "sample": 337, "AL1": 1.0253428277751135, "AL2": 1.071333032946065}, {"trial": 1, "sample": 338, "AL1": 1.1489480715764824, "AL2": 1.13982764294107}, {"trial": 1, "sample": 339, "AL1": 0.869937577179209, "AL2": 0.9683149300100296}, {"trial": 1, "sample": 340, "AL1": 0.8381375703846735, "AL2": 0.8666777667916351}, {"trial": 1, "sample": 341, "AL1": 1.1215724135533605, "AL2": 1.1354086358446183}, {"trial": 1, "sample": 342, "AL1": 0.7858749505223497, "AL2": 0.6987554971264617}, {"trial": 1, "sample": 343, "AL1": 1.095302842723092, "AL2": 1.1141421641929432}, {"trial": 1, "sample": 344, "AL1": 1.1348454598676014, "AL2": 1.12408493015996}, {"trial": 1, "sample": 345, "AL1": 1.0668210975071166, "AL2": 1.0848662421789492}, {"trial": 1, "sample": 346, "AL1": 0.8710436643720625, "AL2": 0.9221915434408124}, {"trial": 1, "sample": 347, "AL1": 1.104704583862346, "AL2": 1.0696759052848956}, {"trial": 1, "sample": 348, "AL1": 1.1096819762301864, "AL2": 1.0658092740755003}, {"trial": 1, "sample": 349, "AL1": 0.8829341016952367, "AL2": 1.0155430683533595}, {"trial": 1, "sample": 350, "AL1": 0.9188819354629726, "AL2": 1.0710568450025368}, {"trial": 1, "sample": 351, "AL1": 0.9310488945843601, "AL2": 0.8429256036482059}, {"trial": 1, "sample": 352, "AL1": 1.1323567636836813, "AL2": 1.0503427492379185}, {"trial": 1, "sample": 353, "AL1": 1.1326332854818946, "AL2": 1.0862471818965904}, {"trial": 1, "sample": 354, "AL1": 1.125167196930134, "AL2": 1.0961899478636072}, {"trial": 1, "sample": 355, "AL1": 0.9797167310699103, "AL2": 1.0232763307721504}, {"trial": 1, "sample": 356, "AL1": 1.0825828400052777, "AL2": 1.0945328202024378}, {"trial": 1, "sample": 357, "AL1": 1.1624976396889368, "AL2": 1.1989318628561147}, {"trial": 1, "sample": 358, "AL1": 0.6913044955333829, "AL2": 0.7465360113568482}, {"trial": 1, "sample": 359, "AL1": 1.0034976057162586, "AL2": 1.0448189903673535}, {"trial": 1, "sample": 360, "AL1": 0.6979410186905034, "AL2": 0.7479169510744894}, {"trial": 1, "sample": 361, "AL1": 1.0936437119338118, "AL2": 1.0942566322589096}, {"trial": 1, "sample": 362, "AL1": 1.1182541519748002, "AL2": 1.0798948591954407}, {"trial": 1, "sample": 363, "AL1": 1.0117932596626593, "AL2": 1.134303884070505}, {"trial": 1, "sample": 364, "AL1": 1.0181532610215664, "AL2": 1.0290762775862436}, {"trial": 1, "sample": 365, "AL1": 1.0455289190446884, "AL2": 0.9824005151299701}, {"trial": 1, "sample": 366, "AL1": 0.7112140650047444, "AL2": 0.6443464722513973}, {"trial": 1, "sample": 367, "AL1": 1.082859361803491, "AL2": 1.1080660294353217}, {"trial": 1, "sample": 368, "AL1": 0.9540002038360684, "AL2": 0.9161154086831911}, {"trial": 1, "sample": 369, "AL1": 0.8124210431508316, "AL2": 0.7647644156297124}, {"trial": 1, "sample": 370, "AL1": 0.8663427938024355, "AL2": 0.7774690610320117}, {"trial": 1, "sample": 371, "AL1": 1.0485706588250352, "AL2": 1.0417809229885429}, {"trial": 1, "sample": 372, "AL1": 1.124337631535494, "AL2": 1.1287801251999403}, {"trial": 1, "sample": 373, "AL1": 0.9202645444540394, "AL2": 0.9114202136432109}, {"trial": 1, "sample": 374, "AL1": 1.1727289462228307, "AL2": 1.0735425364942912}, {"trial": 1, "sample": 375, "AL1": 1.1741115552138977, "AL2": 1.1627512422539146}, {"trial": 1, "sample": 376, "AL1": 1.0933671901355984, "AL2": 1.1254658698776012}, {"trial": 1, "sample": 377, "AL1": 1.137610677849735, "AL2": 1.2135698238631116}, {"trial": 1, "sample": 378, "AL1": 1.1857254707388585, "AL2": 1.128503937256412}, {"trial": 1, "sample": 379, "AL1": 1.052995007596449, "AL2": 1.0693997173413674}, {"trial": 1, "sample": 380, "AL1": 1.0621202269374896, "AL2": 1.0481332456896926}, {"trial": 1, "sample": 381, "AL1": 1.017047173828713, "AL2": 0.9647244867441623}, {"trial": 1, "sample": 382, "AL1": 1.0767758822427973, "AL2": 1.0696759052848956}, {"trial": 1, "sample": 383, "AL1": 0.9006314967808913, "AL2": 0.9876480860570067}, {"trial": 1, "sample": 384, "AL1": 0.9368558523468405, "AL2": 0.9379342562219225}, {"trial": 1, "sample": 385, "AL1": 0.818228000913312, "AL2": 0.850935054010525}, {"trial": 1, "sample": 386, "AL1": 0.7775792965759492, "AL2": 0.8550778731634487}, {"trial": 1, "sample": 387, "AL1": 0.9946489081734313, "AL2": 0.8973346285232704}, {"trial": 1, "sample": 388, "AL1": 0.9968610825591382, "AL2": 0.9453913306971851}, {"trial": 1, "sample": 389, "AL1": 1.0184297828197797, "AL2": 0.834087589455302}, {"trial": 1, "sample": 390, "AL1": 1.0626732705339161, "AL2": 0.9567150363818432}, {"trial": 1, "sample": 391, "AL1": 1.1019393658802124, "AL2": 1.1558465436657084}, {"trial": 1, "sample": 392, "AL1": 1.1414819830247218, "AL2": 1.112761224475302}, {"trial": 1, "sample": 393, "AL1": 1.020365435407273, "AL2": 0.9978670399675518}, {"trial": 1, "sample": 394, "AL1": 0.6252157857603915, "AL2": 0.5076334402049156}, {"trial": 1, "sample": 395, "AL1": 0.933261068970067, "AL2": 1.0078098059345686}, {"trial": 1, "sample": 396, "AL1": 1.012346303259086, "AL2": 0.93517237678664}, {"trial": 1, "sample": 397, "AL1": 1.082859361803491, "AL2": 1.091218564880099}, {"trial": 1, "sample": 398, "AL1": 0.9407271575218275, "AL2": 1.031838157021526}, {"trial": 1, "sample": 399, "AL1": 0.9766749912895634, "AL2": 1.05641888399554}], "data-d5aaef934d070f849a985c8b038c534f": [{"AL1": 0.4814244506894479, "AL2": 0.4814244506894479}, {"AL1": 1.2767011423510517, "AL2": 1.2767011423510517}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2026, PassengerSim LLC.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.2.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.view", "content.code.copy", "content.code.annotate", "navigation.tabs", "navigation.top", "navigation.tracking", "announce.dismiss"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": null}}</script>
+    
+      
+        <script src="../_static/sphinx_immaterial_theme.32136f45f91ae6956.min.js?v=a7a9472a"></script>
+        <script type="application/vnd.jupyter.widget-state+json">{"state": {"9f314c3656d542a5bf5f3ad231527234": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "cfcbecf04c444504bc7415948ab6bf3b": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_9f314c3656d542a5bf5f3ad231527234", "msg_id": "", "outputs": [{"output_type": "display_data", "metadata": {}, "data": {"text/plain": "", "text/html": "<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\"></pre>\n"}}], "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}</script>
+        <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed.js"></script>
+    
+  </body>
+</html>

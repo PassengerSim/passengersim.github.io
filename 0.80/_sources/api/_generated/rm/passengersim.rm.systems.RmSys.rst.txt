@@ -1,0 +1,32 @@
+RmSys
+=====
+
+.. currentmodule:: passengersim.rm.systems
+
+.. autoclass:: RmSys
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~RmSys.__init__
+      ~RmSys.get_name
+      ~RmSys.run
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~RmSys.actions
+      ~RmSys.availability_control
+      ~RmSys.priority
+      ~RmSys.action_queue
+   
+   

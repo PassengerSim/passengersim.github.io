@@ -1,0 +1,31 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.connection_builder.
+
+checking
+========
+
+.. automodule:: passengersim.connection_builder.checking
+   :no-members:
+
+
+
+
+
+
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: .
+
+   check_connections
+
+
+
+
+

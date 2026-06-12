@@ -1,0 +1,54 @@
+SimTabPathClasses
+=================
+
+.. currentmodule:: passengersim.summaries.pathclasses
+
+.. autoclass:: SimTabPathClasses
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SimTabPathClasses.__init__
+      ~SimTabPathClasses.aggregate
+      ~SimTabPathClasses.extract
+      ~SimTabPathClasses.fig_leg_bid_price_detail_rake
+      ~SimTabPathClasses.fig_leg_bid_price_history
+      ~SimTabPathClasses.fig_leg_booking_detail_rake
+      ~SimTabPathClasses.fig_od_fare_class_mix
+      ~SimTabPathClasses.file_info
+      ~SimTabPathClasses.from_file
+      ~SimTabPathClasses.from_pickle
+      ~SimTabPathClasses.metadata
+      ~SimTabPathClasses.remove_data
+      ~SimTabPathClasses.run_queries
+      ~SimTabPathClasses.save
+      ~SimTabPathClasses.subclasses
+      ~SimTabPathClasses.to_file
+      ~SimTabPathClasses.to_html
+      ~SimTabPathClasses.to_pickle
+      ~SimTabPathClasses.to_xlsx
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~SimTabPathClasses.callback_data
+      ~SimTabPathClasses.config
+      ~SimTabPathClasses.leg_bid_price_detail
+      ~SimTabPathClasses.leg_booking_detail
+      ~SimTabPathClasses.market_segmentation
+      ~SimTabPathClasses.pathclasses
+      ~SimTabPathClasses.cnx
+      ~SimTabPathClasses.sim
+      ~SimTabPathClasses.n_total_samples
+      ~SimTabPathClasses.meta_summaries
+   
+   

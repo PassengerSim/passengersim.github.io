@@ -1,0 +1,39 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.summaries.
+
+legbuckets
+==========
+
+.. automodule:: passengersim.summaries.legbuckets
+   :no-members:
+
+
+
+
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: .
+   :template: autosummary/class.rst
+
+   SimTabLegBuckets
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: .
+
+   extract_legbuckets
+
+
+
+
+

@@ -1,0 +1,6 @@
+aggregate\_by\_summing\_dataframe
+=================================
+
+.. currentmodule:: passengersim.summaries.tools
+
+.. autofunction:: aggregate_by_summing_dataframe

@@ -1,0 +1,25 @@
+DynamicProgram
+==============
+
+.. currentmodule:: passengersim.core
+
+.. autoclass:: DynamicProgram
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~DynamicProgram.__init__
+      ~DynamicProgram.initialize
+      ~DynamicProgram.print_pings
+      ~DynamicProgram.solve
+      ~DynamicProgram.solve_for_leg
+   
+   
+
+   
+   
+   

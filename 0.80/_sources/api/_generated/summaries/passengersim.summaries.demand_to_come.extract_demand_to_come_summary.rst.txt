@@ -1,0 +1,6 @@
+extract\_demand\_to\_come\_summary
+==================================
+
+.. currentmodule:: passengersim.summaries.demand_to_come
+
+.. autofunction:: extract_demand_to_come_summary

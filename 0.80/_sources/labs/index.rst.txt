@@ -1,0 +1,11 @@
+Labs
+====
+
+.. toctree::
+   :hidden:
+
+   Lab 1: Understanding RM Impacts <./lab-1.ipynb>
+   Lab 2: Maximizing Revenue <./lab-2.ipynb>
+   ./lab-3.ipynb
+   ./lab-4.ipynb
+   ./lab-5.ipynb

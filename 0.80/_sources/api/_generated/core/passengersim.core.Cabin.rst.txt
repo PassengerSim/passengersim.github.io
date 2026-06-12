@@ -1,0 +1,36 @@
+Cabin
+=====
+
+.. currentmodule:: passengersim.core
+
+.. autoclass:: Cabin
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Cabin.__init__
+      ~Cabin.add_bucket
+      ~Cabin.capture_cabin_history
+      ~Cabin.get_cabin_data
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Cabin.bp_index
+      ~Cabin.buckets
+      ~Cabin.capacity
+      ~Cabin.name
+      ~Cabin.pathclass_identifiers
+      ~Cabin.revenue
+      ~Cabin.sold
+   
+   

@@ -1,0 +1,21 @@
+SimulationTableItem
+===================
+
+.. currentmodule:: passengersim.summaries.generic
+
+.. autoclass:: SimulationTableItem
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SimulationTableItem.__init__
+   
+   
+
+   
+   
+   

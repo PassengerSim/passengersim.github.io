@@ -1,0 +1,2418 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="PE.html">
+      
+      
+        <link rel="next" href="QC.html">
+      
+      
+      <link rel="icon" href="../_static/favicon.png">
+    
+    
+      
+        <title>Unrestricted Networks - PassengerSim</title>
+      
+    
+    
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.50640b526df5ff663.min.css?v=cff97996" />
+        <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+        <link rel="stylesheet" type="text/css" href="../_static/css/extra.css?v=663c5cee" />
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+<p>
+    <span style="vertical-align: middle; color: #ffd334; font-size: 1.2em;">&#9888;</span>
+    We recently updated our website for PassengerSim v0.80.  More or less all the same content is here (and more)
+    but any pre-existing links and bookmarks may be broken.
+</p>
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="PassengerSim" class="md-header__button md-logo" aria-label="PassengerSim" data-md-component="logo">
+      <img src="../_static/logo.svg" alt="logo">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PassengerSim
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Unrestricted Networks
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/passengersim/passengersim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    PassengerSim/passengersim
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../user-guide/welcome.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>User Guide</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../mechanics/counting-sims.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Mechanics</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="intro-3mkt.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Examples</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../api/_index.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>API</span>
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="PassengerSim" class="md-nav__button md-logo" aria-label="PassengerSim" data-md-component="logo">
+      <img src="../_static/logo.svg" alt="logo">
+    </a>
+    PassengerSim
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/passengersim/passengersim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    PassengerSim/passengersim
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>User Guide</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            <span>User Guide</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/welcome.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 10H5L3 8l2-2h6V3l1-1 1 1v1h6l2 2-2 2h-6v2h6l2 2-2 2h-6v6a2 2 0 0 1 2 2H9a2 2 0 0 1 2-2z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Wayfinding</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/installation.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m13.13 22.19-1.63-3.83c1.57-.58 3.04-1.36 4.4-2.27zM5.64 12.5l-3.83-1.63 6.1-2.77C7 9.46 6.22 10.93 5.64 12.5M21.61 2.39S16.66.269 11 5.93c-2.19 2.19-3.5 4.6-4.35 6.71-.28.75-.09 1.57.46 2.13l2.13 2.12c.55.56 1.37.74 2.12.46A19.1 19.1 0 0 0 18.07 13c5.66-5.66 3.54-10.61 3.54-10.61m-7.07 7.07c-.78-.78-.78-2.05 0-2.83s2.05-.78 2.83 0c.77.78.78 2.05 0 2.83s-2.05.78-2.83 0m-5.66 7.07-1.41-1.41zM6.24 22l3.64-3.64c-.34-.09-.67-.24-.97-.45L4.83 22zM2 22h1.41l4.77-4.76-1.42-1.41L2 20.59zm0-2.83 4.09-4.08c-.21-.3-.36-.62-.45-.97L2 17.76z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Installation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/static-config.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.5 3.5 18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2 7.5 3.5 6 2 4.5 3.5 3 2v20l1.5-1.5L6 22l1.5-1.5L9 22l1.5-1.5L12 22l1.5-1.5L15 22l1.5-1.5L18 22l1.5-1.5L21 22V2zM19 19H5V5h14zM6 15h12v2H6m0-6h12v2H6m0-6h12v2H6z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Raw Configuration</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/dynamic-config.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 2 1.5 1.5L21 2v7.13l-2 2V4.91H5v14.18h5.5v1.41L9 22l-1.5-1.5L6 22l-1.5-1.5L3 22V2l1.5 1.5L6 2l1.5 1.5L9 2l1.5 1.5L12 2l1.5 1.5L15 2l1.5 1.5zm-5 17.96 6.13-6.13 2.04 2.04L15.04 22H13zm6.83-6.83.98-.98.02-.02c.05-.04.11-.08.17-.1a.5.5 0 0 1 .53.12l1.32 1.32c.2.2.2.53 0 .72l-.98.98zm-1.83-1-.87.87H6v-2h12zM15.13 15l-2 2H6v-2zM18 9V7H6v2z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Dynamic Configuration</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/basic-usage.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m9 4 2.5 5.5L17 12l-5.5 2.5L9 20l-2.5-5.5L1 12l5.5-2.5zm0 4.83L8 11l-2.17 1L8 13l1 2.17L10 13l2.17-1L10 11zM19 9l-1.26-2.74L15 5l2.74-1.25L19 1l1.25 2.75L23 5l-2.75 1.26zm0 14-1.26-2.74L15 19l2.74-1.25L19 15l1.25 2.75L23 19l-2.75 1.26z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Summary Outputs</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/rm-systems.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 6h18v12H5zm9 3a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3M9 8a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2v-4a2 2 0 0 1-2-2zm-8 2h2v10h16v2H1z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>RM Systems</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/database/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Database</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/experiments.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 19a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1c0-.21-.07-.41-.18-.57L13 8.35V4h-2v4.35L5.18 18.43c-.11.16-.18.36-.18.57m1 3a3 3 0 0 1-3-3c0-.6.18-1.16.5-1.63L9 7.81V6a1 1 0 0 1-1-1V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1v1.81l5.5 9.56c.32.47.5 1.03.5 1.63a3 3 0 0 1-3 3zm7-6 1.34-1.34L16.27 18H7.73l2.66-4.61zm-.5-4a.5.5 0 0 1 .5.5.5.5 0 0 1-.5.5.5.5 0 0 1-.5-.5.5.5 0 0 1 .5-.5"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Experiments</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/callbacks.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.6 5.29c-1.1-.1-2.07.71-2.17 1.82L13.18 10H16v2h-3l-.44 5.07a3.986 3.986 0 0 1-4.33 3.63 4 4 0 0 1-3.06-1.87l1.5-1.5c.24.74.9 1.31 1.73 1.38 1.1.1 2.07-.71 2.17-1.82L11 12H8v-2h3.17l.27-3.07c.19-2.2 2.13-3.83 4.33-3.63 1.31.11 2.41.84 3.06 1.87l-1.5 1.5c-.24-.74-.9-1.31-1.73-1.38"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Callbacks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/tracers.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.84 2.73c-.39 0-.77.15-1.07.44l-2.12 2.12 5.3 5.31 2.12-2.1c.6-.61.6-1.56 0-2.14L17.9 3.17c-.3-.29-.68-.44-1.06-.44M12.94 6l-8.1 8.11 2.56.28.18 2.29 2.28.17.29 2.56 8.1-8.11m-14 3.74L2.5 21.73l6.7-1.79-.24-2.16-2.31-.17-.18-2.32"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Tracing</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/viz/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.45 15.18 22 7.31V21H2V3h2v12.54L9.5 6 16 9.78l4.24-7.33 1.73 1-5.23 9.05-6.51-3.75L4.31 19h2.26l4.39-7.56z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Visualizations</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/firehose.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 15v-1H4v-2h1v-1h2v4zm14-3v-1h-2v4h2v-1h1v-2zm-1-6h-2.14C15.5 4.6 14.4 3.5 13 3.14V2h-2v1.14C9.6 3.5 8.5 4.6 8.14 6H6v2h12zm0 16H6c0-1.1.9-2 2-2V9h8v11a2 2 0 0 1 2 2m-8-9a2 2 0 1 0 4 0c0-1.11-.89-2-2-2s-2 .9-2 2"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Firehose</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>Mechanics</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Mechanics</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mechanics/counting-sims.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 10.73V19h-2v-7.64L15 12v7h-2v-6.38l-2 .64V19H9v-5.11l-2 .61V19H5v-3.85l-2.43.77L2 14l3-.95V5h2v7.42l2-.63V5h2v6.16l2-.63V5h2v4.9l2-.64V5h2v3.63L21 8l.57 1.92z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Counting Simulations</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mechanics/demand-generation.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.35 5.64c-.9-.64-1.12-1.88-.49-2.79.64-.9 1.88-1.12 2.79-.49.9.64 1.12 1.88.49 2.79-.64.9-1.88 1.12-2.79.49M16 19H8.93c-1.48 0-2.74-1.08-2.96-2.54L4 7H2l2 9.76A4.99 4.99 0 0 0 8.94 21H16m.23-6h-4.88l-1.03-4.1c1.58.89 3.28 1.54 5.15 1.22V10c-1.63.3-3.44-.28-4.69-1.26L9.14 7.47c-.23-.18-.49-.3-.76-.38a2.2 2.2 0 0 0-.99-.06h-.02a2.27 2.27 0 0 0-1.84 2.61l1.35 5.92A2.99 2.99 0 0 0 9.83 18h6.85l3.82 3 1.5-1.5"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Demand Generation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mechanics/forecasting.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m9.38 8.38 2.12.96 2.12-.96-.96 2.12.96 2.12-2.12-.96-2.12.96.96-2.12zM16.5 2.5l1.09 2.91L20.5 6.5l-2.91 1.09-1.09 2.91-1.09-2.91L12.5 6.5l2.91-1.09zM6 19h1v-1a1 1 0 0 1 1-1h.26a7.47 7.47 0 0 1-3.76-6.5A7.5 7.5 0 0 1 12 3c1.05 0 2.05.22 2.96.61l-.37.98-1.42.53Q12.6 5 12 5a5.5 5.5 0 0 0-5.5 5.5A5.5 5.5 0 0 0 12 16c2.91 0 5.3-2.27 5.5-5.13l.91-2.46.71-.27c.25.74.38 1.54.38 2.36 0 2.78-1.5 5.2-3.76 6.5H16a1 1 0 0 1 1 1v1h1a2 2 0 0 1 2 2v1H4v-1a2 2 0 0 1 2-2"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Forecasting</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>Examples</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Examples</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="intro-3mkt.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>The 3MKT Network</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="EE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Basic Simulation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="PE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Pro<wbr>BP Optimization</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Unrestricted Networks</span>
+    
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="QC.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Q vs Conditional Forecasting</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="olympic-fcst.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Custom Forecaster</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blf-curves.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Heuristic Intervention</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../labs/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Labs</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>API</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            <span>API</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Passenger<wbr>Sim</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/callbacks/passengersim.callbacks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>callbacks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/config.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>config</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/connection_builder/passengersim.connection_builder.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>connection_<wbr>builder</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/contrast/passengersim.contrast.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>contrast</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/core/passengersim.core.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>core</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/database/passengersim.database.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>database</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/driver/passengersim.driver.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>driver</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/experiments/passengersim.experiments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>experiments</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/rm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>rm</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/summaries/passengersim.summaries.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>summaries</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/tracers/passengersim.tracers.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>tracers</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/transforms/passengersim.transforms.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>transforms</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                
+                
+                  
+
+
+<style>.md-sidebar--secondary {display: none !important;}</style>
+<h1 id="unrestricted-networks">Unrestricted Networks<a class="headerlink" href="#unrestricted-networks" title="Link to this heading">¶</a></h1>
+<p>In the modern day market place, many carriers find themselves operating in
+much less restricted markets, where they cannot rely on imposing
+fare fences or restrictions to entice higher willingness-to-pay customers to purchase
+high price tickets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">altair</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">alt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">passengersim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pax</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">passengersim.contrast</span><span class="w"> </span><span class="kn">import</span> <span class="n">Contrast</span>
+
+<span class="n">pax</span><span class="o">.</span><span class="n">versions</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><code>passengersim 0.80
+passengersim.core 0.80
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">cfg</span> <span class="o">=</span> <span class="n">pax</span><span class="o">.</span><span class="n">Config</span><span class="o">.</span><span class="n">from_yaml</span><span class="p">(</span><span class="n">pax</span><span class="o">.</span><span class="n">demo_network</span><span class="p">(</span><span class="s2">&quot;3MKT/DEMO&quot;</span><span class="p">))</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>In this example, we will work with a completely fenceless marketplace.  To
+convert the typical 3MKT network into a restriction-free network, we
+could iterate through all the fares and remove restrictions, or we can
+can use some pre-packaged functions to strip the restrictions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">passengersim.config.manipulate</span><span class="w"> </span><span class="kn">import</span> <span class="n">strip_ap_restrictions</span><span class="p">,</span> <span class="n">strip_fare_restrictions</span>
+
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">strip_fare_restrictions</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">strip_ap_restrictions</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Now we have completely unrestricted markets.  We could run this network just like this,
+although we get what might be to some a surprising result…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">sim</span> <span class="o">=</span> <span class="n">pax</span><span class="o">.</span><span class="n">MultiSimulation</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+<span class="n">summary</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="n">summary</span><span class="o">.</span><span class="n">fig_carrier_revenues</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b23a14d6fcfc440e9c7ab53ad34480ff"}</script><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">   ╭─────────────────────────────────────╮                                                                         
+   │ <span style="color: #800080; text-decoration-color: #800080">licensed for jpn</span>                    │                                                                         
+   │ <span style="color: #800080; text-decoration-color: #800080">until 2036-05-28 15:49:32+00:00 UTC</span> │                                                                         
+   │ <span style="color: #800080; text-decoration-color: #800080">maximum 42000 legs in network</span>       │                                                                         
+   ╰─────────────────────────────────────╯                                                                         
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre>
+</div><div class="output text_html">
+<style>
+  #altair-viz-bacf71a7dccb4092a1d964b92b206ec0.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-bacf71a7dccb4092a1d964b92b206ec0.vega-embed details,
+  #altair-viz-bacf71a7dccb4092a1d964b92b206ec0.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-bacf71a7dccb4092a1d964b92b206ec0"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-bacf71a7dccb4092a1d964b92b206ec0") {
+      outputDiv = document.getElementById("altair-viz-bacf71a7dccb4092a1d964b92b206ec0");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFontSize": 12}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "rm_system", "title": "RM System", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "rm_system", "title": "RM System", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Average Revenue", "type": "quantitative"}], "x": {"axis": {"format": "$.4s"}, "field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"axis": {"format": "$.4s"}, "field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-399e010e6799c8ffb9756a364e77ba35"}, "height": 50, "title": "Carrier Revenues", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-399e010e6799c8ffb9756a364e77ba35": [{"carrier": "AL1", "avg_rev": 46808.07142857143, "rm_system": "E"}, {"carrier": "AL2", "avg_rev": 46731.78571428571, "rm_system": "E"}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>Looking at the carrier revenues, we can see that the average revenue for each
+carrier is now wildly less than the $91k we saw on the restricted network.</p>
+<p>Looking at the fare class mix, the reason for this collapse becomes clear:
+both carriers are now selling exclusively Y5 tickets (the cheapest fare class).
+From the customers’s perspective, this is perfectly reasonable – without
+any restrictions, there’s no reason to buy anything other than the cheapest
+fare available.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">summary</span><span class="o">.</span><span class="n">fig_fare_class_mix</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-1129503597914f4595c2718c30b1646a.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-1129503597914f4595c2718c30b1646a.vega-embed details,
+  #altair-viz-1129503597914f4595c2718c30b1646a.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-1129503597914f4595c2718c30b1646a"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-1129503597914f4595c2718c30b1646a") {
+      outputDiv = document.getElementById("altair-viz-1129503597914f4595c2718c30b1646a");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFontSize": 12}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "booking_class", "type": "nominal"}, "tooltip": [{"field": "carrier", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "title": "Fare Class Mix", "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 3}, "encoding": {"opacity": {"condition": {"test": "datum.avg_sold < 18.159", "value": 0}, "value": 1}, "order": {"field": "booking_class", "sort": "descending", "type": "nominal"}, "text": {"field": "avg_sold", "format": ".2f", "type": "quantitative"}, "tooltip": [{"field": "carrier", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "title": "Fare Class Mix", "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}], "data": {"name": "data-23693ca0c2b07708a28eee35acf64f5b"}, "height": 300, "width": 400, "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-23693ca0c2b07708a28eee35acf64f5b": [{"carrier": "AL1", "booking_class": "Y0", "avg_sold": 0.0}, {"carrier": "AL1", "booking_class": "Y1", "avg_sold": 0.0}, {"carrier": "AL1", "booking_class": "Y2", "avg_sold": 0.0}, {"carrier": "AL1", "booking_class": "Y3", "avg_sold": 0.0}, {"carrier": "AL1", "booking_class": "Y4", "avg_sold": 0.0}, {"carrier": "AL1", "booking_class": "Y5", "avg_sold": 302.6542857142857}, {"carrier": "AL2", "booking_class": "Y0", "avg_sold": 0.0}, {"carrier": "AL2", "booking_class": "Y1", "avg_sold": 0.0}, {"carrier": "AL2", "booking_class": "Y2", "avg_sold": 0.0}, {"carrier": "AL2", "booking_class": "Y3", "avg_sold": 0.0}, {"carrier": "AL2", "booking_class": "Y4", "avg_sold": 0.0}, {"carrier": "AL2", "booking_class": "Y5", "avg_sold": 302.03285714285715}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>From the carrier’s perspective, clearly something is wrong.  While customers will only
+purchase the lowest available fare, we would expect that carriers would want to
+optimize their networks by sometimes making the lowest <em>available</em> fare not actually
+the lowest <em>possible</em> fare.</p>
+<p>The problem in this case is in the use of standard class-based forecasting. These forecasts
+assume demand for each fare class is independent, and that we can forecast the level of
+demand for each fare class based on the historical demand for that fare class.  But in our
+simulation that gets us into a catch-22: the lack of sales in higher classes results
+in forecasting zero demand for those higher classes, and that zero forecast means the optimizer
+never closes the lowest fare class to try to save space for higher class customers (because
+it thinks there aren’t any).</p>
+<p>To solve this problem, we need to use a different kind of forecast, which accounts for the
+propensity for at least some customers to buy up to a higher fare class if the class they
+prefer is closed.  The RM system “L” uses the same leg-based optimizer as “E”, but instead
+of using standard forecasting it switches to conditional forecasting, which relaxes the
+independent demands by fare class assumption, and instead assumes that customers who purchase
+the lowest available fare are “priceable” customers, and that some fraction of those customers
+will still buy if the fare were higher.  This fraction changes over the booking horizon,
+with generally lower fractions for early bookings and higher fractions for late bookings; how
+large that fraction is and how it changes over time is decribed by a “Frat5 curve”, which
+we will ascribe to each carrier.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">cfg</span><span class="o">.</span><span class="n">carriers</span><span class="o">.</span><span class="n">AL1</span><span class="o">.</span><span class="n">rm_system</span> <span class="o">=</span> <span class="s2">&quot;L&quot;</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">carriers</span><span class="o">.</span><span class="n">AL2</span><span class="o">.</span><span class="n">rm_system</span> <span class="o">=</span> <span class="s2">&quot;L&quot;</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">carriers</span><span class="o">.</span><span class="n">AL1</span><span class="o">.</span><span class="n">frat5</span> <span class="o">=</span> <span class="s2">&quot;curve_C&quot;</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">carriers</span><span class="o">.</span><span class="n">AL2</span><span class="o">.</span><span class="n">frat5</span> <span class="o">=</span> <span class="s2">&quot;curve_C&quot;</span>
+
+<span class="n">sim2</span> <span class="o">=</span> <span class="n">pax</span><span class="o">.</span><span class="n">MultiSimulation</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+<span class="n">summary2</span> <span class="o">=</span> <span class="n">sim2</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">comp2</span> <span class="o">=</span> <span class="n">Contrast</span><span class="p">(</span><span class="n">E</span><span class="o">=</span><span class="n">summary</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="n">summary2</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "6cf68270a9a24415819eec338e350590"}</script><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">comp2</span><span class="o">.</span><span class="n">fig_carrier_revenues</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-3952339654b049069deaa5c8577a6fef.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-3952339654b049069deaa5c8577a6fef.vega-embed details,
+  #altair-viz-3952339654b049069deaa5c8577a6fef.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-3952339654b049069deaa5c8577a6fef"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-3952339654b049069deaa5c8577a6fef") {
+      outputDiv = document.getElementById("altair-viz-3952339654b049069deaa5c8577a6fef");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "data": {"name": "data-6fd84a2faaa53030d6435834cd01b50d"}, "facet": {"row": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "rm_system", "title": "RM System", "type": "nominal"}, "tooltip": [{"field": "source", "title": null, "type": "nominal"}, {"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "rm_system", "title": "RM System", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Revenue ($)", "type": "quantitative"}, {"field": "ratio_0", "format": ".3%", "title": "vs E", "type": "quantitative"}, {"field": "ratio_1", "format": ".3%", "title": "vs L", "type": "quantitative"}], "x": {"axis": {"format": "$.4s"}, "field": "avg_rev", "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["E", "L"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"axis": {"format": "$.4s"}, "field": "avg_rev", "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["E", "L"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 5, "dy": 0}, "encoding": {"text": {"field": "reference_source", "type": "nominal"}, "x": {"field": "avg_rev", "scale": {"domain": [0, 60977.00714285715]}, "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["E", "L"], "title": null, "type": "nominal"}}, "transform": [{"calculate": "datum[\"ratio_label_\" + ref_source]", "as": "reference_source"}]}], "height": 50, "width": 500}, "params": [{"name": "ref_source", "bind": {"input": "radio", "options": ["0", "1"], "labels": ["E", "L"], "name": "Reference Source: "}, "value": "0"}], "title": "Carrier Revenues", "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-6fd84a2faaa53030d6435834cd01b50d": [{"source": "E", "carrier": "AL1", "avg_rev": 46808.07142857143, "rm_system": "E", "ratio_0": null, "ratio_1": -0.17863078600704418, "ratio_label": " ", "ratio_label_0": " ", "ratio_label_1": "-17.9%"}, {"source": "E", "carrier": "AL2", "avg_rev": 46731.78571428571, "rm_system": "E", "ratio_0": null, "ratio_1": -0.1776802424306413, "ratio_label": " ", "ratio_label_0": " ", "ratio_label_1": "-17.8%"}, {"source": "L", "carrier": "AL1", "avg_rev": 56987.857142857145, "rm_system": "L", "ratio_0": 0.21747928089325264, "ratio_1": null, "ratio_label": "+21.7%", "ratio_label_0": "+21.7%", "ratio_label_1": " "}, {"source": "L", "carrier": "AL2", "avg_rev": 56829.21428571429, "rm_system": "L", "ratio_0": 0.21607196080978852, "ratio_1": null, "ratio_label": "+21.6%", "ratio_label_0": "+21.6%", "ratio_label_1": " "}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">comp2</span><span class="o">.</span><span class="n">fig_fare_class_mix</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-664a36a94e824213b562febe0b62c3e9.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-664a36a94e824213b562febe0b62c3e9.vega-embed details,
+  #altair-viz-664a36a94e824213b562febe0b62c3e9.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-664a36a94e824213b562febe0b62c3e9"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-664a36a94e824213b562febe0b62c3e9") {
+      outputDiv = document.getElementById("altair-viz-664a36a94e824213b562febe0b62c3e9");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "data": {"name": "data-a3a25651cefa763e3233adf12f460d34"}, "facet": {"column": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "booking_class", "type": "nominal"}, "tooltip": [{"field": "source", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "source", "sort": ["E", "L"], "title": "Source", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 3}, "encoding": {"opacity": {"condition": {"test": "datum.avg_sold < 18.159", "value": 0}, "value": 1}, "order": {"field": "booking_class", "sort": "descending", "type": "nominal"}, "text": {"field": "avg_sold", "format": ".2f", "type": "quantitative"}, "tooltip": [{"field": "source", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "source", "sort": ["E", "L"], "title": "Source", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}], "height": 300, "width": 200}, "title": "Carrier Fare Class Mix", "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-a3a25651cefa763e3233adf12f460d34": [{"source": "E", "carrier": "AL1", "booking_class": "Y0", "avg_sold": 0.0}, {"source": "E", "carrier": "AL1", "booking_class": "Y1", "avg_sold": 0.0}, {"source": "E", "carrier": "AL1", "booking_class": "Y2", "avg_sold": 0.0}, {"source": "E", "carrier": "AL1", "booking_class": "Y3", "avg_sold": 0.0}, {"source": "E", "carrier": "AL1", "booking_class": "Y4", "avg_sold": 0.0}, {"source": "E", "carrier": "AL1", "booking_class": "Y5", "avg_sold": 302.6542857142857}, {"source": "E", "carrier": "AL2", "booking_class": "Y0", "avg_sold": 0.0}, {"source": "E", "carrier": "AL2", "booking_class": "Y1", "avg_sold": 0.0}, {"source": "E", "carrier": "AL2", "booking_class": "Y2", "avg_sold": 0.0}, {"source": "E", "carrier": "AL2", "booking_class": "Y3", "avg_sold": 0.0}, {"source": "E", "carrier": "AL2", "booking_class": "Y4", "avg_sold": 0.0}, {"source": "E", "carrier": "AL2", "booking_class": "Y5", "avg_sold": 302.03285714285715}, {"source": "L", "carrier": "AL1", "booking_class": "Y0", "avg_sold": 3.322857142857143}, {"source": "L", "carrier": "AL1", "booking_class": "Y1", "avg_sold": 8.194285714285714}, {"source": "L", "carrier": "AL1", "booking_class": "Y2", "avg_sold": 16.634285714285713}, {"source": "L", "carrier": "AL1", "booking_class": "Y3", "avg_sold": 30.267142857142858}, {"source": "L", "carrier": "AL1", "booking_class": "Y4", "avg_sold": 17.81714285714286}, {"source": "L", "carrier": "AL1", "booking_class": "Y5", "avg_sold": 225.25428571428571}, {"source": "L", "carrier": "AL2", "booking_class": "Y0", "avg_sold": 3.2457142857142856}, {"source": "L", "carrier": "AL2", "booking_class": "Y1", "avg_sold": 8.037142857142857}, {"source": "L", "carrier": "AL2", "booking_class": "Y2", "avg_sold": 16.63}, {"source": "L", "carrier": "AL2", "booking_class": "Y3", "avg_sold": 30.062857142857144}, {"source": "L", "carrier": "AL2", "booking_class": "Y4", "avg_sold": 17.748571428571427}, {"source": "L", "carrier": "AL2", "booking_class": "Y5", "avg_sold": 225.54}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">comp2</span><span class="o">.</span><span class="n">fig_bookings_by_timeframe</span><span class="p">(</span><span class="n">by_carrier</span><span class="o">=</span><span class="s2">&quot;AL1&quot;</span><span class="p">,</span> <span class="n">by_class</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-1c4f85b727bf489bb462c9b74d5854cd.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-1c4f85b727bf489bb462c9b74d5854cd.vega-embed details,
+  #altair-viz-1c4f85b727bf489bb462c9b74d5854cd.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-1c4f85b727bf489bb462c9b74d5854cd"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-1c4f85b727bf489bb462c9b74d5854cd") {
+      outputDiv = document.getElementById("altair-viz-1c4f85b727bf489bb462c9b74d5854cd");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "data": {"name": "data-937c552336ccd0f409aefdff1cc9add7"}, "facet": {"row": {"field": "segment", "title": "Passenger Segment", "type": "nominal"}}, "spec": {"mark": {"type": "bar"}, "encoding": {"color": {"field": "booking_class", "title": "Booking Class", "type": "nominal"}, "tooltip": [{"field": "source", "title": "Source", "type": "nominal"}, {"field": "segment", "title": "Passenger Segment", "type": "nominal"}, {"field": "booking_class", "title": "Booking Class", "type": "nominal"}, {"field": "days_prior", "title": "DfD", "type": "quantitative"}, {"field": "bookings", "format": ".2f", "type": "quantitative"}], "x": {"field": "days_prior", "scale": {"reverse": true}, "title": "Days Prior to Departure", "type": "ordinal"}, "xOffset": {"field": "source", "sort": ["E", "L"], "title": "Source", "type": "nominal"}, "y": {"field": "bookings", "stack": true, "type": "quantitative"}}, "height": 200, "width": 500}, "title": "Bookings by Timeframe and Booking Class (AL1)", "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-937c552336ccd0f409aefdff1cc9add7": [{"source": "L", "booking_class": "Y3", "days_prior": 5, "segment": "business", "bookings": 1.7571428571428571}, {"source": "L", "booking_class": "Y4", "days_prior": 31, "segment": "leisure", "bookings": 0.9671428571428571}, {"source": "L", "booking_class": "Y4", "days_prior": 3, "segment": "leisure", "bookings": 0.04428571428571429}, {"source": "L", "booking_class": "Y4", "days_prior": 5, "segment": "business", "bookings": 0.2357142857142857}, {"source": "L", "booking_class": "Y4", "days_prior": 5, "segment": "leisure", "bookings": 0.12571428571428572}, {"source": "L", "booking_class": "Y4", "days_prior": 7, "segment": "business", "bookings": 0.3271428571428571}, {"source": "L", "booking_class": "Y4", "days_prior": 7, "segment": "leisure", "bookings": 0.08857142857142858}, {"source": "L", "booking_class": "Y4", "days_prior": 10, "segment": "business", "bookings": 0.5085714285714286}, {"source": "L", "booking_class": "Y4", "days_prior": 10, "segment": "leisure", "bookings": 0.1514285714285714}, {"source": "L", "booking_class": "Y4", "days_prior": 14, "segment": "business", "bookings": 0.59}, {"source": "L", "booking_class": "Y4", "days_prior": 14, "segment": "leisure", "bookings": 0.31}, {"source": "L", "booking_class": "Y4", "days_prior": 17, "segment": "business", "bookings": 0.61}, {"source": "L", "booking_class": "Y4", "days_prior": 17, "segment": "leisure", "bookings": 0.6728571428571428}, {"source": "L", "booking_class": "Y4", "days_prior": 21, "segment": "business", "bookings": 0.7385714285714285}, {"source": "L", "booking_class": "Y4", "days_prior": 21, "segment": "leisure", "bookings": 1.2585714285714285}, {"source": "L", "booking_class": "Y4", "days_prior": 24, "segment": "business", "bookings": 0.7271428571428571}, {"source": "L", "booking_class": "Y4", "days_prior": 24, "segment": "leisure", "bookings": 2.204285714285714}, {"source": "L", "booking_class": "Y4", "days_prior": 28, "segment": "business", "bookings": 0.8857142857142857}, {"source": "L", "booking_class": "Y4", "days_prior": 28, "segment": "leisure", "bookings": 2.5214285714285714}, {"source": "L", "booking_class": "Y4", "days_prior": 3, "segment": "business", "bookings": 0.27}, {"source": "L", "booking_class": "Y3", "days_prior": 42, "segment": "leisure", "bookings": 0.008571428571428572}, {"source": "L", "booking_class": "Y3", "days_prior": 42, "segment": "business", "bookings": 0.002857142857142857}, {"source": "L", "booking_class": "Y3", "days_prior": 21, "segment": "business", "bookings": 1.5957142857142856}, {"source": "L", "booking_class": "Y3", "days_prior": 7, "segment": "leisure", "bookings": 0.4228571428571429}, {"source": "L", "booking_class": "Y3", "days_prior": 10, "segment": "business", "bookings": 4.275714285714285}, {"source": "L", "booking_class": "Y3", "days_prior": 10, "segment": "leisure", "bookings": 0.7071428571428571}, {"source": "L", "booking_class": "Y3", "days_prior": 14, "segment": "business", "bookings": 4.4471428571428575}, {"source": "L", "booking_class": "Y3", "days_prior": 14, "segment": "leisure", "bookings": 1.617142857142857}, {"source": "L", "booking_class": "Y3", "days_prior": 17, "segment": "business", "bookings": 2.2128571428571426}, {"source": "L", "booking_class": "Y3", "days_prior": 17, "segment": "leisure", "bookings": 1.6257142857142857}, {"source": "L", "booking_class": "Y3", "days_prior": 21, "segment": "leisure", "bookings": 1.7814285714285716}, {"source": "L", "booking_class": "Y3", "days_prior": 35, "segment": "leisure", "bookings": 0.09428571428571428}, {"source": "L", "booking_class": "Y3", "days_prior": 24, "segment": "business", "bookings": 0.8514285714285714}, {"source": "L", "booking_class": "Y3", "days_prior": 24, "segment": "leisure", "bookings": 1.6414285714285715}, {"source": "L", "booking_class": "Y3", "days_prior": 28, "segment": "business", "bookings": 0.4585714285714286}, {"source": "L", "booking_class": "Y3", "days_prior": 28, "segment": "leisure", "bookings": 0.8400000000000001}, {"source": "L", "booking_class": "Y3", "days_prior": 31, "segment": "business", "bookings": 0.09714285714285714}, {"source": "L", "booking_class": "Y3", "days_prior": 31, "segment": "leisure", "bookings": 0.17714285714285716}, {"source": "L", "booking_class": "Y3", "days_prior": 35, "segment": "business", "bookings": 0.06428571428571428}, {"source": "L", "booking_class": "Y4", "days_prior": 31, "segment": "business", "bookings": 0.4357142857142857}, {"source": "L", "booking_class": "Y4", "days_prior": 35, "segment": "business", "bookings": 0.6457142857142857}, {"source": "L", "booking_class": "Y3", "days_prior": 5, "segment": "leisure", "bookings": 0.7785714285714286}, {"source": "L", "booking_class": "Y4", "days_prior": 35, "segment": "leisure", "bookings": 1.1685714285714286}, {"source": "L", "booking_class": "Y5", "days_prior": 21, "segment": "business", "bookings": 3.394285714285714}, {"source": "L", "booking_class": "Y5", "days_prior": 21, "segment": "leisure", "bookings": 6.2457142857142856}, {"source": "L", "booking_class": "Y5", "days_prior": 24, "segment": "business", "bookings": 2.7357142857142858}, {"source": "L", "booking_class": "Y5", "days_prior": 24, "segment": "leisure", "bookings": 8.987142857142857}, {"source": "L", "booking_class": "Y5", "days_prior": 28, "segment": "business", "bookings": 2.9757142857142855}, {"source": "L", "booking_class": "Y5", "days_prior": 28, "segment": "leisure", "bookings": 10.424285714285714}, {"source": "L", "booking_class": "Y5", "days_prior": 31, "segment": "business", "bookings": 2.3899999999999997}, {"source": "L", "booking_class": "Y5", "days_prior": 31, "segment": "leisure", "bookings": 6.174285714285714}, {"source": "L", "booking_class": "Y5", "days_prior": 35, "segment": "business", "bookings": 3.6714285714285717}, {"source": "L", "booking_class": "Y5", "days_prior": 35, "segment": "leisure", "bookings": 9.67142857142857}, {"source": "L", "booking_class": "Y5", "days_prior": 42, "segment": "business", "bookings": 6.602857142857143}, {"source": "L", "booking_class": "Y5", "days_prior": 42, "segment": "leisure", "bookings": 15.475714285714286}, {"source": "L", "booking_class": "Y5", "days_prior": 49, "segment": "business", "bookings": 5.762857142857143}, {"source": "L", "booking_class": "Y5", "days_prior": 49, "segment": "leisure", "bookings": 16.712857142857143}, {"source": "L", "booking_class": "Y5", "days_prior": 56, "segment": "business", "bookings": 7.355714285714285}, {"source": "L", "booking_class": "Y5", "days_prior": 56, "segment": "leisure", "bookings": 15.0}, {"source": "L", "booking_class": "Y5", "days_prior": 63, "segment": "business", "bookings": 8.657142857142858}, {"source": "L", "booking_class": "Y5", "days_prior": 17, "segment": "leisure", "bookings": 4.95}, {"source": "L", "booking_class": "Y5", "days_prior": 17, "segment": "business", "bookings": 3.83}, {"source": "L", "booking_class": "Y5", "days_prior": 14, "segment": "leisure", "bookings": 4.381428571428572}, {"source": "L", "booking_class": "Y5", "days_prior": 1, "segment": "leisure", "bookings": 1.6414285714285715}, {"source": "L", "booking_class": "Y4", "days_prior": 42, "segment": "business", "bookings": 0.6699999999999999}, {"source": "L", "booking_class": "Y4", "days_prior": 42, "segment": "leisure", "bookings": 1.2257142857142858}, {"source": "L", "booking_class": "Y4", "days_prior": 49, "segment": "business", "bookings": 0.1142857142857143}, {"source": "L", "booking_class": "Y4", "days_prior": 49, "segment": "leisure", "bookings": 0.3057142857142857}, {"source": "L", "booking_class": "Y4", "days_prior": 56, "segment": "business", "bookings": 0.002857142857142857}, {"source": "L", "booking_class": "Y4", "days_prior": 56, "segment": "leisure", "bookings": 0.011428571428571429}, {"source": "L", "booking_class": "Y5", "days_prior": 1, "segment": "business", "bookings": 3.1085714285714285}, {"source": "L", "booking_class": "Y5", "days_prior": 3, "segment": "business", "bookings": 8.638571428571428}, {"source": "L", "booking_class": "Y5", "days_prior": 14, "segment": "business", "bookings": 6.922857142857143}, {"source": "L", "booking_class": "Y5", "days_prior": 3, "segment": "leisure", "bookings": 1.8585714285714285}, {"source": "L", "booking_class": "Y5", "days_prior": 5, "segment": "business", "bookings": 4.648571428571429}, {"source": "L", "booking_class": "Y5", "days_prior": 5, "segment": "leisure", "bookings": 3.614285714285714}, {"source": "L", "booking_class": "Y5", "days_prior": 7, "segment": "business", "bookings": 5.371428571428572}, {"source": "L", "booking_class": "Y5", "days_prior": 7, "segment": "leisure", "bookings": 1.73}, {"source": "L", "booking_class": "Y5", "days_prior": 10, "segment": "business", "bookings": 7.6414285714285715}, {"source": "L", "booking_class": "Y5", "days_prior": 10, "segment": "leisure", "bookings": 2.547142857142857}, {"source": "L", "booking_class": "Y3", "days_prior": 7, "segment": "business", "bookings": 2.1642857142857146}, {"source": "L", "booking_class": "Y5", "days_prior": 63, "segment": "leisure", "bookings": 32.13285714285714}, {"source": "L", "booking_class": "Y0", "days_prior": 10, "segment": "leisure", "bookings": 0.002857142857142857}, {"source": "L", "booking_class": "Y0", "days_prior": 14, "segment": "leisure", "bookings": 0.0}, {"source": "L", "booking_class": "Y1", "days_prior": 14, "segment": "business", "bookings": 0.18571428571428572}, {"source": "L", "booking_class": "Y1", "days_prior": 10, "segment": "leisure", "bookings": 0.04428571428571429}, {"source": "L", "booking_class": "Y1", "days_prior": 10, "segment": "business", "bookings": 1.052857142857143}, {"source": "L", "booking_class": "Y1", "days_prior": 7, "segment": "leisure", "bookings": 0.038571428571428576}, {"source": "L", "booking_class": "Y1", "days_prior": 5, "segment": "leisure", "bookings": 0.19857142857142857}, {"source": "L", "booking_class": "Y1", "days_prior": 5, "segment": "business", "bookings": 1.562857142857143}, {"source": "L", "booking_class": "Y1", "days_prior": 3, "segment": "leisure", "bookings": 0.09428571428571428}, {"source": "L", "booking_class": "Y1", "days_prior": 3, "segment": "business", "bookings": 3.217142857142857}, {"source": "L", "booking_class": "Y1", "days_prior": 1, "segment": "leisure", "bookings": 0.045714285714285714}, {"source": "L", "booking_class": "Y1", "days_prior": 1, "segment": "business", "bookings": 0.54}, {"source": "L", "booking_class": "Y0", "days_prior": 14, "segment": "business", "bookings": 0.008571428571428572}, {"source": "L", "booking_class": "Y1", "days_prior": 17, "segment": "business", "bookings": 0.017142857142857144}, {"source": "L", "booking_class": "Y3", "days_prior": 3, "segment": "leisure", "bookings": 0.2642857142857143}, {"source": "L", "booking_class": "Y0", "days_prior": 10, "segment": "business", "bookings": 0.037142857142857144}, {"source": "L", "booking_class": "Y0", "days_prior": 7, "segment": "leisure", "bookings": 0.008571428571428572}, {"source": "L", "booking_class": "Y0", "days_prior": 7, "segment": "business", "bookings": 0.1757142857142857}, {"source": "L", "booking_class": "Y0", "days_prior": 5, "segment": "leisure", "bookings": 0.05}, {"source": "L", "booking_class": "Y0", "days_prior": 5, "segment": "business", "bookings": 0.5728571428571428}, {"source": "L", "booking_class": "Y0", "days_prior": 3, "segment": "leisure", "bookings": 0.05142857142857143}, {"source": "L", "booking_class": "Y0", "days_prior": 3, "segment": "business", "bookings": 2.3042857142857143}, {"source": "L", "booking_class": "Y0", "days_prior": 1, "segment": "leisure", "bookings": 0.011428571428571429}, {"source": "L", "booking_class": "Y0", "days_prior": 1, "segment": "business", "bookings": 0.10428571428571429}, {"source": "L", "booking_class": "Y1", "days_prior": 14, "segment": "leisure", "bookings": 0.022857142857142857}, {"source": "L", "booking_class": "Y1", "days_prior": 7, "segment": "business", "bookings": 1.1814285714285715}, {"source": "L", "booking_class": "Y1", "days_prior": 17, "segment": "leisure", "bookings": 0.002857142857142857}, {"source": "L", "booking_class": "Y2", "days_prior": 14, "segment": "leisure", "bookings": 0.46714285714285714}, {"source": "L", "booking_class": "Y3", "days_prior": 3, "segment": "business", "bookings": 2.007142857142857}, {"source": "L", "booking_class": "Y3", "days_prior": 1, "segment": "leisure", "bookings": 0.07571428571428572}, {"source": "L", "booking_class": "Y3", "days_prior": 1, "segment": "business", "bookings": 0.30428571428571427}, {"source": "L", "booking_class": "Y2", "days_prior": 28, "segment": "leisure", "bookings": 0.002857142857142857}, {"source": "L", "booking_class": "Y2", "days_prior": 28, "segment": "business", "bookings": 0.0}, {"source": "L", "booking_class": "Y2", "days_prior": 1, "segment": "business", "bookings": 0.42428571428571427}, {"source": "L", "booking_class": "Y2", "days_prior": 24, "segment": "business", "bookings": 0.015714285714285715}, {"source": "L", "booking_class": "Y2", "days_prior": 21, "segment": "leisure", "bookings": 0.09428571428571428}, {"source": "L", "booking_class": "Y2", "days_prior": 21, "segment": "business", "bookings": 0.15714285714285714}, {"source": "L", "booking_class": "Y2", "days_prior": 17, "segment": "leisure", "bookings": 0.21714285714285714}, {"source": "L", "booking_class": "Y2", "days_prior": 17, "segment": "business", "bookings": 0.4685714285714286}, {"source": "L", "booking_class": "Y2", "days_prior": 24, "segment": "leisure", "bookings": 0.03285714285714286}, {"source": "L", "booking_class": "Y2", "days_prior": 14, "segment": "business", "bookings": 2.3657142857142857}, {"source": "L", "booking_class": "Y2", "days_prior": 5, "segment": "business", "bookings": 2.0842857142857145}, {"source": "L", "booking_class": "Y2", "days_prior": 10, "segment": "leisure", "bookings": 0.3542857142857143}, {"source": "L", "booking_class": "Y2", "days_prior": 1, "segment": "leisure", "bookings": 0.06428571428571428}, {"source": "L", "booking_class": "Y2", "days_prior": 3, "segment": "business", "bookings": 3.012857142857143}, {"source": "L", "booking_class": "Y2", "days_prior": 3, "segment": "leisure", "bookings": 0.25142857142857145}, {"source": "L", "booking_class": "Y2", "days_prior": 5, "segment": "leisure", "bookings": 0.5028571428571429}, {"source": "L", "booking_class": "Y2", "days_prior": 7, "segment": "business", "bookings": 2.2800000000000002}, {"source": "L", "booking_class": "Y2", "days_prior": 7, "segment": "leisure", "bookings": 0.20285714285714285}, {"source": "L", "booking_class": "Y2", "days_prior": 10, "segment": "business", "bookings": 3.637142857142857}, {"source": "E", "booking_class": "Y5", "days_prior": 21, "segment": "business", "bookings": 5.8342857142857145}, {"source": "E", "booking_class": "Y5", "days_prior": 10, "segment": "business", "bookings": 15.85}, {"source": "E", "booking_class": "Y5", "days_prior": 17, "segment": "leisure", "bookings": 9.559999999999999}, {"source": "E", "booking_class": "Y5", "days_prior": 17, "segment": "business", "bookings": 7.1242857142857146}, {"source": "E", "booking_class": "Y5", "days_prior": 14, "segment": "leisure", "bookings": 9.384285714285713}, {"source": "E", "booking_class": "Y5", "days_prior": 14, "segment": "business", "bookings": 14.411428571428571}, {"source": "E", "booking_class": "Y5", "days_prior": 10, "segment": "leisure", "bookings": 5.1814285714285715}, {"source": "E", "booking_class": "Y5", "days_prior": 3, "segment": "leisure", "bookings": 2.8357142857142854}, {"source": "E", "booking_class": "Y5", "days_prior": 7, "segment": "leisure", "bookings": 3.1814285714285715}, {"source": "E", "booking_class": "Y5", "days_prior": 7, "segment": "business", "bookings": 9.510000000000002}, {"source": "E", "booking_class": "Y5", "days_prior": 5, "segment": "leisure", "bookings": 6.425714285714285}, {"source": "E", "booking_class": "Y5", "days_prior": 5, "segment": "business", "bookings": 7.988571428571429}, {"source": "E", "booking_class": "Y5", "days_prior": 3, "segment": "business", "bookings": 13.021428571428572}, {"source": "E", "booking_class": "Y5", "days_prior": 24, "segment": "business", "bookings": 4.357142857142858}, {"source": "E", "booking_class": "Y5", "days_prior": 21, "segment": "leisure", "bookings": 11.462857142857143}, {"source": "E", "booking_class": "Y5", "days_prior": 1, "segment": "leisure", "bookings": 1.51}, {"source": "E", "booking_class": "Y5", "days_prior": 24, "segment": "leisure", "bookings": 15.042857142857143}, {"source": "E", "booking_class": "Y5", "days_prior": 28, "segment": "business", "bookings": 4.315714285714286}, {"source": "E", "booking_class": "Y5", "days_prior": 28, "segment": "leisure", "bookings": 15.46142857142857}, {"source": "E", "booking_class": "Y5", "days_prior": 31, "segment": "business", "bookings": 2.9985714285714287}, {"source": "E", "booking_class": "Y5", "days_prior": 31, "segment": "leisure", "bookings": 7.737142857142857}, {"source": "E", "booking_class": "Y5", "days_prior": 35, "segment": "business", "bookings": 4.390000000000001}, {"source": "E", "booking_class": "Y5", "days_prior": 35, "segment": "leisure", "bookings": 11.435714285714287}, {"source": "E", "booking_class": "Y5", "days_prior": 42, "segment": "business", "bookings": 7.268571428571429}, {"source": "E", "booking_class": "Y5", "days_prior": 42, "segment": "leisure", "bookings": 17.05428571428571}, {"source": "E", "booking_class": "Y5", "days_prior": 49, "segment": "business", "bookings": 5.941428571428571}, {"source": "E", "booking_class": "Y5", "days_prior": 49, "segment": "leisure", "bookings": 17.212857142857143}, {"source": "E", "booking_class": "Y5", "days_prior": 56, "segment": "business", "bookings": 7.345714285714285}, {"source": "E", "booking_class": "Y5", "days_prior": 56, "segment": "leisure", "bookings": 15.10142857142857}, {"source": "E", "booking_class": "Y5", "days_prior": 63, "segment": "business", "bookings": 8.652857142857144}, {"source": "E", "booking_class": "Y5", "days_prior": 63, "segment": "leisure", "bookings": 32.168571428571425}, {"source": "E", "booking_class": "Y5", "days_prior": 1, "segment": "business", "bookings": 2.888571428571429}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>The use of the conditional forecaster introduces a much larger universe of
+possible options to chose from for simulated carriers. Some of these options
+are highly consequential, and others are less so.</p>
+<p>For example, we can consider choosing among various Frat5 curves, which control
+the assumed levels of sellup across the booking curve.  The available “standard”
+curves look like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="c1"># load all standard frat5 curves in a PassengerSim config</span>
+<span class="n">std_frat5</span> <span class="o">=</span> <span class="n">pax</span><span class="o">.</span><span class="n">Config</span><span class="o">.</span><span class="n">from_yaml</span><span class="p">(</span><span class="n">pax</span><span class="o">.</span><span class="n">demo_network</span><span class="p">(</span><span class="s2">&quot;standard-frat5.yaml&quot;</span><span class="p">))</span>
+
+<span class="c1"># convert to a dataframe for analysis</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="n">curvename</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">std_frat5</span><span class="o">.</span><span class="n">frat5_curves</span><span class="p">[</span><span class="n">curvename</span><span class="p">]</span><span class="o">.</span><span class="n">curve</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;frat5_value&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">curvename</span> <span class="ow">in</span> <span class="n">std_frat5</span><span class="o">.</span><span class="n">frat5_curves</span>
+    <span class="p">},</span>
+    <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;curve_name&quot;</span><span class="p">,</span> <span class="s2">&quot;days_prior&quot;</span><span class="p">],</span>
+<span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="c1"># plot using Altair</span>
+<span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_line</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">&quot;days_prior&quot;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="s2">&quot;descending&quot;</span><span class="p">),</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s2">&quot;frat5_value&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">])),</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;curve_name&quot;</span><span class="p">,</span>
+    <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;curve_name&quot;</span><span class="p">,</span> <span class="s2">&quot;days_prior&quot;</span><span class="p">,</span> <span class="s2">&quot;frat5_value&quot;</span><span class="p">],</span>
+<span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Standard Frat5 Curves&quot;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-0a8d1cd2c7b34a639e068d8236f6bfc9.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-0a8d1cd2c7b34a639e068d8236f6bfc9.vega-embed details,
+  #altair-viz-0a8d1cd2c7b34a639e068d8236f6bfc9.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-0a8d1cd2c7b34a639e068d8236f6bfc9"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-0a8d1cd2c7b34a639e068d8236f6bfc9") {
+      outputDiv = document.getElementById("altair-viz-0a8d1cd2c7b34a639e068d8236f6bfc9");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "data": {"name": "data-1489a86fe3d994c48cd24f85a5ba5577"}, "mark": {"type": "line"}, "encoding": {"color": {"field": "curve_name", "type": "nominal"}, "tooltip": [{"field": "curve_name", "type": "nominal"}, {"field": "days_prior", "type": "quantitative"}, {"field": "frat5_value", "type": "quantitative"}], "x": {"field": "days_prior", "sort": "descending", "type": "quantitative"}, "y": {"field": "frat5_value", "scale": {"domain": [1, 4]}, "type": "quantitative"}}, "title": "Standard Frat5 Curves", "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-1489a86fe3d994c48cd24f85a5ba5577": [{"curve_name": "curve_A", "days_prior": 63, "frat5_value": 1.6}, {"curve_name": "curve_A", "days_prior": 56, "frat5_value": 1.6}, {"curve_name": "curve_A", "days_prior": 49, "frat5_value": 1.7}, {"curve_name": "curve_A", "days_prior": 42, "frat5_value": 1.75}, {"curve_name": "curve_A", "days_prior": 35, "frat5_value": 1.88}, {"curve_name": "curve_A", "days_prior": 31, "frat5_value": 2.0}, {"curve_name": "curve_A", "days_prior": 28, "frat5_value": 2.12}, {"curve_name": "curve_A", "days_prior": 24, "frat5_value": 2.24}, {"curve_name": "curve_A", "days_prior": 21, "frat5_value": 2.68}, {"curve_name": "curve_A", "days_prior": 17, "frat5_value": 3.08}, {"curve_name": "curve_A", "days_prior": 14, "frat5_value": 3.6}, {"curve_name": "curve_A", "days_prior": 10, "frat5_value": 3.72}, {"curve_name": "curve_A", "days_prior": 7, "frat5_value": 3.8}, {"curve_name": "curve_A", "days_prior": 5, "frat5_value": 3.88}, {"curve_name": "curve_A", "days_prior": 3, "frat5_value": 3.95}, {"curve_name": "curve_A", "days_prior": 1, "frat5_value": 4.0}, {"curve_name": "curve_B", "days_prior": 63, "frat5_value": 1.4}, {"curve_name": "curve_B", "days_prior": 56, "frat5_value": 1.4}, {"curve_name": "curve_B", "days_prior": 49, "frat5_value": 1.5}, {"curve_name": "curve_B", "days_prior": 42, "frat5_value": 1.5}, {"curve_name": "curve_B", "days_prior": 35, "frat5_value": 1.6}, {"curve_name": "curve_B", "days_prior": 31, "frat5_value": 1.7}, {"curve_name": "curve_B", "days_prior": 28, "frat5_value": 1.8}, {"curve_name": "curve_B", "days_prior": 24, "frat5_value": 1.9}, {"curve_name": "curve_B", "days_prior": 21, "frat5_value": 2.3}, {"curve_name": "curve_B", "days_prior": 17, "frat5_value": 2.7}, {"curve_name": "curve_B", "days_prior": 14, "frat5_value": 3.2}, {"curve_name": "curve_B", "days_prior": 10, "frat5_value": 3.3}, {"curve_name": "curve_B", "days_prior": 7, "frat5_value": 3.4}, {"curve_name": "curve_B", "days_prior": 5, "frat5_value": 3.4}, {"curve_name": "curve_B", "days_prior": 3, "frat5_value": 3.5}, {"curve_name": "curve_B", "days_prior": 1, "frat5_value": 3.5}, {"curve_name": "curve_C", "days_prior": 63, "frat5_value": 1.2}, {"curve_name": "curve_C", "days_prior": 56, "frat5_value": 1.2}, {"curve_name": "curve_C", "days_prior": 49, "frat5_value": 1.29}, {"curve_name": "curve_C", "days_prior": 42, "frat5_value": 1.29}, {"curve_name": "curve_C", "days_prior": 35, "frat5_value": 1.37}, {"curve_name": "curve_C", "days_prior": 31, "frat5_value": 1.46}, {"curve_name": "curve_C", "days_prior": 28, "frat5_value": 1.54}, {"curve_name": "curve_C", "days_prior": 24, "frat5_value": 1.63}, {"curve_name": "curve_C", "days_prior": 21, "frat5_value": 1.97}, {"curve_name": "curve_C", "days_prior": 17, "frat5_value": 2.31}, {"curve_name": "curve_C", "days_prior": 14, "frat5_value": 2.74}, {"curve_name": "curve_C", "days_prior": 10, "frat5_value": 2.83}, {"curve_name": "curve_C", "days_prior": 7, "frat5_value": 2.91}, {"curve_name": "curve_C", "days_prior": 5, "frat5_value": 2.91}, {"curve_name": "curve_C", "days_prior": 3, "frat5_value": 3.0}, {"curve_name": "curve_C", "days_prior": 1, "frat5_value": 3.0}, {"curve_name": "curve_D", "days_prior": 63, "frat5_value": 1.15}, {"curve_name": "curve_D", "days_prior": 56, "frat5_value": 1.15}, {"curve_name": "curve_D", "days_prior": 49, "frat5_value": 1.25}, {"curve_name": "curve_D", "days_prior": 42, "frat5_value": 1.25}, {"curve_name": "curve_D", "days_prior": 35, "frat5_value": 1.3}, {"curve_name": "curve_D", "days_prior": 31, "frat5_value": 1.37}, {"curve_name": "curve_D", "days_prior": 28, "frat5_value": 1.45}, {"curve_name": "curve_D", "days_prior": 24, "frat5_value": 1.55}, {"curve_name": "curve_D", "days_prior": 21, "frat5_value": 1.75}, {"curve_name": "curve_D", "days_prior": 17, "frat5_value": 1.95}, {"curve_name": "curve_D", "days_prior": 14, "frat5_value": 2.4}, {"curve_name": "curve_D", "days_prior": 10, "frat5_value": 2.43}, {"curve_name": "curve_D", "days_prior": 7, "frat5_value": 2.46}, {"curve_name": "curve_D", "days_prior": 5, "frat5_value": 2.47}, {"curve_name": "curve_D", "days_prior": 3, "frat5_value": 2.5}, {"curve_name": "curve_D", "days_prior": 1, "frat5_value": 2.5}, {"curve_name": "curve_E", "days_prior": 63, "frat5_value": 1.1}, {"curve_name": "curve_E", "days_prior": 56, "frat5_value": 1.1}, {"curve_name": "curve_E", "days_prior": 49, "frat5_value": 1.15}, {"curve_name": "curve_E", "days_prior": 42, "frat5_value": 1.2}, {"curve_name": "curve_E", "days_prior": 35, "frat5_value": 1.25}, {"curve_name": "curve_E", "days_prior": 31, "frat5_value": 1.31}, {"curve_name": "curve_E", "days_prior": 28, "frat5_value": 1.37}, {"curve_name": "curve_E", "days_prior": 24, "frat5_value": 1.44}, {"curve_name": "curve_E", "days_prior": 21, "frat5_value": 1.51}, {"curve_name": "curve_E", "days_prior": 17, "frat5_value": 1.59}, {"curve_name": "curve_E", "days_prior": 14, "frat5_value": 1.9}, {"curve_name": "curve_E", "days_prior": 10, "frat5_value": 1.93}, {"curve_name": "curve_E", "days_prior": 7, "frat5_value": 1.96}, {"curve_name": "curve_E", "days_prior": 5, "frat5_value": 1.97}, {"curve_name": "curve_E", "days_prior": 3, "frat5_value": 2.0}, {"curve_name": "curve_E", "days_prior": 1, "frat5_value": 2.0}, {"curve_name": "curve_F", "days_prior": 63, "frat5_value": 1.28}, {"curve_name": "curve_F", "days_prior": 56, "frat5_value": 1.29}, {"curve_name": "curve_F", "days_prior": 49, "frat5_value": 1.31}, {"curve_name": "curve_F", "days_prior": 42, "frat5_value": 1.32}, {"curve_name": "curve_F", "days_prior": 35, "frat5_value": 1.34}, {"curve_name": "curve_F", "days_prior": 31, "frat5_value": 1.36}, {"curve_name": "curve_F", "days_prior": 28, "frat5_value": 1.38}, {"curve_name": "curve_F", "days_prior": 24, "frat5_value": 1.41}, {"curve_name": "curve_F", "days_prior": 21, "frat5_value": 1.44}, {"curve_name": "curve_F", "days_prior": 17, "frat5_value": 1.47}, {"curve_name": "curve_F", "days_prior": 14, "frat5_value": 1.51}, {"curve_name": "curve_F", "days_prior": 10, "frat5_value": 1.56}, {"curve_name": "curve_F", "days_prior": 7, "frat5_value": 1.63}, {"curve_name": "curve_F", "days_prior": 5, "frat5_value": 1.7}, {"curve_name": "curve_F", "days_prior": 3, "frat5_value": 1.81}, {"curve_name": "curve_F", "days_prior": 1, "frat5_value": 1.96}, {"curve_name": "curve_G", "days_prior": 63, "frat5_value": 1.01}, {"curve_name": "curve_G", "days_prior": 56, "frat5_value": 1.04}, {"curve_name": "curve_G", "days_prior": 49, "frat5_value": 1.08}, {"curve_name": "curve_G", "days_prior": 42, "frat5_value": 1.11}, {"curve_name": "curve_G", "days_prior": 35, "frat5_value": 1.14}, {"curve_name": "curve_G", "days_prior": 31, "frat5_value": 1.17}, {"curve_name": "curve_G", "days_prior": 28, "frat5_value": 1.21}, {"curve_name": "curve_G", "days_prior": 24, "frat5_value": 1.24}, {"curve_name": "curve_G", "days_prior": 21, "frat5_value": 1.27}, {"curve_name": "curve_G", "days_prior": 17, "frat5_value": 1.3}, {"curve_name": "curve_G", "days_prior": 14, "frat5_value": 1.34}, {"curve_name": "curve_G", "days_prior": 10, "frat5_value": 1.37}, {"curve_name": "curve_G", "days_prior": 7, "frat5_value": 1.4}, {"curve_name": "curve_G", "days_prior": 5, "frat5_value": 1.43}, {"curve_name": "curve_G", "days_prior": 3, "frat5_value": 1.47}, {"curve_name": "curve_G", "days_prior": 1, "frat5_value": 1.5}, {"curve_name": "flat_curve", "days_prior": 63, "frat5_value": 1.5}, {"curve_name": "flat_curve", "days_prior": 56, "frat5_value": 1.5}, {"curve_name": "flat_curve", "days_prior": 49, "frat5_value": 1.5}, {"curve_name": "flat_curve", "days_prior": 42, "frat5_value": 1.5}, {"curve_name": "flat_curve", "days_prior": 35, "frat5_value": 1.5}, {"curve_name": "flat_curve", "days_prior": 31, "frat5_value": 1.5}, {"curve_name": "flat_curve", "days_prior": 28, "frat5_value": 1.5}, {"curve_name": "flat_curve", "days_prior": 24, "frat5_value": 1.5}, {"curve_name": "flat_curve", "days_prior": 21, "frat5_value": 1.5}, {"curve_name": "flat_curve", "days_prior": 17, "frat5_value": 1.5}, {"curve_name": "flat_curve", "days_prior": 14, "frat5_value": 1.5}, {"curve_name": "flat_curve", "days_prior": 10, "frat5_value": 1.5}, {"curve_name": "flat_curve", "days_prior": 7, "frat5_value": 1.5}, {"curve_name": "flat_curve", "days_prior": 5, "frat5_value": 1.5}, {"curve_name": "flat_curve", "days_prior": 3, "frat5_value": 1.5}, {"curve_name": "flat_curve", "days_prior": 1, "frat5_value": 1.5}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>We can assign to AL1 a different Frat5 curve, to change the rate at which
+the forecast predicts buy-up.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">cfg</span><span class="o">.</span><span class="n">carriers</span><span class="o">.</span><span class="n">AL1</span><span class="o">.</span><span class="n">frat5</span> <span class="o">=</span> <span class="s2">&quot;curve_E&quot;</span>
+
+<span class="n">sim3</span> <span class="o">=</span> <span class="n">pax</span><span class="o">.</span><span class="n">MultiSimulation</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+<span class="n">summary3</span> <span class="o">=</span> <span class="n">sim3</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">comp3</span> <span class="o">=</span> <span class="n">Contrast</span><span class="p">(</span><span class="n">curve_C</span><span class="o">=</span><span class="n">summary2</span><span class="p">,</span> <span class="n">curve_E</span><span class="o">=</span><span class="n">summary3</span><span class="p">)</span>
+<span class="n">comp3</span><span class="o">.</span><span class="n">fig_carrier_revenues</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "788ad5eb3f8b48048ac53861e0cb3285"}</script><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre>
+</div><div class="output text_html">
+<style>
+  #altair-viz-2ad61636e353425ea9f533fec966b393.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-2ad61636e353425ea9f533fec966b393.vega-embed details,
+  #altair-viz-2ad61636e353425ea9f533fec966b393.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-2ad61636e353425ea9f533fec966b393"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-2ad61636e353425ea9f533fec966b393") {
+      outputDiv = document.getElementById("altair-viz-2ad61636e353425ea9f533fec966b393");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "data": {"name": "data-b77e345715ac4cf5b957e2f97b45048a"}, "facet": {"row": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "rm_system", "title": "RM System", "type": "nominal"}, "tooltip": [{"field": "source", "title": null, "type": "nominal"}, {"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "rm_system", "title": "RM System", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Revenue ($)", "type": "quantitative"}, {"field": "ratio_0", "format": ".3%", "title": "vs curve_C", "type": "quantitative"}, {"field": "ratio_1", "format": ".3%", "title": "vs curve_E", "type": "quantitative"}], "x": {"axis": {"format": "$.4s"}, "field": "avg_rev", "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["curve_C", "curve_E"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"axis": {"format": "$.4s"}, "field": "avg_rev", "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["curve_C", "curve_E"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 5, "dy": 0}, "encoding": {"text": {"field": "reference_source", "type": "nominal"}, "x": {"field": "avg_rev", "scale": {"domain": [0, 60977.00714285715]}, "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["curve_C", "curve_E"], "title": null, "type": "nominal"}}, "transform": [{"calculate": "datum[\"ratio_label_\" + ref_source]", "as": "reference_source"}]}], "height": 50, "width": 500}, "params": [{"name": "ref_source", "bind": {"input": "radio", "options": ["0", "1"], "labels": ["curve_C", "curve_E"], "name": "Reference Source: "}, "value": "0"}], "title": "Carrier Revenues", "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-b77e345715ac4cf5b957e2f97b45048a": [{"source": "curve_C", "carrier": "AL1", "avg_rev": 56987.857142857145, "rm_system": "L", "ratio_0": null, "ratio_1": 0.04313388625979697, "ratio_label": " ", "ratio_label_0": " ", "ratio_label_1": "+4.3%"}, {"source": "curve_C", "carrier": "AL2", "avg_rev": 56829.21428571429, "rm_system": "L", "ratio_0": null, "ratio_1": 0.01655070462035968, "ratio_label": " ", "ratio_label_0": " ", "ratio_label_1": "+1.7%"}, {"source": "curve_E", "carrier": "AL1", "avg_rev": 54631.392857142855, "rm_system": "L", "ratio_0": -0.04135028765526494, "ratio_1": null, "ratio_label": "-4.1%", "ratio_label_0": "-4.1%", "ratio_label_1": " "}, {"source": "curve_E", "carrier": "AL2", "avg_rev": 55903.96428571429, "rm_system": "L", "ratio_0": -0.016281238648632734, "ratio_1": null, "ratio_label": "-1.6%", "ratio_label_0": "-1.6%", "ratio_label_1": " "}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>Apparently, we’ve made things substantially worse for AL1 with this change. Perhaps moving
+in the other direction would be more helpful</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">cfg</span><span class="o">.</span><span class="n">carriers</span><span class="o">.</span><span class="n">AL1</span><span class="o">.</span><span class="n">frat5</span> <span class="o">=</span> <span class="s2">&quot;curve_A&quot;</span>
+
+<span class="n">sim4</span> <span class="o">=</span> <span class="n">pax</span><span class="o">.</span><span class="n">MultiSimulation</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+<span class="n">summary4</span> <span class="o">=</span> <span class="n">sim4</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="n">comp4</span> <span class="o">=</span> <span class="n">Contrast</span><span class="p">(</span><span class="n">curve_E</span><span class="o">=</span><span class="n">summary3</span><span class="p">,</span> <span class="n">curve_C</span><span class="o">=</span><span class="n">summary2</span><span class="p">,</span> <span class="n">curve_A</span><span class="o">=</span><span class="n">summary4</span><span class="p">)</span>
+<span class="n">comp4</span><span class="o">.</span><span class="n">fig_carrier_revenues</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "6536ddcd14f94236a19c3801aac3e3d9"}</script><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre>
+</div><div class="output text_html">
+<style>
+  #altair-viz-8103f77a646342f1b33c651a5fc5cd14.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-8103f77a646342f1b33c651a5fc5cd14.vega-embed details,
+  #altair-viz-8103f77a646342f1b33c651a5fc5cd14.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-8103f77a646342f1b33c651a5fc5cd14"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-8103f77a646342f1b33c651a5fc5cd14") {
+      outputDiv = document.getElementById("altair-viz-8103f77a646342f1b33c651a5fc5cd14");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "data": {"name": "data-ab270e81c6b2c23b5c853615e735def2"}, "facet": {"row": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "rm_system", "title": "RM System", "type": "nominal"}, "tooltip": [{"field": "source", "title": null, "type": "nominal"}, {"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "rm_system", "title": "RM System", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Revenue ($)", "type": "quantitative"}, {"field": "ratio_0", "format": ".3%", "title": "vs curve_E", "type": "quantitative"}, {"field": "ratio_1", "format": ".3%", "title": "vs curve_C", "type": "quantitative"}, {"field": "ratio_2", "format": ".3%", "title": "vs curve_A", "type": "quantitative"}], "x": {"axis": {"format": "$.4s"}, "field": "avg_rev", "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["curve_E", "curve_C", "curve_A"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"axis": {"format": "$.4s"}, "field": "avg_rev", "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["curve_E", "curve_C", "curve_A"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 5, "dy": 0}, "encoding": {"text": {"field": "reference_source", "type": "nominal"}, "x": {"field": "avg_rev", "scale": {"domain": [0, 61857.00571428571]}, "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["curve_E", "curve_C", "curve_A"], "title": null, "type": "nominal"}}, "transform": [{"calculate": "datum[\"ratio_label_\" + ref_source]", "as": "reference_source"}]}], "height": 70, "width": 500}, "params": [{"name": "ref_source", "bind": {"input": "radio", "options": ["0", "1", "2"], "labels": ["curve_E", "curve_C", "curve_A"], "name": "Reference Source: "}, "value": "0"}], "title": "Carrier Revenues", "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-ab270e81c6b2c23b5c853615e735def2": [{"source": "curve_E", "carrier": "AL1", "avg_rev": 54631.392857142855, "rm_system": "L", "ratio_0": null, "ratio_1": -0.04135028765526494, "ratio_2": -0.02666170350857111, "ratio_label": " ", "ratio_label_0": " ", "ratio_label_1": "-4.1%", "ratio_label_2": "-2.7%"}, {"source": "curve_E", "carrier": "AL2", "avg_rev": 55903.96428571429, "rm_system": "L", "ratio_0": null, "ratio_1": -0.016281238648632734, "ratio_2": -0.032975471492962094, "ratio_label": " ", "ratio_label_0": " ", "ratio_label_1": "-1.6%", "ratio_label_2": "-3.3%"}, {"source": "curve_C", "carrier": "AL1", "avg_rev": 56987.857142857145, "rm_system": "L", "ratio_0": 0.04313388625979697, "ratio_1": null, "ratio_2": 0.015322159864594953, "ratio_label": "+4.3%", "ratio_label_0": "+4.3%", "ratio_label_1": " ", "ratio_label_2": "+1.5%"}, {"source": "curve_C", "carrier": "AL2", "avg_rev": 56829.21428571429, "rm_system": "L", "ratio_0": 0.01655070462035968, "ratio_1": null, "ratio_2": -0.016970534160999362, "ratio_label": "+1.7%", "ratio_label_0": "+1.7%", "ratio_label_1": " ", "ratio_label_2": "-1.7%"}, {"source": "curve_A", "carrier": "AL1", "avg_rev": 56127.857142857145, "rm_system": "L", "ratio_0": 0.027392021463326754, "ratio_1": -0.015090934158906055, "ratio_2": null, "ratio_label": "+2.7%", "ratio_label_0": "+2.7%", "ratio_label_1": "-1.5%", "ratio_label_2": " "}, {"source": "curve_A", "carrier": "AL2", "avg_rev": 57810.28571428571, "rm_system": "L", "ratio_0": 0.03409993285679325, "ratio_1": 0.017263505063416673, "ratio_2": null, "ratio_label": "+3.4%", "ratio_label_0": "+3.4%", "ratio_label_1": "+1.7%", "ratio_label_2": " "}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>Looks like using “curve_A” for AL1 gives the best revenue result.  We can
+also look at how the fare class mix changes with the various curves.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">comp4</span><span class="o">.</span><span class="n">fig_fare_class_mix</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-a4b3e3871d1c47639fc840e35b90b3ea.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-a4b3e3871d1c47639fc840e35b90b3ea.vega-embed details,
+  #altair-viz-a4b3e3871d1c47639fc840e35b90b3ea.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-a4b3e3871d1c47639fc840e35b90b3ea"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-a4b3e3871d1c47639fc840e35b90b3ea") {
+      outputDiv = document.getElementById("altair-viz-a4b3e3871d1c47639fc840e35b90b3ea");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "data": {"name": "data-c3c7cb30f2cede4b49f05a658a52b49a"}, "facet": {"column": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "booking_class", "type": "nominal"}, "tooltip": [{"field": "source", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "source", "sort": ["curve_E", "curve_C", "curve_A"], "title": "Source", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 3}, "encoding": {"opacity": {"condition": {"test": "datum.avg_sold < 18.163", "value": 0}, "value": 1}, "order": {"field": "booking_class", "sort": "descending", "type": "nominal"}, "text": {"field": "avg_sold", "format": ".2f", "type": "quantitative"}, "tooltip": [{"field": "source", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "source", "sort": ["curve_E", "curve_C", "curve_A"], "title": "Source", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}], "height": 300, "width": 200}, "title": "Carrier Fare Class Mix", "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-c3c7cb30f2cede4b49f05a658a52b49a": [{"source": "curve_E", "carrier": "AL1", "booking_class": "Y0", "avg_sold": 1.4214285714285715}, {"source": "curve_E", "carrier": "AL1", "booking_class": "Y1", "avg_sold": 5.031428571428571}, {"source": "curve_E", "carrier": "AL1", "booking_class": "Y2", "avg_sold": 11.877142857142857}, {"source": "curve_E", "carrier": "AL1", "booking_class": "Y3", "avg_sold": 24.71}, {"source": "curve_E", "carrier": "AL1", "booking_class": "Y4", "avg_sold": 37.19857142857143}, {"source": "curve_E", "carrier": "AL1", "booking_class": "Y5", "avg_sold": 222.48285714285714}, {"source": "curve_E", "carrier": "AL2", "booking_class": "Y0", "avg_sold": 3.8914285714285715}, {"source": "curve_E", "carrier": "AL2", "booking_class": "Y1", "avg_sold": 7.601428571428571}, {"source": "curve_E", "carrier": "AL2", "booking_class": "Y2", "avg_sold": 13.782857142857143}, {"source": "curve_E", "carrier": "AL2", "booking_class": "Y3", "avg_sold": 23.934285714285714}, {"source": "curve_E", "carrier": "AL2", "booking_class": "Y4", "avg_sold": 18.53}, {"source": "curve_E", "carrier": "AL2", "booking_class": "Y5", "avg_sold": 233.19571428571427}, {"source": "curve_C", "carrier": "AL1", "booking_class": "Y0", "avg_sold": 3.322857142857143}, {"source": "curve_C", "carrier": "AL1", "booking_class": "Y1", "avg_sold": 8.194285714285714}, {"source": "curve_C", "carrier": "AL1", "booking_class": "Y2", "avg_sold": 16.634285714285713}, {"source": "curve_C", "carrier": "AL1", "booking_class": "Y3", "avg_sold": 30.267142857142858}, {"source": "curve_C", "carrier": "AL1", "booking_class": "Y4", "avg_sold": 17.81714285714286}, {"source": "curve_C", "carrier": "AL1", "booking_class": "Y5", "avg_sold": 225.25428571428571}, {"source": "curve_C", "carrier": "AL2", "booking_class": "Y0", "avg_sold": 3.2457142857142856}, {"source": "curve_C", "carrier": "AL2", "booking_class": "Y1", "avg_sold": 8.037142857142857}, {"source": "curve_C", "carrier": "AL2", "booking_class": "Y2", "avg_sold": 16.63}, {"source": "curve_C", "carrier": "AL2", "booking_class": "Y3", "avg_sold": 30.062857142857144}, {"source": "curve_C", "carrier": "AL2", "booking_class": "Y4", "avg_sold": 17.748571428571427}, {"source": "curve_C", "carrier": "AL2", "booking_class": "Y5", "avg_sold": 225.54}, {"source": "curve_A", "carrier": "AL1", "booking_class": "Y0", "avg_sold": 4.84}, {"source": "curve_A", "carrier": "AL1", "booking_class": "Y1", "avg_sold": 10.685714285714285}, {"source": "curve_A", "carrier": "AL1", "booking_class": "Y2", "avg_sold": 12.575714285714286}, {"source": "curve_A", "carrier": "AL1", "booking_class": "Y3", "avg_sold": 14.458571428571428}, {"source": "curve_A", "carrier": "AL1", "booking_class": "Y4", "avg_sold": 11.784285714285714}, {"source": "curve_A", "carrier": "AL1", "booking_class": "Y5", "avg_sold": 248.03285714285715}, {"source": "curve_A", "carrier": "AL2", "booking_class": "Y0", "avg_sold": 3.7214285714285715}, {"source": "curve_A", "carrier": "AL2", "booking_class": "Y1", "avg_sold": 10.571428571428571}, {"source": "curve_A", "carrier": "AL2", "booking_class": "Y2", "avg_sold": 18.99142857142857}, {"source": "curve_A", "carrier": "AL2", "booking_class": "Y3", "avg_sold": 26.59285714285714}, {"source": "curve_A", "carrier": "AL2", "booking_class": "Y4", "avg_sold": 14.151428571428571}, {"source": "curve_A", "carrier": "AL2", "booking_class": "Y5", "avg_sold": 227.14857142857142}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>It is interesting to note here how the results are also changing for AL2.
+This is expected; since PassengerSim is simulating the entire competitive
+environment, it is to be expected that other carriers can see changes in
+their results even if they don’t change their own RM strategies.</p>
+<p>The head-to-head revenue figure can show us some details about when
+the Frat5 curve matter most.  Spoiler alert: it’s the higher demand
+days.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">summary4</span><span class="o">.</span><span class="n">fig_carrier_head_to_head_revenue</span><span class="p">(</span><span class="s2">&quot;AL1&quot;</span><span class="p">,</span> <span class="s2">&quot;AL2&quot;</span><span class="p">,</span> <span class="n">mean_adjusted</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-b8df4772fab74f2fb31bd0771f620a87.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-b8df4772fab74f2fb31bd0771f620a87.vega-embed details,
+  #altair-viz-b8df4772fab74f2fb31bd0771f620a87.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-b8df4772fab74f2fb31bd0771f620a87"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-b8df4772fab74f2fb31bd0771f620a87") {
+      outputDiv = document.getElementById("altair-viz-b8df4772fab74f2fb31bd0771f620a87");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "layer": [{"data": {"name": "data-fbe641b48e8b15c806e9d16e900745b6"}, "mark": {"type": "circle", "opacity": 0.3}, "encoding": {"x": {"axis": {"format": "$.2s"}, "field": "AL1", "scale": {"zero": false}, "title": "AL1 Revenue", "type": "quantitative"}, "y": {"axis": {"format": "$.2s"}, "field": "AL2", "scale": {"zero": false}, "title": "AL2 Revenue", "type": "quantitative"}}, "name": "view_c5425ec231531018_0"}, {"data": {"name": "data-54eb757d1c366f537a50c22ee21f1c2f"}, "mark": {"type": "line", "color": "red", "opacity": 0.3}, "encoding": {"x": {"field": "AL1", "type": "quantitative"}, "y": {"field": "AL2", "type": "quantitative"}}}], "params": [{"name": "param_1e9efca18e7a2868", "select": {"type": "interval", "encodings": ["x", "y"]}, "bind": "scales", "views": ["view_c5425ec231531018_0"]}], "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-fbe641b48e8b15c806e9d16e900745b6": [{"trial": 0, "sample": 50, "AL1": 44450.0, "AL2": 41400.0}, {"trial": 0, "sample": 51, "AL1": 46525.0, "AL2": 47375.0}, {"trial": 0, "sample": 52, "AL1": 55775.0, "AL2": 60050.0}, {"trial": 0, "sample": 53, "AL1": 57925.0, "AL2": 59225.0}, {"trial": 0, "sample": 54, "AL1": 63400.0, "AL2": 64125.0}, {"trial": 0, "sample": 55, "AL1": 65350.0, "AL2": 67225.0}, {"trial": 0, "sample": 56, "AL1": 58825.0, "AL2": 61525.0}, {"trial": 0, "sample": 57, "AL1": 45250.0, "AL2": 45250.0}, {"trial": 0, "sample": 58, "AL1": 51500.0, "AL2": 54100.0}, {"trial": 0, "sample": 59, "AL1": 41200.0, "AL2": 41100.0}, {"trial": 0, "sample": 60, "AL1": 55200.0, "AL2": 54875.0}, {"trial": 0, "sample": 61, "AL1": 53150.0, "AL2": 56600.0}, {"trial": 0, "sample": 62, "AL1": 56800.0, "AL2": 57600.0}, {"trial": 0, "sample": 63, "AL1": 38300.0, "AL2": 37350.0}, {"trial": 0, "sample": 64, "AL1": 63175.0, "AL2": 63975.0}, {"trial": 0, "sample": 65, "AL1": 66175.0, "AL2": 70375.0}, {"trial": 0, "sample": 66, "AL1": 52550.0, "AL2": 58200.0}, {"trial": 0, "sample": 67, "AL1": 39050.0, "AL2": 39050.0}, {"trial": 0, "sample": 68, "AL1": 59100.0, "AL2": 61025.0}, {"trial": 0, "sample": 69, "AL1": 40700.0, "AL2": 45850.0}, {"trial": 0, "sample": 70, "AL1": 53825.0, "AL2": 56750.0}, {"trial": 0, "sample": 71, "AL1": 67325.0, "AL2": 68350.0}, {"trial": 0, "sample": 72, "AL1": 58150.0, "AL2": 63225.0}, {"trial": 0, "sample": 73, "AL1": 57050.0, "AL2": 58800.0}, {"trial": 0, "sample": 74, "AL1": 66725.0, "AL2": 71825.0}, {"trial": 0, "sample": 75, "AL1": 44550.0, "AL2": 43975.0}, {"trial": 0, "sample": 76, "AL1": 52850.0, "AL2": 58425.0}, {"trial": 0, "sample": 77, "AL1": 45550.0, "AL2": 45800.0}, {"trial": 0, "sample": 78, "AL1": 49150.0, "AL2": 49775.0}, {"trial": 0, "sample": 79, "AL1": 55050.0, "AL2": 58350.0}, {"trial": 0, "sample": 80, "AL1": 66900.0, "AL2": 67825.0}, {"trial": 0, "sample": 81, "AL1": 56500.0, "AL2": 60400.0}, {"trial": 0, "sample": 82, "AL1": 49125.0, "AL2": 52125.0}, {"trial": 0, "sample": 83, "AL1": 41650.0, "AL2": 35450.0}, {"trial": 0, "sample": 84, "AL1": 64825.0, "AL2": 67950.0}, {"trial": 0, "sample": 85, "AL1": 56950.0, "AL2": 52550.0}, {"trial": 0, "sample": 86, "AL1": 73100.0, "AL2": 75425.0}, {"trial": 0, "sample": 87, "AL1": 54475.0, "AL2": 59300.0}, {"trial": 0, "sample": 88, "AL1": 43200.0, "AL2": 45350.0}, {"trial": 0, "sample": 89, "AL1": 68300.0, "AL2": 70350.0}, {"trial": 0, "sample": 90, "AL1": 45550.0, "AL2": 45100.0}, {"trial": 0, "sample": 91, "AL1": 55400.0, "AL2": 56125.0}, {"trial": 0, "sample": 92, "AL1": 72550.0, "AL2": 75425.0}, {"trial": 0, "sample": 93, "AL1": 68200.0, "AL2": 69425.0}, {"trial": 0, "sample": 94, "AL1": 59925.0, "AL2": 62125.0}, {"trial": 0, "sample": 95, "AL1": 62400.0, "AL2": 67150.0}, {"trial": 0, "sample": 96, "AL1": 57750.0, "AL2": 58300.0}, {"trial": 0, "sample": 97, "AL1": 62950.0, "AL2": 66050.0}, {"trial": 0, "sample": 98, "AL1": 75050.0, "AL2": 77825.0}, {"trial": 0, "sample": 99, "AL1": 35400.0, "AL2": 34100.0}, {"trial": 0, "sample": 100, "AL1": 42350.0, "AL2": 43450.0}, {"trial": 0, "sample": 101, "AL1": 66400.0, "AL2": 72325.0}, {"trial": 0, "sample": 102, "AL1": 44450.0, "AL2": 44000.0}, {"trial": 0, "sample": 103, "AL1": 42150.0, "AL2": 44650.0}, {"trial": 0, "sample": 104, "AL1": 62575.0, "AL2": 67800.0}, {"trial": 0, "sample": 105, "AL1": 68800.0, "AL2": 70625.0}, {"trial": 0, "sample": 106, "AL1": 56575.0, "AL2": 58225.0}, {"trial": 0, "sample": 107, "AL1": 56975.0, "AL2": 59400.0}, {"trial": 0, "sample": 108, "AL1": 64475.0, "AL2": 68875.0}, {"trial": 0, "sample": 109, "AL1": 70125.0, "AL2": 73100.0}, {"trial": 0, "sample": 110, "AL1": 70500.0, "AL2": 74300.0}, {"trial": 0, "sample": 111, "AL1": 65650.0, "AL2": 68750.0}, {"trial": 0, "sample": 112, "AL1": 56425.0, "AL2": 63100.0}, {"trial": 0, "sample": 113, "AL1": 73225.0, "AL2": 76500.0}, {"trial": 0, "sample": 114, "AL1": 62625.0, "AL2": 59975.0}, {"trial": 0, "sample": 115, "AL1": 53400.0, "AL2": 56675.0}, {"trial": 0, "sample": 116, "AL1": 64800.0, "AL2": 68175.0}, {"trial": 0, "sample": 117, "AL1": 44950.0, "AL2": 45900.0}, {"trial": 0, "sample": 118, "AL1": 51700.0, "AL2": 57675.0}, {"trial": 0, "sample": 119, "AL1": 46950.0, "AL2": 47100.0}, {"trial": 0, "sample": 120, "AL1": 54475.0, "AL2": 57575.0}, {"trial": 0, "sample": 121, "AL1": 48975.0, "AL2": 53350.0}, {"trial": 0, "sample": 122, "AL1": 37150.0, "AL2": 34350.0}, {"trial": 0, "sample": 123, "AL1": 62875.0, "AL2": 67700.0}, {"trial": 0, "sample": 124, "AL1": 73400.0, "AL2": 76125.0}, {"trial": 0, "sample": 125, "AL1": 61500.0, "AL2": 61225.0}, {"trial": 0, "sample": 126, "AL1": 62550.0, "AL2": 68850.0}, {"trial": 0, "sample": 127, "AL1": 61050.0, "AL2": 64950.0}, {"trial": 0, "sample": 128, "AL1": 63625.0, "AL2": 66675.0}, {"trial": 0, "sample": 129, "AL1": 35250.0, "AL2": 42900.0}, {"trial": 0, "sample": 130, "AL1": 75025.0, "AL2": 79250.0}, {"trial": 0, "sample": 131, "AL1": 66025.0, "AL2": 69100.0}, {"trial": 0, "sample": 132, "AL1": 65450.0, "AL2": 71000.0}, {"trial": 0, "sample": 133, "AL1": 56425.0, "AL2": 60500.0}, {"trial": 0, "sample": 134, "AL1": 29600.0, "AL2": 30200.0}, {"trial": 0, "sample": 135, "AL1": 70000.0, "AL2": 75900.0}, {"trial": 0, "sample": 136, "AL1": 69025.0, "AL2": 74750.0}, {"trial": 0, "sample": 137, "AL1": 42550.0, "AL2": 43100.0}, {"trial": 0, "sample": 138, "AL1": 61975.0, "AL2": 65875.0}, {"trial": 0, "sample": 139, "AL1": 44150.0, "AL2": 42850.0}, {"trial": 0, "sample": 140, "AL1": 74775.0, "AL2": 79700.0}, {"trial": 0, "sample": 141, "AL1": 75900.0, "AL2": 79275.0}, {"trial": 0, "sample": 142, "AL1": 69875.0, "AL2": 75600.0}, {"trial": 0, "sample": 143, "AL1": 41000.0, "AL2": 42250.0}, {"trial": 0, "sample": 144, "AL1": 41200.0, "AL2": 38000.0}, {"trial": 0, "sample": 145, "AL1": 69075.0, "AL2": 70925.0}, {"trial": 0, "sample": 146, "AL1": 57775.0, "AL2": 59600.0}, {"trial": 0, "sample": 147, "AL1": 65400.0, "AL2": 70050.0}, {"trial": 0, "sample": 148, "AL1": 62075.0, "AL2": 66425.0}, {"trial": 0, "sample": 149, "AL1": 46325.0, "AL2": 45875.0}, {"trial": 0, "sample": 150, "AL1": 63950.0, "AL2": 67775.0}, {"trial": 0, "sample": 151, "AL1": 45650.0, "AL2": 41850.0}, {"trial": 0, "sample": 152, "AL1": 50950.0, "AL2": 50625.0}, {"trial": 0, "sample": 153, "AL1": 65875.0, "AL2": 70200.0}, {"trial": 0, "sample": 154, "AL1": 67625.0, "AL2": 70275.0}, {"trial": 0, "sample": 155, "AL1": 50225.0, "AL2": 52075.0}, {"trial": 0, "sample": 156, "AL1": 57675.0, "AL2": 59500.0}, {"trial": 0, "sample": 157, "AL1": 66625.0, "AL2": 70900.0}, {"trial": 0, "sample": 158, "AL1": 51925.0, "AL2": 54500.0}, {"trial": 0, "sample": 159, "AL1": 58575.0, "AL2": 62600.0}, {"trial": 0, "sample": 160, "AL1": 50275.0, "AL2": 49525.0}, {"trial": 0, "sample": 161, "AL1": 52875.0, "AL2": 56325.0}, {"trial": 0, "sample": 162, "AL1": 65350.0, "AL2": 72400.0}, {"trial": 0, "sample": 163, "AL1": 74350.0, "AL2": 77150.0}, {"trial": 0, "sample": 164, "AL1": 61825.0, "AL2": 65525.0}, {"trial": 0, "sample": 165, "AL1": 55475.0, "AL2": 61800.0}, {"trial": 0, "sample": 166, "AL1": 55650.0, "AL2": 57625.0}, {"trial": 0, "sample": 167, "AL1": 47850.0, "AL2": 49075.0}, {"trial": 0, "sample": 168, "AL1": 54200.0, "AL2": 57300.0}, {"trial": 0, "sample": 169, "AL1": 71850.0, "AL2": 74575.0}, {"trial": 0, "sample": 170, "AL1": 57450.0, "AL2": 59975.0}, {"trial": 0, "sample": 171, "AL1": 46850.0, "AL2": 46375.0}, {"trial": 0, "sample": 172, "AL1": 36750.0, "AL2": 36450.0}, {"trial": 0, "sample": 173, "AL1": 79875.0, "AL2": 80525.0}, {"trial": 0, "sample": 174, "AL1": 44375.0, "AL2": 47225.0}, {"trial": 0, "sample": 175, "AL1": 39550.0, "AL2": 38000.0}, {"trial": 0, "sample": 176, "AL1": 76975.0, "AL2": 75825.0}, {"trial": 0, "sample": 177, "AL1": 59275.0, "AL2": 62325.0}, {"trial": 0, "sample": 178, "AL1": 37875.0, "AL2": 38375.0}, {"trial": 0, "sample": 179, "AL1": 72300.0, "AL2": 76525.0}, {"trial": 0, "sample": 180, "AL1": 54925.0, "AL2": 61475.0}, {"trial": 0, "sample": 181, "AL1": 61350.0, "AL2": 65075.0}, {"trial": 0, "sample": 182, "AL1": 53975.0, "AL2": 57950.0}, {"trial": 0, "sample": 183, "AL1": 52900.0, "AL2": 54775.0}, {"trial": 0, "sample": 184, "AL1": 44975.0, "AL2": 44725.0}, {"trial": 0, "sample": 185, "AL1": 46150.0, "AL2": 46625.0}, {"trial": 0, "sample": 186, "AL1": 60275.0, "AL2": 64150.0}, {"trial": 0, "sample": 187, "AL1": 65150.0, "AL2": 66725.0}, {"trial": 0, "sample": 188, "AL1": 84000.0, "AL2": 82625.0}, {"trial": 0, "sample": 189, "AL1": 51475.0, "AL2": 52050.0}, {"trial": 0, "sample": 190, "AL1": 70250.0, "AL2": 72525.0}, {"trial": 0, "sample": 191, "AL1": 41200.0, "AL2": 39200.0}, {"trial": 0, "sample": 192, "AL1": 45750.0, "AL2": 44950.0}, {"trial": 0, "sample": 193, "AL1": 46850.0, "AL2": 45750.0}, {"trial": 0, "sample": 194, "AL1": 68500.0, "AL2": 74000.0}, {"trial": 0, "sample": 195, "AL1": 67300.0, "AL2": 72400.0}, {"trial": 0, "sample": 196, "AL1": 75600.0, "AL2": 77125.0}, {"trial": 0, "sample": 197, "AL1": 60600.0, "AL2": 66925.0}, {"trial": 0, "sample": 198, "AL1": 69025.0, "AL2": 72250.0}, {"trial": 0, "sample": 199, "AL1": 40900.0, "AL2": 38750.0}, {"trial": 0, "sample": 200, "AL1": 48050.0, "AL2": 50875.0}, {"trial": 0, "sample": 201, "AL1": 55325.0, "AL2": 59750.0}, {"trial": 0, "sample": 202, "AL1": 51600.0, "AL2": 52975.0}, {"trial": 0, "sample": 203, "AL1": 71575.0, "AL2": 72125.0}, {"trial": 0, "sample": 204, "AL1": 70550.0, "AL2": 73325.0}, {"trial": 0, "sample": 205, "AL1": 45400.0, "AL2": 50725.0}, {"trial": 0, "sample": 206, "AL1": 42800.0, "AL2": 42000.0}, {"trial": 0, "sample": 207, "AL1": 65150.0, "AL2": 70350.0}, {"trial": 0, "sample": 208, "AL1": 56200.0, "AL2": 59350.0}, {"trial": 0, "sample": 209, "AL1": 62025.0, "AL2": 66775.0}, {"trial": 0, "sample": 210, "AL1": 47975.0, "AL2": 49325.0}, {"trial": 0, "sample": 211, "AL1": 60800.0, "AL2": 66500.0}, {"trial": 0, "sample": 212, "AL1": 51000.0, "AL2": 54875.0}, {"trial": 0, "sample": 213, "AL1": 59575.0, "AL2": 64350.0}, {"trial": 0, "sample": 214, "AL1": 44400.0, "AL2": 42050.0}, {"trial": 0, "sample": 215, "AL1": 79150.0, "AL2": 81800.0}, {"trial": 0, "sample": 216, "AL1": 47675.0, "AL2": 46300.0}, {"trial": 0, "sample": 217, "AL1": 59525.0, "AL2": 65700.0}, {"trial": 0, "sample": 218, "AL1": 42050.0, "AL2": 40650.0}, {"trial": 0, "sample": 219, "AL1": 55875.0, "AL2": 57925.0}, {"trial": 0, "sample": 220, "AL1": 35850.0, "AL2": 35450.0}, {"trial": 0, "sample": 221, "AL1": 42350.0, "AL2": 42900.0}, {"trial": 0, "sample": 222, "AL1": 63850.0, "AL2": 65875.0}, {"trial": 0, "sample": 223, "AL1": 48550.0, "AL2": 49875.0}, {"trial": 0, "sample": 224, "AL1": 52850.0, "AL2": 56275.0}, {"trial": 0, "sample": 225, "AL1": 73100.0, "AL2": 75875.0}, {"trial": 0, "sample": 226, "AL1": 65100.0, "AL2": 65425.0}, {"trial": 0, "sample": 227, "AL1": 72775.0, "AL2": 75650.0}, {"trial": 0, "sample": 228, "AL1": 58600.0, "AL2": 63750.0}, {"trial": 0, "sample": 229, "AL1": 66325.0, "AL2": 70375.0}, {"trial": 0, "sample": 230, "AL1": 73975.0, "AL2": 77425.0}, {"trial": 0, "sample": 231, "AL1": 69650.0, "AL2": 69200.0}, {"trial": 0, "sample": 232, "AL1": 65200.0, "AL2": 68200.0}, {"trial": 0, "sample": 233, "AL1": 69975.0, "AL2": 71600.0}, {"trial": 0, "sample": 234, "AL1": 66350.0, "AL2": 68100.0}, {"trial": 0, "sample": 235, "AL1": 35450.0, "AL2": 35100.0}, {"trial": 0, "sample": 236, "AL1": 71800.0, "AL2": 74650.0}, {"trial": 0, "sample": 237, "AL1": 65775.0, "AL2": 68625.0}, {"trial": 0, "sample": 238, "AL1": 62975.0, "AL2": 68125.0}, {"trial": 0, "sample": 239, "AL1": 43500.0, "AL2": 44225.0}, {"trial": 0, "sample": 240, "AL1": 63375.0, "AL2": 66450.0}, {"trial": 0, "sample": 241, "AL1": 46900.0, "AL2": 42700.0}, {"trial": 0, "sample": 242, "AL1": 37550.0, "AL2": 39550.0}, {"trial": 0, "sample": 243, "AL1": 42725.0, "AL2": 41350.0}, {"trial": 0, "sample": 244, "AL1": 30850.0, "AL2": 30350.0}, {"trial": 0, "sample": 245, "AL1": 58275.0, "AL2": 62075.0}, {"trial": 0, "sample": 246, "AL1": 69225.0, "AL2": 72325.0}, {"trial": 0, "sample": 247, "AL1": 56125.0, "AL2": 59775.0}, {"trial": 0, "sample": 248, "AL1": 46800.0, "AL2": 47075.0}, {"trial": 0, "sample": 249, "AL1": 46075.0, "AL2": 45675.0}, {"trial": 0, "sample": 250, "AL1": 65350.0, "AL2": 67925.0}, {"trial": 0, "sample": 251, "AL1": 65200.0, "AL2": 70075.0}, {"trial": 0, "sample": 252, "AL1": 61275.0, "AL2": 66475.0}, {"trial": 0, "sample": 253, "AL1": 43900.0, "AL2": 45150.0}, {"trial": 0, "sample": 254, "AL1": 40000.0, "AL2": 36900.0}, {"trial": 0, "sample": 255, "AL1": 58325.0, "AL2": 59400.0}, {"trial": 0, "sample": 256, "AL1": 55750.0, "AL2": 59725.0}, {"trial": 0, "sample": 257, "AL1": 64650.0, "AL2": 66400.0}, {"trial": 0, "sample": 258, "AL1": 66950.0, "AL2": 66025.0}, {"trial": 0, "sample": 259, "AL1": 64775.0, "AL2": 67100.0}, {"trial": 0, "sample": 260, "AL1": 71300.0, "AL2": 71850.0}, {"trial": 0, "sample": 261, "AL1": 57500.0, "AL2": 60550.0}, {"trial": 0, "sample": 262, "AL1": 39750.0, "AL2": 44700.0}, {"trial": 0, "sample": 263, "AL1": 68850.0, "AL2": 71425.0}, {"trial": 0, "sample": 264, "AL1": 60475.0, "AL2": 57850.0}, {"trial": 0, "sample": 265, "AL1": 60050.0, "AL2": 62850.0}, {"trial": 0, "sample": 266, "AL1": 65075.0, "AL2": 66650.0}, {"trial": 0, "sample": 267, "AL1": 42000.0, "AL2": 41500.0}, {"trial": 0, "sample": 268, "AL1": 46450.0, "AL2": 46000.0}, {"trial": 0, "sample": 269, "AL1": 33600.0, "AL2": 35250.0}, {"trial": 0, "sample": 270, "AL1": 66700.0, "AL2": 70000.0}, {"trial": 0, "sample": 271, "AL1": 51500.0, "AL2": 53675.0}, {"trial": 0, "sample": 272, "AL1": 75850.0, "AL2": 77825.0}, {"trial": 0, "sample": 273, "AL1": 60350.0, "AL2": 60525.0}, {"trial": 0, "sample": 274, "AL1": 45400.0, "AL2": 45300.0}, {"trial": 0, "sample": 275, "AL1": 47100.0, "AL2": 47500.0}, {"trial": 0, "sample": 276, "AL1": 57825.0, "AL2": 58975.0}, {"trial": 0, "sample": 277, "AL1": 53675.0, "AL2": 53925.0}, {"trial": 0, "sample": 278, "AL1": 41350.0, "AL2": 45250.0}, {"trial": 0, "sample": 279, "AL1": 50625.0, "AL2": 55400.0}, {"trial": 0, "sample": 280, "AL1": 48250.0, "AL2": 46375.0}, {"trial": 0, "sample": 281, "AL1": 45900.0, "AL2": 48800.0}, {"trial": 0, "sample": 282, "AL1": 66150.0, "AL2": 67075.0}, {"trial": 0, "sample": 283, "AL1": 70950.0, "AL2": 71825.0}, {"trial": 0, "sample": 284, "AL1": 44750.0, "AL2": 47200.0}, {"trial": 0, "sample": 285, "AL1": 47350.0, "AL2": 45675.0}, {"trial": 0, "sample": 286, "AL1": 52150.0, "AL2": 53450.0}, {"trial": 0, "sample": 287, "AL1": 68075.0, "AL2": 70725.0}, {"trial": 0, "sample": 288, "AL1": 73100.0, "AL2": 71925.0}, {"trial": 0, "sample": 289, "AL1": 70325.0, "AL2": 69675.0}, {"trial": 0, "sample": 290, "AL1": 70950.0, "AL2": 70325.0}, {"trial": 0, "sample": 291, "AL1": 56875.0, "AL2": 60850.0}, {"trial": 0, "sample": 292, "AL1": 39000.0, "AL2": 37550.0}, {"trial": 0, "sample": 293, "AL1": 57150.0, "AL2": 55375.0}, {"trial": 0, "sample": 294, "AL1": 65075.0, "AL2": 68075.0}, {"trial": 0, "sample": 295, "AL1": 62800.0, "AL2": 66250.0}, {"trial": 0, "sample": 296, "AL1": 54925.0, "AL2": 58200.0}, {"trial": 0, "sample": 297, "AL1": 57850.0, "AL2": 60100.0}, {"trial": 0, "sample": 298, "AL1": 31650.0, "AL2": 33850.0}, {"trial": 0, "sample": 299, "AL1": 63725.0, "AL2": 65000.0}, {"trial": 0, "sample": 300, "AL1": 76475.0, "AL2": 76350.0}, {"trial": 0, "sample": 301, "AL1": 60375.0, "AL2": 66450.0}, {"trial": 0, "sample": 302, "AL1": 67375.0, "AL2": 69700.0}, {"trial": 0, "sample": 303, "AL1": 36950.0, "AL2": 40550.0}, {"trial": 0, "sample": 304, "AL1": 39800.0, "AL2": 43600.0}, {"trial": 0, "sample": 305, "AL1": 41000.0, "AL2": 40900.0}, {"trial": 0, "sample": 306, "AL1": 80000.0, "AL2": 80350.0}, {"trial": 0, "sample": 307, "AL1": 58775.0, "AL2": 60950.0}, {"trial": 0, "sample": 308, "AL1": 55975.0, "AL2": 58850.0}, {"trial": 0, "sample": 309, "AL1": 75050.0, "AL2": 77600.0}, {"trial": 0, "sample": 310, "AL1": 41550.0, "AL2": 44900.0}, {"trial": 0, "sample": 311, "AL1": 44900.0, "AL2": 47100.0}, {"trial": 0, "sample": 312, "AL1": 53150.0, "AL2": 51900.0}, {"trial": 0, "sample": 313, "AL1": 55125.0, "AL2": 56325.0}, {"trial": 0, "sample": 314, "AL1": 42750.0, "AL2": 40650.0}, {"trial": 0, "sample": 315, "AL1": 60875.0, "AL2": 63050.0}, {"trial": 0, "sample": 316, "AL1": 75925.0, "AL2": 78375.0}, {"trial": 0, "sample": 317, "AL1": 48025.0, "AL2": 46400.0}, {"trial": 0, "sample": 318, "AL1": 47550.0, "AL2": 49650.0}, {"trial": 0, "sample": 319, "AL1": 45400.0, "AL2": 47150.0}, {"trial": 0, "sample": 320, "AL1": 49525.0, "AL2": 52225.0}, {"trial": 0, "sample": 321, "AL1": 59125.0, "AL2": 61525.0}, {"trial": 0, "sample": 322, "AL1": 55575.0, "AL2": 59200.0}, {"trial": 0, "sample": 323, "AL1": 79725.0, "AL2": 78075.0}, {"trial": 0, "sample": 324, "AL1": 59150.0, "AL2": 59825.0}, {"trial": 0, "sample": 325, "AL1": 64725.0, "AL2": 68625.0}, {"trial": 0, "sample": 326, "AL1": 61775.0, "AL2": 63300.0}, {"trial": 0, "sample": 327, "AL1": 34750.0, "AL2": 30600.0}, {"trial": 0, "sample": 328, "AL1": 37750.0, "AL2": 31600.0}, {"trial": 0, "sample": 329, "AL1": 42500.0, "AL2": 44325.0}, {"trial": 0, "sample": 330, "AL1": 72875.0, "AL2": 74725.0}, {"trial": 0, "sample": 331, "AL1": 53200.0, "AL2": 53600.0}, {"trial": 0, "sample": 332, "AL1": 65425.0, "AL2": 65000.0}, {"trial": 0, "sample": 333, "AL1": 67900.0, "AL2": 68000.0}, {"trial": 0, "sample": 334, "AL1": 64325.0, "AL2": 64650.0}, {"trial": 0, "sample": 335, "AL1": 49425.0, "AL2": 50675.0}, {"trial": 0, "sample": 336, "AL1": 78650.0, "AL2": 78875.0}, {"trial": 0, "sample": 337, "AL1": 75200.0, "AL2": 72725.0}, {"trial": 0, "sample": 338, "AL1": 72025.0, "AL2": 70475.0}, {"trial": 0, "sample": 339, "AL1": 65525.0, "AL2": 67900.0}, {"trial": 0, "sample": 340, "AL1": 42150.0, "AL2": 43150.0}, {"trial": 0, "sample": 341, "AL1": 50650.0, "AL2": 52925.0}, {"trial": 0, "sample": 342, "AL1": 54575.0, "AL2": 58800.0}, {"trial": 0, "sample": 343, "AL1": 82000.0, "AL2": 80325.0}, {"trial": 0, "sample": 344, "AL1": 42350.0, "AL2": 43850.0}, {"trial": 0, "sample": 345, "AL1": 65750.0, "AL2": 67550.0}, {"trial": 0, "sample": 346, "AL1": 63975.0, "AL2": 67800.0}, {"trial": 0, "sample": 347, "AL1": 48350.0, "AL2": 54175.0}, {"trial": 0, "sample": 348, "AL1": 49125.0, "AL2": 54200.0}, {"trial": 0, "sample": 349, "AL1": 42050.0, "AL2": 38350.0}, {"trial": 0, "sample": 350, "AL1": 65700.0, "AL2": 68050.0}, {"trial": 0, "sample": 351, "AL1": 61850.0, "AL2": 62150.0}, {"trial": 0, "sample": 352, "AL1": 64875.0, "AL2": 68075.0}, {"trial": 0, "sample": 353, "AL1": 63300.0, "AL2": 66150.0}, {"trial": 0, "sample": 354, "AL1": 67225.0, "AL2": 70025.0}, {"trial": 0, "sample": 355, "AL1": 48025.0, "AL2": 49350.0}, {"trial": 0, "sample": 356, "AL1": 36050.0, "AL2": 37600.0}, {"trial": 0, "sample": 357, "AL1": 37350.0, "AL2": 37350.0}, {"trial": 0, "sample": 358, "AL1": 55900.0, "AL2": 57575.0}, {"trial": 0, "sample": 359, "AL1": 56175.0, "AL2": 59775.0}, {"trial": 0, "sample": 360, "AL1": 58250.0, "AL2": 61625.0}, {"trial": 0, "sample": 361, "AL1": 46500.0, "AL2": 40750.0}, {"trial": 0, "sample": 362, "AL1": 42650.0, "AL2": 44600.0}, {"trial": 0, "sample": 363, "AL1": 56950.0, "AL2": 60350.0}, {"trial": 0, "sample": 364, "AL1": 69900.0, "AL2": 72500.0}, {"trial": 0, "sample": 365, "AL1": 45250.0, "AL2": 43750.0}, {"trial": 0, "sample": 366, "AL1": 40325.0, "AL2": 42675.0}, {"trial": 0, "sample": 367, "AL1": 48400.0, "AL2": 49875.0}, {"trial": 0, "sample": 368, "AL1": 49125.0, "AL2": 50125.0}, {"trial": 0, "sample": 369, "AL1": 60225.0, "AL2": 60675.0}, {"trial": 0, "sample": 370, "AL1": 44800.0, "AL2": 44850.0}, {"trial": 0, "sample": 371, "AL1": 53450.0, "AL2": 56925.0}, {"trial": 0, "sample": 372, "AL1": 29000.0, "AL2": 29350.0}, {"trial": 0, "sample": 373, "AL1": 44625.0, "AL2": 44850.0}, {"trial": 0, "sample": 374, "AL1": 39050.0, "AL2": 38700.0}, {"trial": 0, "sample": 375, "AL1": 83275.0, "AL2": 80250.0}, {"trial": 0, "sample": 376, "AL1": 32700.0, "AL2": 36350.0}, {"trial": 0, "sample": 377, "AL1": 57000.0, "AL2": 63225.0}, {"trial": 0, "sample": 378, "AL1": 30700.0, "AL2": 28850.0}, {"trial": 0, "sample": 379, "AL1": 63425.0, "AL2": 66050.0}, {"trial": 0, "sample": 380, "AL1": 55625.0, "AL2": 58700.0}, {"trial": 0, "sample": 381, "AL1": 44600.0, "AL2": 49125.0}, {"trial": 0, "sample": 382, "AL1": 53350.0, "AL2": 55250.0}, {"trial": 0, "sample": 383, "AL1": 51125.0, "AL2": 50850.0}, {"trial": 0, "sample": 384, "AL1": 53700.0, "AL2": 55825.0}, {"trial": 0, "sample": 385, "AL1": 62950.0, "AL2": 66450.0}, {"trial": 0, "sample": 386, "AL1": 34200.0, "AL2": 37550.0}, {"trial": 0, "sample": 387, "AL1": 50050.0, "AL2": 52900.0}, {"trial": 0, "sample": 388, "AL1": 54825.0, "AL2": 59025.0}, {"trial": 0, "sample": 389, "AL1": 28100.0, "AL2": 25050.0}, {"trial": 0, "sample": 390, "AL1": 49400.0, "AL2": 53650.0}, {"trial": 0, "sample": 391, "AL1": 45500.0, "AL2": 45650.0}, {"trial": 0, "sample": 392, "AL1": 60200.0, "AL2": 57950.0}, {"trial": 0, "sample": 393, "AL1": 50075.0, "AL2": 53275.0}, {"trial": 0, "sample": 394, "AL1": 46000.0, "AL2": 45150.0}, {"trial": 0, "sample": 395, "AL1": 58800.0, "AL2": 61550.0}, {"trial": 0, "sample": 396, "AL1": 58875.0, "AL2": 58050.0}, {"trial": 0, "sample": 397, "AL1": 61325.0, "AL2": 65175.0}, {"trial": 0, "sample": 398, "AL1": 45275.0, "AL2": 40900.0}, {"trial": 0, "sample": 399, "AL1": 63775.0, "AL2": 64475.0}, {"trial": 1, "sample": 50, "AL1": 69850.0, "AL2": 74050.0}, {"trial": 1, "sample": 51, "AL1": 72100.0, "AL2": 74350.0}, {"trial": 1, "sample": 52, "AL1": 67325.0, "AL2": 70050.0}, {"trial": 1, "sample": 53, "AL1": 56500.0, "AL2": 62900.0}, {"trial": 1, "sample": 54, "AL1": 57400.0, "AL2": 59900.0}, {"trial": 1, "sample": 55, "AL1": 43950.0, "AL2": 43900.0}, {"trial": 1, "sample": 56, "AL1": 52225.0, "AL2": 53350.0}, {"trial": 1, "sample": 57, "AL1": 70700.0, "AL2": 72875.0}, {"trial": 1, "sample": 58, "AL1": 51150.0, "AL2": 54025.0}, {"trial": 1, "sample": 59, "AL1": 64550.0, "AL2": 68475.0}, {"trial": 1, "sample": 60, "AL1": 47150.0, "AL2": 46350.0}, {"trial": 1, "sample": 61, "AL1": 37650.0, "AL2": 40900.0}, {"trial": 1, "sample": 62, "AL1": 72875.0, "AL2": 72725.0}, {"trial": 1, "sample": 63, "AL1": 53650.0, "AL2": 56975.0}, {"trial": 1, "sample": 64, "AL1": 62000.0, "AL2": 66775.0}, {"trial": 1, "sample": 65, "AL1": 59500.0, "AL2": 61225.0}, {"trial": 1, "sample": 66, "AL1": 44000.0, "AL2": 41000.0}, {"trial": 1, "sample": 67, "AL1": 57250.0, "AL2": 56975.0}, {"trial": 1, "sample": 68, "AL1": 69000.0, "AL2": 71575.0}, {"trial": 1, "sample": 69, "AL1": 61650.0, "AL2": 64500.0}, {"trial": 1, "sample": 70, "AL1": 40500.0, "AL2": 41850.0}, {"trial": 1, "sample": 71, "AL1": 55000.0, "AL2": 57925.0}, {"trial": 1, "sample": 72, "AL1": 60900.0, "AL2": 64200.0}, {"trial": 1, "sample": 73, "AL1": 45950.0, "AL2": 47725.0}, {"trial": 1, "sample": 74, "AL1": 72900.0, "AL2": 77100.0}, {"trial": 1, "sample": 75, "AL1": 36550.0, "AL2": 37350.0}, {"trial": 1, "sample": 76, "AL1": 81250.0, "AL2": 81300.0}, {"trial": 1, "sample": 77, "AL1": 68875.0, "AL2": 74650.0}, {"trial": 1, "sample": 78, "AL1": 58575.0, "AL2": 63550.0}, {"trial": 1, "sample": 79, "AL1": 49350.0, "AL2": 49575.0}, {"trial": 1, "sample": 80, "AL1": 46350.0, "AL2": 45500.0}, {"trial": 1, "sample": 81, "AL1": 54450.0, "AL2": 57300.0}, {"trial": 1, "sample": 82, "AL1": 65400.0, "AL2": 70500.0}, {"trial": 1, "sample": 83, "AL1": 51325.0, "AL2": 52775.0}, {"trial": 1, "sample": 84, "AL1": 41100.0, "AL2": 42050.0}, {"trial": 1, "sample": 85, "AL1": 66025.0, "AL2": 68900.0}, {"trial": 1, "sample": 86, "AL1": 59775.0, "AL2": 62625.0}, {"trial": 1, "sample": 87, "AL1": 43900.0, "AL2": 42200.0}, {"trial": 1, "sample": 88, "AL1": 63375.0, "AL2": 63900.0}, {"trial": 1, "sample": 89, "AL1": 70525.0, "AL2": 73600.0}, {"trial": 1, "sample": 90, "AL1": 53550.0, "AL2": 59250.0}, {"trial": 1, "sample": 91, "AL1": 36850.0, "AL2": 35600.0}, {"trial": 1, "sample": 92, "AL1": 57675.0, "AL2": 60700.0}, {"trial": 1, "sample": 93, "AL1": 71650.0, "AL2": 76300.0}, {"trial": 1, "sample": 94, "AL1": 47525.0, "AL2": 49925.0}, {"trial": 1, "sample": 95, "AL1": 66525.0, "AL2": 67050.0}, {"trial": 1, "sample": 96, "AL1": 58975.0, "AL2": 63450.0}, {"trial": 1, "sample": 97, "AL1": 75100.0, "AL2": 77925.0}, {"trial": 1, "sample": 98, "AL1": 45000.0, "AL2": 41500.0}, {"trial": 1, "sample": 99, "AL1": 35300.0, "AL2": 31450.0}, {"trial": 1, "sample": 100, "AL1": 57275.0, "AL2": 61025.0}, {"trial": 1, "sample": 101, "AL1": 58225.0, "AL2": 63325.0}, {"trial": 1, "sample": 102, "AL1": 43625.0, "AL2": 44675.0}, {"trial": 1, "sample": 103, "AL1": 61475.0, "AL2": 63250.0}, {"trial": 1, "sample": 104, "AL1": 46800.0, "AL2": 45100.0}, {"trial": 1, "sample": 105, "AL1": 36500.0, "AL2": 38100.0}, {"trial": 1, "sample": 106, "AL1": 46900.0, "AL2": 44525.0}, {"trial": 1, "sample": 107, "AL1": 47975.0, "AL2": 50925.0}, {"trial": 1, "sample": 108, "AL1": 59900.0, "AL2": 62475.0}, {"trial": 1, "sample": 109, "AL1": 48150.0, "AL2": 52225.0}, {"trial": 1, "sample": 110, "AL1": 34050.0, "AL2": 35600.0}, {"trial": 1, "sample": 111, "AL1": 51150.0, "AL2": 53875.0}, {"trial": 1, "sample": 112, "AL1": 63525.0, "AL2": 64775.0}, {"trial": 1, "sample": 113, "AL1": 71575.0, "AL2": 70500.0}, {"trial": 1, "sample": 114, "AL1": 67400.0, "AL2": 70875.0}, {"trial": 1, "sample": 115, "AL1": 77450.0, "AL2": 79350.0}, {"trial": 1, "sample": 116, "AL1": 69275.0, "AL2": 72800.0}, {"trial": 1, "sample": 117, "AL1": 32000.0, "AL2": 30850.0}, {"trial": 1, "sample": 118, "AL1": 47575.0, "AL2": 46975.0}, {"trial": 1, "sample": 119, "AL1": 48725.0, "AL2": 48375.0}, {"trial": 1, "sample": 120, "AL1": 50500.0, "AL2": 51600.0}, {"trial": 1, "sample": 121, "AL1": 63350.0, "AL2": 64425.0}, {"trial": 1, "sample": 122, "AL1": 64275.0, "AL2": 67950.0}, {"trial": 1, "sample": 123, "AL1": 67050.0, "AL2": 69500.0}, {"trial": 1, "sample": 124, "AL1": 60025.0, "AL2": 61700.0}, {"trial": 1, "sample": 125, "AL1": 54575.0, "AL2": 55225.0}, {"trial": 1, "sample": 126, "AL1": 38225.0, "AL2": 43375.0}, {"trial": 1, "sample": 127, "AL1": 41450.0, "AL2": 43150.0}, {"trial": 1, "sample": 128, "AL1": 55100.0, "AL2": 59400.0}, {"trial": 1, "sample": 129, "AL1": 50175.0, "AL2": 51050.0}, {"trial": 1, "sample": 130, "AL1": 58450.0, "AL2": 64500.0}, {"trial": 1, "sample": 131, "AL1": 39450.0, "AL2": 41650.0}, {"trial": 1, "sample": 132, "AL1": 53600.0, "AL2": 53675.0}, {"trial": 1, "sample": 133, "AL1": 45000.0, "AL2": 39700.0}, {"trial": 1, "sample": 134, "AL1": 65125.0, "AL2": 67450.0}, {"trial": 1, "sample": 135, "AL1": 71850.0, "AL2": 69800.0}, {"trial": 1, "sample": 136, "AL1": 43950.0, "AL2": 40250.0}, {"trial": 1, "sample": 137, "AL1": 35500.0, "AL2": 39150.0}, {"trial": 1, "sample": 138, "AL1": 55900.0, "AL2": 59175.0}, {"trial": 1, "sample": 139, "AL1": 48725.0, "AL2": 40975.0}, {"trial": 1, "sample": 140, "AL1": 51050.0, "AL2": 49250.0}, {"trial": 1, "sample": 141, "AL1": 53000.0, "AL2": 54675.0}, {"trial": 1, "sample": 142, "AL1": 51325.0, "AL2": 52175.0}, {"trial": 1, "sample": 143, "AL1": 44700.0, "AL2": 48000.0}, {"trial": 1, "sample": 144, "AL1": 47175.0, "AL2": 46375.0}, {"trial": 1, "sample": 145, "AL1": 38800.0, "AL2": 41000.0}, {"trial": 1, "sample": 146, "AL1": 62825.0, "AL2": 64825.0}, {"trial": 1, "sample": 147, "AL1": 55225.0, "AL2": 56675.0}, {"trial": 1, "sample": 148, "AL1": 64550.0, "AL2": 63800.0}, {"trial": 1, "sample": 149, "AL1": 61300.0, "AL2": 64500.0}, {"trial": 1, "sample": 150, "AL1": 63675.0, "AL2": 67750.0}, {"trial": 1, "sample": 151, "AL1": 64950.0, "AL2": 68600.0}, {"trial": 1, "sample": 152, "AL1": 46525.0, "AL2": 50150.0}, {"trial": 1, "sample": 153, "AL1": 56750.0, "AL2": 61375.0}, {"trial": 1, "sample": 154, "AL1": 50075.0, "AL2": 52000.0}, {"trial": 1, "sample": 155, "AL1": 65375.0, "AL2": 67300.0}, {"trial": 1, "sample": 156, "AL1": 78350.0, "AL2": 77300.0}, {"trial": 1, "sample": 157, "AL1": 49000.0, "AL2": 49950.0}, {"trial": 1, "sample": 158, "AL1": 74925.0, "AL2": 73025.0}, {"trial": 1, "sample": 159, "AL1": 62550.0, "AL2": 65050.0}, {"trial": 1, "sample": 160, "AL1": 40950.0, "AL2": 39950.0}, {"trial": 1, "sample": 161, "AL1": 60725.0, "AL2": 63100.0}, {"trial": 1, "sample": 162, "AL1": 73000.0, "AL2": 73900.0}, {"trial": 1, "sample": 163, "AL1": 77900.0, "AL2": 77750.0}, {"trial": 1, "sample": 164, "AL1": 51475.0, "AL2": 51850.0}, {"trial": 1, "sample": 165, "AL1": 70025.0, "AL2": 70775.0}, {"trial": 1, "sample": 166, "AL1": 80225.0, "AL2": 77400.0}, {"trial": 1, "sample": 167, "AL1": 52475.0, "AL2": 52475.0}, {"trial": 1, "sample": 168, "AL1": 56600.0, "AL2": 61525.0}, {"trial": 1, "sample": 169, "AL1": 70100.0, "AL2": 71325.0}, {"trial": 1, "sample": 170, "AL1": 66750.0, "AL2": 71550.0}, {"trial": 1, "sample": 171, "AL1": 46350.0, "AL2": 45450.0}, {"trial": 1, "sample": 172, "AL1": 80375.0, "AL2": 80275.0}, {"trial": 1, "sample": 173, "AL1": 62750.0, "AL2": 63925.0}, {"trial": 1, "sample": 174, "AL1": 55600.0, "AL2": 60075.0}, {"trial": 1, "sample": 175, "AL1": 53325.0, "AL2": 57725.0}, {"trial": 1, "sample": 176, "AL1": 46525.0, "AL2": 45500.0}, {"trial": 1, "sample": 177, "AL1": 47925.0, "AL2": 47650.0}, {"trial": 1, "sample": 178, "AL1": 61500.0, "AL2": 62825.0}, {"trial": 1, "sample": 179, "AL1": 43200.0, "AL2": 43700.0}, {"trial": 1, "sample": 180, "AL1": 60650.0, "AL2": 61275.0}, {"trial": 1, "sample": 181, "AL1": 73350.0, "AL2": 72825.0}, {"trial": 1, "sample": 182, "AL1": 56300.0, "AL2": 57400.0}, {"trial": 1, "sample": 183, "AL1": 48800.0, "AL2": 52850.0}, {"trial": 1, "sample": 184, "AL1": 60575.0, "AL2": 63575.0}, {"trial": 1, "sample": 185, "AL1": 28950.0, "AL2": 31200.0}, {"trial": 1, "sample": 186, "AL1": 62800.0, "AL2": 68325.0}, {"trial": 1, "sample": 187, "AL1": 57025.0, "AL2": 60250.0}, {"trial": 1, "sample": 188, "AL1": 57050.0, "AL2": 57350.0}, {"trial": 1, "sample": 189, "AL1": 70125.0, "AL2": 69125.0}, {"trial": 1, "sample": 190, "AL1": 59100.0, "AL2": 63900.0}, {"trial": 1, "sample": 191, "AL1": 66550.0, "AL2": 71875.0}, {"trial": 1, "sample": 192, "AL1": 34100.0, "AL2": 33350.0}, {"trial": 1, "sample": 193, "AL1": 60075.0, "AL2": 63625.0}, {"trial": 1, "sample": 194, "AL1": 72150.0, "AL2": 76000.0}, {"trial": 1, "sample": 195, "AL1": 65800.0, "AL2": 68725.0}, {"trial": 1, "sample": 196, "AL1": 62500.0, "AL2": 65725.0}, {"trial": 1, "sample": 197, "AL1": 54550.0, "AL2": 55750.0}, {"trial": 1, "sample": 198, "AL1": 62675.0, "AL2": 65275.0}, {"trial": 1, "sample": 199, "AL1": 65675.0, "AL2": 70500.0}, {"trial": 1, "sample": 200, "AL1": 58350.0, "AL2": 63925.0}, {"trial": 1, "sample": 201, "AL1": 67800.0, "AL2": 73725.0}, {"trial": 1, "sample": 202, "AL1": 74775.0, "AL2": 77225.0}, {"trial": 1, "sample": 203, "AL1": 65050.0, "AL2": 69350.0}, {"trial": 1, "sample": 204, "AL1": 49750.0, "AL2": 52450.0}, {"trial": 1, "sample": 205, "AL1": 33700.0, "AL2": 29600.0}, {"trial": 1, "sample": 206, "AL1": 46500.0, "AL2": 45875.0}, {"trial": 1, "sample": 207, "AL1": 41050.0, "AL2": 43900.0}, {"trial": 1, "sample": 208, "AL1": 47775.0, "AL2": 48100.0}, {"trial": 1, "sample": 209, "AL1": 55075.0, "AL2": 58050.0}, {"trial": 1, "sample": 210, "AL1": 51425.0, "AL2": 51375.0}, {"trial": 1, "sample": 211, "AL1": 56350.0, "AL2": 60525.0}, {"trial": 1, "sample": 212, "AL1": 42950.0, "AL2": 43450.0}, {"trial": 1, "sample": 213, "AL1": 76275.0, "AL2": 76075.0}, {"trial": 1, "sample": 214, "AL1": 40600.0, "AL2": 38900.0}, {"trial": 1, "sample": 215, "AL1": 58000.0, "AL2": 60875.0}, {"trial": 1, "sample": 216, "AL1": 42950.0, "AL2": 40250.0}, {"trial": 1, "sample": 217, "AL1": 74925.0, "AL2": 76225.0}, {"trial": 1, "sample": 218, "AL1": 38050.0, "AL2": 39850.0}, {"trial": 1, "sample": 219, "AL1": 36150.0, "AL2": 36700.0}, {"trial": 1, "sample": 220, "AL1": 48725.0, "AL2": 48150.0}, {"trial": 1, "sample": 221, "AL1": 75325.0, "AL2": 75850.0}, {"trial": 1, "sample": 222, "AL1": 46625.0, "AL2": 48125.0}, {"trial": 1, "sample": 223, "AL1": 42250.0, "AL2": 38650.0}, {"trial": 1, "sample": 224, "AL1": 58375.0, "AL2": 62975.0}, {"trial": 1, "sample": 225, "AL1": 37400.0, "AL2": 38800.0}, {"trial": 1, "sample": 226, "AL1": 59575.0, "AL2": 59325.0}, {"trial": 1, "sample": 227, "AL1": 39800.0, "AL2": 39500.0}, {"trial": 1, "sample": 228, "AL1": 45800.0, "AL2": 47075.0}, {"trial": 1, "sample": 229, "AL1": 57750.0, "AL2": 59025.0}, {"trial": 1, "sample": 230, "AL1": 77950.0, "AL2": 74025.0}, {"trial": 1, "sample": 231, "AL1": 52250.0, "AL2": 55350.0}, {"trial": 1, "sample": 232, "AL1": 53650.0, "AL2": 54950.0}, {"trial": 1, "sample": 233, "AL1": 49500.0, "AL2": 50200.0}, {"trial": 1, "sample": 234, "AL1": 68600.0, "AL2": 69075.0}, {"trial": 1, "sample": 235, "AL1": 67350.0, "AL2": 69000.0}, {"trial": 1, "sample": 236, "AL1": 59925.0, "AL2": 61525.0}, {"trial": 1, "sample": 237, "AL1": 44650.0, "AL2": 43150.0}, {"trial": 1, "sample": 238, "AL1": 69625.0, "AL2": 65375.0}, {"trial": 1, "sample": 239, "AL1": 65550.0, "AL2": 64800.0}, {"trial": 1, "sample": 240, "AL1": 57800.0, "AL2": 59800.0}, {"trial": 1, "sample": 241, "AL1": 70175.0, "AL2": 69025.0}, {"trial": 1, "sample": 242, "AL1": 48300.0, "AL2": 49700.0}, {"trial": 1, "sample": 243, "AL1": 63525.0, "AL2": 62375.0}, {"trial": 1, "sample": 244, "AL1": 49775.0, "AL2": 53775.0}, {"trial": 1, "sample": 245, "AL1": 35700.0, "AL2": 37350.0}, {"trial": 1, "sample": 246, "AL1": 58925.0, "AL2": 59825.0}, {"trial": 1, "sample": 247, "AL1": 50675.0, "AL2": 56825.0}, {"trial": 1, "sample": 248, "AL1": 55525.0, "AL2": 55625.0}, {"trial": 1, "sample": 249, "AL1": 53025.0, "AL2": 56550.0}, {"trial": 1, "sample": 250, "AL1": 58075.0, "AL2": 60050.0}, {"trial": 1, "sample": 251, "AL1": 64100.0, "AL2": 66775.0}, {"trial": 1, "sample": 252, "AL1": 57375.0, "AL2": 61675.0}, {"trial": 1, "sample": 253, "AL1": 27600.0, "AL2": 28700.0}, {"trial": 1, "sample": 254, "AL1": 47300.0, "AL2": 49425.0}, {"trial": 1, "sample": 255, "AL1": 39300.0, "AL2": 34000.0}, {"trial": 1, "sample": 256, "AL1": 68975.0, "AL2": 69750.0}, {"trial": 1, "sample": 257, "AL1": 39400.0, "AL2": 41975.0}, {"trial": 1, "sample": 258, "AL1": 78075.0, "AL2": 78075.0}, {"trial": 1, "sample": 259, "AL1": 53475.0, "AL2": 55325.0}, {"trial": 1, "sample": 260, "AL1": 58750.0, "AL2": 59550.0}, {"trial": 1, "sample": 261, "AL1": 70200.0, "AL2": 71850.0}, {"trial": 1, "sample": 262, "AL1": 43750.0, "AL2": 40250.0}, {"trial": 1, "sample": 263, "AL1": 66000.0, "AL2": 66975.0}, {"trial": 1, "sample": 264, "AL1": 65175.0, "AL2": 67800.0}, {"trial": 1, "sample": 265, "AL1": 47450.0, "AL2": 47075.0}, {"trial": 1, "sample": 266, "AL1": 55925.0, "AL2": 58225.0}, {"trial": 1, "sample": 267, "AL1": 66450.0, "AL2": 66000.0}, {"trial": 1, "sample": 268, "AL1": 44450.0, "AL2": 41650.0}, {"trial": 1, "sample": 269, "AL1": 68600.0, "AL2": 69800.0}, {"trial": 1, "sample": 270, "AL1": 67825.0, "AL2": 69050.0}, {"trial": 1, "sample": 271, "AL1": 58000.0, "AL2": 61625.0}, {"trial": 1, "sample": 272, "AL1": 42000.0, "AL2": 42300.0}, {"trial": 1, "sample": 273, "AL1": 55950.0, "AL2": 60050.0}, {"trial": 1, "sample": 274, "AL1": 54200.0, "AL2": 53650.0}, {"trial": 1, "sample": 275, "AL1": 58250.0, "AL2": 59125.0}, {"trial": 1, "sample": 276, "AL1": 48625.0, "AL2": 50725.0}, {"trial": 1, "sample": 277, "AL1": 75700.0, "AL2": 75700.0}, {"trial": 1, "sample": 278, "AL1": 77975.0, "AL2": 78425.0}, {"trial": 1, "sample": 279, "AL1": 71850.0, "AL2": 73425.0}, {"trial": 1, "sample": 280, "AL1": 60775.0, "AL2": 61775.0}, {"trial": 1, "sample": 281, "AL1": 80725.0, "AL2": 80300.0}, {"trial": 1, "sample": 282, "AL1": 45800.0, "AL2": 48100.0}, {"trial": 1, "sample": 283, "AL1": 55125.0, "AL2": 61300.0}, {"trial": 1, "sample": 284, "AL1": 50800.0, "AL2": 54700.0}, {"trial": 1, "sample": 285, "AL1": 41550.0, "AL2": 44900.0}, {"trial": 1, "sample": 286, "AL1": 49025.0, "AL2": 50600.0}, {"trial": 1, "sample": 287, "AL1": 51375.0, "AL2": 51525.0}, {"trial": 1, "sample": 288, "AL1": 37450.0, "AL2": 41250.0}, {"trial": 1, "sample": 289, "AL1": 77525.0, "AL2": 77525.0}, {"trial": 1, "sample": 290, "AL1": 61225.0, "AL2": 62975.0}, {"trial": 1, "sample": 291, "AL1": 74525.0, "AL2": 73950.0}, {"trial": 1, "sample": 292, "AL1": 62700.0, "AL2": 65550.0}, {"trial": 1, "sample": 293, "AL1": 51400.0, "AL2": 53550.0}, {"trial": 1, "sample": 294, "AL1": 58750.0, "AL2": 61950.0}, {"trial": 1, "sample": 295, "AL1": 48500.0, "AL2": 49525.0}, {"trial": 1, "sample": 296, "AL1": 57000.0, "AL2": 61725.0}, {"trial": 1, "sample": 297, "AL1": 54975.0, "AL2": 62400.0}, {"trial": 1, "sample": 298, "AL1": 49425.0, "AL2": 52725.0}, {"trial": 1, "sample": 299, "AL1": 61575.0, "AL2": 68375.0}, {"trial": 1, "sample": 300, "AL1": 45100.0, "AL2": 41750.0}, {"trial": 1, "sample": 301, "AL1": 40850.0, "AL2": 42300.0}, {"trial": 1, "sample": 302, "AL1": 44100.0, "AL2": 42475.0}, {"trial": 1, "sample": 303, "AL1": 51575.0, "AL2": 56125.0}, {"trial": 1, "sample": 304, "AL1": 50625.0, "AL2": 57050.0}, {"trial": 1, "sample": 305, "AL1": 50850.0, "AL2": 51725.0}, {"trial": 1, "sample": 306, "AL1": 60175.0, "AL2": 61925.0}, {"trial": 1, "sample": 307, "AL1": 70125.0, "AL2": 74450.0}, {"trial": 1, "sample": 308, "AL1": 41950.0, "AL2": 33800.0}, {"trial": 1, "sample": 309, "AL1": 57400.0, "AL2": 61225.0}, {"trial": 1, "sample": 310, "AL1": 80325.0, "AL2": 81375.0}, {"trial": 1, "sample": 311, "AL1": 65250.0, "AL2": 65300.0}, {"trial": 1, "sample": 312, "AL1": 65525.0, "AL2": 68475.0}, {"trial": 1, "sample": 313, "AL1": 50975.0, "AL2": 52850.0}, {"trial": 1, "sample": 314, "AL1": 70150.0, "AL2": 74450.0}, {"trial": 1, "sample": 315, "AL1": 58600.0, "AL2": 61600.0}, {"trial": 1, "sample": 316, "AL1": 47475.0, "AL2": 49125.0}, {"trial": 1, "sample": 317, "AL1": 33500.0, "AL2": 35600.0}, {"trial": 1, "sample": 318, "AL1": 72150.0, "AL2": 73600.0}, {"trial": 1, "sample": 319, "AL1": 42050.0, "AL2": 40900.0}, {"trial": 1, "sample": 320, "AL1": 53825.0, "AL2": 57950.0}, {"trial": 1, "sample": 321, "AL1": 33900.0, "AL2": 33550.0}, {"trial": 1, "sample": 322, "AL1": 46700.0, "AL2": 45900.0}, {"trial": 1, "sample": 323, "AL1": 70250.0, "AL2": 72000.0}, {"trial": 1, "sample": 324, "AL1": 69475.0, "AL2": 72125.0}, {"trial": 1, "sample": 325, "AL1": 33000.0, "AL2": 34300.0}, {"trial": 1, "sample": 326, "AL1": 55450.0, "AL2": 56350.0}, {"trial": 1, "sample": 327, "AL1": 49575.0, "AL2": 52550.0}, {"trial": 1, "sample": 328, "AL1": 52025.0, "AL2": 53575.0}, {"trial": 1, "sample": 329, "AL1": 61200.0, "AL2": 63425.0}, {"trial": 1, "sample": 330, "AL1": 39800.0, "AL2": 42800.0}, {"trial": 1, "sample": 331, "AL1": 59325.0, "AL2": 63050.0}, {"trial": 1, "sample": 332, "AL1": 73575.0, "AL2": 72150.0}, {"trial": 1, "sample": 333, "AL1": 53025.0, "AL2": 54375.0}, {"trial": 1, "sample": 334, "AL1": 66475.0, "AL2": 69375.0}, {"trial": 1, "sample": 335, "AL1": 61750.0, "AL2": 65650.0}, {"trial": 1, "sample": 336, "AL1": 41200.0, "AL2": 43600.0}, {"trial": 1, "sample": 337, "AL1": 73375.0, "AL2": 69450.0}, {"trial": 1, "sample": 338, "AL1": 70975.0, "AL2": 74200.0}, {"trial": 1, "sample": 339, "AL1": 52300.0, "AL2": 54300.0}, {"trial": 1, "sample": 340, "AL1": 44700.0, "AL2": 43150.0}, {"trial": 1, "sample": 341, "AL1": 71400.0, "AL2": 71275.0}, {"trial": 1, "sample": 342, "AL1": 37000.0, "AL2": 36400.0}, {"trial": 1, "sample": 343, "AL1": 62975.0, "AL2": 66650.0}, {"trial": 1, "sample": 344, "AL1": 65325.0, "AL2": 68450.0}, {"trial": 1, "sample": 345, "AL1": 65800.0, "AL2": 67125.0}, {"trial": 1, "sample": 346, "AL1": 51625.0, "AL2": 53225.0}, {"trial": 1, "sample": 347, "AL1": 60025.0, "AL2": 64550.0}, {"trial": 1, "sample": 348, "AL1": 62175.0, "AL2": 64025.0}, {"trial": 1, "sample": 349, "AL1": 47950.0, "AL2": 46150.0}, {"trial": 1, "sample": 350, "AL1": 49700.0, "AL2": 50350.0}, {"trial": 1, "sample": 351, "AL1": 42850.0, "AL2": 43750.0}, {"trial": 1, "sample": 352, "AL1": 66000.0, "AL2": 70750.0}, {"trial": 1, "sample": 353, "AL1": 65325.0, "AL2": 69725.0}, {"trial": 1, "sample": 354, "AL1": 60775.0, "AL2": 64700.0}, {"trial": 1, "sample": 355, "AL1": 57425.0, "AL2": 61875.0}, {"trial": 1, "sample": 356, "AL1": 66625.0, "AL2": 70325.0}, {"trial": 1, "sample": 357, "AL1": 69825.0, "AL2": 71725.0}, {"trial": 1, "sample": 358, "AL1": 39250.0, "AL2": 38450.0}, {"trial": 1, "sample": 359, "AL1": 59200.0, "AL2": 61350.0}, {"trial": 1, "sample": 360, "AL1": 40900.0, "AL2": 41750.0}, {"trial": 1, "sample": 361, "AL1": 60900.0, "AL2": 64350.0}, {"trial": 1, "sample": 362, "AL1": 67650.0, "AL2": 70875.0}, {"trial": 1, "sample": 363, "AL1": 54150.0, "AL2": 53775.0}, {"trial": 1, "sample": 364, "AL1": 51675.0, "AL2": 57200.0}, {"trial": 1, "sample": 365, "AL1": 56875.0, "AL2": 61675.0}, {"trial": 1, "sample": 366, "AL1": 38050.0, "AL2": 34400.0}, {"trial": 1, "sample": 367, "AL1": 68400.0, "AL2": 69250.0}, {"trial": 1, "sample": 368, "AL1": 44750.0, "AL2": 42100.0}, {"trial": 1, "sample": 369, "AL1": 44000.0, "AL2": 45850.0}, {"trial": 1, "sample": 370, "AL1": 42200.0, "AL2": 40900.0}, {"trial": 1, "sample": 371, "AL1": 54500.0, "AL2": 56675.0}, {"trial": 1, "sample": 372, "AL1": 75075.0, "AL2": 76275.0}, {"trial": 1, "sample": 373, "AL1": 42175.0, "AL2": 42650.0}, {"trial": 1, "sample": 374, "AL1": 73500.0, "AL2": 76075.0}, {"trial": 1, "sample": 375, "AL1": 59200.0, "AL2": 62225.0}, {"trial": 1, "sample": 376, "AL1": 63425.0, "AL2": 66025.0}, {"trial": 1, "sample": 377, "AL1": 79675.0, "AL2": 79425.0}, {"trial": 1, "sample": 378, "AL1": 57050.0, "AL2": 57700.0}, {"trial": 1, "sample": 379, "AL1": 62725.0, "AL2": 66925.0}, {"trial": 1, "sample": 380, "AL1": 64850.0, "AL2": 67050.0}, {"trial": 1, "sample": 381, "AL1": 49450.0, "AL2": 52475.0}, {"trial": 1, "sample": 382, "AL1": 64675.0, "AL2": 67000.0}, {"trial": 1, "sample": 383, "AL1": 50525.0, "AL2": 51525.0}, {"trial": 1, "sample": 384, "AL1": 49100.0, "AL2": 47325.0}, {"trial": 1, "sample": 385, "AL1": 39750.0, "AL2": 42950.0}, {"trial": 1, "sample": 386, "AL1": 42550.0, "AL2": 44050.0}, {"trial": 1, "sample": 387, "AL1": 45200.0, "AL2": 45200.0}, {"trial": 1, "sample": 388, "AL1": 52100.0, "AL2": 53600.0}, {"trial": 1, "sample": 389, "AL1": 45000.0, "AL2": 43400.0}, {"trial": 1, "sample": 390, "AL1": 55700.0, "AL2": 60625.0}, {"trial": 1, "sample": 391, "AL1": 67600.0, "AL2": 69275.0}, {"trial": 1, "sample": 392, "AL1": 68025.0, "AL2": 71700.0}, {"trial": 1, "sample": 393, "AL1": 64825.0, "AL2": 65950.0}, {"trial": 1, "sample": 394, "AL1": 35850.0, "AL2": 33050.0}, {"trial": 1, "sample": 395, "AL1": 56375.0, "AL2": 55050.0}, {"trial": 1, "sample": 396, "AL1": 47100.0, "AL2": 51725.0}, {"trial": 1, "sample": 397, "AL1": 61525.0, "AL2": 64175.0}, {"trial": 1, "sample": 398, "AL1": 52475.0, "AL2": 53525.0}, {"trial": 1, "sample": 399, "AL1": 44450.0, "AL2": 42750.0}], "data-54eb757d1c366f537a50c22ee21f1c2f": [{"AL1": 25050.0, "AL2": 25050.0}, {"AL1": 84000.0, "AL2": 84000.0}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2026, PassengerSim LLC.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.2.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.view", "content.code.copy", "content.code.annotate", "navigation.tabs", "navigation.top", "navigation.tracking", "announce.dismiss"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": null}}</script>
+    
+      
+        <script src="../_static/sphinx_immaterial_theme.32136f45f91ae6956.min.js?v=a7a9472a"></script>
+        <script type="application/vnd.jupyter.widget-state+json">{"state": {"caade1379760441d8f8137c715acbbda": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "b23a14d6fcfc440e9c7ab53ad34480ff": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_caade1379760441d8f8137c715acbbda", "msg_id": "", "outputs": [{"output_type": "display_data", "metadata": {}, "data": {"text/plain": "", "text/html": "<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\"></pre>\n"}}], "tabbable": null, "tooltip": null}}, "2f393eca05d9458da89939a142b9c34b": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "6cf68270a9a24415819eec338e350590": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_2f393eca05d9458da89939a142b9c34b", "msg_id": "", "outputs": [{"output_type": "display_data", "metadata": {}, "data": {"text/plain": "", "text/html": "<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\"></pre>\n"}}], "tabbable": null, "tooltip": null}}, "f31272773b39448bb00c90e7b98f59ad": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "788ad5eb3f8b48048ac53861e0cb3285": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_f31272773b39448bb00c90e7b98f59ad", "msg_id": "", "outputs": [{"output_type": "display_data", "metadata": {}, "data": {"text/plain": "", "text/html": "<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\"></pre>\n"}}], "tabbable": null, "tooltip": null}}, "e10971e7e6874631a2dca7e298b4692e": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "6536ddcd14f94236a19c3801aac3e3d9": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_e10971e7e6874631a2dca7e298b4692e", "msg_id": "", "outputs": [{"output_type": "display_data", "metadata": {}, "data": {"text/plain": "", "text/html": "<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\"></pre>\n"}}], "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}</script>
+        <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed.js"></script>
+    
+  </body>
+</html>

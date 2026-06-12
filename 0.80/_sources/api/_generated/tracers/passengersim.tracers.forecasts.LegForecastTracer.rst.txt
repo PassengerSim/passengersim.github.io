@@ -1,0 +1,31 @@
+LegForecastTracer
+=================
+
+.. currentmodule:: passengersim.tracers.forecasts
+
+.. autoclass:: LegForecastTracer
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~LegForecastTracer.__init__
+      ~LegForecastTracer.attach
+      ~LegForecastTracer.finalize
+      ~LegForecastTracer.fresh
+      ~LegForecastTracer.reset
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~LegForecastTracer.name
+   
+   

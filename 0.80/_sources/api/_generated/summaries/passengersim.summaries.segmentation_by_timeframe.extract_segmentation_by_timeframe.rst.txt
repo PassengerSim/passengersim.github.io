@@ -1,0 +1,6 @@
+extract\_segmentation\_by\_timeframe
+====================================
+
+.. currentmodule:: passengersim.summaries.segmentation_by_timeframe
+
+.. autofunction:: extract_segmentation_by_timeframe

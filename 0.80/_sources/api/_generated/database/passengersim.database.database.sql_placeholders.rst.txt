@@ -1,0 +1,6 @@
+sql\_placeholders
+=================
+
+.. currentmodule:: passengersim.database.database
+
+.. autofunction:: sql_placeholders

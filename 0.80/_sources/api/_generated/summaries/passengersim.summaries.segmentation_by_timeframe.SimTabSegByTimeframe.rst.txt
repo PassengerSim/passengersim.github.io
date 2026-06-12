@@ -1,0 +1,54 @@
+SimTabSegByTimeframe
+====================
+
+.. currentmodule:: passengersim.summaries.segmentation_by_timeframe
+
+.. autoclass:: SimTabSegByTimeframe
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SimTabSegByTimeframe.__init__
+      ~SimTabSegByTimeframe.aggregate
+      ~SimTabSegByTimeframe.extract
+      ~SimTabSegByTimeframe.fig_bookings_by_timeframe
+      ~SimTabSegByTimeframe.fig_leg_bid_price_detail_rake
+      ~SimTabSegByTimeframe.fig_leg_bid_price_history
+      ~SimTabSegByTimeframe.fig_leg_booking_detail_rake
+      ~SimTabSegByTimeframe.fig_segmentation_by_timeframe
+      ~SimTabSegByTimeframe.file_info
+      ~SimTabSegByTimeframe.from_file
+      ~SimTabSegByTimeframe.from_pickle
+      ~SimTabSegByTimeframe.metadata
+      ~SimTabSegByTimeframe.remove_data
+      ~SimTabSegByTimeframe.run_queries
+      ~SimTabSegByTimeframe.save
+      ~SimTabSegByTimeframe.subclasses
+      ~SimTabSegByTimeframe.to_file
+      ~SimTabSegByTimeframe.to_html
+      ~SimTabSegByTimeframe.to_pickle
+      ~SimTabSegByTimeframe.to_xlsx
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~SimTabSegByTimeframe.callback_data
+      ~SimTabSegByTimeframe.config
+      ~SimTabSegByTimeframe.leg_bid_price_detail
+      ~SimTabSegByTimeframe.leg_booking_detail
+      ~SimTabSegByTimeframe.segmentation_by_timeframe
+      ~SimTabSegByTimeframe.cnx
+      ~SimTabSegByTimeframe.sim
+      ~SimTabSegByTimeframe.n_total_samples
+      ~SimTabSegByTimeframe.meta_summaries
+   
+   

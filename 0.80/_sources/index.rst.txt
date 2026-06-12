@@ -1,0 +1,199 @@
+.. PassengerSim documentation master file, created by
+   sphinx-quickstart on Tue May 19 18:37:18 2026.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+
+.. raw:: html
+
+   <style>
+
+     body {
+         background-color: black;
+     }
+
+     /* Fixed background layer — sits behind all content and moves via JS at a
+        reduced rate to create a parallax effect relative to the scrolling foreground. */
+     .parallax-background {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         /* Slightly taller than the viewport so the JS translation doesn't expose
+            an empty gap at the bottom when the user scrolls down. */
+         height: 120%;
+         z-index: -1;
+         will-change: transform;
+
+         background-image: url("_static/images/clouds-airplane-tint.jpg");
+         background-position: center top;
+         background-repeat: no-repeat;
+         background-size: cover;
+     }
+
+     /* Foreground content scrolls at normal speed on top of the background. */
+     .parallax-content {
+         position: relative;
+         z-index: 1;
+     }
+
+     .parallax h1 {
+       color: white;
+       padding-bottom: 30px;
+     }
+     .md-button--white {
+         margin-bottom: 4px;
+     }
+     .md-button--white {
+         background-color: white;
+     }
+     .md-header {
+         background-color: rgba(0,0,0,0);
+     }
+     .md-tabs {
+         background-color: rgba(0,0,0,0);
+     }
+     .md-header__button.md-logo img{
+         display: none;
+     }
+     div.md-sidebar {
+         display: none;
+     }
+     div.md-content {
+         padding-bottom: 20vw;
+     }
+     .md-header--shadow {
+         box-shadow: none;
+         background-color: black;
+         transition: transform .75s cubic-bezier(.1,.7,.1,1),background-color .75s;
+     }
+     .md-tabs__item {
+         font-weight: 800;
+     }
+     .featured-text {
+         font-size: 1.8em;
+         color: white;
+         font-weight: 700;
+         margin-bottom: 20px;
+     }
+     .big-logo {
+         padding-top: 35vh;
+         height: 40px;
+         margin-bottom: 20px;
+         padding-right: 10vw;
+     }
+     .md-content__inner h1, .md-content__inner h2, .md-content__inner h3, .md-content__inner h4, .md-content__inner h5, .md-content__inner h6 {
+         color: white;
+     }
+
+     .md-content__inner h1 {
+         padding-top: 15em;
+     }
+
+     .md-content__inner {
+         color: white;
+     }
+     .md-content__inner a {
+         color: #b065ff;
+     }
+     .md-version {
+         margin-left: -63px;
+     }
+   </style>
+   <div class="parallax-background" id="parallax-bg"></div>
+   <script>
+     (function () {
+       var bg = document.getElementById('parallax-bg');
+       // Speed factor: 0 = completely fixed, 1 = scrolls at full speed (no parallax).
+       // 0.35 makes the background drift upward at 35% of the page scroll rate,
+       // producing a noticeable depth effect without losing the image too quickly.
+       var speedFactor = 0.50;
+
+       function onScroll() {
+         // Prefer the MkDocs material scrolling container if present, fall back to window.
+         var scrollY = window.scrollY || window.pageYOffset;
+         bg.style.transform = 'translateY(' + (-scrollY * speedFactor) + 'px)';
+       }
+
+       // Attach to both window scroll and the MkDocs inner scroll container,
+       // whichever is actually driving the page scroll in this theme.
+       window.addEventListener('scroll', onScroll, { passive: true });
+       var mdContent = document.querySelector('.md-content');
+       if (mdContent) {
+         mdContent.addEventListener('scroll', onScroll, { passive: true });
+       }
+     })();
+   </script>
+   <div class="parallax-content">
+      <section class="mdx-container">
+         <div class="md-grid md-typeset">
+            <img src="_static/logo.svg" alt="logo" class="big-logo">
+            <p class="featured-text">Passenger travel simulation for revenue management.</p>
+            <a href="user-guide/installation.html" title="Installation" class="md-button md-button--primary">
+            Get Started
+            </a>
+            <a href="https://sites.gatech.edu/ce-atlatgt/" class="md-button md-button--white">
+            ✈ ATL@GT
+            </a>
+         </div>
+      </section>
+   </div>
+
+
+.. toctree::
+   :caption: User Guide
+   :hidden:
+
+   user-guide/welcome.md
+   user-guide/installation.md
+   user-guide/static-config.md
+   user-guide/dynamic-config.md
+   user-guide/basic-usage.md
+   user-guide/rm-systems.md
+   user-guide/database/index
+   user-guide/experiments.md
+   user-guide/callbacks.md
+   user-guide/tracers.md
+   user-guide/viz/index.md
+   user-guide/firehose.md
+
+
+.. toctree::
+   :caption: Mechanics
+   :hidden:
+
+   mechanics/counting-sims.md
+   mechanics/demand-generation.md
+   mechanics/forecasting.md
+
+
+.. toctree::
+   :caption: Examples
+   :hidden:
+
+   examples/intro-3mkt
+   examples/EE.ipynb
+   examples/PE.ipynb
+   examples/LL.ipynb
+   examples/QC.ipynb
+   examples/olympic-fcst.ipynb
+   examples/blf-curves.ipynb
+   labs/index
+
+
+.. toctree::
+   :caption: API
+   :hidden:
+   :glob:
+
+   api/*
+
+
+About Us
+--------
+
+PassengerSim is a revenue management simulation for passenger travel, developed by PassengerSim LLC with the support
+of the `Air Transportation Laboratory at Georgia Tech (ATL\@GT) <https://sites.gatech.edu/ce-atlatgt/>`_
+and its corporate members. Our mission is to provide a modern, fast, and customizable simulation environment for
+researchers and practitioners to study ideas in revenue management. We are committed to advancing the state of the art
+in this field through rigorous research and development.

@@ -1,0 +1,42 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.summaries.
+
+carriers
+========
+
+.. automodule:: passengersim.summaries.carriers
+   :no-members:
+
+
+
+
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: .
+   :template: autosummary/class.rst
+
+   SimTabCarriers
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: .
+
+   aggregate_carriers
+   extract_carrier_history2
+   extract_carriers
+   extract_forecast_accuracy
+
+
+
+
+

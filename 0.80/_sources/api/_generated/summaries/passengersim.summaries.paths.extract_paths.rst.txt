@@ -1,0 +1,6 @@
+extract\_paths
+==============
+
+.. currentmodule:: passengersim.summaries.paths
+
+.. autofunction:: extract_paths

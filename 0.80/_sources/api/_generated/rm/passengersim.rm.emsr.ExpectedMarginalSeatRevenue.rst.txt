@@ -1,0 +1,43 @@
+ExpectedMarginalSeatRevenue
+===========================
+
+.. currentmodule:: passengersim.rm.emsr
+
+.. autoclass:: ExpectedMarginalSeatRevenue
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ExpectedMarginalSeatRevenue.__init__
+      ~ExpectedMarginalSeatRevenue.apply_snapshot_filters
+      ~ExpectedMarginalSeatRevenue.configure
+      ~ExpectedMarginalSeatRevenue.get_dcp_index
+      ~ExpectedMarginalSeatRevenue.init
+      ~ExpectedMarginalSeatRevenue.run
+      ~ExpectedMarginalSeatRevenue.should_run
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~ExpectedMarginalSeatRevenue.OPT
+      ~ExpectedMarginalSeatRevenue.frequency
+      ~ExpectedMarginalSeatRevenue.produces
+      ~ExpectedMarginalSeatRevenue.requires
+      ~ExpectedMarginalSeatRevenue.snapshot_filter_type
+      ~ExpectedMarginalSeatRevenue.variant
+      ~ExpectedMarginalSeatRevenue.cabins
+      ~ExpectedMarginalSeatRevenue.snapshots
+      ~ExpectedMarginalSeatRevenue.dcps
+      ~ExpectedMarginalSeatRevenue.carrier
+      ~ExpectedMarginalSeatRevenue.minimum_sample
+   
+   

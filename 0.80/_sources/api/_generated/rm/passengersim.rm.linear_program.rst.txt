@@ -1,0 +1,38 @@
+﻿.. rst-class:: page_title_prefix
+
+    passengersim.rm.
+
+linear\_program
+===============
+
+.. automodule:: passengersim.rm.linear_program
+   :no-members:
+
+
+
+
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: .
+   :template: autosummary/class.rst
+
+   DLP
+   LinearProgramming
+   LpBase
+   LpPiecewise2
+   LpPiecewiseSolver
+   SSBLP
+   StochasticSampleSolver
+
+
+
+
+
+
+
+
+

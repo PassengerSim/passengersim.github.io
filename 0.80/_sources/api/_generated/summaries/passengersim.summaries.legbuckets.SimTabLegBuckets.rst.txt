@@ -1,0 +1,52 @@
+SimTabLegBuckets
+================
+
+.. currentmodule:: passengersim.summaries.legbuckets
+
+.. autoclass:: SimTabLegBuckets
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SimTabLegBuckets.__init__
+      ~SimTabLegBuckets.aggregate
+      ~SimTabLegBuckets.extract
+      ~SimTabLegBuckets.fig_leg_bid_price_detail_rake
+      ~SimTabLegBuckets.fig_leg_bid_price_history
+      ~SimTabLegBuckets.fig_leg_booking_detail_rake
+      ~SimTabLegBuckets.file_info
+      ~SimTabLegBuckets.from_file
+      ~SimTabLegBuckets.from_pickle
+      ~SimTabLegBuckets.metadata
+      ~SimTabLegBuckets.remove_data
+      ~SimTabLegBuckets.run_queries
+      ~SimTabLegBuckets.save
+      ~SimTabLegBuckets.subclasses
+      ~SimTabLegBuckets.to_file
+      ~SimTabLegBuckets.to_html
+      ~SimTabLegBuckets.to_pickle
+      ~SimTabLegBuckets.to_xlsx
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~SimTabLegBuckets.callback_data
+      ~SimTabLegBuckets.config
+      ~SimTabLegBuckets.leg_bid_price_detail
+      ~SimTabLegBuckets.leg_booking_detail
+      ~SimTabLegBuckets.legbuckets
+      ~SimTabLegBuckets.cnx
+      ~SimTabLegBuckets.sim
+      ~SimTabLegBuckets.n_total_samples
+      ~SimTabLegBuckets.meta_summaries
+   
+   

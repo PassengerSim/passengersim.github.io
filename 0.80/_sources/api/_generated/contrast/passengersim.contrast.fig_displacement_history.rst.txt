@@ -1,0 +1,6 @@
+fig\_displacement\_history
+==========================
+
+.. currentmodule:: passengersim.contrast
+
+.. autofunction:: fig_displacement_history

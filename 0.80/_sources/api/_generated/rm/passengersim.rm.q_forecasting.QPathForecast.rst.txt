@@ -1,0 +1,48 @@
+QPathForecast
+=============
+
+.. currentmodule:: passengersim.rm.q_forecasting
+
+.. autoclass:: QPathForecast
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~QPathForecast.__init__
+      ~QPathForecast.apply_snapshot_filters
+      ~QPathForecast.configure
+      ~QPathForecast.get_dcp_index
+      ~QPathForecast.init
+      ~QPathForecast.run
+      ~QPathForecast.should_run
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~QPathForecast.frequency
+      ~QPathForecast.produces
+      ~QPathForecast.requires
+      ~QPathForecast.snapshot_filter_type
+      ~QPathForecast.algorithm
+      ~QPathForecast.alpha
+      ~QPathForecast.fare_adjustment
+      ~QPathForecast.fare_adjustment_scale
+      ~QPathForecast.weighted_by_ratio
+      ~QPathForecast.q_allocation_algorithm
+      ~QPathForecast.variance_rollup_algorithm
+      ~QPathForecast.variance_is_ratio_of_mean
+      ~QPathForecast.max_cap
+      ~QPathForecast.dcps
+      ~QPathForecast.carrier
+      ~QPathForecast.minimum_sample
+   
+   

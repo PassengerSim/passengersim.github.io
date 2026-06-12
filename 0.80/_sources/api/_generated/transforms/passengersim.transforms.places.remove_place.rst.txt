@@ -1,0 +1,6 @@
+remove\_place
+=============
+
+.. currentmodule:: passengersim.transforms.places
+
+.. autofunction:: remove_place

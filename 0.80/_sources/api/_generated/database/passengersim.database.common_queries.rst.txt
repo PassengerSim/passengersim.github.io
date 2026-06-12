@@ -1,0 +1,49 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.database.
+
+common\_queries
+===============
+
+.. automodule:: passengersim.database.common_queries
+   :no-members:
+
+
+
+
+
+
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: .
+
+   bid_price_history
+   bookings_by_timeframe
+   carrier_history
+   demand_to_come
+   demand_to_come_summary
+   displacement_history
+   edgar
+   fare_class_mix
+   leg_detail
+   leg_forecast_trace
+   leg_forecasts
+   leg_local_and_flow_by_class
+   leg_sales_trace
+   load_factor_distribution
+   load_factors
+   local_and_flow_yields
+   od_fare_class_mix
+   path_forecasts
+   total_demand
+
+
+
+
+

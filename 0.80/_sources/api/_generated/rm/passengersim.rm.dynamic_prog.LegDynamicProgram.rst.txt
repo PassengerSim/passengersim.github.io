@@ -1,0 +1,50 @@
+LegDynamicProgram
+=================
+
+.. currentmodule:: passengersim.rm.dynamic_prog
+
+.. autoclass:: LegDynamicProgram
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~LegDynamicProgram.__init__
+      ~LegDynamicProgram.apply_snapshot_filters
+      ~LegDynamicProgram.configure
+      ~LegDynamicProgram.get_dcp_index
+      ~LegDynamicProgram.init
+      ~LegDynamicProgram.run
+      ~LegDynamicProgram.should_run
+      ~LegDynamicProgram.solve_carrier_lp_for_leg_fare_displacements
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~LegDynamicProgram.frequency
+      ~LegDynamicProgram.produces
+      ~LegDynamicProgram.requires
+      ~LegDynamicProgram.udp
+      ~LegDynamicProgram.error_log
+      ~LegDynamicProgram.store_bid_prices
+      ~LegDynamicProgram.reoptimize
+      ~LegDynamicProgram.arrivals_per_time_slice
+      ~LegDynamicProgram.min_time_slices_per_dcp
+      ~LegDynamicProgram.use_current_bp
+      ~LegDynamicProgram.normalization_method
+      ~LegDynamicProgram.cabins
+      ~LegDynamicProgram.capacity_sharing
+      ~LegDynamicProgram.capacity_sharing_start_lf
+      ~LegDynamicProgram.dcps
+      ~LegDynamicProgram.carrier
+      ~LegDynamicProgram.minimum_sample
+   
+   

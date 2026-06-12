@@ -1,0 +1,6 @@
+extract\_displacement\_history
+==============================
+
+.. currentmodule:: passengersim.summaries.displacement_history
+
+.. autofunction:: extract_displacement_history

@@ -1,0 +1,40 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.summaries.
+
+demand\_to\_come
+================
+
+.. automodule:: passengersim.summaries.demand_to_come
+   :no-members:
+
+
+
+
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: .
+   :template: autosummary/class.rst
+
+   SimTabDemandToCome
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: .
+
+   aggregate_demand_to_come_summary
+   extract_demand_to_come_summary
+
+
+
+
+

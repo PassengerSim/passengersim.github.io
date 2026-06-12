@@ -1,0 +1,6 @@
+extract\_carrier\_history2
+==========================
+
+.. currentmodule:: passengersim.summaries.carriers
+
+.. autofunction:: extract_carrier_history2

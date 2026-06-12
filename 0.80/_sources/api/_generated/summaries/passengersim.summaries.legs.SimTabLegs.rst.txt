@@ -1,0 +1,60 @@
+SimTabLegs
+==========
+
+.. currentmodule:: passengersim.summaries.legs
+
+.. autoclass:: SimTabLegs
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SimTabLegs.__init__
+      ~SimTabLegs.aggregate
+      ~SimTabLegs.extract
+      ~SimTabLegs.fig_leg_bid_price_detail_rake
+      ~SimTabLegs.fig_leg_bid_price_history
+      ~SimTabLegs.fig_leg_booking_detail_rake
+      ~SimTabLegs.fig_leg_load_factor_distribution
+      ~SimTabLegs.fig_leg_load_v_distance
+      ~SimTabLegs.fig_leg_load_v_local
+      ~SimTabLegs.fig_leg_local_share_distribution
+      ~SimTabLegs.file_info
+      ~SimTabLegs.from_file
+      ~SimTabLegs.from_pickle
+      ~SimTabLegs.metadata
+      ~SimTabLegs.remove_data
+      ~SimTabLegs.run_queries
+      ~SimTabLegs.save
+      ~SimTabLegs.subclasses
+      ~SimTabLegs.to_file
+      ~SimTabLegs.to_html
+      ~SimTabLegs.to_pickle
+      ~SimTabLegs.to_xlsx
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~SimTabLegs.callback_data
+      ~SimTabLegs.config
+      ~SimTabLegs.leg_bid_price_detail
+      ~SimTabLegs.leg_booking_detail
+      ~SimTabLegs.leg_defs
+      ~SimTabLegs.leg_detail
+      ~SimTabLegs.legs
+      ~SimTabLegs.legs_
+      ~SimTabLegs.local_fraction_by_place
+      ~SimTabLegs.cnx
+      ~SimTabLegs.sim
+      ~SimTabLegs.n_total_samples
+      ~SimTabLegs.meta_summaries
+   
+   

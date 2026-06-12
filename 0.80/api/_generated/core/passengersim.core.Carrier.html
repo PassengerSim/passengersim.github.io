@@ -1,0 +1,4171 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="passengersim.core.Cabin.html">
+      
+      
+        <link rel="next" href="passengersim.core.ChoiceModel.html">
+      
+      
+      <link rel="icon" href="../../../_static/favicon.png">
+    
+    
+      
+        <title>Carrier - PassengerSim</title>
+      
+    
+    
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_immaterial_theme.50640b526df5ff663.min.css?v=cff97996" />
+        <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+        <link rel="stylesheet" type="text/css" href="../../../_static/css/extra.css?v=663c5cee" />
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#passengersim.core.Carrier" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+<p>
+    <span style="vertical-align: middle; color: #ffd334; font-size: 1.2em;">&#9888;</span>
+    We recently updated our website for PassengerSim v0.80.  More or less all the same content is here (and more)
+    but any pre-existing links and bookmarks may be broken.
+</p>
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../index.html" title="PassengerSim" class="md-header__button md-logo" aria-label="PassengerSim" data-md-component="logo">
+      <img src="../../../_static/logo.svg" alt="logo">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PassengerSim
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Carrier
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/passengersim/passengersim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    PassengerSim/passengersim
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../user-guide/welcome.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>User Guide</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../mechanics/counting-sims.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Mechanics</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../examples/intro-3mkt.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Examples</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="../../_index.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>API</span>
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="PassengerSim" class="md-nav__button md-logo" aria-label="PassengerSim" data-md-component="logo">
+      <img src="../../../_static/logo.svg" alt="logo">
+    </a>
+    PassengerSim
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/passengersim/passengersim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    PassengerSim/passengersim
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>User Guide</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            <span>User Guide</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/welcome.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 10H5L3 8l2-2h6V3l1-1 1 1v1h6l2 2-2 2h-6v2h6l2 2-2 2h-6v6a2 2 0 0 1 2 2H9a2 2 0 0 1 2-2z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Wayfinding</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/installation.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m13.13 22.19-1.63-3.83c1.57-.58 3.04-1.36 4.4-2.27zM5.64 12.5l-3.83-1.63 6.1-2.77C7 9.46 6.22 10.93 5.64 12.5M21.61 2.39S16.66.269 11 5.93c-2.19 2.19-3.5 4.6-4.35 6.71-.28.75-.09 1.57.46 2.13l2.13 2.12c.55.56 1.37.74 2.12.46A19.1 19.1 0 0 0 18.07 13c5.66-5.66 3.54-10.61 3.54-10.61m-7.07 7.07c-.78-.78-.78-2.05 0-2.83s2.05-.78 2.83 0c.77.78.78 2.05 0 2.83s-2.05.78-2.83 0m-5.66 7.07-1.41-1.41zM6.24 22l3.64-3.64c-.34-.09-.67-.24-.97-.45L4.83 22zM2 22h1.41l4.77-4.76-1.42-1.41L2 20.59zm0-2.83 4.09-4.08c-.21-.3-.36-.62-.45-.97L2 17.76z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Installation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/static-config.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.5 3.5 18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2 7.5 3.5 6 2 4.5 3.5 3 2v20l1.5-1.5L6 22l1.5-1.5L9 22l1.5-1.5L12 22l1.5-1.5L15 22l1.5-1.5L18 22l1.5-1.5L21 22V2zM19 19H5V5h14zM6 15h12v2H6m0-6h12v2H6m0-6h12v2H6z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Raw Configuration</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/dynamic-config.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 2 1.5 1.5L21 2v7.13l-2 2V4.91H5v14.18h5.5v1.41L9 22l-1.5-1.5L6 22l-1.5-1.5L3 22V2l1.5 1.5L6 2l1.5 1.5L9 2l1.5 1.5L12 2l1.5 1.5L15 2l1.5 1.5zm-5 17.96 6.13-6.13 2.04 2.04L15.04 22H13zm6.83-6.83.98-.98.02-.02c.05-.04.11-.08.17-.1a.5.5 0 0 1 .53.12l1.32 1.32c.2.2.2.53 0 .72l-.98.98zm-1.83-1-.87.87H6v-2h12zM15.13 15l-2 2H6v-2zM18 9V7H6v2z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Dynamic Configuration</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/basic-usage.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m9 4 2.5 5.5L17 12l-5.5 2.5L9 20l-2.5-5.5L1 12l5.5-2.5zm0 4.83L8 11l-2.17 1L8 13l1 2.17L10 13l2.17-1L10 11zM19 9l-1.26-2.74L15 5l2.74-1.25L19 1l1.25 2.75L23 5l-2.75 1.26zm0 14-1.26-2.74L15 19l2.74-1.25L19 15l1.25 2.75L23 19l-2.75 1.26z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Summary Outputs</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/rm-systems.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 6h18v12H5zm9 3a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3M9 8a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2v-4a2 2 0 0 1-2-2zm-8 2h2v10h16v2H1z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>RM Systems</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/database/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Database</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/experiments.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 19a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1c0-.21-.07-.41-.18-.57L13 8.35V4h-2v4.35L5.18 18.43c-.11.16-.18.36-.18.57m1 3a3 3 0 0 1-3-3c0-.6.18-1.16.5-1.63L9 7.81V6a1 1 0 0 1-1-1V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1v1.81l5.5 9.56c.32.47.5 1.03.5 1.63a3 3 0 0 1-3 3zm7-6 1.34-1.34L16.27 18H7.73l2.66-4.61zm-.5-4a.5.5 0 0 1 .5.5.5.5 0 0 1-.5.5.5.5 0 0 1-.5-.5.5.5 0 0 1 .5-.5"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Experiments</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/callbacks.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.6 5.29c-1.1-.1-2.07.71-2.17 1.82L13.18 10H16v2h-3l-.44 5.07a3.986 3.986 0 0 1-4.33 3.63 4 4 0 0 1-3.06-1.87l1.5-1.5c.24.74.9 1.31 1.73 1.38 1.1.1 2.07-.71 2.17-1.82L11 12H8v-2h3.17l.27-3.07c.19-2.2 2.13-3.83 4.33-3.63 1.31.11 2.41.84 3.06 1.87l-1.5 1.5c-.24-.74-.9-1.31-1.73-1.38"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Callbacks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/tracers.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.84 2.73c-.39 0-.77.15-1.07.44l-2.12 2.12 5.3 5.31 2.12-2.1c.6-.61.6-1.56 0-2.14L17.9 3.17c-.3-.29-.68-.44-1.06-.44M12.94 6l-8.1 8.11 2.56.28.18 2.29 2.28.17.29 2.56 8.1-8.11m-14 3.74L2.5 21.73l6.7-1.79-.24-2.16-2.31-.17-.18-2.32"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Tracing</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/viz/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.45 15.18 22 7.31V21H2V3h2v12.54L9.5 6 16 9.78l4.24-7.33 1.73 1-5.23 9.05-6.51-3.75L4.31 19h2.26l4.39-7.56z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Visualizations</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/firehose.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 15v-1H4v-2h1v-1h2v4zm14-3v-1h-2v4h2v-1h1v-2zm-1-6h-2.14C15.5 4.6 14.4 3.5 13 3.14V2h-2v1.14C9.6 3.5 8.5 4.6 8.14 6H6v2h12zm0 16H6c0-1.1.9-2 2-2V9h8v11a2 2 0 0 1 2 2m-8-9a2 2 0 1 0 4 0c0-1.11-.89-2-2-2s-2 .9-2 2"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Firehose</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>Mechanics</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Mechanics</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanics/counting-sims.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 10.73V19h-2v-7.64L15 12v7h-2v-6.38l-2 .64V19H9v-5.11l-2 .61V19H5v-3.85l-2.43.77L2 14l3-.95V5h2v7.42l2-.63V5h2v6.16l2-.63V5h2v4.9l2-.64V5h2v3.63L21 8l.57 1.92z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Counting Simulations</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanics/demand-generation.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.35 5.64c-.9-.64-1.12-1.88-.49-2.79.64-.9 1.88-1.12 2.79-.49.9.64 1.12 1.88.49 2.79-.64.9-1.88 1.12-2.79.49M16 19H8.93c-1.48 0-2.74-1.08-2.96-2.54L4 7H2l2 9.76A4.99 4.99 0 0 0 8.94 21H16m.23-6h-4.88l-1.03-4.1c1.58.89 3.28 1.54 5.15 1.22V10c-1.63.3-3.44-.28-4.69-1.26L9.14 7.47c-.23-.18-.49-.3-.76-.38a2.2 2.2 0 0 0-.99-.06h-.02a2.27 2.27 0 0 0-1.84 2.61l1.35 5.92A2.99 2.99 0 0 0 9.83 18h6.85l3.82 3 1.5-1.5"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Demand Generation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanics/forecasting.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m9.38 8.38 2.12.96 2.12-.96-.96 2.12.96 2.12-2.12-.96-2.12.96.96-2.12zM16.5 2.5l1.09 2.91L20.5 6.5l-2.91 1.09-1.09 2.91-1.09-2.91L12.5 6.5l2.91-1.09zM6 19h1v-1a1 1 0 0 1 1-1h.26a7.47 7.47 0 0 1-3.76-6.5A7.5 7.5 0 0 1 12 3c1.05 0 2.05.22 2.96.61l-.37.98-1.42.53Q12.6 5 12 5a5.5 5.5 0 0 0-5.5 5.5A5.5 5.5 0 0 0 12 16c2.91 0 5.3-2.27 5.5-5.13l.91-2.46.71-.27c.25.74.38 1.54.38 2.36 0 2.78-1.5 5.2-3.76 6.5H16a1 1 0 0 1 1 1v1h1a2 2 0 0 1 2 2v1H4v-1a2 2 0 0 1 2-2"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Forecasting</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>Examples</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Examples</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/intro-3mkt.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>The 3MKT Network</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/EE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Basic Simulation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/PE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Pro<wbr>BP Optimization</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/LL.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Unrestricted Networks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/QC.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Q vs Conditional Forecasting</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/olympic-fcst.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Custom Forecaster</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/blf-curves.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Heuristic Intervention</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labs/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Labs</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>API</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            <span>API</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../_index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Passenger<wbr>Sim</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../callbacks/passengersim.callbacks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>callbacks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>config</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../connection_builder/passengersim.connection_builder.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>connection_<wbr>builder</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contrast/passengersim.contrast.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>contrast</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="passengersim.core.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    <span>core</span>
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            <span>core</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Airport.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Airport</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.BookingCurve.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Booking<wbr>Curve</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Bucket.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Bucket</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Cabin.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Cabin</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    <span>Carrier</span>
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Carrier</span>
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier" class="md-nav__link">
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier (Python class) — Bases: object"><span>passengersim.<wbr>core.<wbr>Carrier</span></span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="passengersim.core.Carrier">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.add_ancillary" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.add_ancillary (Python method) — Add an ancillary (code &amp; price)."><span>add_<wbr>ancillary</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.add_carrier_history" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.add_carrier_history (Python method) — Add an item to the carrier history."><span>add_<wbr>carrier_<wbr>history</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.add_customer_model" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.add_customer_model (Python method) — Add a customer model to the Carrier"><span>add_<wbr>customer_<wbr>model</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.add_frat5_mkt" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.add_frat5_mkt (Python method) — Specify Frat5 for an O&amp;D market."><span>add_<wbr>frat5_<wbr>mkt</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.ancillaries" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.ancillaries (Python attribute) — List of ancillaries that this airline will offer"><span>ancillaries</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.brand_preference" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.brand_preference (Python attribute) — An array of Brand Preference information"><span>brand_<wbr>preference</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.cabin_ordering" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.cabin_ordering (Python attribute) — Ordering of cabin types on this carrier, from best to worst."><span>cabin_<wbr>ordering</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.control" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.control (Python attribute) — RM control technique, such as &#39;leg&#39;, &#39;bp&#39;, &#39;bp_loose&#39;, &#39;vn&#39;, &#39;classless&#39;"><span>control</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.cp_algorithm" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.cp_algorithm (Python attribute) — Algorithm to use for Continuous Pricing, defaults to &#39;none&#39;"><span>cp_<wbr>algorithm</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.cp_elasticity" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.cp_elasticity (Python attribute) — For Continuous Pricing, estimate customer price elasticity"><span>cp_<wbr>elasticity</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.cp_quantize" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.cp_quantize (Python attribute) — For Contrinuous Pricing, round the value to this. i.e. 10 will result in allprices being a multiple of 10"><span>cp_<wbr>quantize</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.cp_record" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.cp_record (Python attribute) — For Continuous Pricing, do we record in the highest_closed class or the lowest_open?"><span>cp_<wbr>record</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.cp_record_highest_closed_as_open" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.cp_record_highest_closed_as_open (Python attribute) — For continuous pricing, do we record the highest closed class as open in the pathclass history?"><span>cp_<wbr>record_<wbr>highest_<wbr>closed_<wbr>as_<wbr>open</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.cp_scale" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.cp_scale (Python attribute) — Scale the Contuous Pricing modifier.  Example, 0.5 will add 50% of the modifier to the bid price"><span>cp_<wbr>scale</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.current_tf_index" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.current_tf_index (Python attribute) — Current timeframe index"><span>current_<wbr>tf_<wbr>index</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.dcp_days_prior" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.dcp_days_prior (Python attribute) — Days prior for DCPs (i.e. the start time of each timeframe)"><span>dcp_<wbr>days_<wbr>prior</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.default_booking_classes" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.default_booking_classes (Python attribute) — Default booking classes for legs and paths on this carrier."><span>default_<wbr>booking_<wbr>classes</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.frat5" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.frat5 (Python attribute) — Default Frat5 curve to use for this Carrier"><span>frat5</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.get_ancillary_by_index" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.get_ancillary_by_index (Python method) — Get ancillary by index."><span>get_<wbr>ancillary_<wbr>by_<wbr>index</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.get_ancillary_price" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.get_ancillary_price (Python method) — Get the price for an ancillary, by code."><span>get_<wbr>ancillary_<wbr>price</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.get_ancillary_sold" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.get_ancillary_sold (Python method) — Get the sold for an ancillary, by code."><span>get_<wbr>ancillary_<wbr>sold</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.get_carrier_history" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.get_carrier_history (Python method) — Return carrier history."><span>get_<wbr>carrier_<wbr>history</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.get_forecast_accuracy" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.get_forecast_accuracy (Python method) — Return forecast accuracy."><span>get_<wbr>forecast_<wbr>accuracy</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.get_frat5_mkt" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.get_frat5_mkt (Python method) — Get Frat5 for an O&amp;D market."><span>get_<wbr>frat5_<wbr>mkt</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.get_history_def" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.get_history_def (Python method) — Get the history definition."><span>get_<wbr>history_<wbr>def</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.get_spill_counters" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.get_spill_counters (Python method) — Return spill counters."><span>get_<wbr>spill_<wbr>counters</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.gt_available_seat_miles" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.gt_available_seat_miles (Python attribute) — Grand total ASM, gets updated outside the burn period and is not reset by the reset methods"><span>gt_<wbr>available_<wbr>seat_<wbr>miles</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.gt_cp_revenue" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.gt_cp_revenue (Python attribute) — Grand total Continuous Pricing revenue, gets updated outside the burn period and is not reset by the reset methods"><span>gt_<wbr>cp_<wbr>revenue</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.gt_cp_sold" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.gt_cp_sold (Python attribute) — Grand total Continuous Pricing sales, gets updated outside the burn period and is not reset by the reset methods"><span>gt_<wbr>cp_<wbr>sold</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.gt_demand" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.gt_demand (Python attribute) — Grand total generated demand, gets updated outside the burn period and is not reset by the reset methods"><span>gt_<wbr>demand</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.gt_revenue" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.gt_revenue (Python attribute) — Grand total revenue, gets updated outside the burn period and is not reset by the reset methods"><span>gt_<wbr>revenue</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.gt_revenue_passenger_miles" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.gt_revenue_passenger_miles (Python attribute) — Grand total RPM, gets updated outside the burn period and is not reset by the reset methods"><span>gt_<wbr>revenue_<wbr>passenger_<wbr>miles</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.gt_sold" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.gt_sold (Python attribute) — Grand total sold, gets updated outside the burn period and is not reset by the reset methods"><span>gt_<wbr>sold</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.history_length" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.history_length (Python attribute) — History length"><span>history_<wbr>length</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.load_factor_curve" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.load_factor_curve (Python attribute) — Load Factor curve, was an experiment in used this type of RM control.  (deprecated)"><span>load_<wbr>factor_<wbr>curve</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.metadata" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.metadata (Python attribute) — A dictionary for storing arbitrary metadata on the Carrier object"><span>metadata</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.name" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.name (Python attribute) — Name is usually the code, such as &#39;AL1&#39; or &#39;DL&#39;"><span>name</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.num_objects" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.num_objects (Python attribute) — Number of Carrier objects allocated, was used for memory leak detection"><span>num_<wbr>objects</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.proration_rule" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.proration_rule (Python attribute) — How do we prorate revenue between legs on connecting paths?"><span>proration_<wbr>rule</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.raw_bid_price_trace" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.raw_bid_price_trace (Python method) — Raw bid price trace."><span>raw_<wbr>bid_<wbr>price_<wbr>trace</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.raw_bookings_by_day" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.raw_bookings_by_day (Python method) — Raw bookings by fare class by days prior to departure."><span>raw_<wbr>bookings_<wbr>by_<wbr>day</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.raw_bookings_by_segment_fare_dcp" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.raw_bookings_by_segment_fare_dcp (Python method) — Raw bookings by segment, fare class, and DCP."><span>raw_<wbr>bookings_<wbr>by_<wbr>segment_<wbr>fare_<wbr>dcp</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.raw_displacement_cost_trace" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.raw_displacement_cost_trace (Python method) — Raw displacement cost trace."><span>raw_<wbr>displacement_<wbr>cost_<wbr>trace</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.raw_fare_class_distribution" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.raw_fare_class_distribution (Python method) — Raw fare class distribution."><span>raw_<wbr>fare_<wbr>class_<wbr>distribution</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.raw_load_factor_distribution" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.raw_load_factor_distribution (Python method) — Raw load factor distribution."><span>raw_<wbr>load_<wbr>factor_<wbr>distribution</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.raw_revenue_by_segment_fare_dcp" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.raw_revenue_by_segment_fare_dcp (Python method) — Raw revenue by segment, fare class, and DCP."><span>raw_<wbr>revenue_<wbr>by_<wbr>segment_<wbr>fare_<wbr>dcp</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.reset_bid_price_trace" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.reset_bid_price_trace (Python method) — Reset bid price trace."><span>reset_<wbr>bid_<wbr>price_<wbr>trace</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.reset_displacement_cost_trace" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.reset_displacement_cost_trace (Python method) — Reset displacement cost trace."><span>reset_<wbr>displacement_<wbr>cost_<wbr>trace</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.revenue" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.revenue (Python attribute) — Revenue total, reset after each sample"><span>revenue</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.rm_sys" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.rm_sys (Python attribute) — The RM system used by this carrier."><span>rm_<wbr>sys</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.sold" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.sold (Python attribute) — Number sold, reset after each sample"><span>sold</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.sold_priceable" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.sold_priceable (Python attribute) — Number sold priceable, reset after each sample"><span>sold_<wbr>priceable</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.store_q_history" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.store_q_history (Python attribute) — Whether to store the Q history"><span>store_<wbr>q_<wbr>history</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.truncation_rule" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.truncation_rule (Python attribute) — Do we mark a TimeFrame as closed if it&#39;s closed at the start, end, or both"><span>truncation_<wbr>rule</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.ChoiceModel.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Choice<wbr>Model</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.DecisionWindow.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Decision<wbr>Window</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Demand.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Demand</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.DynamicProgram.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Dynamic<wbr>Program</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Event.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Event</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Fare.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Fare</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Forecast.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Forecast</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.ForecastAccessor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Forecast<wbr>Accessor</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.ForecastGroup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Forecast<wbr>Group</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Frat5.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Frat5</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.History.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>History</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Leg.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Leg</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Market.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Market</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Path.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Path</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.PathClass.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Path<wbr>Class</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.ProBP.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Pro<wbr>BP</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Profiler.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Profiler</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.UserAction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>User<wbr>Action</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/passengersim.database.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>database</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../driver/passengersim.driver.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>driver</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiments/passengersim.experiments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>experiments</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>rm</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../summaries/passengersim.summaries.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>summaries</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tracers/passengersim.tracers.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>tracers</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transforms/passengersim.transforms.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>transforms</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier" class="md-nav__link">
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier (Python class) — Bases: object"><span>passengersim.<wbr>core.<wbr>Carrier</span></span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="passengersim.core.Carrier">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.add_ancillary" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.add_ancillary (Python method) — Add an ancillary (code &amp; price)."><span>add_<wbr>ancillary</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.add_carrier_history" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.add_carrier_history (Python method) — Add an item to the carrier history."><span>add_<wbr>carrier_<wbr>history</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.add_customer_model" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.add_customer_model (Python method) — Add a customer model to the Carrier"><span>add_<wbr>customer_<wbr>model</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.add_frat5_mkt" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.add_frat5_mkt (Python method) — Specify Frat5 for an O&amp;D market."><span>add_<wbr>frat5_<wbr>mkt</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.ancillaries" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.ancillaries (Python attribute) — List of ancillaries that this airline will offer"><span>ancillaries</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.brand_preference" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.brand_preference (Python attribute) — An array of Brand Preference information"><span>brand_<wbr>preference</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.cabin_ordering" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.cabin_ordering (Python attribute) — Ordering of cabin types on this carrier, from best to worst."><span>cabin_<wbr>ordering</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.control" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.control (Python attribute) — RM control technique, such as &#39;leg&#39;, &#39;bp&#39;, &#39;bp_loose&#39;, &#39;vn&#39;, &#39;classless&#39;"><span>control</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.cp_algorithm" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.cp_algorithm (Python attribute) — Algorithm to use for Continuous Pricing, defaults to &#39;none&#39;"><span>cp_<wbr>algorithm</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.cp_elasticity" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.cp_elasticity (Python attribute) — For Continuous Pricing, estimate customer price elasticity"><span>cp_<wbr>elasticity</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.cp_quantize" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.cp_quantize (Python attribute) — For Contrinuous Pricing, round the value to this. i.e. 10 will result in allprices being a multiple of 10"><span>cp_<wbr>quantize</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.cp_record" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.cp_record (Python attribute) — For Continuous Pricing, do we record in the highest_closed class or the lowest_open?"><span>cp_<wbr>record</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.cp_record_highest_closed_as_open" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.cp_record_highest_closed_as_open (Python attribute) — For continuous pricing, do we record the highest closed class as open in the pathclass history?"><span>cp_<wbr>record_<wbr>highest_<wbr>closed_<wbr>as_<wbr>open</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.cp_scale" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.cp_scale (Python attribute) — Scale the Contuous Pricing modifier.  Example, 0.5 will add 50% of the modifier to the bid price"><span>cp_<wbr>scale</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.current_tf_index" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.current_tf_index (Python attribute) — Current timeframe index"><span>current_<wbr>tf_<wbr>index</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.dcp_days_prior" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.dcp_days_prior (Python attribute) — Days prior for DCPs (i.e. the start time of each timeframe)"><span>dcp_<wbr>days_<wbr>prior</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.default_booking_classes" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.default_booking_classes (Python attribute) — Default booking classes for legs and paths on this carrier."><span>default_<wbr>booking_<wbr>classes</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.frat5" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.frat5 (Python attribute) — Default Frat5 curve to use for this Carrier"><span>frat5</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.get_ancillary_by_index" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.get_ancillary_by_index (Python method) — Get ancillary by index."><span>get_<wbr>ancillary_<wbr>by_<wbr>index</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.get_ancillary_price" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.get_ancillary_price (Python method) — Get the price for an ancillary, by code."><span>get_<wbr>ancillary_<wbr>price</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.get_ancillary_sold" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.get_ancillary_sold (Python method) — Get the sold for an ancillary, by code."><span>get_<wbr>ancillary_<wbr>sold</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.get_carrier_history" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.get_carrier_history (Python method) — Return carrier history."><span>get_<wbr>carrier_<wbr>history</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.get_forecast_accuracy" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.get_forecast_accuracy (Python method) — Return forecast accuracy."><span>get_<wbr>forecast_<wbr>accuracy</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.get_frat5_mkt" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.get_frat5_mkt (Python method) — Get Frat5 for an O&amp;D market."><span>get_<wbr>frat5_<wbr>mkt</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.get_history_def" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.get_history_def (Python method) — Get the history definition."><span>get_<wbr>history_<wbr>def</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.get_spill_counters" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.get_spill_counters (Python method) — Return spill counters."><span>get_<wbr>spill_<wbr>counters</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.gt_available_seat_miles" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.gt_available_seat_miles (Python attribute) — Grand total ASM, gets updated outside the burn period and is not reset by the reset methods"><span>gt_<wbr>available_<wbr>seat_<wbr>miles</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.gt_cp_revenue" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.gt_cp_revenue (Python attribute) — Grand total Continuous Pricing revenue, gets updated outside the burn period and is not reset by the reset methods"><span>gt_<wbr>cp_<wbr>revenue</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.gt_cp_sold" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.gt_cp_sold (Python attribute) — Grand total Continuous Pricing sales, gets updated outside the burn period and is not reset by the reset methods"><span>gt_<wbr>cp_<wbr>sold</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.gt_demand" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.gt_demand (Python attribute) — Grand total generated demand, gets updated outside the burn period and is not reset by the reset methods"><span>gt_<wbr>demand</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.gt_revenue" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.gt_revenue (Python attribute) — Grand total revenue, gets updated outside the burn period and is not reset by the reset methods"><span>gt_<wbr>revenue</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.gt_revenue_passenger_miles" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.gt_revenue_passenger_miles (Python attribute) — Grand total RPM, gets updated outside the burn period and is not reset by the reset methods"><span>gt_<wbr>revenue_<wbr>passenger_<wbr>miles</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.gt_sold" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.gt_sold (Python attribute) — Grand total sold, gets updated outside the burn period and is not reset by the reset methods"><span>gt_<wbr>sold</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.history_length" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.history_length (Python attribute) — History length"><span>history_<wbr>length</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.load_factor_curve" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.load_factor_curve (Python attribute) — Load Factor curve, was an experiment in used this type of RM control.  (deprecated)"><span>load_<wbr>factor_<wbr>curve</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.metadata" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.metadata (Python attribute) — A dictionary for storing arbitrary metadata on the Carrier object"><span>metadata</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.name" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.name (Python attribute) — Name is usually the code, such as &#39;AL1&#39; or &#39;DL&#39;"><span>name</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.num_objects" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.num_objects (Python attribute) — Number of Carrier objects allocated, was used for memory leak detection"><span>num_<wbr>objects</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.proration_rule" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.proration_rule (Python attribute) — How do we prorate revenue between legs on connecting paths?"><span>proration_<wbr>rule</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.raw_bid_price_trace" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.raw_bid_price_trace (Python method) — Raw bid price trace."><span>raw_<wbr>bid_<wbr>price_<wbr>trace</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.raw_bookings_by_day" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.raw_bookings_by_day (Python method) — Raw bookings by fare class by days prior to departure."><span>raw_<wbr>bookings_<wbr>by_<wbr>day</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.raw_bookings_by_segment_fare_dcp" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.raw_bookings_by_segment_fare_dcp (Python method) — Raw bookings by segment, fare class, and DCP."><span>raw_<wbr>bookings_<wbr>by_<wbr>segment_<wbr>fare_<wbr>dcp</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.raw_displacement_cost_trace" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.raw_displacement_cost_trace (Python method) — Raw displacement cost trace."><span>raw_<wbr>displacement_<wbr>cost_<wbr>trace</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.raw_fare_class_distribution" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.raw_fare_class_distribution (Python method) — Raw fare class distribution."><span>raw_<wbr>fare_<wbr>class_<wbr>distribution</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.raw_load_factor_distribution" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.raw_load_factor_distribution (Python method) — Raw load factor distribution."><span>raw_<wbr>load_<wbr>factor_<wbr>distribution</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.raw_revenue_by_segment_fare_dcp" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.raw_revenue_by_segment_fare_dcp (Python method) — Raw revenue by segment, fare class, and DCP."><span>raw_<wbr>revenue_<wbr>by_<wbr>segment_<wbr>fare_<wbr>dcp</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.reset_bid_price_trace" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.reset_bid_price_trace (Python method) — Reset bid price trace."><span>reset_<wbr>bid_<wbr>price_<wbr>trace</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.reset_displacement_cost_trace" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.reset_displacement_cost_trace (Python method) — Reset displacement cost trace."><span>reset_<wbr>displacement_<wbr>cost_<wbr>trace</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.revenue" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.revenue (Python attribute) — Revenue total, reset after each sample"><span>revenue</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.rm_sys" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.rm_sys (Python attribute) — The RM system used by this carrier."><span>rm_<wbr>sys</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.sold" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.sold (Python attribute) — Number sold, reset after each sample"><span>sold</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.sold_priceable" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.sold_priceable (Python attribute) — Number sold priceable, reset after each sample"><span>sold_<wbr>priceable</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.store_q_history" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.store_q_history (Python attribute) — Whether to store the Q history"><span>store_<wbr>q_<wbr>history</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Carrier.truncation_rule" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Carrier.truncation_rule (Python attribute) — Do we mark a TimeFrame as closed if it&#39;s closed at the start, end, or both"><span>truncation_<wbr>rule</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                
+                
+                  
+
+
+<h1 id="carrier">Carrier<a class="headerlink" href="#carrier" title="Link to this heading">¶</a></h1>
+<dl class="py class objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">passengersim.core.</span></span><span class="sig-name descname"><span class="pre">Carrier</span></span><a class="headerlink" href="#passengersim.core.Carrier" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Carrier object representing an airline with revenue management controls.</p>
+<p>Represents an airline carrier with counters for tracking sales, revenue, and
+bookings, along with configuration for revenue management systems, pricing
+strategies, and forecasting.</p>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils data align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code>(*args, **kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Carrier.add_ancillary" title="passengersim.core.Carrier.add_ancillary (Python method) — Add an ancillary (code &amp; price)."><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_ancillary</span></code></a></p></td>
+<td><p>Add an ancillary (code &amp; price).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Carrier.add_carrier_history" title="passengersim.core.Carrier.add_carrier_history (Python method) — Add an item to the carrier history."><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_carrier_history</span></code></a></p></td>
+<td><p>Add an item to the carrier history.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Carrier.add_customer_model" title="passengersim.core.Carrier.add_customer_model (Python method) — Add a customer model to the Carrier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_customer_model</span></code></a></p></td>
+<td><p>Add a customer model to the Carrier</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Carrier.add_frat5_mkt" title="passengersim.core.Carrier.add_frat5_mkt (Python method) — Specify Frat5 for an O&amp;D market."><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_frat5_mkt</span></code></a></p></td>
+<td><p>Specify Frat5 for an O&amp;D market.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Carrier.get_ancillary_by_index" title="passengersim.core.Carrier.get_ancillary_by_index (Python method) — Get ancillary by index."><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_ancillary_by_index</span></code></a></p></td>
+<td><p>Get ancillary by index.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Carrier.get_ancillary_price" title="passengersim.core.Carrier.get_ancillary_price (Python method) — Get the price for an ancillary, by code."><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_ancillary_price</span></code></a></p></td>
+<td><p>Get the price for an ancillary, by code.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Carrier.get_ancillary_sold" title="passengersim.core.Carrier.get_ancillary_sold (Python method) — Get the sold for an ancillary, by code."><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_ancillary_sold</span></code></a></p></td>
+<td><p>Get the sold for an ancillary, by code.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Carrier.get_carrier_history" title="passengersim.core.Carrier.get_carrier_history (Python method) — Return carrier history."><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_carrier_history</span></code></a></p></td>
+<td><p>Return carrier history.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Carrier.get_forecast_accuracy" title="passengersim.core.Carrier.get_forecast_accuracy (Python method) — Return forecast accuracy."><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_forecast_accuracy</span></code></a></p></td>
+<td><p>Return forecast accuracy.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Carrier.get_frat5_mkt" title="passengersim.core.Carrier.get_frat5_mkt (Python method) — Get Frat5 for an O&amp;D market."><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_frat5_mkt</span></code></a></p></td>
+<td><p>Get Frat5 for an O&amp;D market.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Carrier.get_history_def" title="passengersim.core.Carrier.get_history_def (Python method) — Get the history definition."><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_history_def</span></code></a></p></td>
+<td><p>Get the history definition.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Carrier.get_spill_counters" title="passengersim.core.Carrier.get_spill_counters (Python method) — Return spill counters."><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_spill_counters</span></code></a></p></td>
+<td><p>Return spill counters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Carrier.raw_bid_price_trace" title="passengersim.core.Carrier.raw_bid_price_trace (Python method) — Raw bid price trace."><code class="xref py py-obj docutils literal notranslate"><span class="pre">raw_bid_price_trace</span></code></a></p></td>
+<td><p>Raw bid price trace.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Carrier.raw_bookings_by_day" title="passengersim.core.Carrier.raw_bookings_by_day (Python method) — Raw bookings by fare class by days prior to departure."><code class="xref py py-obj docutils literal notranslate"><span class="pre">raw_bookings_by_day</span></code></a></p></td>
+<td><p>Raw bookings by fare class by days prior to departure.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Carrier.raw_bookings_by_segment_fare_dcp" title="passengersim.core.Carrier.raw_bookings_by_segment_fare_dcp (Python method) — Raw bookings by segment, fare class, and DCP."><code class="xref py py-obj docutils literal notranslate"><span class="pre">raw_bookings_by_segment_fare_dcp</span></code></a></p></td>
+<td><p>Raw bookings by segment, fare class, and DCP.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Carrier.raw_displacement_cost_trace" title="passengersim.core.Carrier.raw_displacement_cost_trace (Python method) — Raw displacement cost trace."><code class="xref py py-obj docutils literal notranslate"><span class="pre">raw_displacement_cost_trace</span></code></a></p></td>
+<td><p>Raw displacement cost trace.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Carrier.raw_fare_class_distribution" title="passengersim.core.Carrier.raw_fare_class_distribution (Python method) — Raw fare class distribution."><code class="xref py py-obj docutils literal notranslate"><span class="pre">raw_fare_class_distribution</span></code></a></p></td>
+<td><p>Raw fare class distribution.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Carrier.raw_load_factor_distribution" title="passengersim.core.Carrier.raw_load_factor_distribution (Python method) — Raw load factor distribution."><code class="xref py py-obj docutils literal notranslate"><span class="pre">raw_load_factor_distribution</span></code></a></p></td>
+<td><p>Raw load factor distribution.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Carrier.raw_revenue_by_segment_fare_dcp" title="passengersim.core.Carrier.raw_revenue_by_segment_fare_dcp (Python method) — Raw revenue by segment, fare class, and DCP."><code class="xref py py-obj docutils literal notranslate"><span class="pre">raw_revenue_by_segment_fare_dcp</span></code></a></p></td>
+<td><p>Raw revenue by segment, fare class, and DCP.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Carrier.reset_bid_price_trace" title="passengersim.core.Carrier.reset_bid_price_trace (Python method) — Reset bid price trace."><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_bid_price_trace</span></code></a></p></td>
+<td><p>Reset bid price trace.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Carrier.reset_displacement_cost_trace" title="passengersim.core.Carrier.reset_displacement_cost_trace (Python method) — Reset displacement cost trace."><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_displacement_cost_trace</span></code></a></p></td>
+<td><p>Reset displacement cost trace.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable docutils data align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Carrier.ancillaries" title="passengersim.core.Carrier.ancillaries (Python attribute) — List of ancillaries that this airline will offer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ancillaries</span></code></a></p></td>
+<td><p>List of ancillaries that this airline will offer</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Carrier.brand_preference" title="passengersim.core.Carrier.brand_preference (Python attribute) — An array of Brand Preference information"><code class="xref py py-obj docutils literal notranslate"><span class="pre">brand_preference</span></code></a></p></td>
+<td><p>An array of Brand Preference information</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Carrier.cabin_ordering" title="passengersim.core.Carrier.cabin_ordering (Python attribute) — Ordering of cabin types on this carrier, from best to worst."><code class="xref py py-obj docutils literal notranslate"><span class="pre">cabin_ordering</span></code></a></p></td>
+<td><p>Ordering of cabin types on this carrier, from best to worst.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Carrier.control" title="passengersim.core.Carrier.control (Python attribute) — RM control technique, such as 'leg', 'bp', 'bp_loose', 'vn', 'classless'"><code class="xref py py-obj docutils literal notranslate"><span class="pre">control</span></code></a></p></td>
+<td><p>RM control technique, such as 'leg', 'bp', 'bp_loose', 'vn', 'classless'</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Carrier.cp_algorithm" title="passengersim.core.Carrier.cp_algorithm (Python attribute) — Algorithm to use for Continuous Pricing, defaults to 'none'"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cp_algorithm</span></code></a></p></td>
+<td><p>Algorithm to use for Continuous Pricing, defaults to 'none'</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Carrier.cp_elasticity" title="passengersim.core.Carrier.cp_elasticity (Python attribute) — For Continuous Pricing, estimate customer price elasticity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cp_elasticity</span></code></a></p></td>
+<td><p>For Continuous Pricing, estimate customer price elasticity</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Carrier.cp_quantize" title="passengersim.core.Carrier.cp_quantize (Python attribute) — For Contrinuous Pricing, round the value to this. i.e. 10 will result in allprices being a multiple of 10"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cp_quantize</span></code></a></p></td>
+<td><p>For Contrinuous Pricing, round the value to this.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Carrier.cp_record" title="passengersim.core.Carrier.cp_record (Python attribute) — For Continuous Pricing, do we record in the highest_closed class or the lowest_open?"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cp_record</span></code></a></p></td>
+<td><p>For Continuous Pricing, do we record in the highest_closed class or the lowest_open?</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Carrier.cp_record_highest_closed_as_open" title="passengersim.core.Carrier.cp_record_highest_closed_as_open (Python attribute) — For continuous pricing, do we record the highest closed class as open in the pathclass history?"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cp_record_highest_closed_as_open</span></code></a></p></td>
+<td><p>For continuous pricing, do we record the highest closed class as open in the pathclass history?</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Carrier.cp_scale" title="passengersim.core.Carrier.cp_scale (Python attribute) — Scale the Contuous Pricing modifier.  Example, 0.5 will add 50% of the modifier to the bid price"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cp_scale</span></code></a></p></td>
+<td><p>Scale the Contuous Pricing modifier.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Carrier.current_tf_index" title="passengersim.core.Carrier.current_tf_index (Python attribute) — Current timeframe index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">current_tf_index</span></code></a></p></td>
+<td><p>Current timeframe index</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Carrier.dcp_days_prior" title="passengersim.core.Carrier.dcp_days_prior (Python attribute) — Days prior for DCPs (i.e. the start time of each timeframe)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dcp_days_prior</span></code></a></p></td>
+<td><p>Days prior for DCPs (i.e. the start time of each timeframe).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Carrier.default_booking_classes" title="passengersim.core.Carrier.default_booking_classes (Python attribute) — Default booking classes for legs and paths on this carrier."><code class="xref py py-obj docutils literal notranslate"><span class="pre">default_booking_classes</span></code></a></p></td>
+<td><p>Default booking classes for legs and paths on this carrier.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Carrier.frat5" title="passengersim.core.Carrier.frat5 (Python attribute) — Default Frat5 curve to use for this Carrier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">frat5</span></code></a></p></td>
+<td><p>Default Frat5 curve to use for this Carrier</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Carrier.gt_available_seat_miles" title="passengersim.core.Carrier.gt_available_seat_miles (Python attribute) — Grand total ASM, gets updated outside the burn period and is not reset by the reset methods"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gt_available_seat_miles</span></code></a></p></td>
+<td><p>Grand total ASM, gets updated outside the burn period and is not reset by the reset methods</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Carrier.gt_cp_revenue" title="passengersim.core.Carrier.gt_cp_revenue (Python attribute) — Grand total Continuous Pricing revenue, gets updated outside the burn period and is not reset by the reset methods"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gt_cp_revenue</span></code></a></p></td>
+<td><p>Grand total Continuous Pricing revenue, gets updated outside the burn period and is not reset by the reset methods</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Carrier.gt_cp_sold" title="passengersim.core.Carrier.gt_cp_sold (Python attribute) — Grand total Continuous Pricing sales, gets updated outside the burn period and is not reset by the reset methods"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gt_cp_sold</span></code></a></p></td>
+<td><p>Grand total Continuous Pricing sales, gets updated outside the burn period and is not reset by the reset methods</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Carrier.gt_demand" title="passengersim.core.Carrier.gt_demand (Python attribute) — Grand total generated demand, gets updated outside the burn period and is not reset by the reset methods"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gt_demand</span></code></a></p></td>
+<td><p>Grand total generated demand, gets updated outside the burn period and is not reset by the reset methods</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Carrier.gt_revenue" title="passengersim.core.Carrier.gt_revenue (Python attribute) — Grand total revenue, gets updated outside the burn period and is not reset by the reset methods"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gt_revenue</span></code></a></p></td>
+<td><p>Grand total revenue, gets updated outside the burn period and is not reset by the reset methods</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Carrier.gt_revenue_passenger_miles" title="passengersim.core.Carrier.gt_revenue_passenger_miles (Python attribute) — Grand total RPM, gets updated outside the burn period and is not reset by the reset methods"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gt_revenue_passenger_miles</span></code></a></p></td>
+<td><p>Grand total RPM, gets updated outside the burn period and is not reset by the reset methods</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Carrier.gt_sold" title="passengersim.core.Carrier.gt_sold (Python attribute) — Grand total sold, gets updated outside the burn period and is not reset by the reset methods"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gt_sold</span></code></a></p></td>
+<td><p>Grand total sold, gets updated outside the burn period and is not reset by the reset methods</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Carrier.history_length" title="passengersim.core.Carrier.history_length (Python attribute) — History length"><code class="xref py py-obj docutils literal notranslate"><span class="pre">history_length</span></code></a></p></td>
+<td><p>History length</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Carrier.load_factor_curve" title="passengersim.core.Carrier.load_factor_curve (Python attribute) — Load Factor curve, was an experiment in used this type of RM control.  (deprecated)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_factor_curve</span></code></a></p></td>
+<td><p>Load Factor curve, was an experiment in used this type of RM control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Carrier.metadata" title="passengersim.core.Carrier.metadata (Python attribute) — A dictionary for storing arbitrary metadata on the Carrier object"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metadata</span></code></a></p></td>
+<td><p>A dictionary for storing arbitrary metadata on the Carrier object</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Carrier.name" title="passengersim.core.Carrier.name (Python attribute) — Name is usually the code, such as 'AL1' or 'DL'"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p>Name is usually the code, such as 'AL1' or 'DL'</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Carrier.num_objects" title="passengersim.core.Carrier.num_objects (Python attribute) — Number of Carrier objects allocated, was used for memory leak detection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_objects</span></code></a></p></td>
+<td><p>Number of Carrier objects allocated, was used for memory leak detection</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Carrier.proration_rule" title="passengersim.core.Carrier.proration_rule (Python attribute) — How do we prorate revenue between legs on connecting paths?"><code class="xref py py-obj docutils literal notranslate"><span class="pre">proration_rule</span></code></a></p></td>
+<td><p>How do we prorate revenue between legs on connecting paths?</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Carrier.revenue" title="passengersim.core.Carrier.revenue (Python attribute) — Revenue total, reset after each sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">revenue</span></code></a></p></td>
+<td><p>Revenue total, reset after each sample</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Carrier.rm_sys" title="passengersim.core.Carrier.rm_sys (Python attribute) — The RM system used by this carrier."><code class="xref py py-obj docutils literal notranslate"><span class="pre">rm_sys</span></code></a></p></td>
+<td><p>The RM system used by this carrier.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Carrier.sold" title="passengersim.core.Carrier.sold (Python attribute) — Number sold, reset after each sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sold</span></code></a></p></td>
+<td><p>Number sold, reset after each sample</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Carrier.sold_priceable" title="passengersim.core.Carrier.sold_priceable (Python attribute) — Number sold priceable, reset after each sample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sold_priceable</span></code></a></p></td>
+<td><p>Number sold priceable, reset after each sample</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Carrier.store_q_history" title="passengersim.core.Carrier.store_q_history (Python attribute) — Whether to store the Q history"><code class="xref py py-obj docutils literal notranslate"><span class="pre">store_q_history</span></code></a></p></td>
+<td><p>Whether to store the Q history</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Carrier.truncation_rule" title="passengersim.core.Carrier.truncation_rule (Python attribute) — Do we mark a TimeFrame as closed if it's closed at the start, end, or both"><code class="xref py py-obj docutils literal notranslate"><span class="pre">truncation_rule</span></code></a></p></td>
+<td><p>Do we mark a TimeFrame as closed if it's closed at the start, end, or both</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.add_ancillary">
+<span class="sig-name descname"><span class="pre">add_ancillary</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Carrier.add_ancillary" title="Link to this definition">¶</a></dt>
+<dd><p>Add an ancillary (code &amp; price).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt><span class="sig-name descname">anc</span><span class="p"> : </span><span class="desctype"><span class="desctype">Ancillary</span></span></dt><dd><p>The ancillary item to add.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>int</em> – Returns 0 on success.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.add_carrier_history">
+<span class="sig-name descname"><span class="pre">add_carrier_history</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Carrier.add_carrier_history" title="Link to this definition">¶</a></dt>
+<dd><p>Add an item to the carrier history.</p>
+<p>ONLY USED FOR UNIT TESTING.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt><span class="sig-name descname">trial</span><span class="p"> : </span><span class="desctype"><span class="desctype">int</span></span></dt><dd><p>Trial number.</p>
+</dd>
+<dt><span class="sig-name descname">sample</span><span class="p"> : </span><span class="desctype"><span class="desctype">int</span></span></dt><dd><p>Sample number.</p>
+</dd>
+<dt><span class="sig-name descname">sold</span><span class="p"> : </span><span class="desctype"><span class="desctype">int</span></span></dt><dd><p>Number sold.</p>
+</dd>
+<dt><span class="sig-name descname">sold_priceable</span><span class="p"> : </span><span class="desctype"><span class="desctype">int</span></span></dt><dd><p>Number sold priceable.</p>
+</dd>
+<dt><span class="sig-name descname">revenue</span><span class="p"> : </span><span class="desctype"><span class="desctype">float</span></span></dt><dd><p>Revenue amount.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>int</em> – Returns 0 on success.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.add_customer_model">
+<span class="sig-name descname"><span class="pre">add_customer_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Carrier.add_customer_model" title="Link to this definition">¶</a></dt>
+<dd><p>Add a customer model to the Carrier</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt><span class="sig-name descname">customer_model</span><span class="p"> : </span><span class="desctype"><span class="desctype">CustomerModel</span></span></dt><dd><p>The CustomerModel to use.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.add_frat5_mkt">
+<span class="sig-name descname"><span class="pre">add_frat5_mkt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Carrier.add_frat5_mkt" title="Link to this definition">¶</a></dt>
+<dd><p>Specify Frat5 for an O&amp;D market.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt><span class="sig-name descname">orig</span><span class="p"> : </span><span class="desctype"><span class="desctype">str</span></span></dt><dd><p>Origin airport code.</p>
+</dd>
+<dt><span class="sig-name descname">dest</span><span class="p"> : </span><span class="desctype"><span class="desctype">str</span></span></dt><dd><p>Destination airport code.</p>
+</dd>
+<dt><span class="sig-name descname">frat5</span><span class="p"> : </span><span class="desctype"><span class="desctype"><a class="reference internal" href="passengersim.core.Frat5.html#passengersim.core.Frat5" title="passengersim.core.Frat5 (Python class) — Bases: object">Frat5</a></span></span></dt><dd><p>The Frat5 curve to use for this market.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.ancillaries">
+<span class="sig-name descname"><span class="pre">ancillaries</span></span><a class="headerlink" href="#passengersim.core.Carrier.ancillaries" title="Link to this definition">¶</a></dt>
+<dd><p>List of ancillaries that this airline will offer</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.brand_preference">
+<span class="sig-name descname"><span class="pre">brand_preference</span></span><a class="headerlink" href="#passengersim.core.Carrier.brand_preference" title="Link to this definition">¶</a></dt>
+<dd><p>An array of Brand Preference information</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.cabin_ordering">
+<span class="sig-name descname"><span class="pre">cabin_ordering</span></span><a class="headerlink" href="#passengersim.core.Carrier.cabin_ordering" title="Link to this definition">¶</a></dt>
+<dd><p>Ordering of cabin types on this carrier, from best to worst.</p>
+<p>For any leg that has multiple cabins, all cabin names must appear in this
+list. The cabins are strictly ordered such that any customer can be
+accommodated in the cabin for the ticket they purchased or any better cabin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>list[str]</em> – List of cabin name strings ordered from best to worst.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.control">
+<span class="sig-name descname"><span class="pre">control</span></span><a class="headerlink" href="#passengersim.core.Carrier.control" title="Link to this definition">¶</a></dt>
+<dd><p>RM control technique, such as ‘leg’, ‘bp’, ‘bp_loose’, ‘vn’, ‘classless’</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.cp_algorithm">
+<span class="sig-name descname"><span class="pre">cp_algorithm</span></span><a class="headerlink" href="#passengersim.core.Carrier.cp_algorithm" title="Link to this definition">¶</a></dt>
+<dd><p>Algorithm to use for Continuous Pricing, defaults to ‘none’</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.cp_elasticity">
+<span class="sig-name descname"><span class="pre">cp_elasticity</span></span><a class="headerlink" href="#passengersim.core.Carrier.cp_elasticity" title="Link to this definition">¶</a></dt>
+<dd><p>For Continuous Pricing, estimate customer price elasticity</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.cp_quantize">
+<span class="sig-name descname"><span class="pre">cp_quantize</span></span><a class="headerlink" href="#passengersim.core.Carrier.cp_quantize" title="Link to this definition">¶</a></dt>
+<dd><p>For Contrinuous Pricing, round the value to this. i.e. 10 will result in allprices being a multiple of 10</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.cp_record">
+<span class="sig-name descname"><span class="pre">cp_record</span></span><a class="headerlink" href="#passengersim.core.Carrier.cp_record" title="Link to this definition">¶</a></dt>
+<dd><p>For Continuous Pricing, do we record in the highest_closed class or the lowest_open?</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.cp_record_highest_closed_as_open">
+<span class="sig-name descname"><span class="pre">cp_record_highest_closed_as_open</span></span><a class="headerlink" href="#passengersim.core.Carrier.cp_record_highest_closed_as_open" title="Link to this definition">¶</a></dt>
+<dd><p>For continuous pricing, do we record the highest closed class as open in the pathclass history?</p>
+<p>Has no effect unless cp_record is set to highest_closed</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.cp_scale">
+<span class="sig-name descname"><span class="pre">cp_scale</span></span><a class="headerlink" href="#passengersim.core.Carrier.cp_scale" title="Link to this definition">¶</a></dt>
+<dd><p>Scale the Contuous Pricing modifier.  Example, 0.5 will add 50% of the modifier to the bid price</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.current_tf_index">
+<span class="sig-name descname"><span class="pre">current_tf_index</span></span><a class="headerlink" href="#passengersim.core.Carrier.current_tf_index" title="Link to this definition">¶</a></dt>
+<dd><p>Current timeframe index</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.dcp_days_prior">
+<span class="sig-name descname"><span class="pre">dcp_days_prior</span></span><a class="headerlink" href="#passengersim.core.Carrier.dcp_days_prior" title="Link to this definition">¶</a></dt>
+<dd><p>Days prior for DCPs (i.e. the start time of each timeframe)</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.default_booking_classes">
+<span class="sig-name descname"><span class="pre">default_booking_classes</span></span><a class="headerlink" href="#passengersim.core.Carrier.default_booking_classes" title="Link to this definition">¶</a></dt>
+<dd><p>Default booking classes for legs and paths on this carrier.</p>
+<p>Each entry is a pair (booking_class, lowest_cabin) where booking_class is
+the name of the booking class and lowest_cabin is the lowest cabin type
+where customers who purchase this booking class may be accommodated.
+When setting, each item may be a plain string (stored with an empty
+lowest_cabin) or a (str, str) pair.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>list[tuple[str, str]]</em> – List of (booking_class, lowest_cabin) pairs.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.frat5">
+<span class="sig-name descname"><span class="pre">frat5</span></span><a class="headerlink" href="#passengersim.core.Carrier.frat5" title="Link to this definition">¶</a></dt>
+<dd><p>Default Frat5 curve to use for this Carrier</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.get_ancillary_by_index">
+<span class="sig-name descname"><span class="pre">get_ancillary_by_index</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Carrier.get_ancillary_by_index" title="Link to this definition">¶</a></dt>
+<dd><p>Get ancillary by index.</p>
+<p>ONLY USED FOR DEBUGGING.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt><span class="sig-name descname">index</span><span class="p"> : </span><span class="desctype"><span class="desctype">int</span></span></dt><dd><p>The index of the ancillary to retrieve.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Ancillary</em> – The ancillary at the specified index.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.get_ancillary_price">
+<span class="sig-name descname"><span class="pre">get_ancillary_price</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Carrier.get_ancillary_price" title="Link to this definition">¶</a></dt>
+<dd><p>Get the price for an ancillary, by code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt><span class="sig-name descname">name</span><span class="p"> : </span><span class="desctype"><span class="desctype">str</span></span></dt><dd><p>The ancillary code to look up.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>float</em> – The price of the ancillary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.get_ancillary_sold">
+<span class="sig-name descname"><span class="pre">get_ancillary_sold</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Carrier.get_ancillary_sold" title="Link to this definition">¶</a></dt>
+<dd><p>Get the sold for an ancillary, by code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt><span class="sig-name descname">name</span><span class="p"> : </span><span class="desctype"><span class="desctype">str</span></span></dt><dd><p>The ancillary code to look up.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>int</em> – The number sold of the ancillary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.get_carrier_history">
+<span class="sig-name descname"><span class="pre">get_carrier_history</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Carrier.get_carrier_history" title="Link to this definition">¶</a></dt>
+<dd><p>Return carrier history.</p>
+<p>Returns carrier history as a list of dictionaries, with one item for each sample.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>list[dict]</em> – List of dictionaries containing carrier history data with keys:
+‘trial’, ‘sample’, ‘carrier’, ‘sold’, ‘sold_priceable’, ‘revenue’.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.get_forecast_accuracy">
+<span class="sig-name descname"><span class="pre">get_forecast_accuracy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Carrier.get_forecast_accuracy" title="Link to this definition">¶</a></dt>
+<dd><p>Return forecast accuracy.</p>
+<p>Returns forecast accuracy as a list of dictionaries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>list[dict]</em> – List of dictionaries containing forecast accuracy data with keys:
+‘trial’, ‘sample’, ‘carrier’, ‘booking_class’, ‘timeframe’,
+‘num_zero_displacement’, ‘num_obs’, ‘sold’, ‘sold_priceable’,
+‘fcst_mean’, ‘fcst_variance’.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.get_frat5_mkt">
+<span class="sig-name descname"><span class="pre">get_frat5_mkt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Carrier.get_frat5_mkt" title="Link to this definition">¶</a></dt>
+<dd><p>Get Frat5 for an O&amp;D market.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt><span class="sig-name descname">orig</span><span class="p"> : </span><span class="desctype"><span class="desctype">str</span></span></dt><dd><p>Origin airport code.</p>
+</dd>
+<dt><span class="sig-name descname">dest</span><span class="p"> : </span><span class="desctype"><span class="desctype">str</span></span></dt><dd><p>Destination airport code.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Frat5 or None</em> – The Frat5 curve for the specified market, or None if not found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.get_history_def">
+<span class="sig-name descname"><span class="pre">get_history_def</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Carrier.get_history_def" title="Link to this definition">¶</a></dt>
+<dd><p>Get the history definition.</p>
+<p>Returns the history definition used to initialize the history for this
+carrier’s buckets and pathclasses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>dict</em> – Dictionary with keys:
+- ‘num_departures’ : int - Number of samples in carrier history
+- ‘num_timeframes’ : int - Number of timeframes in carrier history
+- ‘store_priceable’ : bool - Whether carrier has a Frat5 curve</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.get_spill_counters">
+<span class="sig-name descname"><span class="pre">get_spill_counters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Carrier.get_spill_counters" title="Link to this definition">¶</a></dt>
+<dd><p>Return spill counters.</p>
+<p>Returns spill counters as a list of dictionaries.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.gt_available_seat_miles">
+<span class="sig-name descname"><span class="pre">gt_available_seat_miles</span></span><a class="headerlink" href="#passengersim.core.Carrier.gt_available_seat_miles" title="Link to this definition">¶</a></dt>
+<dd><p>Grand total ASM, gets updated outside the burn period and is not reset by the reset methods</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.gt_cp_revenue">
+<span class="sig-name descname"><span class="pre">gt_cp_revenue</span></span><a class="headerlink" href="#passengersim.core.Carrier.gt_cp_revenue" title="Link to this definition">¶</a></dt>
+<dd><p>Grand total Continuous Pricing revenue, gets updated outside the burn period and is not reset by the reset methods</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.gt_cp_sold">
+<span class="sig-name descname"><span class="pre">gt_cp_sold</span></span><a class="headerlink" href="#passengersim.core.Carrier.gt_cp_sold" title="Link to this definition">¶</a></dt>
+<dd><p>Grand total Continuous Pricing sales, gets updated outside the burn period and is not reset by the reset methods</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.gt_demand">
+<span class="sig-name descname"><span class="pre">gt_demand</span></span><a class="headerlink" href="#passengersim.core.Carrier.gt_demand" title="Link to this definition">¶</a></dt>
+<dd><p>Grand total generated demand, gets updated outside the burn period and is not reset by the reset methods</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.gt_revenue">
+<span class="sig-name descname"><span class="pre">gt_revenue</span></span><a class="headerlink" href="#passengersim.core.Carrier.gt_revenue" title="Link to this definition">¶</a></dt>
+<dd><p>Grand total revenue, gets updated outside the burn period and is not reset by the reset methods</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.gt_revenue_passenger_miles">
+<span class="sig-name descname"><span class="pre">gt_revenue_passenger_miles</span></span><a class="headerlink" href="#passengersim.core.Carrier.gt_revenue_passenger_miles" title="Link to this definition">¶</a></dt>
+<dd><p>Grand total RPM, gets updated outside the burn period and is not reset by the reset methods</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.gt_sold">
+<span class="sig-name descname"><span class="pre">gt_sold</span></span><a class="headerlink" href="#passengersim.core.Carrier.gt_sold" title="Link to this definition">¶</a></dt>
+<dd><p>Grand total sold, gets updated outside the burn period and is not reset by the reset methods</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.history_length">
+<span class="sig-name descname"><span class="pre">history_length</span></span><a class="headerlink" href="#passengersim.core.Carrier.history_length" title="Link to this definition">¶</a></dt>
+<dd><p>History length</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.load_factor_curve">
+<span class="sig-name descname"><span class="pre">load_factor_curve</span></span><a class="headerlink" href="#passengersim.core.Carrier.load_factor_curve" title="Link to this definition">¶</a></dt>
+<dd><p>Load Factor curve, was an experiment in used this type of RM control.  (deprecated)</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.metadata">
+<span class="sig-name descname"><span class="pre">metadata</span></span><a class="headerlink" href="#passengersim.core.Carrier.metadata" title="Link to this definition">¶</a></dt>
+<dd><p>A dictionary for storing arbitrary metadata on the Carrier object</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#passengersim.core.Carrier.name" title="Link to this definition">¶</a></dt>
+<dd><p>Name is usually the code, such as ‘AL1’ or ‘DL’</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.num_objects">
+<span class="sig-name descname"><span class="pre">num_objects</span></span><a class="headerlink" href="#passengersim.core.Carrier.num_objects" title="Link to this definition">¶</a></dt>
+<dd><p>Number of Carrier objects allocated, was used for memory leak detection</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.proration_rule">
+<span class="sig-name descname"><span class="pre">proration_rule</span></span><a class="headerlink" href="#passengersim.core.Carrier.proration_rule" title="Link to this definition">¶</a></dt>
+<dd><p>How do we prorate revenue between legs on connecting paths?</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.raw_bid_price_trace">
+<span class="sig-name descname"><span class="pre">raw_bid_price_trace</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Carrier.raw_bid_price_trace" title="Link to this definition">¶</a></dt>
+<dd><p>Raw bid price trace.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>dict</em> – Dictionary with DCP keys and values containing bid price statistics.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.raw_bookings_by_day">
+<span class="sig-name descname"><span class="pre">raw_bookings_by_day</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Carrier.raw_bookings_by_day" title="Link to this definition">¶</a></dt>
+<dd><p>Raw bookings by fare class by days prior to departure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>dict</em> – Dictionary with fare class keys and booking data by days prior.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.raw_bookings_by_segment_fare_dcp">
+<span class="sig-name descname"><span class="pre">raw_bookings_by_segment_fare_dcp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Carrier.raw_bookings_by_segment_fare_dcp" title="Link to this definition">¶</a></dt>
+<dd><p>Raw bookings by segment, fare class, and DCP.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>dict</em> – Dictionary with segment keys, then fare class keys, then DCP keys with booking counts.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.raw_displacement_cost_trace">
+<span class="sig-name descname"><span class="pre">raw_displacement_cost_trace</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Carrier.raw_displacement_cost_trace" title="Link to this definition">¶</a></dt>
+<dd><p>Raw displacement cost trace.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>dict</em> – Dictionary with DCP keys and values containing displacement cost statistics.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.raw_fare_class_distribution">
+<span class="sig-name descname"><span class="pre">raw_fare_class_distribution</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Carrier.raw_fare_class_distribution" title="Link to this definition">¶</a></dt>
+<dd><p>Raw fare class distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>dict</em> – Dictionary with fare class keys and values containing ‘sold’ and ‘revenue’ keys.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.raw_load_factor_distribution">
+<span class="sig-name descname"><span class="pre">raw_load_factor_distribution</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Carrier.raw_load_factor_distribution" title="Link to this definition">¶</a></dt>
+<dd><p>Raw load factor distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>numpy.ndarray</em> – Array of load factor distribution data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.raw_revenue_by_segment_fare_dcp">
+<span class="sig-name descname"><span class="pre">raw_revenue_by_segment_fare_dcp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Carrier.raw_revenue_by_segment_fare_dcp" title="Link to this definition">¶</a></dt>
+<dd><p>Raw revenue by segment, fare class, and DCP.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>dict</em> – Dictionary with segment keys, then fare class keys, then DCP keys with revenue values.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.reset_bid_price_trace">
+<span class="sig-name descname"><span class="pre">reset_bid_price_trace</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Carrier.reset_bid_price_trace" title="Link to this definition">¶</a></dt>
+<dd><p>Reset bid price trace.</p>
+<p>Clears the accumulated bid price trace data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>None</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.reset_displacement_cost_trace">
+<span class="sig-name descname"><span class="pre">reset_displacement_cost_trace</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Carrier.reset_displacement_cost_trace" title="Link to this definition">¶</a></dt>
+<dd><p>Reset displacement cost trace.</p>
+<p>Clears the accumulated displacement cost trace data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>None</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.revenue">
+<span class="sig-name descname"><span class="pre">revenue</span></span><a class="headerlink" href="#passengersim.core.Carrier.revenue" title="Link to this definition">¶</a></dt>
+<dd><p>Revenue total, reset after each sample</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.rm_sys">
+<span class="sig-name descname"><span class="pre">rm_sys</span></span><a class="headerlink" href="#passengersim.core.Carrier.rm_sys" title="Link to this definition">¶</a></dt>
+<dd><p>The RM system used by this carrier.</p>
+<p>This RM system should be a daily callback that implements the RM system for this carrier.
+It should also be attached to the Simulation as a daily callback and is triggered via the
+regular callback process. This attribute is provided for convenience so that the RM system
+can be easily accessed if needed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../rm/passengersim.rm.RmSys.html#passengersim.rm.RmSys" title="passengersim.rm.RmSys (Python class) — Bases: object">RmSys</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.sold">
+<span class="sig-name descname"><span class="pre">sold</span></span><a class="headerlink" href="#passengersim.core.Carrier.sold" title="Link to this definition">¶</a></dt>
+<dd><p>Number sold, reset after each sample</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.sold_priceable">
+<span class="sig-name descname"><span class="pre">sold_priceable</span></span><a class="headerlink" href="#passengersim.core.Carrier.sold_priceable" title="Link to this definition">¶</a></dt>
+<dd><p>Number sold priceable, reset after each sample</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.store_q_history">
+<span class="sig-name descname"><span class="pre">store_q_history</span></span><a class="headerlink" href="#passengersim.core.Carrier.store_q_history" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to store the Q history</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Carrier.truncation_rule">
+<span class="sig-name descname"><span class="pre">truncation_rule</span></span><a class="headerlink" href="#passengersim.core.Carrier.truncation_rule" title="Link to this definition">¶</a></dt>
+<dd><p>Do we mark a TimeFrame as closed if it’s closed at the start, end, or both</p>
+</dd></dl>
+
+</dd></dl>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2026, PassengerSim LLC.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.2.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.action.view", "content.code.copy", "content.code.annotate", "navigation.tabs", "navigation.top", "navigation.tracking", "announce.dismiss"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": null}}</script>
+    
+      
+        <script src="../../../_static/sphinx_immaterial_theme.32136f45f91ae6956.min.js?v=a7a9472a"></script>
+    
+  </body>
+</html>

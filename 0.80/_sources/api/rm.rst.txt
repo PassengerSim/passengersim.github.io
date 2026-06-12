@@ -1,0 +1,59 @@
+==
+rm
+==
+
+.. autosummary::
+    :toctree: _generated/rm
+    :template: autosummary/class.rst
+
+    passengersim.rm.RmSys
+
+
+Standard Systems
+~~~~~~~~~~~~~~~~
+
+.. currentmodule:: passengersim.rm.standard_systems
+
+.. autosummary::
+    :toctree: _generated/rm
+    :template: autosummary/rm_system_class.rst
+
+    E
+    P
+    U
+    Q
+    M
+
+
+Specialty Systems
+~~~~~~~~~~~~~~~~~
+
+.. currentmodule:: passengersim.rm.specialty_systems
+
+.. autosummary::
+    :toctree: _generated/rm
+    :template: autosummary/rm_system_class.rst
+
+    fcfs.FirstComeFirstServed
+    leg_dp.LegDP
+
+
+Components
+~~~~~~~~~~
+
+.. currentmodule:: passengersim.rm
+
+.. autosummary::
+    :toctree: _generated/rm
+    :template: autosummary/module.rst
+
+    systems
+    conditional_forecasting
+    dynamic_prog
+    emsr
+    leg_value
+    linear_program
+    probp
+    q_forecasting
+    standard_forecasting
+    untruncation

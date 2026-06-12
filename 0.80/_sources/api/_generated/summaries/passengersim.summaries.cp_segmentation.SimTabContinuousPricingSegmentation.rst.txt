@@ -1,0 +1,53 @@
+SimTabContinuousPricingSegmentation
+===================================
+
+.. currentmodule:: passengersim.summaries.cp_segmentation
+
+.. autoclass:: SimTabContinuousPricingSegmentation
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SimTabContinuousPricingSegmentation.__init__
+      ~SimTabContinuousPricingSegmentation.aggregate
+      ~SimTabContinuousPricingSegmentation.extract
+      ~SimTabContinuousPricingSegmentation.fig_cp_segmentation
+      ~SimTabContinuousPricingSegmentation.fig_leg_bid_price_detail_rake
+      ~SimTabContinuousPricingSegmentation.fig_leg_bid_price_history
+      ~SimTabContinuousPricingSegmentation.fig_leg_booking_detail_rake
+      ~SimTabContinuousPricingSegmentation.file_info
+      ~SimTabContinuousPricingSegmentation.from_file
+      ~SimTabContinuousPricingSegmentation.from_pickle
+      ~SimTabContinuousPricingSegmentation.metadata
+      ~SimTabContinuousPricingSegmentation.remove_data
+      ~SimTabContinuousPricingSegmentation.run_queries
+      ~SimTabContinuousPricingSegmentation.save
+      ~SimTabContinuousPricingSegmentation.subclasses
+      ~SimTabContinuousPricingSegmentation.to_file
+      ~SimTabContinuousPricingSegmentation.to_html
+      ~SimTabContinuousPricingSegmentation.to_pickle
+      ~SimTabContinuousPricingSegmentation.to_xlsx
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~SimTabContinuousPricingSegmentation.callback_data
+      ~SimTabContinuousPricingSegmentation.config
+      ~SimTabContinuousPricingSegmentation.cp_segmentation
+      ~SimTabContinuousPricingSegmentation.leg_bid_price_detail
+      ~SimTabContinuousPricingSegmentation.leg_booking_detail
+      ~SimTabContinuousPricingSegmentation.cnx
+      ~SimTabContinuousPricingSegmentation.sim
+      ~SimTabContinuousPricingSegmentation.n_total_samples
+      ~SimTabContinuousPricingSegmentation.meta_summaries
+   
+   
