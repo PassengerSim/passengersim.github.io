@@ -1,0 +1,41 @@
+StandardLegForecast
+===================
+
+.. currentmodule:: passengersim.rm.standard_forecasting
+
+.. autoclass:: StandardLegForecast
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~StandardLegForecast.__init__
+      ~StandardLegForecast.apply_snapshot_filters
+      ~StandardLegForecast.configure
+      ~StandardLegForecast.get_dcp_index
+      ~StandardLegForecast.init
+      ~StandardLegForecast.run
+      ~StandardLegForecast.should_run
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~StandardLegForecast.frequency
+      ~StandardLegForecast.produces
+      ~StandardLegForecast.requires
+      ~StandardLegForecast.snapshot_filter_type
+      ~StandardLegForecast.algorithm
+      ~StandardLegForecast.alpha
+      ~StandardLegForecast.dcps
+      ~StandardLegForecast.carrier
+      ~StandardLegForecast.minimum_sample
+   
+   

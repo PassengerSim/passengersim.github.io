@@ -1,0 +1,38 @@
+LpPiecewise2
+============
+
+.. currentmodule:: passengersim.rm.linear_program
+
+.. autoclass:: LpPiecewise2
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~LpPiecewise2.__init__
+      ~LpPiecewise2.initialize
+      ~LpPiecewise2.solve
+      ~LpPiecewise2.test_status
+      ~LpPiecewise2.update
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~LpPiecewise2.carrier
+      ~LpPiecewise2.solver
+      ~LpPiecewise2.objective
+      ~LpPiecewise2.lp_vars
+      ~LpPiecewise2.constraints
+      ~LpPiecewise2.epsilon
+      ~LpPiecewise2.set_bp
+      ~LpPiecewise2.debug
+   
+   

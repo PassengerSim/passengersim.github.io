@@ -1,0 +1,29 @@
+Firehose
+========
+
+.. currentmodule:: passengersim.driver
+
+.. autoclass:: Firehose
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Firehose.__init__
+      ~Firehose.attach_firehose
+      ~Firehose.get_firehose
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Firehose.eng
+   
+   

@@ -1,0 +1,33 @@
+MultiWelford
+============
+
+.. currentmodule:: passengersim.tracers.welford
+
+.. autoclass:: MultiWelford
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~MultiWelford.__init__
+      ~MultiWelford.update
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~MultiWelford.mean
+      ~MultiWelford.n
+      ~MultiWelford.sample_std_dev
+      ~MultiWelford.sample_variance
+      ~MultiWelford.std_dev
+      ~MultiWelford.variance
+   
+   

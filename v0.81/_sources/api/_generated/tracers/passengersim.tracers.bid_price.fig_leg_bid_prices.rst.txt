@@ -1,0 +1,6 @@
+fig\_leg\_bid\_prices
+=====================
+
+.. currentmodule:: passengersim.tracers.bid_price
+
+.. autofunction:: fig_leg_bid_prices

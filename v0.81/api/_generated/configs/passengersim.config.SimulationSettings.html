@@ -1,0 +1,3919 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="passengersim.config.Config.html">
+      
+      
+        <link rel="next" href="passengersim.config.Carrier.html">
+      
+      
+      <link rel="icon" href="../../../_static/favicon.png">
+    
+    
+      
+        <title>SimulationSettings - PassengerSim</title>
+      
+    
+    
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_immaterial_theme.50640b526df5ff663.min.css?v=cff97996" />
+        <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+        <link rel="stylesheet" type="text/css" href="../../../_static/css/extra.css?v=663c5cee" />
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#passengersim.config.SimulationSettings" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+<p>
+    <span style="vertical-align: middle; color: #ffd334; font-size: 1.2em;">&#9888;</span>
+    We recently updated our website for PassengerSim v0.80.  More or less all the same content is here (and more)
+    but any pre-existing links and bookmarks may be broken.
+</p>
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../index.html" title="PassengerSim" class="md-header__button md-logo" aria-label="PassengerSim" data-md-component="logo">
+      <img src="../../../_static/logo.svg" alt="logo">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PassengerSim
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SimulationSettings
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/passengersim/passengersim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    PassengerSim/passengersim
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../user-guide/welcome.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>User Guide</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../mechanics/counting-sims.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Mechanics</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../examples/intro-3mkt.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Examples</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="../../_index.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>API</span>
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="PassengerSim" class="md-nav__button md-logo" aria-label="PassengerSim" data-md-component="logo">
+      <img src="../../../_static/logo.svg" alt="logo">
+    </a>
+    PassengerSim
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/passengersim/passengersim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    PassengerSim/passengersim
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>User Guide</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            <span>User Guide</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/welcome.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 10H5L3 8l2-2h6V3l1-1 1 1v1h6l2 2-2 2h-6v2h6l2 2-2 2h-6v6a2 2 0 0 1 2 2H9a2 2 0 0 1 2-2z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Wayfinding</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/installation.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m13.13 22.19-1.63-3.83c1.57-.58 3.04-1.36 4.4-2.27zM5.64 12.5l-3.83-1.63 6.1-2.77C7 9.46 6.22 10.93 5.64 12.5M21.61 2.39S16.66.269 11 5.93c-2.19 2.19-3.5 4.6-4.35 6.71-.28.75-.09 1.57.46 2.13l2.13 2.12c.55.56 1.37.74 2.12.46A19.1 19.1 0 0 0 18.07 13c5.66-5.66 3.54-10.61 3.54-10.61m-7.07 7.07c-.78-.78-.78-2.05 0-2.83s2.05-.78 2.83 0c.77.78.78 2.05 0 2.83s-2.05.78-2.83 0m-5.66 7.07-1.41-1.41zM6.24 22l3.64-3.64c-.34-.09-.67-.24-.97-.45L4.83 22zM2 22h1.41l4.77-4.76-1.42-1.41L2 20.59zm0-2.83 4.09-4.08c-.21-.3-.36-.62-.45-.97L2 17.76z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Installation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/static-config.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.5 3.5 18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2 7.5 3.5 6 2 4.5 3.5 3 2v20l1.5-1.5L6 22l1.5-1.5L9 22l1.5-1.5L12 22l1.5-1.5L15 22l1.5-1.5L18 22l1.5-1.5L21 22V2zM19 19H5V5h14zM6 15h12v2H6m0-6h12v2H6m0-6h12v2H6z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Raw Configuration</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/dynamic-config.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 2 1.5 1.5L21 2v7.13l-2 2V4.91H5v14.18h5.5v1.41L9 22l-1.5-1.5L6 22l-1.5-1.5L3 22V2l1.5 1.5L6 2l1.5 1.5L9 2l1.5 1.5L12 2l1.5 1.5L15 2l1.5 1.5zm-5 17.96 6.13-6.13 2.04 2.04L15.04 22H13zm6.83-6.83.98-.98.02-.02c.05-.04.11-.08.17-.1a.5.5 0 0 1 .53.12l1.32 1.32c.2.2.2.53 0 .72l-.98.98zm-1.83-1-.87.87H6v-2h12zM15.13 15l-2 2H6v-2zM18 9V7H6v2z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Dynamic Configuration</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/basic-usage.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m9 4 2.5 5.5L17 12l-5.5 2.5L9 20l-2.5-5.5L1 12l5.5-2.5zm0 4.83L8 11l-2.17 1L8 13l1 2.17L10 13l2.17-1L10 11zM19 9l-1.26-2.74L15 5l2.74-1.25L19 1l1.25 2.75L23 5l-2.75 1.26zm0 14-1.26-2.74L15 19l2.74-1.25L19 15l1.25 2.75L23 19l-2.75 1.26z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Summary Outputs</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/rm-systems.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 6h18v12H5zm9 3a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3M9 8a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2v-4a2 2 0 0 1-2-2zm-8 2h2v10h16v2H1z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>RM Systems</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/database/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Database</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/experiments.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 19a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1c0-.21-.07-.41-.18-.57L13 8.35V4h-2v4.35L5.18 18.43c-.11.16-.18.36-.18.57m1 3a3 3 0 0 1-3-3c0-.6.18-1.16.5-1.63L9 7.81V6a1 1 0 0 1-1-1V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1v1.81l5.5 9.56c.32.47.5 1.03.5 1.63a3 3 0 0 1-3 3zm7-6 1.34-1.34L16.27 18H7.73l2.66-4.61zm-.5-4a.5.5 0 0 1 .5.5.5.5 0 0 1-.5.5.5.5 0 0 1-.5-.5.5.5 0 0 1 .5-.5"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Experiments</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/callbacks.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.6 5.29c-1.1-.1-2.07.71-2.17 1.82L13.18 10H16v2h-3l-.44 5.07a3.986 3.986 0 0 1-4.33 3.63 4 4 0 0 1-3.06-1.87l1.5-1.5c.24.74.9 1.31 1.73 1.38 1.1.1 2.07-.71 2.17-1.82L11 12H8v-2h3.17l.27-3.07c.19-2.2 2.13-3.83 4.33-3.63 1.31.11 2.41.84 3.06 1.87l-1.5 1.5c-.24-.74-.9-1.31-1.73-1.38"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Callbacks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/tracers.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.84 2.73c-.39 0-.77.15-1.07.44l-2.12 2.12 5.3 5.31 2.12-2.1c.6-.61.6-1.56 0-2.14L17.9 3.17c-.3-.29-.68-.44-1.06-.44M12.94 6l-8.1 8.11 2.56.28.18 2.29 2.28.17.29 2.56 8.1-8.11m-14 3.74L2.5 21.73l6.7-1.79-.24-2.16-2.31-.17-.18-2.32"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Tracing</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/viz/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.45 15.18 22 7.31V21H2V3h2v12.54L9.5 6 16 9.78l4.24-7.33 1.73 1-5.23 9.05-6.51-3.75L4.31 19h2.26l4.39-7.56z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Visualizations</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/firehose.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 15v-1H4v-2h1v-1h2v4zm14-3v-1h-2v4h2v-1h1v-2zm-1-6h-2.14C15.5 4.6 14.4 3.5 13 3.14V2h-2v1.14C9.6 3.5 8.5 4.6 8.14 6H6v2h12zm0 16H6c0-1.1.9-2 2-2V9h8v11a2 2 0 0 1 2 2m-8-9a2 2 0 1 0 4 0c0-1.11-.89-2-2-2s-2 .9-2 2"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Firehose</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>Mechanics</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Mechanics</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanics/counting-sims.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 10.73V19h-2v-7.64L15 12v7h-2v-6.38l-2 .64V19H9v-5.11l-2 .61V19H5v-3.85l-2.43.77L2 14l3-.95V5h2v7.42l2-.63V5h2v6.16l2-.63V5h2v4.9l2-.64V5h2v3.63L21 8l.57 1.92z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Counting Simulations</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanics/demand-generation.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.35 5.64c-.9-.64-1.12-1.88-.49-2.79.64-.9 1.88-1.12 2.79-.49.9.64 1.12 1.88.49 2.79-.64.9-1.88 1.12-2.79.49M16 19H8.93c-1.48 0-2.74-1.08-2.96-2.54L4 7H2l2 9.76A4.99 4.99 0 0 0 8.94 21H16m.23-6h-4.88l-1.03-4.1c1.58.89 3.28 1.54 5.15 1.22V10c-1.63.3-3.44-.28-4.69-1.26L9.14 7.47c-.23-.18-.49-.3-.76-.38a2.2 2.2 0 0 0-.99-.06h-.02a2.27 2.27 0 0 0-1.84 2.61l1.35 5.92A2.99 2.99 0 0 0 9.83 18h6.85l3.82 3 1.5-1.5"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Demand Generation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanics/forecasting.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m9.38 8.38 2.12.96 2.12-.96-.96 2.12.96 2.12-2.12-.96-2.12.96.96-2.12zM16.5 2.5l1.09 2.91L20.5 6.5l-2.91 1.09-1.09 2.91-1.09-2.91L12.5 6.5l2.91-1.09zM6 19h1v-1a1 1 0 0 1 1-1h.26a7.47 7.47 0 0 1-3.76-6.5A7.5 7.5 0 0 1 12 3c1.05 0 2.05.22 2.96.61l-.37.98-1.42.53Q12.6 5 12 5a5.5 5.5 0 0 0-5.5 5.5A5.5 5.5 0 0 0 12 16c2.91 0 5.3-2.27 5.5-5.13l.91-2.46.71-.27c.25.74.38 1.54.38 2.36 0 2.78-1.5 5.2-3.76 6.5H16a1 1 0 0 1 1 1v1h1a2 2 0 0 1 2 2v1H4v-1a2 2 0 0 1 2-2"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Forecasting</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>Examples</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Examples</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/intro-3mkt.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>The 3MKT Network</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/EE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Basic Simulation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/PE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Pro<wbr>BP Optimization</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/LL.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Unrestricted Networks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/QC.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Q vs Conditional Forecasting</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/olympic-fcst.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Custom Forecaster</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/blf-curves.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Heuristic Intervention</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labs/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Labs</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>API</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            <span>API</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../_index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Passenger<wbr>Sim</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../callbacks/passengersim.callbacks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>callbacks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../config.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    <span>config</span>
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            <span>config</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.config.Config.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Config</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    <span>Simulation<wbr>Settings</span>
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Simulation<wbr>Settings</span>
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings" class="md-nav__link">
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings (Python class) — Bases: PrettyModel"><span>passengersim.<wbr>config.<wbr>Simulation<wbr>Settings</span></span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="passengersim.config.SimulationSettings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.num_trials" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.num_trials (Python attribute) — The overall number of trials to run."><span>num_<wbr>trials</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.num_samples" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.num_samples (Python attribute) — The number of samples to run within each trial."><span>num_<wbr>samples</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.burn_samples" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.burn_samples (Python attribute) — The number of samples to burn when starting each trial."><span>burn_<wbr>samples</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.double_capacity_until" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.double_capacity_until (Python attribute) — Double the capacity on all legs until this sample."><span>double_<wbr>capacity_<wbr>until</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.sys_k_factor" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.sys_k_factor (Python attribute) — System-level randomness factor."><span>sys_<wbr>k_<wbr>factor</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.mkt_k_factor" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.mkt_k_factor (Python attribute) — Market-level randomness factor."><span>mkt_<wbr>k_<wbr>factor</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.pax_type_k_factor" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.pax_type_k_factor (Python attribute) — Passenger-type randomness factor."><span>pax_<wbr>type_<wbr>k_<wbr>factor</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.segment_k_factor" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.segment_k_factor (Python attribute) — Passenger segment randomness factor."><span>segment_<wbr>k_<wbr>factor</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.simple_k_factor" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.simple_k_factor (Python attribute) — Passenger-type randomness factor."><span>simple_<wbr>k_<wbr>factor</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.simple_cv100" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.simple_cv100 (Python attribute) — THIS IS A TEST"><span>simple_<wbr>cv100</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.tf_k_factor" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.tf_k_factor (Python attribute) — Time frame randomness factor."><span>tf_<wbr>k_<wbr>factor</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.tot_z_factor" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.tot_z_factor (Python attribute) — Base level demand variance control."><span>tot_<wbr>z_<wbr>factor</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.tf_z_factor" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.tf_z_factor (Python attribute) — Timeframe demand variance control."><span>tf_<wbr>z_<wbr>factor</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.prorate_revenue" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.prorate_revenue (Python attribute)"><span>prorate_<wbr>revenue</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.revenue_alpha" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.revenue_alpha (Python attribute) — Used to exponentially smooth revenue per PathClass, to get optimizationFare"><span>revenue_<wbr>alpha</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.save_orders" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.save_orders (Python attribute)"><span>save_<wbr>orders</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.save_all_offers" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.save_all_offers (Python attribute) — This will save all Offers, including those that would fail fare rules or availability. The output choice set data will have all of these, so you can find first choice demand, recapture, etc. False by default"><span>save_<wbr>all_<wbr>offers</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.dwm_lite" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.dwm_lite (Python attribute) — Deprecated, has no effect."><span>dwm_<wbr>lite</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.use_standard_todd_curves" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.use_standard_todd_curves (Python attribute) — Use the &#34;standard&#34; time of day departure (TODD) curves."><span>use_<wbr>standard_<wbr>todd_<wbr>curves</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.max_connect_time" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.max_connect_time (Python attribute) — Maximum connection time for automatically generated paths."><span>max_<wbr>connect_<wbr>time</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.disable_ap" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.disable_ap (Python attribute) — Remove all advance purchase settings used in the simulation."><span>disable_<wbr>ap</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.demand_multiplier" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.demand_multiplier (Python attribute) — Scale all demand by this value."><span>demand_<wbr>multiplier</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.capacity_multiplier" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.capacity_multiplier (Python attribute) — Scale all capacities by this value."><span>capacity_<wbr>multiplier</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.connection_builder" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.connection_builder (Python attribute) — Settings related to the automatic generation of paths and connections in the simulation."><span>connection_<wbr>builder</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.manual_paths" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.manual_paths (Python attribute) — Deprecated. See connection_builder.existing_paths instead."><span>manual_<wbr>paths</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.generate_3seg" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.generate_3seg (Python attribute) — Use the new A* search to build connections, it can create 3seg connects"><span>generate_<wbr>3seg</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.use_3seg" class="md-nav__link">
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.use_3seg (Python property)"><span>use_<wbr>3seg</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.write_raw_files" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.write_raw_files (Python attribute)"><span>write_<wbr>raw_<wbr>files</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.random_seed" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.random_seed (Python attribute) — Integer used to control the reproducibility of simulation results."><span>random_<wbr>seed</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.update_frequency" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.update_frequency (Python attribute)"><span>update_<wbr>frequency</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.controller_time_zone" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.controller_time_zone (Python attribute) — The reference time zone for the controller (seconds relative to UTC)."><span>controller_<wbr>time_<wbr>zone</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.base_date" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.base_date (Python attribute) — The default date used to compute relative times for travel."><span>base_<wbr>date</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.dcp_hour" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.dcp_hour (Python attribute) — The hour of the day that the RM recalculation events are triggered."><span>dcp_<wbr>hour</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.capture_competitor_data" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.capture_competitor_data (Python attribute) — Turns on the capturing of competitor data."><span>capture_<wbr>competitor_<wbr>data</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.capture_choice_set_file" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.capture_choice_set_file (Python attribute) — Turns on the capturing of the choice set and writes the data to the specified file"><span>capture_<wbr>choice_<wbr>set_<wbr>file</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.capture_choice_set_obs" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.capture_choice_set_obs (Python attribute) — If this is set, PassengerSim will randomly sample the ChoiceSet data and output APPROXIMATELY this many choice sets (each will have multiple items and all items for the choice set will be saved and output)"><span>capture_<wbr>choice_<wbr>set_<wbr>obs</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.capture_choice_set_mkts" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.capture_choice_set_mkts (Python attribute) — Capture only these markets (O&amp;D pairs)"><span>capture_<wbr>choice_<wbr>set_<wbr>mkts</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.capture_demand_history" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.capture_demand_history (Python attribute) — Store the demand history for each demand."><span>capture_<wbr>demand_<wbr>history</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.show_progress_bar" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.show_progress_bar (Python attribute) — Show a progress bar while running."><span>show_<wbr>progress_<wbr>bar</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.debug_availability" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.debug_availability (Python attribute)"><span>debug_<wbr>availability</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.debug_choice" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.debug_choice (Python attribute)"><span>debug_<wbr>choice</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.debug_connections" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.debug_connections (Python attribute)"><span>debug_<wbr>connections</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.debug_events" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.debug_events (Python attribute)"><span>debug_<wbr>events</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.debug_fares" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.debug_fares (Python attribute)"><span>debug_<wbr>fares</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.debug_offers" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.debug_offers (Python attribute)"><span>debug_<wbr>offers</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.debug_orders" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.debug_orders (Python attribute)"><span>debug_<wbr>orders</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.additional_settings" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.additional_settings (Python attribute) — Additional settings to pass to the simulation."><span>additional_<wbr>settings</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.reference_epoch" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.reference_epoch (Python method) — Get the reference travel datetime in unix time."><span>reference_<wbr>epoch</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.timeframe_demand_allocation" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.timeframe_demand_allocation (Python attribute) — Which algorithm to use for time frame demand allocation."><span>timeframe_<wbr>demand_<wbr>allocation</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.allow_unused_restrictions" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.allow_unused_restrictions (Python attribute) — Allow restrictions to be defined but not used."><span>allow_<wbr>unused_<wbr>restrictions</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.speed_limits" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.speed_limits (Python attribute) — Speed limits for short, medium, and long travel legs."><span>speed_<wbr>limits</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.config.Carrier.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Carrier</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.config.Leg.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Leg</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.config.Path.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Path</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.config.Demand.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Demand</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.config.Fare.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Fare</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.config.BookingCurve.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Booking<wbr>Curve</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.config.ChoiceModel.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Choice<wbr>Model</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.config.DatabaseConfig.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Database<wbr>Config</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.config.Frat5Curve.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Frat5Curve</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.config.ToddCurve.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Todd<wbr>Curve</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.config.Place.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Place</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.config.LimitConnectTime.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Limit<wbr>Connect<wbr>Time</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.config.SnapshotFilter.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Snapshot<wbr>Filter</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.config.simulation_controls.ConnectionBuilderSettings.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Connection<wbr>Builder<wbr>Settings</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.config.outputs.OutputConfig.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Output<wbr>Config</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.config.outputs.HtmlOutputConfig.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Html<wbr>Output<wbr>Config</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.config.outputs.StateOutputConfig.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>State<wbr>Output<wbr>Config</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.config.speed_limits.SpeedLimits.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Speed<wbr>Limits</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.config.base.YamlConfig.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Yaml<wbr>Config</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.config.pretty.PrettyModel.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Pretty<wbr>Model</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../connection_builder/passengersim.connection_builder.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>connection_<wbr>builder</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contrast/passengersim.contrast.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>contrast</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../core/passengersim.core.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>core</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/passengersim.database.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>database</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../driver/passengersim.driver.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>driver</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiments/passengersim.experiments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>experiments</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>rm</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../summaries/passengersim.summaries.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>summaries</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tracers/passengersim.tracers.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>tracers</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transforms/passengersim.transforms.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>transforms</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings" class="md-nav__link">
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings (Python class) — Bases: PrettyModel"><span>passengersim.<wbr>config.<wbr>Simulation<wbr>Settings</span></span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="passengersim.config.SimulationSettings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.num_trials" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.num_trials (Python attribute) — The overall number of trials to run."><span>num_<wbr>trials</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.num_samples" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.num_samples (Python attribute) — The number of samples to run within each trial."><span>num_<wbr>samples</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.burn_samples" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.burn_samples (Python attribute) — The number of samples to burn when starting each trial."><span>burn_<wbr>samples</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.double_capacity_until" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.double_capacity_until (Python attribute) — Double the capacity on all legs until this sample."><span>double_<wbr>capacity_<wbr>until</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.sys_k_factor" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.sys_k_factor (Python attribute) — System-level randomness factor."><span>sys_<wbr>k_<wbr>factor</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.mkt_k_factor" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.mkt_k_factor (Python attribute) — Market-level randomness factor."><span>mkt_<wbr>k_<wbr>factor</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.pax_type_k_factor" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.pax_type_k_factor (Python attribute) — Passenger-type randomness factor."><span>pax_<wbr>type_<wbr>k_<wbr>factor</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.segment_k_factor" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.segment_k_factor (Python attribute) — Passenger segment randomness factor."><span>segment_<wbr>k_<wbr>factor</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.simple_k_factor" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.simple_k_factor (Python attribute) — Passenger-type randomness factor."><span>simple_<wbr>k_<wbr>factor</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.simple_cv100" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.simple_cv100 (Python attribute) — THIS IS A TEST"><span>simple_<wbr>cv100</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.tf_k_factor" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.tf_k_factor (Python attribute) — Time frame randomness factor."><span>tf_<wbr>k_<wbr>factor</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.tot_z_factor" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.tot_z_factor (Python attribute) — Base level demand variance control."><span>tot_<wbr>z_<wbr>factor</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.tf_z_factor" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.tf_z_factor (Python attribute) — Timeframe demand variance control."><span>tf_<wbr>z_<wbr>factor</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.prorate_revenue" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.prorate_revenue (Python attribute)"><span>prorate_<wbr>revenue</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.revenue_alpha" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.revenue_alpha (Python attribute) — Used to exponentially smooth revenue per PathClass, to get optimizationFare"><span>revenue_<wbr>alpha</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.save_orders" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.save_orders (Python attribute)"><span>save_<wbr>orders</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.save_all_offers" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.save_all_offers (Python attribute) — This will save all Offers, including those that would fail fare rules or availability. The output choice set data will have all of these, so you can find first choice demand, recapture, etc. False by default"><span>save_<wbr>all_<wbr>offers</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.dwm_lite" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.dwm_lite (Python attribute) — Deprecated, has no effect."><span>dwm_<wbr>lite</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.use_standard_todd_curves" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.use_standard_todd_curves (Python attribute) — Use the &#34;standard&#34; time of day departure (TODD) curves."><span>use_<wbr>standard_<wbr>todd_<wbr>curves</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.max_connect_time" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.max_connect_time (Python attribute) — Maximum connection time for automatically generated paths."><span>max_<wbr>connect_<wbr>time</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.disable_ap" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.disable_ap (Python attribute) — Remove all advance purchase settings used in the simulation."><span>disable_<wbr>ap</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.demand_multiplier" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.demand_multiplier (Python attribute) — Scale all demand by this value."><span>demand_<wbr>multiplier</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.capacity_multiplier" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.capacity_multiplier (Python attribute) — Scale all capacities by this value."><span>capacity_<wbr>multiplier</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.connection_builder" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.connection_builder (Python attribute) — Settings related to the automatic generation of paths and connections in the simulation."><span>connection_<wbr>builder</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.manual_paths" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.manual_paths (Python attribute) — Deprecated. See connection_builder.existing_paths instead."><span>manual_<wbr>paths</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.generate_3seg" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.generate_3seg (Python attribute) — Use the new A* search to build connections, it can create 3seg connects"><span>generate_<wbr>3seg</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.use_3seg" class="md-nav__link">
+    
+      <span aria-label="Python property" class="objinfo-icon objinfo-icon__alias" title="Python property">P</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.use_3seg (Python property)"><span>use_<wbr>3seg</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.write_raw_files" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.write_raw_files (Python attribute)"><span>write_<wbr>raw_<wbr>files</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.random_seed" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.random_seed (Python attribute) — Integer used to control the reproducibility of simulation results."><span>random_<wbr>seed</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.update_frequency" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.update_frequency (Python attribute)"><span>update_<wbr>frequency</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.controller_time_zone" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.controller_time_zone (Python attribute) — The reference time zone for the controller (seconds relative to UTC)."><span>controller_<wbr>time_<wbr>zone</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.base_date" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.base_date (Python attribute) — The default date used to compute relative times for travel."><span>base_<wbr>date</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.dcp_hour" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.dcp_hour (Python attribute) — The hour of the day that the RM recalculation events are triggered."><span>dcp_<wbr>hour</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.capture_competitor_data" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.capture_competitor_data (Python attribute) — Turns on the capturing of competitor data."><span>capture_<wbr>competitor_<wbr>data</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.capture_choice_set_file" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.capture_choice_set_file (Python attribute) — Turns on the capturing of the choice set and writes the data to the specified file"><span>capture_<wbr>choice_<wbr>set_<wbr>file</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.capture_choice_set_obs" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.capture_choice_set_obs (Python attribute) — If this is set, PassengerSim will randomly sample the ChoiceSet data and output APPROXIMATELY this many choice sets (each will have multiple items and all items for the choice set will be saved and output)"><span>capture_<wbr>choice_<wbr>set_<wbr>obs</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.capture_choice_set_mkts" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.capture_choice_set_mkts (Python attribute) — Capture only these markets (O&amp;D pairs)"><span>capture_<wbr>choice_<wbr>set_<wbr>mkts</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.capture_demand_history" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.capture_demand_history (Python attribute) — Store the demand history for each demand."><span>capture_<wbr>demand_<wbr>history</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.show_progress_bar" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.show_progress_bar (Python attribute) — Show a progress bar while running."><span>show_<wbr>progress_<wbr>bar</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.debug_availability" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.debug_availability (Python attribute)"><span>debug_<wbr>availability</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.debug_choice" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.debug_choice (Python attribute)"><span>debug_<wbr>choice</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.debug_connections" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.debug_connections (Python attribute)"><span>debug_<wbr>connections</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.debug_events" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.debug_events (Python attribute)"><span>debug_<wbr>events</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.debug_fares" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.debug_fares (Python attribute)"><span>debug_<wbr>fares</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.debug_offers" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.debug_offers (Python attribute)"><span>debug_<wbr>offers</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.debug_orders" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.debug_orders (Python attribute)"><span>debug_<wbr>orders</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.additional_settings" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.additional_settings (Python attribute) — Additional settings to pass to the simulation."><span>additional_<wbr>settings</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.reference_epoch" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.reference_epoch (Python method) — Get the reference travel datetime in unix time."><span>reference_<wbr>epoch</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.timeframe_demand_allocation" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.timeframe_demand_allocation (Python attribute) — Which algorithm to use for time frame demand allocation."><span>timeframe_<wbr>demand_<wbr>allocation</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.allow_unused_restrictions" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.allow_unused_restrictions (Python attribute) — Allow restrictions to be defined but not used."><span>allow_<wbr>unused_<wbr>restrictions</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.config.SimulationSettings.speed_limits" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.config.SimulationSettings.speed_limits (Python attribute) — Speed limits for short, medium, and long travel legs."><span>speed_<wbr>limits</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                
+                
+                  
+
+
+<h1 id="simulationsettings">SimulationSettings<a class="headerlink" href="#simulationsettings" title="Link to this heading">¶</a></h1>
+<dl class="py class objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">passengersim.config.</span></span><span class="sig-name descname"><span class="pre">SimulationSettings</span></span><a class="reference internal" href="../../../_modules/passengersim/config/simulation_controls.html#SimulationSettings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#passengersim.config.SimulationSettings" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="passengersim.config.pretty.PrettyModel.html#passengersim.config.pretty.PrettyModel" title="passengersim.config.pretty.PrettyModel (Python class) — Bases: BaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">PrettyModel</span></code></a></p>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils data align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.num_trials" title="passengersim.config.SimulationSettings.num_trials (Python attribute) — The overall number of trials to run."><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_trials</span></code></a></p></td>
+<td><p>The overall number of trials to run.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.num_samples" title="passengersim.config.SimulationSettings.num_samples (Python attribute) — The number of samples to run within each trial."><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_samples</span></code></a></p></td>
+<td><p>The number of samples to run within each trial.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.burn_samples" title="passengersim.config.SimulationSettings.burn_samples (Python attribute) — The number of samples to burn when starting each trial."><code class="xref py py-obj docutils literal notranslate"><span class="pre">burn_samples</span></code></a></p></td>
+<td><p>The number of samples to burn when starting each trial.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.double_capacity_until" title="passengersim.config.SimulationSettings.double_capacity_until (Python attribute) — Double the capacity on all legs until this sample."><code class="xref py py-obj docutils literal notranslate"><span class="pre">double_capacity_until</span></code></a></p></td>
+<td><p>Double the capacity on all legs until this sample.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.sys_k_factor" title="passengersim.config.SimulationSettings.sys_k_factor (Python attribute) — System-level randomness factor."><code class="xref py py-obj docutils literal notranslate"><span class="pre">sys_k_factor</span></code></a></p></td>
+<td><p>System-level randomness factor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.mkt_k_factor" title="passengersim.config.SimulationSettings.mkt_k_factor (Python attribute) — Market-level randomness factor."><code class="xref py py-obj docutils literal notranslate"><span class="pre">mkt_k_factor</span></code></a></p></td>
+<td><p>Market-level randomness factor.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.pax_type_k_factor" title="passengersim.config.SimulationSettings.pax_type_k_factor (Python attribute) — Passenger-type randomness factor."><code class="xref py py-obj docutils literal notranslate"><span class="pre">pax_type_k_factor</span></code></a></p></td>
+<td><p>Passenger-type randomness factor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.segment_k_factor" title="passengersim.config.SimulationSettings.segment_k_factor (Python attribute) — Passenger segment randomness factor."><code class="xref py py-obj docutils literal notranslate"><span class="pre">segment_k_factor</span></code></a></p></td>
+<td><p>Passenger segment randomness factor.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.simple_k_factor" title="passengersim.config.SimulationSettings.simple_k_factor (Python attribute) — Passenger-type randomness factor."><code class="xref py py-obj docutils literal notranslate"><span class="pre">simple_k_factor</span></code></a></p></td>
+<td><p>Passenger-type randomness factor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.simple_cv100" title="passengersim.config.SimulationSettings.simple_cv100 (Python attribute) — THIS IS A TEST"><code class="xref py py-obj docutils literal notranslate"><span class="pre">simple_cv100</span></code></a></p></td>
+<td><p>THIS IS A TEST</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.tf_k_factor" title="passengersim.config.SimulationSettings.tf_k_factor (Python attribute) — Time frame randomness factor."><code class="xref py py-obj docutils literal notranslate"><span class="pre">tf_k_factor</span></code></a></p></td>
+<td><p>Time frame randomness factor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.tot_z_factor" title="passengersim.config.SimulationSettings.tot_z_factor (Python attribute) — Base level demand variance control."><code class="xref py py-obj docutils literal notranslate"><span class="pre">tot_z_factor</span></code></a></p></td>
+<td><p>Base level demand variance control.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.tf_z_factor" title="passengersim.config.SimulationSettings.tf_z_factor (Python attribute) — Timeframe demand variance control."><code class="xref py py-obj docutils literal notranslate"><span class="pre">tf_z_factor</span></code></a></p></td>
+<td><p>Timeframe demand variance control.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.prorate_revenue" title="passengersim.config.SimulationSettings.prorate_revenue (Python attribute)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prorate_revenue</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.revenue_alpha" title="passengersim.config.SimulationSettings.revenue_alpha (Python attribute) — Used to exponentially smooth revenue per PathClass, to get optimizationFare"><code class="xref py py-obj docutils literal notranslate"><span class="pre">revenue_alpha</span></code></a></p></td>
+<td><p>Used to exponentially smooth revenue per PathClass, to get optimizationFare</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.save_orders" title="passengersim.config.SimulationSettings.save_orders (Python attribute)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_orders</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.save_all_offers" title="passengersim.config.SimulationSettings.save_all_offers (Python attribute) — This will save all Offers, including those that would fail fare rules or availability. The output choice set data will have all of these, so you can find first choice demand, recapture, etc. False by default"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_all_offers</span></code></a></p></td>
+<td><p>This will save all Offers, including those that would fail fare rules or availability.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.dwm_lite" title="passengersim.config.SimulationSettings.dwm_lite (Python attribute) — Deprecated, has no effect."><code class="xref py py-obj docutils literal notranslate"><span class="pre">dwm_lite</span></code></a></p></td>
+<td><p>Deprecated, has no effect.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.use_standard_todd_curves" title="passengersim.config.SimulationSettings.use_standard_todd_curves (Python attribute) — Use the &quot;standard&quot; time of day departure (TODD) curves."><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_standard_todd_curves</span></code></a></p></td>
+<td><p>Use the &quot;standard&quot; time of day departure (TODD) curves.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.max_connect_time" title="passengersim.config.SimulationSettings.max_connect_time (Python attribute) — Maximum connection time for automatically generated paths."><code class="xref py py-obj docutils literal notranslate"><span class="pre">max_connect_time</span></code></a></p></td>
+<td><p>Maximum connection time for automatically generated paths.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.disable_ap" title="passengersim.config.SimulationSettings.disable_ap (Python attribute) — Remove all advance purchase settings used in the simulation."><code class="xref py py-obj docutils literal notranslate"><span class="pre">disable_ap</span></code></a></p></td>
+<td><p>Remove all advance purchase settings used in the simulation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.demand_multiplier" title="passengersim.config.SimulationSettings.demand_multiplier (Python attribute) — Scale all demand by this value."><code class="xref py py-obj docutils literal notranslate"><span class="pre">demand_multiplier</span></code></a></p></td>
+<td><p>Scale all demand by this value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.capacity_multiplier" title="passengersim.config.SimulationSettings.capacity_multiplier (Python attribute) — Scale all capacities by this value."><code class="xref py py-obj docutils literal notranslate"><span class="pre">capacity_multiplier</span></code></a></p></td>
+<td><p>Scale all capacities by this value.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.connection_builder" title="passengersim.config.SimulationSettings.connection_builder (Python attribute) — Settings related to the automatic generation of paths and connections in the simulation."><code class="xref py py-obj docutils literal notranslate"><span class="pre">connection_builder</span></code></a></p></td>
+<td><p>Settings related to the automatic generation of paths and connections in the simulation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.manual_paths" title="passengersim.config.SimulationSettings.manual_paths (Python attribute) — Deprecated. See connection_builder.existing_paths instead."><code class="xref py py-obj docutils literal notranslate"><span class="pre">manual_paths</span></code></a></p></td>
+<td><p>Deprecated.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.generate_3seg" title="passengersim.config.SimulationSettings.generate_3seg (Python attribute) — Use the new A* search to build connections, it can create 3seg connects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_3seg</span></code></a></p></td>
+<td><p>Use the new A* search to build connections, it can create 3seg connects</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.use_3seg" title="passengersim.config.SimulationSettings.use_3seg (Python property)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">use_3seg</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.write_raw_files" title="passengersim.config.SimulationSettings.write_raw_files (Python attribute)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_raw_files</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.random_seed" title="passengersim.config.SimulationSettings.random_seed (Python attribute) — Integer used to control the reproducibility of simulation results."><code class="xref py py-obj docutils literal notranslate"><span class="pre">random_seed</span></code></a></p></td>
+<td><p>Integer used to control the reproducibility of simulation results.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.update_frequency" title="passengersim.config.SimulationSettings.update_frequency (Python attribute)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_frequency</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.controller_time_zone" title="passengersim.config.SimulationSettings.controller_time_zone (Python attribute) — The reference time zone for the controller (seconds relative to UTC)."><code class="xref py py-obj docutils literal notranslate"><span class="pre">controller_time_zone</span></code></a></p></td>
+<td><p>The reference time zone for the controller (seconds relative to UTC).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.base_date" title="passengersim.config.SimulationSettings.base_date (Python attribute) — The default date used to compute relative times for travel."><code class="xref py py-obj docutils literal notranslate"><span class="pre">base_date</span></code></a></p></td>
+<td><p>The default date used to compute relative times for travel.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.dcp_hour" title="passengersim.config.SimulationSettings.dcp_hour (Python attribute) — The hour of the day that the RM recalculation events are triggered."><code class="xref py py-obj docutils literal notranslate"><span class="pre">dcp_hour</span></code></a></p></td>
+<td><p>The hour of the day that the RM recalculation events are triggered.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.capture_competitor_data" title="passengersim.config.SimulationSettings.capture_competitor_data (Python attribute) — Turns on the capturing of competitor data."><code class="xref py py-obj docutils literal notranslate"><span class="pre">capture_competitor_data</span></code></a></p></td>
+<td><p>Turns on the capturing of competitor data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.capture_choice_set_file" title="passengersim.config.SimulationSettings.capture_choice_set_file (Python attribute) — Turns on the capturing of the choice set and writes the data to the specified file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">capture_choice_set_file</span></code></a></p></td>
+<td><p>Turns on the capturing of the choice set and writes the data to the specified file</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.capture_choice_set_obs" title="passengersim.config.SimulationSettings.capture_choice_set_obs (Python attribute) — If this is set, PassengerSim will randomly sample the ChoiceSet data and output APPROXIMATELY this many choice sets (each will have multiple items and all items for the choice set will be saved and output)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">capture_choice_set_obs</span></code></a></p></td>
+<td><p>If this is set, PassengerSim will randomly sample the ChoiceSet data and output APPROXIMATELY this many choice sets (each will have multiple items and all items for the choice set will be saved and output)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.capture_choice_set_mkts" title="passengersim.config.SimulationSettings.capture_choice_set_mkts (Python attribute) — Capture only these markets (O&amp;D pairs)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">capture_choice_set_mkts</span></code></a></p></td>
+<td><p>Capture only these markets (O&amp;D pairs)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.capture_demand_history" title="passengersim.config.SimulationSettings.capture_demand_history (Python attribute) — Store the demand history for each demand."><code class="xref py py-obj docutils literal notranslate"><span class="pre">capture_demand_history</span></code></a></p></td>
+<td><p>Store the demand history for each demand.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.show_progress_bar" title="passengersim.config.SimulationSettings.show_progress_bar (Python attribute) — Show a progress bar while running."><code class="xref py py-obj docutils literal notranslate"><span class="pre">show_progress_bar</span></code></a></p></td>
+<td><p>Show a progress bar while running.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.debug_availability" title="passengersim.config.SimulationSettings.debug_availability (Python attribute)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">debug_availability</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.debug_choice" title="passengersim.config.SimulationSettings.debug_choice (Python attribute)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">debug_choice</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.debug_connections" title="passengersim.config.SimulationSettings.debug_connections (Python attribute)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">debug_connections</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.debug_events" title="passengersim.config.SimulationSettings.debug_events (Python attribute)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">debug_events</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.debug_fares" title="passengersim.config.SimulationSettings.debug_fares (Python attribute)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">debug_fares</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.debug_offers" title="passengersim.config.SimulationSettings.debug_offers (Python attribute)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">debug_offers</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.debug_orders" title="passengersim.config.SimulationSettings.debug_orders (Python attribute)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">debug_orders</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.additional_settings" title="passengersim.config.SimulationSettings.additional_settings (Python attribute) — Additional settings to pass to the simulation."><code class="xref py py-obj docutils literal notranslate"><span class="pre">additional_settings</span></code></a></p></td>
+<td><p>Additional settings to pass to the simulation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.timeframe_demand_allocation" title="passengersim.config.SimulationSettings.timeframe_demand_allocation (Python attribute) — Which algorithm to use for time frame demand allocation."><code class="xref py py-obj docutils literal notranslate"><span class="pre">timeframe_demand_allocation</span></code></a></p></td>
+<td><p>Which algorithm to use for time frame demand allocation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.allow_unused_restrictions" title="passengersim.config.SimulationSettings.allow_unused_restrictions (Python attribute) — Allow restrictions to be defined but not used."><code class="xref py py-obj docutils literal notranslate"><span class="pre">allow_unused_restrictions</span></code></a></p></td>
+<td><p>Allow restrictions to be defined but not used.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.speed_limits" title="passengersim.config.SimulationSettings.speed_limits (Python attribute) — Speed limits for short, medium, and long travel legs."><code class="xref py py-obj docutils literal notranslate"><span class="pre">speed_limits</span></code></a></p></td>
+<td><p>Speed limits for short, medium, and long travel legs.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils data align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.config.SimulationSettings.reference_epoch" title="passengersim.config.SimulationSettings.reference_epoch (Python method) — Get the reference travel datetime in unix time."><code class="xref py py-obj docutils literal notranslate"><span class="pre">reference_epoch</span></code></a>()</p></td>
+<td><p>Get the reference travel datetime in unix time.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.num_trials">
+<span class="sig-name descname"><span class="pre">num_trials</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">conint</span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">ge</span></span><span class="o"><span class="pre">=</span></span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">le</span></span><span class="o"><span class="pre">=</span></span><span class="m"><span class="pre">1000</span></span><span class="p"><span class="pre">)</span></span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.num_trials" title="Link to this definition">¶</a></dt>
+<dd><p>The overall number of trials to run.</p>
+<p>Each trial is a complete simulation, including burn-in training time as well
+as study time.  It will have a number of sequentially developed samples, each of
+which represents one “typical” day of travel.</p>
+<p>See [Counting Simulations][counting-simulations] for more details.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.num_samples">
+<span class="sig-name descname"><span class="pre">num_samples</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">conint</span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">ge</span></span><span class="o"><span class="pre">=</span></span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">le</span></span><span class="o"><span class="pre">=</span></span><span class="m"><span class="pre">10000</span></span><span class="p"><span class="pre">)</span></span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.num_samples" title="Link to this definition">¶</a></dt>
+<dd><p>The number of samples to run within each trial.</p>
+<p>Each sample represents one “typical” day of travel.
+See [Counting Simulations][counting-simulations] for more details.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.burn_samples">
+<span class="sig-name descname"><span class="pre">burn_samples</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">conint</span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">ge</span></span><span class="o"><span class="pre">=</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">le</span></span><span class="o"><span class="pre">=</span></span><span class="m"><span class="pre">10000</span></span><span class="p"><span class="pre">)</span></span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.burn_samples" title="Link to this definition">¶</a></dt>
+<dd><p>The number of samples to burn when starting each trial.</p>
+<p>Burned samples are used to populate a stable history of data to support
+forecasting and optimization algorithms, but are not used to evaluate
+performance results.</p>
+<p>See [Counting Simulations][counting-simulations] for more details.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.double_capacity_until">
+<span class="sig-name descname"><span class="pre">double_capacity_until</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.double_capacity_until" title="Link to this definition">¶</a></dt>
+<dd><p>Double the capacity on all legs until this sample.</p>
+<p>The extra capacity may reduce the statistical noise of untruncation
+within the burn period and allow the simulation to achieve a stable
+steady state faster.  If used, this should be set to a value at least
+26 below the <cite>burn_samples</cite> value to avoid polluting the results.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.sys_k_factor">
+<span class="sig-name descname"><span class="pre">sys_k_factor</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">confloat</span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">ge</span></span><span class="o"><span class="pre">=</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">le</span></span><span class="o"><span class="pre">=</span></span><span class="pre">5.0</span><span class="p"><span class="pre">)</span></span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.sys_k_factor" title="Link to this definition">¶</a></dt>
+<dd><p>System-level randomness factor.</p>
+<p>This factor controls the level of correlation in demand levels across the
+entire system.</p>
+<p>See <a class="reference internal" href="../../../mechanics/demand-generation.html#demand-generation-k-factors"><span class="std std-ref">K-Factors to Control Correlation</span></a> for more details.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.mkt_k_factor">
+<span class="sig-name descname"><span class="pre">mkt_k_factor</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">confloat</span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">ge</span></span><span class="o"><span class="pre">=</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">le</span></span><span class="o"><span class="pre">=</span></span><span class="pre">5.0</span><span class="p"><span class="pre">)</span></span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.mkt_k_factor" title="Link to this definition">¶</a></dt>
+<dd><p>Market-level randomness factor.</p>
+<p>This factor controls the level of correlation in demand levels across origin-
+destination markets.</p>
+<p>See <a class="reference internal" href="../../../mechanics/demand-generation.html#demand-generation-k-factors"><span class="std std-ref">K-Factors to Control Correlation</span></a> for more details.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.pax_type_k_factor">
+<span class="sig-name descname"><span class="pre">pax_type_k_factor</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">confloat</span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">ge</span></span><span class="o"><span class="pre">=</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">le</span></span><span class="o"><span class="pre">=</span></span><span class="pre">5.0</span><span class="p"><span class="pre">)</span></span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.pax_type_k_factor" title="Link to this definition">¶</a></dt>
+<dd><p>Passenger-type randomness factor.</p>
+<p>Deprecated: use <cite>simple_k_factor</cite> instead.</p>
+<p>This factor add uncorrelated variance to every demand, unless there are
+multiple demands in the same market and with the same passenger segment.</p>
+<p>See <a class="reference internal" href="../../../mechanics/demand-generation.html#demand-generation-k-factors"><span class="std std-ref">K-Factors to Control Correlation</span></a> for more details.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.segment_k_factor">
+<span class="sig-name descname"><span class="pre">segment_k_factor</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">confloat</span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">ge</span></span><span class="o"><span class="pre">=</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">le</span></span><span class="o"><span class="pre">=</span></span><span class="pre">5.0</span><span class="p"><span class="pre">)</span></span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.segment_k_factor" title="Link to this definition">¶</a></dt>
+<dd><p>Passenger segment randomness factor.</p>
+<p>This factor controls the level of correlation in demand levels across
+passenger segments.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.simple_k_factor">
+<span class="sig-name descname"><span class="pre">simple_k_factor</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">confloat</span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">ge</span></span><span class="o"><span class="pre">=</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">le</span></span><span class="o"><span class="pre">=</span></span><span class="pre">5.0</span><span class="p"><span class="pre">)</span></span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.simple_k_factor" title="Link to this definition">¶</a></dt>
+<dd><p>Passenger-type randomness factor.</p>
+<p>This factor add uncorrelated variance to every demand.</p>
+<p>See <a class="reference internal" href="../../../mechanics/demand-generation.html#demand-generation-k-factors"><span class="std std-ref">K-Factors to Control Correlation</span></a> for more details.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.simple_cv100">
+<span class="sig-name descname"><span class="pre">simple_cv100</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">confloat</span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">ge</span></span><span class="o"><span class="pre">=</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">le</span></span><span class="o"><span class="pre">=</span></span><span class="pre">1.0</span><span class="p"><span class="pre">)</span></span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.simple_cv100" title="Link to this definition">¶</a></dt>
+<dd><p>THIS IS A TEST</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.tf_k_factor">
+<span class="sig-name descname"><span class="pre">tf_k_factor</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">confloat</span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">ge</span></span><span class="o"><span class="pre">=</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">)</span></span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.tf_k_factor" title="Link to this definition">¶</a></dt>
+<dd><p>Time frame randomness factor.</p>
+<p>This factor controls the dispersion of bookings over time, given a previously
+identified level of total demand. See [k-factors]() for more details.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.tot_z_factor">
+<span class="sig-name descname"><span class="pre">tot_z_factor</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">confloat</span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">ge</span></span><span class="o"><span class="pre">=</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">le</span></span><span class="o"><span class="pre">=</span></span><span class="pre">100.0</span><span class="p"><span class="pre">)</span></span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.tot_z_factor" title="Link to this definition">¶</a></dt>
+<dd><p>Base level demand variance control.</p>
+<p>This factor scales the variance in the amount of total demand for any given
+market segment.</p>
+<p>See <a class="reference internal" href="../../../mechanics/demand-generation.html#demand-generation-k-factors"><span class="std std-ref">K-Factors to Control Correlation</span></a> for more details.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.tf_z_factor">
+<span class="sig-name descname"><span class="pre">tf_z_factor</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">confloat</span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">ge</span></span><span class="o"><span class="pre">=</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">le</span></span><span class="o"><span class="pre">=</span></span><span class="pre">100.0</span><span class="p"><span class="pre">)</span></span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.tf_z_factor" title="Link to this definition">¶</a></dt>
+<dd><p>Timeframe demand variance control.</p>
+<p>This factor scales the variance in the allocation of total demand to the
+various arrival timeframes.</p>
+<p>See <a class="reference internal" href="../../../mechanics/demand-generation.html#demand-generation-k-factors"><span class="std std-ref">K-Factors to Control Correlation</span></a> for more details.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.prorate_revenue">
+<span class="sig-name descname"><span class="pre">prorate_revenue</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">bool</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.prorate_revenue" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.revenue_alpha">
+<span class="sig-name descname"><span class="pre">revenue_alpha</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">float</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.revenue_alpha" title="Link to this definition">¶</a></dt>
+<dd><p>Used to exponentially smooth revenue per PathClass, to get optimizationFare</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.save_orders">
+<span class="sig-name descname"><span class="pre">save_orders</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">bool</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.save_orders" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.save_all_offers">
+<span class="sig-name descname"><span class="pre">save_all_offers</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">bool</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.save_all_offers" title="Link to this definition">¶</a></dt>
+<dd><p>This will save all Offers, including those that would fail fare rules or availability.
+The output choice set data will have all of these, so you can find first choice demand,
+recapture, etc.
+False by default</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.dwm_lite">
+<span class="sig-name descname"><span class="pre">dwm_lite</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">bool</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.dwm_lite" title="Link to this definition">¶</a></dt>
+<dd><p>Deprecated, has no effect.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.use_standard_todd_curves">
+<span class="sig-name descname"><span class="pre">use_standard_todd_curves</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">bool</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.use_standard_todd_curves" title="Link to this definition">¶</a></dt>
+<dd><p>Use the “standard” time of day departure (TODD) curves.</p>
+<p>Each demand, unless otherwise given an explicit TODD curve to use, will use the
+standard TODD curve associated with the market’s <cite>delta_t</cite>.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.max_connect_time">
+<span class="sig-name descname"><span class="pre">max_connect_time</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">conint</span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">ge</span></span><span class="o"><span class="pre">=</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">)</span></span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.max_connect_time" title="Link to this definition">¶</a></dt>
+<dd><p>Maximum connection time for automatically generated paths.</p>
+<p>Any generated path that has a connection time greater than this value (expressed
+in minutes) is invalidated.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.disable_ap">
+<span class="sig-name descname"><span class="pre">disable_ap</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">bool</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.disable_ap" title="Link to this definition">¶</a></dt>
+<dd><p>Remove all advance purchase settings used in the simulation.</p>
+<p>This applies to all carriers and all fare products.  If active, this filter
+is applied to all Fare definitions at the time the Config is loaded into to a
+Simulation object.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.demand_multiplier">
+<span class="sig-name descname"><span class="pre">demand_multiplier</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">confloat</span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">gt</span></span><span class="o"><span class="pre">=</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">)</span></span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.demand_multiplier" title="Link to this definition">¶</a></dt>
+<dd><p>Scale all demand by this value.</p>
+<p>Setting to a value other than 1.0 will increase or decrease
+all demand inputs uniformly by the same multiplicative amount.
+This is helpful when exploring how simulation results vary
+when you have “low demand” scenarios
+(e.g, demand_multiplier = 0.8), or “high demand” scenarios
+(e.g., demand multiplier = 1.1).</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.capacity_multiplier">
+<span class="sig-name descname"><span class="pre">capacity_multiplier</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">confloat</span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">gt</span></span><span class="o"><span class="pre">=</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">)</span></span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.capacity_multiplier" title="Link to this definition">¶</a></dt>
+<dd><p>Scale all capacities by this value.</p>
+<p>Setting to a value other than 1.0 will increase or decrease all capacity inputs
+uniformly by the same multiplicative amount.
+Business class and/or first class can be quickly simulated with this option</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.connection_builder">
+<span class="sig-name descname"><span class="pre">connection_builder</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><a class="reference internal" href="passengersim.config.simulation_controls.ConnectionBuilderSettings.html#passengersim.config.simulation_controls.ConnectionBuilderSettings" title="passengersim.config.simulation_controls.ConnectionBuilderSettings (Python class) — Bases: PrettyModel"><span class="pre">ConnectionBuilderSettings</span></a></span><a class="headerlink" href="#passengersim.config.SimulationSettings.connection_builder" title="Link to this definition">¶</a></dt>
+<dd><p>Settings related to the automatic generation of paths and connections in the simulation.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight sig-wrap py" id="passengersim.config.SimulationSettings.manual_paths">
+<span class="sig-name descname"><span class="pre">manual_paths</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Field</span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">deprecated</span></span><span class="o"><span class="pre">=</span></span><span class="s"><span class="pre">'`manual_paths`</span> <span class="pre">is</span> <span class="pre">deprecated</span> <span class="pre">and</span> <span class="pre">will</span> <span class="pre">be</span> <span class="pre">removed</span> <span class="pre">in</span> <span class="pre">a</span> <span class="pre">future</span> <span class="pre">version.</span> <span class="pre">Use</span> <span class="pre">`connection_builder.existing_paths`</span> <span class="pre">instead'</span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.manual_paths" title="Link to this definition">¶</a></dt>
+<dd><p>Deprecated. See <cite>connection_builder.existing_paths</cite> instead.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.generate_3seg">
+<span class="sig-name descname"><span class="pre">generate_3seg</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.generate_3seg" title="Link to this definition">¶</a></dt>
+<dd><p>Use the new A* search to build connections, it can create 3seg connects</p>
+</dd></dl>
+
+<dl class="py property objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.use_3seg">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">use_3seg</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">bool</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.use_3seg" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.write_raw_files">
+<span class="sig-name descname"><span class="pre">write_raw_files</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">bool</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.write_raw_files" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.random_seed">
+<span class="sig-name descname"><span class="pre">random_seed</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.random_seed" title="Link to this definition">¶</a></dt>
+<dd><p>Integer used to control the reproducibility of simulation results.</p>
+<p>A seed is base value used by a pseudo-random generator to generate random
+numbers. A fixed random seed is used to ensure the same randomness pattern
+is reproducible and does not change between simulation runs, i.e. allows
+subsequent runs to be conducted with the same randomness pattern as a
+previous one. Any value set here will allow results to be repeated.</p>
+<p>The random number generator is re-seeded at the beginning of every sample
+in every trial with a fixed tuple of three values: this “global” random seed,
+plus the sample number and trial number.  This ensures that partial results
+are also reproducible: the simulation of sample 234 in trial 2 will be the
+same regardless of how many samples are in trial 1.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.update_frequency">
+<span class="sig-name descname"><span class="pre">update_frequency</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.update_frequency" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.controller_time_zone">
+<span class="sig-name descname"><span class="pre">controller_time_zone</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.controller_time_zone" title="Link to this definition">¶</a></dt>
+<dd><p>The reference time zone for the controller (seconds relative to UTC).</p>
+<p>Data collection points will be trigger at approximately midnight in this time zone.</p>
+<p>This value can be input in hours instead of seconds, any absolute value less
+than or equal to 12 will be assumed to be hours and scaled to seconds.</p>
+<p>The default value is -6 hours, or US Central Standard Time.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.base_date">
+<span class="sig-name descname"><span class="pre">base_date</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">str</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.base_date" title="Link to this definition">¶</a></dt>
+<dd><p>The default date used to compute relative times for travel.</p>
+<p>Future enhancements may include multi-day modeling.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.dcp_hour">
+<span class="sig-name descname"><span class="pre">dcp_hour</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">float</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.dcp_hour" title="Link to this definition">¶</a></dt>
+<dd><p>The hour of the day that the RM recalculation events are triggered.</p>
+<p>If set to zero, the events happen at midnight.  Other values can
+delay the recalculation into later in the night (or the next day).</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.capture_competitor_data">
+<span class="sig-name descname"><span class="pre">capture_competitor_data</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">bool</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.capture_competitor_data" title="Link to this definition">¶</a></dt>
+<dd><p>Turns on the capturing of competitor data.</p>
+<p>This feature captures lowest available fare data captured by market, for potential
+use in competitive analysis RM strategies.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.capture_choice_set_file">
+<span class="sig-name descname"><span class="pre">capture_choice_set_file</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">str</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.capture_choice_set_file" title="Link to this definition">¶</a></dt>
+<dd><p>Turns on the capturing of the choice set and writes the data to the specified file</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.capture_choice_set_obs">
+<span class="sig-name descname"><span class="pre">capture_choice_set_obs</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.capture_choice_set_obs" title="Link to this definition">¶</a></dt>
+<dd><p>If this is set, PassengerSim will randomly sample the ChoiceSet data and output
+APPROXIMATELY this many choice sets (each will have multiple items and all items
+for the choice set will be saved and output)</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.capture_choice_set_mkts">
+<span class="sig-name descname"><span class="pre">capture_choice_set_mkts</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.capture_choice_set_mkts" title="Link to this definition">¶</a></dt>
+<dd><p>Capture only these markets (O&amp;D pairs)</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.capture_demand_history">
+<span class="sig-name descname"><span class="pre">capture_demand_history</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">bool</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.capture_demand_history" title="Link to this definition">¶</a></dt>
+<dd><p>Store the demand history for each demand.</p>
+<p>This can be activated to populate the <cite>demand_history</cite> summary table, if desired.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.show_progress_bar">
+<span class="sig-name descname"><span class="pre">show_progress_bar</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">bool</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.show_progress_bar" title="Link to this definition">¶</a></dt>
+<dd><p>Show a progress bar while running.</p>
+<p>The progress display requires <cite>rich</cite> is installed.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.debug_availability">
+<span class="sig-name descname"><span class="pre">debug_availability</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.debug_availability" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.debug_choice">
+<span class="sig-name descname"><span class="pre">debug_choice</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.debug_choice" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.debug_connections">
+<span class="sig-name descname"><span class="pre">debug_connections</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.debug_connections" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.debug_events">
+<span class="sig-name descname"><span class="pre">debug_events</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.debug_events" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.debug_fares">
+<span class="sig-name descname"><span class="pre">debug_fares</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.debug_fares" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.debug_offers">
+<span class="sig-name descname"><span class="pre">debug_offers</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.debug_offers" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.debug_orders">
+<span class="sig-name descname"><span class="pre">debug_orders</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.debug_orders" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.additional_settings">
+<span class="sig-name descname"><span class="pre">additional_settings</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.additional_settings" title="Link to this definition">¶</a></dt>
+<dd><p>Additional settings to pass to the simulation.</p>
+<p>These settings are passed directly to the simulation object and can be used to
+set various parameters that are not directly exposed in the configuration.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.reference_epoch">
+<span class="sig-name descname"><span class="pre">reference_epoch</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><span class="pre">int</span></span></span></span><a class="reference internal" href="../../../_modules/passengersim/config/simulation_controls.html#SimulationSettings.reference_epoch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#passengersim.config.SimulationSettings.reference_epoch" title="Link to this definition">¶</a></dt>
+<dd><p>Get the reference travel datetime in unix time.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.timeframe_demand_allocation">
+<span class="sig-name descname"><span class="pre">timeframe_demand_allocation</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'v2'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'pods'</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.timeframe_demand_allocation" title="Link to this definition">¶</a></dt>
+<dd><p>Which algorithm to use for time frame demand allocation.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.allow_unused_restrictions">
+<span class="sig-name descname"><span class="pre">allow_unused_restrictions</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><span class="pre">bool</span></span><a class="headerlink" href="#passengersim.config.SimulationSettings.allow_unused_restrictions" title="Link to this definition">¶</a></dt>
+<dd><p>Allow restrictions to be defined but not used.</p>
+<p>If set to False, any restriction that is defined as a parameter of a choice
+model but not present on any fare, or vice versa, will raise a ValueError.
+Users may override this behavior by setting this parameter to True, which
+will emit a warning instead of an error.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.config.SimulationSettings.speed_limits">
+<span class="sig-name descname"><span class="pre">speed_limits</span></span><span class="p"> <span class="pre">:</span> </span><span class="desctype"><a class="reference internal" href="passengersim.config.speed_limits.SpeedLimits.html#passengersim.config.speed_limits.SpeedLimits" title="passengersim.config.speed_limits.SpeedLimits (Python class) — Bases: BaseModel"><span class="pre">SpeedLimits</span></a></span><a class="headerlink" href="#passengersim.config.SimulationSettings.speed_limits" title="Link to this definition">¶</a></dt>
+<dd><p>Speed limits for short, medium, and long travel legs.</p>
+<p>These are only used for data quality checks at Config load time. The limits
+should be set quite generously. If you set do speed limits, then legs that
+violate the limits (i.e., they appear abnormally fast or slow) will be flagged
+as validation errors when your data is loaded. Most of the time this will
+be due to data transcription errors (e.g. failure to account for crossing the
+international date line, incorrect assignment of airports to time zones, etc.)</p>
+</dd></dl>
+
+</dd></dl>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2026, PassengerSim LLC.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.2.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.action.view", "content.code.copy", "content.code.annotate", "navigation.tabs", "navigation.top", "navigation.tracking", "announce.dismiss"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": null}}</script>
+    
+      
+        <script src="../../../_static/sphinx_immaterial_theme.32136f45f91ae6956.min.js?v=a7a9472a"></script>
+    
+  </body>
+</html>

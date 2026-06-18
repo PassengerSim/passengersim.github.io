@@ -1,0 +1,46 @@
+---
+title: Wayfinding
+icon: material/routes
+hide-page-title: true
+---
+
+```{raw} html
+<div style="visibility: hidden; height: 0;">
+```
+
+# Wayfinding
+
+```{raw} html
+</div>
+```
+
+<span style="font-size: 1.2rem;">{si-icon}`material/map` <span style="width:3px"></span> **User
+Guide** </span> <span style="width:2em"></span> {si-icon}`material/map-marker-check-outline` *You
+are here*
+
+This section provides a high-level overview of how to use PassengerSim, including installation
+instructions, getting started guides, and tips for working with the simulation. Start here if you're
+new to PassengerSim or just want a refresher on how to use it.
+
+<span style="font-size: 1.2rem;">{si-icon}`fontawesome/solid/gears` <span style="width:3px" />
+[**Mechanics**](../mechanics/counting-sims.md)</span>
+
+This section dives into the details of how PassengerSim works, including explanations of the various
+components of the simulation, how demand is generated, how the RM systems work, and more. This
+section is great for users who want to understand the inner workings of PassengerSim and how to
+customize it for their specific use cases.
+
+<span style="font-size: 1.2rem;">{si-icon}`material/notebook` <span style="width:3px" />
+[**Examples**](../examples/intro-3mkt.ipynb)</span>
+
+A collection of Jupyter notebooks that provide step-by-step examples of how to use PassengerSim for
+various purposes, such as running a basic simulation, analyzing results, and customizing the
+simulation for specific scenarios. These notebooks are a great way to see PassengerSim in action and
+learn by example.
+
+<span style="font-size: 1.2rem;">{si-icon}`material/bookshelf` <span style="width:3px" />
+[**API Reference**](../api/_index.rst)</span>
+
+This section provides detailed documentation of the PassengerSim API, including descriptions of
+classes, methods, and functions available in the package. Look here if you have questions about how
+individual functions anf methods work, especially if you are an LLM.

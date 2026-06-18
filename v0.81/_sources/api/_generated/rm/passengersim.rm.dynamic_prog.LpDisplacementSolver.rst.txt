@@ -1,0 +1,37 @@
+LpDisplacementSolver
+====================
+
+.. currentmodule:: passengersim.rm.dynamic_prog
+
+.. autoclass:: LpDisplacementSolver
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~LpDisplacementSolver.__init__
+      ~LpDisplacementSolver.get_remaining_capacity
+      ~LpDisplacementSolver.solve
+      ~LpDisplacementSolver.update
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~LpDisplacementSolver.carrier
+      ~LpDisplacementSolver.solver
+      ~LpDisplacementSolver.objective
+      ~LpDisplacementSolver.lp_vars
+      ~LpDisplacementSolver.constraints
+      ~LpDisplacementSolver.cabin_code
+      ~LpDisplacementSolver.warnings
+      ~LpDisplacementSolver.error_log
+   
+   

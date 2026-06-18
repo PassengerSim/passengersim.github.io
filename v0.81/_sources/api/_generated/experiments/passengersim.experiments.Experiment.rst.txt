@@ -1,0 +1,21 @@
+Experiment
+==========
+
+.. currentmodule:: passengersim.experiments
+
+.. autoclass:: Experiment
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Experiment.__init__
+   
+   
+
+   
+   
+   

@@ -1,0 +1,6 @@
+aggregate\_carriers
+===================
+
+.. currentmodule:: passengersim.summaries.carriers
+
+.. autofunction:: aggregate_carriers

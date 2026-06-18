@@ -1,0 +1,34 @@
+BaseSimulation
+==============
+
+.. currentmodule:: passengersim.driver
+
+.. autoclass:: BaseSimulation
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~BaseSimulation.__init__
+      ~BaseSimulation.from_yaml
+      ~BaseSimulation.path_names
+      ~BaseSimulation.pathclasses_for_carrier
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~BaseSimulation.demands
+      ~BaseSimulation.fares
+      ~BaseSimulation.markets
+      ~BaseSimulation.pathclasses
+      ~BaseSimulation.paths
+   
+   

@@ -1,0 +1,3543 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="passengersim.core.BookingCurve.html">
+      
+      
+        <link rel="next" href="passengersim.core.Cabin.html">
+      
+      
+      <link rel="icon" href="../../../_static/favicon.png">
+    
+    
+      
+        <title>Bucket - PassengerSim</title>
+      
+    
+    
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_immaterial_theme.50640b526df5ff663.min.css?v=cff97996" />
+        <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+        <link rel="stylesheet" type="text/css" href="../../../_static/css/extra.css?v=663c5cee" />
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#passengersim.core.Bucket" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+<p>
+    <span style="vertical-align: middle; color: #ffd334; font-size: 1.2em;">&#9888;</span>
+    We recently updated our website for PassengerSim v0.80.  More or less all the same content is here (and more)
+    but any pre-existing links and bookmarks may be broken.
+</p>
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../index.html" title="PassengerSim" class="md-header__button md-logo" aria-label="PassengerSim" data-md-component="logo">
+      <img src="../../../_static/logo.svg" alt="logo">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PassengerSim
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Bucket
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/passengersim/passengersim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    PassengerSim/passengersim
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../user-guide/welcome.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>User Guide</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../mechanics/counting-sims.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Mechanics</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../examples/intro-3mkt.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Examples</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="../../_index.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>API</span>
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="PassengerSim" class="md-nav__button md-logo" aria-label="PassengerSim" data-md-component="logo">
+      <img src="../../../_static/logo.svg" alt="logo">
+    </a>
+    PassengerSim
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/passengersim/passengersim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    PassengerSim/passengersim
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>User Guide</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            <span>User Guide</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/welcome.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 10H5L3 8l2-2h6V3l1-1 1 1v1h6l2 2-2 2h-6v2h6l2 2-2 2h-6v6a2 2 0 0 1 2 2H9a2 2 0 0 1 2-2z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Wayfinding</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/installation.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m13.13 22.19-1.63-3.83c1.57-.58 3.04-1.36 4.4-2.27zM5.64 12.5l-3.83-1.63 6.1-2.77C7 9.46 6.22 10.93 5.64 12.5M21.61 2.39S16.66.269 11 5.93c-2.19 2.19-3.5 4.6-4.35 6.71-.28.75-.09 1.57.46 2.13l2.13 2.12c.55.56 1.37.74 2.12.46A19.1 19.1 0 0 0 18.07 13c5.66-5.66 3.54-10.61 3.54-10.61m-7.07 7.07c-.78-.78-.78-2.05 0-2.83s2.05-.78 2.83 0c.77.78.78 2.05 0 2.83s-2.05.78-2.83 0m-5.66 7.07-1.41-1.41zM6.24 22l3.64-3.64c-.34-.09-.67-.24-.97-.45L4.83 22zM2 22h1.41l4.77-4.76-1.42-1.41L2 20.59zm0-2.83 4.09-4.08c-.21-.3-.36-.62-.45-.97L2 17.76z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Installation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/static-config.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.5 3.5 18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2 7.5 3.5 6 2 4.5 3.5 3 2v20l1.5-1.5L6 22l1.5-1.5L9 22l1.5-1.5L12 22l1.5-1.5L15 22l1.5-1.5L18 22l1.5-1.5L21 22V2zM19 19H5V5h14zM6 15h12v2H6m0-6h12v2H6m0-6h12v2H6z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Raw Configuration</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/dynamic-config.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 2 1.5 1.5L21 2v7.13l-2 2V4.91H5v14.18h5.5v1.41L9 22l-1.5-1.5L6 22l-1.5-1.5L3 22V2l1.5 1.5L6 2l1.5 1.5L9 2l1.5 1.5L12 2l1.5 1.5L15 2l1.5 1.5zm-5 17.96 6.13-6.13 2.04 2.04L15.04 22H13zm6.83-6.83.98-.98.02-.02c.05-.04.11-.08.17-.1a.5.5 0 0 1 .53.12l1.32 1.32c.2.2.2.53 0 .72l-.98.98zm-1.83-1-.87.87H6v-2h12zM15.13 15l-2 2H6v-2zM18 9V7H6v2z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Dynamic Configuration</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/basic-usage.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m9 4 2.5 5.5L17 12l-5.5 2.5L9 20l-2.5-5.5L1 12l5.5-2.5zm0 4.83L8 11l-2.17 1L8 13l1 2.17L10 13l2.17-1L10 11zM19 9l-1.26-2.74L15 5l2.74-1.25L19 1l1.25 2.75L23 5l-2.75 1.26zm0 14-1.26-2.74L15 19l2.74-1.25L19 15l1.25 2.75L23 19l-2.75 1.26z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Summary Outputs</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/rm-systems.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 6h18v12H5zm9 3a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3M9 8a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2v-4a2 2 0 0 1-2-2zm-8 2h2v10h16v2H1z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>RM Systems</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/database/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Database</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/experiments.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 19a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1c0-.21-.07-.41-.18-.57L13 8.35V4h-2v4.35L5.18 18.43c-.11.16-.18.36-.18.57m1 3a3 3 0 0 1-3-3c0-.6.18-1.16.5-1.63L9 7.81V6a1 1 0 0 1-1-1V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1v1.81l5.5 9.56c.32.47.5 1.03.5 1.63a3 3 0 0 1-3 3zm7-6 1.34-1.34L16.27 18H7.73l2.66-4.61zm-.5-4a.5.5 0 0 1 .5.5.5.5 0 0 1-.5.5.5.5 0 0 1-.5-.5.5.5 0 0 1 .5-.5"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Experiments</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/callbacks.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.6 5.29c-1.1-.1-2.07.71-2.17 1.82L13.18 10H16v2h-3l-.44 5.07a3.986 3.986 0 0 1-4.33 3.63 4 4 0 0 1-3.06-1.87l1.5-1.5c.24.74.9 1.31 1.73 1.38 1.1.1 2.07-.71 2.17-1.82L11 12H8v-2h3.17l.27-3.07c.19-2.2 2.13-3.83 4.33-3.63 1.31.11 2.41.84 3.06 1.87l-1.5 1.5c-.24-.74-.9-1.31-1.73-1.38"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Callbacks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/tracers.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.84 2.73c-.39 0-.77.15-1.07.44l-2.12 2.12 5.3 5.31 2.12-2.1c.6-.61.6-1.56 0-2.14L17.9 3.17c-.3-.29-.68-.44-1.06-.44M12.94 6l-8.1 8.11 2.56.28.18 2.29 2.28.17.29 2.56 8.1-8.11m-14 3.74L2.5 21.73l6.7-1.79-.24-2.16-2.31-.17-.18-2.32"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Tracing</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/viz/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.45 15.18 22 7.31V21H2V3h2v12.54L9.5 6 16 9.78l4.24-7.33 1.73 1-5.23 9.05-6.51-3.75L4.31 19h2.26l4.39-7.56z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Visualizations</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/firehose.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 15v-1H4v-2h1v-1h2v4zm14-3v-1h-2v4h2v-1h1v-2zm-1-6h-2.14C15.5 4.6 14.4 3.5 13 3.14V2h-2v1.14C9.6 3.5 8.5 4.6 8.14 6H6v2h12zm0 16H6c0-1.1.9-2 2-2V9h8v11a2 2 0 0 1 2 2m-8-9a2 2 0 1 0 4 0c0-1.11-.89-2-2-2s-2 .9-2 2"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Firehose</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>Mechanics</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Mechanics</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanics/counting-sims.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 10.73V19h-2v-7.64L15 12v7h-2v-6.38l-2 .64V19H9v-5.11l-2 .61V19H5v-3.85l-2.43.77L2 14l3-.95V5h2v7.42l2-.63V5h2v6.16l2-.63V5h2v4.9l2-.64V5h2v3.63L21 8l.57 1.92z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Counting Simulations</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanics/demand-generation.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.35 5.64c-.9-.64-1.12-1.88-.49-2.79.64-.9 1.88-1.12 2.79-.49.9.64 1.12 1.88.49 2.79-.64.9-1.88 1.12-2.79.49M16 19H8.93c-1.48 0-2.74-1.08-2.96-2.54L4 7H2l2 9.76A4.99 4.99 0 0 0 8.94 21H16m.23-6h-4.88l-1.03-4.1c1.58.89 3.28 1.54 5.15 1.22V10c-1.63.3-3.44-.28-4.69-1.26L9.14 7.47c-.23-.18-.49-.3-.76-.38a2.2 2.2 0 0 0-.99-.06h-.02a2.27 2.27 0 0 0-1.84 2.61l1.35 5.92A2.99 2.99 0 0 0 9.83 18h6.85l3.82 3 1.5-1.5"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Demand Generation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanics/forecasting.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m9.38 8.38 2.12.96 2.12-.96-.96 2.12.96 2.12-2.12-.96-2.12.96.96-2.12zM16.5 2.5l1.09 2.91L20.5 6.5l-2.91 1.09-1.09 2.91-1.09-2.91L12.5 6.5l2.91-1.09zM6 19h1v-1a1 1 0 0 1 1-1h.26a7.47 7.47 0 0 1-3.76-6.5A7.5 7.5 0 0 1 12 3c1.05 0 2.05.22 2.96.61l-.37.98-1.42.53Q12.6 5 12 5a5.5 5.5 0 0 0-5.5 5.5A5.5 5.5 0 0 0 12 16c2.91 0 5.3-2.27 5.5-5.13l.91-2.46.71-.27c.25.74.38 1.54.38 2.36 0 2.78-1.5 5.2-3.76 6.5H16a1 1 0 0 1 1 1v1h1a2 2 0 0 1 2 2v1H4v-1a2 2 0 0 1 2-2"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Forecasting</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>Examples</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Examples</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/intro-3mkt.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>The 3MKT Network</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/EE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Basic Simulation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/PE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Pro<wbr>BP Optimization</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/LL.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Unrestricted Networks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/QC.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Q vs Conditional Forecasting</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/olympic-fcst.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Custom Forecaster</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/blf-curves.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Heuristic Intervention</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labs/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Labs</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>API</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            <span>API</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../_index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Passenger<wbr>Sim</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../callbacks/passengersim.callbacks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>callbacks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>config</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../connection_builder/passengersim.connection_builder.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>connection_<wbr>builder</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contrast/passengersim.contrast.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>contrast</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="passengersim.core.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    <span>core</span>
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            <span>core</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Airport.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Airport</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.BookingCurve.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Booking<wbr>Curve</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    <span>Bucket</span>
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Bucket</span>
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket" class="md-nav__link">
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket (Python class) — Bases: object"><span>passengersim.<wbr>core.<wbr>Bucket</span></span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="passengersim.core.Bucket">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.alloc" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.alloc (Python attribute) — Nested allocation level for this bucket."><span>alloc</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.booking_class" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.booking_class (Python attribute) — Bucket name, could be &#39;Y0&#39; or a booking class like &#39;Q&#39;."><span>booking_<wbr>class</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.cabin" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.cabin (Python attribute) — Cabin code indicating the service class."><span>cabin</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.capture_history" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.capture_history (Python method) — Capture history for a specified DCP."><span>capture_<wbr>history</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.detruncated_demand" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.detruncated_demand (Python attribute) — Untruncated (detruncated) demand estimate for this bucket."><span>detruncated_<wbr>demand</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.fcst_mean" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.fcst_mean (Python attribute) — Forecast mean from now until departure."><span>fcst_<wbr>mean</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.fcst_revenue" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.fcst_revenue (Python attribute) — Forecast revenue for this bucket from now until departure."><span>fcst_<wbr>revenue</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.fcst_std_dev" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.fcst_std_dev (Python attribute) — Forecast standard deviation from now until departure."><span>fcst_<wbr>std_<wbr>dev</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.force_closed" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.force_closed (Python attribute) — Make this bucket unavailable for sale, overrides the allocations."><span>force_<wbr>closed</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.forecast" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.forecast (Python attribute) — Returns the appropriate Forecast object based on forecasting system in use."><span>forecast</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.forecast_multiplier" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.forecast_multiplier (Python attribute) — Multiplier applied to all forecasts on this bucket."><span>forecast_<wbr>multiplier</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.get_history_closed" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.get_history_closed (Python method) — Get the closed indicator from history."><span>get_<wbr>history_<wbr>closed</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.get_history_demand" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.get_history_demand (Python method) — Get the demand from history."><span>get_<wbr>history_<wbr>demand</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.get_history_num_dcp" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.get_history_num_dcp (Python method) — Get the number of DCPs stored in history."><span>get_<wbr>history_<wbr>num_<wbr>dcp</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.get_history_num_dep" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.get_history_num_dep (Python method) — Get the number of historical departures in history."><span>get_<wbr>history_<wbr>num_<wbr>dep</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.get_history_sold" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.get_history_sold (Python method) — Get the seats sold from history."><span>get_<wbr>history_<wbr>sold</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.gt_revenue" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.gt_revenue (Python attribute) — Grand total revenue (excluding burn samples)."><span>gt_<wbr>revenue</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.gt_sold" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.gt_sold (Python attribute) — Grand total sold (excluding burn samples)."><span>gt_<wbr>sold</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.history" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.history (Python attribute) — Returns the History object."><span>history</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.naive_value" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.naive_value (Python attribute) — Naive value for this Bucket, typically the non-stop fare."><span>naive_<wbr>value</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.name" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.name (Python attribute) — Bucket name, could be &#39;Y0&#39; or a booking class like &#39;Q&#39;."><span>name</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.num_objects" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.num_objects (Python attribute) — How many Bucket objects are currently allocated?  Was used for memory leak detection"><span>num_<wbr>objects</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.price" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.price (Python attribute) — Price for this bucket."><span>price</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.prorated_value" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.prorated_value (Python attribute) — Prorated value for this Bucket."><span>prorated_<wbr>value</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.protection" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.protection (Python attribute) — Number of seats protected, as calculated by EMSRb or other algorithm."><span>protection</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.push_history" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.push_history (Python method) — Push the history into the departures list."><span>push_<wbr>history</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.q_forecast" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.q_forecast (Python attribute) — Returns the Q forecast (priceable forecast) object."><span>q_<wbr>forecast</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.revenue" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.revenue (Python attribute) — Revenue for this bucket, reset after each sample."><span>revenue</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.set_history_demand" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.set_history_demand (Python method) — Set the demand in history."><span>set_<wbr>history_<wbr>demand</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.sold" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.sold (Python attribute) — Number sold, reset after each sample."><span>sold</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.tf_index_closed_by_ap" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.tf_index_closed_by_ap (Python attribute) — Index of the timeframe where this bucket is completely closed due to AP restrictions."><span>tf_<wbr>index_<wbr>closed_<wbr>by_<wbr>ap</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.y_forecast" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.y_forecast (Python attribute) — Returns the Y forecast (yieldable forecast) object."><span>y_<wbr>forecast</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Cabin.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Cabin</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Carrier.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Carrier</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.ChoiceModel.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Choice<wbr>Model</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.DecisionWindow.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Decision<wbr>Window</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Demand.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Demand</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.DynamicProgram.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Dynamic<wbr>Program</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Event.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Event</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Fare.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Fare</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Forecast.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Forecast</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.ForecastAccessor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Forecast<wbr>Accessor</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.ForecastGroup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Forecast<wbr>Group</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Frat5.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Frat5</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.History.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>History</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Leg.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Leg</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Market.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Market</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Path.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Path</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.PathClass.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Path<wbr>Class</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.ProBP.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Pro<wbr>BP</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Profiler.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Profiler</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.UserAction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>User<wbr>Action</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/passengersim.database.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>database</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../driver/passengersim.driver.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>driver</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiments/passengersim.experiments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>experiments</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>rm</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../summaries/passengersim.summaries.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>summaries</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tracers/passengersim.tracers.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>tracers</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transforms/passengersim.transforms.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>transforms</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket" class="md-nav__link">
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket (Python class) — Bases: object"><span>passengersim.<wbr>core.<wbr>Bucket</span></span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="passengersim.core.Bucket">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.alloc" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.alloc (Python attribute) — Nested allocation level for this bucket."><span>alloc</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.booking_class" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.booking_class (Python attribute) — Bucket name, could be &#39;Y0&#39; or a booking class like &#39;Q&#39;."><span>booking_<wbr>class</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.cabin" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.cabin (Python attribute) — Cabin code indicating the service class."><span>cabin</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.capture_history" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.capture_history (Python method) — Capture history for a specified DCP."><span>capture_<wbr>history</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.detruncated_demand" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.detruncated_demand (Python attribute) — Untruncated (detruncated) demand estimate for this bucket."><span>detruncated_<wbr>demand</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.fcst_mean" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.fcst_mean (Python attribute) — Forecast mean from now until departure."><span>fcst_<wbr>mean</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.fcst_revenue" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.fcst_revenue (Python attribute) — Forecast revenue for this bucket from now until departure."><span>fcst_<wbr>revenue</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.fcst_std_dev" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.fcst_std_dev (Python attribute) — Forecast standard deviation from now until departure."><span>fcst_<wbr>std_<wbr>dev</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.force_closed" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.force_closed (Python attribute) — Make this bucket unavailable for sale, overrides the allocations."><span>force_<wbr>closed</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.forecast" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.forecast (Python attribute) — Returns the appropriate Forecast object based on forecasting system in use."><span>forecast</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.forecast_multiplier" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.forecast_multiplier (Python attribute) — Multiplier applied to all forecasts on this bucket."><span>forecast_<wbr>multiplier</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.get_history_closed" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.get_history_closed (Python method) — Get the closed indicator from history."><span>get_<wbr>history_<wbr>closed</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.get_history_demand" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.get_history_demand (Python method) — Get the demand from history."><span>get_<wbr>history_<wbr>demand</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.get_history_num_dcp" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.get_history_num_dcp (Python method) — Get the number of DCPs stored in history."><span>get_<wbr>history_<wbr>num_<wbr>dcp</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.get_history_num_dep" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.get_history_num_dep (Python method) — Get the number of historical departures in history."><span>get_<wbr>history_<wbr>num_<wbr>dep</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.get_history_sold" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.get_history_sold (Python method) — Get the seats sold from history."><span>get_<wbr>history_<wbr>sold</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.gt_revenue" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.gt_revenue (Python attribute) — Grand total revenue (excluding burn samples)."><span>gt_<wbr>revenue</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.gt_sold" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.gt_sold (Python attribute) — Grand total sold (excluding burn samples)."><span>gt_<wbr>sold</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.history" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.history (Python attribute) — Returns the History object."><span>history</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.naive_value" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.naive_value (Python attribute) — Naive value for this Bucket, typically the non-stop fare."><span>naive_<wbr>value</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.name" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.name (Python attribute) — Bucket name, could be &#39;Y0&#39; or a booking class like &#39;Q&#39;."><span>name</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.num_objects" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.num_objects (Python attribute) — How many Bucket objects are currently allocated?  Was used for memory leak detection"><span>num_<wbr>objects</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.price" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.price (Python attribute) — Price for this bucket."><span>price</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.prorated_value" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.prorated_value (Python attribute) — Prorated value for this Bucket."><span>prorated_<wbr>value</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.protection" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.protection (Python attribute) — Number of seats protected, as calculated by EMSRb or other algorithm."><span>protection</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.push_history" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.push_history (Python method) — Push the history into the departures list."><span>push_<wbr>history</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.q_forecast" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.q_forecast (Python attribute) — Returns the Q forecast (priceable forecast) object."><span>q_<wbr>forecast</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.revenue" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.revenue (Python attribute) — Revenue for this bucket, reset after each sample."><span>revenue</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.set_history_demand" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.set_history_demand (Python method) — Set the demand in history."><span>set_<wbr>history_<wbr>demand</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.sold" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.sold (Python attribute) — Number sold, reset after each sample."><span>sold</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.tf_index_closed_by_ap" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.tf_index_closed_by_ap (Python attribute) — Index of the timeframe where this bucket is completely closed due to AP restrictions."><span>tf_<wbr>index_<wbr>closed_<wbr>by_<wbr>ap</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.Bucket.y_forecast" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.Bucket.y_forecast (Python attribute) — Returns the Y forecast (yieldable forecast) object."><span>y_<wbr>forecast</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                
+                
+                  
+
+
+<h1 id="bucket">Bucket<a class="headerlink" href="#bucket" title="Link to this heading">¶</a></h1>
+<dl class="py class objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">passengersim.core.</span></span><span class="sig-name descname"><span class="pre">Bucket</span></span><a class="headerlink" href="#passengersim.core.Bucket" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Booking class or virtual nesting (VN) bucket.</p>
+<p>Represents a bucket in a revenue management system, which can be a booking
+class or a virtual nesting bucket. Each bucket tracks allocations, prices
+and revenue, sales, forecasts, and historical data.</p>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils data align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code>(*args, **kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Bucket.capture_history" title="passengersim.core.Bucket.capture_history (Python method) — Capture history for a specified DCP."><code class="xref py py-obj docutils literal notranslate"><span class="pre">capture_history</span></code></a></p></td>
+<td><p>Capture history for a specified DCP.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Bucket.get_history_closed" title="passengersim.core.Bucket.get_history_closed (Python method) — Get the closed indicator from history."><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_history_closed</span></code></a></p></td>
+<td><p>Get the closed indicator from history.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Bucket.get_history_demand" title="passengersim.core.Bucket.get_history_demand (Python method) — Get the demand from history."><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_history_demand</span></code></a></p></td>
+<td><p>Get the demand from history.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Bucket.get_history_num_dcp" title="passengersim.core.Bucket.get_history_num_dcp (Python method) — Get the number of DCPs stored in history."><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_history_num_dcp</span></code></a></p></td>
+<td><p>Get the number of DCPs stored in history.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Bucket.get_history_num_dep" title="passengersim.core.Bucket.get_history_num_dep (Python method) — Get the number of historical departures in history."><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_history_num_dep</span></code></a></p></td>
+<td><p>Get the number of historical departures in history.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Bucket.get_history_sold" title="passengersim.core.Bucket.get_history_sold (Python method) — Get the seats sold from history."><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_history_sold</span></code></a></p></td>
+<td><p>Get the seats sold from history.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Bucket.push_history" title="passengersim.core.Bucket.push_history (Python method) — Push the history into the departures list."><code class="xref py py-obj docutils literal notranslate"><span class="pre">push_history</span></code></a></p></td>
+<td><p>Push the history into the departures list.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Bucket.set_history_demand" title="passengersim.core.Bucket.set_history_demand (Python method) — Set the demand in history."><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_history_demand</span></code></a></p></td>
+<td><p>Set the demand in history.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable docutils data align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Bucket.alloc" title="passengersim.core.Bucket.alloc (Python attribute) — Nested allocation level for this bucket."><code class="xref py py-obj docutils literal notranslate"><span class="pre">alloc</span></code></a></p></td>
+<td><p>Nested allocation level for this bucket.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Bucket.booking_class" title="passengersim.core.Bucket.booking_class (Python attribute) — Bucket name, could be 'Y0' or a booking class like 'Q'."><code class="xref py py-obj docutils literal notranslate"><span class="pre">booking_class</span></code></a></p></td>
+<td><p>Bucket name, could be 'Y0' or a booking class like 'Q'.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Bucket.cabin" title="passengersim.core.Bucket.cabin (Python attribute) — Cabin code indicating the service class."><code class="xref py py-obj docutils literal notranslate"><span class="pre">cabin</span></code></a></p></td>
+<td><p>Cabin code indicating the service class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Bucket.detruncated_demand" title="passengersim.core.Bucket.detruncated_demand (Python attribute) — Untruncated (detruncated) demand estimate for this bucket."><code class="xref py py-obj docutils literal notranslate"><span class="pre">detruncated_demand</span></code></a></p></td>
+<td><p>Untruncated (detruncated) demand estimate for this bucket.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Bucket.fcst_mean" title="passengersim.core.Bucket.fcst_mean (Python attribute) — Forecast mean from now until departure."><code class="xref py py-obj docutils literal notranslate"><span class="pre">fcst_mean</span></code></a></p></td>
+<td><p>Forecast mean from now until departure.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Bucket.fcst_revenue" title="passengersim.core.Bucket.fcst_revenue (Python attribute) — Forecast revenue for this bucket from now until departure."><code class="xref py py-obj docutils literal notranslate"><span class="pre">fcst_revenue</span></code></a></p></td>
+<td><p>Forecast revenue for this bucket from now until departure.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Bucket.fcst_std_dev" title="passengersim.core.Bucket.fcst_std_dev (Python attribute) — Forecast standard deviation from now until departure."><code class="xref py py-obj docutils literal notranslate"><span class="pre">fcst_std_dev</span></code></a></p></td>
+<td><p>Forecast standard deviation from now until departure.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Bucket.force_closed" title="passengersim.core.Bucket.force_closed (Python attribute) — Make this bucket unavailable for sale, overrides the allocations."><code class="xref py py-obj docutils literal notranslate"><span class="pre">force_closed</span></code></a></p></td>
+<td><p>Make this bucket unavailable for sale, overrides the allocations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Bucket.forecast" title="passengersim.core.Bucket.forecast (Python attribute) — Returns the appropriate Forecast object based on forecasting system in use."><code class="xref py py-obj docutils literal notranslate"><span class="pre">forecast</span></code></a></p></td>
+<td><p>Returns the appropriate Forecast object based on forecasting system in use.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Bucket.forecast_multiplier" title="passengersim.core.Bucket.forecast_multiplier (Python attribute) — Multiplier applied to all forecasts on this bucket."><code class="xref py py-obj docutils literal notranslate"><span class="pre">forecast_multiplier</span></code></a></p></td>
+<td><p>Multiplier applied to all forecasts on this bucket.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Bucket.gt_revenue" title="passengersim.core.Bucket.gt_revenue (Python attribute) — Grand total revenue (excluding burn samples)."><code class="xref py py-obj docutils literal notranslate"><span class="pre">gt_revenue</span></code></a></p></td>
+<td><p>Grand total revenue (excluding burn samples).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Bucket.gt_sold" title="passengersim.core.Bucket.gt_sold (Python attribute) — Grand total sold (excluding burn samples)."><code class="xref py py-obj docutils literal notranslate"><span class="pre">gt_sold</span></code></a></p></td>
+<td><p>Grand total sold (excluding burn samples).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Bucket.history" title="passengersim.core.Bucket.history (Python attribute) — Returns the History object."><code class="xref py py-obj docutils literal notranslate"><span class="pre">history</span></code></a></p></td>
+<td><p>Returns the History object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Bucket.naive_value" title="passengersim.core.Bucket.naive_value (Python attribute) — Naive value for this Bucket, typically the non-stop fare."><code class="xref py py-obj docutils literal notranslate"><span class="pre">naive_value</span></code></a></p></td>
+<td><p>Naive value for this Bucket, typically the non-stop fare.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Bucket.name" title="passengersim.core.Bucket.name (Python attribute) — Bucket name, could be 'Y0' or a booking class like 'Q'."><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p>Bucket name, could be 'Y0' or a booking class like 'Q'.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Bucket.num_objects" title="passengersim.core.Bucket.num_objects (Python attribute) — How many Bucket objects are currently allocated?  Was used for memory leak detection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_objects</span></code></a></p></td>
+<td><p>How many Bucket objects are currently allocated?  Was used for memory leak detection</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Bucket.price" title="passengersim.core.Bucket.price (Python attribute) — Price for this bucket."><code class="xref py py-obj docutils literal notranslate"><span class="pre">price</span></code></a></p></td>
+<td><p>Price for this bucket.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Bucket.prorated_value" title="passengersim.core.Bucket.prorated_value (Python attribute) — Prorated value for this Bucket."><code class="xref py py-obj docutils literal notranslate"><span class="pre">prorated_value</span></code></a></p></td>
+<td><p>Prorated value for this Bucket.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Bucket.protection" title="passengersim.core.Bucket.protection (Python attribute) — Number of seats protected, as calculated by EMSRb or other algorithm."><code class="xref py py-obj docutils literal notranslate"><span class="pre">protection</span></code></a></p></td>
+<td><p>Number of seats protected, as calculated by EMSRb or other algorithm.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Bucket.q_forecast" title="passengersim.core.Bucket.q_forecast (Python attribute) — Returns the Q forecast (priceable forecast) object."><code class="xref py py-obj docutils literal notranslate"><span class="pre">q_forecast</span></code></a></p></td>
+<td><p>Returns the Q forecast (priceable forecast) object.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Bucket.revenue" title="passengersim.core.Bucket.revenue (Python attribute) — Revenue for this bucket, reset after each sample."><code class="xref py py-obj docutils literal notranslate"><span class="pre">revenue</span></code></a></p></td>
+<td><p>Revenue for this bucket, reset after each sample.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Bucket.sold" title="passengersim.core.Bucket.sold (Python attribute) — Number sold, reset after each sample."><code class="xref py py-obj docutils literal notranslate"><span class="pre">sold</span></code></a></p></td>
+<td><p>Number sold, reset after each sample.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.Bucket.tf_index_closed_by_ap" title="passengersim.core.Bucket.tf_index_closed_by_ap (Python attribute) — Index of the timeframe where this bucket is completely closed due to AP restrictions."><code class="xref py py-obj docutils literal notranslate"><span class="pre">tf_index_closed_by_ap</span></code></a></p></td>
+<td><p>Index of the timeframe where this bucket is completely closed due to AP restrictions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.Bucket.y_forecast" title="passengersim.core.Bucket.y_forecast (Python attribute) — Returns the Y forecast (yieldable forecast) object."><code class="xref py py-obj docutils literal notranslate"><span class="pre">y_forecast</span></code></a></p></td>
+<td><p>Returns the Y forecast (yieldable forecast) object.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.alloc">
+<span class="sig-name descname"><span class="pre">alloc</span></span><a class="headerlink" href="#passengersim.core.Bucket.alloc" title="Link to this definition">¶</a></dt>
+<dd><p>Nested allocation level for this bucket.</p>
+<p>A booking limit system where lower fare classes can access capacity allocated
+to higher fare classes. Each bucket’s allocation represents the cumulative
+number of seats available to it.</p>
+<p>For example, if a leg has 100 seats and 3 fare classes (High, Medium, Low):
+- High bucket alloc: 54 seats (only high fares can book these 54)
+- Medium bucket alloc: 37 seats (medium + high fares can book up to 37 of remaining 46)
+- Low bucket alloc: 14 seats (any fare can book up to 14 of remaining seats)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>float</em> – The allocation level.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.booking_class">
+<span class="sig-name descname"><span class="pre">booking_class</span></span><a class="headerlink" href="#passengersim.core.Bucket.booking_class" title="Link to this definition">¶</a></dt>
+<dd><p>Bucket name, could be ‘Y0’ or a booking class like ‘Q’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em> – The bucket name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.cabin">
+<span class="sig-name descname"><span class="pre">cabin</span></span><a class="headerlink" href="#passengersim.core.Bucket.cabin" title="Link to this definition">¶</a></dt>
+<dd><p>Cabin code indicating the service class.</p>
+<p>Cabin codes are single-letter identifiers for different service classes on
+an aircraft. Typical examples include:
+- ‘Y’: Economy/Coach class
+- ‘C’: Business class
+- ‘F’: First class</p>
+<p>If not explicitly set, defaults to the first character of the bucket name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em> – The cabin code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.capture_history">
+<span class="sig-name descname"><span class="pre">capture_history</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Bucket.capture_history" title="Link to this definition">¶</a></dt>
+<dd><p>Capture history for a specified DCP.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt><span class="sig-name descname">dcp_index</span><span class="p"> : </span><span class="desctype"><span class="desctype">int</span></span></dt><dd><p>Days prior to departure index.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.detruncated_demand">
+<span class="sig-name descname"><span class="pre">detruncated_demand</span></span><a class="headerlink" href="#passengersim.core.Bucket.detruncated_demand" title="Link to this definition">¶</a></dt>
+<dd><p>Untruncated (detruncated) demand estimate for this bucket.</p>
+<p>When a bucket closes before departure, we only observe truncated demand
+(seats sold), not how many more customers would have booked. Untruncation
+algorithms (e.g., EM) estimate the true underlying demand from historical
+patterns.</p>
+<p>Notes:
+- Single aggregate value (not per DCP/timeframe)
+- Used as input to forecasting algorithms
+- Resets each sample like other counters
+- Optional - not all RM systems use untruncation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>float</em> – The detruncated demand.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.fcst_mean">
+<span class="sig-name descname"><span class="pre">fcst_mean</span></span><a class="headerlink" href="#passengersim.core.Bucket.fcst_mean" title="Link to this definition">¶</a></dt>
+<dd><p>Forecast mean from now until departure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>float</em> – The forecast mean.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.fcst_revenue">
+<span class="sig-name descname"><span class="pre">fcst_revenue</span></span><a class="headerlink" href="#passengersim.core.Bucket.fcst_revenue" title="Link to this definition">¶</a></dt>
+<dd><p>Forecast revenue for this bucket from now until departure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>float</em> – The forecast revenue.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.fcst_std_dev">
+<span class="sig-name descname"><span class="pre">fcst_std_dev</span></span><a class="headerlink" href="#passengersim.core.Bucket.fcst_std_dev" title="Link to this definition">¶</a></dt>
+<dd><p>Forecast standard deviation from now until departure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>float</em> – The forecast standard deviation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.force_closed">
+<span class="sig-name descname"><span class="pre">force_closed</span></span><a class="headerlink" href="#passengersim.core.Bucket.force_closed" title="Link to this definition">¶</a></dt>
+<dd><p>Make this bucket unavailable for sale, overrides the allocations.</p>
+<p>When set to True, this flag forces a bucket to be closed (unavailable for
+booking) regardless of its allocation level. This provides a manual override
+mechanism that bypasses normal revenue management controls.</p>
+<p>Common use cases include:</p>
+<ol class="arabic simple">
+<li><p>Load Factor Threshold: Automatically close low-fare buckets when the
+flight’s load factor (percentage of seats sold) exceeds a threshold for
+that fare class.</p></li>
+<li><p>User Adjustments: RM analysts can manually override system recommendations.
+For instance, closing the lowest fare bucket when the airline’s price is
+below competitors to avoid being the cheapest option in the market.</p></li>
+<li><p>Tactical Revenue Management: Close specific fare classes based on
+booking patterns, such as closing discount fares when bookings are ahead
+of forecast to maximize revenue.</p></li>
+</ol>
+<p>Note: Advance purchase restrictions are NOT implemented using force_closed.
+AP restrictions are handled separately through the bucket’s advance purchase
+DCP index, which automatically closes fares when the booking window passes
+the AP cutoff date.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>bool</em> – True if bucket is forced closed, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.forecast">
+<span class="sig-name descname"><span class="pre">forecast</span></span><a class="headerlink" href="#passengersim.core.Bucket.forecast" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the appropriate Forecast object based on forecasting system in use.</p>
+<p>Returns forecasts in this priority order:
+1. Total forecast - Used in hybrid forecasting, which combines Y and Q forecasts</p>
+<blockquote>
+<div><p>(total = Y forecast + Q forecast)</p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>Y forecast (yieldable/plain forecast) - Standard forecast for non-price-sensitive demand</p></li>
+<li><p>Q forecast (priceable forecast) - Forecast for price-sensitive demand only</p></li>
+</ol>
+<p>This provides a single convenient property to access whichever forecast
+is active, without needing to know which forecasting system is configured.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Forecast</em> – The forecast object for this bucket.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.forecast_multiplier">
+<span class="sig-name descname"><span class="pre">forecast_multiplier</span></span><a class="headerlink" href="#passengersim.core.Bucket.forecast_multiplier" title="Link to this definition">¶</a></dt>
+<dd><p>Multiplier applied to all forecasts on this bucket.</p>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.get_history_closed">
+<span class="sig-name descname"><span class="pre">get_history_closed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Bucket.get_history_closed" title="Link to this definition">¶</a></dt>
+<dd><p>Get the closed indicator from history.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt><span class="sig-name descname">period</span><span class="p"> : </span><span class="desctype"><span class="desctype">int</span></span></dt><dd><p>Historical period index.</p>
+</dd>
+<dt><span class="sig-name descname">dcp_index</span><span class="p"> : </span><span class="desctype"><span class="desctype">int</span></span></dt><dd><p>Days prior to departure index.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>float</em> – Closed indicator value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.get_history_demand">
+<span class="sig-name descname"><span class="pre">get_history_demand</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Bucket.get_history_demand" title="Link to this definition">¶</a></dt>
+<dd><p>Get the demand from history.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt><span class="sig-name descname">period</span><span class="p"> : </span><span class="desctype"><span class="desctype">int</span></span></dt><dd><p>Historical period index.</p>
+</dd>
+<dt><span class="sig-name descname">dcp_index</span><span class="p"> : </span><span class="desctype"><span class="desctype">int</span></span></dt><dd><p>Days prior to departure index.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>float</em> – Demand value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.get_history_num_dcp">
+<span class="sig-name descname"><span class="pre">get_history_num_dcp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Bucket.get_history_num_dcp" title="Link to this definition">¶</a></dt>
+<dd><p>Get the number of DCPs stored in history.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>int</em> – Number of DCP timeframes in history.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.get_history_num_dep">
+<span class="sig-name descname"><span class="pre">get_history_num_dep</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Bucket.get_history_num_dep" title="Link to this definition">¶</a></dt>
+<dd><p>Get the number of historical departures in history.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>int</em> – Number of historical departures.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.get_history_sold">
+<span class="sig-name descname"><span class="pre">get_history_sold</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Bucket.get_history_sold" title="Link to this definition">¶</a></dt>
+<dd><p>Get the seats sold from history.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt><span class="sig-name descname">period</span><span class="p"> : </span><span class="desctype"><span class="desctype">int</span></span></dt><dd><p>Historical period index.</p>
+</dd>
+<dt><span class="sig-name descname">dcp_index</span><span class="p"> : </span><span class="desctype"><span class="desctype">int</span></span></dt><dd><p>Days prior to departure index.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>float</em> – Number of seats sold.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.gt_revenue">
+<span class="sig-name descname"><span class="pre">gt_revenue</span></span><a class="headerlink" href="#passengersim.core.Bucket.gt_revenue" title="Link to this definition">¶</a></dt>
+<dd><p>Grand total revenue (excluding burn samples).</p>
+<p>This is the cumulative allocated revenue across all samples after the burn
+period. Unlike revenue which resets each sample, gt_revenue keeps
+accumulating for the entire simulation run.</p>
+<p>Key differences from revenue:</p>
+<ol class="arabic simple">
+<li><p>Excludes burn samples: The simulation has an initial “burn period”
+(warm-up phase) where the RM system is learning and stabilizing. This
+is typically 30-100 samples depending on configuration. Statistics from
+burn samples are not counted in grand totals to ensure reported results
+reflect stable system performance.</p></li>
+<li><p>Never resets: While revenue resets to zero after each sample,
+gt_revenue accumulates continuously across all non-burn samples
+throughout the simulation.</p></li>
+<li><p>Used for final reporting: This is the primary metric used in
+simulation outputs and comparisons, as it represents the total revenue
+performance after the system has stabilized.</p></li>
+</ol>
+<p>Like revenue, this is the sum of allocated revenue (not price × sold),
+accounting for fare proration across multi-leg itineraries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>float</em> – The grand total revenue.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.gt_sold">
+<span class="sig-name descname"><span class="pre">gt_sold</span></span><a class="headerlink" href="#passengersim.core.Bucket.gt_sold" title="Link to this definition">¶</a></dt>
+<dd><p>Grand total sold (excluding burn samples).</p>
+<p>Counts the number of seats sold in this bucket across all non-burn samples.
+Note that this is a per-leg counter: if one passenger books a 2-leg itinerary,
+each leg’s bucket will increment gt_sold by 1, resulting in a total of 2 across
+both legs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>int</em> – The grand total number of seats sold.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.history">
+<span class="sig-name descname"><span class="pre">history</span></span><a class="headerlink" href="#passengersim.core.Bucket.history" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the History object.</p>
+<p>The History object stores historical booking data for this bucket across
+multiple past departures and timeframes. This data is used by
+forecasting algorithms to predict future demand.</p>
+<p>Stored data includes:
+- Sold: Number of seats sold in each timeframe of each past departure
+- Closure: Whether the bucket was closed in each timeframe
+- Priceable sold: Separate tracking of price-sensitive demand (optional)</p>
+<p>The history typically stores the most recent 26 departures with 16 timeframes
+per departure, creating a rolling buffer of historical patterns
+that forecasting algorithms analyze to estimate future demand.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>History</em> – The history object for this bucket.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.naive_value">
+<span class="sig-name descname"><span class="pre">naive_value</span></span><a class="headerlink" href="#passengersim.core.Bucket.naive_value" title="Link to this definition">¶</a></dt>
+<dd><p>Naive value for this Bucket, typically the non-stop fare.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#passengersim.core.Bucket.name" title="Link to this definition">¶</a></dt>
+<dd><p>Bucket name, could be ‘Y0’ or a booking class like ‘Q’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em> – The bucket name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.num_objects">
+<span class="sig-name descname"><span class="pre">num_objects</span></span><a class="headerlink" href="#passengersim.core.Bucket.num_objects" title="Link to this definition">¶</a></dt>
+<dd><p>How many Bucket objects are currently allocated?  Was used for memory leak detection</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.price">
+<span class="sig-name descname"><span class="pre">price</span></span><a class="headerlink" href="#passengersim.core.Bucket.price" title="Link to this definition">¶</a></dt>
+<dd><p>Price for this bucket.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>float</em> – The bucket price.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.prorated_value">
+<span class="sig-name descname"><span class="pre">prorated_value</span></span><a class="headerlink" href="#passengersim.core.Bucket.prorated_value" title="Link to this definition">¶</a></dt>
+<dd><p>Prorated value for this Bucket.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.protection">
+<span class="sig-name descname"><span class="pre">protection</span></span><a class="headerlink" href="#passengersim.core.Bucket.protection" title="Link to this definition">¶</a></dt>
+<dd><p>Number of seats protected, as calculated by EMSRb or other algorithm.</p>
+<p>Protection levels represent the number of seats that should be “protected”
+or reserved for higher-revenue fare classes. This is the inverse concept of
+allocation: while allocation specifies how many seats a bucket can access,
+protection specifies how many seats should be withheld from lower fare classes.</p>
+<p>For example, using the same 100-seat leg with 3 fare classes (High, Medium, Low):
+- High bucket protection: 46 seats (protect 46 seats from Medium and Low)
+- Medium bucket protection: 33 seats (protect 33 seats from Low only)
+- Low bucket protection: 0 seats (nothing below to protect from)</p>
+<dl class="simple">
+<dt>The relationship between protection and allocation is:</dt><dd><p>allocation = capacity - protection - sold</p>
+</dd>
+</dl>
+<p>Note: Protection is undefined/not used for O&amp;D (Origin-Destination) controls.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>int</em> – Number of protected seats.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.push_history">
+<span class="sig-name descname"><span class="pre">push_history</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Bucket.push_history" title="Link to this definition">¶</a></dt>
+<dd><p>Push the history into the departures list.</p>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.q_forecast">
+<span class="sig-name descname"><span class="pre">q_forecast</span></span><a class="headerlink" href="#passengersim.core.Bucket.q_forecast" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the Q forecast (priceable forecast) object.</p>
+<p>The Q forecast represents demand from price-sensitive passengers who
+primarily make booking decisions based on price considerations.</p>
+<p>In hybrid forecasting, Q forecast is combined with Y forecast to create
+the total forecast. In non-hybrid systems, Q forecast can be used alone.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Forecast</em> – The Q forecast object for this bucket.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.revenue">
+<span class="sig-name descname"><span class="pre">revenue</span></span><a class="headerlink" href="#passengersim.core.Bucket.revenue" title="Link to this definition">¶</a></dt>
+<dd><p>Revenue for this bucket, reset after each sample.</p>
+<p>Revenue is the sum of allocated revenue per passenger sold in this bucket
+during the current sample (departure). Note that this is NOT simply
+price × sold, because:</p>
+<ol class="arabic">
+<li><p>Revenue is prorated across legs: When passengers book multi-leg
+itineraries, the total fare they pay is allocated (prorated) across
+the different legs and buckets they use. Each bucket receives its
+portion of the total fare.</p>
+<p>Example: A passenger pays $500 for a two-leg journey (BOS-ORD-LAX).
+The first leg’s bucket might be allocated $300 of revenue, while the
+second leg’s bucket gets $200, even though both buckets show “1 sold”.</p>
+</li>
+<li><p>Multiple fares can use the same bucket: Different fare products
+with different prices might all book into the same booking class,
+contributing different amounts of revenue per seat.</p></li>
+<li><p>Reset after each sample: The revenue counter is reset to zero at
+the start of each sample (departure) and accumulates bookings during
+that sample. After the sample completes, it resets for the next departure.</p></li>
+</ol>
+<p>For grand totals accumulated across all samples, see gt_revenue.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>float</em> – The bucket revenue.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.set_history_demand">
+<span class="sig-name descname"><span class="pre">set_history_demand</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.Bucket.set_history_demand" title="Link to this definition">¶</a></dt>
+<dd><p>Set the demand in history.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt><span class="sig-name descname">dcp_index</span><span class="p"> : </span><span class="desctype"><span class="desctype">int</span></span></dt><dd><p>Days prior to departure index.</p>
+</dd>
+<dt><span class="sig-name descname">demand</span><span class="p"> : </span><span class="desctype"><span class="desctype">float</span></span></dt><dd><p>Demand value to set.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.sold">
+<span class="sig-name descname"><span class="pre">sold</span></span><a class="headerlink" href="#passengersim.core.Bucket.sold" title="Link to this definition">¶</a></dt>
+<dd><p>Number sold, reset after each sample.</p>
+<p>Counts the number of seats sold in this bucket for the current sample.
+Note that this is a per-leg counter: if one passenger books a 2-leg itinerary,
+each leg’s bucket will increment sold by 1, resulting in a total of 2 across
+both legs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>int</em> – The number of seats sold.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.tf_index_closed_by_ap">
+<span class="sig-name descname"><span class="pre">tf_index_closed_by_ap</span></span><a class="headerlink" href="#passengersim.core.Bucket.tf_index_closed_by_ap" title="Link to this definition">¶</a></dt>
+<dd><p>Index of the timeframe where this bucket is completely closed due to AP restrictions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>int</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.Bucket.y_forecast">
+<span class="sig-name descname"><span class="pre">y_forecast</span></span><a class="headerlink" href="#passengersim.core.Bucket.y_forecast" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the Y forecast (yieldable forecast) object.</p>
+<p>The Y forecast represents demand from passengers who are not primarily
+price-sensitive. They book based on schedule, availability, loyalty, or
+other non-price factors.</p>
+<p>In hybrid forecasting, Y forecast is combined with Q forecast to create
+the total forecast. In non-hybrid systems, Y forecast can be used alone.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Forecast</em> – The Y forecast object for this bucket.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2026, PassengerSim LLC.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.2.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.action.view", "content.code.copy", "content.code.annotate", "navigation.tabs", "navigation.top", "navigation.tracking", "announce.dismiss"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": null}}</script>
+    
+      
+        <script src="../../../_static/sphinx_immaterial_theme.32136f45f91ae6956.min.js?v=a7a9472a"></script>
+    
+  </body>
+</html>

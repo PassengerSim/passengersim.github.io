@@ -1,0 +1,2126 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="QC.html">
+      
+      
+        <link rel="next" href="blf-curves.html">
+      
+      
+      <link rel="icon" href="../_static/favicon.png">
+    
+    
+      
+        <title>Custom Forecaster - PassengerSim</title>
+      
+    
+    
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.50640b526df5ff663.min.css?v=cff97996" />
+        <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+        <link rel="stylesheet" type="text/css" href="../_static/css/extra.css?v=663c5cee" />
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#comparing-results" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+<p>
+    <span style="vertical-align: middle; color: #ffd334; font-size: 1.2em;">&#9888;</span>
+    We recently updated our website for PassengerSim v0.80.  More or less all the same content is here (and more)
+    but any pre-existing links and bookmarks may be broken.
+</p>
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="PassengerSim" class="md-header__button md-logo" aria-label="PassengerSim" data-md-component="logo">
+      <img src="../_static/logo.svg" alt="logo">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PassengerSim
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Custom Forecaster
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/passengersim/passengersim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    PassengerSim/passengersim
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../user-guide/welcome.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>User Guide</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../mechanics/counting-sims.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Mechanics</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="intro-3mkt.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Examples</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../api/_index.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>API</span>
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="PassengerSim" class="md-nav__button md-logo" aria-label="PassengerSim" data-md-component="logo">
+      <img src="../_static/logo.svg" alt="logo">
+    </a>
+    PassengerSim
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/passengersim/passengersim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    PassengerSim/passengersim
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>User Guide</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            <span>User Guide</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/welcome.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 10H5L3 8l2-2h6V3l1-1 1 1v1h6l2 2-2 2h-6v2h6l2 2-2 2h-6v6a2 2 0 0 1 2 2H9a2 2 0 0 1 2-2z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Wayfinding</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/installation.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m13.13 22.19-1.63-3.83c1.57-.58 3.04-1.36 4.4-2.27zM5.64 12.5l-3.83-1.63 6.1-2.77C7 9.46 6.22 10.93 5.64 12.5M21.61 2.39S16.66.269 11 5.93c-2.19 2.19-3.5 4.6-4.35 6.71-.28.75-.09 1.57.46 2.13l2.13 2.12c.55.56 1.37.74 2.12.46A19.1 19.1 0 0 0 18.07 13c5.66-5.66 3.54-10.61 3.54-10.61m-7.07 7.07c-.78-.78-.78-2.05 0-2.83s2.05-.78 2.83 0c.77.78.78 2.05 0 2.83s-2.05.78-2.83 0m-5.66 7.07-1.41-1.41zM6.24 22l3.64-3.64c-.34-.09-.67-.24-.97-.45L4.83 22zM2 22h1.41l4.77-4.76-1.42-1.41L2 20.59zm0-2.83 4.09-4.08c-.21-.3-.36-.62-.45-.97L2 17.76z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Installation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/static-config.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.5 3.5 18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2 7.5 3.5 6 2 4.5 3.5 3 2v20l1.5-1.5L6 22l1.5-1.5L9 22l1.5-1.5L12 22l1.5-1.5L15 22l1.5-1.5L18 22l1.5-1.5L21 22V2zM19 19H5V5h14zM6 15h12v2H6m0-6h12v2H6m0-6h12v2H6z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Raw Configuration</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/dynamic-config.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 2 1.5 1.5L21 2v7.13l-2 2V4.91H5v14.18h5.5v1.41L9 22l-1.5-1.5L6 22l-1.5-1.5L3 22V2l1.5 1.5L6 2l1.5 1.5L9 2l1.5 1.5L12 2l1.5 1.5L15 2l1.5 1.5zm-5 17.96 6.13-6.13 2.04 2.04L15.04 22H13zm6.83-6.83.98-.98.02-.02c.05-.04.11-.08.17-.1a.5.5 0 0 1 .53.12l1.32 1.32c.2.2.2.53 0 .72l-.98.98zm-1.83-1-.87.87H6v-2h12zM15.13 15l-2 2H6v-2zM18 9V7H6v2z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Dynamic Configuration</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/basic-usage.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m9 4 2.5 5.5L17 12l-5.5 2.5L9 20l-2.5-5.5L1 12l5.5-2.5zm0 4.83L8 11l-2.17 1L8 13l1 2.17L10 13l2.17-1L10 11zM19 9l-1.26-2.74L15 5l2.74-1.25L19 1l1.25 2.75L23 5l-2.75 1.26zm0 14-1.26-2.74L15 19l2.74-1.25L19 15l1.25 2.75L23 19l-2.75 1.26z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Summary Outputs</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/rm-systems.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 6h18v12H5zm9 3a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3M9 8a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2v-4a2 2 0 0 1-2-2zm-8 2h2v10h16v2H1z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>RM Systems</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/database/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Database</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/experiments.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 19a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1c0-.21-.07-.41-.18-.57L13 8.35V4h-2v4.35L5.18 18.43c-.11.16-.18.36-.18.57m1 3a3 3 0 0 1-3-3c0-.6.18-1.16.5-1.63L9 7.81V6a1 1 0 0 1-1-1V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1v1.81l5.5 9.56c.32.47.5 1.03.5 1.63a3 3 0 0 1-3 3zm7-6 1.34-1.34L16.27 18H7.73l2.66-4.61zm-.5-4a.5.5 0 0 1 .5.5.5.5 0 0 1-.5.5.5.5 0 0 1-.5-.5.5.5 0 0 1 .5-.5"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Experiments</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/callbacks.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.6 5.29c-1.1-.1-2.07.71-2.17 1.82L13.18 10H16v2h-3l-.44 5.07a3.986 3.986 0 0 1-4.33 3.63 4 4 0 0 1-3.06-1.87l1.5-1.5c.24.74.9 1.31 1.73 1.38 1.1.1 2.07-.71 2.17-1.82L11 12H8v-2h3.17l.27-3.07c.19-2.2 2.13-3.83 4.33-3.63 1.31.11 2.41.84 3.06 1.87l-1.5 1.5c-.24-.74-.9-1.31-1.73-1.38"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Callbacks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/tracers.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.84 2.73c-.39 0-.77.15-1.07.44l-2.12 2.12 5.3 5.31 2.12-2.1c.6-.61.6-1.56 0-2.14L17.9 3.17c-.3-.29-.68-.44-1.06-.44M12.94 6l-8.1 8.11 2.56.28.18 2.29 2.28.17.29 2.56 8.1-8.11m-14 3.74L2.5 21.73l6.7-1.79-.24-2.16-2.31-.17-.18-2.32"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Tracing</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/viz/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.45 15.18 22 7.31V21H2V3h2v12.54L9.5 6 16 9.78l4.24-7.33 1.73 1-5.23 9.05-6.51-3.75L4.31 19h2.26l4.39-7.56z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Visualizations</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/firehose.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 15v-1H4v-2h1v-1h2v4zm14-3v-1h-2v4h2v-1h1v-2zm-1-6h-2.14C15.5 4.6 14.4 3.5 13 3.14V2h-2v1.14C9.6 3.5 8.5 4.6 8.14 6H6v2h12zm0 16H6c0-1.1.9-2 2-2V9h8v11a2 2 0 0 1 2 2m-8-9a2 2 0 1 0 4 0c0-1.11-.89-2-2-2s-2 .9-2 2"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Firehose</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>Mechanics</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Mechanics</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mechanics/counting-sims.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 10.73V19h-2v-7.64L15 12v7h-2v-6.38l-2 .64V19H9v-5.11l-2 .61V19H5v-3.85l-2.43.77L2 14l3-.95V5h2v7.42l2-.63V5h2v6.16l2-.63V5h2v4.9l2-.64V5h2v3.63L21 8l.57 1.92z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Counting Simulations</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mechanics/demand-generation.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.35 5.64c-.9-.64-1.12-1.88-.49-2.79.64-.9 1.88-1.12 2.79-.49.9.64 1.12 1.88.49 2.79-.64.9-1.88 1.12-2.79.49M16 19H8.93c-1.48 0-2.74-1.08-2.96-2.54L4 7H2l2 9.76A4.99 4.99 0 0 0 8.94 21H16m.23-6h-4.88l-1.03-4.1c1.58.89 3.28 1.54 5.15 1.22V10c-1.63.3-3.44-.28-4.69-1.26L9.14 7.47c-.23-.18-.49-.3-.76-.38a2.2 2.2 0 0 0-.99-.06h-.02a2.27 2.27 0 0 0-1.84 2.61l1.35 5.92A2.99 2.99 0 0 0 9.83 18h6.85l3.82 3 1.5-1.5"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Demand Generation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mechanics/forecasting.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m9.38 8.38 2.12.96 2.12-.96-.96 2.12.96 2.12-2.12-.96-2.12.96.96-2.12zM16.5 2.5l1.09 2.91L20.5 6.5l-2.91 1.09-1.09 2.91-1.09-2.91L12.5 6.5l2.91-1.09zM6 19h1v-1a1 1 0 0 1 1-1h.26a7.47 7.47 0 0 1-3.76-6.5A7.5 7.5 0 0 1 12 3c1.05 0 2.05.22 2.96.61l-.37.98-1.42.53Q12.6 5 12 5a5.5 5.5 0 0 0-5.5 5.5A5.5 5.5 0 0 0 12 16c2.91 0 5.3-2.27 5.5-5.13l.91-2.46.71-.27c.25.74.38 1.54.38 2.36 0 2.78-1.5 5.2-3.76 6.5H16a1 1 0 0 1 1 1v1h1a2 2 0 0 1 2 2v1H4v-1a2 2 0 0 1 2-2"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Forecasting</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>Examples</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Examples</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="intro-3mkt.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>The 3MKT Network</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="EE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Basic Simulation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="PE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Pro<wbr>BP Optimization</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="LL.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Unrestricted Networks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="QC.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Q vs Conditional Forecasting</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    <span>Custom Forecaster</span>
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Custom Forecaster</span>
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#comparing-results" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Comparing Results</span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="blf-curves.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Heuristic Intervention</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../labs/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Labs</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>API</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            <span>API</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Passenger<wbr>Sim</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/callbacks/passengersim.callbacks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>callbacks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/config.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>config</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/connection_builder/passengersim.connection_builder.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>connection_<wbr>builder</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/contrast/passengersim.contrast.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>contrast</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/core/passengersim.core.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>core</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/database/passengersim.database.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>database</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/driver/passengersim.driver.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>driver</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/experiments/passengersim.experiments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>experiments</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/rm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>rm</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/summaries/passengersim.summaries.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>summaries</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/tracers/passengersim.tracers.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>tracers</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/transforms/passengersim.transforms.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>transforms</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#comparing-results" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Comparing Results</span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                
+                
+                  
+
+
+<style>.md-sidebar--secondary {display: none !important;}</style>
+<h1 id="custom-forecaster">Custom Forecaster<a class="headerlink" href="#custom-forecaster" title="Link to this heading">¶</a></h1>
+<p>In this example, we use a custom forecast algorithm, the “Olympic Average”,
+implemented in Python.  In this forecast, the mean (mu) forecast for any
+bucket is computed by taking the 26 historical values, discarding the highest
+and lowest, and taking the mean of the remaining 24 values.</p>
+<div class="admonition tip">
+<p class="admonition-title">Do try this at home -- but not at work</p>
+<p style="margin-block-start: 1em;">
+We're not suggesting this is a great idea, it's merely a straightforward
+idea that we can use to demostrate how to implement a custom RM action in
+PassengerSim.
+</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">passengersim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pax</span>
+
+<span class="n">pax</span><span class="o">.</span><span class="n">versions</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><code>passengersim 0.81
+passengersim.core 0.81
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>We’ll first run a simulation without the change as a baseline.  As this tutorial is
+meant as a technology demonstration and not for serious statistical analysis, we’ll
+only run a small sample so it goes fast, and we won’t worry about statistical validity.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">cfg</span> <span class="o">=</span> <span class="n">pax</span><span class="o">.</span><span class="n">Config</span><span class="o">.</span><span class="n">from_yaml</span><span class="p">(</span><span class="n">pax</span><span class="o">.</span><span class="n">demo_network</span><span class="p">(</span><span class="s2">&quot;3MKT/DEMO&quot;</span><span class="p">))</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">simulation_controls</span><span class="o">.</span><span class="n">num_samples</span> <span class="o">=</span> <span class="mi">150</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">sim</span> <span class="o">=</span> <span class="n">pax</span><span class="o">.</span><span class="n">MultiSimulation</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+<span class="n">baseline_summary</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "0c39a1c822e3406ca7750739aae56545"}</script><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">   ╭─────────────────────────────────────╮                                                                         
+   │ <span style="color: #800080; text-decoration-color: #800080">licensed for jpn</span>                    │                                                                         
+   │ <span style="color: #800080; text-decoration-color: #800080">until 2036-05-28 15:49:32+00:00 UTC</span> │                                                                         
+   │ <span style="color: #800080; text-decoration-color: #800080">maximum 42000 legs in network</span>       │                                                                         
+   ╰─────────────────────────────────────╯                                                                         
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">baseline_summary</span><span class="o">.</span><span class="n">fig_carrier_revenues</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-e109395d1f8a4d18af81eb82b991c862.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-e109395d1f8a4d18af81eb82b991c862.vega-embed details,
+  #altair-viz-e109395d1f8a4d18af81eb82b991c862.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-e109395d1f8a4d18af81eb82b991c862"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-e109395d1f8a4d18af81eb82b991c862") {
+      outputDiv = document.getElementById("altair-viz-e109395d1f8a4d18af81eb82b991c862");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFontSize": 12}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "rm_system", "title": "RM System", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "rm_system", "title": "RM System", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Average Revenue", "type": "quantitative"}], "x": {"axis": {"format": "$.4s"}, "field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"axis": {"format": "$.4s"}, "field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-bb6346a0db7fd1e05cf9e2df2d1acb2a"}, "height": 50, "title": "Carrier Revenues", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-bb6346a0db7fd1e05cf9e2df2d1acb2a": [{"carrier": "AL1", "avg_rev": 89932.625, "rm_system": "E"}, {"carrier": "AL2", "avg_rev": 90480.125, "rm_system": "E"}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>Now we’ll write our custom RM system.  This is going to be done in two parts: first,
+we will write our custom forecast algorithm as a <code class="docutils literal notranslate"><span class="pre">RmAction</span></code>. Then we’ll define a
+<code class="docutils literal notranslate"><span class="pre">RmSys</span></code> that uses that custom forecast algorithm.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">passengersim.rm</span><span class="w"> </span><span class="kn">import</span> <span class="n">RmAction</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">OlympicForecast</span><span class="p">(</span><span class="n">RmAction</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    In this step, we use a custom forecast algorithm, the &quot;Olympic Average&quot;,</span>
+<span class="sd">    implemented in Python.  In this forecast, the mean (mu) forecast for any</span>
+<span class="sd">    bucket is computed by taking the 26 historical values, discarding the highest</span>
+<span class="sd">    and lowest, and taking the mean of the remaining 24 values.</span>
+
+<span class="sd">    This forecaster is meant primarily as a technology demonstration for how</span>
+<span class="sd">    to implement a custom RM step in Python.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">requires</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;leg_demand&quot;</span><span class="p">}</span>
+    <span class="n">produces</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;leg_forecast&quot;</span><span class="p">}</span>
+    <span class="n">frequency</span> <span class="o">=</span> <span class="s2">&quot;dcp&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sim</span><span class="p">:</span> <span class="n">pax</span><span class="o">.</span><span class="n">Simulation</span><span class="p">,</span> <span class="n">days_prior</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">should_run</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">days_prior</span><span class="p">):</span>
+            <span class="k">return</span>
+        <span class="n">dcp_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dcp_index</span><span class="p">(</span><span class="n">days_prior</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">leg</span> <span class="ow">in</span> <span class="n">sim</span><span class="o">.</span><span class="n">eng</span><span class="o">.</span><span class="n">legs</span><span class="o">.</span><span class="n">set_filters</span><span class="p">(</span><span class="n">carrier</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">carrier</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">bkt</span> <span class="ow">in</span> <span class="n">leg</span><span class="o">.</span><span class="n">buckets</span><span class="p">:</span>
+                <span class="c1"># get historic demand, for all recorded departures and remaining TFs</span>
+                <span class="n">history</span> <span class="o">=</span> <span class="n">bkt</span><span class="o">.</span><span class="n">forecast</span><span class="o">.</span><span class="n">get_detruncated_demand_array</span><span class="p">()[:,</span> <span class="n">dcp_index</span><span class="p">:]</span>
+                <span class="c1"># sum historic demand to come over all remaining time periods</span>
+                <span class="n">hdtc</span> <span class="o">=</span> <span class="n">history</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                <span class="c1"># compute average pickup excluding min and max</span>
+                <span class="n">avg_pickup</span> <span class="o">=</span> <span class="p">(</span><span class="n">hdtc</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="n">hdtc</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">hdtc</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">hdtc</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+                <span class="c1"># set forecast mean excluding outliers</span>
+                <span class="n">bkt</span><span class="o">.</span><span class="n">fcst_mean</span> <span class="o">=</span> <span class="n">avg_pickup</span>
+                <span class="c1"># compute standard dev as normal, including outliers</span>
+                <span class="n">bkt</span><span class="o">.</span><span class="n">fcst_std_dev</span> <span class="o">=</span> <span class="n">history</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Now we have our custom forecaster. But this isn’t a whole RM system; we
+still need to handle demand untruncation before we do forecasting, and
+then to have some kind of optimizer that will do something with the
+forecasts.  For these other things, we’ll draw from PassengerSim’s standard
+library of RM components to build a complete RM system.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">passengersim.rm</span><span class="w"> </span><span class="kn">import</span> <span class="n">RmSys</span><span class="p">,</span> <span class="n">register_rm_system</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">passengersim.rm.emsr</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExpectedMarginalSeatRevenue</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">passengersim.rm.untruncation</span><span class="w"> </span><span class="kn">import</span> <span class="n">LegUntruncation</span>
+
+
+<span class="nd">@register_rm_system</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Olympic</span><span class="p">(</span><span class="n">RmSys</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A custom RM system using Olympic Average forecasting.&quot;&quot;&quot;</span>
+
+    <span class="n">availability_control</span> <span class="o">=</span> <span class="s2">&quot;leg&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This RM system uses leg-level class allocation availability controls.&quot;&quot;&quot;</span>
+
+    <span class="n">actions</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">LegUntruncation</span><span class="p">,</span>
+        <span class="n">OlympicForecast</span><span class="p">,</span>
+        <span class="n">ExpectedMarginalSeatRevenue</span><span class="p">,</span>
+    <span class="p">]</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>The last thing to do is to actually assign this system to a carrier who will use it.
+The <code class="docutils literal notranslate"><span class="pre">register_rm_system</span></code> reads the name of the class that it is decorating, and makes
+that class available as a named RM system that you can use in configs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">cfg</span><span class="o">.</span><span class="n">carriers</span><span class="o">.</span><span class="n">AL1</span><span class="o">.</span><span class="n">rm_system</span> <span class="o">=</span> <span class="s2">&quot;Olympic&quot;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Now we’re ready to run, and see what chaos we have wrought.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">sim</span> <span class="o">=</span> <span class="n">pax</span><span class="o">.</span><span class="n">MultiSimulation</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+<span class="n">summary</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "526627379a234660b23aea0ea324db71"}</script><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre>
+</div></div>
+</div>
+<h2 id="comparing-results">Comparing Results<a class="headerlink" href="#comparing-results" title="Link to this heading">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">passengersim.contrast</span><span class="w"> </span><span class="kn">import</span> <span class="n">Contrast</span>
+
+<span class="n">comp</span> <span class="o">=</span> <span class="n">Contrast</span><span class="p">(</span><span class="n">Baseline</span><span class="o">=</span><span class="n">baseline_summary</span><span class="p">,</span> <span class="n">Olympic</span><span class="o">=</span><span class="n">summary</span><span class="p">)</span>
+<span class="n">comp</span><span class="o">.</span><span class="n">fig_carrier_revenues</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-b94b1fba768b48fe8f9a644e0c8375f7.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-b94b1fba768b48fe8f9a644e0c8375f7.vega-embed details,
+  #altair-viz-b94b1fba768b48fe8f9a644e0c8375f7.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-b94b1fba768b48fe8f9a644e0c8375f7"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-b94b1fba768b48fe8f9a644e0c8375f7") {
+      outputDiv = document.getElementById("altair-viz-b94b1fba768b48fe8f9a644e0c8375f7");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "data": {"name": "data-fee50c070636bcef90aae209d8ebfcdd"}, "facet": {"row": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "rm_system", "title": "RM System", "type": "nominal"}, "tooltip": [{"field": "source", "title": null, "type": "nominal"}, {"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "rm_system", "title": "RM System", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Revenue ($)", "type": "quantitative"}, {"field": "ratio_0", "format": ".3%", "title": "vs Baseline", "type": "quantitative"}, {"field": "ratio_1", "format": ".3%", "title": "vs Olympic", "type": "quantitative"}], "x": {"axis": {"format": "$.4s"}, "field": "avg_rev", "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["Baseline", "Olympic"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"axis": {"format": "$.4s"}, "field": "avg_rev", "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["Baseline", "Olympic"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 5, "dy": 0}, "encoding": {"text": {"field": "reference_source", "type": "nominal"}, "x": {"field": "avg_rev", "scale": {"domain": [0, 96813.73375]}, "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["Baseline", "Olympic"], "title": null, "type": "nominal"}}, "transform": [{"calculate": "datum[\"ratio_label_\" + ref_source]", "as": "reference_source"}]}], "height": 50, "width": 500}, "params": [{"name": "ref_source", "bind": {"input": "radio", "options": ["0", "1"], "labels": ["Baseline", "Olympic"], "name": "Reference Source: "}, "value": "0"}], "title": "Carrier Revenues", "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-fee50c070636bcef90aae209d8ebfcdd": [{"source": "Baseline", "carrier": "AL1", "avg_rev": 89932.625, "rm_system": "E", "ratio_0": null, "ratio_1": -0.003893264735079449, "ratio_label": " ", "ratio_label_0": " ", "ratio_label_1": "-0.4%"}, {"source": "Baseline", "carrier": "AL2", "avg_rev": 90480.125, "rm_system": "E", "ratio_0": null, "ratio_1": 0.002286101995319756, "ratio_label": " ", "ratio_label_0": " ", "ratio_label_1": "+0.2%"}, {"source": "Olympic", "carrier": "AL1", "avg_rev": 90284.125, "rm_system": "Olympic", "ratio_0": 0.003908481488225313, "ratio_1": null, "ratio_label": "+0.4%", "ratio_label_0": "+0.4%", "ratio_label_1": " "}, {"source": "Olympic", "carrier": "AL2", "avg_rev": 90273.75, "rm_system": "E", "ratio_0": -0.0022808876535039824, "ratio_1": null, "ratio_label": "-0.2%", "ratio_label_0": "-0.2%", "ratio_label_1": " "}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>Taking a look at the revenue results, we see that the Olympic forecaster has turned in
+less than record settings revenues.  This is a small sample, so we shouldn’t necessarily
+read a whole lot into this result, but we can at least say it’s not looking promising at
+this point.  We can take a look through some of the other output reports to see if
+anything stands out to us as good or bad.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">comp</span><span class="o">.</span><span class="n">fig_carrier_load_factors</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-7c344a35d5954970821604365d93bf5b.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-7c344a35d5954970821604365d93bf5b.vega-embed details,
+  #altair-viz-7c344a35d5954970821604365d93bf5b.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-7c344a35d5954970821604365d93bf5b"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-7c344a35d5954970821604365d93bf5b") {
+      outputDiv = document.getElementById("altair-viz-7c344a35d5954970821604365d93bf5b");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "data": {"name": "data-bfa9b87f6e106040e416eb72236b9087"}, "facet": {"row": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "rm_system", "title": "RM System", "type": "nominal"}, "tooltip": [{"field": "source", "title": null, "type": "nominal"}, {"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "rm_system", "title": "RM System", "type": "nominal"}, {"field": "sys_lf", "format": ".2f", "title": "System Load Factor", "type": "quantitative"}, {"field": "ratio_0", "format": ".3%", "title": "vs Baseline", "type": "quantitative"}, {"field": "ratio_1", "format": ".3%", "title": "vs Olympic", "type": "quantitative"}], "x": {"axis": {"format": ".2f"}, "field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "source", "sort": ["Baseline", "Olympic"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "sys_lf", "format": ".2f", "type": "quantitative"}, "x": {"axis": {"format": ".2f"}, "field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "source", "sort": ["Baseline", "Olympic"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 5, "dy": 0}, "encoding": {"text": {"field": "reference_source", "type": "nominal"}, "x": {"field": "sys_lf", "scale": {"domain": [0, 94.31117982972319]}, "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "source", "sort": ["Baseline", "Olympic"], "title": null, "type": "nominal"}}, "transform": [{"calculate": "datum[\"ratio_label_\" + ref_source]", "as": "reference_source"}]}], "height": 50, "width": 500}, "params": [{"name": "ref_source", "bind": {"input": "radio", "options": ["0", "1"], "labels": ["Baseline", "Olympic"], "name": "Reference Source: "}, "value": "0"}], "title": "Carrier System Load Factors", "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-bfa9b87f6e106040e416eb72236b9087": [{"source": "Baseline", "carrier": "AL1", "sys_lf": 88.11549821349182, "rm_system": "E", "ratio_0": null, "ratio_1": -0.00029261367885291545, "ratio_label": " ", "ratio_label_0": " ", "ratio_label_1": "-0.0%"}, {"source": "Baseline", "carrier": "AL2", "sys_lf": 88.11792981058046, "rm_system": "E", "ratio_0": null, "ratio_1": 0.0007063173351322671, "ratio_label": " ", "ratio_label_0": " ", "ratio_label_1": "+0.1%"}, {"source": "Olympic", "carrier": "AL1", "sys_lf": 88.14128956048896, "rm_system": "Olympic", "ratio_0": 0.00029269932667963516, "ratio_1": null, "ratio_label": "+0.0%", "ratio_label_0": "+0.0%", "ratio_label_1": " "}, {"source": "Olympic", "carrier": "AL2", "sys_lf": 88.05573451883201, "rm_system": "E", "ratio_0": -0.0007058188030761858, "ratio_1": null, "ratio_label": "-0.1%", "ratio_label_0": "-0.1%", "ratio_label_1": " "}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">comp</span><span class="o">.</span><span class="n">fig_fare_class_mix</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-58237e9325e34f14b6718e0c1f3ed544.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-58237e9325e34f14b6718e0c1f3ed544.vega-embed details,
+  #altair-viz-58237e9325e34f14b6718e0c1f3ed544.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-58237e9325e34f14b6718e0c1f3ed544"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-58237e9325e34f14b6718e0c1f3ed544") {
+      outputDiv = document.getElementById("altair-viz-58237e9325e34f14b6718e0c1f3ed544");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "data": {"name": "data-beda4e26e6048cf389e0ad0da76dcb23"}, "facet": {"column": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "booking_class", "type": "nominal"}, "tooltip": [{"field": "source", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "source", "sort": ["Baseline", "Olympic"], "title": "Source", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 3}, "encoding": {"opacity": {"condition": {"test": "datum.avg_sold < 17.110", "value": 0}, "value": 1}, "order": {"field": "booking_class", "sort": "descending", "type": "nominal"}, "text": {"field": "avg_sold", "format": ".2f", "type": "quantitative"}, "tooltip": [{"field": "source", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "source", "sort": ["Baseline", "Olympic"], "title": "Source", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}], "height": 300, "width": 200}, "title": "Carrier Fare Class Mix", "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-beda4e26e6048cf389e0ad0da76dcb23": [{"source": "Baseline", "carrier": "AL1", "booking_class": "Y0", "avg_sold": 53.47}, {"source": "Baseline", "carrier": "AL1", "booking_class": "Y1", "avg_sold": 50.695}, {"source": "Baseline", "carrier": "AL1", "booking_class": "Y2", "avg_sold": 28.2}, {"source": "Baseline", "carrier": "AL1", "booking_class": "Y3", "avg_sold": 12.965}, {"source": "Baseline", "carrier": "AL1", "booking_class": "Y4", "avg_sold": 103.165}, {"source": "Baseline", "carrier": "AL1", "booking_class": "Y5", "avg_sold": 36.61}, {"source": "Baseline", "carrier": "AL2", "booking_class": "Y0", "avg_sold": 53.9}, {"source": "Baseline", "carrier": "AL2", "booking_class": "Y1", "avg_sold": 51.68}, {"source": "Baseline", "carrier": "AL2", "booking_class": "Y2", "avg_sold": 28.09}, {"source": "Baseline", "carrier": "AL2", "booking_class": "Y3", "avg_sold": 13.465}, {"source": "Baseline", "carrier": "AL2", "booking_class": "Y4", "avg_sold": 103.15}, {"source": "Baseline", "carrier": "AL2", "booking_class": "Y5", "avg_sold": 34.795}, {"source": "Olympic", "carrier": "AL1", "booking_class": "Y0", "avg_sold": 55.075}, {"source": "Olympic", "carrier": "AL1", "booking_class": "Y1", "avg_sold": 50.565}, {"source": "Olympic", "carrier": "AL1", "booking_class": "Y2", "avg_sold": 27.37}, {"source": "Olympic", "carrier": "AL1", "booking_class": "Y3", "avg_sold": 11.63}, {"source": "Olympic", "carrier": "AL1", "booking_class": "Y4", "avg_sold": 102.87}, {"source": "Olympic", "carrier": "AL1", "booking_class": "Y5", "avg_sold": 37.42}, {"source": "Olympic", "carrier": "AL2", "booking_class": "Y0", "avg_sold": 53.625}, {"source": "Olympic", "carrier": "AL2", "booking_class": "Y1", "avg_sold": 51.14}, {"source": "Olympic", "carrier": "AL2", "booking_class": "Y2", "avg_sold": 28.59}, {"source": "Olympic", "carrier": "AL2", "booking_class": "Y3", "avg_sold": 13.285}, {"source": "Olympic", "carrier": "AL2", "booking_class": "Y4", "avg_sold": 103.47}, {"source": "Olympic", "carrier": "AL2", "booking_class": "Y5", "avg_sold": 35.05}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">comp</span><span class="o">.</span><span class="n">fig_segmentation_by_timeframe</span><span class="p">(</span><span class="s2">&quot;bookings&quot;</span><span class="p">,</span> <span class="n">by_carrier</span><span class="o">=</span><span class="s2">&quot;AL1&quot;</span><span class="p">,</span> <span class="n">by_class</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">source_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-5701574b12ed4300a71d3b9d61f94041.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-5701574b12ed4300a71d3b9d61f94041.vega-embed details,
+  #altair-viz-5701574b12ed4300a71d3b9d61f94041.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-5701574b12ed4300a71d3b9d61f94041"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-5701574b12ed4300a71d3b9d61f94041") {
+      outputDiv = document.getElementById("altair-viz-5701574b12ed4300a71d3b9d61f94041");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "data": {"name": "data-41685f3ecdf0504674fc787fc7e4ea16"}, "facet": {"row": {"field": "segment", "title": "Passenger Type", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "booking_class", "title": "Booking Class", "type": "nominal"}, "tooltip": [{"field": "source", "title": "Source", "type": "nominal"}, {"field": "segment", "title": "Passenger Type", "type": "nominal"}, {"field": "booking_class", "title": "Booking Class", "type": "nominal"}, {"field": "days_prior", "title": "Days Prior", "type": "quantitative"}, {"field": "bookings", "format": ".2f", "type": "quantitative"}], "x": {"field": "days_prior", "scale": {"reverse": true}, "title": "Days Prior to Departure", "type": "ordinal"}, "xOffset": {"field": "source", "sort": ["Baseline", "Olympic"], "title": "Source", "type": "nominal"}, "y": {"field": "bookings", "stack": true, "type": "quantitative"}}}, {"mark": {"type": "text", "align": "left", "angle": 270, "baseline": "middle", "color": "#616161", "fontSize": 8, "yOffset": -2}, "encoding": {"text": {"field": "source", "title": "Source", "type": "nominal"}, "x": {"field": "days_prior", "scale": {"reverse": true}, "title": "Days Prior to Departure", "type": "ordinal"}, "xOffset": {"field": "source", "sort": ["Baseline", "Olympic"], "title": "Source", "type": "nominal"}, "y": {"aggregate": "sum", "field": "bookings", "title": null, "type": "quantitative"}}}], "height": 200, "width": 500}, "title": "Bookings by Timeframe and Booking Class (AL1)", "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-41685f3ecdf0504674fc787fc7e4ea16": [{"source": "Olympic", "booking_class": "Y0", "days_prior": 1, "segment": "business", "bookings": 1.965}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 42, "segment": "leisure", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 35, "segment": "leisure", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 35, "segment": "business", "bookings": 1.5750000000000002}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 31, "segment": "leisure", "bookings": 0.005}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 31, "segment": "business", "bookings": 0.9750000000000001}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 28, "segment": "leisure", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 28, "segment": "business", "bookings": 1.42}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 24, "segment": "leisure", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 24, "segment": "business", "bookings": 1.5899999999999999}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 21, "segment": "leisure", "bookings": 0.005}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 21, "segment": "business", "bookings": 2.1550000000000002}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 17, "segment": "leisure", "bookings": 0.005}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 17, "segment": "business", "bookings": 2.465}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 14, "segment": "leisure", "bookings": 0.04}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 14, "segment": "business", "bookings": 5.15}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 10, "segment": "leisure", "bookings": 0.095}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 42, "segment": "business", "bookings": 2.615}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 49, "segment": "business", "bookings": 2.02}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 7, "segment": "leisure", "bookings": 0.095}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 49, "segment": "leisure", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 21, "segment": "business", "bookings": 1.2999999999999998}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 17, "segment": "leisure", "bookings": 0.4}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 17, "segment": "business", "bookings": 1.5699999999999998}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 14, "segment": "leisure", "bookings": 0.635}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 14, "segment": "business", "bookings": 3.3449999999999998}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 10, "segment": "leisure", "bookings": 0.49}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 10, "segment": "business", "bookings": 3.6799999999999997}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 7, "segment": "leisure", "bookings": 0.97}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 7, "segment": "business", "bookings": 2.31}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 5, "segment": "leisure", "bookings": 1.94}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 5, "segment": "business", "bookings": 2.07}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 63, "segment": "leisure", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 63, "segment": "business", "bookings": 2.89}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 56, "segment": "leisure", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 56, "segment": "business", "bookings": 2.52}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 10, "segment": "business", "bookings": 6.27}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 7, "segment": "business", "bookings": 4.08}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 24, "segment": "business", "bookings": 0.88}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 28, "segment": "leisure", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 24, "segment": "leisure", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 24, "segment": "business", "bookings": 1.51}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 21, "segment": "leisure", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 21, "segment": "business", "bookings": 2.2800000000000002}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 17, "segment": "leisure", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 17, "segment": "business", "bookings": 2.82}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 14, "segment": "leisure", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 14, "segment": "business", "bookings": 5.76}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 10, "segment": "leisure", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 10, "segment": "business", "bookings": 6.675}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 7, "segment": "leisure", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 7, "segment": "business", "bookings": 4.675}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 5, "segment": "leisure", "bookings": 0.015}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 5, "segment": "business", "bookings": 4.665}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 3, "segment": "leisure", "bookings": 0.005}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 28, "segment": "business", "bookings": 1.4500000000000002}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 31, "segment": "business", "bookings": 1.185}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 5, "segment": "leisure", "bookings": 0.225}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 31, "segment": "leisure", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 5, "segment": "business", "bookings": 3.885}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 3, "segment": "leisure", "bookings": 0.555}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 3, "segment": "business", "bookings": 7.845000000000001}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 1, "segment": "leisure", "bookings": 0.245}, {"source": "Olympic", "booking_class": "Y1", "days_prior": 1, "segment": "business", "bookings": 1.8399999999999999}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 63, "segment": "leisure", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 63, "segment": "business", "bookings": 3.35}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 56, "segment": "leisure", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 56, "segment": "business", "bookings": 2.615}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 49, "segment": "leisure", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 49, "segment": "business", "bookings": 2.255}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 42, "segment": "leisure", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 42, "segment": "business", "bookings": 2.7350000000000003}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 35, "segment": "leisure", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 35, "segment": "business", "bookings": 1.6600000000000001}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 21, "segment": "leisure", "bookings": 0.215}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 24, "segment": "leisure", "bookings": 0.05}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 1, "segment": "leisure", "bookings": 0.005}, {"source": "Olympic", "booking_class": "Y4", "days_prior": 56, "segment": "leisure", "bookings": 10.165}, {"source": "Olympic", "booking_class": "Y4", "days_prior": 49, "segment": "leisure", "bookings": 12.035}, {"source": "Olympic", "booking_class": "Y4", "days_prior": 49, "segment": "business", "bookings": 0.315}, {"source": "Olympic", "booking_class": "Y4", "days_prior": 42, "segment": "leisure", "bookings": 11.825}, {"source": "Olympic", "booking_class": "Y4", "days_prior": 42, "segment": "business", "bookings": 0.375}, {"source": "Olympic", "booking_class": "Y4", "days_prior": 35, "segment": "leisure", "bookings": 8.15}, {"source": "Olympic", "booking_class": "Y4", "days_prior": 35, "segment": "business", "bookings": 0.19}, {"source": "Olympic", "booking_class": "Y4", "days_prior": 31, "segment": "leisure", "bookings": 5.175}, {"source": "Olympic", "booking_class": "Y4", "days_prior": 31, "segment": "business", "bookings": 0.13}, {"source": "Olympic", "booking_class": "Y4", "days_prior": 28, "segment": "leisure", "bookings": 10.905}, {"source": "Olympic", "booking_class": "Y4", "days_prior": 28, "segment": "business", "bookings": 0.16999999999999998}, {"source": "Olympic", "booking_class": "Y4", "days_prior": 24, "segment": "leisure", "bookings": 9.455}, {"source": "Olympic", "booking_class": "Y4", "days_prior": 24, "segment": "business", "bookings": 0.16999999999999998}, {"source": "Olympic", "booking_class": "Y4", "days_prior": 21, "segment": "leisure", "bookings": 6.525}, {"source": "Olympic", "booking_class": "Y4", "days_prior": 21, "segment": "business", "bookings": 0.205}, {"source": "Olympic", "booking_class": "Y4", "days_prior": 17, "segment": "leisure", "bookings": 4.325}, {"source": "Olympic", "booking_class": "Y4", "days_prior": 56, "segment": "business", "bookings": 0.39}, {"source": "Olympic", "booking_class": "Y4", "days_prior": 63, "segment": "business", "bookings": 0.38}, {"source": "Olympic", "booking_class": "Y3", "days_prior": 63, "segment": "leisure", "bookings": 0.16}, {"source": "Olympic", "booking_class": "Y4", "days_prior": 63, "segment": "leisure", "bookings": 21.814999999999998}, {"source": "Olympic", "booking_class": "Y5", "days_prior": 63, "segment": "business", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y5", "days_prior": 56, "segment": "leisure", "bookings": 4.95}, {"source": "Olympic", "booking_class": "Y5", "days_prior": 56, "segment": "business", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y5", "days_prior": 49, "segment": "leisure", "bookings": 5.300000000000001}, {"source": "Olympic", "booking_class": "Y5", "days_prior": 49, "segment": "business", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y5", "days_prior": 42, "segment": "leisure", "bookings": 4.93}, {"source": "Olympic", "booking_class": "Y5", "days_prior": 42, "segment": "business", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y5", "days_prior": 35, "segment": "leisure", "bookings": 3.1100000000000003}, {"source": "Olympic", "booking_class": "Y5", "days_prior": 35, "segment": "business", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y5", "days_prior": 31, "segment": "leisure", "bookings": 1.935}, {"source": "Olympic", "booking_class": "Y5", "days_prior": 31, "segment": "business", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y5", "days_prior": 28, "segment": "leisure", "bookings": 3.685}, {"source": "Olympic", "booking_class": "Y5", "days_prior": 28, "segment": "business", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y5", "days_prior": 24, "segment": "leisure", "bookings": 3.4}, {"source": "Olympic", "booking_class": "Y5", "days_prior": 24, "segment": "business", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y4", "days_prior": 17, "segment": "business", "bookings": 0.16999999999999998}, {"source": "Olympic", "booking_class": "Y3", "days_prior": 63, "segment": "business", "bookings": 0.22999999999999998}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 28, "segment": "business", "bookings": 0.79}, {"source": "Olympic", "booking_class": "Y3", "days_prior": 14, "segment": "leisure", "bookings": 3.6}, {"source": "Olympic", "booking_class": "Y3", "days_prior": 10, "segment": "leisure", "bookings": 1.9300000000000002}, {"source": "Olympic", "booking_class": "Y3", "days_prior": 10, "segment": "business", "bookings": 0.265}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 63, "segment": "leisure", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 63, "segment": "business", "bookings": 1.5950000000000002}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 56, "segment": "leisure", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 56, "segment": "business", "bookings": 1.4}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 49, "segment": "leisure", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 49, "segment": "business", "bookings": 1.0150000000000001}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 42, "segment": "leisure", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 42, "segment": "business", "bookings": 1.365}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 35, "segment": "leisure", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 35, "segment": "business", "bookings": 0.78}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 31, "segment": "leisure", "bookings": 0.0}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 31, "segment": "business", "bookings": 0.565}, {"source": "Olympic", "booking_class": "Y2", "days_prior": 28, "segment": "leisure", "bookings": 0.005}, {"source": "Olympic", "booking_class": "Y3", "days_prior": 14, "segment": "business", "bookings": 0.27}, {"source": "Olympic", "booking_class": "Y3", "days_prior": 17, "segment": "business", "bookings": 0.14}, {"source": "Olympic", "booking_class": "Y3", "days_prior": 56, "segment": "leisure", "bookings": 0.1}, {"source": "Olympic", "booking_class": "Y3", "days_prior": 17, "segment": "leisure", "bookings": 1.315}, {"source": "Olympic", "booking_class": "Y3", "days_prior": 56, "segment": "business", "bookings": 0.20500000000000002}, {"source": "Olympic", "booking_class": "Y3", "days_prior": 49, "segment": "leisure", "bookings": 0.10500000000000001}, {"source": "Olympic", "booking_class": "Y3", "days_prior": 49, "segment": "business", "bookings": 0.125}, {"source": "Olympic", "booking_class": "Y3", "days_prior": 42, "segment": "leisure", "bookings": 0.06}, {"source": "Olympic", "booking_class": "Y3", "days_prior": 42, "segment": "business", "bookings": 0.155}, {"source": "Olympic", "booking_class": "Y3", "days_prior": 35, "segment": "leisure", "bookings": 0.06}, {"source": "Olympic", "booking_class": "Y3", "days_prior": 35, "segment": "business", "bookings": 0.135}, {"source": "Olympic", "booking_class": "Y3", "days_prior": 31, "segment": "leisure", "bookings": 0.05}, {"source": "Olympic", "booking_class": "Y3", "days_prior": 31, "segment": "business", "bookings": 0.09}, {"source": "Olympic", "booking_class": "Y3", "days_prior": 28, "segment": "leisure", "bookings": 0.275}, {"source": "Olympic", "booking_class": "Y3", "days_prior": 28, "segment": "business", "bookings": 0.11000000000000001}, {"source": "Olympic", "booking_class": "Y3", "days_prior": 24, "segment": "leisure", "bookings": 0.715}, {"source": "Olympic", "booking_class": "Y3", "days_prior": 24, "segment": "business", "bookings": 0.11}, {"source": "Olympic", "booking_class": "Y3", "days_prior": 21, "segment": "leisure", "bookings": 1.26}, {"source": "Olympic", "booking_class": "Y3", "days_prior": 21, "segment": "business", "bookings": 0.16499999999999998}, {"source": "Olympic", "booking_class": "Y0", "days_prior": 3, "segment": "business", "bookings": 9.45}, {"source": "Olympic", "booking_class": "Y5", "days_prior": 63, "segment": "leisure", "bookings": 10.11}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 1, "segment": "leisure", "bookings": 0.005}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 24, "segment": "business", "bookings": 1.455}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 35, "segment": "leisure", "bookings": 0.005}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 35, "segment": "business", "bookings": 1.51}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 31, "segment": "leisure", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 31, "segment": "business", "bookings": 1.08}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 28, "segment": "leisure", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 28, "segment": "business", "bookings": 1.38}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 24, "segment": "leisure", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 21, "segment": "leisure", "bookings": 0.005}, {"source": "Baseline", "booking_class": "Y5", "days_prior": 63, "segment": "leisure", "bookings": 10.055}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 21, "segment": "business", "bookings": 2.265}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 17, "segment": "leisure", "bookings": 0.01}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 17, "segment": "business", "bookings": 2.45}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 14, "segment": "leisure", "bookings": 0.045000000000000005}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 14, "segment": "business", "bookings": 5.35}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 10, "segment": "leisure", "bookings": 0.034999999999999996}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 10, "segment": "business", "bookings": 6.175000000000001}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 42, "segment": "business", "bookings": 2.66}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 42, "segment": "leisure", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 49, "segment": "business", "bookings": 2.025}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 49, "segment": "leisure", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 21, "segment": "business", "bookings": 1.3}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 17, "segment": "leisure", "bookings": 0.33999999999999997}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 17, "segment": "business", "bookings": 1.56}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 14, "segment": "leisure", "bookings": 0.61}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 14, "segment": "business", "bookings": 3.62}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 10, "segment": "leisure", "bookings": 0.445}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 10, "segment": "business", "bookings": 3.88}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 7, "segment": "leisure", "bookings": 0.99}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 7, "segment": "business", "bookings": 2.46}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 5, "segment": "leisure", "bookings": 2.01}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 5, "segment": "business", "bookings": 2.1799999999999997}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 63, "segment": "leisure", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 63, "segment": "business", "bookings": 2.9}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 56, "segment": "leisure", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 56, "segment": "business", "bookings": 2.4850000000000003}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 7, "segment": "leisure", "bookings": 0.08}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 7, "segment": "business", "bookings": 3.895}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 5, "segment": "leisure", "bookings": 0.20500000000000002}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 28, "segment": "business", "bookings": 1.55}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 24, "segment": "business", "bookings": 1.51}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 21, "segment": "leisure", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 21, "segment": "business", "bookings": 2.165}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 17, "segment": "leisure", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 17, "segment": "business", "bookings": 2.745}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 14, "segment": "leisure", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 14, "segment": "business", "bookings": 5.56}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 10, "segment": "leisure", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 10, "segment": "business", "bookings": 6.5}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 7, "segment": "leisure", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 7, "segment": "business", "bookings": 4.545}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 5, "segment": "leisure", "bookings": 0.03}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 5, "segment": "business", "bookings": 4.09}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 3, "segment": "leisure", "bookings": 0.01}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 3, "segment": "business", "bookings": 9.1}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 24, "segment": "leisure", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 28, "segment": "leisure", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 5, "segment": "business", "bookings": 4.055}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 31, "segment": "business", "bookings": 1.1400000000000001}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 3, "segment": "leisure", "bookings": 0.47}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 3, "segment": "business", "bookings": 7.945}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 1, "segment": "leisure", "bookings": 0.25}, {"source": "Baseline", "booking_class": "Y1", "days_prior": 1, "segment": "business", "bookings": 1.96}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 63, "segment": "leisure", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 63, "segment": "business", "bookings": 3.38}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 56, "segment": "leisure", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 56, "segment": "business", "bookings": 2.625}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 49, "segment": "leisure", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 49, "segment": "business", "bookings": 2.205}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 42, "segment": "leisure", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 42, "segment": "business", "bookings": 2.795}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 35, "segment": "leisure", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 35, "segment": "business", "bookings": 1.62}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 31, "segment": "leisure", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 21, "segment": "leisure", "bookings": 0.15}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 24, "segment": "business", "bookings": 0.885}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 24, "segment": "leisure", "bookings": 0.01}, {"source": "Baseline", "booking_class": "Y4", "days_prior": 56, "segment": "leisure", "bookings": 10.105}, {"source": "Baseline", "booking_class": "Y4", "days_prior": 49, "segment": "leisure", "bookings": 12.155000000000001}, {"source": "Baseline", "booking_class": "Y4", "days_prior": 49, "segment": "business", "bookings": 0.30000000000000004}, {"source": "Baseline", "booking_class": "Y4", "days_prior": 42, "segment": "leisure", "bookings": 11.825}, {"source": "Baseline", "booking_class": "Y4", "days_prior": 42, "segment": "business", "bookings": 0.37}, {"source": "Baseline", "booking_class": "Y4", "days_prior": 35, "segment": "leisure", "bookings": 8.225}, {"source": "Baseline", "booking_class": "Y4", "days_prior": 35, "segment": "business", "bookings": 0.21}, {"source": "Baseline", "booking_class": "Y4", "days_prior": 31, "segment": "leisure", "bookings": 5.404999999999999}, {"source": "Baseline", "booking_class": "Y4", "days_prior": 31, "segment": "business", "bookings": 0.12000000000000001}, {"source": "Baseline", "booking_class": "Y4", "days_prior": 28, "segment": "leisure", "bookings": 10.675}, {"source": "Baseline", "booking_class": "Y4", "days_prior": 28, "segment": "business", "bookings": 0.225}, {"source": "Baseline", "booking_class": "Y4", "days_prior": 24, "segment": "leisure", "bookings": 9.41}, {"source": "Baseline", "booking_class": "Y4", "days_prior": 24, "segment": "business", "bookings": 0.14}, {"source": "Baseline", "booking_class": "Y4", "days_prior": 21, "segment": "leisure", "bookings": 6.475}, {"source": "Baseline", "booking_class": "Y4", "days_prior": 21, "segment": "business", "bookings": 0.14}, {"source": "Baseline", "booking_class": "Y4", "days_prior": 17, "segment": "leisure", "bookings": 4.585}, {"source": "Baseline", "booking_class": "Y4", "days_prior": 56, "segment": "business", "bookings": 0.42000000000000004}, {"source": "Baseline", "booking_class": "Y4", "days_prior": 63, "segment": "business", "bookings": 0.38}, {"source": "Baseline", "booking_class": "Y3", "days_prior": 63, "segment": "leisure", "bookings": 0.16}, {"source": "Baseline", "booking_class": "Y4", "days_prior": 63, "segment": "leisure", "bookings": 21.78}, {"source": "Baseline", "booking_class": "Y5", "days_prior": 63, "segment": "business", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y5", "days_prior": 56, "segment": "leisure", "bookings": 4.875}, {"source": "Baseline", "booking_class": "Y5", "days_prior": 56, "segment": "business", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y5", "days_prior": 49, "segment": "leisure", "bookings": 5.035}, {"source": "Baseline", "booking_class": "Y5", "days_prior": 49, "segment": "business", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y5", "days_prior": 42, "segment": "leisure", "bookings": 4.93}, {"source": "Baseline", "booking_class": "Y5", "days_prior": 42, "segment": "business", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y5", "days_prior": 35, "segment": "leisure", "bookings": 3.145}, {"source": "Baseline", "booking_class": "Y5", "days_prior": 35, "segment": "business", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y5", "days_prior": 31, "segment": "leisure", "bookings": 1.93}, {"source": "Baseline", "booking_class": "Y5", "days_prior": 31, "segment": "business", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y5", "days_prior": 28, "segment": "leisure", "bookings": 3.425}, {"source": "Baseline", "booking_class": "Y5", "days_prior": 28, "segment": "business", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y5", "days_prior": 24, "segment": "leisure", "bookings": 3.215}, {"source": "Baseline", "booking_class": "Y5", "days_prior": 24, "segment": "business", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y4", "days_prior": 17, "segment": "business", "bookings": 0.22}, {"source": "Baseline", "booking_class": "Y3", "days_prior": 63, "segment": "business", "bookings": 0.22999999999999998}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 28, "segment": "business", "bookings": 0.825}, {"source": "Baseline", "booking_class": "Y3", "days_prior": 14, "segment": "leisure", "bookings": 3.9299999999999997}, {"source": "Baseline", "booking_class": "Y3", "days_prior": 10, "segment": "leisure", "bookings": 2.115}, {"source": "Baseline", "booking_class": "Y3", "days_prior": 10, "segment": "business", "bookings": 0.31}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 63, "segment": "leisure", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 63, "segment": "business", "bookings": 1.59}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 56, "segment": "leisure", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 56, "segment": "business", "bookings": 1.3900000000000001}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 49, "segment": "leisure", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 49, "segment": "business", "bookings": 1.05}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 42, "segment": "leisure", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 42, "segment": "business", "bookings": 1.275}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 35, "segment": "leisure", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 35, "segment": "business", "bookings": 1.03}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 31, "segment": "leisure", "bookings": 0.0}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 31, "segment": "business", "bookings": 0.595}, {"source": "Baseline", "booking_class": "Y2", "days_prior": 28, "segment": "leisure", "bookings": 0.005}, {"source": "Baseline", "booking_class": "Y3", "days_prior": 14, "segment": "business", "bookings": 0.255}, {"source": "Baseline", "booking_class": "Y3", "days_prior": 17, "segment": "business", "bookings": 0.15}, {"source": "Baseline", "booking_class": "Y3", "days_prior": 56, "segment": "leisure", "bookings": 0.09}, {"source": "Baseline", "booking_class": "Y3", "days_prior": 17, "segment": "leisure", "bookings": 1.335}, {"source": "Baseline", "booking_class": "Y3", "days_prior": 56, "segment": "business", "bookings": 0.18}, {"source": "Baseline", "booking_class": "Y3", "days_prior": 49, "segment": "leisure", "bookings": 0.125}, {"source": "Baseline", "booking_class": "Y3", "days_prior": 49, "segment": "business", "bookings": 0.1}, {"source": "Baseline", "booking_class": "Y3", "days_prior": 42, "segment": "leisure", "bookings": 0.1}, {"source": "Baseline", "booking_class": "Y3", "days_prior": 42, "segment": "business", "bookings": 0.17}, {"source": "Baseline", "booking_class": "Y3", "days_prior": 35, "segment": "leisure", "bookings": 0.045}, {"source": "Baseline", "booking_class": "Y3", "days_prior": 35, "segment": "business", "bookings": 0.125}, {"source": "Baseline", "booking_class": "Y3", "days_prior": 31, "segment": "leisure", "bookings": 0.07}, {"source": "Baseline", "booking_class": "Y3", "days_prior": 31, "segment": "business", "bookings": 0.08}, {"source": "Baseline", "booking_class": "Y3", "days_prior": 28, "segment": "leisure", "bookings": 0.265}, {"source": "Baseline", "booking_class": "Y3", "days_prior": 28, "segment": "business", "bookings": 0.1}, {"source": "Baseline", "booking_class": "Y3", "days_prior": 24, "segment": "leisure", "bookings": 1.1300000000000001}, {"source": "Baseline", "booking_class": "Y3", "days_prior": 24, "segment": "business", "bookings": 0.09}, {"source": "Baseline", "booking_class": "Y3", "days_prior": 21, "segment": "leisure", "bookings": 1.605}, {"source": "Baseline", "booking_class": "Y3", "days_prior": 21, "segment": "business", "bookings": 0.20500000000000002}, {"source": "Baseline", "booking_class": "Y0", "days_prior": 1, "segment": "business", "bookings": 1.895}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<p>The other thing we may want to keep in mind is runtime. Even on this tiny
+network and with a tiny number of samples, the custom RM system takes noticably
+longer to run.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">baseline_summary</span><span class="o">.</span><span class="n">metadata</span><span class="p">(</span><span class="s2">&quot;time.runtime&quot;</span><span class="p">),</span> <span class="n">summary</span><span class="o">.</span><span class="n">metadata</span><span class="p">(</span><span class="s2">&quot;time.runtime&quot;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><code>(3.1819047927856445, 3.4563441276550293)
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Customization is great as it adds lots of flexibility to the system, but it’s not completely
+free. Passing data into Python for the custom tools, and processing that data in a Python
+environment is typically a bit (or sometimes a lot) slower than running the same
+mathematical algorithms in well optimized C/C++ code.  To maximize the speed
+that the Simulator runs, users should generally use RM actions from PassengerSim’s
+standard library whenever possible.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2026, PassengerSim LLC.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.2.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.view", "content.code.copy", "content.code.annotate", "navigation.tabs", "navigation.top", "navigation.tracking", "announce.dismiss"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": null}}</script>
+    
+      
+        <script src="../_static/sphinx_immaterial_theme.32136f45f91ae6956.min.js?v=a7a9472a"></script>
+        <script type="application/vnd.jupyter.widget-state+json">{"state": {"2e93fad9d8394b07be1d5457406923da": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "0c39a1c822e3406ca7750739aae56545": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_2e93fad9d8394b07be1d5457406923da", "msg_id": "", "outputs": [{"output_type": "display_data", "metadata": {}, "data": {"text/plain": "", "text/html": "<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\"></pre>\n"}}], "tabbable": null, "tooltip": null}}, "db9e0ae6f0b8422a90946ddb07ad1c45": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "526627379a234660b23aea0ea324db71": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_db9e0ae6f0b8422a90946ddb07ad1c45", "msg_id": "", "outputs": [{"output_type": "display_data", "metadata": {}, "data": {"text/plain": "", "text/html": "<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\"></pre>\n"}}], "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}</script>
+        <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,6 @@
+extract\_fare\_class\_mix
+=========================
+
+.. currentmodule:: passengersim.summaries.fare_class_mix
+
+.. autofunction:: extract_fare_class_mix

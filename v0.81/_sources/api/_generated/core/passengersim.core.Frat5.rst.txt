@@ -1,0 +1,38 @@
+Frat5
+=====
+
+.. currentmodule:: passengersim.core
+
+.. autoclass:: Frat5
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Frat5.__init__
+      ~Frat5.add_vals
+      ~Frat5.adjust_fare_ki
+      ~Frat5.adjust_fare_mr
+      ~Frat5.cbc_modifier
+      ~Frat5.get_val
+      ~Frat5.print
+      ~Frat5.sellup_probability
+      ~Frat5.set_val
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Frat5.fare_adjustment_scale
+      ~Frat5.max_cap
+      ~Frat5.name
+      ~Frat5.num_values
+   
+   

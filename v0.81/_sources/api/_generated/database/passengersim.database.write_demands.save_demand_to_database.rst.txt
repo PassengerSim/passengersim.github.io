@@ -1,0 +1,6 @@
+save\_demand\_to\_database
+==========================
+
+.. currentmodule:: passengersim.database.write_demands
+
+.. autofunction:: save_demand_to_database

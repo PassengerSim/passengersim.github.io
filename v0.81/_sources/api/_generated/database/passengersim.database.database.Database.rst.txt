@@ -1,0 +1,47 @@
+Database
+========
+
+.. currentmodule:: passengersim.database.database
+
+.. autoclass:: Database
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Database.__init__
+      ~Database.add_indexes
+      ~Database.backup
+      ~Database.close
+      ~Database.connect_to_simulation_engine
+      ~Database.dataframe
+      ~Database.delete_experiment
+      ~Database.disconnect_from_simulation_engine
+      ~Database.index_names
+      ~Database.load_configs
+      ~Database.load_raw_configs
+      ~Database.open
+      ~Database.save_configs
+      ~Database.save_dataframe
+      ~Database.save_details
+      ~Database.save_final
+      ~Database.schema
+      ~Database.sql_placeholders
+      ~Database.table_info
+      ~Database.table_names
+      ~Database.use_sqlite
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Database.is_open
+   
+   

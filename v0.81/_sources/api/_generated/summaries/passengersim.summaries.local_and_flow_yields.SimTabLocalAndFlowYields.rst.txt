@@ -1,0 +1,52 @@
+SimTabLocalAndFlowYields
+========================
+
+.. currentmodule:: passengersim.summaries.local_and_flow_yields
+
+.. autoclass:: SimTabLocalAndFlowYields
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SimTabLocalAndFlowYields.__init__
+      ~SimTabLocalAndFlowYields.aggregate
+      ~SimTabLocalAndFlowYields.extract
+      ~SimTabLocalAndFlowYields.fig_leg_bid_price_detail_rake
+      ~SimTabLocalAndFlowYields.fig_leg_bid_price_history
+      ~SimTabLocalAndFlowYields.fig_leg_booking_detail_rake
+      ~SimTabLocalAndFlowYields.file_info
+      ~SimTabLocalAndFlowYields.from_file
+      ~SimTabLocalAndFlowYields.from_pickle
+      ~SimTabLocalAndFlowYields.metadata
+      ~SimTabLocalAndFlowYields.remove_data
+      ~SimTabLocalAndFlowYields.run_queries
+      ~SimTabLocalAndFlowYields.save
+      ~SimTabLocalAndFlowYields.subclasses
+      ~SimTabLocalAndFlowYields.to_file
+      ~SimTabLocalAndFlowYields.to_html
+      ~SimTabLocalAndFlowYields.to_pickle
+      ~SimTabLocalAndFlowYields.to_xlsx
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~SimTabLocalAndFlowYields.callback_data
+      ~SimTabLocalAndFlowYields.config
+      ~SimTabLocalAndFlowYields.leg_bid_price_detail
+      ~SimTabLocalAndFlowYields.leg_booking_detail
+      ~SimTabLocalAndFlowYields.local_and_flow_yields
+      ~SimTabLocalAndFlowYields.cnx
+      ~SimTabLocalAndFlowYields.sim
+      ~SimTabLocalAndFlowYields.n_total_samples
+      ~SimTabLocalAndFlowYields.meta_summaries
+   
+   

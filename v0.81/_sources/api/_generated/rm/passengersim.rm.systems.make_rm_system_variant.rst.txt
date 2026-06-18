@@ -1,0 +1,6 @@
+make\_rm\_system\_variant
+=========================
+
+.. currentmodule:: passengersim.rm.systems
+
+.. autofunction:: make_rm_system_variant

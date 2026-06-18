@@ -1,0 +1,47 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.database.
+
+database
+========
+
+.. automodule:: passengersim.database.database
+   :no-members:
+
+
+
+
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: .
+   :template: autosummary/class.rst
+
+   Database
+   VoidWriter
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: .
+
+   compute_rrd
+   delete_experiment
+   get_database_connection
+   save_demand_multi
+   save_fare_multi
+   save_leg
+   save_leg_bucket_multi
+   sql_placeholders
+
+
+
+
+

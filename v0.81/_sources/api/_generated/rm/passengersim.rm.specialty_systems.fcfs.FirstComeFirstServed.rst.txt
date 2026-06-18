@@ -1,0 +1,16 @@
+﻿FirstComeFirstServed
+====================
+
+.. currentmodule:: passengersim.rm.specialty_systems.fcfs
+
+.. autoclass:: FirstComeFirstServed()
+
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      ~FirstComeFirstServed.availability_control
+      ~FirstComeFirstServed.actions
+
+   

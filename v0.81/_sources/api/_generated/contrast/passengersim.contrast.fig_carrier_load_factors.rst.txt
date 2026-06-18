@@ -1,0 +1,6 @@
+fig\_carrier\_load\_factors
+===========================
+
+.. currentmodule:: passengersim.contrast
+
+.. autofunction:: fig_carrier_load_factors

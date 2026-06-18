@@ -1,0 +1,6 @@
+MissingDataError
+================
+
+.. currentmodule:: passengersim.summaries.generic
+
+.. autoexception:: MissingDataError

@@ -1,0 +1,6 @@
+demand\_to\_come\_summary
+=========================
+
+.. currentmodule:: passengersim.database.common_queries
+
+.. autofunction:: demand_to_come_summary

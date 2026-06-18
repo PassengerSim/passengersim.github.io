@@ -1,0 +1,6 @@
+fig\_leg\_shifts
+================
+
+.. currentmodule:: passengersim.contrast.duo
+
+.. autofunction:: fig_leg_shifts

@@ -1,0 +1,48 @@
+ConditionalLegForecast
+======================
+
+.. currentmodule:: passengersim.rm.conditional_forecasting
+
+.. autoclass:: ConditionalLegForecast
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ConditionalLegForecast.__init__
+      ~ConditionalLegForecast.apply_snapshot_filters
+      ~ConditionalLegForecast.configure
+      ~ConditionalLegForecast.get_dcp_index
+      ~ConditionalLegForecast.init
+      ~ConditionalLegForecast.run
+      ~ConditionalLegForecast.should_run
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~ConditionalLegForecast.frequency
+      ~ConditionalLegForecast.produces
+      ~ConditionalLegForecast.requires
+      ~ConditionalLegForecast.snapshot_filter_type
+      ~ConditionalLegForecast.algorithm
+      ~ConditionalLegForecast.alpha
+      ~ConditionalLegForecast.fare_adjustment
+      ~ConditionalLegForecast.fare_adjustment_scale
+      ~ConditionalLegForecast.weighted_by_ratio
+      ~ConditionalLegForecast.q_allocation_algorithm
+      ~ConditionalLegForecast.variance_rollup_algorithm
+      ~ConditionalLegForecast.variance_is_ratio_of_mean
+      ~ConditionalLegForecast.max_cap
+      ~ConditionalLegForecast.dcps
+      ~ConditionalLegForecast.carrier
+      ~ConditionalLegForecast.minimum_sample
+   
+   

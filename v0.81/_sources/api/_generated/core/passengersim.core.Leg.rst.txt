@@ -1,0 +1,111 @@
+Leg
+===
+
+.. currentmodule:: passengersim.core
+
+.. autoclass:: Leg
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Leg.__init__
+      ~Leg.add_bucket
+      ~Leg.add_cabin
+      ~Leg.adjust_forecast_means
+      ~Leg.allocate_q_demand
+      ~Leg.avg_load_factor
+      ~Leg.avg_local
+      ~Leg.bucket_number
+      ~Leg.capture_dcp
+      ~Leg.clear_forecast_means_adjustment
+      ~Leg.combine_forecasts
+      ~Leg.compute_conditional_q_forecast
+      ~Leg.compute_fare_adjustments
+      ~Leg.compute_forecasts
+      ~Leg.compute_hybrid_forecasts
+      ~Leg.compute_simple_fare_adjustments
+      ~Leg.detruncate_demand
+      ~Leg.emsrb
+      ~Leg.emsrc
+      ~Leg.get_bid_price_array
+      ~Leg.get_bucket_auth
+      ~Leg.get_bucket_fcst_mean
+      ~Leg.get_bucket_fcst_revenue
+      ~Leg.get_bucket_fcst_std_dev
+      ~Leg.get_bucket_revenue
+      ~Leg.get_bucket_sold
+      ~Leg.get_cabin
+      ~Leg.get_forecast_data
+      ~Leg.get_num_buckets
+      ~Leg.get_num_cabins
+      ~Leg.info
+      ~Leg.littlewood
+      ~Leg.new_forecast
+      ~Leg.next_departure
+      ~Leg.print_bucket_detail
+      ~Leg.print_bucket_history
+      ~Leg.reset_counters
+      ~Leg.sales_by_demand
+      ~Leg.set_bucket_auth
+      ~Leg.set_bucket_blank_value
+      ~Leg.set_bucket_fcst_mean
+      ~Leg.set_bucket_fcst_revenue
+      ~Leg.set_bucket_fcst_std_dev
+      ~Leg.set_bucket_revenue
+      ~Leg.set_bucket_sold
+      ~Leg.update_forecasts
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Leg.action_state
+      ~Leg.action_timestamp
+      ~Leg.arr_time
+      ~Leg.arr_time_offset
+      ~Leg.bid_price
+      ~Leg.bid_price_gradient
+      ~Leg.bp_index
+      ~Leg.buckets
+      ~Leg.cabins
+      ~Leg.capacity
+      ~Leg.capacity_sharing
+      ~Leg.carrier
+      ~Leg.carrier_name
+      ~Leg.dep_time
+      ~Leg.dep_time_offset
+      ~Leg.dest
+      ~Leg.displacement
+      ~Leg.distance
+      ~Leg.duration
+      ~Leg.equipment
+      ~Leg.flt_no
+      ~Leg.forecast
+      ~Leg.gt_capacity
+      ~Leg.gt_n
+      ~Leg.gt_revenue
+      ~Leg.gt_sold
+      ~Leg.gt_sold_local
+      ~Leg.history
+      ~Leg.leg_id
+      ~Leg.local_revenue
+      ~Leg.local_sold
+      ~Leg.num_objects
+      ~Leg.orig
+      ~Leg.pathclass_identifiers
+      ~Leg.q_demand
+      ~Leg.q_forecast
+      ~Leg.report_bid_price
+      ~Leg.revenue
+      ~Leg.sold
+      ~Leg.tags
+   
+   

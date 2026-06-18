@@ -1,0 +1,10 @@
+﻿Frat5Curve
+==========
+
+.. currentmodule:: passengersim.config
+
+.. autoclass:: Frat5Curve()
+   :members:
+   :exclude-members: validate_tags, serialize_date, model_config
+   :class-doc-from: class
+   :autosummary:

@@ -1,0 +1,10 @@
+﻿Carrier
+=======
+
+.. currentmodule:: passengersim.config
+
+.. autoclass:: Carrier()
+   :members:
+   :exclude-members: validate_tags, serialize_date, model_config
+   :class-doc-from: class
+   :autosummary:

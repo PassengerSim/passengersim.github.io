@@ -1,0 +1,34 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.callbacks.
+
+booking\_detail
+===============
+
+.. automodule:: passengersim.callbacks.booking_detail
+   :no-members:
+
+
+
+
+
+
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: .
+
+   collect_leg_booking_detail
+   fig_leg_booking_detail_rake
+   process_leg_booking_detail
+   summarize_leg_booking_detail
+
+
+
+
+

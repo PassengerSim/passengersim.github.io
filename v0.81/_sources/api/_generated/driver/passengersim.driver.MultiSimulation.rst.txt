@@ -1,0 +1,43 @@
+MultiSimulation
+===============
+
+.. currentmodule:: passengersim.driver
+
+.. autoclass:: MultiSimulation
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~MultiSimulation.__init__
+      ~MultiSimulation.add_callback_events
+      ~MultiSimulation.apply_callback_functions
+      ~MultiSimulation.begin_sample_callback
+      ~MultiSimulation.callback_functions
+      ~MultiSimulation.daily_callback
+      ~MultiSimulation.end_sample_callback
+      ~MultiSimulation.from_yaml
+      ~MultiSimulation.path_names
+      ~MultiSimulation.pathclasses_for_carrier
+      ~MultiSimulation.run
+      ~MultiSimulation.sequential_run
+      ~MultiSimulation.use_registered_callbacks
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~MultiSimulation.demands
+      ~MultiSimulation.fares
+      ~MultiSimulation.markets
+      ~MultiSimulation.pathclasses
+      ~MultiSimulation.paths
+   
+   

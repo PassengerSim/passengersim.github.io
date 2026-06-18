@@ -1,0 +1,6 @@
+
+.. autosummary::
+   :toctree: _generated/core
+   :recursive:
+
+   passengersim.core

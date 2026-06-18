@@ -1,0 +1,2946 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="passengersim.core.ChoiceModel.html">
+      
+      
+        <link rel="next" href="passengersim.core.Demand.html">
+      
+      
+      <link rel="icon" href="../../../_static/favicon.png">
+    
+    
+      
+        <title>DecisionWindow - PassengerSim</title>
+      
+    
+    
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_immaterial_theme.50640b526df5ff663.min.css?v=cff97996" />
+        <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+        <link rel="stylesheet" type="text/css" href="../../../_static/css/extra.css?v=663c5cee" />
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#passengersim.core.DecisionWindow" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+<p>
+    <span style="vertical-align: middle; color: #ffd334; font-size: 1.2em;">&#9888;</span>
+    We recently updated our website for PassengerSim v0.80.  More or less all the same content is here (and more)
+    but any pre-existing links and bookmarks may be broken.
+</p>
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../index.html" title="PassengerSim" class="md-header__button md-logo" aria-label="PassengerSim" data-md-component="logo">
+      <img src="../../../_static/logo.svg" alt="logo">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PassengerSim
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              DecisionWindow
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/passengersim/passengersim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    PassengerSim/passengersim
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../user-guide/welcome.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>User Guide</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../mechanics/counting-sims.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Mechanics</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../examples/intro-3mkt.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Examples</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="../../_index.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>API</span>
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../index.html" title="PassengerSim" class="md-nav__button md-logo" aria-label="PassengerSim" data-md-component="logo">
+      <img src="../../../_static/logo.svg" alt="logo">
+    </a>
+    PassengerSim
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/passengersim/passengersim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    PassengerSim/passengersim
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>User Guide</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            <span>User Guide</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/welcome.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 10H5L3 8l2-2h6V3l1-1 1 1v1h6l2 2-2 2h-6v2h6l2 2-2 2h-6v6a2 2 0 0 1 2 2H9a2 2 0 0 1 2-2z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Wayfinding</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/installation.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m13.13 22.19-1.63-3.83c1.57-.58 3.04-1.36 4.4-2.27zM5.64 12.5l-3.83-1.63 6.1-2.77C7 9.46 6.22 10.93 5.64 12.5M21.61 2.39S16.66.269 11 5.93c-2.19 2.19-3.5 4.6-4.35 6.71-.28.75-.09 1.57.46 2.13l2.13 2.12c.55.56 1.37.74 2.12.46A19.1 19.1 0 0 0 18.07 13c5.66-5.66 3.54-10.61 3.54-10.61m-7.07 7.07c-.78-.78-.78-2.05 0-2.83s2.05-.78 2.83 0c.77.78.78 2.05 0 2.83s-2.05.78-2.83 0m-5.66 7.07-1.41-1.41zM6.24 22l3.64-3.64c-.34-.09-.67-.24-.97-.45L4.83 22zM2 22h1.41l4.77-4.76-1.42-1.41L2 20.59zm0-2.83 4.09-4.08c-.21-.3-.36-.62-.45-.97L2 17.76z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Installation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/static-config.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.5 3.5 18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2 7.5 3.5 6 2 4.5 3.5 3 2v20l1.5-1.5L6 22l1.5-1.5L9 22l1.5-1.5L12 22l1.5-1.5L15 22l1.5-1.5L18 22l1.5-1.5L21 22V2zM19 19H5V5h14zM6 15h12v2H6m0-6h12v2H6m0-6h12v2H6z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Raw Configuration</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/dynamic-config.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 2 1.5 1.5L21 2v7.13l-2 2V4.91H5v14.18h5.5v1.41L9 22l-1.5-1.5L6 22l-1.5-1.5L3 22V2l1.5 1.5L6 2l1.5 1.5L9 2l1.5 1.5L12 2l1.5 1.5L15 2l1.5 1.5zm-5 17.96 6.13-6.13 2.04 2.04L15.04 22H13zm6.83-6.83.98-.98.02-.02c.05-.04.11-.08.17-.1a.5.5 0 0 1 .53.12l1.32 1.32c.2.2.2.53 0 .72l-.98.98zm-1.83-1-.87.87H6v-2h12zM15.13 15l-2 2H6v-2zM18 9V7H6v2z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Dynamic Configuration</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/basic-usage.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m9 4 2.5 5.5L17 12l-5.5 2.5L9 20l-2.5-5.5L1 12l5.5-2.5zm0 4.83L8 11l-2.17 1L8 13l1 2.17L10 13l2.17-1L10 11zM19 9l-1.26-2.74L15 5l2.74-1.25L19 1l1.25 2.75L23 5l-2.75 1.26zm0 14-1.26-2.74L15 19l2.74-1.25L19 15l1.25 2.75L23 19l-2.75 1.26z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Summary Outputs</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/rm-systems.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 6h18v12H5zm9 3a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3M9 8a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2v-4a2 2 0 0 1-2-2zm-8 2h2v10h16v2H1z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>RM Systems</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/database/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Database</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/experiments.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 19a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1c0-.21-.07-.41-.18-.57L13 8.35V4h-2v4.35L5.18 18.43c-.11.16-.18.36-.18.57m1 3a3 3 0 0 1-3-3c0-.6.18-1.16.5-1.63L9 7.81V6a1 1 0 0 1-1-1V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1v1.81l5.5 9.56c.32.47.5 1.03.5 1.63a3 3 0 0 1-3 3zm7-6 1.34-1.34L16.27 18H7.73l2.66-4.61zm-.5-4a.5.5 0 0 1 .5.5.5.5 0 0 1-.5.5.5.5 0 0 1-.5-.5.5.5 0 0 1 .5-.5"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Experiments</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/callbacks.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.6 5.29c-1.1-.1-2.07.71-2.17 1.82L13.18 10H16v2h-3l-.44 5.07a3.986 3.986 0 0 1-4.33 3.63 4 4 0 0 1-3.06-1.87l1.5-1.5c.24.74.9 1.31 1.73 1.38 1.1.1 2.07-.71 2.17-1.82L11 12H8v-2h3.17l.27-3.07c.19-2.2 2.13-3.83 4.33-3.63 1.31.11 2.41.84 3.06 1.87l-1.5 1.5c-.24-.74-.9-1.31-1.73-1.38"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Callbacks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/tracers.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.84 2.73c-.39 0-.77.15-1.07.44l-2.12 2.12 5.3 5.31 2.12-2.1c.6-.61.6-1.56 0-2.14L17.9 3.17c-.3-.29-.68-.44-1.06-.44M12.94 6l-8.1 8.11 2.56.28.18 2.29 2.28.17.29 2.56 8.1-8.11m-14 3.74L2.5 21.73l6.7-1.79-.24-2.16-2.31-.17-.18-2.32"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Tracing</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/viz/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.45 15.18 22 7.31V21H2V3h2v12.54L9.5 6 16 9.78l4.24-7.33 1.73 1-5.23 9.05-6.51-3.75L4.31 19h2.26l4.39-7.56z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Visualizations</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/firehose.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 15v-1H4v-2h1v-1h2v4zm14-3v-1h-2v4h2v-1h1v-2zm-1-6h-2.14C15.5 4.6 14.4 3.5 13 3.14V2h-2v1.14C9.6 3.5 8.5 4.6 8.14 6H6v2h12zm0 16H6c0-1.1.9-2 2-2V9h8v11a2 2 0 0 1 2 2m-8-9a2 2 0 1 0 4 0c0-1.11-.89-2-2-2s-2 .9-2 2"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Firehose</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>Mechanics</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Mechanics</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanics/counting-sims.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 10.73V19h-2v-7.64L15 12v7h-2v-6.38l-2 .64V19H9v-5.11l-2 .61V19H5v-3.85l-2.43.77L2 14l3-.95V5h2v7.42l2-.63V5h2v6.16l2-.63V5h2v4.9l2-.64V5h2v3.63L21 8l.57 1.92z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Counting Simulations</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanics/demand-generation.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.35 5.64c-.9-.64-1.12-1.88-.49-2.79.64-.9 1.88-1.12 2.79-.49.9.64 1.12 1.88.49 2.79-.64.9-1.88 1.12-2.79.49M16 19H8.93c-1.48 0-2.74-1.08-2.96-2.54L4 7H2l2 9.76A4.99 4.99 0 0 0 8.94 21H16m.23-6h-4.88l-1.03-4.1c1.58.89 3.28 1.54 5.15 1.22V10c-1.63.3-3.44-.28-4.69-1.26L9.14 7.47c-.23-.18-.49-.3-.76-.38a2.2 2.2 0 0 0-.99-.06h-.02a2.27 2.27 0 0 0-1.84 2.61l1.35 5.92A2.99 2.99 0 0 0 9.83 18h6.85l3.82 3 1.5-1.5"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Demand Generation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanics/forecasting.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m9.38 8.38 2.12.96 2.12-.96-.96 2.12.96 2.12-2.12-.96-2.12.96.96-2.12zM16.5 2.5l1.09 2.91L20.5 6.5l-2.91 1.09-1.09 2.91-1.09-2.91L12.5 6.5l2.91-1.09zM6 19h1v-1a1 1 0 0 1 1-1h.26a7.47 7.47 0 0 1-3.76-6.5A7.5 7.5 0 0 1 12 3c1.05 0 2.05.22 2.96.61l-.37.98-1.42.53Q12.6 5 12 5a5.5 5.5 0 0 0-5.5 5.5A5.5 5.5 0 0 0 12 16c2.91 0 5.3-2.27 5.5-5.13l.91-2.46.71-.27c.25.74.38 1.54.38 2.36 0 2.78-1.5 5.2-3.76 6.5H16a1 1 0 0 1 1 1v1h1a2 2 0 0 1 2 2v1H4v-1a2 2 0 0 1 2-2"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Forecasting</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>Examples</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Examples</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/intro-3mkt.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>The 3MKT Network</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/EE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Basic Simulation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/PE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Pro<wbr>BP Optimization</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/LL.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Unrestricted Networks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/QC.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Q vs Conditional Forecasting</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/olympic-fcst.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Custom Forecaster</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/blf-curves.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Heuristic Intervention</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../labs/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Labs</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>API</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            <span>API</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../_index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Passenger<wbr>Sim</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../callbacks/passengersim.callbacks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>callbacks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>config</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../connection_builder/passengersim.connection_builder.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>connection_<wbr>builder</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contrast/passengersim.contrast.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>contrast</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="passengersim.core.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    <span>core</span>
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            <span>core</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Airport.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Airport</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.BookingCurve.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Booking<wbr>Curve</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Bucket.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Bucket</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Cabin.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Cabin</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Carrier.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Carrier</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.ChoiceModel.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Choice<wbr>Model</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    <span>Decision<wbr>Window</span>
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Decision<wbr>Window</span>
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim.core.DecisionWindow" class="md-nav__link">
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.DecisionWindow (Python class) — Bases: object"><span>passengersim.<wbr>core.<wbr>Decision<wbr>Window</span></span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="passengersim.core.DecisionWindow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#background-and-motivation" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Background and Motivation</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1a-determine-decision-window-width" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Step 1A:<wbr> Determine Decision Window Width</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1A: Determine Decision Window Width">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#systematic-behaviors-in-window-generation" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Systematic Behaviors in Window Generation</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1b-placement-of-window-using-time-of-day-demand-distribution" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Step 1B:<wbr> Placement of Window Using Time-<wbr>of-<wbr>Day Demand Distribution</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-decision-window-generation" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Example:<wbr> Decision Window Generation</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-notes" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Additional Notes</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-itinerary-evaluation-and-penalties" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Step 2:<wbr> Itinerary Evaluation and Penalties</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Itinerary Evaluation and Penalties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.DecisionWindow.add_parm" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.DecisionWindow.add_parm (Python method) — Add a parameter value to the decision window model."><span>add_<wbr>parm</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.DecisionWindow.dwm_tod" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.DecisionWindow.dwm_tod (Python attribute) — Time of Day probability distribution (24 hourly values)."><span>dwm_<wbr>tod</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.DecisionWindow.get_midpoint" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.DecisionWindow.get_midpoint (Python method) — Get decision window midpoint for a given random draw."><span>get_<wbr>midpoint</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.DecisionWindow.get_time_disutility" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.DecisionWindow.get_time_disutility (Python method) — Get time disutility penalty for an offer."><span>get_<wbr>time_<wbr>disutility</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.DecisionWindow.get_window" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.DecisionWindow.get_window (Python method) — Get decision window start and end times."><span>get_<wbr>window</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.DecisionWindow.k_factor" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.DecisionWindow.k_factor (Python attribute) — Coefficient of variation for random draws in window placement."><span>k_<wbr>factor</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.DecisionWindow.name" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.DecisionWindow.name (Python attribute) — Name identifier for this decision window model."><span>name</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.DecisionWindow.random_generator" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.DecisionWindow.random_generator (Python attribute) — Random number generator for stochastic window placement."><span>random_<wbr>generator</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.DecisionWindow.serialize" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.DecisionWindow.serialize (Python method) — Get all parameter values from the decision window model."><span>serialize</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Demand.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Demand</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.DynamicProgram.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Dynamic<wbr>Program</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Event.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Event</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Fare.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Fare</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Forecast.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Forecast</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.ForecastAccessor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Forecast<wbr>Accessor</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.ForecastGroup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Forecast<wbr>Group</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Frat5.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Frat5</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.History.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>History</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Leg.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Leg</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Market.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Market</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Path.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Path</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.PathClass.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Path<wbr>Class</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.ProBP.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Pro<wbr>BP</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.Profiler.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Profiler</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="passengersim.core.UserAction.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>User<wbr>Action</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/passengersim.database.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>database</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../driver/passengersim.driver.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>driver</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experiments/passengersim.experiments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>experiments</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>rm</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../summaries/passengersim.summaries.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>summaries</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tracers/passengersim.tracers.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>tracers</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transforms/passengersim.transforms.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>transforms</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#passengersim.core.DecisionWindow" class="md-nav__link">
+    
+      <span aria-label="Python class" class="objinfo-icon objinfo-icon__data" title="Python class">C</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.DecisionWindow (Python class) — Bases: object"><span>passengersim.<wbr>core.<wbr>Decision<wbr>Window</span></span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="passengersim.core.DecisionWindow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#background-and-motivation" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Background and Motivation</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1a-determine-decision-window-width" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Step 1A:<wbr> Determine Decision Window Width</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1A: Determine Decision Window Width">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#systematic-behaviors-in-window-generation" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Systematic Behaviors in Window Generation</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-1b-placement-of-window-using-time-of-day-demand-distribution" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Step 1B:<wbr> Placement of Window Using Time-<wbr>of-<wbr>Day Demand Distribution</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-decision-window-generation" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Example:<wbr> Decision Window Generation</span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-notes" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Additional Notes</span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-itinerary-evaluation-and-penalties" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Step 2:<wbr> Itinerary Evaluation and Penalties</span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Itinerary Evaluation and Penalties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.DecisionWindow.add_parm" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.DecisionWindow.add_parm (Python method) — Add a parameter value to the decision window model."><span>add_<wbr>parm</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.DecisionWindow.dwm_tod" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.DecisionWindow.dwm_tod (Python attribute) — Time of Day probability distribution (24 hourly values)."><span>dwm_<wbr>tod</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.DecisionWindow.get_midpoint" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.DecisionWindow.get_midpoint (Python method) — Get decision window midpoint for a given random draw."><span>get_<wbr>midpoint</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.DecisionWindow.get_time_disutility" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.DecisionWindow.get_time_disutility (Python method) — Get time disutility penalty for an offer."><span>get_<wbr>time_<wbr>disutility</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.DecisionWindow.get_window" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.DecisionWindow.get_window (Python method) — Get decision window start and end times."><span>get_<wbr>window</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.DecisionWindow.k_factor" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.DecisionWindow.k_factor (Python attribute) — Coefficient of variation for random draws in window placement."><span>k_<wbr>factor</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.DecisionWindow.name" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.DecisionWindow.name (Python attribute) — Name identifier for this decision window model."><span>name</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.DecisionWindow.random_generator" class="md-nav__link">
+    
+      <span aria-label="Python attribute" class="objinfo-icon objinfo-icon__alias" title="Python attribute">A</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.DecisionWindow.random_generator (Python attribute) — Random number generator for stochastic window placement."><span>random_<wbr>generator</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passengersim.core.DecisionWindow.serialize" class="md-nav__link">
+    
+      <span aria-label="Python method" class="objinfo-icon objinfo-icon__procedure" title="Python method">M</span>
+    
+    <span class="md-ellipsis">
+      <span title="passengersim.core.DecisionWindow.serialize (Python method) — Get all parameter values from the decision window model."><span>serialize</span></span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                
+                
+                  
+
+
+<h1 id="decisionwindow">DecisionWindow<a class="headerlink" href="#decisionwindow" title="Link to this heading">¶</a></h1>
+<dl class="py class objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.DecisionWindow">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">passengersim.core.</span></span><span class="sig-name descname"><span class="pre">DecisionWindow</span></span><a class="headerlink" href="#passengersim.core.DecisionWindow" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Decision Window Model configuration for customer time preferences.</p>
+<h2 id="background-and-motivation">Background and Motivation<a class="headerlink" href="#background-and-motivation" title="Link to this heading">¶</a></h2>
+<p>Airline schedule planning models commonly represent passengers’ departure and arrival
+time preferences using discrete time-of-day indicators, defined at the hourly level
+or grouped into periods such as morning, afternoon, and evening. Continuous time-of-day
+formulations have also been used to capture smoother substitution across adjacent times
+[2] [3] [4]. These approaches allow demand to vary across specific departure and
+arrival times and align naturally with the discrete structure of airline schedules,
+often combined with elapsed time, defined as the total time from block-out of the
+first flight to block-in of the final flight in a directional itinerary.</p>
+<p>An alternative framework for modeling time-of-day preferences is the decision window
+model, used historically in PODS-based studies. Instead of time-of-day indicators,
+passengers are assumed to have a preferred travel interval—referred to as a decision
+window—bounded by an earliest acceptable departure time and a latest acceptable arrival
+time. Itineraries within the window are acceptable and incur no disutility, while those
+partially or fully outside require replanning and incur a disutility. This approach
+parallels ground transportation scheduling models that represent preferences using
+departure or arrival time windows rather than point-in-time choices [5] [6].</p>
+<h2 id="step-1a-determine-decision-window-width">Step 1A: Determine Decision Window Width<a class="headerlink" href="#step-1a-determine-decision-window-width" title="Link to this heading">¶</a></h2>
+<p>A decision window is defined as the minimum elapsed clock time in the market plus a
+schedule tolerance that captures passengers’ flexibility in scheduling their trips.</p>
+<p><strong>Elapsed clock time</strong> (also called Delta_T) represents the difference between local
+departure time at origin and local arrival time at destination, accounting for time
+zone changes but not actual time spent on the aircraft. For example, a flight departing
+Los Angeles at 8 AM and arriving New York at 4:30 PM has an elapsed clock time of
+8.5 hours, even though passengers spend only 5.5 hours on the plane.</p>
+<p><strong>Schedule tolerance</strong> reflects how much earlier a passenger is willing to depart
+before their ideal time and how much later they are willing to arrive after their ideal
+time. The tolerance is passenger-type specific (e.g., business vs. leisure) and varies
+systematically with market distance.</p>
+<h3 id="systematic-behaviors-in-window-generation">Systematic Behaviors in Window Generation<a class="headerlink" href="#systematic-behaviors-in-window-generation" title="Link to this heading">¶</a></h3>
+<p>When generating decision windows, several systematic behaviors are captured:</p>
+<ol class="arabic simple">
+<li><p><strong>Window size differs by distance</strong>: Short-haul markets have narrower windows
+whereas long-haul markets have wider windows. This reflects that passengers planning
+short trips have tighter constraints (e.g., day trip with meeting), while those
+planning long trips have more flexibility in when they can depart and arrive. For
+very long distance trips (greater than 5000 miles), the window size is capped at
+24 hours, reflecting that passengers generally have full-day flexibility for
+intercontinental travel. This is equivalent to no replanning disutility for such trips.</p></li>
+<li><p><strong>Window size differs by passenger type</strong>: Business travelers have narrower
+windows than leisure travelers on the same route. Business travelers face
+fixed meeting times and opportunity cost of time, while leisure travelers
+have discretionary time and stronger price sensitivity, making them more
+willing to accept inconvenient departure/arrival times for lower fares.</p></li>
+</ol>
+<p><strong>Recommended Schedule Tolerance Values</strong>: The following table shows recommended tolerance
+values (dwm_tolerance parameter, in hours) implemented in PassengerSim. Note these must be
+set in the customer_choice module as they are customer-type specific.</p>
+<table class="docutils data align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Distance Range</p></th>
+<th class="head"><p>Business</p></th>
+<th class="head"><p>Leisure</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0-500 miles</p></td>
+<td><p>1.2</p></td>
+<td><p>2.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>501-1000 miles</p></td>
+<td><p>3.3</p></td>
+<td><p>4.6</p></td>
+</tr>
+<tr class="row-even"><td><p>1001-1500 miles</p></td>
+<td><p>3.5</p></td>
+<td><p>4.9</p></td>
+</tr>
+<tr class="row-odd"><td><p>1501-2000 miles</p></td>
+<td><p>3.8</p></td>
+<td><p>5.2</p></td>
+</tr>
+<tr class="row-even"><td><p>2001-2500 miles</p></td>
+<td><p>4.0</p></td>
+<td><p>5.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>2501-3000 miles</p></td>
+<td><p>4.2</p></td>
+<td><p>5.8</p></td>
+</tr>
+<tr class="row-even"><td><p>3001-3500 miles</p></td>
+<td><p>5.4</p></td>
+<td><p>6.4</p></td>
+</tr>
+<tr class="row-odd"><td><p>3501-4000 miles</p></td>
+<td><p>10.5</p></td>
+<td><p>12.7</p></td>
+</tr>
+<tr class="row-even"><td><p>4001-4500 miles</p></td>
+<td><p>10.8</p></td>
+<td><p>13.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>4501-5000 miles</p></td>
+<td><p>11.0</p></td>
+<td><p>13.3</p></td>
+</tr>
+<tr class="row-even"><td><p>5001-25000 miles</p></td>
+<td><p>24.0</p></td>
+<td><p>24.0</p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple" start="3">
+<li><p><strong>Window placement differs by time-of-day preferences</strong>: Once window size is determined,
+the actual placement within the day is stochastic, based on time-of-day probability
+distributions that vary as a function of elapsed clock time (Delta_T). Prior empirical
+studies [3] [4] found that time-of-day preferences varied with direction of travel
+and number of time zones crossed. For example, eastbound transcontinental flights
+(which “lose” hours crossing time zones) showed different placement patterns than
+westbound flights (which “gain” hours). Similarly, markets crossing multiple time zones
+exhibited different patterns than those within a single time zone, as passengers account
+for jet lag and body clock adjustments.</p></li>
+</ol>
+<h3 id="step-1b-placement-of-window-using-time-of-day-demand-distribution">Step 1B: Placement of Window Using Time-of-Day Demand Distribution<a class="headerlink" href="#step-1b-placement-of-window-using-time-of-day-demand-distribution" title="Link to this heading">¶</a></h3>
+<p>The time-of-day distribution is defined as a function of elapsed clock time (Delta_T)
+rather than individual markets, allowing the model to generalize across markets with
+similar elapsed times regardless of distance, direction of travel, or time zones crossed.
+For example, markets with a 4-hour Delta_T—whether a 500-mile north-south route, a
+1,500-mile eastbound transcontinental segment, or a 2,500-mile westbound transatlantic
+segment—share the same time-of-day distribution because passengers experience similar
+“clock time” travel durations and thus have similar departure time preferences.</p>
+<p>The time-of-day distribution creates heterogeneity in window placement across passengers,
+capturing that different individuals have different preferred departure times (e.g., some
+prefer early morning, others late afternoon). These distributions vary systematically with
+Delta_T based on empirically observed patterns: short Delta_T markets typically show strong
+morning and evening peaks (for business travel before/after work), while longer Delta_T
+markets exhibit more uniform distributions reflecting greater scheduling flexibility.</p>
+<h3 id="example-decision-window-generation">Example: Decision Window Generation<a class="headerlink" href="#example-decision-window-generation" title="Link to this heading">¶</a></h3>
+<p>PassengerSim implements a decision window model derived from the framework originally
+developed for PODS and documented in MIT lecture materials [1]. The following example
+illustrates how a decision window is generated for a specific passenger:</p>
+<p><strong>Scenario</strong>: Business traveler on a medium-haul market (e.g., Boston to Chicago)</p>
+<ul class="simple">
+<li><p><strong>Market characteristics</strong>:
+* Distance: 850 nautical miles
+* Shortest elapsed clock time (Delta_T): 2.5 hours (accounting for time zones)
+* Applies distance range: 501-1000 miles</p></li>
+<li><p><strong>Step 1 - Determine tolerance</strong>:
+* Mean tolerance for business traveler at this distance: 3.3 hours (from tolerance table)
+* Standard deviation: k_factor × 3.3 = 0.3 × 3.3 = 1.0 hour
+* Random draw from N(3.3, 1.0) → e.g., 3.7 hours (constrained to ≥ 0)</p></li>
+<li><p><strong>Step 2 - Calculate window width</strong>:
+* window_width = shortest_elapsed_time + tolerance
+* window_width = 2.5 + 3.7 = 6.2 hours</p></li>
+<li><p><strong>Step 3 - Determine window placement</strong>:
+* Time-of-day distribution (dwm_tod) for medium Delta_T: peaks at 7-9 AM and 5-7 PM
+* Random draw from distribution → e.g., selects 8:00 AM as window midpoint
+* Window spans: 8:00 AM ± (6.2 hours / 2) = 4:54 AM to 11:06 AM (local time)</p></li>
+<li><p><strong>Result</strong>: This passenger will consider any itinerary departing between 4:54 AM and
+arriving by 11:06 AM (in local times) as acceptable with no schedule penalty. Itineraries
+outside this window incur disutilities based on how far they fall outside the window,
+as specified by the ChoiceModel parameters (replanning_alpha/beta or early_dep/late_arr
+S-curve functions).</p></li>
+</ul>
+<h3 id="additional-notes">Additional Notes<a class="headerlink" href="#additional-notes" title="Link to this heading">¶</a></h3>
+<p><strong>Representative Departure Day</strong>: PassengerSim uses a representative departure day approach.
+The time-of-day preference distributions represent an “average” day and do not vary across
+multiple days of the week (e.g., weekday vs. weekend patterns are not separately modeled).
+This simplification is consistent with most airline revenue management systems, which
+aggregate demand patterns across days of the week within a departure time period.</p>
+<p><strong>Customer Segments and Tolerance Table</strong>: The recommended tolerance table assumes two customer
+types labeled “business” and “leisure”. To use these defaults with more than two customer
+segments, either: (1) expand the tolerance table to include additional customer types with
+their own tolerance values, or (2) map your customer segments to the business/leisure
+categories to use this table. For example, a “premium business” segment might map to
+business tolerances, while “vacation” and “visiting friends/relatives” segments might both
+map to leisure tolerances.</p>
+<h2 id="step-2-itinerary-evaluation-and-penalties">Step 2: Itinerary Evaluation and Penalties<a class="headerlink" href="#step-2-itinerary-evaluation-and-penalties" title="Link to this heading">¶</a></h2>
+<p>Once generated, each offered itinerary is evaluated against the passenger’s window:</p>
+<ul class="simple">
+<li><p><strong>Fully Inside</strong>: Both departure and arrival within window → no penalty</p></li>
+<li><p><strong>Early Departure</strong>: Departure before window start → early departure penalty</p></li>
+<li><p><strong>Late Arrival</strong>: Arrival after window end → late arrival penalty</p></li>
+<li><p><strong>Both Early and Late</strong>: Both conditions → both penalties apply</p></li>
+</ul>
+<p>The penalty functional form (binary vs. S-curve) is specified in the ChoiceModel class
+via replanning_alpha/beta or early_dep/late_arr parameters, while DecisionWindow defines
+the window generation logic.</p>
+<p class="rubric">References</p>
+<p>[1] Boeing Commercial Airplanes (1993). “The Boeing Passenger Origin-Destination
+Simulator: A Technical Design Overview.” Boeing Commercial Airplanes Marketing
+Research and Analysis Group.
+Available at: <a class="reference external" href="https://ocw.mit.edu/courses/16-75j-airline-management-spring-2006/f4cf28d87d1ac891f5fa4ebd5faa557d_lect6b.pdf">https://ocw.mit.edu/courses/16-75j-airline-management-spring-2006/f4cf28d87d1ac891f5fa4ebd5faa557d_lect6b.pdf</a>
+Accessed January 1, 2026.</p>
+<p>[2] Carrier, E. (2003). Modeling airline passenger choice: Passenger preference for
+schedule in the passenger origin-destination simulator (PODS). MS Thesis,
+Massachusetts Institute of Technology.</p>
+<p>[3] Coldren, G. M., &amp; Koppelman, F. S. (2005). Modeling the competition among air-travel
+itinerary shares: GEV model development. Transportation Research Part A: Policy and
+Practice, 39(4), 345-365.</p>
+<p>[4] Lurkin, V., Garrow, L. A., Higgins, M. J., Newman, J. P., &amp; Schyns, M. (2016).
+Accounting for price endogeneity in airline itinerary choice models: An application
+to Continental U.S. markets. Transportation Research Part A: Policy and Practice,
+100, 228-246.</p>
+<p>[5] Small, K. A. (1982). The scheduling of consumer activities: Work trips. The American
+Economic Review, 72(3), 467-479.</p>
+<p>[6] Zeid, M. A., &amp; Ben-Akiva, M. (2012). Modeling time-of-day choice in the context of
+tour-based models. Transportation Research Record, 2302(1), 64-72.</p>
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils data align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code>(*args, **kwargs)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.DecisionWindow.add_parm" title="passengersim.core.DecisionWindow.add_parm (Python method) — Add a parameter value to the decision window model."><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_parm</span></code></a></p></td>
+<td><p>Add a parameter value to the decision window model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.DecisionWindow.get_midpoint" title="passengersim.core.DecisionWindow.get_midpoint (Python method) — Get decision window midpoint for a given random draw."><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_midpoint</span></code></a></p></td>
+<td><p>Get decision window midpoint for a given random draw.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.DecisionWindow.get_time_disutility" title="passengersim.core.DecisionWindow.get_time_disutility (Python method) — Get time disutility penalty for an offer."><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_time_disutility</span></code></a></p></td>
+<td><p>Get time disutility penalty for an offer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.DecisionWindow.get_window" title="passengersim.core.DecisionWindow.get_window (Python method) — Get decision window start and end times."><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_window</span></code></a></p></td>
+<td><p>Get decision window start and end times.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.DecisionWindow.serialize" title="passengersim.core.DecisionWindow.serialize (Python method) — Get all parameter values from the decision window model."><code class="xref py py-obj docutils literal notranslate"><span class="pre">serialize</span></code></a></p></td>
+<td><p>Get all parameter values from the decision window model.</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable docutils data align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.DecisionWindow.dwm_tod" title="passengersim.core.DecisionWindow.dwm_tod (Python attribute) — Time of Day probability distribution (24 hourly values)."><code class="xref py py-obj docutils literal notranslate"><span class="pre">dwm_tod</span></code></a></p></td>
+<td><p>Time of Day probability distribution (24 hourly values).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.DecisionWindow.k_factor" title="passengersim.core.DecisionWindow.k_factor (Python attribute) — Coefficient of variation for random draws in window placement."><code class="xref py py-obj docutils literal notranslate"><span class="pre">k_factor</span></code></a></p></td>
+<td><p>Coefficient of variation for random draws in window placement.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#passengersim.core.DecisionWindow.name" title="passengersim.core.DecisionWindow.name (Python attribute) — Name identifier for this decision window model."><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></p></td>
+<td><p>Name identifier for this decision window model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#passengersim.core.DecisionWindow.random_generator" title="passengersim.core.DecisionWindow.random_generator (Python attribute) — Random number generator for stochastic window placement."><code class="xref py py-obj docutils literal notranslate"><span class="pre">random_generator</span></code></a></p></td>
+<td><p>Random number generator for stochastic window placement.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.DecisionWindow.add_parm">
+<span class="sig-name descname"><span class="pre">add_parm</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.DecisionWindow.add_parm" title="Link to this definition">¶</a></dt>
+<dd><p>Add a parameter value to the decision window model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt><span class="sig-name descname">name</span><span class="p"> : </span><span class="desctype"><span class="desctype">str</span></span></dt><dd><p>Name of the parameter to add.</p>
+</dd>
+<dt><span class="sig-name descname">value</span><span class="p"> : </span><span class="desctype"><span class="desctype">float</span></span></dt><dd><p>Primary parameter value.</p>
+</dd>
+<dt><span class="sig-name descname">value2</span><span class="p"> : </span><span class="desctype"><span class="desctype">float, optional</span></span></dt><dd><p>Secondary parameter value for parameters requiring two values.
+Default is 0.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>int</em> – Returns 0 on success.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.DecisionWindow.dwm_tod">
+<span class="sig-name descname"><span class="pre">dwm_tod</span></span><a class="headerlink" href="#passengersim.core.DecisionWindow.dwm_tod" title="Link to this definition">¶</a></dt>
+<dd><p>Time of Day probability distribution (24 hourly values).</p>
+<p>A list of 24 values representing the probability distribution for the
+center-point of the decision window. Must sum to 1.0 (probabilities)
+or 100.0 (percentages).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>list[float]</em> – List of 24 probability values.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.DecisionWindow.get_midpoint">
+<span class="sig-name descname"><span class="pre">get_midpoint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.DecisionWindow.get_midpoint" title="Link to this definition">¶</a></dt>
+<dd><p>Get decision window midpoint for a given random draw.</p>
+<p>Used for unit tests and debugging.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt><span class="sig-name descname">z_val</span><span class="p"> : </span><span class="desctype"><span class="desctype">float</span></span></dt><dd><p>Random z-value for stochastic window placement.</p>
+</dd>
+<dt><span class="sig-name descname">snapshot_instruction</span><span class="p"> : </span><span class="desctype"><span class="desctype">optional</span></span></dt><dd><p>Debugging/logging control parameter.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>float</em> – Decision window midpoint in minutes from midnight.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.DecisionWindow.get_time_disutility">
+<span class="sig-name descname"><span class="pre">get_time_disutility</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.DecisionWindow.get_time_disutility" title="Link to this definition">¶</a></dt>
+<dd><p>Get time disutility penalty for an offer.</p>
+<p>Calculates penalties for short connections and/or long elapsed time.
+Used for unit tests and debugging.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt><span class="sig-name descname">dmd</span><span class="p"> : </span><span class="desctype"><span class="desctype"><a class="reference internal" href="passengersim.core.Demand.html#passengersim.core.Demand" title="passengersim.core.Demand (Python class) — Bases: object">Demand</a></span></span></dt><dd><p>Demand object representing the customer request.</p>
+</dd>
+<dt><span class="sig-name descname">offer</span><span class="p"> : </span><span class="desctype"><span class="desctype">Offer</span></span></dt><dd><p>Offer to evaluate for time-based penalties.</p>
+</dd>
+<dt><span class="sig-name descname">debug</span><span class="p"> : </span><span class="desctype"><span class="desctype">bool</span></span></dt><dd><p>Enable debug output if True.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>float</em> – Time disutility penalty value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.DecisionWindow.get_window">
+<span class="sig-name descname"><span class="pre">get_window</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.DecisionWindow.get_window" title="Link to this definition">¶</a></dt>
+<dd><p>Get decision window start and end times.</p>
+<p>Used for unit tests and debugging.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt><span class="sig-name descname">dmd</span><span class="p"> : </span><span class="desctype"><span class="desctype"><a class="reference internal" href="passengersim.core.Demand.html#passengersim.core.Demand" title="passengersim.core.Demand (Python class) — Bases: object">Demand</a></span></span></dt><dd><p>Demand object representing the customer request.</p>
+</dd>
+<dt><span class="sig-name descname">midpoint</span><span class="p"> : </span><span class="desctype"><span class="desctype">int</span></span></dt><dd><p>Window midpoint in minutes from midnight.</p>
+</dd>
+<dt><span class="sig-name descname">distance</span><span class="p"> : </span><span class="desctype"><span class="desctype">int</span></span></dt><dd><p>Market distance in nautical miles.</p>
+</dd>
+<dt><span class="sig-name descname">z_val</span><span class="p"> : </span><span class="desctype"><span class="desctype">float</span></span></dt><dd><p>An explicit draw from an implied random standard normal distribution.
+Providing a draw is used for testing, in practice you should generally
+omit this to get a random draw automatically.</p>
+</dd>
+<dt><span class="sig-name descname">snapshot_instruction</span><span class="p"> : </span><span class="desctype"><span class="desctype">optional</span></span></dt><dd><p>Debugging/logging control parameter.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>tuple[int, int]</em> – Tuple of (start_time, end_time) in seconds from midnight.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.DecisionWindow.k_factor">
+<span class="sig-name descname"><span class="pre">k_factor</span></span><a class="headerlink" href="#passengersim.core.DecisionWindow.k_factor" title="Link to this definition">¶</a></dt>
+<dd><p>Coefficient of variation for random draws in window placement.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>float</em> – The k-factor value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.DecisionWindow.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#passengersim.core.DecisionWindow.name" title="Link to this definition">¶</a></dt>
+<dd><p>Name identifier for this decision window model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em> – The name of the decision window model.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.DecisionWindow.random_generator">
+<span class="sig-name descname"><span class="pre">random_generator</span></span><a class="headerlink" href="#passengersim.core.DecisionWindow.random_generator" title="Link to this definition">¶</a></dt>
+<dd><p>Random number generator for stochastic window placement.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Generator</em> – The random number generator object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method objdesc">
+<dt class="sig sig-object highlight py" id="passengersim.core.DecisionWindow.serialize">
+<span class="sig-name descname"><span class="pre">serialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#passengersim.core.DecisionWindow.serialize" title="Link to this definition">¶</a></dt>
+<dd><p>Get all parameter values from the decision window model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>None</em></p>
+</dd>
+</dl>
+<div class="admonition">
+<p class="admonition-title">Notes</p>
+<p>This method is not yet fully implemented.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2026, PassengerSim LLC.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.2.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.action.view", "content.code.copy", "content.code.annotate", "navigation.tabs", "navigation.top", "navigation.tracking", "announce.dismiss"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": null}}</script>
+    
+      
+        <script src="../../../_static/sphinx_immaterial_theme.32136f45f91ae6956.min.js?v=a7a9472a"></script>
+    
+  </body>
+</html>

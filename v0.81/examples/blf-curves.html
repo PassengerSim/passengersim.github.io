@@ -1,0 +1,2203 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="olympic-fcst.html">
+      
+      
+        <link rel="next" href="../labs/index.html">
+      
+      
+      <link rel="icon" href="../_static/favicon.png">
+    
+    
+      
+        <title>Heuristic Intervention - PassengerSim</title>
+      
+    
+    
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../_static/sphinx_immaterial_theme.50640b526df5ff663.min.css?v=cff97996" />
+        <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+        <link rel="stylesheet" type="text/css" href="../_static/css/extra.css?v=663c5cee" />
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+<p>
+    <span style="vertical-align: middle; color: #ffd334; font-size: 1.2em;">&#9888;</span>
+    We recently updated our website for PassengerSim v0.80.  More or less all the same content is here (and more)
+    but any pre-existing links and bookmarks may be broken.
+</p>
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="PassengerSim" class="md-header__button md-logo" aria-label="PassengerSim" data-md-component="logo">
+      <img src="../_static/logo.svg" alt="logo">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PassengerSim
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Heuristic Intervention
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/passengersim/passengersim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    PassengerSim/passengersim
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../user-guide/welcome.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>User Guide</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../mechanics/counting-sims.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Mechanics</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="intro-3mkt.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Examples</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../api/_index.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>API</span>
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="PassengerSim" class="md-nav__button md-logo" aria-label="PassengerSim" data-md-component="logo">
+      <img src="../_static/logo.svg" alt="logo">
+    </a>
+    PassengerSim
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/passengersim/passengersim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    PassengerSim/passengersim
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>User Guide</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            <span>User Guide</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/welcome.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 10H5L3 8l2-2h6V3l1-1 1 1v1h6l2 2-2 2h-6v2h6l2 2-2 2h-6v6a2 2 0 0 1 2 2H9a2 2 0 0 1 2-2z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Wayfinding</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/installation.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m13.13 22.19-1.63-3.83c1.57-.58 3.04-1.36 4.4-2.27zM5.64 12.5l-3.83-1.63 6.1-2.77C7 9.46 6.22 10.93 5.64 12.5M21.61 2.39S16.66.269 11 5.93c-2.19 2.19-3.5 4.6-4.35 6.71-.28.75-.09 1.57.46 2.13l2.13 2.12c.55.56 1.37.74 2.12.46A19.1 19.1 0 0 0 18.07 13c5.66-5.66 3.54-10.61 3.54-10.61m-7.07 7.07c-.78-.78-.78-2.05 0-2.83s2.05-.78 2.83 0c.77.78.78 2.05 0 2.83s-2.05.78-2.83 0m-5.66 7.07-1.41-1.41zM6.24 22l3.64-3.64c-.34-.09-.67-.24-.97-.45L4.83 22zM2 22h1.41l4.77-4.76-1.42-1.41L2 20.59zm0-2.83 4.09-4.08c-.21-.3-.36-.62-.45-.97L2 17.76z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Installation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/static-config.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.5 3.5 18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2 7.5 3.5 6 2 4.5 3.5 3 2v20l1.5-1.5L6 22l1.5-1.5L9 22l1.5-1.5L12 22l1.5-1.5L15 22l1.5-1.5L18 22l1.5-1.5L21 22V2zM19 19H5V5h14zM6 15h12v2H6m0-6h12v2H6m0-6h12v2H6z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Raw Configuration</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/dynamic-config.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 2 1.5 1.5L21 2v7.13l-2 2V4.91H5v14.18h5.5v1.41L9 22l-1.5-1.5L6 22l-1.5-1.5L3 22V2l1.5 1.5L6 2l1.5 1.5L9 2l1.5 1.5L12 2l1.5 1.5L15 2l1.5 1.5zm-5 17.96 6.13-6.13 2.04 2.04L15.04 22H13zm6.83-6.83.98-.98.02-.02c.05-.04.11-.08.17-.1a.5.5 0 0 1 .53.12l1.32 1.32c.2.2.2.53 0 .72l-.98.98zm-1.83-1-.87.87H6v-2h12zM15.13 15l-2 2H6v-2zM18 9V7H6v2z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Dynamic Configuration</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/basic-usage.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m9 4 2.5 5.5L17 12l-5.5 2.5L9 20l-2.5-5.5L1 12l5.5-2.5zm0 4.83L8 11l-2.17 1L8 13l1 2.17L10 13l2.17-1L10 11zM19 9l-1.26-2.74L15 5l2.74-1.25L19 1l1.25 2.75L23 5l-2.75 1.26zm0 14-1.26-2.74L15 19l2.74-1.25L19 15l1.25 2.75L23 19l-2.75 1.26z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Summary Outputs</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/rm-systems.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 6h18v12H5zm9 3a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3M9 8a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2v-4a2 2 0 0 1-2-2zm-8 2h2v10h16v2H1z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>RM Systems</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/database/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Database</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/experiments.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 19a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1c0-.21-.07-.41-.18-.57L13 8.35V4h-2v4.35L5.18 18.43c-.11.16-.18.36-.18.57m1 3a3 3 0 0 1-3-3c0-.6.18-1.16.5-1.63L9 7.81V6a1 1 0 0 1-1-1V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1v1.81l5.5 9.56c.32.47.5 1.03.5 1.63a3 3 0 0 1-3 3zm7-6 1.34-1.34L16.27 18H7.73l2.66-4.61zm-.5-4a.5.5 0 0 1 .5.5.5.5 0 0 1-.5.5.5.5 0 0 1-.5-.5.5.5 0 0 1 .5-.5"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Experiments</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/callbacks.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.6 5.29c-1.1-.1-2.07.71-2.17 1.82L13.18 10H16v2h-3l-.44 5.07a3.986 3.986 0 0 1-4.33 3.63 4 4 0 0 1-3.06-1.87l1.5-1.5c.24.74.9 1.31 1.73 1.38 1.1.1 2.07-.71 2.17-1.82L11 12H8v-2h3.17l.27-3.07c.19-2.2 2.13-3.83 4.33-3.63 1.31.11 2.41.84 3.06 1.87l-1.5 1.5c-.24-.74-.9-1.31-1.73-1.38"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Callbacks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/tracers.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.84 2.73c-.39 0-.77.15-1.07.44l-2.12 2.12 5.3 5.31 2.12-2.1c.6-.61.6-1.56 0-2.14L17.9 3.17c-.3-.29-.68-.44-1.06-.44M12.94 6l-8.1 8.11 2.56.28.18 2.29 2.28.17.29 2.56 8.1-8.11m-14 3.74L2.5 21.73l6.7-1.79-.24-2.16-2.31-.17-.18-2.32"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Tracing</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/viz/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.45 15.18 22 7.31V21H2V3h2v12.54L9.5 6 16 9.78l4.24-7.33 1.73 1-5.23 9.05-6.51-3.75L4.31 19h2.26l4.39-7.56z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Visualizations</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/firehose.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 15v-1H4v-2h1v-1h2v4zm14-3v-1h-2v4h2v-1h1v-2zm-1-6h-2.14C15.5 4.6 14.4 3.5 13 3.14V2h-2v1.14C9.6 3.5 8.5 4.6 8.14 6H6v2h12zm0 16H6c0-1.1.9-2 2-2V9h8v11a2 2 0 0 1 2 2m-8-9a2 2 0 1 0 4 0c0-1.11-.89-2-2-2s-2 .9-2 2"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Firehose</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>Mechanics</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Mechanics</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mechanics/counting-sims.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 10.73V19h-2v-7.64L15 12v7h-2v-6.38l-2 .64V19H9v-5.11l-2 .61V19H5v-3.85l-2.43.77L2 14l3-.95V5h2v7.42l2-.63V5h2v6.16l2-.63V5h2v4.9l2-.64V5h2v3.63L21 8l.57 1.92z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Counting Simulations</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mechanics/demand-generation.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.35 5.64c-.9-.64-1.12-1.88-.49-2.79.64-.9 1.88-1.12 2.79-.49.9.64 1.12 1.88.49 2.79-.64.9-1.88 1.12-2.79.49M16 19H8.93c-1.48 0-2.74-1.08-2.96-2.54L4 7H2l2 9.76A4.99 4.99 0 0 0 8.94 21H16m.23-6h-4.88l-1.03-4.1c1.58.89 3.28 1.54 5.15 1.22V10c-1.63.3-3.44-.28-4.69-1.26L9.14 7.47c-.23-.18-.49-.3-.76-.38a2.2 2.2 0 0 0-.99-.06h-.02a2.27 2.27 0 0 0-1.84 2.61l1.35 5.92A2.99 2.99 0 0 0 9.83 18h6.85l3.82 3 1.5-1.5"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Demand Generation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mechanics/forecasting.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m9.38 8.38 2.12.96 2.12-.96-.96 2.12.96 2.12-2.12-.96-2.12.96.96-2.12zM16.5 2.5l1.09 2.91L20.5 6.5l-2.91 1.09-1.09 2.91-1.09-2.91L12.5 6.5l2.91-1.09zM6 19h1v-1a1 1 0 0 1 1-1h.26a7.47 7.47 0 0 1-3.76-6.5A7.5 7.5 0 0 1 12 3c1.05 0 2.05.22 2.96.61l-.37.98-1.42.53Q12.6 5 12 5a5.5 5.5 0 0 0-5.5 5.5A5.5 5.5 0 0 0 12 16c2.91 0 5.3-2.27 5.5-5.13l.91-2.46.71-.27c.25.74.38 1.54.38 2.36 0 2.78-1.5 5.2-3.76 6.5H16a1 1 0 0 1 1 1v1h1a2 2 0 0 1 2 2v1H4v-1a2 2 0 0 1 2-2"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Forecasting</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>Examples</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Examples</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="intro-3mkt.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>The 3MKT Network</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="EE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Basic Simulation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="PE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Pro<wbr>BP Optimization</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="LL.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Unrestricted Networks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="QC.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Q vs Conditional Forecasting</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="olympic-fcst.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Custom Forecaster</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Heuristic Intervention</span>
+    
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../labs/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Labs</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>API</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            <span>API</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Passenger<wbr>Sim</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/callbacks/passengersim.callbacks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>callbacks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/config.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>config</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/connection_builder/passengersim.connection_builder.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>connection_<wbr>builder</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/contrast/passengersim.contrast.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>contrast</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/core/passengersim.core.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>core</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/database/passengersim.database.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>database</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/driver/passengersim.driver.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>driver</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/experiments/passengersim.experiments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>experiments</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/rm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>rm</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/summaries/passengersim.summaries.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>summaries</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/tracers/passengersim.tracers.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>tracers</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/_generated/transforms/passengersim.transforms.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>transforms</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                
+                
+                  
+
+
+<h1 id="heuristic-intervention">Heuristic Intervention<a class="headerlink" href="#heuristic-intervention" title="Link to this heading">¶</a></h1>
+<p>In this example, we will demonstrate the use of a heuristic intervention.
+These interventions are not based on rigorous forecasts or formal optimization,
+but instead are just heuristic tweaks that try to improve revenue by changing
+parts of the RM system. For example, the heuristic we demonstrate here is a
+booked load factor curve adjustment, which takes an exogenously provided booked
+load factor curve for individual legs, and nudges the mean forecast up or down
+if the leg’s actual bookings are running much higher or lower than expected at
+any point in the booking curve. This is meant to replicate what a human analyst
+might do in a similar situation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">passengersim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pax</span>
+
+<span class="n">pax</span><span class="o">.</span><span class="n">versions</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><code>passengersim 0.81
+passengersim.core 0.81
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>We’ll start by loading the standard 3MKT demo model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">cfg</span> <span class="o">=</span> <span class="n">pax</span><span class="o">.</span><span class="n">Config</span><span class="o">.</span><span class="n">from_yaml</span><span class="p">(</span><span class="n">pax</span><span class="o">.</span><span class="n">demo_network</span><span class="p">(</span><span class="s2">&quot;3MKT/DEMO&quot;</span><span class="p">))</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>The heuristic adjustment is made using a <code class="docutils literal notranslate"><span class="pre">RmAction</span></code>, which works just like any other <code class="docutils literal notranslate"><span class="pre">RmAction</span></code>
+when it is inserted in a <code class="docutils literal notranslate"><span class="pre">RmSys</span></code>’s action list.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">passengersim.rm.emsr</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExpectedMarginalSeatRevenue</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">passengersim.rm.heuristic_adjustments.booked_lf</span><span class="w"> </span><span class="kn">import</span> <span class="n">BookedLoadFactorAdjustment</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">passengersim.rm.standard_forecasting</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardLegForecast</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">passengersim.rm.systems</span><span class="w"> </span><span class="kn">import</span> <span class="n">RmSys</span><span class="p">,</span> <span class="n">register_rm_system</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">passengersim.rm.untruncation</span><span class="w"> </span><span class="kn">import</span> <span class="n">LegUntruncation</span>
+
+
+<span class="nd">@register_rm_system</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">EX</span><span class="p">(</span><span class="n">RmSys</span><span class="p">):</span>
+    <span class="n">availability_control</span> <span class="o">=</span> <span class="s2">&quot;leg&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This RM system uses leg-level class allocation availability controls.&quot;&quot;&quot;</span>
+
+    <span class="n">actions</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">LegUntruncation</span><span class="p">,</span>
+        <span class="n">StandardLegForecast</span><span class="p">,</span>
+        <span class="n">BookedLoadFactorAdjustment</span><span class="p">,</span>
+        <span class="n">ExpectedMarginalSeatRevenue</span><span class="p">,</span>
+    <span class="p">]</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">BookedLoadFactorAdjustment</span></code> uses a set of booked load factor curves, which are stored
+in a configuration’s <code class="docutils literal notranslate"><span class="pre">other_controls</span></code> attribute. This attribute allows users to set arbitrary
+other controls, which can be loaded, validated, and used by <code class="docutils literal notranslate"><span class="pre">RmAction</span></code> steps that call them.
+For the booked load factor adjustment, the needed inputs are stored under the
+“booked_load_factor_curves” key.  These curves are already included in the demo configuration,
+so we don’t need to do anything special to make them available.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">cfg</span><span class="o">.</span><span class="n">other_controls</span><span class="p">[</span><span class="s2">&quot;booked_load_factor_curves&quot;</span><span class="p">]</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><code>{&#39;BOSTON&#39;: {&#39;lower_bound&#39;: {0: 0.64,
+   1: 0.64,
+   2: 0.61,
+   3: 0.59,
+   4: 0.56,
+   5: 0.54,
+   6: 0.53,
+   7: 0.52,
+   8: 0.5,
+   9: 0.48,
+   10: 0.47,
+   11: 0.46,
+   12: 0.45,
+   13: 0.44,
+   14: 0.43,
+   15: 0.42,
+   16: 0.41,
+   17: 0.4,
+   18: 0.4,
+   19: 0.39,
+   20: 0.38,
+   21: 0.37,
+   22: 0.36,
+   23: 0.34,
+   24: 0.33,
+   25: 0.31,
+   26: 0.31,
+   27: 0.3,
+   28: 0.28,
+   29: 0.28,
+   30: 0.27,
+   31: 0.27,
+   32: 0.26,
+   33: 0.25,
+   34: 0.24,
+   35: 0.23,
+   36: 0.22,
+   37: 0.21,
+   38: 0.2,
+   39: 0.19,
+   40: 0.18,
+   41: 0.18,
+   42: 0.17,
+   43: 0.16,
+   44: 0.16,
+   45: 0.15,
+   46: 0.14,
+   47: 0.14,
+   48: 0.13,
+   49: 0.12,
+   50: 0.12,
+   51: 0.11,
+   52: 0.1,
+   53: 0.1,
+   54: 0.09,
+   55: 0.09,
+   56: 0.08,
+   57: 0.06,
+   58: 0.05,
+   59: 0.04,
+   60: 0.02,
+   61: 0.01,
+   62: 0.0,
+   63: 0.0},
+  &#39;upper_bound&#39;: {0: 1.0,
+   1: 1.0,
+   2: 0.99,
+   3: 0.96,
+   4: 0.94,
+   5: 0.92,
+   6: 0.9,
+   7: 0.88,
+   8: 0.86,
+   9: 0.83,
+   10: 0.81,
+   11: 0.8,
+   12: 0.78,
+   13: 0.76,
+   14: 0.74,
+   15: 0.73,
+   16: 0.71,
+   17: 0.7,
+   18: 0.69,
+   19: 0.68,
+   20: 0.67,
+   21: 0.66,
+   22: 0.64,
+   23: 0.62,
+   24: 0.6,
+   25: 0.59,
+   26: 0.57,
+   27: 0.55,
+   28: 0.54,
+   29: 0.53,
+   30: 0.52,
+   31: 0.51,
+   32: 0.49,
+   33: 0.48,
+   34: 0.46,
+   35: 0.45,
+   36: 0.44,
+   37: 0.43,
+   38: 0.42,
+   39: 0.4,
+   40: 0.39,
+   41: 0.37,
+   42: 0.36,
+   43: 0.35,
+   44: 0.34,
+   45: 0.33,
+   46: 0.31,
+   47: 0.3,
+   48: 0.29,
+   49: 0.27,
+   50: 0.26,
+   51: 0.25,
+   52: 0.24,
+   53: 0.23,
+   54: 0.21,
+   55: 0.2,
+   56: 0.18,
+   57: 0.16,
+   58: 0.13,
+   59: 0.11,
+   60: 0.09,
+   61: 0.06,
+   62: 0.04,
+   63: 0.0}},
+ &#39;CHICAGO&#39;: {&#39;lower_bound&#39;: {0: 0.71,
+   1: 0.69,
+   2: 0.67,
+   3: 0.64,
+   4: 0.62,
+   5: 0.6,
+   6: 0.58,
+   7: 0.56,
+   8: 0.55,
+   9: 0.53,
+   10: 0.52,
+   11: 0.5,
+   12: 0.49,
+   13: 0.48,
+   14: 0.47,
+   15: 0.46,
+   16: 0.44,
+   17: 0.43,
+   18: 0.42,
+   19: 0.42,
+   20: 0.41,
+   21: 0.4,
+   22: 0.38,
+   23: 0.37,
+   24: 0.35,
+   25: 0.34,
+   26: 0.33,
+   27: 0.32,
+   28: 0.31,
+   29: 0.3,
+   30: 0.29,
+   31: 0.28,
+   32: 0.28,
+   33: 0.27,
+   34: 0.26,
+   35: 0.25,
+   36: 0.24,
+   37: 0.23,
+   38: 0.23,
+   39: 0.22,
+   40: 0.21,
+   41: 0.2,
+   42: 0.19,
+   43: 0.18,
+   44: 0.17,
+   45: 0.17,
+   46: 0.16,
+   47: 0.15,
+   48: 0.14,
+   49: 0.13,
+   50: 0.12,
+   51: 0.12,
+   52: 0.12,
+   53: 0.1,
+   54: 0.1,
+   55: 0.09,
+   56: 0.08,
+   57: 0.07,
+   58: 0.05,
+   59: 0.04,
+   60: 0.03,
+   61: 0.02,
+   62: 0.0,
+   63: 0.0},
+  &#39;upper_bound&#39;: {0: 1.0,
+   1: 1.0,
+   2: 1.0,
+   3: 0.97,
+   4: 0.94,
+   5: 0.93,
+   6: 0.89,
+   7: 0.88,
+   8: 0.85,
+   9: 0.82,
+   10: 0.81,
+   11: 0.79,
+   12: 0.78,
+   13: 0.75,
+   14: 0.73,
+   15: 0.72,
+   16: 0.71,
+   17: 0.68,
+   18: 0.68,
+   19: 0.67,
+   20: 0.66,
+   21: 0.64,
+   22: 0.62,
+   23: 0.62,
+   24: 0.59,
+   25: 0.57,
+   26: 0.57,
+   27: 0.56,
+   28: 0.53,
+   29: 0.53,
+   30: 0.52,
+   31: 0.5,
+   32: 0.48,
+   33: 0.47,
+   34: 0.46,
+   35: 0.44,
+   36: 0.43,
+   37: 0.42,
+   38: 0.41,
+   39: 0.4,
+   40: 0.38,
+   41: 0.38,
+   42: 0.36,
+   43: 0.35,
+   44: 0.33,
+   45: 0.33,
+   46: 0.32,
+   47: 0.3,
+   48: 0.28,
+   49: 0.28,
+   50: 0.26,
+   51: 0.25,
+   52: 0.23,
+   53: 0.23,
+   54: 0.21,
+   55: 0.2,
+   56: 0.18,
+   57: 0.16,
+   58: 0.13,
+   59: 0.11,
+   60: 0.08,
+   61: 0.06,
+   62: 0.03,
+   63: 0.0}}}
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>You may not that this configuration is itself a dictionary, which has a couple of different curves
+stored under different keys:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">cfg</span><span class="o">.</span><span class="n">other_controls</span><span class="p">[</span><span class="s2">&quot;booked_load_factor_curves&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><code>dict_keys([&#39;BOSTON&#39;, &#39;CHICAGO&#39;])
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>To tell the action which curve to use for which leg, we’ll attach a ‘BLF_Curve’ tag to each leg,
+which tells the simulation which curve to use.  For this example, we’ll attach the “BOSTON”
+curve to the legs originating at BOS, and the “CHICAGO” tag to legs originating at ORD.  This is
+our choice in assigning these tags; we could alternatively assign tags based on stage length,
+departure time of day, or any other leg attribute(s) we like.  In the extreme, we could create and
+assign a unique curve to every individual leg in the entire simulation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">leg</span> <span class="ow">in</span> <span class="n">cfg</span><span class="o">.</span><span class="n">legs</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">leg</span><span class="o">.</span><span class="n">carrier</span> <span class="o">==</span> <span class="s2">&quot;AL1&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">leg</span><span class="o">.</span><span class="n">orig</span> <span class="o">==</span> <span class="s2">&quot;BOS&quot;</span><span class="p">:</span>
+            <span class="n">leg</span><span class="o">.</span><span class="n">tags</span><span class="p">[</span><span class="s2">&quot;BLF_Curve&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;BOSTON&quot;</span>
+        <span class="k">if</span> <span class="n">leg</span><span class="o">.</span><span class="n">orig</span> <span class="o">==</span> <span class="s2">&quot;ORD&quot;</span><span class="p">:</span>
+            <span class="n">leg</span><span class="o">.</span><span class="n">tags</span><span class="p">[</span><span class="s2">&quot;BLF_Curve&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;CHICAGO&quot;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>We’re now pretty much all set up and use this new RM system in a simulation in place of a standard “E” type system.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">cfg</span><span class="o">.</span><span class="n">carriers</span><span class="o">.</span><span class="n">AL1</span><span class="o">.</span><span class="n">rm_system</span> <span class="o">=</span> <span class="s2">&quot;EX&quot;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Let’s run it and see what happens.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">sim</span> <span class="o">=</span> <span class="n">pax</span><span class="o">.</span><span class="n">MultiSimulation</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">summary</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "a6ee7eb9d7d944b4aefb2912565912af"}</script><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">   ╭─────────────────────────────────────╮                                                                         
+   │ <span style="color: #800080; text-decoration-color: #800080">licensed for jpn</span>                    │                                                                         
+   │ <span style="color: #800080; text-decoration-color: #800080">until 2036-05-28 15:49:32+00:00 UTC</span> │                                                                         
+   │ <span style="color: #800080; text-decoration-color: #800080">maximum 42000 legs in network</span>       │                                                                         
+   ╰─────────────────────────────────────╯                                                                         
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">summary</span><span class="o">.</span><span class="n">fig_carrier_revenues</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-bbeb3012e0e043e18c8d44e1f8638703.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-bbeb3012e0e043e18c8d44e1f8638703.vega-embed details,
+  #altair-viz-bbeb3012e0e043e18c8d44e1f8638703.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-bbeb3012e0e043e18c8d44e1f8638703"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-bbeb3012e0e043e18c8d44e1f8638703") {
+      outputDiv = document.getElementById("altair-viz-bbeb3012e0e043e18c8d44e1f8638703");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFontSize": 12}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "rm_system", "title": "RM System", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "rm_system", "title": "RM System", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Average Revenue", "type": "quantitative"}], "x": {"axis": {"format": "$.4s"}, "field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"axis": {"format": "$.4s"}, "field": "avg_rev", "stack": "zero", "title": "Average Revenue", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-7afb7010784f26b8a96d1a0aecbafa9c"}, "height": 50, "title": "Carrier Revenues", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-7afb7010784f26b8a96d1a0aecbafa9c": [{"carrier": "AL1", "avg_rev": 91667.10714285714, "rm_system": "EX"}, {"carrier": "AL2", "avg_rev": 90458.32142857142, "rm_system": "E"}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">summary</span><span class="o">.</span><span class="n">fig_carrier_load_factors</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-07e5b9d4958a4694bd7bd45bddb182d0.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-07e5b9d4958a4694bd7bd45bddb182d0.vega-embed details,
+  #altair-viz-07e5b9d4958a4694bd7bd45bddb182d0.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-07e5b9d4958a4694bd7bd45bddb182d0"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-07e5b9d4958a4694bd7bd45bddb182d0") {
+      outputDiv = document.getElementById("altair-viz-07e5b9d4958a4694bd7bd45bddb182d0");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFontSize": 12}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "rm_system", "title": "RM System", "type": "nominal"}, "tooltip": [{"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "rm_system", "title": "RM System", "type": "nominal"}, {"field": "sys_lf", "format": ".2f", "title": "System Load Factor", "type": "quantitative"}], "x": {"axis": {"format": ".2f"}, "field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "sys_lf", "format": ".2f", "type": "quantitative"}, "x": {"axis": {"format": ".2f"}, "field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "carrier", "title": "Carrier", "type": "nominal"}}}], "data": {"name": "data-eef0306b7afbefa4428eab5011eef8ce"}, "height": 50, "title": "Carrier System Load Factors", "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-eef0306b7afbefa4428eab5011eef8ce": [{"carrier": "AL1", "sys_lf": 87.1146320172017, "rm_system": "EX"}, {"carrier": "AL2", "sys_lf": 88.21129028326627, "rm_system": "E"}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">summary</span><span class="o">.</span><span class="n">fig_fare_class_mix</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-0f871053b4f44f91b7befee0db0469d5.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-0f871053b4f44f91b7befee0db0469d5.vega-embed details,
+  #altair-viz-0f871053b4f44f91b7befee0db0469d5.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-0f871053b4f44f91b7befee0db0469d5"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-0f871053b4f44f91b7befee0db0469d5") {
+      outputDiv = document.getElementById("altair-viz-0f871053b4f44f91b7befee0db0469d5");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 12, "titleFontSize": 12}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif", "labelFontSize": 15, "titleFontSize": 12}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "booking_class", "type": "nominal"}, "tooltip": [{"field": "carrier", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "title": "Fare Class Mix", "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}, {"mark": {"type": "text", "baseline": "top", "color": "white", "dx": 0, "dy": 3}, "encoding": {"opacity": {"condition": {"test": "datum.avg_sold < 17.167", "value": 0}, "value": 1}, "order": {"field": "booking_class", "sort": "descending", "type": "nominal"}, "text": {"field": "avg_sold", "format": ".2f", "type": "quantitative"}, "tooltip": [{"field": "carrier", "type": "nominal"}, {"field": "booking_class", "type": "nominal"}, {"field": "avg_sold", "format": ".2f", "type": "quantitative"}], "x": {"field": "carrier", "title": "Carrier", "type": "nominal"}, "y": {"field": "avg_sold", "stack": "zero", "title": "Seats", "type": "quantitative"}}, "title": "Fare Class Mix", "transform": [{"calculate": "datum.avg_sold / 2.0", "as": "halfsold"}]}], "data": {"name": "data-85890c94aee33cddbb09d140c8fd9f28"}, "height": 300, "width": 400, "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-85890c94aee33cddbb09d140c8fd9f28": [{"carrier": "AL1", "booking_class": "Y0", "avg_sold": 55.41}, {"carrier": "AL1", "booking_class": "Y1", "avg_sold": 54.06428571428572}, {"carrier": "AL1", "booking_class": "Y2", "avg_sold": 30.44857142857143}, {"carrier": "AL1", "booking_class": "Y3", "avg_sold": 13.911428571428571}, {"carrier": "AL1", "booking_class": "Y4", "avg_sold": 97.80571428571429}, {"carrier": "AL1", "booking_class": "Y5", "avg_sold": 32.07857142857143}, {"carrier": "AL2", "booking_class": "Y0", "avg_sold": 53.80571428571429}, {"carrier": "AL2", "booking_class": "Y1", "avg_sold": 51.56}, {"carrier": "AL2", "booking_class": "Y2", "avg_sold": 28.365714285714287}, {"carrier": "AL2", "booking_class": "Y3", "avg_sold": 13.548571428571428}, {"carrier": "AL2", "booking_class": "Y4", "avg_sold": 103.16142857142857}, {"carrier": "AL2", "booking_class": "Y5", "avg_sold": 35.677142857142854}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">summary</span><span class="o">.</span><span class="n">fig_carrier_head_to_head_revenue</span><span class="p">(</span><span class="s2">&quot;AL1&quot;</span><span class="p">,</span> <span class="s2">&quot;AL2&quot;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-0e7799a3a5f646cea517fde4d94dbd80.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-0e7799a3a5f646cea517fde4d94dbd80.vega-embed details,
+  #altair-viz-0e7799a3a5f646cea517fde4d94dbd80.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-0e7799a3a5f646cea517fde4d94dbd80"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-0e7799a3a5f646cea517fde4d94dbd80") {
+      outputDiv = document.getElementById("altair-viz-0e7799a3a5f646cea517fde4d94dbd80");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "layer": [{"data": {"name": "data-791908ee28654a8e1b1c35a41e9e49a9"}, "mark": {"type": "circle", "opacity": 0.3}, "encoding": {"x": {"axis": {"format": "%"}, "field": "AL1", "scale": {"zero": false}, "title": "AL1 Percentage of Mean Revenue", "type": "quantitative"}, "y": {"axis": {"format": "%"}, "field": "AL2", "scale": {"zero": false}, "title": "AL2 Percentage of Mean Revenue", "type": "quantitative"}}, "name": "view_3744f6761d86846c_0"}, {"data": {"name": "data-2f903a8968f0040ecb85957060314234"}, "mark": {"type": "line", "color": "red", "opacity": 0.3}, "encoding": {"x": {"field": "AL1", "type": "quantitative"}, "y": {"field": "AL2", "type": "quantitative"}}}], "params": [{"name": "param_1e9efca18e7a2868", "select": {"type": "interval", "encodings": ["x", "y"]}, "bind": "scales", "views": ["view_3744f6761d86846c_0"]}], "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-791908ee28654a8e1b1c35a41e9e49a9": [{"trial": 0, "sample": 50, "AL1": 0.9106319878722661, "AL2": 0.925564377912006}, {"trial": 0, "sample": 51, "AL1": 0.8350868963356929, "AL2": 0.9319208964823184}, {"trial": 0, "sample": 52, "AL1": 1.0641767046054453, "AL2": 1.0667896383219895}, {"trial": 0, "sample": 53, "AL1": 1.0723584834722222, "AL2": 0.9949333414401975}, {"trial": 0, "sample": 54, "AL1": 1.0791766325278696, "AL2": 1.0958085274473286}, {"trial": 0, "sample": 55, "AL1": 0.986722531333291, "AL2": 1.0988486015461738}, {"trial": 0, "sample": 56, "AL1": 1.1168128153150432, "AL2": 1.0579457863980768}, {"trial": 0, "sample": 57, "AL1": 0.7655417759680895, "AL2": 0.9468448966039213}, {"trial": 0, "sample": 58, "AL1": 1.0159042092914619, "AL2": 1.0974667496830623}, {"trial": 0, "sample": 59, "AL1": 0.889904814743098, "AL2": 0.846798821714657}, {"trial": 0, "sample": 60, "AL1": 0.999813377520134, "AL2": 1.0808845273257257}, {"trial": 0, "sample": 61, "AL1": 0.9340864206236931, "AL2": 0.9769692672197495}, {"trial": 0, "sample": 62, "AL1": 1.004995170802426, "AL2": 1.0267159342917593}, {"trial": 0, "sample": 63, "AL1": 0.7516327518945688, "AL2": 0.7699678581256639}, {"trial": 0, "sample": 64, "AL1": 1.0243587141204646, "AL2": 1.0850300829150599}, {"trial": 0, "sample": 65, "AL1": 1.1585398875356052, "AL2": 1.09719037931044}, {"trial": 0, "sample": 66, "AL1": 0.9354500504348225, "AL2": 0.943528452132454}, {"trial": 0, "sample": 67, "AL1": 0.751087299970117, "AL2": 0.7334869689395234}, {"trial": 0, "sample": 68, "AL1": 1.0257223439315941, "AL2": 0.9426993410145872}, {"trial": 0, "sample": 69, "AL1": 0.7298146749164971, "AL2": 0.9037311184748461}, {"trial": 0, "sample": 70, "AL1": 1.0093587861980404, "AL2": 1.1480425278729391}, {"trial": 0, "sample": 71, "AL1": 1.1195400749373021, "AL2": 1.070106082793457}, {"trial": 0, "sample": 72, "AL1": 1.0614494449831864, "AL2": 1.0037771933641104}, {"trial": 0, "sample": 73, "AL1": 0.9823589159376767, "AL2": 1.0814372680709703}, {"trial": 0, "sample": 74, "AL1": 1.1309945653507898, "AL2": 1.1596500835230747}, {"trial": 0, "sample": 75, "AL1": 0.9280864494547234, "AL2": 0.9283280816382288}, {"trial": 0, "sample": 76, "AL1": 0.9779953005420623, "AL2": 0.8697375626423061}, {"trial": 0, "sample": 77, "AL1": 0.9463590889238584, "AL2": 0.8514971180492357}, {"trial": 0, "sample": 78, "AL1": 0.9302682571525306, "AL2": 0.9556887485278341}, {"trial": 0, "sample": 79, "AL1": 0.9406318437171146, "AL2": 1.028374156527493}, {"trial": 0, "sample": 80, "AL1": 1.1465399451976659, "AL2": 1.0905574903675055}, {"trial": 0, "sample": 81, "AL1": 0.9106319878722661, "AL2": 0.97337645237566}, {"trial": 0, "sample": 82, "AL1": 0.8738139829717702, "AL2": 0.9554123781552118}, {"trial": 0, "sample": 83, "AL1": 0.7592690788368939, "AL2": 0.7868264508556229}, {"trial": 0, "sample": 84, "AL1": 1.119812800899528, "AL2": 1.0678951198124786}, {"trial": 0, "sample": 85, "AL1": 0.9689953437886077, "AL2": 0.9819439339269505}, {"trial": 0, "sample": 86, "AL1": 1.201630589567297, "AL2": 1.10327052750813}, {"trial": 0, "sample": 87, "AL1": 1.0300859593272085, "AL2": 1.070106082793457}, {"trial": 0, "sample": 88, "AL1": 0.8258142136200125, "AL2": 0.8103179325285165}, {"trial": 0, "sample": 89, "AL1": 1.1116310220327512, "AL2": 1.0444036381395851}, {"trial": 0, "sample": 90, "AL1": 0.8618140406338307, "AL2": 0.9880240821246405}, {"trial": 0, "sample": 91, "AL1": 0.9935406803889384, "AL2": 1.0919393422306167}, {"trial": 0, "sample": 92, "AL1": 1.1923579068516164, "AL2": 1.1405805278121375}, {"trial": 0, "sample": 93, "AL1": 1.0958129162236492, "AL2": 1.0933211940937282}, {"trial": 0, "sample": 94, "AL1": 1.0409949978162443, "AL2": 1.017319341622602}, {"trial": 0, "sample": 95, "AL1": 1.0527222141919577, "AL2": 0.9540305262921005}, {"trial": 0, "sample": 96, "AL1": 1.1140855556927842, "AL2": 1.072317045774435}, {"trial": 0, "sample": 97, "AL1": 1.1263582239929497, "AL2": 0.9755874153566382}, {"trial": 0, "sample": 98, "AL1": 1.1629035029312196, "AL2": 1.133947638869203}, {"trial": 0, "sample": 99, "AL1": 0.7208147181630425, "AL2": 0.6900968204378259}, {"trial": 0, "sample": 100, "AL1": 0.7805417038905138, "AL2": 0.8437587476158119}, {"trial": 0, "sample": 101, "AL1": 1.0617221709454123, "AL2": 1.0018426007557544}, {"trial": 0, "sample": 102, "AL1": 0.8230869539977534, "AL2": 0.8542608217754585}, {"trial": 0, "sample": 103, "AL1": 0.9209955744368501, "AL2": 0.9758637857292604}, {"trial": 0, "sample": 104, "AL1": 1.0622676228698642, "AL2": 1.087241045896038}, {"trial": 0, "sample": 105, "AL1": 1.119812800899528, "AL2": 1.0565639345349653}, {"trial": 0, "sample": 106, "AL1": 1.1378127144064372, "AL2": 1.1129434905499098}, {"trial": 0, "sample": 107, "AL1": 0.9428136514149218, "AL2": 0.9946569710675752}, {"trial": 0, "sample": 108, "AL1": 1.1473581230843435, "AL2": 1.136987712968048}, {"trial": 0, "sample": 109, "AL1": 1.1301763874641122, "AL2": 1.149148009363428}, {"trial": 0, "sample": 110, "AL1": 1.185267031833743, "AL2": 1.237862898975179}, {"trial": 0, "sample": 111, "AL1": 1.1419036038398256, "AL2": 1.0869646755234157}, {"trial": 0, "sample": 112, "AL1": 1.056813103625346, "AL2": 1.0786735643447476}, {"trial": 0, "sample": 113, "AL1": 1.2079032866984925, "AL2": 1.19668371345446}, {"trial": 0, "sample": 114, "AL1": 1.0205405506493022, "AL2": 0.9891295636151297}, {"trial": 0, "sample": 115, "AL1": 0.955359045677313, "AL2": 0.9896823043603743}, {"trial": 0, "sample": 116, "AL1": 1.1528126423288616, "AL2": 1.0880701570139049}, {"trial": 0, "sample": 117, "AL1": 0.989177064993324, "AL2": 0.9374483039347639}, {"trial": 0, "sample": 118, "AL1": 0.9834498197865802, "AL2": 0.9092585259272916}, {"trial": 0, "sample": 119, "AL1": 0.8386323338446295, "AL2": 0.8899125998437323}, {"trial": 0, "sample": 120, "AL1": 1.0219041804604316, "AL2": 1.1038232682533746}, {"trial": 0, "sample": 121, "AL1": 0.9736316851464479, "AL2": 0.9540305262921005}, {"trial": 0, "sample": 122, "AL1": 0.7693599394392521, "AL2": 0.7088900057761407}, {"trial": 0, "sample": 123, "AL1": 1.0761766469433849, "AL2": 1.0286505269001154}, {"trial": 0, "sample": 124, "AL1": 1.1503581086688284, "AL2": 1.1463843056372054}, {"trial": 0, "sample": 125, "AL1": 1.0268132477804977, "AL2": 1.0369416380787837}, {"trial": 0, "sample": 126, "AL1": 1.1579944356111536, "AL2": 1.0999540830366628}, {"trial": 0, "sample": 127, "AL1": 1.2019033155295227, "AL2": 1.1801014910971233}, {"trial": 0, "sample": 128, "AL1": 1.075631195018933, "AL2": 1.0521420085730089}, {"trial": 0, "sample": 129, "AL1": 0.7767235404193512, "AL2": 0.714141042855964}, {"trial": 0, "sample": 130, "AL1": 1.2411758540900517, "AL2": 1.1894980837662805}, {"trial": 0, "sample": 131, "AL1": 1.093631108525842, "AL2": 1.0468909714931856}, {"trial": 0, "sample": 132, "AL1": 1.09908562777036, "AL2": 1.1590973427778302}, {"trial": 0, "sample": 133, "AL1": 1.0895402190924537, "AL2": 1.020359415721447}, {"trial": 0, "sample": 134, "AL1": 0.5852699149367724, "AL2": 0.6179641531834116}, {"trial": 0, "sample": 135, "AL1": 1.185539757795969, "AL2": 1.1737449725268108}, {"trial": 0, "sample": 136, "AL1": 1.1585398875356052, "AL2": 1.154951787188496}, {"trial": 0, "sample": 137, "AL1": 0.9820861899754507, "AL2": 0.8606173403457709}, {"trial": 0, "sample": 138, "AL1": 1.088722041205776, "AL2": 1.1212346017285781}, {"trial": 0, "sample": 139, "AL1": 0.8119051895464918, "AL2": 0.9280517112656065}, {"trial": 0, "sample": 140, "AL1": 1.2073578347740406, "AL2": 1.1729158614089439}, {"trial": 0, "sample": 141, "AL1": 1.2583575897102832, "AL2": 1.2251498618345544}, {"trial": 0, "sample": 142, "AL1": 1.141085425953148, "AL2": 1.1737449725268108}, {"trial": 0, "sample": 143, "AL1": 0.8841775695363542, "AL2": 0.9551360077825897}, {"trial": 0, "sample": 144, "AL1": 0.7767235404193512, "AL2": 0.7636113395553517}, {"trial": 0, "sample": 145, "AL1": 1.1694489260246412, "AL2": 1.0449563788848297}, {"trial": 0, "sample": 146, "AL1": 1.0879038633190983, "AL2": 1.0319669713715827}, {"trial": 0, "sample": 147, "AL1": 1.083540247923484, "AL2": 1.1223400832190673}, {"trial": 0, "sample": 148, "AL1": 0.9747225889953516, "AL2": 1.0604331197516772}, {"trial": 0, "sample": 149, "AL1": 0.8282687472800455, "AL2": 0.9313681557370738}, {"trial": 0, "sample": 150, "AL1": 1.141358151915374, "AL2": 1.1035468978807523}, {"trial": 0, "sample": 151, "AL1": 0.9234501080968831, "AL2": 0.8990328221402674}, {"trial": 0, "sample": 152, "AL1": 1.0071769785002331, "AL2": 1.0115155637975342}, {"trial": 0, "sample": 153, "AL1": 1.1367218105575336, "AL2": 1.0656841568315005}, {"trial": 0, "sample": 154, "AL1": 1.2859029118950986, "AL2": 1.1488716389908058}, {"trial": 0, "sample": 155, "AL1": 0.8781775983673844, "AL2": 0.922524303813161}, {"trial": 0, "sample": 156, "AL1": 1.012631497744751, "AL2": 0.9918932673413525}, {"trial": 0, "sample": 157, "AL1": 1.1312672913130157, "AL2": 1.1286966017893796}, {"trial": 0, "sample": 158, "AL1": 1.0183587429514949, "AL2": 0.9529250448016114}, {"trial": 0, "sample": 159, "AL1": 1.1601762433089606, "AL2": 1.0795026754626142}, {"trial": 0, "sample": 160, "AL1": 0.9319046129258859, "AL2": 0.9667435634327253}, {"trial": 0, "sample": 161, "AL1": 0.9111774397967178, "AL2": 0.9731000820030377}, {"trial": 0, "sample": 162, "AL1": 1.1839034020226136, "AL2": 1.0938739348389728}, {"trial": 0, "sample": 163, "AL1": 1.2283577338654346, "AL2": 1.1325657870060915}, {"trial": 0, "sample": 164, "AL1": 1.0772675507922884, "AL2": 1.0435745270217183}, {"trial": 0, "sample": 165, "AL1": 1.0412677237784702, "AL2": 1.0267159342917593}, {"trial": 0, "sample": 166, "AL1": 1.1329036470863711, "AL2": 1.027268675037004}, {"trial": 0, "sample": 167, "AL1": 0.9125410696078473, "AL2": 0.864762895935105}, {"trial": 0, "sample": 168, "AL1": 0.8967229637987454, "AL2": 0.9252880075393837}, {"trial": 0, "sample": 169, "AL1": 1.16153987312009, "AL2": 1.1322894166334692}, {"trial": 0, "sample": 170, "AL1": 1.1451763153865364, "AL2": 1.0855828236603045}, {"trial": 0, "sample": 171, "AL1": 0.9556317716395388, "AL2": 0.9717182301399262}, {"trial": 0, "sample": 172, "AL1": 0.677724016131351, "AL2": 0.6646707461565764}, {"trial": 0, "sample": 173, "AL1": 1.2449940175612142, "AL2": 1.109074305333198}, {"trial": 0, "sample": 174, "AL1": 0.8162688049421061, "AL2": 0.9573469707635679}, {"trial": 0, "sample": 175, "AL1": 0.7639054201947341, "AL2": 0.68816222782947}, {"trial": 0, "sample": 176, "AL1": 1.2725393397460298, "AL2": 1.143067861165738}, {"trial": 0, "sample": 177, "AL1": 1.1187218970506245, "AL2": 1.0883465273865272}, {"trial": 0, "sample": 178, "AL1": 0.7636326942325082, "AL2": 0.7912483768175793}, {"trial": 0, "sample": 179, "AL1": 1.1689034741001894, "AL2": 1.143896972283605}, {"trial": 0, "sample": 180, "AL1": 0.997086117897875, "AL2": 0.9706127486494371}, {"trial": 0, "sample": 181, "AL1": 1.141358151915374, "AL2": 1.1259328980631569}, {"trial": 0, "sample": 182, "AL1": 1.015086031404784, "AL2": 1.0037771933641104}, {"trial": 0, "sample": 183, "AL1": 0.9548135937528611, "AL2": 1.0441272677669629}, {"trial": 0, "sample": 184, "AL1": 0.6698149632268, "AL2": 0.8116997843916278}, {"trial": 0, "sample": 185, "AL1": 0.8833593916496765, "AL2": 1.0007371192652654}, {"trial": 0, "sample": 186, "AL1": 1.119812800899528, "AL2": 0.9639798597065025}, {"trial": 0, "sample": 187, "AL1": 1.1026310652792968, "AL2": 1.0399817121776287}, {"trial": 0, "sample": 188, "AL1": 1.2619030272192198, "AL2": 1.143067861165738}, {"trial": 0, "sample": 189, "AL1": 0.8912684445542275, "AL2": 0.8915708220794659}, {"trial": 0, "sample": 190, "AL1": 1.1716307337224483, "AL2": 1.1919854171198812}, {"trial": 0, "sample": 191, "AL1": 0.8438141271269216, "AL2": 0.8973745999045337}, {"trial": 0, "sample": 192, "AL1": 0.9332682427370154, "AL2": 0.8639337848172381}, {"trial": 0, "sample": 193, "AL1": 0.9441772812260513, "AL2": 0.8959927480414224}, {"trial": 0, "sample": 194, "AL1": 1.1116310220327512, "AL2": 1.1259328980631569}, {"trial": 0, "sample": 195, "AL1": 1.055176747851991, "AL2": 0.9976970451664203}, {"trial": 0, "sample": 196, "AL1": 1.1612671471578644, "AL2": 1.177890528116145}, {"trial": 0, "sample": 197, "AL1": 1.0649948824921232, "AL2": 0.9786274894554832}, {"trial": 0, "sample": 198, "AL1": 1.1811761424003546, "AL2": 1.143896972283605}, {"trial": 0, "sample": 199, "AL1": 0.8907229926297756, "AL2": 0.8921235628247105}, {"trial": 0, "sample": 200, "AL1": 0.8552686175404092, "AL2": 0.9161677852428486}, {"trial": 0, "sample": 201, "AL1": 1.05190403630528, "AL2": 0.9932751192044639}, {"trial": 0, "sample": 202, "AL1": 0.7630872423080565, "AL2": 0.8163980807262066}, {"trial": 0, "sample": 203, "AL1": 1.1735398154580297, "AL2": 1.0960848978199509}, {"trial": 0, "sample": 204, "AL1": 1.1498126567443767, "AL2": 1.117089046139244}, {"trial": 0, "sample": 205, "AL1": 0.9065410984388776, "AL2": 0.8653156366803496}, {"trial": 0, "sample": 206, "AL1": 0.7257237854831087, "AL2": 0.9631507485886357}, {"trial": 0, "sample": 207, "AL1": 1.185267031833743, "AL2": 1.218793343264242}, {"trial": 0, "sample": 208, "AL1": 1.018086016989269, "AL2": 1.039428971432384}, {"trial": 0, "sample": 209, "AL1": 1.0865402335079688, "AL2": 1.122063712846445}, {"trial": 0, "sample": 210, "AL1": 0.9245410119457868, "AL2": 0.838784080908611}, {"trial": 0, "sample": 211, "AL1": 1.1214491566728835, "AL2": 1.0775680828542584}, {"trial": 0, "sample": 212, "AL1": 0.939540939868211, "AL2": 0.8940581554330664}, {"trial": 0, "sample": 213, "AL1": 1.1419036038398256, "AL2": 1.1566100094242295}, {"trial": 0, "sample": 214, "AL1": 0.9040865647788445, "AL2": 0.9291571927560955}, {"trial": 0, "sample": 215, "AL1": 1.2201759549986577, "AL2": 1.2035929727700168}, {"trial": 0, "sample": 216, "AL1": 0.936813680245952, "AL2": 0.9004146740033787}, {"trial": 0, "sample": 217, "AL1": 1.0649948824921232, "AL2": 1.0725934161470574}, {"trial": 0, "sample": 218, "AL1": 0.7917234683417755, "AL2": 0.8056196361939377}, {"trial": 0, "sample": 219, "AL1": 1.0900856710169056, "AL2": 1.1317366758882248}, {"trial": 0, "sample": 220, "AL1": 0.7821780596638691, "AL2": 0.717181116954809}, {"trial": 0, "sample": 221, "AL1": 1.0019951852179412, "AL2": 0.838784080908611}, {"trial": 0, "sample": 222, "AL1": 1.0175405650648173, "AL2": 1.024228600938159}, {"trial": 0, "sample": 223, "AL1": 0.8154506270554284, "AL2": 0.9001383036307565}, {"trial": 0, "sample": 224, "AL1": 0.9959952140489714, "AL2": 0.9697836375315703}, {"trial": 0, "sample": 225, "AL1": 1.1533580942533133, "AL2": 1.1867343800400578}, {"trial": 0, "sample": 226, "AL1": 1.0898129450546796, "AL2": 0.9896823043603743}, {"trial": 0, "sample": 227, "AL1": 1.2289031857898864, "AL2": 1.1494243797360504}, {"trial": 0, "sample": 228, "AL1": 0.9976315698223268, "AL2": 1.0327960824894495}, {"trial": 0, "sample": 229, "AL1": 0.9913588726911312, "AL2": 1.0294796380179823}, {"trial": 0, "sample": 230, "AL1": 1.250721262767958, "AL2": 1.167941194701743}, {"trial": 0, "sample": 231, "AL1": 1.184994305871517, "AL2": 1.1403041574395152}, {"trial": 0, "sample": 232, "AL1": 1.1274491278418532, "AL2": 1.0924920829758613}, {"trial": 0, "sample": 233, "AL1": 1.1451763153865364, "AL2": 1.1386459352037817}, {"trial": 0, "sample": 234, "AL1": 1.1492672048199248, "AL2": 1.145002453774094}, {"trial": 0, "sample": 235, "AL1": 0.6774512901691252, "AL2": 0.6569323757231527}, {"trial": 0, "sample": 236, "AL1": 1.2280850079032088, "AL2": 1.1980655653175711}, {"trial": 0, "sample": 237, "AL1": 1.0947220123747456, "AL2": 1.1165363053939994}, {"trial": 0, "sample": 238, "AL1": 1.1209037047484316, "AL2": 1.1267620091810238}, {"trial": 0, "sample": 239, "AL1": 0.902995660929941, "AL2": 0.9479503780944104}, {"trial": 0, "sample": 240, "AL1": 1.1184491710883986, "AL2": 1.1018886756450188}, {"trial": 0, "sample": 241, "AL1": 0.8048143145286185, "AL2": 1.0300323787632266}, {"trial": 0, "sample": 242, "AL1": 0.7401782614810811, "AL2": 0.7185629688179205}, {"trial": 0, "sample": 243, "AL1": 0.860995862747153, "AL2": 0.8490097846956353}, {"trial": 0, "sample": 244, "AL1": 0.7742690067593182, "AL2": 0.6563796349779081}, {"trial": 0, "sample": 245, "AL1": 1.012904223706977, "AL2": 1.0825427495614595}, {"trial": 0, "sample": 246, "AL1": 1.1915397289649388, "AL2": 1.1795487503518787}, {"trial": 0, "sample": 247, "AL1": 1.119812800899528, "AL2": 1.0678951198124786}, {"trial": 0, "sample": 248, "AL1": 0.8045415885663926, "AL2": 0.8371258586728773}, {"trial": 0, "sample": 249, "AL1": 0.7145420210318469, "AL2": 0.7511746727873492}, {"trial": 0, "sample": 250, "AL1": 1.093903834488068, "AL2": 1.0645786753410114}, {"trial": 0, "sample": 251, "AL1": 1.0688130459632856, "AL2": 1.1146017127856436}, {"trial": 0, "sample": 252, "AL1": 1.093903834488068, "AL2": 1.1165363053939994}, {"trial": 0, "sample": 253, "AL1": 0.8983593195721007, "AL2": 0.9501613410753886}, {"trial": 0, "sample": 254, "AL1": 0.7369055499343704, "AL2": 0.8556426736385698}, {"trial": 0, "sample": 255, "AL1": 1.0134496756314288, "AL2": 1.0507601567098974}, {"trial": 0, "sample": 256, "AL1": 0.9575408533751201, "AL2": 1.0568403049075876}, {"trial": 0, "sample": 257, "AL1": 1.14626721923544, "AL2": 1.094979416329462}, {"trial": 0, "sample": 258, "AL1": 1.1637216808178974, "AL2": 1.1245510462000454}, {"trial": 0, "sample": 259, "AL1": 1.0647221565298972, "AL2": 1.0565639345349653}, {"trial": 0, "sample": 260, "AL1": 1.1375399884442114, "AL2": 1.12510378694529}, {"trial": 0, "sample": 261, "AL1": 1.009904238122492, "AL2": 0.9706127486494371}, {"trial": 0, "sample": 262, "AL1": 0.8075415741508775, "AL2": 0.9186551185964491}, {"trial": 0, "sample": 263, "AL1": 1.159630791384509, "AL2": 1.1245510462000454}, {"trial": 0, "sample": 264, "AL1": 0.9722680553353185, "AL2": 0.971441859767304}, {"trial": 0, "sample": 265, "AL1": 0.9032683868921668, "AL2": 0.9896823043603743}, {"trial": 0, "sample": 266, "AL1": 1.1563580798377981, "AL2": 1.1115616386867984}, {"trial": 0, "sample": 267, "AL1": 0.8661776560294451, "AL2": 0.7459236357075258}, {"trial": 0, "sample": 268, "AL1": 0.9111774397967178, "AL2": 0.9313681557370738}, {"trial": 0, "sample": 269, "AL1": 0.756269093252409, "AL2": 0.7511746727873492}, {"trial": 0, "sample": 270, "AL1": 1.0486313247585692, "AL2": 1.0819900088162149}, {"trial": 0, "sample": 271, "AL1": 0.9256319157946903, "AL2": 0.9288808223834732}, {"trial": 0, "sample": 272, "AL1": 1.0900856710169056, "AL2": 1.15301719458014}, {"trial": 0, "sample": 273, "AL1": 1.1449035894243105, "AL2": 1.1223400832190673}, {"trial": 0, "sample": 274, "AL1": 0.7491782182345358, "AL2": 0.8918471924520882}, {"trial": 0, "sample": 275, "AL1": 0.9125410696078473, "AL2": 0.8766468219578629}, {"trial": 0, "sample": 276, "AL1": 0.9793589303531918, "AL2": 0.9543068966647228}, {"trial": 0, "sample": 277, "AL1": 1.0202678246870762, "AL2": 1.1126671201772875}, {"trial": 0, "sample": 278, "AL1": 0.8416323194291144, "AL2": 0.9319208964823184}, {"trial": 0, "sample": 279, "AL1": 1.0112678679336216, "AL2": 0.9675726745505921}, {"trial": 0, "sample": 280, "AL1": 0.9736316851464479, "AL2": 0.9214188223226718}, {"trial": 0, "sample": 281, "AL1": 0.7478145884234063, "AL2": 0.7721788211066422}, {"trial": 0, "sample": 282, "AL1": 1.083267521961258, "AL2": 1.054352971553987}, {"trial": 0, "sample": 283, "AL1": 1.2160850655652693, "AL2": 1.1729158614089439}, {"trial": 0, "sample": 284, "AL1": 0.9910861467289053, "AL2": 0.856748155129059}, {"trial": 0, "sample": 285, "AL1": 0.9302682571525306, "AL2": 1.0258868231738925}, {"trial": 0, "sample": 286, "AL1": 1.012358771782525, "AL2": 1.0120683045427787}, {"trial": 0, "sample": 287, "AL1": 1.1585398875356052, "AL2": 1.0789499347173697}, {"trial": 0, "sample": 288, "AL1": 1.1067219547126852, "AL2": 1.102994157135508}, {"trial": 0, "sample": 289, "AL1": 1.1034492431659744, "AL2": 1.012344674915401}, {"trial": 0, "sample": 290, "AL1": 1.1416308778775999, "AL2": 1.1488716389908058}, {"trial": 0, "sample": 291, "AL1": 1.0813584402256768, "AL2": 0.9979734155390426}, {"trial": 0, "sample": 292, "AL1": 0.8198142424510427, "AL2": 0.7826808952662887}, {"trial": 0, "sample": 293, "AL1": 1.0039042669535223, "AL2": 1.0397053418050064}, {"trial": 0, "sample": 294, "AL1": 1.102085613354845, "AL2": 1.1074160830974642}, {"trial": 0, "sample": 295, "AL1": 1.0928129306391645, "AL2": 1.0659605272041228}, {"trial": 0, "sample": 296, "AL1": 0.9837225457488061, "AL2": 1.1273147499262683}, {"trial": 0, "sample": 297, "AL1": 0.9739044111086739, "AL2": 1.0803317865804811}, {"trial": 0, "sample": 298, "AL1": 0.6564513910777312, "AL2": 0.6577614868410194}, {"trial": 0, "sample": 299, "AL1": 1.0750857430944811, "AL2": 1.1101797868236871}, {"trial": 0, "sample": 300, "AL1": 1.161812599082316, "AL2": 1.1112852683141763}, {"trial": 0, "sample": 301, "AL1": 1.054358569965313, "AL2": 1.038323489941895}, {"trial": 0, "sample": 302, "AL1": 1.1424490557642775, "AL2": 1.0877937866412826}, {"trial": 0, "sample": 303, "AL1": 0.737996453783274, "AL2": 0.8642101551898604}, {"trial": 0, "sample": 304, "AL1": 0.8206324203377204, "AL2": 0.8733303774863956}, {"trial": 0, "sample": 305, "AL1": 0.9119956176833955, "AL2": 0.7652695617910853}, {"trial": 0, "sample": 306, "AL1": 1.3172663975510768, "AL2": 1.1657302317207647}, {"trial": 0, "sample": 307, "AL1": 0.9889043390310981, "AL2": 0.9728237116304154}, {"trial": 0, "sample": 308, "AL1": 1.0399040939673407, "AL2": 1.0819900088162149}, {"trial": 0, "sample": 309, "AL1": 1.2160850655652693, "AL2": 1.2514050472336706}, {"trial": 0, "sample": 310, "AL1": 0.8757230647073514, "AL2": 0.8664211181708387}, {"trial": 0, "sample": 311, "AL1": 0.8629049444827342, "AL2": 0.8423768957527006}, {"trial": 0, "sample": 312, "AL1": 0.9921770505778089, "AL2": 1.0770153421090138}, {"trial": 0, "sample": 313, "AL1": 1.0889947671680018, "AL2": 1.1745740836446776}, {"trial": 0, "sample": 314, "AL1": 0.730360126840949, "AL2": 0.8125288955094947}, {"trial": 0, "sample": 315, "AL1": 1.2106305463207514, "AL2": 1.0836482310519484}, {"trial": 0, "sample": 316, "AL1": 1.253448522390217, "AL2": 1.2163060099106415}, {"trial": 0, "sample": 317, "AL1": 0.8560867954270869, "AL2": 0.8039614139582041}, {"trial": 0, "sample": 318, "AL1": 0.9567226754884425, "AL2": 0.9976970451664203}, {"trial": 0, "sample": 319, "AL1": 0.9659953582041229, "AL2": 0.9587288226266792}, {"trial": 0, "sample": 320, "AL1": 0.9550863197150871, "AL2": 0.8932290443151996}, {"trial": 0, "sample": 321, "AL1": 1.10972194029717, "AL2": 0.9338554890906743}, {"trial": 0, "sample": 322, "AL1": 0.9938134063511642, "AL2": 1.1223400832190673}, {"trial": 0, "sample": 323, "AL1": 1.2008124116806191, "AL2": 1.175955935507789}, {"trial": 0, "sample": 324, "AL1": 1.0442677093629549, "AL2": 1.024228600938159}, {"trial": 0, "sample": 325, "AL1": 1.169721651986867, "AL2": 1.1104561571963094}, {"trial": 0, "sample": 326, "AL1": 1.0849038777346134, "AL2": 1.084200971797193}, {"trial": 0, "sample": 327, "AL1": 0.6837239873003208, "AL2": 0.6630125239208428}, {"trial": 0, "sample": 328, "AL1": 0.659451376662216, "AL2": 0.6024874123165641}, {"trial": 0, "sample": 329, "AL1": 0.8825412137629988, "AL2": 0.9098112666725362}, {"trial": 0, "sample": 330, "AL1": 1.2239941184698202, "AL2": 1.1176417868844886}, {"trial": 0, "sample": 331, "AL1": 0.9954497621245196, "AL2": 1.0366652677061614}, {"trial": 0, "sample": 332, "AL1": 1.1274491278418532, "AL2": 1.1234455647095565}, {"trial": 0, "sample": 333, "AL1": 1.1236309643706908, "AL2": 1.0800554162078588}, {"trial": 0, "sample": 334, "AL1": 1.093631108525842, "AL2": 1.1212346017285781}, {"trial": 0, "sample": 335, "AL1": 0.9916315986533571, "AL2": 1.028374156527493}, {"trial": 0, "sample": 336, "AL1": 1.2398122242789222, "AL2": 1.136158601850181}, {"trial": 0, "sample": 337, "AL1": 1.1424490557642775, "AL2": 1.1024414163902634}, {"trial": 0, "sample": 338, "AL1": 1.1528126423288616, "AL2": 1.1284202314167573}, {"trial": 0, "sample": 339, "AL1": 1.1078128585615887, "AL2": 1.101059564527152}, {"trial": 0, "sample": 340, "AL1": 0.829632377091175, "AL2": 0.8619991922088822}, {"trial": 0, "sample": 341, "AL1": 0.937086406208178, "AL2": 1.1264856388084015}, {"trial": 0, "sample": 342, "AL1": 0.9482681706594397, "AL2": 1.1071397127248421}, {"trial": 0, "sample": 343, "AL1": 1.3120846042687846, "AL2": 1.187839861530547}, {"trial": 0, "sample": 344, "AL1": 0.7944507279640345, "AL2": 0.9111931185356476}, {"trial": 0, "sample": 345, "AL1": 1.0892674931302277, "AL2": 1.094979416329462}, {"trial": 0, "sample": 346, "AL1": 1.1367218105575336, "AL2": 1.135053120359692}, {"trial": 0, "sample": 347, "AL1": 0.850359550220343, "AL2": 0.7832336360115333}, {"trial": 0, "sample": 348, "AL1": 0.8994502234210043, "AL2": 1.0051590452272219}, {"trial": 0, "sample": 349, "AL1": 0.8890866368564203, "AL2": 0.7481345986885041}, {"trial": 0, "sample": 350, "AL1": 1.1522671904044097, "AL2": 1.1298020832798688}, {"trial": 0, "sample": 351, "AL1": 1.0622676228698642, "AL2": 1.0363888973335391}, {"trial": 0, "sample": 352, "AL1": 1.0382677381939853, "AL2": 1.0645786753410114}, {"trial": 0, "sample": 353, "AL1": 1.141085425953148, "AL2": 1.109074305333198}, {"trial": 0, "sample": 354, "AL1": 1.0679948680766078, "AL2": 1.0786735643447476}, {"trial": 0, "sample": 355, "AL1": 0.9545408677906353, "AL2": 0.9601106744897906}, {"trial": 0, "sample": 356, "AL1": 0.6662695257178635, "AL2": 0.732105117076412}, {"trial": 0, "sample": 357, "AL1": 0.7619963384591528, "AL2": 0.8401659327717224}, {"trial": 0, "sample": 358, "AL1": 0.88445029549858, "AL2": 0.8912944517068436}, {"trial": 0, "sample": 359, "AL1": 0.8904502666675498, "AL2": 0.9269462297751173}, {"trial": 0, "sample": 360, "AL1": 1.117358267239495, "AL2": 1.0817136384435926}, {"trial": 0, "sample": 361, "AL1": 0.8476322905980841, "AL2": 0.9407647484062313}, {"trial": 0, "sample": 362, "AL1": 0.7985416173974229, "AL2": 1.0496546752194085}, {"trial": 0, "sample": 363, "AL1": 0.9425409254526959, "AL2": 0.9949333414401975}, {"trial": 0, "sample": 364, "AL1": 1.125540046106272, "AL2": 1.081160897698348}, {"trial": 0, "sample": 365, "AL1": 0.8997229493832302, "AL2": 0.8526025995397248}, {"trial": 0, "sample": 366, "AL1": 0.6545423093421499, "AL2": 0.822754599296519}, {"trial": 0, "sample": 367, "AL1": 0.9902679688422276, "AL2": 0.9988025266569094}, {"trial": 0, "sample": 368, "AL1": 1.0639039786432194, "AL2": 0.8622755625815045}, {"trial": 0, "sample": 369, "AL1": 0.9722680553353185, "AL2": 1.0427454159038514}, {"trial": 0, "sample": 370, "AL1": 0.9433591033393736, "AL2": 0.8937817850604441}, {"trial": 0, "sample": 371, "AL1": 0.9951770361622937, "AL2": 1.0457854900026966}, {"trial": 0, "sample": 372, "AL1": 0.4748159002352846, "AL2": 0.5262091894728156}, {"trial": 0, "sample": 373, "AL1": 0.7685417615525744, "AL2": 0.8412714142622114}, {"trial": 0, "sample": 374, "AL1": 0.8168142568665578, "AL2": 0.782957265638911}, {"trial": 0, "sample": 375, "AL1": 1.2111759982452033, "AL2": 1.0913866014853721}, {"trial": 0, "sample": 376, "AL1": 0.75354183363015, "AL2": 0.6605251905672422}, {"trial": 0, "sample": 377, "AL1": 1.0478131468718916, "AL2": 1.1046523793712415}, {"trial": 0, "sample": 378, "AL1": 0.5980880351613894, "AL2": 0.5629664490315784}, {"trial": 0, "sample": 379, "AL1": 1.078085728678966, "AL2": 1.0659605272041228}, {"trial": 0, "sample": 380, "AL1": 0.9711771514864149, "AL2": 1.0267159342917593}, {"trial": 0, "sample": 381, "AL1": 0.8855411993474837, "AL2": 0.905665711083202}, {"trial": 0, "sample": 382, "AL1": 0.8571776992759905, "AL2": 0.9509904521932555}, {"trial": 0, "sample": 383, "AL1": 0.8593595069737976, "AL2": 0.910640377790403}, {"trial": 0, "sample": 384, "AL1": 0.9837225457488061, "AL2": 0.9620452670981465}, {"trial": 0, "sample": 385, "AL1": 1.0982674498836824, "AL2": 1.0982958608009292}, {"trial": 0, "sample": 386, "AL1": 0.6430878189286623, "AL2": 0.7942884509164244}, {"trial": 0, "sample": 387, "AL1": 1.0846311517723877, "AL2": 1.0449563788848297}, {"trial": 0, "sample": 388, "AL1": 1.0199950987248503, "AL2": 1.054076601181365}, {"trial": 0, "sample": 389, "AL1": 0.5124520830224581, "AL2": 0.5469369674194864}, {"trial": 0, "sample": 390, "AL1": 1.0281768775916271, "AL2": 1.0493783048467862}, {"trial": 0, "sample": 391, "AL1": 0.8329050886378857, "AL2": 1.0090282304439337}, {"trial": 0, "sample": 392, "AL1": 1.0268132477804977, "AL2": 0.9753110449840159}, {"trial": 0, "sample": 393, "AL1": 0.9272682715680457, "AL2": 1.0410871936681179}, {"trial": 0, "sample": 394, "AL1": 0.981540738050999, "AL2": 0.984431267280551}, {"trial": 0, "sample": 395, "AL1": 1.0502676805319247, "AL2": 1.0789499347173697}, {"trial": 0, "sample": 396, "AL1": 0.9564499495262165, "AL2": 0.9797329709459723}, {"trial": 0, "sample": 397, "AL1": 1.1999942337939415, "AL2": 1.0886228977591494}, {"trial": 0, "sample": 398, "AL1": 0.7966325356618416, "AL2": 0.8882543776079985}, {"trial": 0, "sample": 399, "AL1": 1.093903834488068, "AL2": 1.1168126757666217}, {"trial": 1, "sample": 50, "AL1": 1.1241764162951424, "AL2": 1.2052511950057503}, {"trial": 1, "sample": 51, "AL1": 1.2267213780920794, "AL2": 1.182036083705479}, {"trial": 1, "sample": 52, "AL1": 1.0270859737427236, "AL2": 1.067342379067234}, {"trial": 1, "sample": 53, "AL1": 0.9452681850749548, "AL2": 1.0507601567098974}, {"trial": 1, "sample": 54, "AL1": 0.9790862043909659, "AL2": 1.0667896383219895}, {"trial": 1, "sample": 55, "AL1": 0.8514504540692467, "AL2": 0.8982037110224006}, {"trial": 1, "sample": 56, "AL1": 1.033904122798371, "AL2": 1.0626440827326553}, {"trial": 1, "sample": 57, "AL1": 1.0584494593987015, "AL2": 1.100230453409285}, {"trial": 1, "sample": 58, "AL1": 1.0006315554068117, "AL2": 0.9910641562234856}, {"trial": 1, "sample": 59, "AL1": 1.117358267239495, "AL2": 1.0739752680101688}, {"trial": 1, "sample": 60, "AL1": 0.8817230358763211, "AL2": 0.9866422302615292}, {"trial": 1, "sample": 61, "AL1": 0.7336328383876597, "AL2": 0.8672502292887055}, {"trial": 1, "sample": 62, "AL1": 1.1372672624819855, "AL2": 1.1314603055156025}, {"trial": 1, "sample": 63, "AL1": 0.936813680245952, "AL2": 1.0808845273257257}, {"trial": 1, "sample": 64, "AL1": 1.0652676084543489, "AL2": 1.1181945276297331}, {"trial": 1, "sample": 65, "AL1": 1.073449387321126, "AL2": 1.1289729721620019}, {"trial": 1, "sample": 66, "AL1": 0.8279960213178196, "AL2": 0.9396592669157421}, {"trial": 1, "sample": 67, "AL1": 0.9430863773771476, "AL2": 0.920589711204805}, {"trial": 1, "sample": 68, "AL1": 1.177630704891418, "AL2": 1.122063712846445}, {"trial": 1, "sample": 69, "AL1": 1.0669039642277043, "AL2": 1.1245510462000454}, {"trial": 1, "sample": 70, "AL1": 0.840268689617985, "AL2": 0.915615044497604}, {"trial": 1, "sample": 71, "AL1": 0.9619044687707344, "AL2": 1.0430217862764737}, {"trial": 1, "sample": 72, "AL1": 1.1427217817265034, "AL2": 1.0955321570747063}, {"trial": 1, "sample": 73, "AL1": 0.9117228917211696, "AL2": 0.8006449694867367}, {"trial": 1, "sample": 74, "AL1": 1.1446308634620845, "AL2": 1.2016583801616607}, {"trial": 1, "sample": 75, "AL1": 0.7295419489542713, "AL2": 0.6331645236776369}, {"trial": 1, "sample": 76, "AL1": 1.2376304165811152, "AL2": 1.204698454260506}, {"trial": 1, "sample": 77, "AL1": 1.1326309211241452, "AL2": 1.0836482310519484}, {"trial": 1, "sample": 78, "AL1": 0.9444500071882771, "AL2": 0.961492526352902}, {"trial": 1, "sample": 79, "AL1": 0.9059956465144258, "AL2": 0.9349609705811635}, {"trial": 1, "sample": 80, "AL1": 0.9299955311903046, "AL2": 0.9230770445584054}, {"trial": 1, "sample": 81, "AL1": 1.070722127698867, "AL2": 0.9272226001477396}, {"trial": 1, "sample": 82, "AL1": 1.1277218538040792, "AL2": 1.1582682316599633}, {"trial": 1, "sample": 83, "AL1": 1.0090860602358145, "AL2": 1.0720406754018128}, {"trial": 1, "sample": 84, "AL1": 0.8675412858405745, "AL2": 0.732105117076412}, {"trial": 1, "sample": 85, "AL1": 1.0862675075457429, "AL2": 1.170981268800588}, {"trial": 1, "sample": 86, "AL1": 1.1901760991538093, "AL2": 1.0491019344741639}, {"trial": 1, "sample": 87, "AL1": 0.9215410263613019, "AL2": 0.992446008086597}, {"trial": 1, "sample": 88, "AL1": 0.9485408966216655, "AL2": 0.9952097118128198}, {"trial": 1, "sample": 89, "AL1": 1.114903733579462, "AL2": 1.0767389717363915}, {"trial": 1, "sample": 90, "AL1": 0.8885411849319685, "AL2": 1.019253934230958}, {"trial": 1, "sample": 91, "AL1": 0.7775417183060289, "AL2": 0.7672041543994412}, {"trial": 1, "sample": 92, "AL1": 0.9608135649218309, "AL2": 0.9700600079041926}, {"trial": 1, "sample": 93, "AL1": 1.1999942337939415, "AL2": 1.1408568981847598}, {"trial": 1, "sample": 94, "AL1": 0.8364505261468224, "AL2": 0.9504377114480109}, {"trial": 1, "sample": 95, "AL1": 1.180357964513677, "AL2": 1.0877937866412826}, {"trial": 1, "sample": 96, "AL1": 1.0764493729056106, "AL2": 1.027268675037004}, {"trial": 1, "sample": 97, "AL1": 1.2319031713743713, "AL2": 1.1295257129072465}, {"trial": 1, "sample": 98, "AL1": 0.7557236413279572, "AL2": 0.8531553402849694}, {"trial": 1, "sample": 99, "AL1": 0.7104511315984585, "AL2": 0.727130450369211}, {"trial": 1, "sample": 100, "AL1": 1.0096315121602661, "AL2": 1.021188526839314}, {"trial": 1, "sample": 101, "AL1": 1.0909038489035832, "AL2": 0.9341318594632966}, {"trial": 1, "sample": 102, "AL1": 0.7791780740793843, "AL2": 0.8719485256232842}, {"trial": 1, "sample": 103, "AL1": 1.0772675507922884, "AL2": 0.982496674672195}, {"trial": 1, "sample": 104, "AL1": 1.02599506989382, "AL2": 0.9742055634935267}, {"trial": 1, "sample": 105, "AL1": 0.7107238575606845, "AL2": 0.8197145251976738}, {"trial": 1, "sample": 106, "AL1": 0.88445029549858, "AL2": 0.8683557107791946}, {"trial": 1, "sample": 107, "AL1": 0.8817230358763211, "AL2": 0.9042838592200907}, {"trial": 1, "sample": 108, "AL1": 1.1154491855039137, "AL2": 1.1621374168766752}, {"trial": 1, "sample": 109, "AL1": 1.0502676805319247, "AL2": 1.0275450454096262}, {"trial": 1, "sample": 110, "AL1": 0.6299969727418193, "AL2": 0.6179641531834116}, {"trial": 1, "sample": 111, "AL1": 0.8994502234210043, "AL2": 0.9454630447408099}, {"trial": 1, "sample": 112, "AL1": 1.0827220700368063, "AL2": 1.0944266755842174}, {"trial": 1, "sample": 113, "AL1": 1.0840856998479358, "AL2": 1.0350070454704277}, {"trial": 1, "sample": 114, "AL1": 1.164267132742349, "AL2": 1.1217873424738227}, {"trial": 1, "sample": 115, "AL1": 1.27717568110387, "AL2": 1.201934750534283}, {"trial": 1, "sample": 116, "AL1": 1.25126671469241, "AL2": 1.20884400984984}, {"trial": 1, "sample": 117, "AL1": 0.6201788381016871, "AL2": 0.48364815208898493}, {"trial": 1, "sample": 118, "AL1": 0.9379045840948557, "AL2": 0.8473515624599015}, {"trial": 1, "sample": 119, "AL1": 0.9381773100570815, "AL2": 0.9346846002085412}, {"trial": 1, "sample": 120, "AL1": 0.8969956897609712, "AL2": 0.961492526352902}, {"trial": 1, "sample": 121, "AL1": 1.0606312670965088, "AL2": 1.050207415964653}, {"trial": 1, "sample": 122, "AL1": 1.0352677526095004, "AL2": 1.1112852683141763}, {"trial": 1, "sample": 123, "AL1": 1.0952674642991975, "AL2": 1.0977431200556846}, {"trial": 1, "sample": 124, "AL1": 1.0229950843093352, "AL2": 0.9949333414401975}, {"trial": 1, "sample": 125, "AL1": 1.0595403632476053, "AL2": 1.1394750463216485}, {"trial": 1, "sample": 126, "AL1": 0.7502691220834393, "AL2": 0.8537080810302139}, {"trial": 1, "sample": 127, "AL1": 0.8263596655444643, "AL2": 0.9838785265353065}, {"trial": 1, "sample": 128, "AL1": 0.9946315842378419, "AL2": 1.0808845273257257}, {"trial": 1, "sample": 129, "AL1": 1.0036315409912966, "AL2": 0.9377246743073862}, {"trial": 1, "sample": 130, "AL1": 1.0216314544982057, "AL2": 0.9432520817598317}, {"trial": 1, "sample": 131, "AL1": 0.7682690355903484, "AL2": 0.6425611163467942}, {"trial": 1, "sample": 132, "AL1": 1.0649948824921232, "AL2": 0.9979734155390426}, {"trial": 1, "sample": 133, "AL1": 0.8541777136915056, "AL2": 0.8047905250760709}, {"trial": 1, "sample": 134, "AL1": 1.0325404929872415, "AL2": 1.0684478605577232}, {"trial": 1, "sample": 135, "AL1": 1.1323581951619193, "AL2": 1.1074160830974642}, {"trial": 1, "sample": 136, "AL1": 0.7519054778567947, "AL2": 0.8628283033267491}, {"trial": 1, "sample": 137, "AL1": 0.7478145884234063, "AL2": 0.7953939324069135}, {"trial": 1, "sample": 138, "AL1": 0.9632680985818639, "AL2": 0.9388301557978753}, {"trial": 1, "sample": 139, "AL1": 0.9177228628901394, "AL2": 0.9731000820030377}, {"trial": 1, "sample": 140, "AL1": 0.7909052904550978, "AL2": 0.8263474141406085}, {"trial": 1, "sample": 141, "AL1": 1.041540449740696, "AL2": 1.043298156649096}, {"trial": 1, "sample": 142, "AL1": 1.049722228607473, "AL2": 0.9366191928168971}, {"trial": 1, "sample": 143, "AL1": 0.9024502090054892, "AL2": 0.8711194145054174}, {"trial": 1, "sample": 144, "AL1": 0.75354183363015, "AL2": 0.8625519329541268}, {"trial": 1, "sample": 145, "AL1": 0.7966325356618416, "AL2": 0.7854445989925115}, {"trial": 1, "sample": 146, "AL1": 1.0358132045339523, "AL2": 1.0098573415618004}, {"trial": 1, "sample": 147, "AL1": 0.8989047714965526, "AL2": 1.045232749257452}, {"trial": 1, "sample": 148, "AL1": 1.1334490990108228, "AL2": 1.038323489941895}, {"trial": 1, "sample": 149, "AL1": 1.0292677814405307, "AL2": 1.076186230991147}, {"trial": 1, "sample": 150, "AL1": 1.127994579766305, "AL2": 1.0894520088770163}, {"trial": 1, "sample": 151, "AL1": 1.0456313391740846, "AL2": 1.1408568981847598}, {"trial": 1, "sample": 152, "AL1": 0.9095410840233624, "AL2": 0.8255183030227417}, {"trial": 1, "sample": 153, "AL1": 0.9949043102000679, "AL2": 1.1134962312951544}, {"trial": 1, "sample": 154, "AL1": 0.9910861467289053, "AL2": 0.9695072671589481}, {"trial": 1, "sample": 155, "AL1": 1.1189946230128505, "AL2": 1.1566100094242295}, {"trial": 1, "sample": 156, "AL1": 1.2054487530384594, "AL2": 1.1480425278729391}, {"trial": 1, "sample": 157, "AL1": 1.0409949978162443, "AL2": 1.054352971553987}, {"trial": 1, "sample": 158, "AL1": 1.2136305319052363, "AL2": 1.0800554162078588}, {"trial": 1, "sample": 159, "AL1": 1.0791766325278696, "AL2": 1.1193000091202223}, {"trial": 1, "sample": 160, "AL1": 0.7570872711390867, "AL2": 0.7111009687571189}, {"trial": 1, "sample": 161, "AL1": 1.0527222141919577, "AL2": 1.0560111937897207}, {"trial": 1, "sample": 162, "AL1": 1.2469030992967955, "AL2": 1.1112852683141763}, {"trial": 1, "sample": 163, "AL1": 1.180630690475903, "AL2": 1.1099034164510648}, {"trial": 1, "sample": 164, "AL1": 0.9359955023592743, "AL2": 0.9576233411361901}, {"trial": 1, "sample": 165, "AL1": 1.0857220556212912, "AL2": 1.1146017127856436}, {"trial": 1, "sample": 166, "AL1": 1.1661762144779304, "AL2": 1.1596500835230747}, {"trial": 1, "sample": 167, "AL1": 1.01535875736701, "AL2": 1.0739752680101688}, {"trial": 1, "sample": 168, "AL1": 0.9616317428085086, "AL2": 0.9545832670373451}, {"trial": 1, "sample": 169, "AL1": 1.198630603982812, "AL2": 1.1267620091810238}, {"trial": 1, "sample": 170, "AL1": 1.1653580365912528, "AL2": 1.166006602093387}, {"trial": 1, "sample": 171, "AL1": 0.9400863917926628, "AL2": 0.9581760818814347}, {"trial": 1, "sample": 172, "AL1": 1.2779938589905477, "AL2": 1.2033166023973945}, {"trial": 1, "sample": 173, "AL1": 0.9616317428085086, "AL2": 1.1079688238427088}, {"trial": 1, "sample": 174, "AL1": 0.9820861899754507, "AL2": 0.9498849707027663}, {"trial": 1, "sample": 175, "AL1": 0.9177228628901394, "AL2": 1.0549057122992316}, {"trial": 1, "sample": 176, "AL1": 0.9338136946614672, "AL2": 0.9164441556154709}, {"trial": 1, "sample": 177, "AL1": 0.9245410119457868, "AL2": 1.015384749014246}, {"trial": 1, "sample": 178, "AL1": 1.1078128585615887, "AL2": 1.1148780831582659}, {"trial": 1, "sample": 179, "AL1": 0.8451777569380511, "AL2": 0.9280517112656065}, {"trial": 1, "sample": 180, "AL1": 1.1037219691282003, "AL2": 1.1295257129072465}, {"trial": 1, "sample": 181, "AL1": 1.2174486953763988, "AL2": 1.1646247502302756}, {"trial": 1, "sample": 182, "AL1": 0.965722632241897, "AL2": 0.9186551185964491}, {"trial": 1, "sample": 183, "AL1": 1.034176848760597, "AL2": 0.9272226001477396}, {"trial": 1, "sample": 184, "AL1": 1.0142678535181064, "AL2": 1.0358361565882945}, {"trial": 1, "sample": 185, "AL1": 0.5476337321495988, "AL2": 0.5071396337618784}, {"trial": 1, "sample": 186, "AL1": 1.1729943635335778, "AL2": 1.1259328980631569}, {"trial": 1, "sample": 187, "AL1": 1.078358454641192, "AL2": 1.0905574903675055}, {"trial": 1, "sample": 188, "AL1": 0.9234501080968831, "AL2": 0.9772456375923718}, {"trial": 1, "sample": 189, "AL1": 1.1399945221042445, "AL2": 1.1322894166334692}, {"trial": 1, "sample": 190, "AL1": 0.9635408245440898, "AL2": 1.0535238604361203}, {"trial": 1, "sample": 191, "AL1": 1.1285400316907568, "AL2": 1.140027787066893}, {"trial": 1, "sample": 192, "AL1": 0.677724016131351, "AL2": 0.8144634881178506}, {"trial": 1, "sample": 193, "AL1": 1.0191769208381725, "AL2": 1.0988486015461738}, {"trial": 1, "sample": 194, "AL1": 1.1675398442890599, "AL2": 1.094979416329462}, {"trial": 1, "sample": 195, "AL1": 1.088722041205776, "AL2": 1.0947030459568396}, {"trial": 1, "sample": 196, "AL1": 1.0791766325278696, "AL2": 1.0960848978199509}, {"trial": 1, "sample": 197, "AL1": 1.0229950843093352, "AL2": 1.0510365270825197}, {"trial": 1, "sample": 198, "AL1": 1.0977219979592305, "AL2": 1.1237219350821785}, {"trial": 1, "sample": 199, "AL1": 1.0889947671680018, "AL2": 1.06927697167559}, {"trial": 1, "sample": 200, "AL1": 0.9875407092199686, "AL2": 1.0493783048467862}, {"trial": 1, "sample": 201, "AL1": 1.219630503074206, "AL2": 1.105205120116486}, {"trial": 1, "sample": 202, "AL1": 1.20872146458517, "AL2": 1.1997237875533049}, {"trial": 1, "sample": 203, "AL1": 1.0628130747943159, "AL2": 1.1204054906107113}, {"trial": 1, "sample": 204, "AL1": 1.1108128441460736, "AL2": 1.0062645267177108}, {"trial": 1, "sample": 205, "AL1": 0.6512695977954391, "AL2": 0.665223486901821}, {"trial": 1, "sample": 206, "AL1": 0.9340864206236931, "AL2": 0.9736528227482822}, {"trial": 1, "sample": 207, "AL1": 0.9548135937528611, "AL2": 0.7578075617302837}, {"trial": 1, "sample": 208, "AL1": 0.892359348403131, "AL2": 1.046338230747941}, {"trial": 1, "sample": 209, "AL1": 1.1571762577244757, "AL2": 1.1005068237819073}, {"trial": 1, "sample": 210, "AL1": 0.8959047859120677, "AL2": 0.9109167481630253}, {"trial": 1, "sample": 211, "AL1": 1.0022679111801671, "AL2": 0.9849840080257956}, {"trial": 1, "sample": 212, "AL1": 0.8364505261468224, "AL2": 0.8921235628247105}, {"trial": 1, "sample": 213, "AL1": 1.2149941617163658, "AL2": 1.1193000091202223}, {"trial": 1, "sample": 214, "AL1": 0.8138142712820731, "AL2": 0.8351912660645213}, {"trial": 1, "sample": 215, "AL1": 0.9864498053710651, "AL2": 0.9706127486494371}, {"trial": 1, "sample": 216, "AL1": 0.7928143721906791, "AL2": 0.8951636369235555}, {"trial": 1, "sample": 217, "AL1": 1.2493576329568286, "AL2": 1.2185169728916196}, {"trial": 1, "sample": 218, "AL1": 0.787632578908387, "AL2": 0.7431599319813031}, {"trial": 1, "sample": 219, "AL1": 0.77481445868377, "AL2": 0.7619531173196179}, {"trial": 1, "sample": 220, "AL1": 0.9962679400111973, "AL2": 1.0048826748545996}, {"trial": 1, "sample": 221, "AL1": 1.2526303445035394, "AL2": 1.09719037931044}, {"trial": 1, "sample": 222, "AL1": 0.8539049877292797, "AL2": 0.9167205259880931}, {"trial": 1, "sample": 223, "AL1": 0.8405414155802108, "AL2": 0.841824155007456}, {"trial": 1, "sample": 224, "AL1": 0.960540838959605, "AL2": 0.9708891190220594}, {"trial": 1, "sample": 225, "AL1": 0.8187233386021392, "AL2": 0.8559190440111921}, {"trial": 1, "sample": 226, "AL1": 1.0903583969791313, "AL2": 1.0814372680709703}, {"trial": 1, "sample": 227, "AL1": 0.7859962231350317, "AL2": 0.7931829694259352}, {"trial": 1, "sample": 228, "AL1": 0.9163592330790099, "AL2": 0.8871488961175095}, {"trial": 1, "sample": 229, "AL1": 1.0827220700368063, "AL2": 1.067342379067234}, {"trial": 1, "sample": 230, "AL1": 1.1888124693426798, "AL2": 1.1571627501694741}, {"trial": 1, "sample": 231, "AL1": 1.0164496612159135, "AL2": 0.9999080081473986}, {"trial": 1, "sample": 232, "AL1": 0.9714498774486409, "AL2": 1.0187011934857133}, {"trial": 1, "sample": 233, "AL1": 0.8364505261468224, "AL2": 0.9139568222618704}, {"trial": 1, "sample": 234, "AL1": 1.1034492431659744, "AL2": 1.1861816392948132}, {"trial": 1, "sample": 235, "AL1": 1.1749034452691591, "AL2": 1.0590512678885657}, {"trial": 1, "sample": 236, "AL1": 0.9635408245440898, "AL2": 0.9388301557978753}, {"trial": 1, "sample": 237, "AL1": 0.8143597232065248, "AL2": 0.8119761547642501}, {"trial": 1, "sample": 238, "AL1": 1.0955401902614235, "AL2": 1.067342379067234}, {"trial": 1, "sample": 239, "AL1": 1.0819038921501285, "AL2": 1.079226305089992}, {"trial": 1, "sample": 240, "AL1": 1.0019951852179412, "AL2": 1.028374156527493}, {"trial": 1, "sample": 241, "AL1": 1.1367218105575336, "AL2": 1.1317366758882248}, {"trial": 1, "sample": 242, "AL1": 1.0159042092914619, "AL2": 0.9194842297143159}, {"trial": 1, "sample": 243, "AL1": 1.0202678246870762, "AL2": 0.9913405265961079}, {"trial": 1, "sample": 244, "AL1": 0.9182683148145911, "AL2": 0.9954860821854421}, {"trial": 1, "sample": 245, "AL1": 0.6556332131910535, "AL2": 0.707231783540407}, {"trial": 1, "sample": 246, "AL1": 1.0475404209096657, "AL2": 1.1347767499870698}, {"trial": 1, "sample": 247, "AL1": 0.7971779875862934, "AL2": 0.9402120076609867}, {"trial": 1, "sample": 248, "AL1": 1.0859947815835171, "AL2": 1.1168126757666217}, {"trial": 1, "sample": 249, "AL1": 0.8942684301387123, "AL2": 0.9197606000869382}, {"trial": 1, "sample": 250, "AL1": 1.104267421052652, "AL2": 0.9681254152958366}, {"trial": 1, "sample": 251, "AL1": 1.0606312670965088, "AL2": 1.1582682316599633}, {"trial": 1, "sample": 252, "AL1": 1.0996310796948119, "AL2": 1.0676187494398564}, {"trial": 1, "sample": 253, "AL1": 0.6384514775708221, "AL2": 0.6005528197082082}, {"trial": 1, "sample": 254, "AL1": 1.0644494305676713, "AL2": 1.001566230383132}, {"trial": 1, "sample": 255, "AL1": 0.7922689202662273, "AL2": 0.7326578578216566}, {"trial": 1, "sample": 256, "AL1": 1.1702671039113188, "AL2": 1.1383695648311594}, {"trial": 1, "sample": 257, "AL1": 0.8129960933953954, "AL2": 0.742054450490814}, {"trial": 1, "sample": 258, "AL1": 1.2294486377143383, "AL2": 1.133118527751336}, {"trial": 1, "sample": 259, "AL1": 1.012631497744751, "AL2": 0.9380010446800084}, {"trial": 1, "sample": 260, "AL1": 0.9428136514149218, "AL2": 0.9808384524364614}, {"trial": 1, "sample": 261, "AL1": 1.180085238551451, "AL2": 1.1408568981847598}, {"trial": 1, "sample": 262, "AL1": 0.8754503387451255, "AL2": 0.8064487473118046}, {"trial": 1, "sample": 263, "AL1": 1.1762670750802886, "AL2": 1.12510378694529}, {"trial": 1, "sample": 264, "AL1": 1.1631762288934455, "AL2": 1.053247490063498}, {"trial": 1, "sample": 265, "AL1": 0.9673589880152523, "AL2": 0.9172732667333376}, {"trial": 1, "sample": 266, "AL1": 0.9561772235639906, "AL2": 1.0844773421698153}, {"trial": 1, "sample": 267, "AL1": 1.054358569965313, "AL2": 1.0156611193868683}, {"trial": 1, "sample": 268, "AL1": 0.837541429995726, "AL2": 1.0098573415618004}, {"trial": 1, "sample": 269, "AL1": 1.1732670894958037, "AL2": 1.18093060221499}, {"trial": 1, "sample": 270, "AL1": 1.2389940463922446, "AL2": 1.2035929727700168}, {"trial": 1, "sample": 271, "AL1": 1.0639039786432194, "AL2": 1.0999540830366628}, {"trial": 1, "sample": 272, "AL1": 0.8579958771626681, "AL2": 0.8362967475550105}, {"trial": 1, "sample": 273, "AL1": 0.9758134928442551, "AL2": 0.9907877858508634}, {"trial": 1, "sample": 274, "AL1": 1.1770852529669662, "AL2": 1.064302304968389}, {"trial": 1, "sample": 275, "AL1": 1.0944492864125197, "AL2": 1.0963612681925732}, {"trial": 1, "sample": 276, "AL1": 0.9313591610014341, "AL2": 1.0062645267177108}, {"trial": 1, "sample": 277, "AL1": 1.2818120224617102, "AL2": 1.203869343142639}, {"trial": 1, "sample": 278, "AL1": 1.261357575294768, "AL2": 1.143067861165738}, {"trial": 1, "sample": 279, "AL1": 1.2027214934162005, "AL2": 1.1143253424130213}, {"trial": 1, "sample": 280, "AL1": 1.2409031281278258, "AL2": 1.1651774909755201}, {"trial": 1, "sample": 281, "AL1": 1.2818120224617102, "AL2": 1.1776141577435226}, {"trial": 1, "sample": 282, "AL1": 0.8522686319559244, "AL2": 0.8885307479806208}, {"trial": 1, "sample": 283, "AL1": 0.9793589303531918, "AL2": 1.064302304968389}, {"trial": 1, "sample": 284, "AL1": 0.8563595213893128, "AL2": 0.8315984512204317}, {"trial": 1, "sample": 285, "AL1": 0.8907229926297756, "AL2": 0.8802396368019525}, {"trial": 1, "sample": 286, "AL1": 0.8945411561009382, "AL2": 1.0955321570747063}, {"trial": 1, "sample": 287, "AL1": 0.8803594060651916, "AL2": 1.0526947493182535}, {"trial": 1, "sample": 288, "AL1": 0.7990870693218747, "AL2": 0.8235837104143857}, {"trial": 1, "sample": 289, "AL1": 1.269539354161545, "AL2": 1.2110549728308182}, {"trial": 1, "sample": 290, "AL1": 1.1375399884442114, "AL2": 1.1870107504126801}, {"trial": 1, "sample": 291, "AL1": 1.1920851808893904, "AL2": 1.1845234170590797}, {"trial": 1, "sample": 292, "AL1": 1.1639944067801233, "AL2": 1.0817136384435926}, {"trial": 1, "sample": 293, "AL1": 1.018086016989269, "AL2": 0.8476279328325238}, {"trial": 1, "sample": 294, "AL1": 1.1290854836152087, "AL2": 1.1016123052723965}, {"trial": 1, "sample": 295, "AL1": 0.9280864494547234, "AL2": 0.961492526352902}, {"trial": 1, "sample": 296, "AL1": 1.046994968985214, "AL2": 1.0828191199340818}, {"trial": 1, "sample": 297, "AL1": 1.017813291027043, "AL2": 1.0065408970903331}, {"trial": 1, "sample": 298, "AL1": 0.8751776127828996, "AL2": 0.9667435634327253}, {"trial": 1, "sample": 299, "AL1": 1.1419036038398256, "AL2": 1.0560111937897207}, {"trial": 1, "sample": 300, "AL1": 0.8129960933953954, "AL2": 0.9581760818814347}, {"trial": 1, "sample": 301, "AL1": 0.8299051030534009, "AL2": 0.7694151173804195}, {"trial": 1, "sample": 302, "AL1": 0.8110870116598141, "AL2": 0.7746661544602427}, {"trial": 1, "sample": 303, "AL1": 1.0120860458202994, "AL2": 0.9855367487710401}, {"trial": 1, "sample": 304, "AL1": 0.9439045552638253, "AL2": 0.9424229706419649}, {"trial": 1, "sample": 305, "AL1": 0.9662680841663488, "AL2": 0.9874713413793961}, {"trial": 1, "sample": 306, "AL1": 1.1822670462492582, "AL2": 1.1745740836446776}, {"trial": 1, "sample": 307, "AL1": 1.2095396424718479, "AL2": 1.1682175650743654}, {"trial": 1, "sample": 308, "AL1": 0.7543600115168277, "AL2": 0.8407186735169669}, {"trial": 1, "sample": 309, "AL1": 1.114903733579462, "AL2": 1.1286966017893796}, {"trial": 1, "sample": 310, "AL1": 1.269539354161545, "AL2": 1.0911102311127499}, {"trial": 1, "sample": 311, "AL1": 1.0257223439315941, "AL2": 1.1264856388084015}, {"trial": 1, "sample": 312, "AL1": 1.046722243022988, "AL2": 1.0391526010597618}, {"trial": 1, "sample": 313, "AL1": 0.9087229061366848, "AL2": 0.9885768228698851}, {"trial": 1, "sample": 314, "AL1": 1.308539166759848, "AL2": 1.2116077135760628}, {"trial": 1, "sample": 315, "AL1": 1.0671766901899302, "AL2": 1.065131416086256}, {"trial": 1, "sample": 316, "AL1": 0.9411772956415664, "AL2": 1.0239522305655366}, {"trial": 1, "sample": 317, "AL1": 0.6692695113023482, "AL2": 0.6771074129245789}, {"trial": 1, "sample": 318, "AL1": 1.1394490701797926, "AL2": 1.0551820826718539}, {"trial": 1, "sample": 319, "AL1": 0.8888139108941944, "AL2": 0.8653156366803496}, {"trial": 1, "sample": 320, "AL1": 0.9068138244011035, "AL2": 1.1005068237819073}, {"trial": 1, "sample": 321, "AL1": 0.6174515784794281, "AL2": 0.6326117829323923}, {"trial": 1, "sample": 322, "AL1": 0.7840871413994503, "AL2": 0.9885768228698851}, {"trial": 1, "sample": 323, "AL1": 1.1509035605932803, "AL2": 1.0441272677669629}, {"trial": 1, "sample": 324, "AL1": 1.1743579933447073, "AL2": 1.0576694160254545}, {"trial": 1, "sample": 325, "AL1": 0.6313606025529488, "AL2": 0.7116537095023635}, {"trial": 1, "sample": 326, "AL1": 1.232721349261049, "AL2": 1.166006602093387}, {"trial": 1, "sample": 327, "AL1": 0.9414500216037923, "AL2": 0.9777983783376164}, {"trial": 1, "sample": 328, "AL1": 0.9477227187349879, "AL2": 0.9247352667941392}, {"trial": 1, "sample": 329, "AL1": 0.9845407236354838, "AL2": 0.9883004524972628}, {"trial": 1, "sample": 330, "AL1": 0.787632578908387, "AL2": 0.7967757842700248}, {"trial": 1, "sample": 331, "AL1": 0.9924497765400347, "AL2": 1.0695533420482124}, {"trial": 1, "sample": 332, "AL1": 1.1399945221042445, "AL2": 1.0228467490750475}, {"trial": 1, "sample": 333, "AL1": 1.012358771782525, "AL2": 1.015384749014246}, {"trial": 1, "sample": 334, "AL1": 1.13563090670863, "AL2": 1.061262230869544}, {"trial": 1, "sample": 335, "AL1": 1.0960856421858751, "AL2": 1.0814372680709703}, {"trial": 1, "sample": 336, "AL1": 0.7701781173259297, "AL2": 0.7906956360723347}, {"trial": 1, "sample": 337, "AL1": 1.0720857575099965, "AL2": 1.1043760089986192}, {"trial": 1, "sample": 338, "AL1": 1.1364490845953077, "AL2": 1.1480425278729391}, {"trial": 1, "sample": 339, "AL1": 0.8334505405623376, "AL2": 0.9805620820638391}, {"trial": 1, "sample": 340, "AL1": 0.8590867810115718, "AL2": 0.8664211181708387}, {"trial": 1, "sample": 341, "AL1": 1.2234486665453685, "AL2": 1.0604331197516772}, {"trial": 1, "sample": 342, "AL1": 0.7750871846459958, "AL2": 0.699217042734361}, {"trial": 1, "sample": 343, "AL1": 1.093631108525842, "AL2": 1.101059564527152}, {"trial": 1, "sample": 344, "AL1": 1.1743579933447073, "AL2": 1.1168126757666217}, {"trial": 1, "sample": 345, "AL1": 1.1132673778061066, "AL2": 1.0908338607401278}, {"trial": 1, "sample": 346, "AL1": 0.9155410551923322, "AL2": 0.8830033405281753}, {"trial": 1, "sample": 347, "AL1": 1.1236309643706908, "AL2": 1.058222156770699}, {"trial": 1, "sample": 348, "AL1": 1.0889947671680018, "AL2": 1.072317045774435}, {"trial": 1, "sample": 349, "AL1": 0.9125410696078473, "AL2": 1.0026717118736213}, {"trial": 1, "sample": 350, "AL1": 0.9248137379080126, "AL2": 1.0159374897594906}, {"trial": 1, "sample": 351, "AL1": 0.8334505405623376, "AL2": 0.9780747487102386}, {"trial": 1, "sample": 352, "AL1": 1.0930856566013902, "AL2": 1.1018886756450188}, {"trial": 1, "sample": 353, "AL1": 1.1312672913130157, "AL2": 1.0720406754018128}, {"trial": 1, "sample": 354, "AL1": 1.1421763298020515, "AL2": 1.0819900088162149}, {"trial": 1, "sample": 355, "AL1": 0.9594499351107014, "AL2": 1.0648550457136337}, {"trial": 1, "sample": 356, "AL1": 1.114903733579462, "AL2": 1.0825427495614595}, {"trial": 1, "sample": 357, "AL1": 1.2100850943962995, "AL2": 1.1303548240251133}, {"trial": 1, "sample": 358, "AL1": 0.7467236845745027, "AL2": 0.6776601536698235}, {"trial": 1, "sample": 359, "AL1": 1.0219041804604316, "AL2": 1.0316906009989604}, {"trial": 1, "sample": 360, "AL1": 0.6869966988470315, "AL2": 0.8105943029011388}, {"trial": 1, "sample": 361, "AL1": 1.1394490701797926, "AL2": 1.0927684533484836}, {"trial": 1, "sample": 362, "AL1": 1.1495399307821508, "AL2": 1.1085215645879534}, {"trial": 1, "sample": 363, "AL1": 1.1599035173467347, "AL2": 1.0222940083298029}, {"trial": 1, "sample": 364, "AL1": 1.0279041516294012, "AL2": 1.0209121564666916}, {"trial": 1, "sample": 365, "AL1": 0.9591772091484755, "AL2": 1.079226305089992}, {"trial": 1, "sample": 366, "AL1": 0.701451174845004, "AL2": 0.6447720793277725}, {"trial": 1, "sample": 367, "AL1": 1.1443581374998588, "AL2": 1.1364349722228033}, {"trial": 1, "sample": 368, "AL1": 0.9384500360193074, "AL2": 0.8783050441935966}, {"trial": 1, "sample": 369, "AL1": 0.8225415020733017, "AL2": 0.7865500804830006}, {"trial": 1, "sample": 370, "AL1": 0.8544504396537315, "AL2": 0.77798259893171}, {"trial": 1, "sample": 371, "AL1": 1.033631396836145, "AL2": 0.966467193060103}, {"trial": 1, "sample": 372, "AL1": 1.1320854691996933, "AL2": 1.136158601850181}, {"trial": 1, "sample": 373, "AL1": 0.8866321031963872, "AL2": 0.9158914148702263}, {"trial": 1, "sample": 374, "AL1": 1.1710852817979964, "AL2": 1.0935975644663505}, {"trial": 1, "sample": 375, "AL1": 1.1301763874641122, "AL2": 1.140027787066893}, {"trial": 1, "sample": 376, "AL1": 1.1159946374283656, "AL2": 1.1502534908539173}, {"trial": 1, "sample": 377, "AL1": 1.1836306760603876, "AL2": 1.2168587506558861}, {"trial": 1, "sample": 378, "AL1": 1.1304491134263381, "AL2": 1.138922305576404}, {"trial": 1, "sample": 379, "AL1": 1.0208132766115279, "AL2": 1.0764626013637693}, {"trial": 1, "sample": 380, "AL1": 1.1061765027882333, "AL2": 1.0477200826110524}, {"trial": 1, "sample": 381, "AL1": 0.9837225457488061, "AL2": 0.9858131191436624}, {"trial": 1, "sample": 382, "AL1": 1.0213587285359798, "AL2": 1.0850300829150599}, {"trial": 1, "sample": 383, "AL1": 0.9354500504348225, "AL2": 0.9330263779728074}, {"trial": 1, "sample": 384, "AL1": 0.9010865791943597, "AL2": 0.938553785425253}, {"trial": 1, "sample": 385, "AL1": 0.8094506558864587, "AL2": 0.8407186735169669}, {"trial": 1, "sample": 386, "AL1": 0.766905405779219, "AL2": 0.8556426736385698}, {"trial": 1, "sample": 387, "AL1": 0.9248137379080126, "AL2": 0.9689545264137035}, {"trial": 1, "sample": 388, "AL1": 0.937086406208178, "AL2": 0.9731000820030377}, {"trial": 1, "sample": 389, "AL1": 1.0044497188779742, "AL2": 0.8346385253192768}, {"trial": 1, "sample": 390, "AL1": 0.9924497765400347, "AL2": 0.9526486744289892}, {"trial": 1, "sample": 391, "AL1": 1.1896306472293574, "AL2": 1.1231691943369342}, {"trial": 1, "sample": 392, "AL1": 1.0925402046769386, "AL2": 1.1093506757058202}, {"trial": 1, "sample": 393, "AL1": 1.072903935396674, "AL2": 0.9927223784592193}, {"trial": 1, "sample": 394, "AL1": 0.6166334005927504, "AL2": 0.5079687448797453}, {"trial": 1, "sample": 395, "AL1": 0.9428136514149218, "AL2": 1.0021189711283767}, {"trial": 1, "sample": 396, "AL1": 0.8828139397252247, "AL2": 0.9507140818206332}, {"trial": 1, "sample": 397, "AL1": 1.0276314256671752, "AL2": 1.0960848978199509}, {"trial": 1, "sample": 398, "AL1": 0.937086406208178, "AL2": 1.015384749014246}, {"trial": 1, "sample": 399, "AL1": 0.9632680985818639, "AL2": 1.05711667528021}], "data-2f903a8968f0040ecb85957060314234": [{"AL1": 0.4748159002352846, "AL2": 0.4748159002352846}, {"AL1": 1.3172663975510768, "AL2": 1.3172663975510768}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2026, PassengerSim LLC.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.2.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.view", "content.code.copy", "content.code.annotate", "navigation.tabs", "navigation.top", "navigation.tracking", "announce.dismiss"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": null}}</script>
+    
+      
+        <script src="../_static/sphinx_immaterial_theme.32136f45f91ae6956.min.js?v=a7a9472a"></script>
+        <script type="application/vnd.jupyter.widget-state+json">{"state": {"9cd04823a4d944b9a677c81e3d3df733": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a6ee7eb9d7d944b4aefb2912565912af": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_9cd04823a4d944b9a677c81e3d3df733", "msg_id": "", "outputs": [{"output_type": "display_data", "metadata": {}, "data": {"text/plain": "", "text/html": "<pre style=\"white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace\"></pre>\n"}}], "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}</script>
+        <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,75 @@
+Demand
+======
+
+.. currentmodule:: passengersim.core
+
+.. autoclass:: Demand
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Demand.__init__
+      ~Demand.add_booking_curve
+      ~Demand.add_curve
+      ~Demand.add_fare
+      ~Demand.add_group_sizes
+      ~Demand.add_override
+      ~Demand.add_path
+      ~Demand.choose_offer
+      ~Demand.get_carrier_revenue
+      ~Demand.get_carrier_sold
+      ~Demand.get_choice_model_name
+      ~Demand.get_demand_dcp
+      ~Demand.get_demand_history
+      ~Demand.get_min_delta_t
+      ~Demand.get_min_elapsed_time
+      ~Demand.get_overrides
+      ~Demand.get_paths
+      ~Demand.simulate_choices
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Demand.base_demand
+      ~Demand.business
+      ~Demand.choice_model
+      ~Demand.curve_number
+      ~Demand.dest
+      ~Demand.deterministic
+      ~Demand.distance
+      ~Demand.dwm
+      ~Demand.dwm_tolerance
+      ~Demand.emult
+      ~Demand.fares
+      ~Demand.generated_demand
+      ~Demand.gt_demand
+      ~Demand.gt_eliminated_chose_nothing
+      ~Demand.gt_eliminated_no_offers
+      ~Demand.gt_eliminated_wtp
+      ~Demand.gt_revenue
+      ~Demand.gt_sold
+      ~Demand.identifier
+      ~Demand.market
+      ~Demand.market_identifier
+      ~Demand.orig
+      ~Demand.price
+      ~Demand.prob_favored_carrier
+      ~Demand.prob_num_days
+      ~Demand.prob_saturday_night
+      ~Demand.reference_price
+      ~Demand.revenue
+      ~Demand.scenario_demand
+      ~Demand.segment
+      ~Demand.sold
+      ~Demand.unsold
+   
+   

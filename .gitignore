@@ -8,3 +8,4 @@ __pycache__
 *.pkl.lz4
 *.ipynb
 *.hash.txt
+/jupyter_execute

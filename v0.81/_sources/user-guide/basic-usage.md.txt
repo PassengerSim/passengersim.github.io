@@ -1,0 +1,189 @@
+---
+title: Summary Outputs
+icon: material/creation-outline
+jupytext:
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.19.2
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
+# Summary Outputs
+
+When you run a simulation in PassengerSim, you will get a
+[`SimulationTables`](passengersim.summaries.SimulationTables) object. This objects embeds a variety
+of summary information from the run.
+
+```{code-cell} ipython3
+import passengersim as pax
+
+pax.versions()
+```
+
+```{code-cell} ipython3
+cfg = pax.Config.from_yaml(pax.demo_network("3MKT/08-untrunc-em"))
+cfg.simulation_controls.num_samples = 300
+cfg.simulation_controls.num_trials = 2
+sim = pax.Simulation(cfg)
+summary = sim.run()
+```
+
+The simple `repr` of this object has a bit of information about what data is in there. You can view
+this in a Jupyter notebook by putting the object as the last line of a cell (or just by itself):
+
+```{code-cell} ipython3
+summary
+```
+
+We can see here there are a variety of tables stored as pandas DataFrames. We can access the raw
+values of any of these dataframes directly in Python as an attribute on the
+[`SimulationTables`](passengersim.summaries.SimulationTables) object.
+
+```{code-cell} ipython3
+summary.carriers
+```
+
+## Metadata
+
+There is also some metadata stored on the summary, which can be accessed via the
+[`metadata`](passengersim.summaries.SimulationTables.metadata) method.
+
+```{code-cell} ipython3
+summary.metadata()
+```
+
+You can access the metadata for a specific key by passing that key as an argument to the method.
+
+```{code-cell} ipython3
+summary.metadata("time")
+```
+
+```{code-cell} ipython3
+:tags: [hidden]
+
+assert "created" in summary.metadata("time").keys()
+assert "time.created" in summary.metadata().keys()
+```
+
+## Configuration Used
+
+The summary also includes the complete configuration used for this simulation run, to make it easy
+for users to see how the results were generated, and to replicate them if needed.
+
+```{code-cell} ipython3
+summary.config
+```
+
++++ {"vscode": {"languageId": "plaintext"}}
+
+## Saving and Restoring
+
+Running a PassengerSim simulation on a practical network can take some time, so it is desirable to
+save your results after a run. This allows you to come back to the analyze those results later, or
+compare against other future scenario permutations. Results can be saved using the
+[`SummaryTables.to_file`](passengersim.summaries.SimulationTables.to_file) method.
+
+```{code-cell} ipython3
+:tags: [hidden]
+
+# ensure the saved-outputs directory starts off empty
+import shutil
+
+shutil.rmtree("saved-outputs", ignore_errors=True)
+```
+
+```{code-cell} ipython3
+summary.to_file("saved-outputs/summary")
+```
+
+The method will automatically add the appropriate file extension and write the file to disk. By
+default, it will also add a timestamp, so that you will not overwrite existing similar files.
+
+```{code-cell} ipython3
+from passengersim.utils.show_dir import display_directory_contents
+
+display_directory_contents("saved-outputs")
+```
+
+Restoring from this file can be done, surprisingly enough, using the
+[`SummaryTables.from_file`](passengersim.summaries.SummaryTables.from_file) classmethod. You can
+call this function with the same filename as `to_file`, and it will load the file with the most
+recent timestamp if there is one or more matching file(s) with various timestamps. To load a
+specific file that may or may not be the most recent, you can call this method with the complete
+actual filename, including the timestamp and ".pxsim" suffix.
+
+```{code-cell} ipython3
+resummary = pax.SimulationTables.from_file("saved-outputs/summary")
+resummary
+```
+
+When opening the file, only the most basic metadata is actually loaded by the
+[`from_file`](passengersim.summaries.SummaryTables.from_file) method, and the rest is identified as
+available on demand from storage. You can confirm which file is used as the storage, as that is
+added to the metadata at load time:
+
+```{code-cell} ipython3
+resummary.metadata("store")
+```
+
+Accessing data will load just that table from the file. This includes accessing a table explicitly
+(by calling for it), or implicitly (e.g. by creating a figure using the data). The loading process
+happens transparently -- you don't need to specifically load anything, it will just happen
+automatically as needed.
+
+```{code-cell} ipython3
+resummary.carriers
+```
+
+```{code-cell} ipython3
+resummary.fig_fare_class_mix()
+```
+
+We can see in the objects `repr` that the carriers and fare_class_mix tables have been loaded, but
+the rest are still only in the storage file.
+
+```{code-cell} ipython3
+resummary
+```
+
+In addition to the summary data tables, the complete configuration used is also still available, in
+case it is needed.
+
+```{code-cell} ipython3
+resummary.config
+```
+
+## Pickling
+
+In addition to the `pxsim` file format, PassengerSim also supports `pickle` serialization. This file
+format loses some of the niceties of the `pxsim` format, such as lazy data loading. But it is a
+widely adopted standard format for Python serialization which is used across many Python libraries.
+If the LZ4 library is available, it will also use that for compression, which can result in a
+marginally smaller filesize than the `pxsim` format.
+
+```{code-cell} ipython3
+summary.to_pickle("saved-outputs/summary")
+
+display_directory_contents("saved-outputs")
+```
+
+Restoring from this pickle file can be done, surprisingly enough, using the `from_pickle` method.
+You can call this method with the same filename as `to_pickle`, and it will load the file with the
+most recent timestamp if there is one or more matching file(s) with various timestamps. To load a
+specific pickle file that may or may not be the most recent, you can call this method with the
+complete actual filename, including the timestamp and ".pkl" or ".pkl.lz4" suffix.
+
+```{code-cell} ipython3
+resummary2 = pax.SimulationTables.from_pickle("saved-outputs/summary")
+resummary2
+```
+
+You may note the summary that is reloaded from the pickle file is fully populated, with every table
+showing as a DataFrame instead of "available from store". Since the pickle format does not include
+lazy data access, loading anything from a pickle requires loading everything from the pickle, which
+may take some time for larger simulations.

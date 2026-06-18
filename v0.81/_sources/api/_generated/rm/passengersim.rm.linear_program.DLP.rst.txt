@@ -1,0 +1,37 @@
+DLP
+===
+
+.. currentmodule:: passengersim.rm.linear_program
+
+.. autoclass:: DLP
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~DLP.__init__
+      ~DLP.get_remaining_capacity
+      ~DLP.initialize
+      ~DLP.solve
+      ~DLP.test_status
+      ~DLP.update
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~DLP.carrier
+      ~DLP.solver
+      ~DLP.objective
+      ~DLP.lp_vars
+      ~DLP.constraints
+      ~DLP.cabin_code
+   
+   

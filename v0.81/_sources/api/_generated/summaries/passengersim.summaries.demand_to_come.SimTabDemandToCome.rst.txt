@@ -1,0 +1,54 @@
+SimTabDemandToCome
+==================
+
+.. currentmodule:: passengersim.summaries.demand_to_come
+
+.. autoclass:: SimTabDemandToCome
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SimTabDemandToCome.__init__
+      ~SimTabDemandToCome.aggregate
+      ~SimTabDemandToCome.aggregate_demand_history
+      ~SimTabDemandToCome.extract
+      ~SimTabDemandToCome.fig_leg_bid_price_detail_rake
+      ~SimTabDemandToCome.fig_leg_bid_price_history
+      ~SimTabDemandToCome.fig_leg_booking_detail_rake
+      ~SimTabDemandToCome.file_info
+      ~SimTabDemandToCome.from_file
+      ~SimTabDemandToCome.from_pickle
+      ~SimTabDemandToCome.metadata
+      ~SimTabDemandToCome.remove_data
+      ~SimTabDemandToCome.run_queries
+      ~SimTabDemandToCome.save
+      ~SimTabDemandToCome.subclasses
+      ~SimTabDemandToCome.to_file
+      ~SimTabDemandToCome.to_html
+      ~SimTabDemandToCome.to_pickle
+      ~SimTabDemandToCome.to_xlsx
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~SimTabDemandToCome.callback_data
+      ~SimTabDemandToCome.config
+      ~SimTabDemandToCome.demand_to_come
+      ~SimTabDemandToCome.demand_to_come_summary
+      ~SimTabDemandToCome.leg_bid_price_detail
+      ~SimTabDemandToCome.leg_booking_detail
+      ~SimTabDemandToCome.cnx
+      ~SimTabDemandToCome.sim
+      ~SimTabDemandToCome.n_total_samples
+      ~SimTabDemandToCome.meta_summaries
+   
+   
