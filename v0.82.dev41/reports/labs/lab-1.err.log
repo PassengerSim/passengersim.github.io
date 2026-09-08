@@ -1,0 +1,89 @@
+Traceback (most recent call last):
+  File "/Users/jpn/Git/pax/.venv/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/jpn/Git/pax/.venv/lib/python3.12/site-packages/nbclient/client.py", line 1323, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jpn/Git/pax/.venv/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jpn/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/jpn/Git/pax/.venv/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/Users/jpn/Git/pax/.venv/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/jpn/Git/pax/.venv/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+summary = experiments.run()
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mValueError[39m                                Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[6][39m[32m, line 1[39m
+[32m----> [39m[32m1[39m summary = experiments.run()
+
+[36mFile [39m[32m~/Git/pax/packages/passengersim-public/src/passengersim/experiments.py:859[39m, in [36mExperiments.run[39m[34m(self, use_existing, tag, check_versions, check_content, single_process, retain_sims, write_report, cache_results)[39m
+[32m    848[39m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m._run_experiments_in_sequence(
+[32m    849[39m         use_existing=use_existing,
+[32m    850[39m         tag=tag,
+[32m   (...)[39m[32m    856[39m         cache_results=cache_results,
+[32m    857[39m     )
+[32m    858[39m [38;5;28;01melse[39;00m:
+[32m--> [39m[32m859[39m     [38;5;28;01mreturn[39;00m [30;43mself[39;49m[30;43m.[39;49m[30;43m_run_together[39;49m[30;43m([39;49m
+[32m    860[39m [30;43m        [39;49m[30;43muse_existing[39;49m[30;43m=[39;49m[30;43muse_existing[39;49m[30;43m,[39;49m
+[32m    861[39m [30;43m        [39;49m[30;43mtag[39;49m[30;43m=[39;49m[30;43mtag[39;49m[30;43m,[39;49m
+[32m    862[39m [30;43m        [39;49m[30;43mcheck_versions[39;49m[30;43m=[39;49m[30;43mcheck_versions[39;49m[30;43m,[39;49m
+[32m    863[39m [30;43m        [39;49m[30;43mcheck_content[39;49m[30;43m=[39;49m[30;43mcheck_content[39;49m[30;43m,[39;49m
+[32m    864[39m [30;43m        [39;49m[30;43mretain_sims[39;49m[30;43m=[39;49m[30;43mretain_sims[39;49m[30;43m,[39;49m
+[32m    865[39m [30;43m        [39;49m[30;43mwrite_report[39;49m[30;43m=[39;49m[30;43mwrite_report[39;49m[30;43m,[39;49m
+[32m    866[39m [30;43m        [39;49m[30;43mcache_results[39;49m[30;43m=[39;49m[30;43mcache_results[39;49m[30;43m,[39;49m
+[32m    867[39m [30;43m    [39;49m[30;43m)[39;49m
+
+[36mFile [39m[32m~/Git/pax/packages/passengersim-public/src/passengersim/experiments.py:772[39m, in [36mExperiments._run_together[39m[34m(self, use_existing, tag, check_versions, check_content, retain_sims, write_report, cache_results, summarizer)[39m
+[32m    768[39m         e.cached = summary
+[32m    770[39m [38;5;66;03m# convert cached results, which might be Futures, into finalized results[39;00m
+[32m    771[39m results = contrast.Contrast(
+[32m--> [39m[32m772[39m     {k: ([30;43mv[39;49m[30;43m.[39;49m[30;43mresult[39;49m[30;43m([39;49m[30;43m)[39;49m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(v, concurrent.futures.Future) [38;5;28;01melse[39;00m v) [38;5;28;01mfor[39;00m k, v [38;5;129;01min[39;00m results.items()}
+[32m    773[39m )
+[32m    775[39m [38;5;66;03m# await results[39;00m
+[32m    776[39m [38;5;28;01mfor[39;00m k, v [38;5;129;01min[39;00m pending_results.items():
+
+[36mFile [39m[32m~/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/concurrent/futures/_base.py:456[39m, in [36mFuture.result[39m[34m(self, timeout)[39m
+[32m    454[39m     [38;5;28;01mraise[39;00m CancelledError()
+[32m    455[39m [38;5;28;01melif[39;00m [38;5;28mself[39m._state == FINISHED:
+[32m--> [39m[32m456[39m     [38;5;28;01mreturn[39;00m [30;43mself[39;49m[30;43m.[39;49m[30;43m__get_result[39;49m[30;43m([39;49m[30;43m)[39;49m
+[32m    457[39m [38;5;28;01melse[39;00m:
+[32m    458[39m     [38;5;28;01mraise[39;00m [38;5;167;01mTimeoutError[39;00m()
+
+[36mFile [39m[32m~/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/concurrent/futures/_base.py:401[39m, in [36mFuture.__get_result[39m[34m(self)[39m
+[32m    399[39m [38;5;28;01mif[39;00m [38;5;28mself[39m._exception:
+[32m    400[39m     [38;5;28;01mtry[39;00m:
+[32m--> [39m[32m401[39m         [38;5;28;01mraise[39;00m [38;5;28mself[39m._exception
+[32m    402[39m     [38;5;28;01mfinally[39;00m:
+[32m    403[39m         [38;5;66;03m# Break a reference cycle with the exception in self._exception[39;00m
+[32m    404[39m         [38;5;28mself[39m = [38;5;28;01mNone[39;00m
+
+[31mValueError[39m: Z requires bucket_allocations for availability control 'leg', but it has not been produced by any actions.
+Subprocess traceback (trial 0):
+Traceback (most recent call last):
+  File "/Users/jpn/Git/pax/packages/passengersim-public/src/passengersim/driver/_multiproc.py", line 79, in _subprocess_run_trial
+    sim = Simulation(cfg, output_dir.joinpath(f"passengersim-trial-{trial_id:02}"))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jpn/Git/pax/packages/passengersim-public/src/passengersim/driver/_singleproc.py", line 200, in __init__
+    self._initialize(config)
+  File "/Users/jpn/Git/pax/packages/passengersim-public/src/passengersim/driver/_singleproc.py", line 331, in _initialize
+    self._init_carriers(config)
+  File "/Users/jpn/Git/pax/packages/passengersim-public/src/passengersim/driver/_singleproc.py", line 643, in _init_carriers
+    rm_sys = system_class(carrier=carrier_name, cfg=config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jpn/Git/pax/packages/passengersim-public/src/passengersim/rm/systems.py", line 134, in __init__
+    self.validate_step_requirements()
+  File "/Users/jpn/Git/pax/packages/passengersim-public/src/passengersim/rm/systems.py", line 210, in validate_step_requirements
+    raise ValueError(
+ValueError: Z requires bucket_allocations for availability control 'leg', but it has not been produced by any actions.
+

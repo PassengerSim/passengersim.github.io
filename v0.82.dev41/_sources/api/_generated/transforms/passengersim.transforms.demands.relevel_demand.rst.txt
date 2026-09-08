@@ -1,0 +1,6 @@
+relevel\_demand
+===============
+
+.. currentmodule:: passengersim.transforms.demands
+
+.. autofunction:: relevel_demand

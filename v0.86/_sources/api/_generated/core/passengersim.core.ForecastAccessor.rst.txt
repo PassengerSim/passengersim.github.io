@@ -1,0 +1,68 @@
+ForecastAccessor
+================
+
+.. currentmodule:: passengersim.core
+
+.. autoclass:: ForecastAccessor
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ForecastAccessor.__init__
+      ~ForecastAccessor.adjust_forecast_means
+      ~ForecastAccessor.allocate_q_demand
+      ~ForecastAccessor.clear_forecast_means_adjustment
+      ~ForecastAccessor.combine_forecasts
+      ~ForecastAccessor.compute_conditional_q_forecast
+      ~ForecastAccessor.compute_fare_adjustments
+      ~ForecastAccessor.compute_forecasts
+      ~ForecastAccessor.compute_hybrid_forecasts
+      ~ForecastAccessor.compute_sellup_probability
+      ~ForecastAccessor.compute_simple_fare_adjustments
+      ~ForecastAccessor.detruncate_demand
+      ~ForecastAccessor.detruncate_q_demand
+      ~ForecastAccessor.detruncate_yieldable_demand
+      ~ForecastAccessor.get_adjusted_marginal_revenue
+      ~ForecastAccessor.get_advpurch_max_tf_indexes
+      ~ForecastAccessor.get_current_mean
+      ~ForecastAccessor.get_current_stdev
+      ~ForecastAccessor.get_customer_prices
+      ~ForecastAccessor.get_forecast_data
+      ~ForecastAccessor.get_forecast_means_adjustment
+      ~ForecastAccessor.get_history
+      ~ForecastAccessor.get_mean_in_timeframe
+      ~ForecastAccessor.get_mean_to_departure
+      ~ForecastAccessor.get_q_mean_in_timeframe
+      ~ForecastAccessor.get_q_mean_to_departure
+      ~ForecastAccessor.get_q_stdev_in_timeframe
+      ~ForecastAccessor.get_q_stdev_to_departure
+      ~ForecastAccessor.get_stdev_in_timeframe
+      ~ForecastAccessor.get_stdev_to_departure
+      ~ForecastAccessor.is_freestanding
+      ~ForecastAccessor.move_forecast_pointers
+      ~ForecastAccessor.sellup_probability
+      ~ForecastAccessor.set_adjusted_marginal_revenue
+      ~ForecastAccessor.set_mean_in_timeframe
+      ~ForecastAccessor.set_mean_to_departure
+      ~ForecastAccessor.set_stdev_in_timeframe
+      ~ForecastAccessor.set_stdev_to_departure
+      ~ForecastAccessor.update_conditional_forecast
+      ~ForecastAccessor.update_q_forecast
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~ForecastAccessor.dcp_days_prior
+      ~ForecastAccessor.label
+      ~ForecastAccessor.parent
+   
+   

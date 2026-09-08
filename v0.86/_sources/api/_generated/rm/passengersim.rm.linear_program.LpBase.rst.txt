@@ -1,0 +1,25 @@
+LpBase
+======
+
+.. currentmodule:: passengersim.rm.linear_program
+
+.. autoclass:: LpBase
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~LpBase.__init__
+      ~LpBase.initialize
+      ~LpBase.solve
+      ~LpBase.test_status
+      ~LpBase.update
+   
+   
+
+   
+   
+   

@@ -1,0 +1,6 @@
+fig\_path\_forecasts
+====================
+
+.. currentmodule:: passengersim.contrast
+
+.. autofunction:: fig_path_forecasts

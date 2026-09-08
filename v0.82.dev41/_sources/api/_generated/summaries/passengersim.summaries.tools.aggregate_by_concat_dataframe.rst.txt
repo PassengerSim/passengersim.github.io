@@ -1,0 +1,6 @@
+aggregate\_by\_concat\_dataframe
+================================
+
+.. currentmodule:: passengersim.summaries.tools
+
+.. autofunction:: aggregate_by_concat_dataframe

@@ -1,0 +1,6 @@
+extract\_cabins
+===============
+
+.. currentmodule:: passengersim.summaries.cabins
+
+.. autofunction:: extract_cabins

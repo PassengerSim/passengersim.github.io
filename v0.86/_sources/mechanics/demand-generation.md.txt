@@ -1,0 +1,81 @@
+---
+title: Demand Generation
+icon: material/seat-recline-extra
+myst:
+  substitutions:
+    sys_k_factor: '[`sys_k_factor`](passengersim.config.SimulationSettings.sys_k_factor)'
+    mkt_k_factor: '[`mkt_k_factor`](passengersim.config.SimulationSettings.mkt_k_factor)'
+    segment_k_factor: '[`segment_k_factor`](passengersim.config.SimulationSettings.segment_k_factor)'
+    simple_k_factor: '[`simple_k_factor`](passengersim.config.SimulationSettings.simple_k_factor)'
+---
+
+# Demand Generation
+
+There are multiple sources of variability that is introduced in the simulation when generating
+demand, which allows the user to manipulate both variance and covariance in demand levels by market
+and passenger segment.
+
+The relative amounts of variability in the level of demand by passenger segment on any given day for
+any origin-destination pair is controlled by a number of k-factors, which are used to induce some
+correlation across various dimensions of demand.
+
+(demand-generation-k-factors)=
+
+## K-Factors to Control Correlation
+
+Three k-factors are used to introduce correlation in demand across all markets in the system and
+between passengers segments (e.g., business/leisure) within a market. The equation to generate the
+expected (mean) demand for a given market and passenger type is given as:
+
+$\mu'_{ODS} = \mu_{ODS} + (R_s \times k_s) + (R_m \times k_m) + (R_p \times k_p) + (R_\star \times k_\star)$
+
+where $R_s$, $R_m$, $R_p$, and $R_\star$ are random numbers associated with the system, market,
+passenger segment, and simple k-factors, respectively.
+
+The intuition behind using four k-factors is that even across a "typical" departure day (like
+Wednesdays) we may have high demand days across the system and low demand days across the system.
+Or, we may have high or low demand days for a given market across all passenger types, or high or
+low demand for a given passenger segment across all markets. Intuitively, when generating demands,
+for a given sample (or departure day in the simulation), we add the term ($R_s$ x {{ sys_k_factor
+}}) to every single market and passenger segment in the system for that departure day, we add a
+unique ($R_m$ x {{ mkt_k_factor }}) to each origin-destination market in the sample, we add a unique
+($R_p$ x {{ segment_k_factor }}) for each passenger segment regardless of market, and finally a
+random term (~$R_\star$ x {{ simple_k_factor }}) that is unique for every demand.
+
+The addition of the ($R_s$ x {{ sys_k_factor }}) to "everything" in the sample creates a
+system-level correlation (i.e., demand on a given departure date or sample could be "high" across
+the system or "low" compared to average).
+
+The addition of the ($R_m$ x {{ mkt_k_factor }}) and ($R_p$ x {{ segment_k_factor }}) induces lower
+level, less wide-reaching correlation (i.e., if business demand is running higher than average in
+the market, we expect leisure demand will run higher than average in general as well). The use of
+the (PRN x {{ simple_k_factor }}) ensures that there is some random component that is independent
+for every component of demand.
+
+(demand-generation-z-factor)=
+
+## Z-Factor to Control Scedasticity
+
+In addition to the k-factors that are used to introduce correlation, we have a
+[`tot_z_factor`](passengersim.config.SimulationSettings.tot_z_factor). We assume that actual demand,
+given expected (mean) demand, will vary across samples (or departure dates) according to a constant
+z-factor given as $\mu$ divided by $\sigma^2$.
+
+Once we generate the means and std dev for correlated demands by OD and pax type using the
+methodology described above, we use these to generate the “actual” demands for a sample using the
+equation
+
+$\mu'_{OD-Biz} + NRV x \sigma'_{OD-Biz}$,
+
+where NRV is a normal random variable.
+
+(demand-generation-timeframes)=
+
+## Demand Allocation to Time Periods
+
+The demand generation above is used to find the total demand for each passenger type in each market
+on each travel day. This total value is subsequently distributed over the booking time periods.
+
+While the methodology for this is not (yet) explained here, note that the `tf_k_factor` is used to
+generate variability in how demand is allocated to the different time frames (also using the booking
+curves as a key input).

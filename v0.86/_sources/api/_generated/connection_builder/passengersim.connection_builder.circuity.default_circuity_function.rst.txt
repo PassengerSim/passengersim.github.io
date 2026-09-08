@@ -1,0 +1,6 @@
+default\_circuity\_function
+===========================
+
+.. currentmodule:: passengersim.connection_builder.circuity
+
+.. autofunction:: default_circuity_function

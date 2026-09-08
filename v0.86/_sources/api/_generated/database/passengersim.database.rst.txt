@@ -1,0 +1,35 @@
+﻿.. rst-class:: page_title_prefix
+
+    passengersim.
+
+database
+========
+
+.. automodule:: passengersim.database
+   :no-members:
+
+
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree: .
+   :recursive:
+
+   common_queries
+   database
+   tables
+   write_demands
+
+
+
+
+
+
+
+
+
+
+
+
+

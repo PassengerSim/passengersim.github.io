@@ -1,0 +1,39 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.summaries.
+
+fare\_class\_mix
+================
+
+.. automodule:: passengersim.summaries.fare_class_mix
+   :no-members:
+
+
+
+
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: .
+   :template: autosummary/class.rst
+
+   SimTabFareClassMix
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: .
+
+   extract_fare_class_mix
+
+
+
+
+

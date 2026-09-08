@@ -1,0 +1,54 @@
+SimTabDemands
+=============
+
+.. currentmodule:: passengersim.summaries.demands
+
+.. autoclass:: SimTabDemands
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SimTabDemands.__init__
+      ~SimTabDemands.aggregate
+      ~SimTabDemands.extract
+      ~SimTabDemands.fig_demand_segmentation_distribution
+      ~SimTabDemands.fig_leg_bid_price_detail_rake
+      ~SimTabDemands.fig_leg_bid_price_history
+      ~SimTabDemands.fig_leg_booking_detail_rake
+      ~SimTabDemands.file_info
+      ~SimTabDemands.from_file
+      ~SimTabDemands.from_pickle
+      ~SimTabDemands.metadata
+      ~SimTabDemands.remove_data
+      ~SimTabDemands.run_queries
+      ~SimTabDemands.save
+      ~SimTabDemands.subclasses
+      ~SimTabDemands.to_file
+      ~SimTabDemands.to_html
+      ~SimTabDemands.to_pickle
+      ~SimTabDemands.to_xlsx
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~SimTabDemands.callback_data
+      ~SimTabDemands.config
+      ~SimTabDemands.demand_history
+      ~SimTabDemands.demands
+      ~SimTabDemands.leg_bid_price_detail
+      ~SimTabDemands.leg_booking_detail
+      ~SimTabDemands.cnx
+      ~SimTabDemands.sim
+      ~SimTabDemands.n_total_samples
+      ~SimTabDemands.meta_summaries
+   
+   

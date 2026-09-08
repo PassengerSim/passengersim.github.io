@@ -1,0 +1,6 @@
+extract\_cp\_segmentation
+=========================
+
+.. currentmodule:: passengersim.summaries.cp_segmentation
+
+.. autofunction:: extract_cp_segmentation

@@ -1,0 +1,45 @@
+---
+jupytext:
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.19.2
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
+# Configuration Visualizations
+
+Some PassengerSim visualization tools can operate on a Config object directly, because they don't
+rely on the outputs of a simulation. Some examples are shown here.
+
+```{code-cell} ipython3
+import passengersim as pax
+
+cfg = pax.Config.from_yaml(pax.demo_network("3MKT/DEMO"))
+```
+
+## Route Map
+
+You can generate a map of all the legs in the network, or all the legs offered by a particular
+carrier (here the maps look the same, as the 3MKT network is symmetric).
+
+```{code-cell} ipython3
+cfg.fig_route_map()
+```
+
+```{code-cell} ipython3
+cfg.fig_route_map("AL1")
+```
+
+## Booking Curves
+
+You can review the booking curves, which control the average fraction of each passenger type
+arriving in each timeframe.
+
+```{code-cell} ipython3
+cfg.fig_booking_curves()
+```

@@ -1,0 +1,6 @@
+common\_reference\_prices
+=========================
+
+.. currentmodule:: passengersim.transforms.demands
+
+.. autofunction:: common_reference_prices

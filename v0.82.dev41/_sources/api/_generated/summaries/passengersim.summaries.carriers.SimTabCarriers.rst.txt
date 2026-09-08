@@ -1,0 +1,64 @@
+SimTabCarriers
+==============
+
+.. currentmodule:: passengersim.summaries.carriers
+
+.. autoclass:: SimTabCarriers
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SimTabCarriers.__init__
+      ~SimTabCarriers.aggregate
+      ~SimTabCarriers.extract
+      ~SimTabCarriers.fig_carrier_head_to_head_revenue
+      ~SimTabCarriers.fig_carrier_load_factors
+      ~SimTabCarriers.fig_carrier_local_share
+      ~SimTabCarriers.fig_carrier_mileage
+      ~SimTabCarriers.fig_carrier_rasm
+      ~SimTabCarriers.fig_carrier_revenue_distribution
+      ~SimTabCarriers.fig_carrier_revenues
+      ~SimTabCarriers.fig_carrier_total_bookings
+      ~SimTabCarriers.fig_carrier_yields
+      ~SimTabCarriers.fig_leg_bid_price_detail_rake
+      ~SimTabCarriers.fig_leg_bid_price_history
+      ~SimTabCarriers.fig_leg_booking_detail_rake
+      ~SimTabCarriers.file_info
+      ~SimTabCarriers.from_file
+      ~SimTabCarriers.from_pickle
+      ~SimTabCarriers.metadata
+      ~SimTabCarriers.remove_data
+      ~SimTabCarriers.run_queries
+      ~SimTabCarriers.save
+      ~SimTabCarriers.subclasses
+      ~SimTabCarriers.to_file
+      ~SimTabCarriers.to_html
+      ~SimTabCarriers.to_pickle
+      ~SimTabCarriers.to_xlsx
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~SimTabCarriers.callback_data
+      ~SimTabCarriers.carrier_history
+      ~SimTabCarriers.carrier_history2
+      ~SimTabCarriers.carriers
+      ~SimTabCarriers.config
+      ~SimTabCarriers.forecast_accuracy
+      ~SimTabCarriers.leg_bid_price_detail
+      ~SimTabCarriers.leg_booking_detail
+      ~SimTabCarriers.cnx
+      ~SimTabCarriers.sim
+      ~SimTabCarriers.n_total_samples
+      ~SimTabCarriers.meta_summaries
+   
+   

@@ -1,0 +1,21 @@
+DatabaseTableItem
+=================
+
+.. currentmodule:: passengersim.summaries.generic
+
+.. autoclass:: DatabaseTableItem
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~DatabaseTableItem.__init__
+   
+   
+
+   
+   
+   

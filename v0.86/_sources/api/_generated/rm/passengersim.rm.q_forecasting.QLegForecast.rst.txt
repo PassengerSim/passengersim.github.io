@@ -1,0 +1,48 @@
+QLegForecast
+============
+
+.. currentmodule:: passengersim.rm.q_forecasting
+
+.. autoclass:: QLegForecast
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~QLegForecast.__init__
+      ~QLegForecast.apply_snapshot_filters
+      ~QLegForecast.configure
+      ~QLegForecast.get_dcp_index
+      ~QLegForecast.init
+      ~QLegForecast.run
+      ~QLegForecast.should_run
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~QLegForecast.frequency
+      ~QLegForecast.produces
+      ~QLegForecast.requires
+      ~QLegForecast.snapshot_filter_type
+      ~QLegForecast.algorithm
+      ~QLegForecast.alpha
+      ~QLegForecast.fare_adjustment
+      ~QLegForecast.fare_adjustment_scale
+      ~QLegForecast.weighted_by_ratio
+      ~QLegForecast.q_allocation_algorithm
+      ~QLegForecast.variance_rollup_algorithm
+      ~QLegForecast.variance_is_ratio_of_mean
+      ~QLegForecast.max_cap
+      ~QLegForecast.dcps
+      ~QLegForecast.carrier
+      ~QLegForecast.minimum_sample
+   
+   

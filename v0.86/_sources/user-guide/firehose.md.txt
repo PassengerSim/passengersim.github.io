@@ -1,0 +1,128 @@
+---
+title: Firehose
+icon: material/fire-hydrant
+jupytext:
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.19.2
+kernelspec:
+  display_name: pax (3.12.13)
+  language: python
+  name: python3
+---
+
+<!-- Hide the secondary sidebar, which is not needed for this page and just takes up space --->
+
+<style>.md-sidebar--secondary {display: none !important;}</style>
+
+# Firehose
+
+In addition to all the pre-processed and RM data that is a available from PassengerSim, if you
+really (really, really) want to see the details, you can connect to a "firehose" data stream, which
+outputs virtually everything going on inside the simulation. This is generally a lot of data, and
+you will not want to do this when running PassengerSim at scale. Even for the simple 3 market
+example model, firehose outputs can easily output over a gigabyte of data.
+
+```{code-cell} ipython3
+import io
+
+import passengersim as pax
+
+pax.versions()
+```
+
+```{code-cell} ipython3
+cfg = pax.Config.from_yaml(pax.demo_network("3MKT"))
+
+cfg.simulation_controls.num_samples = 51
+cfg.simulation_controls.burn_samples = 50
+cfg.simulation_controls.num_trials = 1
+cfg.db = None
+cfg.outputs.reports.clear()
+cfg.carriers.AL1.rm_system = "P"
+
+cfg.simulation_controls.show_progress_bar = False
+
+sim = pax.Simulation(cfg)
+```
+
+It is possible to attach a firehose to the simulation at any point, including before you even begin.
+For example, here we'll attach the "orders" data stream to stdout, which will print the output right
+here in our Python interpreter.
+
+```{code-cell} ipython3
+sim.attach_firehose("orders", "stdout")
+```
+
+You can see here, when you attach to the "orders" firehose, it writes a header line. In the Jupyter
+notebook context, this header shows up when
+
+Since the firehose is going to overwhelm us with data, we'll make a callback to turn it off almost
+immediately.
+
+```{code-cell} ipython3
+@sim.daily_callback
+def omg(sim, days_prior):
+    if sim.eng.sample == 0 and days_prior == 60:
+        sim.attach_firehose("orders", None)
+```
+
+Since the firehose sends out a lot of data, it's unlikely we'd actually want to see it in "stdout"
+(or "stderr"). Fortunately, we can also give a filename (any string other than those two) or a
+writable file-like object. Let's hook up to the 50th sample to collect all the orders.
+
+```{code-cell} ipython3
+orders_50 = io.StringIO()
+
+
+@sim.begin_sample_callback
+def please_may_i_have_some_more(sim):
+    if sim.eng.sample == 50:
+        sim.attach_firehose("orders", orders_50)
+
+
+@sim.end_sample_callback
+def gee_thanks(sim):
+    if sim.eng.sample == 50:
+        sim.attach_firehose("orders", None)
+```
+
+Now we'll run the model.
+
+```{code-cell} ipython3
+out = sim.run()
+```
+
+We got a bunch of orders data from the very first sample in our stdout.
+
+We also now have access to order from the 50th sample... they were not printed to our screen but
+they are available in our pseudo-file.
+
+```{code-cell} ipython3
+len(orders_50.getvalue())
+```
+
+We got a fair bit of data from our little model! Let's take a peek:
+
+```{code-cell} ipython3
+data = orders_50.getvalue().splitlines()
+
+print("\n".join(data[:10] + ["..."] + data[-18:]))
+```
+
+We can see the expected trends: at the beginning, there's plenty of capacity, and we see and accept
+mostly leisure passengers. At the end of the order stream, we are mostly turning away customers,
+although a few business customers with high willingness to pay are able to make orders.
+
+We can feed this raw CSV output back into a tool that can process it if we like.
+
+```{code-cell} ipython3
+import pandas as pd
+
+# Reset the StringIO cursor to the beginning so we can read it again
+orders_50.seek(0)
+
+pd.read_csv(orders_50)
+```

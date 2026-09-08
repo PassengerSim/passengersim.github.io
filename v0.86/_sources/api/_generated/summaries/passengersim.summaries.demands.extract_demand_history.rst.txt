@@ -1,0 +1,6 @@
+extract\_demand\_history
+========================
+
+.. currentmodule:: passengersim.summaries.demands
+
+.. autofunction:: extract_demand_history

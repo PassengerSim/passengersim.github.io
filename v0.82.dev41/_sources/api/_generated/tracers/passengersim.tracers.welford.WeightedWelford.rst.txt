@@ -1,0 +1,33 @@
+WeightedWelford
+===============
+
+.. currentmodule:: passengersim.tracers.welford
+
+.. autoclass:: WeightedWelford
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~WeightedWelford.__init__
+      ~WeightedWelford.update
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~WeightedWelford.mean
+      ~WeightedWelford.n
+      ~WeightedWelford.sample_std_dev
+      ~WeightedWelford.sample_variance
+      ~WeightedWelford.std_dev
+      ~WeightedWelford.variance
+   
+   

@@ -1,0 +1,10 @@
+﻿LimitConnectTime
+================
+
+.. currentmodule:: passengersim.config
+
+.. autoclass:: LimitConnectTime()
+   :members:
+   :exclude-members: validate_tags, serialize_date, model_config
+   :class-doc-from: class
+   :autosummary:

@@ -1,0 +1,6 @@
+fig\_carrier\_yields
+====================
+
+.. currentmodule:: passengersim.contrast
+
+.. autofunction:: fig_carrier_yields

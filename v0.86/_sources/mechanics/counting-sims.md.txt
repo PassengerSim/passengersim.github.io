@@ -1,0 +1,54 @@
+---
+title: Counting Simulations
+icon: material/tally-mark-5
+---
+
+# Counting Simulations
+
+When we run a PassengerSim simulation, we are simulating the booking and operations of one or more
+airlines over a number of departure days. We abstract away many of the nuances of the real world,
+such as seasonality and specific calendar dates, instead just simulating the same schedule
+repeatedly.
+
+A simulation run consists of a number of _independent_ trials, and each trial is made up of a
+sequence of _dependent_ samples -- earlier samples in a trial are used to develop forecasts and
+train optimization algorithms used by carriers in later samples of the same trial.
+
+The number of trials is set by the
+[`num_trials`](passengersim.config.simulation_controls.SimulationSettings.num_trials) configuration,
+and the number of samples in each trial is set by
+[`num_samples`](passengersim.config.simulation_controls.SimulationSettings.num_samples). Both values
+can be found in the [`simulation_controls`](passengersim.config.Config.simulation_controls)
+configuration inputs.
+
+We can think of a sample as a "typical" departure day. When generating results, the first few
+samples from each trial are discarded, as these are during a "burn period" when the simulation is
+getting started and sufficient history is being generated to use for forecasts and other steps. The
+number of samples in the burn period is set by the
+[`burn_samples`](passengersim.config.simulation_controls.SimulationSettings.burn_samples)
+configuration value.
+
+As a general rule, all PassengerSim outputs will reflect results collected only from the samples
+that are after the burn period. For example, if we have 300 samples and a burn period of 50 samples,
+then all outputs will be based on the 250 samples that are after the burn period. This is important
+to keep in mind when interpreting results, as the burn period is essentially a "warm-up" period for
+the simulation and does not reflect a steady-state behavior of the system.
+
+It is still possible to access data from the burn period samples through the use of custom callbacks
+and firehose outputs. This is generally not recommended for analysis, as the burn period is not
+representative of the steady-state behavior of the system, but it can be useful for debugging or
+other purposes. If you do choose to access burn period data, just be sure to keep in mind that it
+may not reflect the same dynamics as the post-burn period samples.
+
+When running a simulation, within each trial everything is simulated serially (i.e., one thing at a
+time), because each sample is dependent on the previous samples in the same trial. However, since
+the trials themselves are independent, they can be run in parallel. This means that if you have the
+computational resources to run multiple trials at the same time, you can significantly reduce the
+overall runtime of your simulations by doing so. There are two different but closely related ways to
+run PassegnerSim simulations: using the [`Simulation`](passengersim.Simulation) driver to run
+everything sequentially in a single process, or using the
+[`MultiSimulation`](passengersim.MultiSimulation) driver to run multiple trials in parallel across
+multiple processes. The former is generally easier to set up and debug, while the latter can provide
+significant speedups if you have the computational resources to run multiple trials at the same
+time. Since PassengerSim uses reproducible random seeds attached to the trial and sample numbers, it
+will not change the results either way, other than runtimes.

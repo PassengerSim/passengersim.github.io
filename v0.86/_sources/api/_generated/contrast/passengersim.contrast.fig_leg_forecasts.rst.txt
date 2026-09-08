@@ -1,0 +1,6 @@
+fig\_leg\_forecasts
+===================
+
+.. currentmodule:: passengersim.contrast
+
+.. autofunction:: fig_leg_forecasts

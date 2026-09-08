@@ -1,0 +1,46 @@
+PathUntruncation
+================
+
+.. currentmodule:: passengersim.rm.untruncation
+
+.. autoclass:: PathUntruncation
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~PathUntruncation.__init__
+      ~PathUntruncation.apply_snapshot_filters
+      ~PathUntruncation.configure
+      ~PathUntruncation.get_dcp_index
+      ~PathUntruncation.init
+      ~PathUntruncation.run
+      ~PathUntruncation.should_run
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~PathUntruncation.frequency
+      ~PathUntruncation.produces
+      ~PathUntruncation.requires
+      ~PathUntruncation.snapshot_filter_type
+      ~PathUntruncation.which_data
+      ~PathUntruncation.algorithm
+      ~PathUntruncation.maxiter
+      ~PathUntruncation.tolerance
+      ~PathUntruncation.initialization_method
+      ~PathUntruncation.minimum_mu
+      ~PathUntruncation.minimum_sigma
+      ~PathUntruncation.dcps
+      ~PathUntruncation.carrier
+      ~PathUntruncation.minimum_sample
+   
+   

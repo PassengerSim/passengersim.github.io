@@ -1,0 +1,15 @@
+---
+title: Visualizations
+icon: material/chart-areaspline
+---
+
+<meta http-equiv="Refresh" content="0; url=single-run.html">
+
+# Visualizations
+
+```{toctree}
+:maxdepth: 1
+
+Single Run <single-run.md>
+contrasting.md
+```

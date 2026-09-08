@@ -1,0 +1,56 @@
+SimTabPathLegs
+==============
+
+.. currentmodule:: passengersim.summaries.pathlegs
+
+.. autoclass:: SimTabPathLegs
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SimTabPathLegs.__init__
+      ~SimTabPathLegs.aggregate
+      ~SimTabPathLegs.connecting_paths_by_place
+      ~SimTabPathLegs.extract
+      ~SimTabPathLegs.fig_leg_bid_price_detail_rake
+      ~SimTabPathLegs.fig_leg_bid_price_history
+      ~SimTabPathLegs.fig_leg_booking_detail_rake
+      ~SimTabPathLegs.fig_select_leg_analysis
+      ~SimTabPathLegs.file_info
+      ~SimTabPathLegs.from_file
+      ~SimTabPathLegs.from_pickle
+      ~SimTabPathLegs.metadata
+      ~SimTabPathLegs.remove_data
+      ~SimTabPathLegs.run_queries
+      ~SimTabPathLegs.save
+      ~SimTabPathLegs.select_leg_analysis
+      ~SimTabPathLegs.subclasses
+      ~SimTabPathLegs.to_file
+      ~SimTabPathLegs.to_html
+      ~SimTabPathLegs.to_pickle
+      ~SimTabPathLegs.to_xlsx
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~SimTabPathLegs.callback_data
+      ~SimTabPathLegs.config
+      ~SimTabPathLegs.leg_bid_price_detail
+      ~SimTabPathLegs.leg_booking_detail
+      ~SimTabPathLegs.path_legs
+      ~SimTabPathLegs.pathclasses
+      ~SimTabPathLegs.cnx
+      ~SimTabPathLegs.sim
+      ~SimTabPathLegs.n_total_samples
+      ~SimTabPathLegs.meta_summaries
+   
+   

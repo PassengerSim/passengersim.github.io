@@ -1,0 +1,46 @@
+ProbabilisticBidPrice
+=====================
+
+.. currentmodule:: passengersim.rm.probp
+
+.. autoclass:: ProbabilisticBidPrice
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ProbabilisticBidPrice.__init__
+      ~ProbabilisticBidPrice.apply_snapshot_filters
+      ~ProbabilisticBidPrice.configure
+      ~ProbabilisticBidPrice.get_dcp_index
+      ~ProbabilisticBidPrice.init
+      ~ProbabilisticBidPrice.rm_engine
+      ~ProbabilisticBidPrice.run
+      ~ProbabilisticBidPrice.should_run
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~ProbabilisticBidPrice.frequency
+      ~ProbabilisticBidPrice.produces
+      ~ProbabilisticBidPrice.requires
+      ~ProbabilisticBidPrice.cabins
+      ~ProbabilisticBidPrice.capacity_sharing
+      ~ProbabilisticBidPrice.capacity_sharing_start_lf
+      ~ProbabilisticBidPrice.use_adjusted_fares
+      ~ProbabilisticBidPrice.bid_price_vector
+      ~ProbabilisticBidPrice.maxiter
+      ~ProbabilisticBidPrice.use_sub_bp
+      ~ProbabilisticBidPrice.dcps
+      ~ProbabilisticBidPrice.carrier
+      ~ProbabilisticBidPrice.minimum_sample
+   
+   

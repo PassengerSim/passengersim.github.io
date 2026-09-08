@@ -1,0 +1,6 @@
+fig\_carrier\_local\_share
+==========================
+
+.. currentmodule:: passengersim.contrast
+
+.. autofunction:: fig_carrier_local_share

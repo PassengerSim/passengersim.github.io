@@ -1,0 +1,53 @@
+SimTabPaths
+===========
+
+.. currentmodule:: passengersim.summaries.paths
+
+.. autoclass:: SimTabPaths
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SimTabPaths.__init__
+      ~SimTabPaths.aggregate
+      ~SimTabPaths.extract
+      ~SimTabPaths.fig_leg_bid_price_detail_rake
+      ~SimTabPaths.fig_leg_bid_price_history
+      ~SimTabPaths.fig_leg_booking_detail_rake
+      ~SimTabPaths.file_info
+      ~SimTabPaths.from_file
+      ~SimTabPaths.from_pickle
+      ~SimTabPaths.metadata
+      ~SimTabPaths.path_identifier
+      ~SimTabPaths.remove_data
+      ~SimTabPaths.run_queries
+      ~SimTabPaths.save
+      ~SimTabPaths.subclasses
+      ~SimTabPaths.to_file
+      ~SimTabPaths.to_html
+      ~SimTabPaths.to_pickle
+      ~SimTabPaths.to_xlsx
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~SimTabPaths.callback_data
+      ~SimTabPaths.config
+      ~SimTabPaths.leg_bid_price_detail
+      ~SimTabPaths.leg_booking_detail
+      ~SimTabPaths.paths
+      ~SimTabPaths.cnx
+      ~SimTabPaths.sim
+      ~SimTabPaths.n_total_samples
+      ~SimTabPaths.meta_summaries
+   
+   

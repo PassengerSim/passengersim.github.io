@@ -1,0 +1,6 @@
+fig\_cp\_segmentation
+=====================
+
+.. currentmodule:: passengersim.contrast
+
+.. autofunction:: fig_cp_segmentation
