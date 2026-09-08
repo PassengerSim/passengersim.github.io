@@ -1,0 +1,6 @@
+leg\_local\_and\_flow\_by\_class
+================================
+
+.. currentmodule:: passengersim.database.common_queries
+
+.. autofunction:: leg_local_and_flow_by_class

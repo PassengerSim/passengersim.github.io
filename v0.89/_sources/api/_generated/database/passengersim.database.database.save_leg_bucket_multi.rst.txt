@@ -1,0 +1,6 @@
+save\_leg\_bucket\_multi
+========================
+
+.. currentmodule:: passengersim.database.database
+
+.. autofunction:: save_leg_bucket_multi

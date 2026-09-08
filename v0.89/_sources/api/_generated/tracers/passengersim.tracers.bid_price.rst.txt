@@ -1,0 +1,45 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.tracers.
+
+bid\_price
+==========
+
+.. automodule:: passengersim.tracers.bid_price
+   :no-members:
+
+
+
+
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: .
+   :template: autosummary/class.rst
+
+   LegBidPriceArrayTracer
+   LegBidPriceTracer
+   LegBidPriceVectorTracer
+   PathBidPriceTracer
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: .
+
+   fig_leg_bid_price_array
+   fig_leg_bid_price_vectors
+   fig_leg_bid_prices
+   fig_path_bid_prices
+
+
+
+
+

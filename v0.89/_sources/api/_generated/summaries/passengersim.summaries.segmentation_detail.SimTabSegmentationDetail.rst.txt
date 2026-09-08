@@ -1,0 +1,53 @@
+SimTabSegmentationDetail
+========================
+
+.. currentmodule:: passengersim.summaries.segmentation_detail
+
+.. autoclass:: SimTabSegmentationDetail
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SimTabSegmentationDetail.__init__
+      ~SimTabSegmentationDetail.aggregate
+      ~SimTabSegmentationDetail.extract
+      ~SimTabSegmentationDetail.fig_leg_bid_price_detail_rake
+      ~SimTabSegmentationDetail.fig_leg_bid_price_history
+      ~SimTabSegmentationDetail.fig_leg_booking_detail_rake
+      ~SimTabSegmentationDetail.fig_segmentation_detail
+      ~SimTabSegmentationDetail.file_info
+      ~SimTabSegmentationDetail.from_file
+      ~SimTabSegmentationDetail.from_pickle
+      ~SimTabSegmentationDetail.metadata
+      ~SimTabSegmentationDetail.remove_data
+      ~SimTabSegmentationDetail.run_queries
+      ~SimTabSegmentationDetail.save
+      ~SimTabSegmentationDetail.subclasses
+      ~SimTabSegmentationDetail.to_file
+      ~SimTabSegmentationDetail.to_html
+      ~SimTabSegmentationDetail.to_pickle
+      ~SimTabSegmentationDetail.to_xlsx
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~SimTabSegmentationDetail.callback_data
+      ~SimTabSegmentationDetail.config
+      ~SimTabSegmentationDetail.leg_bid_price_detail
+      ~SimTabSegmentationDetail.leg_booking_detail
+      ~SimTabSegmentationDetail.segmentation_detail
+      ~SimTabSegmentationDetail.cnx
+      ~SimTabSegmentationDetail.sim
+      ~SimTabSegmentationDetail.n_total_samples
+      ~SimTabSegmentationDetail.meta_summaries
+   
+   

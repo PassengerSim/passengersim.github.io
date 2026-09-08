@@ -1,0 +1,32 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.tracers.
+
+generic
+=======
+
+.. automodule:: passengersim.tracers.generic
+   :no-members:
+
+
+
+
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: .
+   :template: autosummary/class.rst
+
+   GenericTracer
+
+
+
+
+
+
+
+
+

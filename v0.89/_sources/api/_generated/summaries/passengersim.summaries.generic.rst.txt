@@ -1,0 +1,48 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.summaries.
+
+generic
+=======
+
+.. automodule:: passengersim.summaries.generic
+   :no-members:
+
+
+
+
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: .
+   :template: autosummary/class.rst
+
+   DatabaseTableItem
+   GenericSimulationTables
+   SimulationTableItem
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: .
+
+   initialize_metadata
+
+
+
+
+
+.. rubric:: Exceptions
+
+.. autosummary::
+   :toctree: .
+
+   MissingDataError
+

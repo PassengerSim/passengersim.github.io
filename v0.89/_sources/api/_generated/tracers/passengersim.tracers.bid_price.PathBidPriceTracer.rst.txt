@@ -1,0 +1,32 @@
+PathBidPriceTracer
+==================
+
+.. currentmodule:: passengersim.tracers.bid_price
+
+.. autoclass:: PathBidPriceTracer
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~PathBidPriceTracer.__init__
+      ~PathBidPriceTracer.attach
+      ~PathBidPriceTracer.finalize
+      ~PathBidPriceTracer.fresh
+      ~PathBidPriceTracer.reset
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~PathBidPriceTracer.name
+      ~PathBidPriceTracer.bid_prices
+   
+   

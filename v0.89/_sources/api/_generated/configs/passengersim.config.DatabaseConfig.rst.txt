@@ -1,0 +1,10 @@
+﻿DatabaseConfig
+==============
+
+.. currentmodule:: passengersim.config
+
+.. autoclass:: DatabaseConfig()
+   :members:
+   :exclude-members: validate_tags, serialize_date, model_config
+   :class-doc-from: class
+   :autosummary:

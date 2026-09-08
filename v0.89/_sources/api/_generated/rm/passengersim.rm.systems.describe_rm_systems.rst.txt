@@ -1,0 +1,6 @@
+describe\_rm\_systems
+=====================
+
+.. currentmodule:: passengersim.rm.systems
+
+.. autofunction:: describe_rm_systems

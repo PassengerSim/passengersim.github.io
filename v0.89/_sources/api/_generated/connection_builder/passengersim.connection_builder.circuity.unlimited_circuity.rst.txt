@@ -1,0 +1,6 @@
+unlimited\_circuity
+===================
+
+.. currentmodule:: passengersim.connection_builder.circuity
+
+.. autofunction:: unlimited_circuity

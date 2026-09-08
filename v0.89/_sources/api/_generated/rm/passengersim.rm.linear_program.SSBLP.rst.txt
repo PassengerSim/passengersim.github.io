@@ -1,0 +1,40 @@
+SSBLP
+=====
+
+.. currentmodule:: passengersim.rm.linear_program
+
+.. autoclass:: SSBLP
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SSBLP.__init__
+      ~SSBLP.initialize
+      ~SSBLP.initialize2
+      ~SSBLP.solve
+      ~SSBLP.test_status
+      ~SSBLP.update
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~SSBLP.carrier
+      ~SSBLP.solver
+      ~SSBLP.objective
+      ~SSBLP.lp_vars
+      ~SSBLP.constraints
+      ~SSBLP.epsilon
+      ~SSBLP.num_samples
+      ~SSBLP.set_bp
+      ~SSBLP.debug
+   
+   

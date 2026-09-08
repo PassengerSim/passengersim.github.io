@@ -1,0 +1,6 @@
+simplify\_config
+================
+
+.. currentmodule:: passengersim.transforms.simplify
+
+.. autofunction:: simplify_config

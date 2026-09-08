@@ -1,0 +1,46 @@
+Forecast
+========
+
+.. currentmodule:: passengersim.core
+
+.. autoclass:: Forecast
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Forecast.__init__
+      ~Forecast.add_obs
+      ~Forecast.compute_forecast
+      ~Forecast.detruncate
+      ~Forecast.expected_demand_given_capacity
+      ~Forecast.get_detruncated_demand_array
+      ~Forecast.get_detruncated_demand_which_data
+      ~Forecast.get_mean_in_timeframe
+      ~Forecast.get_mean_to_departure
+      ~Forecast.get_stdev_in_timeframe
+      ~Forecast.get_stdev_to_departure
+      ~Forecast.get_vectors
+      ~Forecast.normal_cdf
+      ~Forecast.normal_inv_cdf
+      ~Forecast.print
+      ~Forecast.set_vectors
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Forecast.detruncation_source
+      ~Forecast.history
+      ~Forecast.mean_to_dep
+      ~Forecast.name
+      ~Forecast.std_dev_to_dep
+   
+   
