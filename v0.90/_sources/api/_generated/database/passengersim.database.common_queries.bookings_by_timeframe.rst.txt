@@ -1,0 +1,6 @@
+bookings\_by\_timeframe
+=======================
+
+.. currentmodule:: passengersim.database.common_queries
+
+.. autofunction:: bookings_by_timeframe

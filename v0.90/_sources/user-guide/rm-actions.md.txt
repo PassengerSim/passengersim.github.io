@@ -1,0 +1,35 @@
+---
+title: RM Actions
+icon: material/cash
+---
+
+# RM Actions
+
+A principle building block of a [revenue management (RM) system](rm-systems.md) is an **action**,
+defined in Python as an [`RmAction`](passengersim.rm.systems.RmAction). Each action is an algorithm
+that is executed periodically, as often as daily, that will do something. Exactly what that
+something is up to the user: it could be to print a message to a log file, to forecast demand, to
+optimize bid prices, or to do something else entirely. Several kinds of actions are provided by
+PassengerSim, such as detruncation, forecasting, and various optimization algorithms. Actions are
+highly customizable, and can be written by users to implement their own algorithms if desired.
+
+This page includes a quick rundown of some of the predefined actions that are available in
+PassengerSim.
+
+## Detruncation
+
+- TODO
+
+## Forecasting
+
+- [StandardLegForecast](passengersim.rm.standard_forecasting.StandardLegForecast)
+- [StandardPathForecast](passengersim.rm.standard_forecasting.StandardPathForecast)
+- [PathForecastDailyDecay](passengersim.rm.standard_forecasting.PathForecastDailyDecay)
+
+## Bucket Allocation
+
+- [ExpectedMarginalSeatRevenue](passengersim.rm.emsr.ExpectedMarginalSeatRevenue)
+
+## Bid Price Optimization
+
+- [ProbabilisticBidPrice](passengersim.rm.probp.ProbabilisticBidPrice)

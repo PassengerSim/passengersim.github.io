@@ -1,0 +1,53 @@
+SimTabFareClassMix
+==================
+
+.. currentmodule:: passengersim.summaries.fare_class_mix
+
+.. autoclass:: SimTabFareClassMix
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SimTabFareClassMix.__init__
+      ~SimTabFareClassMix.aggregate
+      ~SimTabFareClassMix.extract
+      ~SimTabFareClassMix.fig_fare_class_mix
+      ~SimTabFareClassMix.fig_leg_bid_price_detail_rake
+      ~SimTabFareClassMix.fig_leg_bid_price_history
+      ~SimTabFareClassMix.fig_leg_booking_detail_rake
+      ~SimTabFareClassMix.file_info
+      ~SimTabFareClassMix.from_file
+      ~SimTabFareClassMix.from_pickle
+      ~SimTabFareClassMix.metadata
+      ~SimTabFareClassMix.remove_data
+      ~SimTabFareClassMix.run_queries
+      ~SimTabFareClassMix.save
+      ~SimTabFareClassMix.subclasses
+      ~SimTabFareClassMix.to_file
+      ~SimTabFareClassMix.to_html
+      ~SimTabFareClassMix.to_pickle
+      ~SimTabFareClassMix.to_xlsx
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~SimTabFareClassMix.callback_data
+      ~SimTabFareClassMix.config
+      ~SimTabFareClassMix.fare_class_mix
+      ~SimTabFareClassMix.leg_bid_price_detail
+      ~SimTabFareClassMix.leg_booking_detail
+      ~SimTabFareClassMix.cnx
+      ~SimTabFareClassMix.sim
+      ~SimTabFareClassMix.n_total_samples
+      ~SimTabFareClassMix.meta_summaries
+   
+   

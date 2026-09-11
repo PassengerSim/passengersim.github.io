@@ -1,0 +1,31 @@
+GenericTracer
+=============
+
+.. currentmodule:: passengersim.tracers.generic
+
+.. autoclass:: GenericTracer
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~GenericTracer.__init__
+      ~GenericTracer.attach
+      ~GenericTracer.finalize
+      ~GenericTracer.fresh
+      ~GenericTracer.reset
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~GenericTracer.name
+   
+   

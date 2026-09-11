@@ -1,0 +1,16 @@
+﻿LegDP
+=====
+
+.. currentmodule:: passengersim.rm.specialty_systems.leg_dp
+
+.. autoclass:: LegDP()
+
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      ~LegDP.availability_control
+      ~LegDP.actions
+
+   

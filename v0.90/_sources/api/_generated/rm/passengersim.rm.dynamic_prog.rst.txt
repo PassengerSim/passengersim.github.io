@@ -1,0 +1,35 @@
+﻿.. rst-class:: page_title_prefix
+
+    passengersim.rm.
+
+dynamic\_prog
+=============
+
+.. automodule:: passengersim.rm.dynamic_prog
+   :no-members:
+
+
+
+
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: .
+   :template: autosummary/class.rst
+
+   LegDynamicProgram
+   LpDisplacementSolver
+   UnbucketedDynamicProgram
+   WarnSome
+
+
+
+
+
+
+
+
+

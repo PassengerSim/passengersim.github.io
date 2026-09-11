@@ -1,0 +1,38 @@
+Experiments
+===========
+
+.. currentmodule:: passengersim.experiments
+
+.. autoclass:: Experiments
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Experiments.__init__
+      ~Experiments.add_callback_events
+      ~Experiments.apply_callback_functions
+      ~Experiments.begin_sample_callback
+      ~Experiments.callback_functions
+      ~Experiments.daily_callback
+      ~Experiments.end_sample_callback
+      ~Experiments.existing
+      ~Experiments.run
+      ~Experiments.use_registered_callbacks
+      ~Experiments.validate
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Experiments.report_filename
+      ~Experiments.sims
+   
+   

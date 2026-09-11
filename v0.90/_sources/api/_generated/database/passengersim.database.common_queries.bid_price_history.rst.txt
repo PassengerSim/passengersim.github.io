@@ -1,0 +1,6 @@
+bid\_price\_history
+===================
+
+.. currentmodule:: passengersim.database.common_queries
+
+.. autofunction:: bid_price_history

@@ -1,0 +1,6 @@
+local\_and\_flow\_yields
+========================
+
+.. currentmodule:: passengersim.database.common_queries
+
+.. autofunction:: local_and_flow_yields

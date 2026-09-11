@@ -1,0 +1,58 @@
+Bucket
+======
+
+.. currentmodule:: passengersim.core
+
+.. autoclass:: Bucket
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Bucket.__init__
+      ~Bucket.capture_history
+      ~Bucket.get_history_closed
+      ~Bucket.get_history_demand
+      ~Bucket.get_history_num_dcp
+      ~Bucket.get_history_num_dep
+      ~Bucket.get_history_sold
+      ~Bucket.push_history
+      ~Bucket.set_history_demand
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Bucket.alloc
+      ~Bucket.booking_class
+      ~Bucket.cabin
+      ~Bucket.detruncated_demand
+      ~Bucket.fcst_mean
+      ~Bucket.fcst_revenue
+      ~Bucket.fcst_std_dev
+      ~Bucket.force_closed
+      ~Bucket.forecast
+      ~Bucket.forecast_multiplier
+      ~Bucket.gt_revenue
+      ~Bucket.gt_sold
+      ~Bucket.history
+      ~Bucket.naive_value
+      ~Bucket.name
+      ~Bucket.num_objects
+      ~Bucket.price
+      ~Bucket.prorated_value
+      ~Bucket.protection
+      ~Bucket.q_forecast
+      ~Bucket.revenue
+      ~Bucket.sold
+      ~Bucket.tf_index_closed_by_ap
+      ~Bucket.y_forecast
+   
+   

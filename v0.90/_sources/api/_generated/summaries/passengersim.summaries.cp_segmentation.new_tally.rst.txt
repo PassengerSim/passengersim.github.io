@@ -1,0 +1,6 @@
+new\_tally
+==========
+
+.. currentmodule:: passengersim.summaries.cp_segmentation
+
+.. autofunction:: new_tally

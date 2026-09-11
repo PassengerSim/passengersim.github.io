@@ -1,0 +1,6 @@
+extract\_legbuckets
+===================
+
+.. currentmodule:: passengersim.summaries.legbuckets
+
+.. autofunction:: extract_legbuckets

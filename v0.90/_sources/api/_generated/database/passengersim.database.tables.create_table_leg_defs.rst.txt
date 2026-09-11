@@ -1,0 +1,6 @@
+create\_table\_leg\_defs
+========================
+
+.. currentmodule:: passengersim.database.tables
+
+.. autofunction:: create_table_leg_defs
