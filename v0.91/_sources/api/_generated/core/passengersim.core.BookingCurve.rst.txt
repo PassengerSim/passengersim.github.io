@@ -1,0 +1,31 @@
+BookingCurve
+============
+
+.. currentmodule:: passengersim.core
+
+.. autoclass:: BookingCurve
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~BookingCurve.__init__
+      ~BookingCurve.add_dcp
+      ~BookingCurve.get_curve
+      ~BookingCurve.verify_curve
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~BookingCurve.name
+      ~BookingCurve.random_generator
+   
+   

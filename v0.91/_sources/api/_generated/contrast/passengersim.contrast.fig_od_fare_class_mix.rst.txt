@@ -1,0 +1,6 @@
+fig\_od\_fare\_class\_mix
+=========================
+
+.. currentmodule:: passengersim.contrast
+
+.. autofunction:: fig_od_fare_class_mix

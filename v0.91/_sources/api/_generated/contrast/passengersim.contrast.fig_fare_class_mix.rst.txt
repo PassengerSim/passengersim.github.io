@@ -1,0 +1,6 @@
+fig\_fare\_class\_mix
+=====================
+
+.. currentmodule:: passengersim.contrast
+
+.. autofunction:: fig_fare_class_mix

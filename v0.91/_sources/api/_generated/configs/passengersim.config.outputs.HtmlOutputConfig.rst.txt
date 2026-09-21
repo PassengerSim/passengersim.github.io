@@ -1,0 +1,10 @@
+﻿HtmlOutputConfig
+================
+
+.. currentmodule:: passengersim.config.outputs
+
+.. autoclass:: HtmlOutputConfig()
+   :members:
+   :exclude-members: validate_tags, serialize_date, model_config
+   :class-doc-from: class
+   :autosummary:

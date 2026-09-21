@@ -1,0 +1,6 @@
+fig\_carrier\_total\_bookings
+=============================
+
+.. currentmodule:: passengersim.contrast
+
+.. autofunction:: fig_carrier_total_bookings
