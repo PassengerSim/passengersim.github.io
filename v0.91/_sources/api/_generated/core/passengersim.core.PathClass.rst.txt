@@ -1,0 +1,65 @@
+PathClass
+=========
+
+.. currentmodule:: passengersim.core
+
+.. autoclass:: PathClass
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~PathClass.__init__
+      ~PathClass.add_fare
+      ~PathClass.current_tf_adjusted_fare_price
+      ~PathClass.current_tf_raw_adjusted_fare_price
+      ~PathClass.get_fcst_revenue
+      ~PathClass.get_index
+      ~PathClass.initialize_q_forecast
+      ~PathClass.next_departure
+      ~PathClass.set_index
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~PathClass.adjusted_at
+      ~PathClass.adjusted_marginal_revenue
+      ~PathClass.booking_class
+      ~PathClass.cabin_code
+      ~PathClass.decision_fare
+      ~PathClass.decision_price_rule
+      ~PathClass.fare
+      ~PathClass.fare_price
+      ~PathClass.fcst_mean
+      ~PathClass.fcst_std_dev
+      ~PathClass.forecast
+      ~PathClass.forecast_multiplier
+      ~PathClass.gt_revenue
+      ~PathClass.gt_revenue_by_segment
+      ~PathClass.gt_sold
+      ~PathClass.gt_sold_by_segment
+      ~PathClass.gt_sold_priceable
+      ~PathClass.history
+      ~PathClass.identifier
+      ~PathClass.num_objects
+      ~PathClass.optimization_price
+      ~PathClass.optimization_price_vector
+      ~PathClass.path_id
+      ~PathClass.q_forecast
+      ~PathClass.raw_adjusted_marginal_revenue
+      ~PathClass.revenue_alpha
+      ~PathClass.revenue_by_dcp
+      ~PathClass.sold
+      ~PathClass.sold_by_dcp
+      ~PathClass.sold_priceable
+      ~PathClass.y_forecast
+   
+   

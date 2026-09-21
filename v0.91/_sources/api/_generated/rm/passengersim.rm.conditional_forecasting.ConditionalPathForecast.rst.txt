@@ -1,0 +1,48 @@
+ConditionalPathForecast
+=======================
+
+.. currentmodule:: passengersim.rm.conditional_forecasting
+
+.. autoclass:: ConditionalPathForecast
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ConditionalPathForecast.__init__
+      ~ConditionalPathForecast.apply_snapshot_filters
+      ~ConditionalPathForecast.configure
+      ~ConditionalPathForecast.get_dcp_index
+      ~ConditionalPathForecast.init
+      ~ConditionalPathForecast.run
+      ~ConditionalPathForecast.should_run
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~ConditionalPathForecast.frequency
+      ~ConditionalPathForecast.produces
+      ~ConditionalPathForecast.requires
+      ~ConditionalPathForecast.snapshot_filter_type
+      ~ConditionalPathForecast.algorithm
+      ~ConditionalPathForecast.alpha
+      ~ConditionalPathForecast.fare_adjustment
+      ~ConditionalPathForecast.fare_adjustment_scale
+      ~ConditionalPathForecast.weighted_by_ratio
+      ~ConditionalPathForecast.q_allocation_algorithm
+      ~ConditionalPathForecast.variance_rollup_algorithm
+      ~ConditionalPathForecast.variance_is_ratio_of_mean
+      ~ConditionalPathForecast.max_cap
+      ~ConditionalPathForecast.dcps
+      ~ConditionalPathForecast.carrier
+      ~ConditionalPathForecast.minimum_sample
+   
+   

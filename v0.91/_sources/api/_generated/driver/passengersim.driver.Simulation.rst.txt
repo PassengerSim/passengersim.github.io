@@ -1,0 +1,80 @@
+Simulation
+==========
+
+.. currentmodule:: passengersim.driver
+
+.. autoclass:: Simulation
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Simulation.__init__
+      ~Simulation.add_callback_events
+      ~Simulation.apply_callback_functions
+      ~Simulation.attach_firehose
+      ~Simulation.backup_db
+      ~Simulation.begin_sample
+      ~Simulation.begin_sample_callback
+      ~Simulation.begin_trial
+      ~Simulation.callback_functions
+      ~Simulation.capture_competitor_data
+      ~Simulation.capture_dcp_data
+      ~Simulation.daily_callback
+      ~Simulation.end_sample
+      ~Simulation.end_sample_callback
+      ~Simulation.end_trial
+      ~Simulation.extract_and_reset_bid_price_traces
+      ~Simulation.extract_segmentation_by_timeframe
+      ~Simulation.from_yaml
+      ~Simulation.generate_dcp_rm_events
+      ~Simulation.generate_demands
+      ~Simulation.generate_demands_gamma
+      ~Simulation.get_choice_parameters
+      ~Simulation.get_firehose
+      ~Simulation.get_restriction_name
+      ~Simulation.license_info
+      ~Simulation.parse_restriction_flags
+      ~Simulation.path_names
+      ~Simulation.pathclasses_for_carrier
+      ~Simulation.reseed
+      ~Simulation.rm_data
+      ~Simulation.run
+      ~Simulation.run_single_sample
+      ~Simulation.run_trial
+      ~Simulation.save_simulation_state
+      ~Simulation.set_choice_parameters
+      ~Simulation.set_classes
+      ~Simulation.setup_scenario
+      ~Simulation.use_registered_callbacks
+      ~Simulation.validate_license
+      ~Simulation.vn_initial_mapping
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Simulation.base_time
+      ~Simulation.config
+      ~Simulation.db_writer
+      ~Simulation.demands
+      ~Simulation.fares
+      ~Simulation.markets
+      ~Simulation.pathclasses
+      ~Simulation.paths
+      ~Simulation.random_generator
+      ~Simulation.snapshot_filters
+      ~Simulation.segmentation_data_by_timeframe
+      ~Simulation.bid_price_traces
+      ~Simulation.displacement_traces
+      ~Simulation.callback_data
+      ~Simulation.eng
+   
+   
