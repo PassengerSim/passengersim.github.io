@@ -1,0 +1,52 @@
+SimTabServices
+==============
+
+.. currentmodule:: passengersim.summaries.services
+
+.. autoclass:: SimTabServices
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SimTabServices.__init__
+      ~SimTabServices.aggregate
+      ~SimTabServices.extract
+      ~SimTabServices.fig_leg_bid_price_detail_rake
+      ~SimTabServices.fig_leg_bid_price_history
+      ~SimTabServices.fig_leg_booking_detail_rake
+      ~SimTabServices.file_info
+      ~SimTabServices.from_file
+      ~SimTabServices.from_pickle
+      ~SimTabServices.metadata
+      ~SimTabServices.remove_data
+      ~SimTabServices.run_queries
+      ~SimTabServices.save
+      ~SimTabServices.subclasses
+      ~SimTabServices.to_file
+      ~SimTabServices.to_html
+      ~SimTabServices.to_pickle
+      ~SimTabServices.to_xlsx
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~SimTabServices.callback_data
+      ~SimTabServices.config
+      ~SimTabServices.leg_bid_price_detail
+      ~SimTabServices.leg_booking_detail
+      ~SimTabServices.services
+      ~SimTabServices.cnx
+      ~SimTabServices.sim
+      ~SimTabServices.n_total_samples
+      ~SimTabServices.meta_summaries
+   
+   

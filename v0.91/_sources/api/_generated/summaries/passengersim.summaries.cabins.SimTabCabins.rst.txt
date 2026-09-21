@@ -1,0 +1,54 @@
+SimTabCabins
+============
+
+.. currentmodule:: passengersim.summaries.cabins
+
+.. autoclass:: SimTabCabins
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SimTabCabins.__init__
+      ~SimTabCabins.aggregate
+      ~SimTabCabins.extract
+      ~SimTabCabins.fig_cabin_load_factors
+      ~SimTabCabins.fig_leg_bid_price_detail_rake
+      ~SimTabCabins.fig_leg_bid_price_history
+      ~SimTabCabins.fig_leg_booking_detail_rake
+      ~SimTabCabins.file_info
+      ~SimTabCabins.from_file
+      ~SimTabCabins.from_pickle
+      ~SimTabCabins.get_cabins_df
+      ~SimTabCabins.metadata
+      ~SimTabCabins.remove_data
+      ~SimTabCabins.run_queries
+      ~SimTabCabins.save
+      ~SimTabCabins.subclasses
+      ~SimTabCabins.to_file
+      ~SimTabCabins.to_html
+      ~SimTabCabins.to_pickle
+      ~SimTabCabins.to_xlsx
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~SimTabCabins.cabins
+      ~SimTabCabins.callback_data
+      ~SimTabCabins.config
+      ~SimTabCabins.leg_bid_price_detail
+      ~SimTabCabins.leg_booking_detail
+      ~SimTabCabins.cnx
+      ~SimTabCabins.sim
+      ~SimTabCabins.n_total_samples
+      ~SimTabCabins.meta_summaries
+   
+   

@@ -1,0 +1,56 @@
+SimTabForecasts
+===============
+
+.. currentmodule:: passengersim.summaries.forecasts
+
+.. autoclass:: SimTabForecasts
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SimTabForecasts.__init__
+      ~SimTabForecasts.aggregate
+      ~SimTabForecasts.extract
+      ~SimTabForecasts.fig_leg_bid_price_detail_rake
+      ~SimTabForecasts.fig_leg_bid_price_history
+      ~SimTabForecasts.fig_leg_booking_detail_rake
+      ~SimTabForecasts.fig_leg_forecasts
+      ~SimTabForecasts.fig_path_forecasts
+      ~SimTabForecasts.file_info
+      ~SimTabForecasts.from_file
+      ~SimTabForecasts.from_pickle
+      ~SimTabForecasts.metadata
+      ~SimTabForecasts.remove_data
+      ~SimTabForecasts.run_queries
+      ~SimTabForecasts.save
+      ~SimTabForecasts.subclasses
+      ~SimTabForecasts.to_file
+      ~SimTabForecasts.to_html
+      ~SimTabForecasts.to_pickle
+      ~SimTabForecasts.to_xlsx
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~SimTabForecasts.callback_data
+      ~SimTabForecasts.config
+      ~SimTabForecasts.edgar
+      ~SimTabForecasts.leg_bid_price_detail
+      ~SimTabForecasts.leg_booking_detail
+      ~SimTabForecasts.leg_forecasts
+      ~SimTabForecasts.path_forecasts
+      ~SimTabForecasts.cnx
+      ~SimTabForecasts.sim
+      ~SimTabForecasts.n_total_samples
+      ~SimTabForecasts.meta_summaries
+   
+   

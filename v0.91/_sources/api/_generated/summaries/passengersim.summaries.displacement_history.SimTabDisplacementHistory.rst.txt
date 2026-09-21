@@ -1,0 +1,53 @@
+SimTabDisplacementHistory
+=========================
+
+.. currentmodule:: passengersim.summaries.displacement_history
+
+.. autoclass:: SimTabDisplacementHistory
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SimTabDisplacementHistory.__init__
+      ~SimTabDisplacementHistory.aggregate
+      ~SimTabDisplacementHistory.extract
+      ~SimTabDisplacementHistory.fig_displacement_history
+      ~SimTabDisplacementHistory.fig_leg_bid_price_detail_rake
+      ~SimTabDisplacementHistory.fig_leg_bid_price_history
+      ~SimTabDisplacementHistory.fig_leg_booking_detail_rake
+      ~SimTabDisplacementHistory.file_info
+      ~SimTabDisplacementHistory.from_file
+      ~SimTabDisplacementHistory.from_pickle
+      ~SimTabDisplacementHistory.metadata
+      ~SimTabDisplacementHistory.remove_data
+      ~SimTabDisplacementHistory.run_queries
+      ~SimTabDisplacementHistory.save
+      ~SimTabDisplacementHistory.subclasses
+      ~SimTabDisplacementHistory.to_file
+      ~SimTabDisplacementHistory.to_html
+      ~SimTabDisplacementHistory.to_pickle
+      ~SimTabDisplacementHistory.to_xlsx
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~SimTabDisplacementHistory.callback_data
+      ~SimTabDisplacementHistory.config
+      ~SimTabDisplacementHistory.displacement_history
+      ~SimTabDisplacementHistory.leg_bid_price_detail
+      ~SimTabDisplacementHistory.leg_booking_detail
+      ~SimTabDisplacementHistory.cnx
+      ~SimTabDisplacementHistory.sim
+      ~SimTabDisplacementHistory.n_total_samples
+      ~SimTabDisplacementHistory.meta_summaries
+   
+   
