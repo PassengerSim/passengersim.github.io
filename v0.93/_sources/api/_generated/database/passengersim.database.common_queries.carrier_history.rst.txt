@@ -1,0 +1,6 @@
+carrier\_history
+================
+
+.. currentmodule:: passengersim.database.common_queries
+
+.. autofunction:: carrier_history

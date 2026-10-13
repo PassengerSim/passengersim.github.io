@@ -1,0 +1,30 @@
+UserAction
+==========
+
+.. currentmodule:: passengersim.core
+
+.. autoclass:: UserAction
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~UserAction.__init__
+      ~UserAction.add_curve
+      ~UserAction.adjust_path
+      ~UserAction.clear
+      ~UserAction.clear_path
+      ~UserAction.do_all_paths
+      ~UserAction.get_curve_data
+      ~UserAction.initialize
+      ~UserAction.run
+      ~UserAction.test_leg
+   
+   
+
+   
+   
+   

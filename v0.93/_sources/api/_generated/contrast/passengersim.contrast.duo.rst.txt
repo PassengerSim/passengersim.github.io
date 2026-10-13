@@ -1,0 +1,32 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.contrast.
+
+duo
+===
+
+.. automodule:: passengersim.contrast.duo
+   :no-members:
+
+
+
+
+
+
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: .
+
+   fig_leg_shifts
+   fig_service_shifts
+
+
+
+
+

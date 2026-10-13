@@ -1,0 +1,6 @@
+create\_table\_path\_defs
+=========================
+
+.. currentmodule:: passengersim.database.tables
+
+.. autofunction:: create_table_path_defs

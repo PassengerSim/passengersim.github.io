@@ -1,0 +1,6 @@
+fig\_carrier\_rasm
+==================
+
+.. currentmodule:: passengersim.contrast
+
+.. autofunction:: fig_carrier_rasm

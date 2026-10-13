@@ -1,0 +1,38 @@
+StochasticSampleSolver
+======================
+
+.. currentmodule:: passengersim.rm.linear_program
+
+.. autoclass:: StochasticSampleSolver
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~StochasticSampleSolver.__init__
+      ~StochasticSampleSolver.initialize
+      ~StochasticSampleSolver.solve
+      ~StochasticSampleSolver.test_status
+      ~StochasticSampleSolver.update
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~StochasticSampleSolver.carrier
+      ~StochasticSampleSolver.solver
+      ~StochasticSampleSolver.objective
+      ~StochasticSampleSolver.lp_vars
+      ~StochasticSampleSolver.constraints
+      ~StochasticSampleSolver.num_samples
+      ~StochasticSampleSolver.set_bp
+      ~StochasticSampleSolver.debug
+   
+   

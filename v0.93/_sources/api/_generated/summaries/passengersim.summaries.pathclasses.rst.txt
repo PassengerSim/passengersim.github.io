@@ -1,0 +1,39 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.summaries.
+
+pathclasses
+===========
+
+.. automodule:: passengersim.summaries.pathclasses
+   :no-members:
+
+
+
+
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: .
+   :template: autosummary/class.rst
+
+   SimTabPathClasses
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: .
+
+   extract_pathclasses
+
+
+
+
+

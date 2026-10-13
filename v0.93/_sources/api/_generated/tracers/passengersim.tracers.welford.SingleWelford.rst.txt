@@ -1,0 +1,33 @@
+SingleWelford
+=============
+
+.. currentmodule:: passengersim.tracers.welford
+
+.. autoclass:: SingleWelford
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SingleWelford.__init__
+      ~SingleWelford.update
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~SingleWelford.mean
+      ~SingleWelford.n
+      ~SingleWelford.sample_std_dev
+      ~SingleWelford.sample_variance
+      ~SingleWelford.std_dev
+      ~SingleWelford.variance
+   
+   

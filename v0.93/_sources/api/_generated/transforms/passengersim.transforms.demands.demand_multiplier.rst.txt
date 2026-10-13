@@ -1,0 +1,6 @@
+demand\_multiplier
+==================
+
+.. currentmodule:: passengersim.transforms.demands
+
+.. autofunction:: demand_multiplier

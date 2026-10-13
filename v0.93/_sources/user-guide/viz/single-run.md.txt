@@ -1,0 +1,288 @@
+---
+jupytext:
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.19.2
+kernelspec:
+  display_name: pax (3.12.13)
+  language: python
+  name: python3
+---
+
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
+# Simulation Run Summaries
+
+This page provides an overview of the summary visualizations available in PassengerSim.
+
+The results from a simulation run are stored in a `SimulationTables` instance, which is returned
+from `Simulation.run` or can be loaded from a stored database of results. This object has a number
+of methods to generate visualizations for the results of the simulation.
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+tags: [remove-cell]
+---
+# This cell creates the two on-disk database files.
+# It is hidden in the rendered documentation as this code is not the focus of this page.
+import pathlib
+
+import passengersim as pax
+from passengersim.tracers.bid_price import LegBidPriceTracer, PathBidPriceTracer
+
+if not pathlib.Path("temp_output/3MKT-baseline.pxsim").exists():
+    cfg = pax.Config.from_yaml(pax.demo_network("3MKT/demo"))
+    cfg.simulation_controls.num_trials = 1
+    cfg.simulation_controls.num_samples = 900
+    cfg.simulation_controls.show_progress_bar = False
+    cfg.db = None
+    cfg.outputs.reports.clear()
+    cfg.outputs._write_no_files()
+    cfg.carriers.AL1.rm_system = "U"
+    cfg.carriers.AL2.rm_system = "P"
+    cfg.carriers.AL1.rm_system_options = {}
+    cfg.carriers.AL2.rm_system_options = {}
+    sim = pax.Simulation(cfg)
+    bp_tracer = PathBidPriceTracer(path_ids=[1, 5, 9])
+    bp_tracer.attach(sim)
+    leg_bp_tracer = LegBidPriceTracer(leg_ids=[101, 111])
+    leg_bp_tracer.attach(sim)
+    summary_3mkt = sim.run()
+    summary_3mkt.to_file("temp_output/3MKT-baseline.pxsim", add_timestamp_ext=False)
+else:
+    summary_3mkt = pax.from_file("temp_output/3MKT-baseline.pxsim")
+
+summary_us25 = pax.from_file(pax.demo_output("US25/baseline"))
+```
+
+### Carrier Revenues
+
+[`SimulationTables.fig_carrier_revenues`](../../API/summary.html#passengersim.summary.SimulationTables.fig_carrier_revenues)
+
+Display the average revenues by carrier.
+
+```{code-cell} ipython3
+summary_us25.fig_carrier_revenues()
+```
+
+### Carrier Mileage
+
+[`SimulationTables.fig_carrier_mileage`](../../API/summary.html#passengersim.summary.SimulationTables.fig_carrier_mileage)
+
+Display the available seat miles (ASM) and average revenue passenger miles (RPM) by carrier.
+
+```{code-cell} ipython3
+summary_us25.fig_carrier_mileage()
+```
+
+## Carrier Load Factors
+
+[`SimulationTables.fig_carrier_load_factors`](../../API/summary.html#passengersim.summary.SimulationTables.fig_carrier_load_factors)
+
+Display the average system load factors by carrier. The system load factor is calculated based on
+ASM and RPM figures for the carrier, which weights larger capacity vehicles and longer distance legs
+more heavily, to reflect their larger relative importance in evaluating carrier performance.
+
+```{code-cell} ipython3
+summary_us25.fig_carrier_load_factors()
+```
+
+Alternatively, this function can also display the average leg load factor, which considers the
+fraction of capacity sold on each leg, and weights all legs uniformly.
+
+```{code-cell} ipython3
+summary_us25.fig_carrier_load_factors(load_measure="avg_leg_lf")
+```
+
+We can also look at the *distribution* of leg load factors, instead of looking at aggregate system
+level measures.
+
+[`SimulationTables.fig_leg_load_factor_distribution`](../../API/summary.html#passengersim.summaries.SimulationTables.fig_leg_load_factor_distribution)
+
+Display the distribution of leg load factors.
+
+```{code-cell} ipython3
+summary_us25.fig_leg_load_factor_distribution()
+```
+
+## Carrier Local Passenger Percentages
+
+Display the percentage of local passengers by carrier. By default, this is the percentage of
+bookings that are local (i.e. flying on only a single leg). Alternatively, this method accepts a
+`load_measure` argument that can be set to 'leg_pax', which will report the percentage of leg
+passengers who are local -- the numerator of this ratio is the same, but the denominator is larger
+(assuming there are any connecting passengers in the network).
+
+```{code-cell} ipython3
+summary_us25.fig_carrier_local_share()
+```
+
+```{code-cell} ipython3
+summary_us25.fig_carrier_local_share("leg_pax")
+```
+
+## Carrier Yields
+
+[`SimulationTables.fig_carrier_yields`](../../API/summary.html#passengersim.summary.SimulationTables.fig_carrier_yields)
+
+Display the average yield (revenue per passenger mile) by carrier.
+
+```{code-cell} ipython3
+summary_us25.fig_carrier_yields()
+```
+
+## Fare Class Mix
+
+[`SimulationTables.fig_fare_class_mix`](../../API/summary.html#passengersim.summary.SimulationTables.fig_fare_class_mix)
+
+Display the fare class mix by carrier.
+
+```{code-cell} ipython3
+summary_us25.fig_fare_class_mix()
+```
+
+We can also display the fare class mix for individual markets. For example, here's a market where
+Bison offers non-stop service and Eagle only offers connecting service.
+
+```{code-cell} ipython3
+summary_us25.fig_od_fare_class_mix(orig="DEN", dest="ATL")
+```
+
+When one or more carriers don't serve a market at all, they are omitted.
+
+```{code-cell} ipython3
+summary_us25.fig_od_fare_class_mix(orig="DEN", dest="LAX")
+```
+
+## Bookings by Timeframe
+
+[`SimulationTables.fig_bookings_by_timeframe`](../../API/summary.html#passengersim.summary.SimulationTables.fig_bookings_by_timeframe)
+
+Display the distribution of bookings across different time periods leading up to departure. This
+visualization shows how booking patterns vary over the advance booking timeframe, helping to
+understand passenger booking behavior and demand patterns at different points in the booking
+horizon.
+
+By default, we view the bookings by timeframe, carrier, and passenger market segment (e.g.
+business/leisure).
+
+```{code-cell} ipython3
+summary_us25.fig_bookings_by_timeframe()
+```
+
+We can alse view the bookings by timeframe for an individual carrier, breaking out the bookings not
+only by passenger segment but also fare class.
+
+```{code-cell} ipython3
+summary_us25.fig_bookings_by_timeframe(by_carrier="Bison", by_class=True)
+```
+
+## Bid Prices
+
++++
+
+[`SimulationTables.fig_bid_price_history`](../../API/summary.html#passengersim.summary.SimulationTables.fig_bid_price_history)
+
+Display the history of average bid prices over the booking horizon. Bid prices represent the
+marginal value of capacity and are used in revenue management optimization to make booking control
+decisions. Higher bid prices indicate that capacity is more valuable, typically closer to departure
+when demand uncertainty is reduced and remaining capacity is limited.
+
+The default figure show the average bid price over "all" legs. We say "all" in quotes because of the
+anomalous situation for sold-out legs, which have no capacity remaining and thus no bid price. For
+these legs, the average is using the last calculated bid price as of the moment the leg sold out.
+This tends to skew the averages, especially near the end of the booking horizon, as legs that sell
+out are generally high outliers at the moment they sell out, and by locking in that bid price there
+is no opportunity for that leg's value to revert towards the mean later.
+
+```{code-cell} ipython3
+summary_3mkt.fig_bid_price_history()
+```
+
+Users can choose instead to average only those legs where the bid price exists (i.e. legs that are
+not yet sold out), by settings `cap='some'`. This introduces an opposite bias, as the high outliers
+are thrown out, but low outliers are retained.
+
+```{code-cell} ipython3
+summary_3mkt.fig_bid_price_history(cap="some")
+```
+
+Note that bid prices figures are only available for carriers that have an RM system that calculates
+a bid price. If you request bid prices for carriers that don't have any, you will get a blank
+figure.
+
+```{code-cell} ipython3
+summary_us25.fig_bid_price_history()
+```
+
+In addition to viewing aggregate average bid prices, we can also view the mean and standard
+deviation of bid prices on individual legs or paths. This is only available if those bid prices were
+traced during a simulation run; see [tracing](bid-price-tracing). By default no bid prices are
+traced as this is a lot of data to track.
+
+In the `3MKT` summary shown here, bid prices have been traced for two representative legs (101 and
+111\) and three representative paths (1, 5, and 9).
+
+```{code-cell} ipython3
+from passengersim.tracers.bid_price import fig_leg_bid_prices
+
+fig_leg_bid_prices(summary_3mkt)
+```
+
+```{code-cell} ipython3
+from passengersim.tracers.bid_price import fig_path_bid_prices
+
+fig_path_bid_prices(summary_3mkt)
+```
+
+```{code-cell} ipython3
+
+```
+
++++ {"vscode": {"languageId": "markdown"}}
+
+## Demand Segmentation Distribution
+
+[`SimulationTables.fig_demand_segmentation_distribution`](../../API/summary.html#passengersim.summary.SimulationTables.fig_demand_segmentation_distribution)
+
+Display the distribution of passenger demand across different market segments (typically business
+and leisure travelers) by carrier. This visualization helps understand the relative distribution of
+different types of passengers across markets.
+
+```{code-cell} ipython3
+summary_us25.fig_demand_segmentation_distribution()
+```
+
+## Leg Load Factor vs Distance
+
+[`SimulationTables.fig_leg_load_v_distance`](../../API/summary.html#passengersim.summary.SimulationTables.fig_leg_load_v_distance)
+
+Display the relationship between leg load factors and flight distance. This scatter plot
+visualization helps identify patterns in how aircraft utilization varies with route length, which
+can provide insights into network efficiency and capacity allocation strategies across different
+market segments.
+
+```{code-cell} ipython3
+summary_us25.fig_leg_load_v_distance()
+```
+
+## Select Leg Analysis
+
+[`SimulationTables.fig_select_leg_analysis`](../../API/summary.html#passengersim.summary.SimulationTables.fig_select_leg_analysis)
+
+Display detailed analysis for a specific leg, including passenger origins, destinations, and booking
+classes. This visualization provides a comprehensive view of individual leg performance, helping to
+understand how specific routes perform across different metrics and time periods.
+
+```{code-cell} ipython3
+summary_us25.fig_select_leg_analysis(leg_id=429)
+```
+
+```{code-cell} ipython3
+summary_us25.legs.loc[429]
+```

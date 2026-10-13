@@ -1,0 +1,63 @@
+﻿.. rst-class:: page_title_prefix
+
+    passengersim.
+
+contrast
+========
+
+.. automodule:: passengersim.contrast
+   :no-members:
+
+
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree: .
+   :recursive:
+
+   duo
+
+
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: .
+   :template: autosummary/class.rst
+
+   Contrast
+   MultiContrast
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: .
+
+   fig_bid_price_history
+   fig_bookings_by_timeframe
+   fig_carrier_load_factors
+   fig_carrier_local_share
+   fig_carrier_rasm
+   fig_carrier_revenues
+   fig_carrier_total_bookings
+   fig_carrier_yields
+   fig_cp_segmentation
+   fig_demand_to_come
+   fig_displacement_history
+   fig_fare_class_mix
+   fig_leg_forecasts
+   fig_od_fare_class_mix
+   fig_path_forecasts
+   fig_segmentation_by_timeframe
+
+
+
+
+

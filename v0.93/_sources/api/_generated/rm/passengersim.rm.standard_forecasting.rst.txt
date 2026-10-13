@@ -1,0 +1,34 @@
+﻿.. rst-class:: page_title_prefix
+
+    passengersim.rm.
+
+standard\_forecasting
+=====================
+
+.. automodule:: passengersim.rm.standard_forecasting
+   :no-members:
+
+
+
+
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: .
+   :template: autosummary/class.rst
+
+   PathForecastDailyDecay
+   StandardLegForecast
+   StandardPathForecast
+
+
+
+
+
+
+
+
+

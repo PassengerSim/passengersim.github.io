@@ -1,0 +1,41 @@
+StandardPathForecast
+====================
+
+.. currentmodule:: passengersim.rm.standard_forecasting
+
+.. autoclass:: StandardPathForecast
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~StandardPathForecast.__init__
+      ~StandardPathForecast.apply_snapshot_filters
+      ~StandardPathForecast.configure
+      ~StandardPathForecast.get_dcp_index
+      ~StandardPathForecast.init
+      ~StandardPathForecast.run
+      ~StandardPathForecast.should_run
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~StandardPathForecast.frequency
+      ~StandardPathForecast.produces
+      ~StandardPathForecast.requires
+      ~StandardPathForecast.snapshot_filter_type
+      ~StandardPathForecast.algorithm
+      ~StandardPathForecast.alpha
+      ~StandardPathForecast.dcps
+      ~StandardPathForecast.carrier
+      ~StandardPathForecast.minimum_sample
+   
+   

@@ -1,0 +1,76 @@
+Traceback (most recent call last):
+  File "/Users/jpn/Git/pax/.venv/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/jpn/Git/pax/.venv/lib/python3.12/site-packages/nbclient/client.py", line 1323, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jpn/Git/pax/.venv/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jpn/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/jpn/Git/pax/.venv/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/Users/jpn/Git/pax/.venv/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/jpn/Git/pax/.venv/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+summaries = experiments.run()
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mValueError[39m                                Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[6][39m[32m, line 1[39m
+[32m----> [39m[32m1[39m summaries = experiments.run()
+
+[36mFile [39m[32m~/Git/pax/packages/passengersim-public/src/passengersim/experiments.py:1063[39m, in [36mExperiments.run[39m[34m(self, use_existing, tag, check_versions, check_content, single_process, retain_sims, write_report, cache_results)[39m
+[32m   1052[39m     result = [38;5;28mself[39m._run_experiments_in_sequence(
+[32m   1053[39m         use_existing=use_existing,
+[32m   1054[39m         tag=tag,
+[32m   (...)[39m[32m   1060[39m         cache_results=cache_results,
+[32m   1061[39m     )
+[32m   1062[39m [38;5;28;01melse[39;00m:
+[32m-> [39m[32m1063[39m     result = [30;43mself[39;49m[30;43m.[39;49m[30;43m_run_together[39;49m[30;43m([39;49m
+[32m   1064[39m [30;43m        [39;49m[30;43muse_existing[39;49m[30;43m=[39;49m[30;43muse_existing[39;49m[30;43m,[39;49m
+[32m   1065[39m [30;43m        [39;49m[30;43mtag[39;49m[30;43m=[39;49m[30;43mtag[39;49m[30;43m,[39;49m
+[32m   1066[39m [30;43m        [39;49m[30;43mcheck_versions[39;49m[30;43m=[39;49m[30;43mcheck_versions[39;49m[30;43m,[39;49m
+[32m   1067[39m [30;43m        [39;49m[30;43mcheck_content[39;49m[30;43m=[39;49m[30;43mcheck_content[39;49m[30;43m,[39;49m
+[32m   1068[39m [30;43m        [39;49m[30;43mretain_sims[39;49m[30;43m=[39;49m[30;43mretain_sims[39;49m[30;43m,[39;49m
+[32m   1069[39m [30;43m        [39;49m[30;43mwrite_report[39;49m[30;43m=[39;49m[30;43mwrite_report[39;49m[30;43m,[39;49m
+[32m   1070[39m [30;43m        [39;49m[30;43mcache_results[39;49m[30;43m=[39;49m[30;43mcache_results[39;49m[30;43m,[39;49m
+[32m   1071[39m [30;43m    [39;49m[30;43m)[39;49m
+[32m   1073[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mpassengersim[39;00m[34;01m.[39;00m[34;01mdriver[39;00m[34;01m.[39;00m[34;01m_trial_database[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m finalize_result
+[32m   1075[39m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(result, GenericSimulationTables):
+
+[36mFile [39m[32m~/Git/pax/packages/passengersim-public/src/passengersim/experiments.py:862[39m, in [36mExperiments._run_together[39m[34m(self, use_existing, tag, check_versions, check_content, retain_sims, write_report, cache_results, summarizer)[39m
+[32m    859[39m [38;5;28;01melse[39;00m:
+[32m    860[39m     [38;5;28;01mraise[39;00m [38;5;167;01mTypeError[39;00m([33m"[39m[33mtag must be a string or None[39m[33m"[39m)
+[32m--> [39m[32m862[39m prepared_configs = [30;43mself[39;49m[30;43m.[39;49m[30;43m_prepare_database_configs[39;49m[30;43m([39;49m[30;43mselected_experiments[39;49m[30;43m)[39;49m
+[32m    863[39m [38;5;28;01mwith[39;00m JobExecutor() [38;5;28;01mas[39;00m jobber:
+[32m    864[39m     [38;5;28;01mtry[39;00m:
+
+[36mFile [39m[32m~/Git/pax/packages/passengersim-public/src/passengersim/experiments.py:509[39m, in [36mExperiments._prepare_database_configs[39m[34m(self, experiments)[39m
+[32m    507[39m     [38;5;28;01mcontinue[39;00m
+[32m    508[39m config = experiment.func([38;5;28mself[39m.base_config.model_copy(deep=[38;5;28;01mTrue[39;00m))
+[32m--> [39m[32m509[39m policy = [30;43mresolve_storage[39;49m[30;43m([39;49m[30;43mconfig[39;49m[30;43m.[39;49m[30;43mdb[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43morchestrated[39;49m[30;43m=[39;49m[30;43;01mTrue[39;49;00m[30;43m)[39;49m
+[32m    510[39m validate_database_reports(config, policy)
+[32m    511[39m [38;5;28;01mif[39;00m policy.filename [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+
+[36mFile [39m[32m~/Git/pax/packages/passengersim-public/src/passengersim/config/storage.py:49[39m, in [36mresolve_storage[39m[34m(db, orchestrated, borrowed)[39m
+[32m     47[39m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([33m"[39m[33mPersistent storage requires db.filename or db.result_directory[39m[33m"[39m)
+[32m     48[39m [38;5;28;01mif[39;00m mode == [33m"[39m[33mmemory[39m[33m"[39m [38;5;129;01mand[39;00m orchestrated:
+[32m---> [39m[32m49[39m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[32m     50[39m         [33m"[39m[33mMemory storage is standalone-only; use temporary or summary_only for MultiSimulation/Experiments[39m[33m"[39m
+[32m     51[39m     )
+[32m     52[39m [38;5;28;01mreturn[39;00m StoragePolicy(
+[32m     53[39m     mode,
+[32m     54[39m     Path(filename).absolute() [38;5;28;01mif[39;00m filename [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m [38;5;28;01melse[39;00m [38;5;28;01mNone[39;00m,
+[32m     55[39m     Path(db.result_directory).absolute() [38;5;28;01mif[39;00m db.result_directory [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m [38;5;28;01melse[39;00m [38;5;28;01mNone[39;00m,
+[32m     56[39m )
+
+[31mValueError[39m: Memory storage is standalone-only; use temporary or summary_only for MultiSimulation/Experiments
+

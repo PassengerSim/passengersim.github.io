@@ -1,0 +1,33 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.callbacks.
+
+base
+====
+
+.. automodule:: passengersim.callbacks.base
+   :no-members:
+
+
+
+
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: .
+   :template: autosummary/class.rst
+
+   CallbackData
+   CallbackMixin
+
+
+
+
+
+
+
+
+

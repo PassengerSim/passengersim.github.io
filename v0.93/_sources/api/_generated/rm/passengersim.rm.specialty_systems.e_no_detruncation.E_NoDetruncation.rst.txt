@@ -1,0 +1,16 @@
+﻿E\_NoDetruncation
+=================
+
+.. currentmodule:: passengersim.rm.specialty_systems.e_no_detruncation
+
+.. autoclass:: E_NoDetruncation()
+
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      ~E_NoDetruncation.availability_control
+      ~E_NoDetruncation.actions
+
+   

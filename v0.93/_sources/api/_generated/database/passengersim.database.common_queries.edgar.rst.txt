@@ -1,0 +1,6 @@
+edgar
+=====
+
+.. currentmodule:: passengersim.database.common_queries
+
+.. autofunction:: edgar

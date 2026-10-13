@@ -1,0 +1,41 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.tracers.
+
+forecasts
+=========
+
+.. automodule:: passengersim.tracers.forecasts
+   :no-members:
+
+
+
+
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: .
+   :template: autosummary/class.rst
+
+   LegForecastTracer
+   PathForecastTracer
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: .
+
+   fig_leg_forecast_dashboard
+   fig_path_forecast_dashboard
+
+
+
+
+

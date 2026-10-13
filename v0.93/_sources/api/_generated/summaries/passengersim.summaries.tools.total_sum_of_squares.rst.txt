@@ -1,0 +1,6 @@
+total\_sum\_of\_squares
+=======================
+
+.. currentmodule:: passengersim.summaries.tools
+
+.. autofunction:: total_sum_of_squares

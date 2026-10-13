@@ -1,0 +1,6 @@
+extract\_forecast\_accuracy
+===========================
+
+.. currentmodule:: passengersim.summaries.carriers
+
+.. autofunction:: extract_forecast_accuracy

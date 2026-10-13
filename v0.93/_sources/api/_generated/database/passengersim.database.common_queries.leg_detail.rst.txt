@@ -1,0 +1,6 @@
+leg\_detail
+===========
+
+.. currentmodule:: passengersim.database.common_queries
+
+.. autofunction:: leg_detail

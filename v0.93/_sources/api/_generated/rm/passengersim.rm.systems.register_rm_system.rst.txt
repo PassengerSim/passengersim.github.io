@@ -1,0 +1,6 @@
+register\_rm\_system
+====================
+
+.. currentmodule:: passengersim.rm.systems
+
+.. autofunction:: register_rm_system

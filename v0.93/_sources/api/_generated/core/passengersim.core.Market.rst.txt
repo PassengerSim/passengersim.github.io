@@ -1,0 +1,42 @@
+Market
+======
+
+.. currentmodule:: passengersim.core
+
+.. autoclass:: Market
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Market.__init__
+      ~Market.add_demand
+      ~Market.add_offer
+      ~Market.get_carrier_share
+      ~Market.get_carrier_sold
+      ~Market.get_competitor_price
+      ~Market.set_carrier_share
+      ~Market.set_competitor_price
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Market.demands
+      ~Market.dest
+      ~Market.distance
+      ~Market.fares
+      ~Market.identifier
+      ~Market.orig
+      ~Market.paths
+      ~Market.revenue
+      ~Market.sold
+   
+   

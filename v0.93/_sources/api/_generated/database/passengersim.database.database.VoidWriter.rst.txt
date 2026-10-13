@@ -1,0 +1,26 @@
+VoidWriter
+==========
+
+.. currentmodule:: passengersim.database.database
+
+.. autoclass:: VoidWriter
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~VoidWriter.__init__
+      ~VoidWriter.close
+      ~VoidWriter.commit
+      ~VoidWriter.final_write_to_sqlite
+      ~VoidWriter.update_db_write_flags
+      ~VoidWriter.write_to_sqlite
+   
+   
+
+   
+   
+   

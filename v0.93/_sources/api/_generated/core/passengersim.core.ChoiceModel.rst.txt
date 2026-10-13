@@ -1,0 +1,62 @@
+ChoiceModel
+===========
+
+.. currentmodule:: passengersim.core
+
+.. autoclass:: ChoiceModel
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ChoiceModel.__init__
+      ~ChoiceModel.add_parm
+      ~ChoiceModel.add_restriction
+      ~ChoiceModel.choose_offer
+      ~ChoiceModel.get_dwm_penalty
+      ~ChoiceModel.get_parameters
+      ~ChoiceModel.get_time_disutility
+      ~ChoiceModel.max_wtp
+      ~ChoiceModel.prob_wtp
+      ~ChoiceModel.serialize
+      ~ChoiceModel.set_parameters
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~ChoiceModel.buffer_threshold
+      ~ChoiceModel.buffer_time_alpha
+      ~ChoiceModel.buffer_time_beta
+      ~ChoiceModel.dwm
+      ~ChoiceModel.dwm_eliminate_outside_window
+      ~ChoiceModel.dwm_tod
+      ~ChoiceModel.early_dep_beta
+      ~ChoiceModel.early_dep_offset
+      ~ChoiceModel.early_dep_slope
+      ~ChoiceModel.elapsed_time_alpha
+      ~ChoiceModel.elapsed_time_beta
+      ~ChoiceModel.k_factor
+      ~ChoiceModel.late_arr_beta
+      ~ChoiceModel.late_arr_offset
+      ~ChoiceModel.late_arr_slope
+      ~ChoiceModel.path_quality_alpha
+      ~ChoiceModel.path_quality_beta
+      ~ChoiceModel.preferred_carrier
+      ~ChoiceModel.preferred_carrier_alpha
+      ~ChoiceModel.preferred_carrier_beta
+      ~ChoiceModel.random_generator
+      ~ChoiceModel.replanning_alpha
+      ~ChoiceModel.replanning_beta
+      ~ChoiceModel.seat_share_alpha
+      ~ChoiceModel.seat_share_beta
+      ~ChoiceModel.segment
+   
+   

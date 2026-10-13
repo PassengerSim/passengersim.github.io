@@ -1,0 +1,6 @@
+fig\_path\_forecast\_dashboard
+==============================
+
+.. currentmodule:: passengersim.tracers.forecasts
+
+.. autofunction:: fig_path_forecast_dashboard

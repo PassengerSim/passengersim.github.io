@@ -1,0 +1,13 @@
+Database
+========
+
+For storage settings, result lifetime, and migration examples, see
+:doc:`../user-guide/database/storage`. Implementation details are in
+:doc:`../mechanics/database-storage`; the archive schema is described in
+:doc:`../mechanics/pxsim-storage`.
+
+.. autosummary::
+   :toctree: _generated/database
+   :recursive:
+
+   passengersim.database

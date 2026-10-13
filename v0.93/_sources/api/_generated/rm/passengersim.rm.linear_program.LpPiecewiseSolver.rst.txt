@@ -1,0 +1,40 @@
+LpPiecewiseSolver
+=================
+
+.. currentmodule:: passengersim.rm.linear_program
+
+.. autoclass:: LpPiecewiseSolver
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~LpPiecewiseSolver.__init__
+      ~LpPiecewiseSolver.initialize
+      ~LpPiecewiseSolver.solve
+      ~LpPiecewiseSolver.test_status
+      ~LpPiecewiseSolver.update
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~LpPiecewiseSolver.carrier
+      ~LpPiecewiseSolver.solver
+      ~LpPiecewiseSolver.objective
+      ~LpPiecewiseSolver.lp_vars
+      ~LpPiecewiseSolver.constraints
+      ~LpPiecewiseSolver.epsilon
+      ~LpPiecewiseSolver.num_pieces
+      ~LpPiecewiseSolver.max_std_dev
+      ~LpPiecewiseSolver.set_bp
+      ~LpPiecewiseSolver.debug
+   
+   

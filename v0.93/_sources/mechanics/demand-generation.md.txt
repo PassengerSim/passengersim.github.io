@@ -1,0 +1,120 @@
+---
+title: Demand Generation
+icon: material/seat-recline-extra
+myst:
+  substitutions:
+    sys_k_factor: '[`sys_k_factor`](passengersim.config.SimulationSettings.sys_k_factor)'
+    mkt_k_factor: '[`mkt_k_factor`](passengersim.config.SimulationSettings.mkt_k_factor)'
+    segment_k_factor: '[`segment_k_factor`](passengersim.config.SimulationSettings.segment_k_factor)'
+    simple_k_factor: '[`simple_k_factor`](passengersim.config.SimulationSettings.simple_k_factor)'
+---
+
+# Demand Generation
+
+Demand generation creates the pool of potential customers for each simulated travel day, or
+[sample](counting-sims.md). It happens before sales and has two stages:
+
+1. Generate total demand for each origin-destination market and passenger segment.
+1. Allocate that total over booking timeframes and schedule customer arrival events before
+   departure, using the segment's booking curve.
+
+These are potential customers, not guaranteed bookings. When each arrival event occurs, the
+customer's choice and the products then available determine whether a sale occurs.
+
+The starting point is each demand record's `base_demand` in the initialized simulation, including
+any scaling applied during initialization. Randomness controls both the variation in demand for one
+record and the correlation between records in different markets or passenger segments.
+
+(demand-generation-k-factors)=
+
+## K-Factors to Control Correlation
+
+Four k-factors perturb demand. Three share random draws across records to induce correlation, and
+one adds independent variation:
+
+| Setting                | Scope of the random draw                                       | Interpretation                                                                                   |
+| ---------------------- | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| {{ sys_k_factor }}     | One draw for the entire sample                                 | A high-demand day tends to increase demand across the system.                                    |
+| {{ mkt_k_factor }}     | One draw per origin-destination market, shared by its segments | Business and leisure demand in the same market tend to rise or fall together.                    |
+| {{ segment_k_factor }} | One draw per passenger segment, shared across markets          | Business demand, for example, can rise across markets without the same change in leisure demand. |
+| {{ simple_k_factor }}  | An independent draw for each demand record                     | Adds variation specific to a market and passenger segment.                                       |
+
+Each draw is a standard normal random variable, with mean zero and standard deviation one. Shared
+draws are reused within a sample; new draws are made for the next sample.
+
+For a base demand $b_{ods}$ in origin-destination market $od$ and segment $s$, the perturbed mean is
+
+$$
+\mu_{ods} = \max\left(0,\ b_{ods}\left[
+1 + k_{\mathrm{sys}}R_{\mathrm{sys}}
++ k_{\mathrm{mkt}}R_{od}
++ k_{\mathrm{segment}}R_s
++ k_{\mathrm{simple}}R_{ods}
+\right]\right).
+$$
+
+The k-factor terms are **relative** perturbations: their sum scales base demand rather than adding a
+fixed number of customers. Larger factors increase variability. Setting a factor to zero removes its
+contribution. The perturbed mean is clipped at zero so the next stage has a nonnegative mean.
+
+The old `pax_type_k_factor` name is a deprecated alias for `simple_k_factor`. It refers to
+independent variation, not the cross-market correlation controlled by `segment_k_factor`. Keeping
+that distinction is important when translating older configurations or PODS terminology.
+
+```{note}
+The equation above describes the usual setting `simple_cv100=0`. The experimental
+`simple_cv100` option, when positive, replaces the independent perturbation and takes precedence
+over `simple_k_factor`.
+```
+
+(demand-generation-z-factor)=
+
+## Z-Factor to Control Variance
+
+After constructing the perturbed mean, PassengerSim makes an additional independent normal draw for
+each demand record. Let $z$ be
+[`tot_z_factor`](passengersim.config.SimulationSettings.tot_z_factor). The standard deviation and
+sample demand are
+
+$$
+\sigma_{ods} = \sqrt{\mu_{ods} z},
+\qquad
+D_{ods} = \max\left(0,\ \mu_{ods} + \sigma_{ods}R_{\mathrm{residual}}\right).
+$$
+
+Here $R_{\mathrm{residual}}$ is another standard normal random variable. Before clipping, the
+conditional variance is $\mu_{ods}z$, so the z-factor is **variance divided by mean**, not its
+reciprocal. This is the variance of the final draw conditional on the perturbed mean; k-factors also
+contribute to variation across samples.
+
+Negative results are clipped to zero. Clipping either the perturbed mean or the final draw can make
+average generated demand higher than the original base demand. A zero perturbed mean produces zero
+demand, and `tot_z_factor=0` removes this final random contribution while retaining any k-factor
+variability.
+
+For example, if base demand is 100, the four k-factors are 0.1, 0.2, 0.3, and 0.4, and all four
+k-factor draws happen to be 1, the perturbed mean is 200. With `tot_z_factor=2`, the standard
+deviation is 20. A residual draw of 1 then gives sample demand of 220.
+
+A demand record configured with `deterministic: true` bypasses both stages of total-demand
+randomness and uses its base demand directly. This fixes its total, but does not by itself make
+customer arrival times deterministic.
+
+(demand-generation-timeframes)=
+
+## Demand Allocation to Time Periods
+
+The generated `scenario_demand` is rounded to a nonnegative integer passenger count using
+`int(scenario_demand + 0.5)`: half passengers round up. This count is then allocated over booking
+timeframes using the booking curve and
+[`tf_k_factor`](passengersim.config.SimulationSettings.tf_k_factor), which controls variability in
+the timing of demand rather than the total count.
+
+[`timeframe_demand_allocation`](passengersim.config.SimulationSettings.timeframe_demand_allocation)
+selects the allocator: `"pods"` uses the PODS-style allocation, while `"v2"` uses the alternative
+allocator. Both must preserve the rounded total; PassengerSim checks that the number of allocated
+events equals that count and raises an error if it does not.
+
+Separating total demand from arrival timing lets a scenario vary the size of the customer pool, the
+correlation between markets and segments, and the timing of customer arrivals independently through
+their respective controls.

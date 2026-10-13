@@ -1,0 +1,6 @@
+drop\_carriers
+==============
+
+.. currentmodule:: passengersim.transforms.carriers
+
+.. autofunction:: drop_carriers

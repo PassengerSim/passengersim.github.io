@@ -1,0 +1,6 @@
+extract\_spill
+==============
+
+.. currentmodule:: passengersim.summaries.carriers
+
+.. autofunction:: extract_spill

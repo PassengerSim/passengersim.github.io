@@ -1,0 +1,46 @@
+LegDetruncation
+===============
+
+.. currentmodule:: passengersim.rm.untruncation
+
+.. autoclass:: LegDetruncation
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~LegDetruncation.__init__
+      ~LegDetruncation.apply_snapshot_filters
+      ~LegDetruncation.configure
+      ~LegDetruncation.get_dcp_index
+      ~LegDetruncation.init
+      ~LegDetruncation.run
+      ~LegDetruncation.should_run
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~LegDetruncation.frequency
+      ~LegDetruncation.produces
+      ~LegDetruncation.requires
+      ~LegDetruncation.snapshot_filter_type
+      ~LegDetruncation.which_data
+      ~LegDetruncation.algorithm
+      ~LegDetruncation.maxiter
+      ~LegDetruncation.tolerance
+      ~LegDetruncation.initialization_method
+      ~LegDetruncation.minimum_mu
+      ~LegDetruncation.minimum_sigma
+      ~LegDetruncation.dcps
+      ~LegDetruncation.carrier
+      ~LegDetruncation.minimum_sample
+   
+   

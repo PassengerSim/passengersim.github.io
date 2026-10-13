@@ -1,0 +1,35 @@
+﻿.. rst-class:: page_title_prefix
+
+    passengersim.
+
+callbacks
+=========
+
+.. automodule:: passengersim.callbacks
+   :no-members:
+
+
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree: .
+   :recursive:
+
+   base
+   bid_price_detail
+   booking_detail
+   registration
+
+
+
+
+
+
+
+
+
+
+
+
+

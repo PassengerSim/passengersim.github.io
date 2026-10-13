@@ -1,0 +1,24 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.callbacks.
+
+registration
+============
+
+.. automodule:: passengersim.callbacks.registration
+   :no-members:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

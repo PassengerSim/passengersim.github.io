@@ -1,0 +1,39 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.summaries.
+
+segmentation\_by\_timeframe
+===========================
+
+.. automodule:: passengersim.summaries.segmentation_by_timeframe
+   :no-members:
+
+
+
+
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: .
+   :template: autosummary/class.rst
+
+   SimTabSegByTimeframe
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: .
+
+   extract_segmentation_by_timeframe
+
+
+
+
+

@@ -1,0 +1,6 @@
+fig\_service\_shifts
+====================
+
+.. currentmodule:: passengersim.contrast.duo
+
+.. autofunction:: fig_service_shifts

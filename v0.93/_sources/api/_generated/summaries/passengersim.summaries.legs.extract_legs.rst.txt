@@ -1,0 +1,6 @@
+extract\_legs
+=============
+
+.. currentmodule:: passengersim.summaries.legs
+
+.. autofunction:: extract_legs

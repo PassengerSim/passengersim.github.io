@@ -1,0 +1,21 @@
+---
+title: Network Editors
+icon: material/airplane-edit
+---
+
+# Network Editors
+
+```{note}
+Both network editors are **experimental**. Their interfaces and features are subject to change.
+```
+
+Use these interactive Jupyter notebook editors to adjust flight schedules, group flights into banks,
+and change capacities. Each editor works on an independent copy of the supplied configuration.
+
+```{toctree}
+---
+maxdepth: 1
+---
+Schedule Editor <schedule-editor.md>
+Hub Capacity and Bank Editor <capacity-editor.md>
+```

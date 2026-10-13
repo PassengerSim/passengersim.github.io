@@ -1,0 +1,6 @@
+initialize\_metadata
+====================
+
+.. currentmodule:: passengersim.summaries.generic
+
+.. autofunction:: initialize_metadata

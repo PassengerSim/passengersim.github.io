@@ -1,0 +1,40 @@
+﻿.. rst-class:: page_title_prefix
+
+    passengersim.
+
+experiments
+===========
+
+.. automodule:: passengersim.experiments
+   :no-members:
+
+
+
+
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: .
+   :template: autosummary/class.rst
+
+   Experiment
+   Experiments
+
+
+
+
+
+
+
+
+
+.. rubric:: Exceptions
+
+.. autosummary::
+   :toctree: .
+
+   OverwriteExperimentWarning
+

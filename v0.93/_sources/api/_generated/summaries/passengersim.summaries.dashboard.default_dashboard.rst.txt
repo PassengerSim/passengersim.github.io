@@ -1,0 +1,6 @@
+default\_dashboard
+==================
+
+.. currentmodule:: passengersim.summaries.dashboard
+
+.. autofunction:: default_dashboard

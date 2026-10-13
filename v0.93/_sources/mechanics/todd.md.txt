@@ -1,0 +1,298 @@
+---
+icon: material/airplane-clock
+title: Time of Day Preferences
+---
+
+# Time of Day Preferences
+
+## How TODD preferences work
+
+PassengerSim implements TODD—time-of-day departure—preferences as a passenger-specific “decision
+window” in the PODS choice model.
+
+For each passenger:
+
+1. An hourly TODD curve is used to randomly select the midpoint of the passenger’s preferred travel
+   window. This TODD curve is defined on the `Demand` configuration, or if not there then on the
+   `ChoiceModel` configuration, but in general we expect it to be set on the `Demand`. The curve is
+   a discrete probability distribution over the 24 hours of the day, with each hour representing the
+   range from that hour to the next (e.g., hour 8 represents 08:00–09:00). The midpoint is sampled
+   from this distribution and then set to a precise time within that hour via a uniform draw.
+
+1. The base window width is computed by taking the shortest Delta-T of any path in the market. The
+   "Delta-T" is the difference between the departure and arrival time for each path, with the time
+   always expressed as local time. For example, for a westbound path departing New York at 08:00
+   eastern time and arriving in Los Angeles at 10:30 pacific time, the Delta-T is 2.5 hours. The
+   actual flight duration is 5.5 hours, but due to time zone changes the Delta-T is smaller. By
+   contrast, an eastbound flight departing Los Angeles at 11:30 pacific time and arriving back in in
+   New York at 19:30 eastern time has a Delta-T of 8 hours, even though the flight duration is only
+   5 hours.
+
+1. The actual window width for a given customer is the base width plus some amount of random
+   schedule tolerance. The schedule tolerance is drawn from a truncated normal distribution with
+   mean `dwm_tolerance` and standard deviation `k_factor × dwm_tolerance`. The resulting window is
+   centered on the selected midpoint.
+
+1. Each itinerary is compared with that window:
+
+   - Departure and arrival inside the window: no TODD penalty.
+   - Departure before the window: early-departure penalty.
+   - Arrival after the window: late-arrival penalty.
+   - With the legacy replanning formulation, any excursion outside the window incurs one binary
+     penalty.
+
+The same sampled window is applied to every offer considered by that passenger. It therefore affects
+itinerary choice, not the number or booking time of potential passengers. Booking curves control
+passenger arrival timing.
+
+TODD decision windows are currently used by `kind: pods` choice models. Logit choice models instead
+have separate `tod_sin*` and `tod_cos*` schedule coefficients.
+
+## Using the standard TODD curves
+
+The user can apply standard TODD curves to a configuration that does not defined them explicity. For
+example, a standard configuration might include:
+
+```yaml
+simulation_controls:
+  use_standard_todd_curves: true
+
+choice_models:
+  business:
+    kind: pods
+
+    # Choose one penalty formulation:
+    early_dep: {beta: 0.10, slope: 0.06, offset: 60}
+    late_arr:  {beta: 0.10, slope: 0.06, offset: 60}
+    # Or:
+    # replanning: [21.56, 0.26]
+
+demands:
+  - orig: BOS
+    dest: ORD
+    segment: business
+    base_demand: 100
+    reference_price: 300
+    choice_model: business
+    curve: business_booking_curve
+    distance: 850
+    dwm_tolerance: 3.3
+    # todd_curve is intentionally omitted
+```
+
+To attach the standard TODD curve to each demand, the user must explicitly call the preprocess
+method before constructing the simulation:
+
+```python
+cfg = passengersim.Config.from_yaml("config.yaml")
+cfg.preprocess()
+sim = passengersim.Simulation(cfg)
+```
+
+This call is important in the current implementation: neither `Config.from_yaml()` nor
+`Simulation(cfg)` automatically invokes `cfg.preprocess()`.
+
+Preprocessing:
+
+- Builds connections if needed.
+- Computes each market’s `delta_t`, unless supplied explicitly.
+- Assigns every demand without an explicit curve to `Standard_TODD_Curve_XX`, where `XX` is the
+  market’s `delta_t`.
+- Loads the required curves from the standard YAML file included with PassengerSim.
+
+For example, `delta_t: 4` selects `Standard_TODD_Curve_04`. `delta_t` is the local arrival hour
+minus local departure hour, modulo 24, for the shortest-duration path. You may set it explicitly for
+markets:
+
+```yaml
+markets:
+  - orig: BOS
+    dest: ORD
+    delta_t: 2
+```
+
+Otherwise, valid flight details including correct local leg times must exist before preprocessing.
+An explicit `demand.todd_curve` is not replaced by standard assignment. This means it is also
+possible to simply attach the desired standard curve named `Standard_TODD_Curve_XX` to each demand
+without calling `cfg.preprocess()`.
+
+## Defining custom preferences
+
+A robust custom setup attaches each curve directly to its demands:
+
+```yaml
+simulation_controls:
+  use_standard_todd_curves: false
+
+todd_curves:
+  - name: morning_and_evening
+    k_factor: 0.30
+    probabilities:
+      6:  0.05
+      7:  0.20
+      8:  0.25
+      16: 0.10
+      17: 0.25
+      18: 0.15
+
+choice_models:
+  business:
+    kind: pods
+    early_dep: {beta: 0.10, slope: 0.06, offset: 60}
+    late_arr:  {beta: 0.10, slope: 0.06, offset: 60}
+
+demands:
+  - orig: BOS
+    dest: ORD
+    segment: business
+    base_demand: 100
+    reference_price: 300
+    choice_model: business
+    curve: business_booking_curve
+    distance: 850
+    todd_curve: morning_and_evening
+    dwm_tolerance: 3.3
+```
+
+## Parameter effects
+
+### `probabilities`
+
+The keys are hours `0` through `23`. Hour `8`, for example, represents 08:00–09:00. After an hour is
+selected, the midpoint is interpolated continuously within that hour rather than always landing
+exactly on the hour.
+
+- Higher weight: more passengers receive a window centered in that hour.
+- Zero or omitted hour: no midpoint is selected there.
+- Uniform weights: midpoints are spread uniformly across the day; this does not disable TODD.
+- A single nonzero hour: all windows are centered somewhere within that hour.
+- Arbitrary nonnegative weights are accepted and normalized to sum to 1.
+- Missing hours are filled with zero.
+- Negative values, out-of-range hours, and an all-zero curve are rejected.
+- A non-normalized curve generates a warning and is rescaled.
+
+### TODD-curve `k_factor`
+
+This is the coefficient of variation for the passenger’s schedule-tolerance draw:
+
+`standard deviation = k_factor × mean dwm_tolerance`
+
+- `0`: every passenger receives exactly the configured mean tolerance. This does not disable TODD
+  preferences, it just removes variation in window width.
+- `0.3`, the default: tolerance standard deviation is 30% of its mean.
+- Larger positive values: greater passenger-to-passenger variation in window width.
+- Use a nonnegative value. It is still possible that an individual random draw value could come up
+  negative, but any negative tolerance draw is truncated to zero.
+
+### `dwm_tolerance`
+
+This is the mean additional scheduling flexibility in hours.
+
+- `0`: window width is still the shortest Delta-T; TODD remains active.
+- Small values: narrow windows and stronger schedule differentiation.
+- Large values: broad windows; more offers fall inside and receive no penalty.
+- `24`: generally makes the window extremely broad, but it is not the correct way to disable TODD.
+
+It can be set directly on each demand or through a top-level distance/segment table:
+
+```yaml
+dwm_tolerance:
+  - min_dist: 0
+    max_dist: 500
+    business: 1.2
+    leisure: 2.0
+
+  - min_dist: 501
+    max_dist: 1000
+    business: 3.3
+    leisure: 4.6
+
+  - min_dist: 1001
+    max_dist: 25000
+    business: 5.0
+    leisure: 7.0
+```
+
+Important table behavior:
+
+- Bounds are inclusive.
+- Segment keys must exactly match `demand.segment`.
+- Ranges should cover the actual distance values without gaps.
+- A positive demand-level `dwm_tolerance` overrides the table.
+- A demand-level value of zero uses a matching table entry if one exists.
+- If no entry applies, the runtime tolerance remains zero.
+
+### `min_distance` and `max_distance` on a TODD curve
+
+These fields are deprecated and have no effect. Distance-sensitive behavior must be configured by
+assigning different curves and/or different tolerances to demands.
+
+### Choice-model penalties
+
+A decision window only changes choices when the PODS choice model assigns a penalty outside it.
+
+There are two ways to configure the penalty, via a smooth S-curve or a binary penalty.
+
+The smooth formulation applies an "S" shaped curved penalty, with a small penalty for itineraries
+just outside the window and a larger penalty for itineraries further outside. The penalties need not
+be symmetric for early departures and late arrivals. The S-curve formulation parameters are:
+
+```yaml
+early_dep: {beta: 0.10, slope: 0.06, offset: 60}
+late_arr:  {beta: 0.10, slope: 0.06, offset: 60}
+```
+
+- `beta`: scales the maximum penalty relative to reference price.
+- `offset`, in minutes: positions the midpoint of the S-curve.
+- `slope`: controls how sharply the penalty rises with minutes outside the window.
+- Early and late parameters may differ to model asymmetric preferences.
+
+The legacy alternative is:
+
+```yaml
+replanning: [alpha, beta]
+```
+
+Its penalty is approximately:
+
+`alpha + beta × reference price`
+
+whenever departure or arrival is outside the window, regardless of how far outside it is.
+
+Use either `replanning` or `early_dep`/`late_arr`, not both. With neither configured—or with all
+coefficients zero—the window is sampled but contributes zero generalized-cost penalty.
+
+## Disabling TODD entirely
+
+Configure:
+
+```yaml
+simulation_controls:
+  use_standard_todd_curves: false
+```
+
+Also omit `todd_curve` from both demands and choice models:
+
+```yaml
+choice_models:
+  business:
+    kind: pods
+    # no todd_curve
+
+demands:
+  - orig: BOS
+    dest: ORD
+    segment: business
+    # no todd_curve
+```
+
+For a clean disabled configuration, also omit `todd_curves` and `dwm_tolerance` from top level
+configs, and remove `early_dep`, `late_arr`, and `replanning` from the configs of all choice models.
+
+The last four are harmless when no decision window is attached, but removing them makes the intent
+unambiguous.
+
+Set `use_standard_todd_curves: false` before calling `cfg.preprocess()`. If preprocessing already
+assigned `Standard_TODD_Curve_XX` names to demands, changing the flag afterward does not remove
+those assignments; clear each demand’s `todd_curve` or reload and preprocess the configuration with
+the flag disabled.

@@ -1,0 +1,41 @@
+Airport
+=======
+
+.. currentmodule:: passengersim.core
+
+.. autoclass:: Airport
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Airport.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Airport.code
+      ~Airport.country
+      ~Airport.gmt_offset
+      ~Airport.latitude
+      ~Airport.longitude
+      ~Airport.max_connect_time_dd
+      ~Airport.max_connect_time_di
+      ~Airport.max_connect_time_id
+      ~Airport.max_connect_time_ii
+      ~Airport.mct_dd
+      ~Airport.mct_di
+      ~Airport.mct_id
+      ~Airport.mct_ii
+      ~Airport.name
+      ~Airport.state
+   
+   

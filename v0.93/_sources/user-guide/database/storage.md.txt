@@ -1,0 +1,387 @@
+# Database storage and controls
+
+Choose whether to retain detailed simulation data, where to store it, and when to release it. These
+controls apply to standalone simulations, multiple trials, and experiments. For available SQL
+tables, see the [database overview](index.md); for class and function signatures, see the
+[database API](../../api/database.rst).
+
+### Turn database recording off
+
+To completely disable database recording, set these options on your configuration **before creating
+the simulation**. Database recording is on by default, using a temporary SQLite file.
+
+In Python, set:
+
+```python
+config.db = None
+```
+
+Or, in your YAML configuration:
+
+```yaml
+db: null
+```
+
+To disable database recording for now but keep your database settings for later, use
+`config.db.engine = None` instead; set it back to `"sqlite"` to turn recording on again. Setting
+`db.filename` to `None` does **not** disable recording; a default filename will be populated
+instead. Native summary tables remain available with recording off, but explicitly requested
+SQL-backed reports require recording and will raise an error if it is disabled.
+
+### Turn database recording on
+
+To enable recording with the default settings, including after setting `config.db = None`:
+
+```python
+from passengersim.config import DatabaseConfig
+
+config.db = DatabaseConfig()
+```
+
+The YAML equivalent is `db: {}`. These examples reset the database settings to their defaults. For a
+file that remains after the simulation closes, choose persistent storage and an unused filename:
+
+```yaml
+db:
+  result_storage: persistent
+  filename: results.sqlite
+```
+
+See [Storage configuration](#storage-configuration) for other storage destinations and modes.
+
+### Choose what to record
+
+Set `db.write_items` to the detail types you need. For example, record legs and demands at every
+data collection point (DCP), plus booking summaries:
+
+```python
+config.db.write_items = {"leg", "demand", "bookings"}
+```
+
+Or, in YAML:
+
+```yaml
+db:
+  write_items: [leg, demand, bookings]
+```
+
+These assignments replace the default selection, which is
+`[leg_final, fare_final, demand_final, bookings]`. With those defaults, leg, fare, and demand
+details are recorded only at the end of each sample, along with booking summaries.
+
+| Data to record               | At every DCP | Only at the end of each sample |
+| ---------------------------- | ------------ | ------------------------------ |
+| Legs                         | `leg`        | `leg_final`                    |
+| Booking buckets on each leg  | `bucket`     | `bucket_final`                 |
+| Fares                        | `fare`       | `fare_final`                   |
+| Demands                      | `demand`     | `demand_final`                 |
+| Booking classes on each path | `pathclass`  | `pathclass_final`              |
+
+Use `bookings` to collect booking data at each DCP and write aggregate results to
+`bookings_by_timeframe` at the end of the simulation. For daily detail, `leg_daily` and
+`pathclass_daily` record at the end of each day; use with caution as these can produce much larger
+database files. Start with final-only detail unless you need the history leading up to departure.
+
+`write_items` selects simulation detail, not all database writes: an empty selection does not
+disable the database or its definition tables. Use `db: null` to turn recording off entirely.
+Requested reports in `outputs.reports` may require particular recording flags; keep those
+requirements in mind when reducing the selection.
+
+Leg bid prices and displacements are included by default when recording leg detail. To omit them:
+
+```yaml
+db:
+  write_items: [leg_final]
+  store_leg_bid_prices: false
+  store_displacements: false
+```
+
+## Database objects and connections
+
+Simulation and summary result objects expose PassengerSim's `Database` wrapper when a database is
+available. The wrapper provides SQL queries, dataframe helpers, transaction handling, and
+native-writer integration. Its `connection` attribute exposes the underlying Python
+`sqlite3.Connection`. `config.db` holds configuration, not a live database:
+
+```python
+from passengersim import Simulation
+
+config.db.result_storage = "temporary"
+simulation = Simulation(config)
+summary = simulation.run()
+db = summary.db
+connection = db.connection
+path = summary.database_path
+```
+
+Use `database_available` to check for retained data and `database_path` to inspect the destination
+without opening a lazy database. Renaming the wrapper does not change storage ownership, cleanup, or
+disabled-recording behavior.
+
+### Migrating from cnx
+
+Older versions of PassengerSim used `simulation.cnx` and `summary.cnx` to expose the SQLite
+connection. Replace `simulation.cnx` and `summary.cnx` with `simulation.db` and `summary.db`.
+Replace `cnx=` with `db=` in summary constructors, `run_queries()`, and database query/table
+helpers. Positional arguments retain their meaning. The `connection=` argument for caller-owned
+SQLite connections is unchanged.
+
+The old attributes remain read/write compatibility aliases and emit `DeprecationWarning` on explicit
+access or assignment. They delegate to the same database and retain the same assignment
+restrictions; they never create a second connection. Deprecated `cnx=` keywords also warn. Supplying
+both names, even if one is `None`, raises `TypeError`. PassengerSim's internal operations and
+loading older serialized summaries do not emit these deprecation warnings.
+
+Python normally filters `DeprecationWarning`. To find deprecated calls while migrating a script, run
+it with `python -Wd your_script.py`. The compatibility aliases will remain in PassengerSim for some
+time to ensure a smooth transition.
+
+## Sharing a Python SQLite connection
+
+The native writer and Python queries share the supplied SQLite connection. See the
+[database mechanics](../../mechanics/database-storage.md) for runtime requirements.
+
+To use a connection created by your own code:
+
+```python
+import sqlite3
+from passengersim import Simulation
+
+connection = sqlite3.connect(":memory:")
+simulation = Simulation(config, connection=connection)
+summary = simulation.run()
+assert simulation.db.connection is connection
+assert summary.db.connection is connection
+rows = connection.execute("SELECT count(*) FROM leg_detail").fetchone()
+connection.commit()  # Caller-owned transaction boundaries remain explicit.
+simulation.db.close()  # Detaches the writer; does not close this connection.
+connection.close()
+```
+
+The configured `db.write_items` controls which simulation rows are recorded. Python and native code
+share uncommitted data, temporary tables, callbacks, and transaction state. A supplied connection's
+pending work is never committed by native writer attachment, detachment, or automatic simulation
+batching. You may commit or roll back directly through that connection. `Database(connection=...)`
+also accepts an existing connection; its context manager uses savepoints without committing the
+caller's surrounding transaction.
+
+## Storage configuration
+
+`db.filename` defaults to `None`: it means no user-chosen filename, not disabled recording. All
+simulation interfaces use the same policy resolver:
+
+```python
+cfg.db.filename = None
+cfg.db.result_storage = "temporary"
+```
+
+This is also the default when neither field is set. If an earlier configuration set `db = None`,
+re-enable it with `cfg.db = DatabaseConfig()` (import `DatabaseConfig` from `passengersim.config`).
+
+| Mode                              | Standalone Simulation                                     | MultiSimulation and Experiments                             |
+| --------------------------------- | --------------------------------------------------------- | ----------------------------------------------------------- |
+| `temporary`                       | Owned temporary SQLite file                               | Separate temporary consolidated database per run/experiment |
+| `persistent`                      | Retained SQLite file                                      | Retained consolidated database and original trial files     |
+| `memory`                          | Real SQLite in-memory connection                          | Rejected, including sequential execution                    |
+| `summary_only`                    | Compute requested reports, then discard internal database | Compute eager reports in workers, retain summaries only     |
+| `db = None` or `db.engine = None` | No database recording                                     | No database recording                                       |
+
+With `result_storage=None`, a filename selects persistent storage, the legacy filename `':memory:'`
+selects memory storage, and no filename selects temporary storage. Other filename strings receive no
+special treatment. The legacy memory spelling is also accepted for summary-only worker recording; it
+never becomes a file.
+
+`filename` is an **exact persistent destination**. `result_directory` is a **parent for unique run
+directories**. They cannot both be supplied:
+
+```python
+from pathlib import Path
+
+# Exact persistent file (also works for MultiSimulation's consolidated result).
+cfg.db.result_storage = "persistent"
+cfg.db.filename = Path("results.sqlite")
+cfg.db.result_directory = None
+
+# Unique persistent run directory, containing results.sqlite.
+cfg.db.filename = None
+cfg.db.result_directory = Path("results")
+
+# Temporary run directory beneath a chosen scratch directory.
+cfg.db.result_storage = "temporary"
+cfg.db.result_directory = Path("scratch")
+```
+
+Persistent storage requires a filename or directory. Existing exact filenames are rejected: running
+a model never silently appends or overwrites. Directory-based runs receive unique subdirectories.
+Temporary storage rejects a filename; memory and summary-only reject file destinations and result
+directories.
+
+Experiments put directory-based databases under a separate tag directory followed by a unique run
+directory. An exact filename must be distinct for each selected experiment. Duplicate filenames and
+invalid policies are checked before dispatch. Changing the worker count or `single_process` does not
+change storage semantics. This storage mechanism assumes workers share the parent's local
+filesystem.
+
+Use `db.engine=None` to disable recording while preserving other settings, or `db=None` to remove
+the configuration entirely. Both survive JSON round trips. Explicitly requested SQL-backed reports
+(for example, `segmentation_detail`) raise an error when recording is disabled. Native summary
+tables remain available. Summary-only allows eager SQL reports before discarding detail data.
+
+A caller-supplied connection requires database recording to be enabled and all managed
+destination/storage fields left at their defaults. Conflicting settings raise instead of being
+ignored. The caller retains ownership and transaction control. `cache_dir` is rejected with a
+borrowed connection because a cache hit supplies summaries without populating that connection;
+explicitly export results instead.
+
+### Finding and retaining results
+
+After running either simulation interface:
+
+```python
+result = sim.run()
+print(result.database_path)  # Absolute pathlib.Path, or None
+assert result.database_path == sim.database_path
+print(result.database_available)  # Does not open a lazy connection
+connection = result.db.connection
+```
+
+For experiments, use `results["baseline"].database_path`. Path lookup does not open the database.
+Memory, summary-only, and disabled results have no file path. The recorded path remains available
+for diagnostics after close, even if a temporary file was removed; use `database_available` to check
+live availability.
+
+Keep the simulation, summary, database wrapper, or raw connection alive while using temporary files.
+Explicit close releases the shared owner and deletes temporary storage; persistent files remain.
+`Simulation` and `MultiSimulation` support context managers. Reruns allocate new managed databases
+and preserve earlier results; rerunning an exact persistent destination raises rather than
+overwriting. Borrowed connections remain owned by the caller and may intentionally share data across
+runs.
+
+### Migration
+
+Configurations using `filename=None` to disable recording must change to `engine=None` or `db=None`.
+Serialized configurations cannot distinguish the old intent from an intentionally unspecified
+filename. A literal `passengersim-output.sqlite` now means that exact persistent file. Prefer an
+explicit storage policy when updating old configurations. Worker storage settings now apply to
+standalone simulations as well.
+
+## Retained multiprocess databases
+
+`MultiSimulation` consolidates successful trials into one parent-owned SQLite file. After a run,
+`multi.db` and `summary.db` expose the same `Database` wrapper and Python connection:
+
+```python
+result = multi.run()
+assert result.db is multi.db
+rows = result.db.execute("SELECT trial, count(*) FROM leg_detail GROUP BY trial").fetchall()
+trial_zero = result.db.execute("SELECT * FROM leg_detail WHERE trial = ?", (0,)).fetchall()
+```
+
+Consolidation needs additional disk space while worker files and the combined database coexist.
+
+The storage modes above apply to both sequential and parallel trial execution. Temporary trial files
+are removed after their merge commits and all handles close. Persistent runs preserve the
+consolidated database and their original trial files. Only file-backed modes retain orchestrated
+databases; memory is standalone-only.
+
+Experiments and reruns have separate databases even when their scenario names and definition IDs
+overlap. Experiments use the same handoff with and without `single_process=True`; retained
+simulation objects use `MultiSimulation` in either case. An earlier result remains usable after
+rerunning its simulation.
+
+### Merge policies and failures
+
+Successful trial files are merged transactionally. Conflicting definitions and unsupported user
+tables, views, or triggers cause a merge error. See [database consolidation](trial-consolidation)
+for merge rules.
+
+`multi.database_status` and `summary.database_status` return snapshots with `completed` trial IDs,
+`failed` IDs mapped to error messages, `cancelled` IDs, and a `complete` flag. With
+`fail_fast=False`, successful trials remain queryable and the result is marked incomplete. A failed
+merge rolls back all its changes and retains its input file until owner cleanup. With fail-fast or
+cancellation, queued workers are cancelled and running workers are allowed to finish; completed
+trials remain available on the simulation. A synchronous `run()` waits for this cleanup before
+returning or raising.
+
+`trial_databases` remains available on simulations and live summaries. Its values contain a
+`trial_id`, absolute `path`, and source schema/runtime metadata. For temporary storage, successful
+descriptors point to the consolidated file; use a trial filter when reading it. Persistent
+descriptors point to the preserved original trial files. Descriptor objects alone do not own their
+files.
+
+### Connection lifetime and caches
+
+The retained connection opens lazily on the thread that first accesses `db`. SQLite's normal thread
+restriction remains in force. No monitor-thread connection is passed to the caller. Keep the result,
+simulation, or `Database` wrapper alive while using its temporary database, and close any
+independently opened connections before releasing that owner, especially on Windows.
+
+Use `result.close()`, `multi.close()`, or `result.db.close()` to close the shared owner. Explicitly
+closing its raw connection has the same effect. Repeated close is harmless; all aliases become
+unavailable, SQLite handles close before temporary files are removed, and persistent files remain.
+Both results and MultiSimulation support context managers. Close must run on the connection's owning
+thread, and cannot run while workers or merging are active. A failed file removal can be retried by
+calling close again. Raw connections also retain the owner, so keeping `result.db.connection` keeps
+its files alive.
+
+Synchronous runs bind the connection before returning; private asynchronous results bind on first
+access. `MultiSimulation(..., database_initializer=callback)` runs the callback with the new parent
+connection on its owning thread, allowing user SQL functions to be registered. Inherited result
+connections and cursors reject use after fork. Child cleanup never removes parent-owned temporary
+directories.
+
+An abrupt process kill can leave `passengersim-db-*` directories in the configured scratch location.
+Remove these only after confirming that their run/process is no longer active; PassengerSim does not
+automatically delete other runs' directories. Pickled summaries omit the storage owner and
+connection and do not restore raw databases. Continue requesting eager reports in `outputs.reports`
+for summary-only caches. This storage mechanism requires a shared local filesystem between the
+parent and workers.
+
+(summary-archives-and-caches)=
+
+## Summary archives and caches
+
+PXSIM files store summaries, configuration, and metadata. Detailed simulation records stay in a
+separate SQLite file. You can keep that file during analysis, then delete it while retaining the
+PXSIM archive. PassengerSim does not schedule deletion of persistent files; you decide how long to
+keep them.
+
+For example, starting with your simulation configuration:
+
+```python
+from pathlib import Path
+from passengersim import Simulation, SimulationTables
+
+config.db.result_storage = "persistent"
+config.db.filename = Path("details.sqlite")  # Must not already exist.
+config.db.result_directory = None
+
+with Simulation(config) as sim:
+    result = sim.run()
+    result.to_file("results.pxsim", add_timestamp_ext=False)
+    result.close()
+
+# This reads the summary archive without opening details.sqlite.
+with SimulationTables.from_file("results.pxsim") as saved:
+    print(saved.carriers)
+    assert not saved.database_available
+```
+
+Closing the live result releases its database connection. With persistent storage, `details.sqlite`
+remains available for SQL analysis, for example through Python's `sqlite3.connect`. After closing
+all connections to it, you can delete it yourself. The saved summary archive remains usable.
+
+Request any SQL-backed reports you want to archive in `outputs.reports` before running. Saving a
+PXSIM file preserves the collected summaries; it does not generate additional reports or embed a
+copy of the database. A report that was not collected cannot be reconstructed from missing detail
+data later.
+
+Both `cache_dir` and experiment disk outputs save these same summary archives. A cache hit returns
+saved summaries even if the original detail database has been deleted. It does not open the original
+file, recreate it, or rerun the simulation just because detail data is unavailable. A fresh run can
+return a live database according to its storage policy; a disk cache hit has
+`database_available=False`. An experiment result kept in memory can still retain its live database
+until it is closed.
+
+Disk outputs use separate experiment directories in both execution modes. Existing PXSIM files
+written by older released versions remain readable as-is, without conversion.

@@ -1,0 +1,151 @@
+# Database connections and consolidation
+
+PassengerSim writes detailed simulation results to SQLite so they can be queried during or after a
+run. Two parts of that process need coordination: Python and C++ must work with the same database
+connection, and trials running in separate processes must eventually produce a combined result.
+
+This page explains how that coordination works. For choosing storage settings, running queries,
+retaining results, and migrating existing scripts, see
+[Database storage and controls](../user-guide/database/storage.md).
+
+The detailed database described here is separate from the [PXSIM summary archive](pxsim-storage.md).
+Saving or caching a summary does not copy the database. Loading that summary does not reopen the
+database, so users can delete persistent detail files when their analysis is finished while keeping
+the summaries for reference.
+
+## Python and C++ use the same connection
+
+A **connection** is an open conversation with a database. It carries more than a filename: it also
+holds pending changes, transaction state, temporary tables, and registered functions. Opening two
+connections to the same file does not give them all the same state.
+
+PassengerSim's simulation engine writes results from C++, while Python code uses those results to
+run queries and prepare reports. To keep both sides working with the same state, the native writer
+uses Python's existing `sqlite3.Connection`. Here, **native** means the compiled C++ code.
+
+The connection bridge gives the C++ writer access to that connection using the same SQLite runtime
+that Python uses. PassengerSim does not embed or link a separate SQLite engine. This avoids having
+two different SQLite implementations trying to operate on the same connection.
+
+### What the bridge requires
+
+Python must support loadable SQLite extensions and the `Connection.getconfig` and `setconfig` APIs,
+available in CPython 3.12 or later. The bridge temporarily enables the C extension-loading API to
+establish access, then restores the previous setting, including when an error occurs.
+
+Code that constructs `DbWriter` directly must supply a `sqlite3.Connection` as its fourth argument.
+A filename or raw pointer is no longer accepted in that position.
+
+### How access is kept safe
+
+Sharing a connection does not mean that different processes or threads can write through it at the
+same time. A native writer can only be used in the process and thread that created it. Python and
+C++ take turns using the connection, and reentrant native writes are rejected. A reentrant write
+would occur, for example, if a callback tried to start another native write while the first one was
+still in progress.
+
+Closing the Python connection prevents further native operations. During each batch of native
+writes, the bridge holds an internal SQLite statement to protect against the connection being closed
+during a callback. It releases that statement before returning to Python.
+
+(trial-consolidation)=
+
+## Combining results from separate trials
+
+A **worker** is a process running a trial. The **parent** is the process coordinating the run and
+collecting its results. Each worker uses its own database file, with Python and C++ sharing one
+connection inside that worker. The parent combines the completed files into one database; this is
+called **consolidation**.
+
+For example, suppose two workers run trials 0 and 1. Each records its own bookings and leg details.
+When both have finished, the combined database contains those rows with their original trial IDs, so
+a query can examine trial 0, trial 1, or both together.
+
+### How a worker hands off its results
+
+1. The worker **commits** its changes, completing its pending database transaction.
+1. If the database uses WAL, the worker checkpoints it as needed. WAL is a *write-ahead log*: SQLite
+   can record changes in a separate log before copying them into the main database file. A
+   checkpoint transfers those changes into the main file so the handoff does not depend on an
+   unfinished log.
+1. The worker closes its connection and returns a description of the file: its path and metadata. It
+   does not send an open connection or the database contents through the process boundary.
+1. The parent merges one worker file at a time, using a transaction for each merge. A transaction
+   groups the changes so they can be accepted together or rolled back if the merge fails.
+
+The worker files and the combined database coexist during this process, so consolidation needs
+additional disk space. Returning a file description should not be confused with sharing an open
+operating-system file handle between workers and the parent.
+
+### Why merging is more than appending rows
+
+Some tables contain observations from a trial. Others describe the network shared by every trial, or
+contain reports calculated from the observations. They need different treatment:
+
+| Kind of data                                                                              | How consolidation handles it                                  | Why                                                                                                               |
+| ----------------------------------------------------------------------------------------- | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Network definitions: legs, paths, fares, fare restrictions, distances, and booking curves | Copy once and check subsequent trials against them.           | Repeating the same definitions for every trial would create duplicates; conflicting definitions must be detected. |
+| Detail tables and bookings-by-timeframe                                                   | Append rows while preserving their original trial IDs.        | Each trial contributes separate observations. Merging the same trial twice is rejected.                           |
+| Known report caches: fare, demand-to-come, bid-price, and displacement summaries          | Omit the cached tables and let post-run queries rebuild them. | A report computed from one trial is not necessarily the correct report for all retained trials.                   |
+
+Fare IDs require an extra step because each worker assigns its own IDs. For example, the same fare
+could have ID 7 in one worker and ID 12 in another. The parent matches complete fare definitions,
+then translates `fare_detail.fare_id` to the corresponding IDs in the combined database. Other
+conflicts between definitions are errors.
+
+The runtime configurations must also agree. The comparison permits differences in worker filenames,
+timestamps, and the order in which configuration sets were serialized, since those do not represent
+different simulation settings.
+
+### What cannot be copied automatically
+
+Unknown user tables, views, and triggers cause a clear merge error until an explicit merge policy is
+implemented. A view is a saved query; a trigger is database logic that runs in response to a change.
+PassengerSim cannot safely infer whether custom data should be appended, checked for agreement, or
+recalculated, so it neither silently combines nor discards these objects.
+
+SQLite `TEMP` tables and worker Python callbacks are not transported. They belong to the worker's
+connection or process rather than the database file being handed over. The parent's connection
+registers PassengerSim's aggregate functions—functions that summarize groups of SQL rows—but any
+user functions must be registered again on that connection.
+
+## Understanding performance measurements
+
+Per-trial timings are available from `result.metadata('database.timings')`. They cover setup,
+simulation and writes, eager reports (reports computed before the worker returns), worker
+finalization, delivery delay, and merging in the parent.
+
+Delivery delay includes serializing the worker's returned information and waiting for the parent's
+monitor to process it. Trials running in parallel overlap in time: if two workers each spend ten
+seconds running at the same time, that is about ten seconds of elapsed time, not twenty. Adding all
+worker phase durations therefore does not measure the total time a user waits for a result.
+
+### What the benchmark compares
+
+The repeatable benchmark in `.ai/sqlite-connection-sharing/benchmark.py` measures elapsed time until
+results can be queried, first and repeated queries, post-run reports, result size, and sampled peak
+memory and scratch-disk usage. Memory measurements cover the process tree: the parent and its child
+processes.
+
+Its comparisons include small and larger detail outputs, worker limits, multiple experiments, commit
+batching, and these storage settings:
+
+- **DELETE/FULL**, the default: SQLite uses a rollback journal and full synchronization. The journal
+  helps it undo an incomplete transaction; synchronization controls how changes are flushed to
+  storage.
+- **WAL/NORMAL**, selected explicitly: SQLite uses a write-ahead log and its NORMAL synchronization
+  setting. These settings change how writes reach storage and must be considered alongside the
+  workload's durability requirements.
+- **Single-process memory storage**: a reference measurement that avoids disk-backed result storage
+  as well as the executor and consolidation overhead of multiple processes.
+
+The first query is not guaranteed to read from physical storage: the operating system may already
+have file contents cached in memory. It should not be described as an OS-cache-cold measurement.
+
+GitHub's Linux and Windows wheel-consumer jobs run the portable smoke benchmark and upload JSON
+measurements alongside their test evidence. These jobs test installed wheel packages in separate
+consumer environments. macOS benchmarks run locally.
+
+Storage defaults remain durable temporary files. “Temporary” describes when files are cleaned up; it
+does not mean that journaling or synchronization is silently relaxed. Use the recorded benchmark
+results to evaluate WAL or transaction-setting changes for a particular workload.

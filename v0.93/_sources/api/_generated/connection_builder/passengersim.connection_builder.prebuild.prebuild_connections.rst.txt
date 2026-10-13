@@ -1,0 +1,6 @@
+prebuild\_connections
+=====================
+
+.. currentmodule:: passengersim.connection_builder.prebuild
+
+.. autofunction:: prebuild_connections

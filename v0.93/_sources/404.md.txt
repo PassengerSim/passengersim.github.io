@@ -1,0 +1,25 @@
+---
+title: Not Found
+icon: material/error-outline
+hide-navigation: true
+
+project:
+  site:
+    template: blank.html
+---
+
+<style>
+nav.md-tabs {
+    display: none !important;
+}
+</style>
+
+<div style="text-align: center;">
+<b>404 - Not Found</b>
+
+![Nope](_static/images/404.gif)
+
+<a style="color: lightgrey;" href="https://giphy.com/gifs/cat-animation-watercolour-3o85xJzDLDGnhMKKpa">via
+GIPHY</a>
+
+</div>

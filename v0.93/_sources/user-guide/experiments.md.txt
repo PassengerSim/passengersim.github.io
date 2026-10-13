@@ -1,0 +1,164 @@
+---
+title: Experiments
+icon: material/flask-outline
+jupytext:
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.19.2
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
+---
+
+<!-- Hide the secondary sidebar, which is not needed for this page and just takes up space --->
+
+<style>.md-sidebar--secondary {display: none !important;}</style>
+
+# Experiments
+
+The experiments interface allows the user to easily run and compare a number of different scenarios.
+
+```{code-cell} ipython3
+import passengersim as pax
+
+pax.versions()
+```
+
+The experimentation starts with a base config.
+
+```{code-cell} ipython3
+cfg = pax.Config.from_yaml(pax.demo_network("3MKT/08-untrunc-em"))
+cfg.simulation_controls.num_trials = 1
+```
+
+Then, we create an `Experiments` object, which will manage our set of experiments somewhat
+automatically. This object takes our baseline config as an argument, as well as allows us to set a
+directory where all experimental output will be stored.
+
+```{code-cell} ipython3
+:tags: [remove-cell]
+
+import altair as alt
+
+
+# ensure the demo-output directory is empty
+
+import shutil
+
+shutil.rmtree("demo-output", ignore_errors=True)
+```
+
+```{code-cell} ipython3
+from passengersim.experiments import Experiments
+
+experiments = Experiments(cfg, output_dir="demo-output")
+```
+
+Now we can define one or more experiments, although as you'll see quickly, the real power of this
+interface comes when there is more than one experiment.
+
+Each experiment is defined by a function that accepts a Config as an argument, and returns a
+possibly modified Config. Within this function, you can make any modifications desired: changing
+simulation controls, swapping out revenue management systems for one or more carriers, or even
+changing the network structure itself. Each experiment function is prefixed by the experiments
+object as decorator, and each should have a unique function name that will be used to identify it.
+
+```{code-cell} ipython3
+@experiments
+def baseline(cfg: pax.Config) -> pax.Config:
+    return cfg
+
+
+@experiments
+def low_dmd(cfg: pax.Config) -> pax.Config:
+    cfg.simulation_controls.demand_multiplier = 0.9
+    return cfg
+
+
+@experiments
+def high_dmd(cfg):
+    cfg.simulation_controls.demand_multiplier = 1.1
+    return cfg
+```
+
+Finally, we can run all the experiments as a batch using the `run` command on the `Experiments`
+object.
+
+```{code-cell} ipython3
+summaries = experiments.run()
+```
+
+The return value from this batch run is a passengersim `Contrast` object, which can be used to
+review the results interactively in a Jupyter notebook.
+
+```{code-cell} ipython3
+summaries.fig_carrier_revenues()
+```
+
+```{code-cell} ipython3
+summaries.fig_fare_class_mix()
+```
+
+When we ran the experiments, the `demo-output` directory was populated with outputs from each
+experiment, including a pickle file storing the summary results, as well as an HTML output file that
+includes key figures and metadata describing the results from that experiment.
+
+```{code-cell} ipython3
+from passengersim.utils.show_dir import display_directory_contents
+
+display_directory_contents("demo-output")
+```
+
+We can change an existing experiment explicitly by writing a new experiment with the same tag, or
+implicitly by editing the Jupyter notebook and re-running the entire notebook. Here, we will just
+edit one experiment by overwriting it (note we do get a warning when we do this).
+
+```{code-cell} ipython3
+@experiments
+def high_dmd(cfg):  # noqa: F811
+    cfg.simulation_controls.demand_multiplier = 1.2
+    return cfg
+```
+
+If we now re-run the set of experiments, PassengerSim will detect that some of the experiments are
+have been run already, and not re-run them in favor of simply reloading from disk. The loaded
+results configurations are compared against the experiment configuration, to confirm it is still the
+same. For the first two experiments, this is the case and the simulation is *not* re-run. The change
+we made in the last experiment is detected, and the loaded results are then discarded in favor of
+re-running the simulation.
+
+```{code-cell} ipython3
+summaries2 = experiments.run()
+```
+
+```{code-cell} ipython3
+summaries2.fig_carrier_revenues()
+```
+
+```{code-cell} ipython3
+summaries2.fig_fare_class_mix()
+```
+
+If we inspect the `demo-output` directory, we will see that the results from the old experiment are
+still available if needed, but they are timestamped so we can clearly identify them as older.
+
+```{code-cell} ipython3
+display_directory_contents("demo-output")
+```
+
+We can write out a report of the experiments, which contains a variety of standard outputs.
+
+```{code-cell} ipython3
+out_file = summaries2.write_report(
+    "demo-output/meta-summary.html", base_config=cfg
+)
+```
+
+```{code-cell} ipython3
+from passengersim.utils.iframe import preview_html
+
+preview_html(out_file)
+```

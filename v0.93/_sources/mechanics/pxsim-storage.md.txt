@@ -1,0 +1,186 @@
+# PXSIM storage format
+
+A PXSIM file is a SQLite container for summary tables, configuration, and metadata. Detailed
+simulation records, such as `leg_detail`, stay in a separate SQLite file. Saving a PXSIM file does
+not copy that database, and loading a PXSIM file does not open or recreate it. You can retain a
+summary archive after deleting the much larger detail database.
+
+This page explains how the summary container works and why it is organized this way. For saving and
+loading results, see the [basic usage guide](../user-guide/basic-usage.md). For retaining detail
+data separately, see [summary archives and caches](summary-archives-and-caches).
+
+## Why split an item into pieces?
+
+The original PXSIM format stored each Python object as one compressed value in SQLite. An especially
+large results table could exceed SQLite's limit on the size of a single value, producing the error
+`string or blob too big` even when there was enough disk space for the file.
+
+Version 2 stores a large item as many smaller pieces, called **chunks**. Each piece fits within the
+SQLite limit, and the writer can compress and save pieces progressively instead of first creating
+one enormous compressed value. The complete item being stored is called a **payload**. A payload
+might represent a summary table, a configuration object, or run metadata.
+
+This solves the single-value size problem and reduces the buffers needed to write the archive. It
+does not make a large pandas table smaller in memory: loading that table still needs space for the
+complete reconstructed object.
+
+## Entries, payloads, and chunks
+
+Three tables answer three different questions: **What is this item called? How should we interpret
+it? Where are its bytes?** They do not hold three copies of the data.
+
+Imagine saving a results table under the illustrative name `bookings`:
+
+| Container table  | Purpose                                       | Example                                                                      |
+| ---------------- | --------------------------------------------- | ---------------------------------------------------------------------------- |
+| `pxsim_entries`  | A directory of named results                  | “`bookings` is payload 42.”                                                  |
+| `pxsim_payloads` | A description of each complete item           | “Payload 42 is a Python object, compressed this way, split into 800 pieces.” |
+| `pxsim_chunks`   | The actual data, divided into numbered pieces | “Here are pieces 0 through 799 of payload 42.”                               |
+
+When you request `bookings`, PassengerSim looks up its payload ID, reads the instructions for
+decoding that payload, and reads its chunks in order to reconstruct the object. The ID is just a
+number used to connect the records; it is not another copy of the result.
+
+The payload record stores information that applies to the complete item, such as its total size,
+compression method, and number of chunks. Keeping that information in one place avoids repeating it
+on every piece. Both the complete payload and its individual chunks have checksums: digital
+fingerprints that let the reader detect damaged data.
+
+The entries table supplies the names used by the summary interface. The payload table describes
+storage, and the chunks table holds the bytes. This separation lets code that manages result names
+work independently of code that writes and validates streams of data.
+
+### Are three tables essential?
+
+Chunking is the important change that avoids SQLite's single-value limit. Separating entries from
+payloads is an organizational choice, not a requirement for streaming or a major performance
+improvement by itself. A two-table design could combine the name and payload description.
+
+The current separation adds little bookkeeping while keeping the directory of results separate from
+their storage descriptions. PassengerSim can list names, check whether a result exists, and report
+stored sizes without decoding the actual data.
+
+## What the version 2 tables contain
+
+One additional table identifies the format. Together, the four tables have these responsibilities:
+
+| Table            | Stored information                                                                                                                                                                      |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pxsim_format`   | One format marker: `(id=1, major=2, minor=0)`. “One” here means a single record for the entire archive.                                                                                 |
+| `pxsim_entries`  | Each logical summary key and its payload ID. Each entry refers to one payload, and two entries cannot share a payload ID.                                                               |
+| `pxsim_payloads` | The serializer, compression codec, optional pickle protocol, chunk size, decoded and stored byte counts, chunk count, and SHA-256 checksum of the complete decoded byte stream.         |
+| `pxsim_chunks`   | The payload ID, chunk number, decoded byte count, SHA-256 checksum of the decoded chunk, and its compressed data as one LZ4 frame. Chunk numbers start at zero and must be consecutive. |
+
+A **serializer** turns an item into bytes that can be stored and later reconstructed. PXSIM uses
+`pickle` for Python objects. A **codec** compresses those bytes and decompresses them when needed.
+Here, **decoded bytes** means bytes after decompression: the payload is still a serialized pickle
+stream at that point, not yet a reconstructed Python object.
+
+## Writing and reading the pieces
+
+New Python values use pickle protocol 5 with **in-band buffers**: the object's data travels within
+the pickle byte stream rather than in separate external buffers. When a legacy pickle stream is
+copied into a new container, it retains its original pickle protocol.
+
+The initial compression codec is `lz4-blocks-v1`, supported with LZ4 4.3.2 or later. Each chunk is
+stored as an independent LZ4 frame, meaning a self-contained compressed piece. The writer normally
+buffers 1 MiB of uncompressed input at a time, reducing that size when the connection has a lower
+SQLite length limit. Readers accept declared chunk sizes up to 16 MiB.
+
+On reading, the chunk layer checks the declared sizes, piece order, counts, and checksums.
+Unsupported versions or codecs, malformed compressed frames, missing chunks, and count or checksum
+mismatches are rejected rather than silently returning partial data.
+
+The chunk layer does not retain a complete serialized or compressed object. However, unpickling
+still allocates the returned Python object and may request large individual buffers. The complete
+read path is therefore not constant-memory, and chunking does not make pandas operations work on
+tables larger than available memory.
+
+### Copying results without loading them
+
+An unloaded version 2 entry can be copied into another archive without unpickling or recompressing
+it. If the value has already been loaded, PassengerSim serializes it again because a pandas object
+may have been changed in place. Legacy entries can also be streamed into new chunks without
+reconstructing their Python objects.
+
+This structural copying checks frame metadata and counts. It does not verify the checksums of the
+decoded contents: that requires decompression, which happens during normal access or full
+validation.
+
+## Keeping incomplete writes out of the archive
+
+A **transaction** groups database changes so they either succeed together or are rolled back. A
+**savepoint** provides a smaller rollback boundary within that work. PXSIM uses these mechanisms so
+a payload's description and chunks are finalized together. Replacing a value removes its old payload
+only within the same transaction as the replacement.
+
+A standalone mutation uses a savepoint that commits on success. When the mutation is part of a
+larger export transaction, it only releases its own savepoint; it does not commit the surrounding
+export. That lets an error in a later item roll back the larger operation.
+
+Exporting a file also protects an existing destination. The exporter writes a temporary file in the
+same directory, commits and closes it, and replaces the destination only after successful
+completion. A failed export does not replace the previous archive. Exporting over a symlink follows
+its target; exporting over a separate hard-link alias of the open source is rejected to avoid
+ambiguous replacement.
+
+SQLite's journal durability is not disabled. These measures provide failure-safe publication, but do
+not add a stronger power-loss guarantee than SQLite and the filesystem replacement operation already
+provide.
+
+## Keeping detailed data separately
+
+The detail database can grow with every trial, sample, and recorded observation. Embedding it would
+make each archive or cache entry carry that cost, even when the user only needs summary reports.
+Keeping it separate also lets users delete the detailed records without rewriting their archives.
+
+A saved archive contains the summary items already collected, plus configuration and metadata. It
+cannot create a new SQL-backed report after the detail database has been deleted. Request those
+reports before saving, or keep the separate database for later analysis. Loading an archive returns
+summaries with `database_available=False`; saved database paths are not automatically reopened.
+
+Disk caches follow the same rule. Missing detail files alone do not invalidate a cached summary or
+trigger a simulation rerun. A fresh run may return a live database, while a disk cache hit returns
+only the saved summaries. Archive `read_only=True` applies to the PXSIM container.
+
+## Reading older files
+
+Readers support both the unversioned legacy layout and explicit version 2.0. A legacy file has a
+`kvstore(key, value)` table containing LZ4-compressed pickles. The reader recognizes that layout
+without migrating it or requiring write permission.
+
+Existing legacy files need no conversion. A writable legacy store remains in the legacy format after
+explicit mutation; exporting to a new container uses version 2. Older PassengerSim readers cannot
+read version 2 files. Unknown container versions and codecs fail explicitly instead of being
+mistaken for the legacy layout.
+
+Restoring an archived configuration handles known retired fields and historical schedule validation
+separately from validating new simulation input. Custom callback classes still need their original
+importable definitions. Frozen historical test fixtures, including both Config-object and
+Config-dictionary variants, protect compatibility with older archives.
+
+Concrete `pathlib.PosixPath` and `pathlib.WindowsPath` values inside stored objects are restored as
+the consuming platform's native `Path` type. This applies to both layouts, including historical
+configuration objects, without rewriting the archive. Pure path values keep their original flavor.
+Restoring a path does not relocate the referenced file or guarantee that it exists on the consuming
+machine.
+
+## Checking an archive
+
+For support tooling, the internal `KVStore(path, mode="r").validate()` method checks SQLite
+integrity, references between records, payload ownership, chunk counts, and frame metadata. Its
+`validate(full=True)` option also decompresses and hashes version 2 payloads to check their contents
+without unpickling the Python objects. Legacy payload validation can decompress values, but cannot
+verify checksums that were never stored. Both operations leave the archive unchanged; callers must
+close the store when finished.
+
+Checksums detect corruption, not whether a file comes from a trustworthy source. PXSIM's Python
+payloads use pickle, which can execute code when loaded. Only load trusted archives; passing an
+integrity check does not make unpickling untrusted data safe.
+
+### Large-file tests and benchmarks
+
+The opt-in `test_pxsim_large.py` suite exercises 1.05 GB and 2.2 GB summary payloads. Set
+`PXSIM_LARGE_TESTS=1` and use one pytest worker. The `tests/benchmarks/benchmark_pxsim_storage.py`
+runner compares legacy and new storage in isolated subprocesses. Its timings help investigate
+performance; they are not CI pass/fail assertions.

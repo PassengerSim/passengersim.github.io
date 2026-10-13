@@ -1,0 +1,6 @@
+delete\_experiment
+==================
+
+.. currentmodule:: passengersim.database.database
+
+.. autofunction:: delete_experiment

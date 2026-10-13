@@ -1,0 +1,39 @@
+PathForecastDailyDecay
+======================
+
+.. currentmodule:: passengersim.rm.standard_forecasting
+
+.. autoclass:: PathForecastDailyDecay
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~PathForecastDailyDecay.__init__
+      ~PathForecastDailyDecay.apply_snapshot_filters
+      ~PathForecastDailyDecay.configure
+      ~PathForecastDailyDecay.get_dcp_index
+      ~PathForecastDailyDecay.init
+      ~PathForecastDailyDecay.run
+      ~PathForecastDailyDecay.should_run
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~PathForecastDailyDecay.frequency
+      ~PathForecastDailyDecay.produces
+      ~PathForecastDailyDecay.requires
+      ~PathForecastDailyDecay.snapshot_filter_type
+      ~PathForecastDailyDecay.dcps
+      ~PathForecastDailyDecay.carrier
+      ~PathForecastDailyDecay.minimum_sample
+   
+   

@@ -1,0 +1,6 @@
+fare\_class\_mix
+================
+
+.. currentmodule:: passengersim.database.common_queries
+
+.. autofunction:: fare_class_mix

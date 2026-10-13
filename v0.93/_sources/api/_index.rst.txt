@@ -1,0 +1,37 @@
+
+PassengerSim
+============
+
+Below are a handful of top-level functions from the PassengerSim API.
+For most operations, please refer to the API reference for the individual sub-modules.
+
+Modules
+-------
+
+.. autosummary::
+   :nosignatures:
+
+   passengersim.callbacks
+   passengersim.config
+   passengersim.connection_builder
+   passengersim.contrast
+   passengersim.core
+   passengersim.database
+   passengersim.driver
+   passengersim.experiments
+   passengersim.rm
+   passengersim.summaries
+   passengersim.tracers
+   passengersim.transforms
+
+
+Functions
+---------
+
+.. autofunction:: passengersim.demo_network
+
+.. autofunction:: passengersim.demo_output
+
+.. autofunction:: passengersim.info
+
+.. autofunction:: passengersim.from_file

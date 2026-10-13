@@ -1,0 +1,10 @@
+﻿Place
+=====
+
+.. currentmodule:: passengersim.config
+
+.. autoclass:: Place()
+   :members:
+   :exclude-members: validate_tags, serialize_date, model_config
+   :class-doc-from: class
+   :autosummary:

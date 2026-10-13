@@ -1,0 +1,6 @@
+fig\_demand\_to\_come
+=====================
+
+.. currentmodule:: passengersim.contrast
+
+.. autofunction:: fig_demand_to_come

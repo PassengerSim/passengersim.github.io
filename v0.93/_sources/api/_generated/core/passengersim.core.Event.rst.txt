@@ -1,0 +1,28 @@
+Event
+=====
+
+.. currentmodule:: passengersim.core
+
+.. autoclass:: Event
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Event.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Event.event_time
+      ~Event.payload
+   
+   

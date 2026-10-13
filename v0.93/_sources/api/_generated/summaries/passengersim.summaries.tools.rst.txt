@@ -1,0 +1,38 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.summaries.
+
+tools
+=====
+
+.. automodule:: passengersim.summaries.tools
+   :no-members:
+
+
+
+
+
+
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: .
+
+   aggregate_by_averaging_dataframe
+   aggregate_by_concat_dataframe
+   aggregate_by_first_dataframe
+   aggregate_by_summing_dataframe
+   break_on_integer
+   combine_sigmas
+   total_sum
+   total_sum_of_squares
+
+
+
+
+

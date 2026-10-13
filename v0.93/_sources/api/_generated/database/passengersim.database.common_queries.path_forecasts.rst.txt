@@ -1,0 +1,6 @@
+path\_forecasts
+===============
+
+.. currentmodule:: passengersim.database.common_queries
+
+.. autofunction:: path_forecasts

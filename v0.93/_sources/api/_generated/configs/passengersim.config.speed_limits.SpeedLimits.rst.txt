@@ -1,0 +1,10 @@
+﻿SpeedLimits
+===========
+
+.. currentmodule:: passengersim.config.speed_limits
+
+.. autoclass:: SpeedLimits()
+   :members:
+   :exclude-members: validate_tags, serialize_date, model_config
+   :class-doc-from: class
+   :autosummary:

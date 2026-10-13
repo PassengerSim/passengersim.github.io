@@ -1,0 +1,31 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.transforms.
+
+places
+======
+
+.. automodule:: passengersim.transforms.places
+   :no-members:
+
+
+
+
+
+
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: .
+
+   remove_place
+
+
+
+
+

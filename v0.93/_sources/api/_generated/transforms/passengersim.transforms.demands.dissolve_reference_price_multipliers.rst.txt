@@ -1,0 +1,6 @@
+dissolve\_reference\_price\_multipliers
+=======================================
+
+.. currentmodule:: passengersim.transforms.demands
+
+.. autofunction:: dissolve_reference_price_multipliers

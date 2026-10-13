@@ -1,0 +1,35 @@
+Contrast
+========
+
+.. currentmodule:: passengersim.contrast
+
+.. autoclass:: Contrast
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Contrast.__init__
+      ~Contrast.apply
+      ~Contrast.clear
+      ~Contrast.copy
+      ~Contrast.fromkeys
+      ~Contrast.get
+      ~Contrast.items
+      ~Contrast.keys
+      ~Contrast.pop
+      ~Contrast.popitem
+      ~Contrast.setdefault
+      ~Contrast.subset
+      ~Contrast.update
+      ~Contrast.values
+      ~Contrast.write_report
+   
+   
+
+   
+   
+   

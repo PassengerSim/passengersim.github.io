@@ -1,0 +1,6 @@
+fig\_carrier\_revenues
+======================
+
+.. currentmodule:: passengersim.contrast
+
+.. autofunction:: fig_carrier_revenues

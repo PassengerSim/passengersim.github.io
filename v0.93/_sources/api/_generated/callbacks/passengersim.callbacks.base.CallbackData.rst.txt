@@ -1,0 +1,33 @@
+CallbackData
+============
+
+.. currentmodule:: passengersim.callbacks.base
+
+.. autoclass:: CallbackData
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~CallbackData.__init__
+      ~CallbackData.clear
+      ~CallbackData.get
+      ~CallbackData.get_data
+      ~CallbackData.items
+      ~CallbackData.keys
+      ~CallbackData.pop
+      ~CallbackData.popitem
+      ~CallbackData.setdefault
+      ~CallbackData.to_dataframe
+      ~CallbackData.update
+      ~CallbackData.update_data
+      ~CallbackData.values
+   
+   
+
+   
+   
+   

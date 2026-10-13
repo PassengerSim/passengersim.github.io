@@ -1,0 +1,6 @@
+fig\_bid\_price\_history
+========================
+
+.. currentmodule:: passengersim.contrast
+
+.. autofunction:: fig_bid_price_history
