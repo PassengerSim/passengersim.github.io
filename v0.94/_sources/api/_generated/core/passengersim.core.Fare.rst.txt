@@ -1,0 +1,60 @@
+Fare
+====
+
+.. currentmodule:: passengersim.core
+
+.. autoclass:: Fare
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Fare.__init__
+      ~Fare.add_restriction
+      ~Fare.adjust_price
+      ~Fare.get_adjusted_by_dcp
+      ~Fare.get_restrictions
+      ~Fare.get_sales_by_dcp
+      ~Fare.get_sales_by_dcp2
+      ~Fare.get_sales_by_segment
+      ~Fare.num_restrictions
+      ~Fare.set_sales_by_dcp
+      ~Fare.set_sales_by_dcp2
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Fare.adjusted_price
+      ~Fare.adv_purch
+      ~Fare.booking_class
+      ~Fare.brand
+      ~Fare.cabin
+      ~Fare.carrier
+      ~Fare.carrier_name
+      ~Fare.category
+      ~Fare.cp_revenue
+      ~Fare.cp_sold
+      ~Fare.dest
+      ~Fare.fare_id
+      ~Fare.gt_cp_revenue
+      ~Fare.gt_cp_sold
+      ~Fare.gt_revenue
+      ~Fare.gt_sold
+      ~Fare.min_stay
+      ~Fare.orig
+      ~Fare.price
+      ~Fare.price_lower_bound
+      ~Fare.price_upper_bound
+      ~Fare.saturday_night_required
+      ~Fare.sold
+      ~Fare.sold_business
+   
+   

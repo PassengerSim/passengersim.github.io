@@ -1,0 +1,30 @@
+FileSize
+========
+
+.. currentmodule:: passengersim.database.files
+
+.. autoclass:: FileSize
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~FileSize.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~FileSize.error
+      ~FileSize.path
+      ~FileSize.size
+      ~FileSize.bytes_per_second
+   
+   

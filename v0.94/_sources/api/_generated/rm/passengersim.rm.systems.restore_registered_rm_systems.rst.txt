@@ -1,0 +1,6 @@
+restore\_registered\_rm\_systems
+================================
+
+.. currentmodule:: passengersim.rm.systems
+
+.. autofunction:: restore_registered_rm_systems

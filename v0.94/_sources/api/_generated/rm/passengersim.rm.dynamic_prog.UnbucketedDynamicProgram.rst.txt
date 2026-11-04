@@ -1,0 +1,50 @@
+UnbucketedDynamicProgram
+========================
+
+.. currentmodule:: passengersim.rm.dynamic_prog
+
+.. autoclass:: UnbucketedDynamicProgram
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~UnbucketedDynamicProgram.__init__
+      ~UnbucketedDynamicProgram.apply_snapshot_filters
+      ~UnbucketedDynamicProgram.configure
+      ~UnbucketedDynamicProgram.get_dcp_index
+      ~UnbucketedDynamicProgram.init
+      ~UnbucketedDynamicProgram.run
+      ~UnbucketedDynamicProgram.should_run
+      ~UnbucketedDynamicProgram.solve_carrier_lp_for_leg_fare_displacements
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~UnbucketedDynamicProgram.frequency
+      ~UnbucketedDynamicProgram.produces
+      ~UnbucketedDynamicProgram.requires
+      ~UnbucketedDynamicProgram.udp
+      ~UnbucketedDynamicProgram.error_log
+      ~UnbucketedDynamicProgram.store_bid_prices
+      ~UnbucketedDynamicProgram.reoptimize
+      ~UnbucketedDynamicProgram.arrivals_per_time_slice
+      ~UnbucketedDynamicProgram.min_time_slices_per_dcp
+      ~UnbucketedDynamicProgram.use_current_bp
+      ~UnbucketedDynamicProgram.normalization_method
+      ~UnbucketedDynamicProgram.cabins
+      ~UnbucketedDynamicProgram.capacity_sharing
+      ~UnbucketedDynamicProgram.capacity_sharing_start_lf
+      ~UnbucketedDynamicProgram.dcps
+      ~UnbucketedDynamicProgram.carrier
+      ~UnbucketedDynamicProgram.minimum_sample
+   
+   

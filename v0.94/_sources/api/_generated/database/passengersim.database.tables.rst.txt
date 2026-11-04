@@ -1,0 +1,45 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.database.
+
+tables
+======
+
+.. automodule:: passengersim.database.tables
+   :no-members:
+
+
+
+
+
+
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: .
+
+   create_table_booking_curve
+   create_table_bookings_by_timeframe
+   create_table_configs
+   create_table_demand_detail
+   create_table_distance
+   create_table_edgar
+   create_table_fare_defs
+   create_table_fare_detail
+   create_table_fare_restriction_defs
+   create_table_leg_bucket_detail
+   create_table_leg_defs
+   create_table_leg_detail
+   create_table_path_class_detail
+   create_table_path_defs
+   create_tables
+
+
+
+
+

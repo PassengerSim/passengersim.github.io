@@ -1,0 +1,28 @@
+CallbackMixin
+=============
+
+.. currentmodule:: passengersim.callbacks.base
+
+.. autoclass:: CallbackMixin
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~CallbackMixin.__init__
+      ~CallbackMixin.add_callback_events
+      ~CallbackMixin.apply_callback_functions
+      ~CallbackMixin.begin_sample_callback
+      ~CallbackMixin.callback_functions
+      ~CallbackMixin.daily_callback
+      ~CallbackMixin.end_sample_callback
+      ~CallbackMixin.use_registered_callbacks
+   
+   
+
+   
+   
+   

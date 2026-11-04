@@ -1,0 +1,22 @@
+WarnSome
+========
+
+.. currentmodule:: passengersim.rm.dynamic_prog
+
+.. autoclass:: WarnSome
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~WarnSome.__init__
+      ~WarnSome.warn
+   
+   
+
+   
+   
+   

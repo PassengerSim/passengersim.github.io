@@ -1,0 +1,33 @@
+﻿.. rst-class:: page_title_prefix
+
+    passengersim.rm.
+
+q\_forecasting
+==============
+
+.. automodule:: passengersim.rm.q_forecasting
+   :no-members:
+
+
+
+
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: .
+   :template: autosummary/class.rst
+
+   QLegForecast
+   QPathForecast
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+﻿M
+=
+
+.. currentmodule:: passengersim.rm.standard_systems
+
+.. autoclass:: M()
+
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      ~M.availability_control
+      ~M.actions
+
+   

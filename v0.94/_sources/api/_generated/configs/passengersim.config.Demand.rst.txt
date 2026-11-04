@@ -1,0 +1,10 @@
+﻿Demand
+======
+
+.. currentmodule:: passengersim.config
+
+.. autoclass:: Demand()
+   :members:
+   :exclude-members: validate_tags, serialize_date, model_config
+   :class-doc-from: class
+   :autosummary:

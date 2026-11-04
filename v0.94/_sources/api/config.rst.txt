@@ -1,0 +1,32 @@
+
+config
+======
+
+.. autosummary::
+    :toctree: _generated/configs
+    :template: autosummary/config-class.rst
+
+    ~passengersim.config.Config
+    ~passengersim.config.SimulationSettings
+    ~passengersim.config.Carrier
+    ~passengersim.config.Leg
+    ~passengersim.config.Path
+    ~passengersim.config.Demand
+    ~passengersim.config.Fare
+    ~passengersim.config.BookingCurve
+    ~passengersim.config.ChoiceModel
+    ~passengersim.config.DatabaseConfig
+    ~passengersim.config.Frat5Curve
+    ~passengersim.config.ToddCurve
+    ~passengersim.config.Place
+    ~passengersim.config.LimitConnectTime
+    ~passengersim.config.SnapshotFilter
+
+    ~passengersim.config.simulation_controls.ConnectionBuilderSettings
+    ~passengersim.config.outputs.OutputConfig
+    ~passengersim.config.outputs.HtmlOutputConfig
+    ~passengersim.config.outputs.StateOutputConfig
+    ~passengersim.config.speed_limits.SpeedLimits
+
+    ~passengersim.config.base.YamlConfig
+    ~passengersim.config.pretty.PrettyModel

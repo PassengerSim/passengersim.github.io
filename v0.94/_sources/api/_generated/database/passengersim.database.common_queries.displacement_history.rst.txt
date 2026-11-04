@@ -1,0 +1,6 @@
+displacement\_history
+=====================
+
+.. currentmodule:: passengersim.database.common_queries
+
+.. autofunction:: displacement_history

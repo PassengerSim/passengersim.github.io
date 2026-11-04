@@ -1,0 +1,32 @@
+﻿.. rst-class:: page_title_prefix
+
+    passengersim.rm.
+
+probp
+=====
+
+.. automodule:: passengersim.rm.probp
+   :no-members:
+
+
+
+
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: .
+   :template: autosummary/class.rst
+
+   ProbabilisticBidPrice
+
+
+
+
+
+
+
+
+

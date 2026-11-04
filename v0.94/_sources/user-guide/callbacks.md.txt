@@ -1,0 +1,269 @@
+---
+title: Callbacks
+icon: material/function
+jupytext:
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.19.2
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
+---
+
+# Callbacks
+
+PassengerSim includes a variety of optimized data collection processes that run automatically during
+a simulation, but these pre-selected data may not be sufficient for every analysis. To supplement
+this, users can choose to additionally collect any other data while running a simulation. This is
+done by writing a "callback" function. Such a function is invoked regularly while the simulation is
+running, and can inspect and store almost anything from the Simulation object.
+
+```{code-cell} ipython3
+import pandas as pd
+
+import passengersim as pax
+
+pax.versions()
+```
+
+Here, we'll run a quick demo using the "3MKT" example model. We'll give AL1 the 'P' RM system to
+make it interesting.
+
+```{code-cell} ipython3
+cfg = pax.Config.from_yaml(pax.demo_network("3MKT"))
+
+cfg.simulation_controls.num_samples = 100
+cfg.simulation_controls.burn_samples = 50
+cfg.simulation_controls.num_trials = 1
+cfg.db = None
+cfg.outputs.reports.clear()
+
+cfg.carriers.AL1.rm_system = "P"
+
+sim = pax.Simulation(cfg)
+```
+
+## Types of Callback Functions
+
+To collect data, we can write a function that will interrogate the simulation and grab whatever info
+we are looking for. There are three different points where we can attach data collection callback
+functions:
+
+- `begin_sample`, which will trigger data collection at the beginning of each sample, after the RM
+  systems for each carrier are initialized (e.g. with forecasts, etc) but before any customers can
+  arrive.
+- `end_sample`, which will trigger data collection at the end of each sample, after customers have
+  arrive and all bookings have be finalized.
+- `daily`, which will trigger data collection once per day during every sample, just after any DCP
+  or daily RM system updates are run.
+
+The first two callbacks (begin and end sample) are written as a function that accepts one argument
+(the `Simulation` object), and either returns nothing (to ignore that event) or returns a dictionary
+of values to store, where the keys are all strings naming what's being stored and the values can be
+whatever is of interest. This can be a simple numeric value (i.e., a scalar), or a tuple, an array,
+a nested dictionary, or any other
+[pickle-able](https://docs.python.org/3/library/pickle.html#what-can-be-pickled-and-unpickled)
+Python object.
+
+We can attach each callback to the Simulation by using a Python decorator.
+
+## Example Callback Functions
+
+For example, here we create a callback to collect carrier revenue at the end of every sample. Note
+that we skip the burn period by returning nothing for those samples; this is not required by the
+callback algorithm but is good practice for analysis.
+
+```{code-cell} ipython3
+@sim.end_sample_callback
+def collect_carrier_revenue(sim: pax.Simulation) -> dict | None:
+    if sim.eng.sample < sim.eng.burn_samples:
+        return
+    return {c.name: c.revenue for c in sim.eng.carriers}
+```
+
+The daily callback operates similarly, except it accepts a second argument that gives the number of
+days prior to departure for this day. You don't need to *use* the second argument in the callback
+function, but you need to including in the function signature (and you can use it if desired, e.g.
+to collect data only at DCPs instead of every day). In the example here, we collect daily carrier
+revenue, but only every 7th sample, which is a good way to reduce the overhead from collecting
+detailed data.
+
+```{code-cell} ipython3
+@sim.daily_callback
+def collect_carrier_revenue_detail(
+    sim: pax.Simulation, days_prior: int
+) -> dict | None:
+    if sim.eng.sample < sim.eng.burn_samples:
+        return
+    if sim.eng.sample % 7 == 0:
+        return {c.name: c.revenue for c in sim.eng.carriers}
+```
+
+Multiple callbacks of the same kind can be attached (i.e. there can be two end_sample callbacks).
+The only limitation is that the named values in the return values of each callback function must be
+unique, or else they will overwrite one another.
+
+For example, suppose we also want to count for each carrier the number of passengers departing each
+airport on each sample day. The previous end sample callback stored revenue values in a dictionary
+keyed by carrier name, so if we don't want to overwrite that, we need to use a different key. One
+way to avoid that is to just nest the output of the callback function in another dictionary with a
+unique top level key.
+
+```{code-cell} ipython3
+from collections import defaultdict
+
+
+@sim.end_sample_callback
+def collect_passenger_counts(sim: pax.Simulation) -> dict | None:
+    if sim.eng.sample < sim.eng.burn_samples:
+        return
+    paxcount = defaultdict(lambda: defaultdict(int))
+    for leg in sim.eng.legs:
+        paxcount[leg.carrier.name][leg.orig] += leg.sold
+    # convert defaultdict to a regular dict, not necessary but pickles smaller
+    paxcount = {
+        carrier: dict(airports) for carrier, airports in paxcount.items()
+    }
+    return {"psgr_by_airport": paxcount}
+```
+
+One of the nifty features of callbacks is that they can access anything available in the simulation,
+not just sales and revenue data from carriers. For example, we can inspect demand objects directly,
+and see how many potential passengers were simulated so far, and how many didn't make a booking on
+any airlines (i.e. the "no-go" customers).
+
+```{code-cell} ipython3
+@sim.daily_callback
+def count_nogo(sim: pax.Simulation, days_prior: int) -> dict | None:
+    if sim.eng.sample < sim.eng.burn_samples:
+        return
+    if sim.eng.sample % 7 == 0:
+        return
+    if days_prior > 0 and days_prior not in sim.config.dcps:
+        # Only count "nogo" (unsold) demand at DCPs, and at departure (days_prior == 0)
+        return
+    nogo_count = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))
+    for dmd in sim.eng.demands:
+        nogo_count[dmd.orig][dmd.dest][dmd.segment] += dmd.unsold
+    # convert defaultdict to a regular dict, not necessary but pickles smaller
+    nogo_count = {
+        orig: {dest: dict(seg) for dest, seg in dests.items()}
+        for orig, dests in nogo_count.items()
+    }
+    return {"nogo": nogo_count}
+```
+
+### Re-using Callback Functions
+
+Attaching via the decorators is a convenient way to add callbacks to a single simulation. The
+decorators connect the callback function to the simulation, but do not otherwise modify the function
+itself. It is easy to define callback functions in a seperate module or to re-use callback functions
+for multiple simulations, by using the decorator as a regular function. For example, we can create a
+second simulation object, and attach the same callback functions like this:
+
+```{code-cell} ipython3
+duplicate_sim = pax.Simulation(cfg)
+duplicate_sim.end_sample_callback(collect_carrier_revenue)
+duplicate_sim.daily_callback(collect_carrier_revenue_detail)
+```
+
+In this example, the duplicate_sim is running the same config as the original, but this would work
+with a modified config or even a completely different network.
+
+Once we have attached all desired callbacks to the simulation we want to run, we can run it as
+normal.
+
+```{code-cell} ipython3
+summary = sim.run()
+```
+
+All the usual summary data remains available for review and analysis.
+
+```{code-cell} ipython3
+summary.fig_carrier_revenues()
+```
+
+## Callback Data
+
+In addition to the usual suspects, the summary object includes the collected callback data from our
+callback functions.
+
+```{code-cell} ipython3
+summary.callback_data
+```
+
+Because we connected a "daily" callback, the data we collected is available under the
+`callback_data.daily` accessor.
+
+```{code-cell} ipython3
+summary.callback_data.daily[:5]
+```
+
+As you might expect, the "begin_sample" or "end_sample" callbacks are available under
+`callback_data.begin_sample` or `callback_data.end_sample`, respectively.
+
+```{code-cell} ipython3
+summary.callback_data.end_sample[:3]
+```
+
+The callback data can include pretty much anything, so it is stored in a very flexible (but
+inefficient) format: a list of dict's. If the content of the dicts is fairly simple (numbers,
+tuples, lists, or nested dictionaries thereof), it can be converted into a pandas DataFrame using
+the `to_dataframe` method on the `callback_data` attribute. This may make subsequent analysis
+easier.
+
+```{code-cell} ipython3
+summary.callback_data.to_dataframe("daily")
+```
+
+```{code-cell} ipython3
+summary.callback_data.to_dataframe("end_sample")
+```
+
+Users are free to process this callback data now however they like, with typical Python tools:
+analyze, visualize, interpret, etc.
+
+```{code-cell} ipython3
+# Visualize revenue difference between carriers across booking curve
+
+import altair as alt
+
+alt.Chart(
+    summary.callback_data.to_dataframe("daily").eval("DIFF = AL1 - AL2")
+).mark_line().encode(
+    x=alt.X("days_prior", scale=alt.Scale(reverse=True)),
+    y="DIFF",
+    color="sample:N",
+)
+```
+
+```{code-cell} ipython3
+# Visualize "nogo" passengers over time, by market and segment
+
+nogo = (
+    summary.callback_data.to_dataframe("daily")
+    .set_index(["days_prior", "sample"])
+    .drop(columns=["trial", "AL1", "AL2"])
+)
+nogo.columns = pd.MultiIndex.from_tuples(nogo.columns.str.split(".").to_list())
+nogo.columns.names = ["nogo", "orig", "dest", "segment"]
+nogo = nogo.stack([1, 2, 3], future_stack=True).dropna().reset_index()
+
+mean_nogo = (
+    nogo.groupby(["days_prior", "orig", "dest", "segment"])
+    .nogo.mean()
+    .reset_index()
+)
+mean_nogo["market"] = mean_nogo.orig + "-" + mean_nogo.dest
+
+alt.Chart(mean_nogo).mark_line().encode(
+    x=alt.X("days_prior", scale=alt.Scale(reverse=True)),
+    y="nogo",
+    color="segment:N",
+    strokeWidth="market:N",
+    strokeDash="market:N",
+)
+```

@@ -1,0 +1,32 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.summaries.
+
+local\_and\_flow\_yields
+========================
+
+.. automodule:: passengersim.summaries.local_and_flow_yields
+   :no-members:
+
+
+
+
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: .
+   :template: autosummary/class.rst
+
+   SimTabLocalAndFlowYields
+
+
+
+
+
+
+
+
+

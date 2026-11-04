@@ -1,0 +1,31 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.transforms.
+
+pricing
+=======
+
+.. automodule:: passengersim.transforms.pricing
+   :no-members:
+
+
+
+
+
+
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: .
+
+   pricing_multiplier
+
+
+
+
+

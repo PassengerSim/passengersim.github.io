@@ -1,0 +1,250 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "5b1e0c4a",
+   "metadata": {},
+   "source": [
+    "# NA26 Baseline Network\n",
+    "\n",
+    "This page loads the NA26 network and reviews its schedule, demand, and available paths before\n",
+    "simulation. See {doc}`the NA26 overview <index>` for a description of the network."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "03a0fd16",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import NA26"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "f51f17d7",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg = NA26.load_config(\"latest\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "058a55b0",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg.fig_route_map()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "c672ec7a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg.fig_demand_vs_capacity()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5dfe9f38",
+   "metadata": {},
+   "source": [
+    "These figures show departing and arriving totals for seats on all carriers and total average demand\n",
+    "for all markets.\n",
+    "\n",
+    "Points are colored by the airport's *path flow share*. This is computed by taking an enumeration of\n",
+    "all paths that utilize each airport, and finding the fraction of all those paths where this airport\n",
+    "is a connection rather than the path origin or destination. We expect hubs to have relatively high\n",
+    "path flow shares, focus cities (if any carriers are not operating a strict hub-and-spoke system) to\n",
+    "have lower values, and spokes to have low or zero path flow shares.\n",
+    "\n",
+    "A red diagonal 1:1 reference line is also included in each panel. If the network is well calibrated\n",
+    "the spoke airports should have marks close to or slightly below the red line, while hub airports can\n",
+    "be well above the line (i.e. local passengers at that airport need not be available in sufficient\n",
+    "quantity to fill planes at that airport)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "002a3be0",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg.fig_duration_by_distance()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c1dc7b39",
+   "metadata": {},
+   "source": [
+    "This figure shows the distance compared against the block time for each leg. It is useful to catch\n",
+    "encoding problems for the network schedule, which might have impacts on customer choice behaviour\n",
+    "(i.e. if one leg is unusually fast or slow compared to others in the same market.). Each leg is\n",
+    "marked with a wedge showing the average bearing for the great circle routing. In this network we can\n",
+    "see a reasonable setup where eastbound legs tend to have slightly higher speeds and shorter block\n",
+    "times."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "61ad3fe4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg.fig_reference_price_by_distance()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "7c401327",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg.fig_booking_curves()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b0014c1d",
+   "metadata": {},
+   "source": [
+    "We can use a schedule viewer to review the schedule at any airport, although reviewing the hub\n",
+    "airports will be most useful. Clicking on any leg in these figures will highlight all available\n",
+    "connections at this airport that use that leg."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b70bda74",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg.fig_hub_schedule(\"DEN\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "6252df0f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg.fig_hub_schedule(\"ORD\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "97f05836",
+   "metadata": {},
+   "source": [
+    "We can also review the complete set of available paths for any specific market."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "8b71023c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg.fig_market_schedule(\"SLC\", \"ATL\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "e3a22983",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg.dataframes.legs"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "92d38908",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "0fd3cb1b",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def check_market_windows(cfg):\n",
+    "    legs_df = cfg.dataframes.legs\n",
+    "    earliest_dep = {}\n",
+    "    latest_dep = {}\n",
+    "    earliest_arr = {}\n",
+    "    latest_arr = {}\n",
+    "    for p in cfg.paths:\n",
+    "        mkt = p.market_identifier\n",
+    "        deptime = legs_df.loc[p.legs[0]].dep_time\n",
+    "        arrtime = legs_df.loc[p.legs[-1]].arr_time\n",
+    "        if mkt in earliest_dep:\n",
+    "            earliest_dep[mkt] = min(earliest_dep[mkt], deptime)\n",
+    "            latest_dep[mkt] = max(latest_dep[mkt], deptime)\n",
+    "            earliest_arr[mkt] = min(earliest_arr[mkt], arrtime)\n",
+    "            latest_arr[mkt] = max(latest_arr[mkt], arrtime)\n",
+    "        else:\n",
+    "            earliest_dep[mkt] = deptime\n",
+    "            latest_dep[mkt] = deptime\n",
+    "            earliest_arr[mkt] = arrtime\n",
+    "            latest_arr[mkt] = arrtime\n",
+    "    df = pd.DataFrame.from_dict(\n",
+    "        {\n",
+    "            \"earliest_dep\": earliest_dep,\n",
+    "            \"latest_dep\": latest_dep,\n",
+    "            \"earliest_arr\": earliest_arr,\n",
+    "            \"latest_arr\": latest_arr,\n",
+    "        }\n",
+    "    )\n",
+    "    df[\"dep_hours_span\"] = (df[\"latest_dep\"] - df[\"earliest_dep\"]) / 3600\n",
+    "    df[\"arr_hours_span\"] = (df[\"latest_arr\"] - df[\"earliest_arr\"]) / 3600\n",
+    "    return df\n",
+    "\n",
+    "\n",
+    "check_market_windows(cfg)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "pax (3.12.11)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.11"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

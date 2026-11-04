@@ -1,0 +1,243 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "59ac6bf0",
+   "metadata": {},
+   "source": [
+    "# Logging simulation diagnostics\n",
+    "\n",
+    "If you want to save periodic diagnostic records to a file, you can configure a file handler for the\n",
+    "`passengersim.diagnostics` logger. This example shows how to do that, and how to read the resulting\n",
+    "JSON-lines file. It is important to remember that the logger must be configured **before** the\n",
+    "simulation run starts, otherwise your periodic records will simply be sent into the void, never to\n",
+    "be seen.\n",
+    "\n",
+    "PassengerSim uses the `passengersim.diagnostics` logger and existing handlers; it does not create a\n",
+    "log file for you. If that logger does not accept INFO records when the run starts, periodic\n",
+    "diagnostic logging is not started.\n",
+    "\n",
+    "This example writes one JSON object per line to a uniquely named file, runs a small two-trial model,\n",
+    "and reads the resulting records. Logging is independent of which live dashboard panels are visible.\n",
+    "\n",
+    "The usual PassengerSim installation and license requirements apply. See\n",
+    "[periodic diagnostic logging](../user-guide/diagnostics.md#periodic-diagnostic-logging) for the full\n",
+    "configuration and record descriptions."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "54c4da19",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import json\n",
+    "import logging\n",
+    "from datetime import UTC, datetime\n",
+    "from pathlib import Path\n",
+    "from uuid import uuid4\n",
+    "\n",
+    "import passengersim as pax"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "be2ea9b7",
+   "metadata": {},
+   "source": [
+    "## Configure a short demonstration run\n",
+    "\n",
+    "The default logging interval is 60 seconds. Here we use one second to make periodic records easier\n",
+    "to observe during a short example; a very short run may still finish in less than one second, before\n",
+    "the first periodic record. Start, completion, and other lifecycle records are emitted regardless of\n",
+    "the interval. For production runs, 60 seconds is usually a better starting point.\n",
+    "\n",
+    "Temporary SQLite recording lets the logs include database sizes and growth without keeping the\n",
+    "database after the result is closed. The diagnostic log file itself remains available."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "44635880",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg = pax.Config.from_yaml(pax.demo_network(\"3MKT/DEMO\"))\n",
+    "cfg.simulation_controls.num_trials = 2\n",
+    "cfg.simulation_controls.num_samples = 500\n",
+    "cfg.simulation_controls.burn_samples = 50\n",
+    "cfg.simulation_controls.diagnostics = {\"mode\": \"live\", \"log_interval\": 1.0}\n",
+    "cfg.db = {\"result_storage\": \"temporary\", \"write_items\": [\"leg\"]}\n",
+    "cfg.outputs.disk = False\n",
+    "cfg.outputs.reports.clear()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1532f524",
+   "metadata": {},
+   "source": [
+    "## Install the file handler before running\n",
+    "\n",
+    "Each diagnostic LogRecord that PassengerSim will emit has a `diagnostics` dictionary. This formatter\n",
+    "saves that dictionary without rounding its numeric values and adds a UTC timestamp. The filter keeps\n",
+    "unrelated messages out of the JSON-lines file. Other than knowing that there will be a `diagnostics`\n",
+    "dictionary in the LogRecord, nothing in the following code block is PassengerSim-specific, it is\n",
+    "just regular Python logging semantics."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "3320a9d2",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "class DiagnosticJSONFormatter(logging.Formatter):\n",
+    "    \"\"\"Serialize diagnostic records with an explicit UTC timestamp.\"\"\"\n",
+    "\n",
+    "    def format(self, record: logging.LogRecord) -> str:\n",
+    "        payload = dict(record.diagnostics)\n",
+    "        payload[\"timestamp\"] = datetime.fromtimestamp(record.created, UTC).isoformat()\n",
+    "        return json.dumps(payload)\n",
+    "\n",
+    "\n",
+    "log_directory = Path(\"diagnostic-logs\")\n",
+    "log_directory.mkdir(parents=True, exist_ok=True)\n",
+    "log_path = log_directory / f\"run-{uuid4().hex[:12]}.jsonl\"\n",
+    "\n",
+    "diagnostic_logger = logging.getLogger(\"passengersim.diagnostics\")\n",
+    "previous_level = diagnostic_logger.level\n",
+    "previous_propagate = diagnostic_logger.propagate\n",
+    "file_handler = logging.FileHandler(log_path, encoding=\"utf-8\")\n",
+    "file_handler.setLevel(logging.INFO)\n",
+    "file_handler.setFormatter(DiagnosticJSONFormatter())\n",
+    "file_handler.addFilter(lambda record: hasattr(record, \"diagnostics\"))\n",
+    "\n",
+    "diagnostic_logger = logging.getLogger(\"passengersim.diagnostics\")\n",
+    "diagnostic_logger.addHandler(file_handler)\n",
+    "diagnostic_logger.setLevel(logging.INFO)\n",
+    "diagnostic_logger.propagate = False"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e3fefc11",
+   "metadata": {},
+   "source": [
+    "Once that's all set up, we are ready to actually run a simulation, and it will log diagnostics while\n",
+    "it's running.\n",
+    "\n",
+    "The `try`/`finally` block closes the file and restores the logger configuration even if the\n",
+    "simulation fails. Removing only the handler installed here also prevents duplicate handlers when the\n",
+    "notebook cell is rerun. If you want to re-run with logging, you'll need to re-run both cells to\n",
+    "re-set the handlers for this run. Other existing handlers are left in place; propagation is\n",
+    "temporarily disabled to keep these records out of ancestor loggers' console handlers."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "30580f3a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "try:\n",
+    "    # The handler and INFO level are set in the prior cell before constructing/running the model.\n",
+    "    with pax.MultiSimulation(cfg) as sim:\n",
+    "        result = sim.run(max_processes=2)\n",
+    "        try:\n",
+    "            final_diagnostics = result._metadata[\"diagnostics\"]\n",
+    "        finally:\n",
+    "            result.close()\n",
+    "finally:\n",
+    "    # Clean up the diagnostic logger and file handler.\n",
+    "    diagnostic_logger.removeHandler(file_handler)\n",
+    "    file_handler.close()\n",
+    "    diagnostic_logger.setLevel(previous_level)\n",
+    "    diagnostic_logger.propagate = previous_propagate\n",
+    "\n",
+    "print(f\"Diagnostic records saved to {log_path.resolve()}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e3db6393",
+   "metadata": {},
+   "source": [
+    "## Inspect the log\n",
+    "\n",
+    "The last record contains the final available snapshot and completion status. Timing values are\n",
+    "summed worker seconds, which can exceed elapsed wall time for parallel runs. Carrier counts exclude\n",
+    "burn-in; `completed_samples` includes it. Confidence-interval half-widths are `null` until 30\n",
+    "post-burn-in observations are available for a carrier.\n",
+    "\n",
+    "Periodic records can contain older worker observations during a long operation; inspect\n",
+    "`snapshot_age_seconds` and the ages in `active_trials` when interpreting them. Database sizes\n",
+    "include each main file and its journal/WAL/SHM companions. Files may disappear as temporary\n",
+    "databases are consolidated or cleaned up.\n",
+    "\n",
+    "Loading the whole file below is convenient for this small example. For long runs, iterate over lines\n",
+    "instead of retaining every record in memory."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d92dc7ee",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "with log_path.open(encoding=\"utf-8\") as stream:\n",
+    "    records = [json.loads(line) for line in stream]\n",
+    "\n",
+    "final_record = records[-1]\n",
+    "print(f\"Recorded {len(records)} diagnostic events\")\n",
+    "print(f\"Final status: {final_record['event']}\")\n",
+    "print(f\"Completed samples: {final_record['completed_samples']}\")\n",
+    "print(json.dumps(final_record, indent=2))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "56b601b1",
+   "metadata": {},
+   "source": [
+    "## Adjust logging for the next run\n",
+    "\n",
+    "Use `cfg.simulation_controls.diagnostics.log_interval = 60` for the default cadence, or set it to\n",
+    "`None` to disable diagnostic logging while retaining other diagnostics. Setting\n",
+    "`cfg.simulation_controls.diagnostics.mode = \"off\"` disables both collection and diagnostic logging.\n",
+    "Changing `.mode` back to `\"live\"` keeps the logging interval and panel settings.\n",
+    "\n",
+    "Assigning a shorthand to the entire `diagnostics` setting, such as `\"full\"` or `\"off\"`, resets its\n",
+    "other options, including the interval. Set the interval afterward if needed. For another run with\n",
+    "file logging, rerun both the handler and run cells above so logging is configured again before the\n",
+    "simulation starts."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "pax (3.12.13)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.13"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

@@ -1,0 +1,6 @@
+resolve\_market\_demand\_multipliers
+====================================
+
+.. currentmodule:: passengersim.transforms.simplify
+
+.. autofunction:: resolve_market_demand_multipliers

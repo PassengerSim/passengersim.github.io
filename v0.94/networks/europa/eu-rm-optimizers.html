@@ -1,0 +1,2509 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="eu-baseline.html">
+      
+      
+        <link rel="next" href="../u25/index.html">
+      
+      
+      <link rel="icon" href="../../_static/favicon.png">
+    
+    
+      
+        <title>RM Optimizers - PassengerSim</title>
+      
+    
+    
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.50640b526df5ff663.min.css?v=cff97996" />
+        <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=6c696159" />
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+
+<style>
+  /* Keep the Networks landing page in the top tabs, but omit its sidebar row. */
+  .md-sidebar--primary .md-nav__item:has(> a[href="../index.html"]) {
+    display: none;
+  }
+  
+</style>
+
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#setup-probp-experiments" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="PassengerSim" class="md-header__button md-logo" aria-label="PassengerSim" data-md-component="logo">
+      <img src="../../_static/logo.svg" alt="logo">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PassengerSim
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RM Optimizers
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/passengersim/passengersim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    PassengerSim/passengersim
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../user-guide/welcome.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>User Guide</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../mechanics/counting-sims.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Mechanics</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../examples/intro-3mkt.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Examples</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Networks</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../api/_index.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>API</span>
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="PassengerSim" class="md-nav__button md-logo" aria-label="PassengerSim" data-md-component="logo">
+      <img src="../../_static/logo.svg" alt="logo">
+    </a>
+    PassengerSim
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/passengersim/passengersim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    PassengerSim/passengersim
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>User Guide</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            <span>User Guide</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/welcome.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 10H5L3 8l2-2h6V3l1-1 1 1v1h6l2 2-2 2h-6v2h6l2 2-2 2h-6v6a2 2 0 0 1 2 2H9a2 2 0 0 1 2-2z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Wayfinding</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/installation.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m13.13 22.19-1.63-3.83c1.57-.58 3.04-1.36 4.4-2.27zM5.64 12.5l-3.83-1.63 6.1-2.77C7 9.46 6.22 10.93 5.64 12.5M21.61 2.39S16.66.269 11 5.93c-2.19 2.19-3.5 4.6-4.35 6.71-.28.75-.09 1.57.46 2.13l2.13 2.12c.55.56 1.37.74 2.12.46A19.1 19.1 0 0 0 18.07 13c5.66-5.66 3.54-10.61 3.54-10.61m-7.07 7.07c-.78-.78-.78-2.05 0-2.83s2.05-.78 2.83 0c.77.78.78 2.05 0 2.83s-2.05.78-2.83 0m-5.66 7.07-1.41-1.41zM6.24 22l3.64-3.64c-.34-.09-.67-.24-.97-.45L4.83 22zM2 22h1.41l4.77-4.76-1.42-1.41L2 20.59zm0-2.83 4.09-4.08c-.21-.3-.36-.62-.45-.97L2 17.76z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Installation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/static-config.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.5 3.5 18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2 7.5 3.5 6 2 4.5 3.5 3 2v20l1.5-1.5L6 22l1.5-1.5L9 22l1.5-1.5L12 22l1.5-1.5L15 22l1.5-1.5L18 22l1.5-1.5L21 22V2zM19 19H5V5h14zM6 15h12v2H6m0-6h12v2H6m0-6h12v2H6z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Raw Configuration</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/dynamic-config.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 2 1.5 1.5L21 2v7.13l-2 2V4.91H5v14.18h5.5v1.41L9 22l-1.5-1.5L6 22l-1.5-1.5L3 22V2l1.5 1.5L6 2l1.5 1.5L9 2l1.5 1.5L12 2l1.5 1.5L15 2l1.5 1.5zm-5 17.96 6.13-6.13 2.04 2.04L15.04 22H13zm6.83-6.83.98-.98.02-.02c.05-.04.11-.08.17-.1a.5.5 0 0 1 .53.12l1.32 1.32c.2.2.2.53 0 .72l-.98.98zm-1.83-1-.87.87H6v-2h12zM15.13 15l-2 2H6v-2zM18 9V7H6v2z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Dynamic Configuration</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/network-editors.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.55 11.63 7.66 15.5 8 18l-1.05 1.06-1.77-3.19L2 14.11l1.06-1.06 2.48.35 3.89-3.9L2 5.62l1.41-1.41 9.2 2.12 3.89-3.89a1.49 1.49 0 0 1 2.12 0c.58.59.58 1.56 0 2.12l-3.89 3.89 1.3 5.65-2.09 2.09zM13 19.96V22h2.04l6.13-6.12-2.04-2.05zm9.85-6.49-1.32-1.32c-.2-.2-.53-.2-.72 0l-.98.98 2.04 2.04.98-.98c.2-.19.2-.52 0-.72"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Network Editors</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/basic-usage.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m9 4 2.5 5.5L17 12l-5.5 2.5L9 20l-2.5-5.5L1 12l5.5-2.5zm0 4.83L8 11l-2.17 1L8 13l1 2.17L10 13l2.17-1L10 11zM19 9l-1.26-2.74L15 5l2.74-1.25L19 1l1.25 2.75L23 5l-2.75 1.26zm0 14-1.26-2.74L15 19l2.74-1.25L19 15l1.25 2.75L23 19l-2.75 1.26z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Summary Outputs</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/rm-systems.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 6h18v12H5zm9 3a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3M9 8a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2v-4a2 2 0 0 1-2-2zm-8 2h2v10h16v2H1z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>RM Systems</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/rm-actions.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v12H3zm9 3a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3M7 8a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2v-4a2 2 0 0 1-2-2z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>RM Actions</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/database/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Database</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/experiments.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 19a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1c0-.21-.07-.41-.18-.57L13 8.35V4h-2v4.35L5.18 18.43c-.11.16-.18.36-.18.57m1 3a3 3 0 0 1-3-3c0-.6.18-1.16.5-1.63L9 7.81V6a1 1 0 0 1-1-1V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1v1.81l5.5 9.56c.32.47.5 1.03.5 1.63a3 3 0 0 1-3 3zm7-6 1.34-1.34L16.27 18H7.73l2.66-4.61zm-.5-4a.5.5 0 0 1 .5.5.5.5 0 0 1-.5.5.5.5 0 0 1-.5-.5.5.5 0 0 1 .5-.5"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Experiments</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/callbacks.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.6 5.29c-1.1-.1-2.07.71-2.17 1.82L13.18 10H16v2h-3l-.44 5.07a3.986 3.986 0 0 1-4.33 3.63 4 4 0 0 1-3.06-1.87l1.5-1.5c.24.74.9 1.31 1.73 1.38 1.1.1 2.07-.71 2.17-1.82L11 12H8v-2h3.17l.27-3.07c.19-2.2 2.13-3.83 4.33-3.63 1.31.11 2.41.84 3.06 1.87l-1.5 1.5c-.24-.74-.9-1.31-1.73-1.38"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Callbacks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/tracers.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.84 2.73c-.39 0-.77.15-1.07.44l-2.12 2.12 5.3 5.31 2.12-2.1c.6-.61.6-1.56 0-2.14L17.9 3.17c-.3-.29-.68-.44-1.06-.44M12.94 6l-8.1 8.11 2.56.28.18 2.29 2.28.17.29 2.56 8.1-8.11m-14 3.74L2.5 21.73l6.7-1.79-.24-2.16-2.31-.17-.18-2.32"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Tracing</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/viz/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.45 15.18 22 7.31V21H2V3h2v12.54L9.5 6 16 9.78l4.24-7.33 1.73 1-5.23 9.05-6.51-3.75L4.31 19h2.26l4.39-7.56z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Visualizations</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/diagnostics.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 2a8 8 0 0 1 8 8c0 2.4-1 4.5-2.7 6-1.4-1.3-3.3-2-5.3-2s-3.8.7-5.3 2C5 16.5 4 14.4 4 12a8 8 0 0 1 8-8m2 1.89c-.38.01-.74.26-.9.65l-1.29 3.23-.1.23c-.71.13-1.3.6-1.57 1.26-.41 1.03.09 2.19 1.12 2.6s2.19-.09 2.6-1.12c.26-.66.14-1.42-.29-1.98l.1-.26 1.29-3.21.01-.03c.2-.51-.05-1.09-.56-1.3-.13-.05-.26-.07-.41-.07M10 6a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1M7 9a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1m10 0a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Live Diagnostics</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/firehose.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 15v-1H4v-2h1v-1h2v4zm14-3v-1h-2v4h2v-1h1v-2zm-1-6h-2.14C15.5 4.6 14.4 3.5 13 3.14V2h-2v1.14C9.6 3.5 8.5 4.6 8.14 6H6v2h12zm0 16H6c0-1.1.9-2 2-2V9h8v11a2 2 0 0 1 2 2m-8-9a2 2 0 1 0 4 0c0-1.11-.89-2-2-2s-2 .9-2 2"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Firehose</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>Mechanics</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Mechanics</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanics/counting-sims.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 10.73V19h-2v-7.64L15 12v7h-2v-6.38l-2 .64V19H9v-5.11l-2 .61V19H5v-3.85l-2.43.77L2 14l3-.95V5h2v7.42l2-.63V5h2v6.16l2-.63V5h2v4.9l2-.64V5h2v3.63L21 8l.57 1.92z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Counting Simulations</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanics/demand-generation.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.35 5.64c-.9-.64-1.12-1.88-.49-2.79.64-.9 1.88-1.12 2.79-.49.9.64 1.12 1.88.49 2.79-.64.9-1.88 1.12-2.79.49M16 19H8.93c-1.48 0-2.74-1.08-2.96-2.54L4 7H2l2 9.76A4.99 4.99 0 0 0 8.94 21H16m.23-6h-4.88l-1.03-4.1c1.58.89 3.28 1.54 5.15 1.22V10c-1.63.3-3.44-.28-4.69-1.26L9.14 7.47c-.23-.18-.49-.3-.76-.38a2.2 2.2 0 0 0-.99-.06h-.02a2.27 2.27 0 0 0-1.84 2.61l1.35 5.92A2.99 2.99 0 0 0 9.83 18h6.85l3.82 3 1.5-1.5"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Demand Generation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanics/forecasting.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m9.38 8.38 2.12.96 2.12-.96-.96 2.12.96 2.12-2.12-.96-2.12.96.96-2.12zM16.5 2.5l1.09 2.91L20.5 6.5l-2.91 1.09-1.09 2.91-1.09-2.91L12.5 6.5l2.91-1.09zM6 19h1v-1a1 1 0 0 1 1-1h.26a7.47 7.47 0 0 1-3.76-6.5A7.5 7.5 0 0 1 12 3c1.05 0 2.05.22 2.96.61l-.37.98-1.42.53Q12.6 5 12 5a5.5 5.5 0 0 0-5.5 5.5A5.5 5.5 0 0 0 12 16c2.91 0 5.3-2.27 5.5-5.13l.91-2.46.71-.27c.25.74.38 1.54.38 2.36 0 2.78-1.5 5.2-3.76 6.5H16a1 1 0 0 1 1 1v1h1a2 2 0 0 1 2 2v1H4v-1a2 2 0 0 1 2-2"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Forecasting</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanics/todd.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 9c-.91 0-1.77.18-2.57.5l-.7-3.05 3.89-3.89c.58-.56.58-1.53 0-2.12s-1.54-.586-2.12 0l-3.89 3.89-9.2-2.12L0 3.62 7.43 7.5l-3.89 3.9-2.48-.35L0 12.11l3.18 1.76 1.77 3.19L6 16l-.34-2.5 3.89-3.87 1.02 1.96A6.995 6.995 0 0 0 16 23c3.87 0 7-3.13 7-7s-3.13-7-7-7m0 12c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5m.5-4.75V12H15v5l3.61 2.16.75-1.22z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Time of Day Preferences</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanics/database-storage.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Database connections and consolidation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanics/pxsim-storage.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 3h18v4H3zm1 5h16v13H4zm5.5 3a.5.5 0 0 0-.5.5V13h6v-1.5a.5.5 0 0 0-.5-.5z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>PXSIM storage format</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>Examples</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Examples</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/intro-3mkt.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>The 3MKT Network</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/diagnostic-logging.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Logging simulation diagnostics</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/EE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Basic Simulation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/PE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Pro<wbr>BP Optimization</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/LL.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Unrestricted Networks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/QC.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Q vs Conditional Forecasting</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/olympic-fcst.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Custom Forecaster</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/blf-curves.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Heuristic Intervention</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/continuous-price.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Continuous Pricing</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Labs</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>Networks</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Networks</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Networks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3mkt/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 7h2v5H8zM4.22 2h15.56C21 2 22 3 22 4.22v15.56A2.22 2.22 0 0 1 19.78 22H4.22C3 22 2 21 2 19.78V4.22A2.22 2.22 0 0 1 4.22 2M12 4a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8m2 3.5h2v4h-2zm-3.5 8.75a1.5 1.5 0 0 1 1.5-1.5 1.5 1.5 0 0 1 1.5 1.5V17h-3z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>3MKT Network</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4.22 2A2.22 2.22 0 0 0 2 4.22v15.56C2 21 3 22 4.22 22h15.56A2.22 2.22 0 0 0 22 19.78V4.22C22 3 21 2 19.78 2zM11 4.07V6h2V4.07A8 8 0 0 1 20 12a8 8 0 0 1-7 7.93V18h-2v1.93A8 8 0 0 1 4 12a8 8 0 0 1 7-7.93M7.5 10.5A1.5 1.5 0 0 0 6 12c0 .83.66 1.5 1.5 1.5A1.5 1.5 0 0 0 9 12a1.5 1.5 0 0 0-1.5-1.5m9 0A1.5 1.5 0 0 0 15 12a1.5 1.5 0 0 0 1.5 1.5A1.5 1.5 0 0 0 18 12a1.5 1.5 0 0 0-1.5-1.5"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Europa Network</span>
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Europa Network</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="eu-baseline.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Baseline Results</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    <span>RM Optimizers</span>
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>RM Optimizers</span>
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup-probp-experiments" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Setup Pro<wbr>BP Experiments</span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-udp-experiments" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Setup UDP Experiments</span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-experiments" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Run Experiments</span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../u25/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
+  <!-- Original network icon with a transparent hub opening. -->
+  <path d="M164 280H48M220 202 168 80M331 228 464 136M335 332 464 416" fill="none" stroke="currentColor" stroke-width="48" stroke-linecap="round"/>
+  <path fill-rule="evenodd" d="M368 280a112 112 0 1 1-224 0 112 112 0 1 1 224 0Zm-72 0a40 40 0 1 0-80 0 40 40 0 1 0 80 0Z"/>
+  <circle cx="48" cy="280" r="48"/>
+  <circle cx="168" cy="80" r="48"/>
+  <circle cx="464" cy="136" r="48"/>
+  <circle cx="464" cy="416" r="48"/>
+</svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>U25 Network</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../na26/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
+  <!-- Original artwork: simplified continents cut out of a solid globe. -->
+  <path fill-rule="evenodd" d="M 256,0 C 114.61501,0 1.1113408e-4,114.61511 1.1113408e-4,256 1.1113408e-4,397.38489 114.61501,512 256,512 397.38499,512 511.99989,397.38489 511.99989,256 511.99989,114.61511 397.38499,0 256,0 Z M 124.24456,102.49276 C 147.12323,75.17321 203.37541,37.044495 289,51 c 11,15 10,29 -3,43 l -13,14 c -11,12 -9,29 4,39 13,10 30,6 37,-8 l 8,-16 c 5,-9 16,-9 23,-1 l 25,31 c 12,15 9,35 -5,47 l -31,26 c -9,8 -14,18 -16,30 l -4,26 c -1,10 -13,13 -18,4 l -9,-16 c -5,-10 -15,-14 -25,-10 l -16,7 c -12,5 -16,18 -10,29 l 4.08488,17.43276 c 17.91512,20.52361 34.59945,-20.33452 38.86249,-2.2352 l 6.43944,27.33954 c 2.20913,9.37918 59.41074,25.6605 71.11143,42.32761 -9.73785,10.39924 -7.79254,9.63885 -15.47599,19.67132 -8.46486,-21.23535 -19.49171,-19.66394 -31.60239,-25.89185 -12.64285,-6.50158 -27.47664,-7.31512 -41.17705,-11.1113 -17.81509,-4.9363 -37.72392,-5.28191 -53.34426,-15.16875 -14.76006,-9.34233 -23.53648,-25.84514 -34.52536,-39.42391 -10.8187,-13.36848 -22.2055,-26.48277 -30.87243,-41.33689 -10.11264,-17.33189 -19.01913,-35.72371 -24.26461,-55.09237 -5.43225,-20.05829 -10.46195,-47.17548 -7.09703,-61.93733 6.0465,-26.52588 14.57382,-30.64632 6.10544,-48.08087 z M 374,85 c 18.79736,12.877097 35.35119,28.75526 49,47 l -12,32 c -3,9 -7,16 -11,20 -5,6 -12,2 -13,-6 l -4,-25 c -1,-8 -5,-14 -10,-20 -10,-12 -8,-33 1,-48 z m -17.08608,296.00119 c 11,-10 16.91154,-13.56604 29.91154,-4.56604 l 31.17573,22.30424 c -12.15311,13.04357 -24.88908,31.77601 -74.39628,51.74177 l -7.04244,-18.08726 c -11,-12 9.35145,-39.39271 20.35145,-51.39271 z"/>
+</svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>NA26 Network</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../me26/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
+  <!-- Original artwork: simplified land cut out of a solid globe, centered on the Middle East. -->
+  <path fill-rule="evenodd" d="M256 0a256 256 0 1 0 0 512A256 256 0 0 0 256 0Z
+    M120 99A208 208 0 0 1 458 205
+    L426 221C415 226 410 236 406 247
+    C402 258 392 261 383 255
+    L374 250L368 302C367 314 362 326 354 328
+    C346 330 341 320 337 309
+    L322 273C319 266 313 261 306 258
+    L288 248C280 244 277 234 270 231
+    C263 228 259 234 263 241
+    L286 267C294 277 291 290 280 297
+    L251 314C240 320 231 316 226 306
+    L201 256C196 246 194 234 185 234
+    C179 234 180 244 185 254
+    L211 307C217 319 227 324 239 322
+    L257 318C267 316 272 326 265 334
+    L238 365C231 373 225 387 221 400
+    L212 428C207 443 194 448 183 438
+    L159 414C148 403 143 388 143 373
+    L143 338C143 326 135 318 123 318
+    L89 318C72 318 60 307 56 291
+    A208 208 0 0 1 56 199
+    L132 199C148 199 162 207 178 207
+    L195 207C204 207 212 200 212 191
+    C212 182 205 177 196 177
+    L179 177C171 177 166 173 161 167
+    L151 154C146 147 138 146 132 151
+    C125 157 116 154 114 146
+    C110 132 117 113 120 99Z"/>
+</svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>ME26 Network</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>API</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            <span>API</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/_index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Passenger<wbr>Sim</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/_generated/callbacks/passengersim.callbacks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>callbacks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/config.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>config</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/_generated/connection_builder/passengersim.connection_builder.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>connection_<wbr>builder</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/_generated/contrast/passengersim.contrast.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>contrast</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/_generated/core/passengersim.core.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>core</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/database.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Database</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/_generated/driver/passengersim.driver.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>driver</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/_generated/experiments/passengersim.experiments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>experiments</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>rm</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/_generated/summaries/passengersim.summaries.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>summaries</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/_generated/tracers/passengersim.tracers.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>tracers</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/_generated/transforms/passengersim.transforms.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>transforms</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup-probp-experiments" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Setup Pro<wbr>BP Experiments</span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-udp-experiments" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Setup UDP Experiments</span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-experiments" class="md-nav__link">
+    
+    <span class="md-ellipsis">
+      <span>Run Experiments</span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                
+                
+                  
+
+
+<h1 id="rm-optimizers">RM Optimizers<a class="headerlink" href="#rm-optimizers" title="Link to this heading">¶</a></h1>
+<p>This vignette examines swapping out optimizers for carriers in the Europa network.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">passengersim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pax</span>
+
+<span class="n">pax</span><span class="o">.</span><span class="n">versions</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><code>passengersim 0.94
+passengersim.core 0.94
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">cfg</span> <span class="o">=</span> <span class="n">pax</span><span class="o">.</span><span class="n">Config</span><span class="o">.</span><span class="n">from_yaml</span><span class="p">(</span><span class="n">pax</span><span class="o">.</span><span class="n">demo_network</span><span class="p">(</span><span class="s2">&quot;europa&quot;</span><span class="p">))</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">ex</span> <span class="o">=</span> <span class="n">pax</span><span class="o">.</span><span class="n">Experiments</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="nd">@ex</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">EEE</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">pax</span><span class="o">.</span><span class="n">Config</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">cfg</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="setup-probp-experiments">Setup ProBP Experiments<a class="headerlink" href="#setup-probp-experiments" title="Link to this heading">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="nd">@ex</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">PEE</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">pax</span><span class="o">.</span><span class="n">Config</span><span class="p">):</span>
+    <span class="n">cfg</span><span class="o">.</span><span class="n">carriers</span><span class="p">[</span><span class="s2">&quot;Brat&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rm_system</span> <span class="o">=</span> <span class="s2">&quot;P&quot;</span>
+    <span class="k">return</span> <span class="n">cfg</span>
+
+
+<span class="nd">@ex</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">EPE</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">pax</span><span class="o">.</span><span class="n">Config</span><span class="p">):</span>
+    <span class="n">cfg</span><span class="o">.</span><span class="n">carriers</span><span class="p">[</span><span class="s2">&quot;Stroop&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rm_system</span> <span class="o">=</span> <span class="s2">&quot;P&quot;</span>
+    <span class="k">return</span> <span class="n">cfg</span>
+
+
+<span class="nd">@ex</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">EEP</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">pax</span><span class="o">.</span><span class="n">Config</span><span class="p">):</span>
+    <span class="n">cfg</span><span class="o">.</span><span class="n">carriers</span><span class="p">[</span><span class="s2">&quot;Tapas&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rm_system</span> <span class="o">=</span> <span class="s2">&quot;P&quot;</span>
+    <span class="k">return</span> <span class="n">cfg</span>
+
+
+<span class="nd">@ex</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">PPE</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">pax</span><span class="o">.</span><span class="n">Config</span><span class="p">):</span>
+    <span class="n">cfg</span><span class="o">.</span><span class="n">carriers</span><span class="p">[</span><span class="s2">&quot;Brat&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rm_system</span> <span class="o">=</span> <span class="s2">&quot;P&quot;</span>
+    <span class="n">cfg</span><span class="o">.</span><span class="n">carriers</span><span class="p">[</span><span class="s2">&quot;Stroop&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rm_system</span> <span class="o">=</span> <span class="s2">&quot;P&quot;</span>
+    <span class="k">return</span> <span class="n">cfg</span>
+
+
+<span class="nd">@ex</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">PPP</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">pax</span><span class="o">.</span><span class="n">Config</span><span class="p">):</span>
+    <span class="n">cfg</span><span class="o">.</span><span class="n">carriers</span><span class="p">[</span><span class="s2">&quot;Brat&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rm_system</span> <span class="o">=</span> <span class="s2">&quot;P&quot;</span>
+    <span class="n">cfg</span><span class="o">.</span><span class="n">carriers</span><span class="p">[</span><span class="s2">&quot;Stroop&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rm_system</span> <span class="o">=</span> <span class="s2">&quot;P&quot;</span>
+    <span class="n">cfg</span><span class="o">.</span><span class="n">carriers</span><span class="p">[</span><span class="s2">&quot;Tapas&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rm_system</span> <span class="o">=</span> <span class="s2">&quot;P&quot;</span>
+    <span class="k">return</span> <span class="n">cfg</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="setup-udp-experiments">Setup UDP Experiments<a class="headerlink" href="#setup-udp-experiments" title="Link to this heading">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="nd">@ex</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">UEE</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">pax</span><span class="o">.</span><span class="n">Config</span><span class="p">):</span>
+    <span class="n">cfg</span><span class="o">.</span><span class="n">carriers</span><span class="p">[</span><span class="s2">&quot;Brat&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rm_system</span> <span class="o">=</span> <span class="s2">&quot;U&quot;</span>
+    <span class="k">return</span> <span class="n">cfg</span>
+
+
+<span class="nd">@ex</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">EUE</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">pax</span><span class="o">.</span><span class="n">Config</span><span class="p">):</span>
+    <span class="n">cfg</span><span class="o">.</span><span class="n">carriers</span><span class="p">[</span><span class="s2">&quot;Stroop&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rm_system</span> <span class="o">=</span> <span class="s2">&quot;U&quot;</span>
+    <span class="k">return</span> <span class="n">cfg</span>
+
+
+<span class="nd">@ex</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">EEU</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">pax</span><span class="o">.</span><span class="n">Config</span><span class="p">):</span>
+    <span class="n">cfg</span><span class="o">.</span><span class="n">carriers</span><span class="p">[</span><span class="s2">&quot;Tapas&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rm_system</span> <span class="o">=</span> <span class="s2">&quot;U&quot;</span>
+    <span class="k">return</span> <span class="n">cfg</span>
+
+
+<span class="nd">@ex</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">UUE</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">pax</span><span class="o">.</span><span class="n">Config</span><span class="p">):</span>
+    <span class="n">cfg</span><span class="o">.</span><span class="n">carriers</span><span class="p">[</span><span class="s2">&quot;Brat&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rm_system</span> <span class="o">=</span> <span class="s2">&quot;U&quot;</span>
+    <span class="n">cfg</span><span class="o">.</span><span class="n">carriers</span><span class="p">[</span><span class="s2">&quot;Stroop&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rm_system</span> <span class="o">=</span> <span class="s2">&quot;U&quot;</span>
+    <span class="k">return</span> <span class="n">cfg</span>
+
+
+<span class="nd">@ex</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">UUU</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">pax</span><span class="o">.</span><span class="n">Config</span><span class="p">):</span>
+    <span class="n">cfg</span><span class="o">.</span><span class="n">carriers</span><span class="p">[</span><span class="s2">&quot;Brat&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rm_system</span> <span class="o">=</span> <span class="s2">&quot;U&quot;</span>
+    <span class="n">cfg</span><span class="o">.</span><span class="n">carriers</span><span class="p">[</span><span class="s2">&quot;Stroop&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rm_system</span> <span class="o">=</span> <span class="s2">&quot;U&quot;</span>
+    <span class="n">cfg</span><span class="o">.</span><span class="n">carriers</span><span class="p">[</span><span class="s2">&quot;Tapas&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rm_system</span> <span class="o">=</span> <span class="s2">&quot;U&quot;</span>
+    <span class="k">return</span> <span class="n">cfg</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="run-experiments">Run Experiments<a class="headerlink" href="#run-experiments" title="Link to this heading">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">out</span> <span class="o">=</span> <span class="n">ex</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">write_report</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"></div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="color: #008000; text-decoration-color: #008000">╭────────────────────── Summary revenue statistics ──────────────────────╮</span>
+<span style="color: #008000; text-decoration-color: #008000">│</span> <span style="font-weight: bold">                        Brat            Stroop             Tapas      </span> <span style="color: #008000; text-decoration-color: #008000">│</span>
+<span style="color: #008000; text-decoration-color: #008000">│</span> <span style="font-weight: bold">Run   Samples     Mean  ~95% CI     Mean  ~95% CI     Mean  ~95% CI   </span> <span style="color: #008000; text-decoration-color: #008000">│</span>
+<span style="color: #008000; text-decoration-color: #008000">│</span> EEE       900   943.2K   ±7,066   920.6K   ±7,443   292.5K   ±2,336    <span style="color: #008000; text-decoration-color: #008000">│</span>
+<span style="color: #008000; text-decoration-color: #008000">│</span> EEP       900   940.3K   ±7,109   920.2K   ±7,342   300.7K   ±2,850    <span style="color: #008000; text-decoration-color: #008000">│</span>
+<span style="color: #008000; text-decoration-color: #008000">│</span> PEE       900   982.8K   ±8,670   903.7K   ±7,029   293.3K   ±2,228    <span style="color: #008000; text-decoration-color: #008000">│</span>
+<span style="color: #008000; text-decoration-color: #008000">│</span> EPE       900   928.5K   ±6,703   961.1K   ±8,998   293.2K   ±2,195    <span style="color: #008000; text-decoration-color: #008000">│</span>
+<span style="color: #008000; text-decoration-color: #008000">│</span> PPE       900   964.1K   ±8,098   935.4K   ±8,207   292.9K    ±2.1K    <span style="color: #008000; text-decoration-color: #008000">│</span>
+<span style="color: #008000; text-decoration-color: #008000">│</span> UEE       900   989.5K   ±8,894   903.7K   ±7,098   291.5K   ±2,271    <span style="color: #008000; text-decoration-color: #008000">│</span>
+<span style="color: #008000; text-decoration-color: #008000">│</span> PPP       900   962.7K   ±8,014   930.7K   ±8,154   299.8K   ±2,552    <span style="color: #008000; text-decoration-color: #008000">│</span>
+<span style="color: #008000; text-decoration-color: #008000">│</span> EEU       900   941.1K   ±7,052   920.3K   ±7,386   301.5K   ±2,868    <span style="color: #008000; text-decoration-color: #008000">│</span>
+<span style="color: #008000; text-decoration-color: #008000">│</span> EUE       900   927.6K   ±6,740     968K   ±9,292     292K   ±2,217    <span style="color: #008000; text-decoration-color: #008000">│</span>
+<span style="color: #008000; text-decoration-color: #008000">│</span> UUE       900   968.4K   ±8,282   940.1K   ±8,412   290.5K   ±2,176    <span style="color: #008000; text-decoration-color: #008000">│</span>
+<span style="color: #008000; text-decoration-color: #008000">│</span> UUU       900   967.1K   ±8,237   936.2K   ±8,319   298.1K   ±2,613    <span style="color: #008000; text-decoration-color: #008000">│</span>
+<span style="color: #008000; text-decoration-color: #008000">│</span> <span style="color: #7f7f7f; text-decoration-color: #7f7f7f">Post-burn-in only · Approx. 95% CI for mean</span>                            <span style="color: #008000; text-decoration-color: #008000">│</span>
+<span style="color: #008000; text-decoration-color: #008000">╰────────────────────────────────────────────────────────────────────────╯</span>
+</pre>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">out</span><span class="o">.</span><span class="n">fig_carrier_revenues</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-3cad80053f734f1f95fd7f3479f6567e.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-3cad80053f734f1f95fd7f3479f6567e.vega-embed details,
+  #altair-viz-3cad80053f734f1f95fd7f3479f6567e.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-3cad80053f734f1f95fd7f3479f6567e"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-3cad80053f734f1f95fd7f3479f6567e") {
+      outputDiv = document.getElementById("altair-viz-3cad80053f734f1f95fd7f3479f6567e");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "data": {"name": "data-62dd4c40977b428301cc86328cca2d54"}, "facet": {"row": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "rm_system", "title": "RM System", "type": "nominal"}, "tooltip": [{"field": "source", "title": null, "type": "nominal"}, {"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "rm_system", "title": "RM System", "type": "nominal"}, {"field": "avg_rev", "format": "$.4s", "title": "Revenue ($)", "type": "quantitative"}, {"field": "ratio_0", "format": ".3%", "title": "vs EEE", "type": "quantitative"}, {"field": "ratio_1", "format": ".3%", "title": "vs PEE", "type": "quantitative"}, {"field": "ratio_2", "format": ".3%", "title": "vs EPE", "type": "quantitative"}, {"field": "ratio_3", "format": ".3%", "title": "vs EEP", "type": "quantitative"}, {"field": "ratio_4", "format": ".3%", "title": "vs PPE", "type": "quantitative"}, {"field": "ratio_5", "format": ".3%", "title": "vs PPP", "type": "quantitative"}, {"field": "ratio_6", "format": ".3%", "title": "vs UEE", "type": "quantitative"}, {"field": "ratio_7", "format": ".3%", "title": "vs EUE", "type": "quantitative"}, {"field": "ratio_8", "format": ".3%", "title": "vs EEU", "type": "quantitative"}, {"field": "ratio_9", "format": ".3%", "title": "vs UUE", "type": "quantitative"}, {"field": "ratio_10", "format": ".3%", "title": "vs UUU", "type": "quantitative"}], "x": {"axis": {"format": "$.4s"}, "field": "avg_rev", "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["EEE", "PEE", "EPE", "EEP", "PPE", "PPP", "UEE", "EUE", "EEU", "UUE", "UUU"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "avg_rev", "format": "$.4s", "type": "quantitative"}, "x": {"axis": {"format": "$.4s"}, "field": "avg_rev", "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["EEE", "PEE", "EPE", "EEP", "PPE", "PPP", "UEE", "EUE", "EEU", "UUE", "UUU"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 5, "dy": 0}, "encoding": {"text": {"field": "reference_source", "type": "nominal"}, "x": {"field": "avg_rev", "scale": {"domain": [0, 1058805.643652778]}, "stack": "zero", "title": "Revenue ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["EEE", "PEE", "EPE", "EEP", "PPE", "PPP", "UEE", "EUE", "EEU", "UUE", "UUU"], "title": null, "type": "nominal"}}, "transform": [{"calculate": "datum[\"ratio_label_\" + ref_source]", "as": "reference_source"}]}], "height": 230, "width": 500}, "params": [{"name": "ref_source", "bind": {"input": "radio", "options": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"], "labels": ["EEE", "PEE", "EPE", "EEP", "PPE", "PPP", "UEE", "EUE", "EEU", "UUE", "UUU"], "name": "Reference Source: "}, "value": "0"}], "title": "Carrier Revenues", "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-62dd4c40977b428301cc86328cca2d54": [{"source": "EEE", "carrier": "Tapas", "avg_rev": 292491.43888888886, "rm_system": "E", "ratio_0": null, "ratio_1": -0.0025955817991423213, "ratio_2": -0.0024711965311280393, "ratio_3": -0.027277085128392997, "ratio_4": -0.0014676484445712568, "ratio_5": -0.024291497675586915, "ratio_6": 0.0035643493620878264, "ratio_7": 0.0016448479108077674, "ratio_8": -0.02981624117273951, "ratio_9": 0.006788765958475329, "ratio_10": -0.01878099753867113, "ratio_label": " ", "ratio_label_0": " ", "ratio_label_1": "-0.3%", "ratio_label_2": "-0.2%", "ratio_label_3": "-2.7%", "ratio_label_4": "-0.1%", "ratio_label_5": "-2.4%", "ratio_label_6": "+0.4%", "ratio_label_7": "+0.2%", "ratio_label_8": "-3.0%", "ratio_label_9": "+0.7%", "ratio_label_10": "-1.9%"}, {"source": "EEE", "carrier": "Stroop", "avg_rev": 920608.3388888888, "rm_system": "E", "ratio_0": null, "ratio_1": 0.018763170693665288, "ratio_2": -0.042157372826810646, "ratio_3": 0.0004114899667295724, "ratio_4": -0.01583423023189967, "ratio_5": -0.010889562114607898, "ratio_6": 0.018669750507902316, "ratio_7": -0.04892050602723985, "ratio_8": 0.0003878453959649253, "ratio_9": -0.020701162379540117, "ratio_10": -0.01667085128746315, "ratio_label": " ", "ratio_label_0": " ", "ratio_label_1": "+1.9%", "ratio_label_2": "-4.2%", "ratio_label_3": "+0.0%", "ratio_label_4": "-1.6%", "ratio_label_5": "-1.1%", "ratio_label_6": "+1.9%", "ratio_label_7": "-4.9%", "ratio_label_8": "+0.0%", "ratio_label_9": "-2.1%", "ratio_label_10": "-1.7%"}, {"source": "EEE", "carrier": "Brat", "avg_rev": 943208.8944444446, "rm_system": "E", "ratio_0": null, "ratio_1": -0.040315385377300395, "ratio_2": 0.015804484992742562, "ratio_3": 0.00314223619768228, "ratio_4": -0.021675471416517045, "ratio_5": -0.0202716397583822, "ratio_6": -0.046818910434027305, "ratio_7": 0.016826823147054748, "ratio_8": 0.0022433422039784823, "ratio_9": -0.026039946909592326, "ratio_10": -0.024678165456897827, "ratio_label": " ", "ratio_label_0": " ", "ratio_label_1": "-4.0%", "ratio_label_2": "+1.6%", "ratio_label_3": "+0.3%", "ratio_label_4": "-2.2%", "ratio_label_5": "-2.0%", "ratio_label_6": "-4.7%", "ratio_label_7": "+1.7%", "ratio_label_8": "+0.2%", "ratio_label_9": "-2.6%", "ratio_label_10": "-2.5%"}, {"source": "PEE", "carrier": "Tapas", "avg_rev": 293252.60000000003, "rm_system": "E", "ratio_0": 0.0026023363760754314, "ratio_1": null, "ratio_2": 0.00012470896032179546, "ratio_3": -0.024745732903180606, "ratio_4": 0.0011308686165694137, "ratio_5": -0.02175237594754209, "ratio_6": 0.006175961374165206, "ratio_7": 0.004251464734434496, "ratio_8": -0.027291496685665884, "ratio_9": 0.009408768987153149, "ratio_10": -0.0162275356356697, "ratio_label": "+0.3%", "ratio_label_0": "+0.3%", "ratio_label_1": " ", "ratio_label_2": "+0.0%", "ratio_label_3": "-2.5%", "ratio_label_4": "+0.1%", "ratio_label_5": "-2.2%", "ratio_label_6": "+0.6%", "ratio_label_7": "+0.4%", "ratio_label_8": "-2.7%", "ratio_label_9": "+0.9%", "ratio_label_10": "-1.6%"}, {"source": "PEE", "carrier": "Stroop", "avg_rev": 903652.9444444445, "rm_system": "E", "ratio_0": -0.01841759815570254, "ratio_1": null, "ratio_2": -0.0597985334304888, "ratio_3": -0.018013686845825272, "ratio_4": -0.033960199898086074, "ratio_5": -0.029106600691191975, "ratio_6": -9.169961032184926e-05, "ratio_7": -0.0664371059613591, "ratio_8": -0.018036895940387043, "ratio_9": -0.0387374948451803, "ratio_10": -0.03478141240323973, "ratio_label": "-1.8%", "ratio_label_0": "-1.8%", "ratio_label_1": " ", "ratio_label_2": "-6.0%", "ratio_label_3": "-1.8%", "ratio_label_4": "-3.4%", "ratio_label_5": "-2.9%", "ratio_label_6": "-0.0%", "ratio_label_7": "-6.6%", "ratio_label_8": "-1.8%", "ratio_label_9": "-3.9%", "ratio_label_10": "-3.5%"}, {"source": "PEE", "carrier": "Brat", "avg_rev": 982832.1513888888, "rm_system": "P", "ratio_0": 0.04200899416643278, "ratio_1": null, "ratio_2": 0.05847740967703907, "ratio_3": 0.04528323254621314, "ratio_4": 0.019422957997624613, "ratio_5": 0.020885763211696773, "ratio_6": -0.006776731602896269, "ratio_7": 0.05954269522891198, "ratio_8": 0.04434657691997157, "ratio_9": 0.01487513527902129, "ratio_10": 0.01629412380081785, "ratio_label": "+4.2%", "ratio_label_0": "+4.2%", "ratio_label_1": " ", "ratio_label_2": "+5.8%", "ratio_label_3": "+4.5%", "ratio_label_4": "+1.9%", "ratio_label_5": "+2.1%", "ratio_label_6": "-0.7%", "ratio_label_7": "+6.0%", "ratio_label_8": "+4.4%", "ratio_label_9": "+1.5%", "ratio_label_10": "+1.6%"}, {"source": "EPE", "carrier": "Tapas", "avg_rev": 293216.0333333333, "rm_system": "E", "ratio_0": 0.0024773184719424357, "ratio_1": -0.00012469340993637168, "ratio_2": null, "ratio_3": -0.024867340683299988, "ratio_4": 0.0010060341947690787, "ratio_5": -0.021874356979547427, "ratio_6": 0.006050497862545301, "ratio_7": 0.004126241194863045, "ratio_8": -0.027412787025818175, "ratio_9": 0.009282902365728374, "ratio_10": -0.016350205578852806, "ratio_label": "+0.2%", "ratio_label_0": "+0.2%", "ratio_label_1": "-0.0%", "ratio_label_2": " ", "ratio_label_3": "-2.5%", "ratio_label_4": "+0.1%", "ratio_label_5": "-2.2%", "ratio_label_6": "+0.6%", "ratio_label_7": "+0.4%", "ratio_label_8": "-2.7%", "ratio_label_9": "+0.9%", "ratio_label_10": "-1.6%"}, {"source": "EPE", "carrier": "Stroop", "avg_rev": 961126.9249999999, "rm_system": "P", "ratio_0": 0.044012838467240245, "ratio_1": 0.06360182956177907, "ratio_2": null, "ratio_3": 0.04444243927540659, "ratio_4": 0.027481698817890976, "ratio_5": 0.03264399581430322, "ratio_6": 0.06350429768847077, "ratio_7": -0.007060797889512083, "ratio_8": 0.04441775403996817, "ratio_9": 0.02240055917180528, "ratio_10": 0.026608255694950733, "ratio_label": "+4.4%", "ratio_label_0": "+4.4%", "ratio_label_1": "+6.4%", "ratio_label_2": " ", "ratio_label_3": "+4.4%", "ratio_label_4": "+2.7%", "ratio_label_5": "+3.3%", "ratio_label_6": "+6.4%", "ratio_label_7": "-0.7%", "ratio_label_8": "+4.4%", "ratio_label_9": "+2.2%", "ratio_label_10": "+2.7%"}, {"source": "EPE", "carrier": "Brat", "avg_rev": 928533.8944444446, "rm_system": "E", "ratio_0": -0.015558589498505193, "ratio_1": -0.055246724344246045, "ratio_2": null, "ratio_3": -0.012465242063929849, "ratio_4": -0.03689682115306603, "ratio_5": -0.035514831135425196, "ratio_6": -0.06164906372432222, "ratio_7": 0.0010064320146407901, "ratio_8": -0.013350150534983007, "ratio_9": -0.04119339156356827, "ratio_10": -0.03985279750948301, "ratio_label": "-1.6%", "ratio_label_0": "-1.6%", "ratio_label_1": "-5.5%", "ratio_label_2": " ", "ratio_label_3": "-1.2%", "ratio_label_4": "-3.7%", "ratio_label_5": "-3.6%", "ratio_label_6": "-6.2%", "ratio_label_7": "+0.1%", "ratio_label_8": "-1.3%", "ratio_label_9": "-4.1%", "ratio_label_10": "-4.0%"}, {"source": "EEP", "carrier": "Tapas", "avg_rev": 300693.48055555555, "rm_system": "P", "ratio_0": 0.02804198884529563, "ratio_1": 0.025373621770294674, "ratio_2": 0.025501495048607214, "ratio_3": null, "ratio_4": 0.02653318461941301, "ratio_5": 0.003069309262854425, "ratio_6": 0.031706289652435826, "ratio_7": 0.02973296156287053, "ratio_8": -0.002610359029818543, "ratio_9": 0.0350211253030519, "ratio_10": 0.00873433478314145, "ratio_label": "+2.8%", "ratio_label_0": "+2.8%", "ratio_label_1": "+2.5%", "ratio_label_2": "+2.6%", "ratio_label_3": " ", "ratio_label_4": "+2.7%", "ratio_label_5": "+0.3%", "ratio_label_6": "+3.2%", "ratio_label_7": "+3.0%", "ratio_label_8": "-0.3%", "ratio_label_9": "+3.5%", "ratio_label_10": "+0.9%"}, {"source": "EEP", "carrier": "Stroop", "avg_rev": 920229.673611111, "rm_system": "E", "ratio_0": -0.0004113207123833673, "ratio_1": 0.018344132300545546, "ratio_2": -0.04255135333857063, "ratio_3": null, "ratio_4": -0.01623903799742399, "ratio_5": -0.011296403724544768, "ratio_6": 0.01825075054044012, "ratio_7": -0.049311704722233896, "ratio_8": -2.3634845263020843e-05, "ratio_9": -0.02110396827506633, "ratio_10": -0.01707531493341896, "ratio_label": "-0.0%", "ratio_label_0": "-0.0%", "ratio_label_1": "+1.8%", "ratio_label_2": "-4.3%", "ratio_label_3": " ", "ratio_label_4": "-1.6%", "ratio_label_5": "-1.1%", "ratio_label_6": "+1.8%", "ratio_label_7": "-4.9%", "ratio_label_8": "-0.0%", "ratio_label_9": "-2.1%", "ratio_label_10": "-1.7%"}, {"source": "EEP", "carrier": "Brat", "avg_rev": 940254.3930555555, "rm_system": "E", "ratio_0": -0.00313239347751193, "ratio_1": -0.043321495204613036, "ratio_2": 0.012622585649523899, "ratio_3": null, "ratio_4": -0.02473996878874196, "ratio_5": -0.02334053448373652, "ratio_6": -0.04980464866187151, "ratio_7": 0.013641721438469867, "ratio_8": -0.0008960783040210529, "ratio_9": -0.02909077302724994, "ratio_10": -0.027733257209895723, "ratio_label": "-0.3%", "ratio_label_0": "-0.3%", "ratio_label_1": "-4.3%", "ratio_label_2": "+1.3%", "ratio_label_3": " ", "ratio_label_4": "-2.5%", "ratio_label_5": "-2.3%", "ratio_label_6": "-5.0%", "ratio_label_7": "+1.4%", "ratio_label_8": "-0.1%", "ratio_label_9": "-2.9%", "ratio_label_10": "-2.8%"}, {"source": "PPE", "carrier": "Tapas", "avg_rev": 292921.34444444446, "rm_system": "E", "ratio_0": 0.0014698056024775585, "ratio_1": -0.0011295911973349115, "ratio_2": -0.0010050231071567772, "ratio_3": -0.02584737153845651, "ratio_4": null, "ratio_5": -0.022857395852485585, "ratio_6": 0.005039393865226893, "ratio_7": 0.0031170711199597356, "ratio_8": -0.02839025964858255, "ratio_9": 0.008268549727192598, "ratio_10": -0.017338796351596075, "ratio_label": "+0.1%", "ratio_label_0": "+0.1%", "ratio_label_1": "-0.1%", "ratio_label_2": "-0.1%", "ratio_label_3": "-2.6%", "ratio_label_4": " ", "ratio_label_5": "-2.3%", "ratio_label_6": "+0.5%", "ratio_label_7": "+0.3%", "ratio_label_8": "-2.8%", "ratio_label_9": "+0.8%", "ratio_label_10": "-1.7%"}, {"source": "PPE", "carrier": "Stroop", "avg_rev": 935419.9944444444, "rm_system": "P", "ratio_0": 0.01608898695555183, "ratio_1": 0.03515403805775241, "ratio_2": -0.026746655292749666, "ratio_3": 0.016507097378988478, "ratio_4": null, "ratio_5": 0.005024222818130308, "ratio_6": 0.035059114835839233, "ratio_7": -0.0336186004550193, "ratio_8": 0.016483072391033193, "ratio_9": -0.004945236155477484, "ratio_10": -0.0008500814408132218, "ratio_label": "+1.6%", "ratio_label_0": "+1.6%", "ratio_label_1": "+3.5%", "ratio_label_2": "-2.7%", "ratio_label_3": "+1.7%", "ratio_label_4": " ", "ratio_label_5": "+0.5%", "ratio_label_6": "+3.5%", "ratio_label_7": "-3.4%", "ratio_label_8": "+1.6%", "ratio_label_9": "-0.5%", "ratio_label_10": "-0.1%"}, {"source": "PPE", "carrier": "Brat", "avg_rev": 964106.3541666666, "rm_system": "P", "ratio_0": 0.02215570680610557, "ratio_1": -0.0190528944293894, "ratio_2": 0.03831035133456884, "ratio_3": 0.025367561467699362, "ratio_4": null, "ratio_5": 0.0014349345407576042, "ratio_6": -0.025700509680479433, "ratio_7": 0.039355340113284676, "ratio_8": 0.024448751842221172, "ratio_9": -0.004461173532462337, "ratio_10": -0.003069220849167942, "ratio_label": "+2.2%", "ratio_label_0": "+2.2%", "ratio_label_1": "-1.9%", "ratio_label_2": "+3.8%", "ratio_label_3": "+2.5%", "ratio_label_4": " ", "ratio_label_5": "+0.1%", "ratio_label_6": "-2.6%", "ratio_label_7": "+3.9%", "ratio_label_8": "+2.4%", "ratio_label_9": "-0.4%", "ratio_label_10": "-0.3%"}, {"source": "PPP", "carrier": "Tapas", "avg_rev": 299773.38333333336, "rm_system": "P", "ratio_0": 0.024896265244914506, "ratio_1": 0.022236063152835994, "ratio_2": 0.02236354514947525, "ratio_3": -0.0030599174299430487, "ratio_4": 0.02339207783538111, "ratio_5": null, "ratio_6": 0.028549353594146343, "ratio_7": 0.02658206372559735, "ratio_8": -0.005662288976667873, "ratio_9": 0.03185404612137788, "ratio_10": 0.005647691009956546, "ratio_label": "+2.5%", "ratio_label_0": "+2.5%", "ratio_label_1": "+2.2%", "ratio_label_2": "+2.2%", "ratio_label_3": "-0.3%", "ratio_label_4": "+2.3%", "ratio_label_5": " ", "ratio_label_6": "+2.9%", "ratio_label_7": "+2.7%", "ratio_label_8": "-0.6%", "ratio_label_9": "+3.2%", "ratio_label_10": "+0.6%"}, {"source": "PPP", "carrier": "Stroop", "avg_rev": 930743.7305555554, "rm_system": "P", "ratio_0": 0.011009450206479032, "ratio_1": 0.029979193093611967, "ratio_2": -0.031612052117304335, "ratio_3": 0.011425470451507769, "ratio_4": -0.004999106194716552, "ratio_5": null, "ratio_6": 0.029884744402965513, "ratio_7": -0.0384496436959435, "ratio_8": 0.011401565567018546, "ratio_9": -0.009919620589494915, "ratio_10": -0.005844937988133014, "ratio_label": "+1.1%", "ratio_label_0": "+1.1%", "ratio_label_1": "+3.0%", "ratio_label_2": "-3.2%", "ratio_label_3": "+1.1%", "ratio_label_4": "-0.5%", "ratio_label_5": " ", "ratio_label_6": "+3.0%", "ratio_label_7": "-3.8%", "ratio_label_8": "+1.1%", "ratio_label_9": "-1.0%", "ratio_label_10": "-0.6%"}, {"source": "PPP", "carrier": "Brat", "avg_rev": 962724.9069444444, "rm_system": "P", "ratio_0": 0.020691081917219245, "ratio_1": -0.020458472401447048, "ratio_2": 0.036822578803606065, "ratio_3": 0.023898334381471154, "ratio_4": -0.0014328784539713313, "ratio_5": null, "ratio_6": -0.027096562427873505, "ratio_7": 0.03786607024041633, "ratio_8": 0.022980841298508636, "ratio_9": -0.005887659666999445, "ratio_10": -0.0044977014827140005, "ratio_label": "+2.1%", "ratio_label_0": "+2.1%", "ratio_label_1": "-2.0%", "ratio_label_2": "+3.7%", "ratio_label_3": "+2.4%", "ratio_label_4": "-0.1%", "ratio_label_5": " ", "ratio_label_6": "-2.7%", "ratio_label_7": "+3.8%", "ratio_label_8": "+2.3%", "ratio_label_9": "-0.6%", "ratio_label_10": "-0.4%"}, {"source": "UEE", "carrier": "Tapas", "avg_rev": 291452.60000000003, "rm_system": "E", "ratio_0": -0.0035516898984638834, "ratio_1": -0.0061380529959496055, "ratio_2": -0.006014109505835252, "ratio_3": -0.03073189527914688, "ratio_4": -0.005014125710880002, "ratio_5": -0.0277569117071379, "ratio_6": null, "ratio_7": -0.001912683977365437, "ratio_8": -0.033262033028620075, "ratio_9": 0.0032129644685336967, "ratio_10": -0.022265983157893854, "ratio_label": "-0.4%", "ratio_label_0": "-0.4%", "ratio_label_1": "-0.6%", "ratio_label_2": "-0.6%", "ratio_label_3": "-3.1%", "ratio_label_4": "-0.5%", "ratio_label_5": "-2.8%", "ratio_label_6": " ", "ratio_label_7": "-0.2%", "ratio_label_8": "-3.3%", "ratio_label_9": "+0.3%", "ratio_label_10": "-2.2%"}, {"source": "UEE", "carrier": "Stroop", "avg_rev": 903735.8166666668, "rm_system": "E", "ratio_0": -0.018327579177249254, "ratio_1": 9.170801991165156e-05, "ratio_2": -0.05971230941567174, "ratio_3": -0.017923630825465553, "ratio_4": -0.033871606300862944, "ratio_5": -0.029017561979996165, "ratio_6": null, "ratio_7": -0.06635149075688385, "ratio_8": -0.01794684204848751, "ratio_9": -0.03864933936421733, "ratio_10": -0.03469289411778931, "ratio_label": "-1.8%", "ratio_label_0": "-1.8%", "ratio_label_1": "+0.0%", "ratio_label_2": "-6.0%", "ratio_label_3": "-1.8%", "ratio_label_4": "-3.4%", "ratio_label_5": "-2.9%", "ratio_label_6": " ", "ratio_label_7": "-6.6%", "ratio_label_8": "-1.8%", "ratio_label_9": "-3.9%", "ratio_label_10": "-3.5%"}, {"source": "UEE", "carrier": "Brat", "avg_rev": 989537.9847222222, "rm_system": "U", "ratio_0": 0.049118589265494395, "ratio_1": 0.006822969032766135, "ratio_2": 0.0656993682651481, "ratio_3": 0.052415167672345886, "ratio_4": 0.02637844927133326, "ratio_5": 0.027851235160081922, "ratio_6": null, "ratio_7": 0.0667719222273524, "ratio_8": 0.051472121273771876, "ratio_9": 0.02179959689915445, "ratio_10": 0.023228267135693148, "ratio_label": "+4.9%", "ratio_label_0": "+4.9%", "ratio_label_1": "+0.7%", "ratio_label_2": "+6.6%", "ratio_label_3": "+5.2%", "ratio_label_4": "+2.6%", "ratio_label_5": "+2.8%", "ratio_label_6": " ", "ratio_label_7": "+6.7%", "ratio_label_8": "+5.1%", "ratio_label_9": "+2.2%", "ratio_label_10": "+2.3%"}, {"source": "EUE", "carrier": "Tapas", "avg_rev": 292011.125, "rm_system": "E", "ratio_0": -0.0016421468290267471, "ratio_1": -0.0042334663017481455, "ratio_2": -0.004109285292607345, "ratio_3": -0.028874438978571115, "ratio_4": -0.0031073851793586016, "ratio_5": -0.025893754298733418, "ratio_6": 0.0019163493480585103, "ratio_7": null, "ratio_8": -0.03140942535587099, "ratio_9": 0.005135470978956835, "ratio_10": -0.020392303212143803, "ratio_label": "-0.2%", "ratio_label_0": "-0.2%", "ratio_label_1": "-0.4%", "ratio_label_2": "-0.4%", "ratio_label_3": "-2.9%", "ratio_label_4": "-0.3%", "ratio_label_5": "-2.6%", "ratio_label_6": "+0.2%", "ratio_label_7": " ", "ratio_label_8": "-3.1%", "ratio_label_9": "+0.5%", "ratio_label_10": "-2.0%"}, {"source": "EUE", "carrier": "Stroop", "avg_rev": 967961.5055555556, "rm_system": "U", "ratio_0": 0.05143682135642913, "ratio_1": 0.0711651099091446, "ratio_2": 0.007111007274669401, "ratio_3": 0.051869477059067304, "ratio_4": 0.0347881286527747, "ratio_5": 0.03998713478068239, "ratio_6": 0.07106688448597565, "ratio_7": null, "ratio_8": 0.051844616286740086, "ratio_9": 0.029670856985702043, "ratio_10": 0.033908474469433125, "ratio_label": "+5.1%", "ratio_label_0": "+5.1%", "ratio_label_1": "+7.1%", "ratio_label_2": "+0.7%", "ratio_label_3": "+5.2%", "ratio_label_4": "+3.5%", "ratio_label_5": "+4.0%", "ratio_label_6": "+7.1%", "ratio_label_7": " ", "ratio_label_8": "+5.2%", "ratio_label_9": "+3.0%", "ratio_label_10": "+3.4%"}, {"source": "EUE", "carrier": "Brat", "avg_rev": 927600.3277777778, "rm_system": "E", "ratio_0": -0.016548366707101803, "ratio_1": -0.05619659830324053, "ratio_2": -0.0010054201276360475, "ratio_3": -0.013458129386298978, "ratio_4": -0.03786514447406908, "ratio_5": -0.03648454393700806, "ratio_6": -0.06259250064243993, "ratio_7": null, "ratio_8": -0.014342148152564294, "ratio_9": -0.04215739502620075, "ratio_10": -0.04081814883236046, "ratio_label": "-1.7%", "ratio_label_0": "-1.7%", "ratio_label_1": "-5.6%", "ratio_label_2": "-0.1%", "ratio_label_3": "-1.3%", "ratio_label_4": "-3.8%", "ratio_label_5": "-3.6%", "ratio_label_6": "-6.3%", "ratio_label_7": " ", "ratio_label_8": "-1.4%", "ratio_label_9": "-4.2%", "ratio_label_10": "-4.1%"}, {"source": "EEU", "carrier": "Tapas", "avg_rev": 301480.4527777778, "rm_system": "U", "ratio_0": 0.030732570919122404, "ratio_1": 0.028057220218261625, "ratio_2": 0.028185428165346416, "ratio_3": 0.002617190837554073, "ratio_4": 0.029219817864644115, "ratio_5": 0.005694533068488772, "ratio_6": 0.03440646190076113, "ratio_7": 0.03242796923500024, "ratio_8": null, "ratio_9": 0.03772997310886983, "ratio_10": 0.011374385041662105, "ratio_label": "+3.1%", "ratio_label_0": "+3.1%", "ratio_label_1": "+2.8%", "ratio_label_2": "+2.8%", "ratio_label_3": "+0.3%", "ratio_label_4": "+2.9%", "ratio_label_5": "+0.6%", "ratio_label_6": "+3.4%", "ratio_label_7": "+3.2%", "ratio_label_8": " ", "ratio_label_9": "+3.8%", "ratio_label_10": "+1.1%"}, {"source": "EEU", "carrier": "Stroop", "avg_rev": 920251.4236111111, "rm_system": "E", "ratio_0": -0.0003876950302323934, "ratio_1": 0.018368201275403617, "ratio_2": -0.042528723653110445, "ratio_3": 2.3635403882060757e-05, "ratio_4": -0.01621578640976351, "ratio_5": -0.011273035315726987, "ratio_6": 0.018274817308182367, "ratio_7": -0.049289234820409034, "ratio_8": null, "ratio_9": -0.021080831671997924, "ratio_10": -0.017052083111501637, "ratio_label": "-0.0%", "ratio_label_0": "-0.0%", "ratio_label_1": "+1.8%", "ratio_label_2": "-4.3%", "ratio_label_3": "+0.0%", "ratio_label_4": "-1.6%", "ratio_label_5": "-1.1%", "ratio_label_6": "+1.8%", "ratio_label_7": "-4.9%", "ratio_label_8": " ", "ratio_label_9": "-2.1%", "ratio_label_10": "-1.7%"}, {"source": "EEU", "carrier": "Brat", "avg_rev": 941097.6902777777, "rm_system": "E", "ratio_0": -0.002238320884272782, "ratio_1": -0.04246346749252561, "ratio_2": 0.013530788599645405, "ratio_3": 0.0008968819805050821, "ratio_4": -0.02386527564044183, "ratio_5": -0.022464586208025383, "ratio_6": -0.04895243557329676, "ratio_7": 0.014550838433116109, "ratio_8": null, "ratio_9": -0.028219982036872038, "ratio_10": -0.02686124868804296, "ratio_label": "-0.2%", "ratio_label_0": "-0.2%", "ratio_label_1": "-4.2%", "ratio_label_2": "+1.4%", "ratio_label_3": "+0.1%", "ratio_label_4": "-2.4%", "ratio_label_5": "-2.2%", "ratio_label_6": "-4.9%", "ratio_label_7": "+1.5%", "ratio_label_8": " ", "ratio_label_9": "-2.8%", "ratio_label_10": "-2.7%"}, {"source": "UUE", "carrier": "Tapas", "avg_rev": 290519.1722222222, "rm_system": "E", "ratio_0": -0.00674298938170248, "ratio_1": -0.009321069200333931, "ratio_2": -0.009197522660861046, "ratio_3": -0.03383614541471103, "ratio_4": -0.00820074148839589, "ratio_5": -0.030870689746397284, "ratio_6": -0.003202674389515936, "ratio_7": -0.005109232662891872, "ratio_8": -0.03635817995681201, "ratio_9": null, "ratio_10": -0.025397346853392677, "ratio_label": "-0.7%", "ratio_label_0": "-0.7%", "ratio_label_1": "-0.9%", "ratio_label_2": "-0.9%", "ratio_label_3": "-3.4%", "ratio_label_4": "-0.8%", "ratio_label_5": "-3.1%", "ratio_label_6": "-0.3%", "ratio_label_7": "-0.5%", "ratio_label_8": "-3.6%", "ratio_label_9": " ", "ratio_label_10": "-2.5%"}, {"source": "UUE", "carrier": "Stroop", "avg_rev": 940068.8569444445, "rm_system": "U", "ratio_0": 0.021138759267641527, "ratio_1": 0.0402985601096979, "ratio_2": -0.021909768114711237, "ratio_3": 0.021558947621718838, "ratio_4": 0.00496981305468136, "ratio_5": 0.010019005320963004, "ratio_6": 0.040203165137117525, "ratio_7": -0.028815865559759346, "ratio_8": 0.02153480323406476, "ratio_9": null, "ratio_10": 0.0041155068680260865, "ratio_label": "+2.1%", "ratio_label_0": "+2.1%", "ratio_label_1": "+4.0%", "ratio_label_2": "-2.2%", "ratio_label_3": "+2.2%", "ratio_label_4": "+0.5%", "ratio_label_5": "+1.0%", "ratio_label_6": "+4.0%", "ratio_label_7": "-2.9%", "ratio_label_8": "+2.2%", "ratio_label_9": " ", "ratio_label_10": "+0.4%"}, {"source": "UUE", "carrier": "Brat", "avg_rev": 968426.673611111, "rm_system": "U", "ratio_0": 0.026736154965459447, "ratio_1": -0.014657108802780594, "ratio_2": 0.042963191118117416, "ratio_3": 0.02996240247706128, "ratio_4": 0.004481164786201086, "ratio_5": 0.00592252950509331, "ratio_6": -0.021334513113245968, "ratio_7": 0.044012862663750374, "ratio_8": 0.02903947551424424, "ratio_9": null, "ratio_10": 0.0013981902526427614, "ratio_label": "+2.7%", "ratio_label_0": "+2.7%", "ratio_label_1": "-1.5%", "ratio_label_2": "+4.3%", "ratio_label_3": "+3.0%", "ratio_label_4": "+0.4%", "ratio_label_5": "+0.6%", "ratio_label_6": "-2.1%", "ratio_label_7": "+4.4%", "ratio_label_8": "+2.9%", "ratio_label_9": " ", "ratio_label_10": "+0.1%"}, {"source": "UUU", "carrier": "Tapas", "avg_rev": 298089.8638888889, "rm_system": "U", "ratio_0": 0.019140474747798564, "ratio_1": 0.016495212280773996, "ratio_2": 0.016621978341869514, "ratio_3": -0.008658706739688049, "ratio_4": 0.01764473481523532, "ratio_5": -0.00561597372563416, "ratio_6": 0.022773047448843675, "ratio_7": 0.02081680582850698, "ratio_8": -0.011246463436182075, "ratio_9": 0.026059180909670854, "ratio_10": null, "ratio_label": "+1.9%", "ratio_label_0": "+1.9%", "ratio_label_1": "+1.6%", "ratio_label_2": "+1.7%", "ratio_label_3": "-0.9%", "ratio_label_4": "+1.8%", "ratio_label_5": "-0.6%", "ratio_label_6": "+2.3%", "ratio_label_7": "+2.1%", "ratio_label_8": "-1.1%", "ratio_label_9": "+2.6%", "ratio_label_10": " "}, {"source": "UUU", "carrier": "Stroop", "avg_rev": 936215.8541666666, "rm_system": "U", "ratio_0": 0.016953480235270213, "ratio_1": 0.03603475197244155, "ratio_2": -0.02591860677853064, "ratio_3": 0.017371946389017845, "ratio_4": 0.0008508046940933767, "ratio_5": 0.005879302144581544, "ratio_6": 0.03593974798940591, "ratio_7": -0.032796398624001855, "ratio_8": 0.017347900960489993, "ratio_9": -0.0040986388915185135, "ratio_10": null, "ratio_label": "+1.7%", "ratio_label_0": "+1.7%", "ratio_label_1": "+3.6%", "ratio_label_2": "-2.6%", "ratio_label_3": "+1.7%", "ratio_label_4": "+0.1%", "ratio_label_5": "+0.6%", "ratio_label_6": "+3.6%", "ratio_label_7": "-3.3%", "ratio_label_8": "+1.7%", "ratio_label_9": "-0.4%", "ratio_label_10": " "}, {"source": "UUU", "carrier": "Brat", "avg_rev": 967074.5194444446, "rm_system": "U", "ratio_0": 0.025302586882471, "ratio_1": -0.01603288203603881, "ratio_2": 0.04150696622987504, "ratio_3": 0.02852432978455055, "ratio_4": 0.00307866996721895, "ratio_5": 0.004518022197852245, "ratio_6": -0.022700963100555915, "ratio_7": 0.04255517218416016, "ratio_8": 0.027602691447472738, "ratio_9": -0.0013962380462162471, "ratio_10": null, "ratio_label": "+2.5%", "ratio_label_0": "+2.5%", "ratio_label_1": "-1.6%", "ratio_label_2": "+4.2%", "ratio_label_3": "+2.9%", "ratio_label_4": "+0.3%", "ratio_label_5": "+0.5%", "ratio_label_6": "-2.3%", "ratio_label_7": "+4.3%", "ratio_label_8": "+2.8%", "ratio_label_9": "-0.1%", "ratio_label_10": " "}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">out</span><span class="o">.</span><span class="n">fig_carrier_load_factors</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-87fb161aa6d74a5c9dd5d77f8d847fea.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-87fb161aa6d74a5c9dd5d77f8d847fea.vega-embed details,
+  #altair-viz-87fb161aa6d74a5c9dd5d77f8d847fea.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-87fb161aa6d74a5c9dd5d77f8d847fea"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-87fb161aa6d74a5c9dd5d77f8d847fea") {
+      outputDiv = document.getElementById("altair-viz-87fb161aa6d74a5c9dd5d77f8d847fea");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "data": {"name": "data-babb46b000dc7fa3c3aab4ffbf4fc073"}, "facet": {"row": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "rm_system", "title": "RM System", "type": "nominal"}, "tooltip": [{"field": "source", "title": null, "type": "nominal"}, {"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "rm_system", "title": "RM System", "type": "nominal"}, {"field": "sys_lf", "format": ".2f", "title": "System Load Factor", "type": "quantitative"}, {"field": "ratio_0", "format": ".3%", "title": "vs EEE", "type": "quantitative"}, {"field": "ratio_1", "format": ".3%", "title": "vs PEE", "type": "quantitative"}, {"field": "ratio_2", "format": ".3%", "title": "vs EPE", "type": "quantitative"}, {"field": "ratio_3", "format": ".3%", "title": "vs EEP", "type": "quantitative"}, {"field": "ratio_4", "format": ".3%", "title": "vs PPE", "type": "quantitative"}, {"field": "ratio_5", "format": ".3%", "title": "vs PPP", "type": "quantitative"}, {"field": "ratio_6", "format": ".3%", "title": "vs UEE", "type": "quantitative"}, {"field": "ratio_7", "format": ".3%", "title": "vs EUE", "type": "quantitative"}, {"field": "ratio_8", "format": ".3%", "title": "vs EEU", "type": "quantitative"}, {"field": "ratio_9", "format": ".3%", "title": "vs UUE", "type": "quantitative"}, {"field": "ratio_10", "format": ".3%", "title": "vs UUU", "type": "quantitative"}], "x": {"axis": {"format": ".2f"}, "field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "source", "sort": ["EEE", "PEE", "EPE", "EEP", "PPE", "PPP", "UEE", "EUE", "EEU", "UUE", "UUU"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "sys_lf", "format": ".2f", "type": "quantitative"}, "x": {"axis": {"format": ".2f"}, "field": "sys_lf", "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "source", "sort": ["EEE", "PEE", "EPE", "EEP", "PPE", "PPP", "UEE", "EUE", "EEU", "UUE", "UUU"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 5, "dy": 0}, "encoding": {"text": {"field": "reference_source", "type": "nominal"}, "x": {"field": "sys_lf", "scale": {"domain": [0, 92.43357629360145]}, "stack": "zero", "title": "System Load Factor", "type": "quantitative"}, "y": {"field": "source", "sort": ["EEE", "PEE", "EPE", "EEP", "PPE", "PPP", "UEE", "EUE", "EEU", "UUE", "UUU"], "title": null, "type": "nominal"}}, "transform": [{"calculate": "datum[\"ratio_label_\" + ref_source]", "as": "reference_source"}]}], "height": 230, "width": 500}, "params": [{"name": "ref_source", "bind": {"input": "radio", "options": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"], "labels": ["EEE", "PEE", "EPE", "EEP", "PPE", "PPP", "UEE", "EUE", "EEU", "UUE", "UUU"], "name": "Reference Source: "}, "value": "0"}], "title": "Carrier System Load Factors", "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-babb46b000dc7fa3c3aab4ffbf4fc073": [{"source": "EEE", "carrier": "Tapas", "sys_lf": 84.75794350805425, "rm_system": "E", "ratio_0": null, "ratio_1": -0.00846866420279746, "ratio_2": -0.011873215909230517, "ratio_3": 0.010702991216430702, "ratio_4": -0.018852205116984266, "ratio_5": -0.0027743944790377117, "ratio_6": -0.002316653710387473, "ratio_7": -0.00553153491078795, "ratio_8": 0.006529457550636053, "ratio_9": -0.007262022282431113, "ratio_10": 0.0036636296890348863, "ratio_label": " ", "ratio_label_0": " ", "ratio_label_1": "-0.8%", "ratio_label_2": "-1.2%", "ratio_label_3": "+1.1%", "ratio_label_4": "-1.9%", "ratio_label_5": "-0.3%", "ratio_label_6": "-0.2%", "ratio_label_7": "-0.6%", "ratio_label_8": "+0.7%", "ratio_label_9": "-0.7%", "ratio_label_10": "+0.4%"}, {"source": "EEE", "carrier": "Stroop", "sys_lf": 84.60624700049051, "rm_system": "E", "ratio_0": null, "ratio_1": 0.005733924149884162, "ratio_2": -0.005361666971987922, "ratio_3": -0.002859867095669988, "ratio_4": 0.0022608623993709553, "ratio_5": 0.0003661274447537277, "ratio_6": 0.005914841743437371, "ratio_7": -0.010951369465217242, "ratio_8": -0.0016916072480647193, "ratio_9": -0.0016835020698819925, "ratio_10": -0.0031096824370684395, "ratio_label": " ", "ratio_label_0": " ", "ratio_label_1": "+0.6%", "ratio_label_2": "-0.5%", "ratio_label_3": "-0.3%", "ratio_label_4": "+0.2%", "ratio_label_5": "+0.0%", "ratio_label_6": "+0.6%", "ratio_label_7": "-1.1%", "ratio_label_8": "-0.2%", "ratio_label_9": "-0.2%", "ratio_label_10": "-0.3%"}, {"source": "EEE", "carrier": "Brat", "sys_lf": 85.65849430839846, "rm_system": "E", "ratio_0": null, "ratio_1": -0.000925479402282714, "ratio_2": 0.003138244119866629, "ratio_3": 0.0008985787592585837, "ratio_4": 0.0045426567168096454, "ratio_5": 0.003615765101249613, "ratio_6": -0.007902234695568278, "ratio_7": 0.004309573195621974, "ratio_8": 0.0004764530905287945, "ratio_9": -0.0016686399444070243, "ratio_10": -0.002038784114415715, "ratio_label": " ", "ratio_label_0": " ", "ratio_label_1": "-0.1%", "ratio_label_2": "+0.3%", "ratio_label_3": "+0.1%", "ratio_label_4": "+0.5%", "ratio_label_5": "+0.4%", "ratio_label_6": "-0.8%", "ratio_label_7": "+0.4%", "ratio_label_8": "+0.0%", "ratio_label_9": "-0.2%", "ratio_label_10": "-0.2%"}, {"source": "PEE", "carrier": "Tapas", "sys_lf": 85.48186068159701, "rm_system": "E", "ratio_0": 0.008540995021593112, "ratio_1": null, "ratio_2": -0.0034336299656084757, "ratio_3": 0.01933540043271953, "ratio_4": -0.010472226685441344, "ratio_5": 0.0057429044531220885, "ratio_6": 0.0062045547833984305, "ratio_7": 0.0029622152986703565, "ratio_8": 0.015126220636662913, "ratio_9": 0.0012169478430010816, "ratio_10": 0.012235915753562976, "ratio_label": "+0.9%", "ratio_label_0": "+0.9%", "ratio_label_1": " ", "ratio_label_2": "-0.3%", "ratio_label_3": "+1.9%", "ratio_label_4": "-1.0%", "ratio_label_5": "+0.6%", "ratio_label_6": "+0.6%", "ratio_label_7": "+0.3%", "ratio_label_8": "+1.5%", "ratio_label_9": "+0.1%", "ratio_label_10": "+1.2%"}, {"source": "PEE", "carrier": "Stroop", "sys_lf": 84.12388701316361, "rm_system": "E", "ratio_0": -0.005701233708240272, "ratio_1": null, "ratio_2": -0.011032332563755243, "ratio_3": -0.008544796033223334, "ratio_4": -0.0034532610137903985, "ratio_5": -0.005337193641616111, "ratio_6": 0.0001798861400703622, "ratio_7": -0.016590166856711108, "ratio_8": -0.0073831967080413285, "ratio_9": -0.007375137739373594, "ratio_10": -0.008793187118976586, "ratio_label": "-0.6%", "ratio_label_0": "-0.6%", "ratio_label_1": " ", "ratio_label_2": "-1.1%", "ratio_label_3": "-0.9%", "ratio_label_4": "-0.3%", "ratio_label_5": "-0.5%", "ratio_label_6": "+0.0%", "ratio_label_7": "-1.7%", "ratio_label_8": "-0.7%", "ratio_label_9": "-0.7%", "ratio_label_10": "-0.9%"}, {"source": "PEE", "carrier": "Brat", "sys_lf": 85.73784291601338, "rm_system": "P", "ratio_0": 0.0009263367078253815, "ratio_1": null, "ratio_2": 0.004067487898418376, "ratio_3": 0.0018257478535734784, "ratio_4": 0.005473201454302856, "ratio_5": 0.004545451225015151, "ratio_6": -0.006983218117815215, "ratio_7": 0.005239902019293474, "ratio_8": 0.0014032311543414888, "ratio_9": -0.0007438489590143593, "ratio_10": -0.0011143360071549369, "ratio_label": "+0.1%", "ratio_label_0": "+0.1%", "ratio_label_1": " ", "ratio_label_2": "+0.4%", "ratio_label_3": "+0.2%", "ratio_label_4": "+0.5%", "ratio_label_5": "+0.5%", "ratio_label_6": "-0.7%", "ratio_label_7": "+0.5%", "ratio_label_8": "+0.1%", "ratio_label_9": "-0.1%", "ratio_label_10": "-0.1%"}, {"source": "EPE", "carrier": "Tapas", "sys_lf": 85.77638504763816, "rm_system": "E", "ratio_0": 0.012015883083420054, "ratio_1": 0.0034454604016891377, "ratio_2": null, "ratio_3": 0.022847480190950398, "ratio_4": -0.007062847926114557, "ratio_5": 0.00920815180469492, "ratio_6": 0.009671392732903739, "ratio_7": 0.006417881895872224, "ratio_8": 0.018623797832582722, "ratio_9": 0.004666601190294051, "ratio_10": 0.015723534518459203, "ratio_label": "+1.2%", "ratio_label_0": "+1.2%", "ratio_label_1": "+0.3%", "ratio_label_2": " ", "ratio_label_3": "+2.3%", "ratio_label_4": "-0.7%", "ratio_label_5": "+0.9%", "ratio_label_6": "+1.0%", "ratio_label_7": "+0.6%", "ratio_label_8": "+1.9%", "ratio_label_9": "+0.5%", "ratio_label_10": "+1.6%"}, {"source": "EPE", "carrier": "Stroop", "sys_lf": 85.06232284746233, "rm_system": "P", "ratio_0": 0.005390569409953416, "ratio_1": 0.011155402675959047, "ratio_2": null, "ratio_3": 0.002515286002201078, "ratio_4": 0.007663619145014566, "ratio_5": 0.005758670490110918, "ratio_6": 0.011337295518357715, "ratio_7": -0.0056198341725001155, "ratio_8": 0.0036898434356036347, "ratio_9": 0.003697992305311981, "ratio_10": 0.0022641240138652208, "ratio_label": "+0.5%", "ratio_label_0": "+0.5%", "ratio_label_1": "+1.1%", "ratio_label_2": " ", "ratio_label_3": "+0.3%", "ratio_label_4": "+0.8%", "ratio_label_5": "+0.6%", "ratio_label_6": "+1.1%", "ratio_label_7": "-0.6%", "ratio_label_8": "+0.4%", "ratio_label_9": "+0.4%", "ratio_label_10": "+0.2%"}, {"source": "EPE", "carrier": "Brat", "sys_lf": 85.39051801733818, "rm_system": "E", "ratio_0": -0.00312842635425592, "ratio_1": -0.0040510104623862064, "ratio_2": null, "ratio_3": -0.0022326587324692504, "ratio_4": 0.0014000189955625242, "ratio_5": 0.0004760270921602139, "ratio_6": -0.01100593949054507, "ratio_7": 0.0011676646590050854, "ratio_8": -0.002653463812132051, "ratio_9": -0.004791846081485085, "ratio_10": -0.005160832282717465, "ratio_label": "-0.3%", "ratio_label_0": "-0.3%", "ratio_label_1": "-0.4%", "ratio_label_2": " ", "ratio_label_3": "-0.2%", "ratio_label_4": "+0.1%", "ratio_label_5": "+0.0%", "ratio_label_6": "-1.1%", "ratio_label_7": "+0.1%", "ratio_label_8": "-0.3%", "ratio_label_9": "-0.5%", "ratio_label_10": "-0.5%"}, {"source": "EEP", "carrier": "Tapas", "sys_lf": 83.8603865276424, "rm_system": "P", "ratio_0": -0.010589650282472385, "ratio_1": -0.01896863429300255, "ratio_2": -0.022337132987495956, "ratio_3": null, "ratio_4": -0.029242217140214355, "ratio_5": -0.013334664894231518, "ratio_6": -0.012881771440241274, "ratio_7": -0.016062608173029846, "ratio_8": -0.004129337403831923, "ratio_9": -0.017774770288589092, "ratio_10": -0.006964817150609037, "ratio_label": "-1.1%", "ratio_label_0": "-1.1%", "ratio_label_1": "-1.9%", "ratio_label_2": "-2.2%", "ratio_label_3": " ", "ratio_label_4": "-2.9%", "ratio_label_5": "-1.3%", "ratio_label_6": "-1.3%", "ratio_label_7": "-1.6%", "ratio_label_8": "-0.4%", "ratio_label_9": "-1.8%", "ratio_label_10": "-0.7%"}, {"source": "EEP", "carrier": "Stroop", "sys_lf": 84.84890358796541, "rm_system": "E", "ratio_0": 0.0028680693929550305, "ratio_1": 0.008618438835194864, "ratio_2": -0.0025089752119704656, "ratio_3": null, "ratio_4": 0.005135416102575174, "ratio_5": 0.0032352469166270215, "ratio_6": 0.008799875312960781, "ratio_7": -0.00811470935983638, "ratio_8": 0.0011716104979171416, "ratio_9": 0.001179738922313378, "ratio_10": -0.0002505318291330383, "ratio_label": "+0.3%", "ratio_label_0": "+0.3%", "ratio_label_1": "+0.9%", "ratio_label_2": "-0.3%", "ratio_label_3": " ", "ratio_label_4": "+0.5%", "ratio_label_5": "+0.3%", "ratio_label_6": "+0.9%", "ratio_label_7": "-0.8%", "ratio_label_8": "+0.1%", "ratio_label_9": "+0.1%", "ratio_label_10": "-0.0%"}, {"source": "EEP", "carrier": "Brat", "sys_lf": 85.58159250718798, "rm_system": "E", "ratio_0": -0.0008977720403724465, "ratio_1": -0.001822420573123762, "ratio_2": 0.0022376546516675866, "ratio_3": null, "ratio_4": 0.003640806406247865, "ratio_5": 0.0027147469280648373, "ratio_6": -0.008792912330574554, "ratio_7": 0.0034079321409283825, "ratio_8": -0.00042174669610683946, "ratio_9": -0.0025649139264919407, "ratio_10": -0.0029347257914138503, "ratio_label": "-0.1%", "ratio_label_0": "-0.1%", "ratio_label_1": "-0.2%", "ratio_label_2": "+0.2%", "ratio_label_3": " ", "ratio_label_4": "+0.4%", "ratio_label_5": "+0.3%", "ratio_label_6": "-0.9%", "ratio_label_7": "+0.3%", "ratio_label_8": "-0.0%", "ratio_label_9": "-0.3%", "ratio_label_10": "-0.3%"}, {"source": "PPE", "carrier": "Tapas", "sys_lf": 86.38651990056209, "rm_system": "E", "ratio_0": 0.019214439674944295, "ratio_1": 0.010583054834694794, "ratio_2": 0.00711308657487808, "ratio_3": 0.03012308287044463, "ratio_4": null, "ratio_5": 0.016386736760554577, "ratio_6": 0.016853272761590654, "ratio_7": 0.013576619420303082, "ratio_8": 0.02586935709379712, "ratio_9": 0.011812881703449296, "ratio_10": 0.022948463955630327, "ratio_label": "+1.9%", "ratio_label_0": "+1.9%", "ratio_label_1": "+1.1%", "ratio_label_2": "+0.7%", "ratio_label_3": "+3.0%", "ratio_label_4": " ", "ratio_label_5": "+1.6%", "ratio_label_6": "+1.7%", "ratio_label_7": "+1.4%", "ratio_label_8": "+2.6%", "ratio_label_9": "+1.2%", "ratio_label_10": "+2.3%"}, {"source": "PPE", "carrier": "Stroop", "sys_lf": 84.4153954070866, "rm_system": "P", "ratio_0": -0.0022557624309088586, "ratio_1": 0.0034652273482962404, "ratio_2": -0.007605334755974358, "ratio_3": -0.005109178345827137, "ratio_4": null, "ratio_5": -0.0018904608826899594, "ratio_6": 0.0036457368347386776, "ratio_7": -0.013182428208319497, "ratio_8": -0.0039435538148956395, "ratio_9": -0.003935466920069297, "ratio_10": -0.00535843016316373, "ratio_label": "-0.2%", "ratio_label_0": "-0.2%", "ratio_label_1": "+0.3%", "ratio_label_2": "-0.8%", "ratio_label_3": "-0.5%", "ratio_label_4": " ", "ratio_label_5": "-0.2%", "ratio_label_6": "+0.4%", "ratio_label_7": "-1.3%", "ratio_label_8": "-0.4%", "ratio_label_9": "-0.4%", "ratio_label_10": "-0.5%"}, {"source": "PPE", "carrier": "Brat", "sys_lf": 85.27113680603652, "rm_system": "P", "ratio_0": -0.004522114303892932, "ratio_1": -0.005443408582532561, "ratio_2": -0.001398061682649776, "ratio_3": -0.0036275990204946984, "ratio_4": null, "ratio_5": -0.0009227001057271478, "ratio_6": -0.01238861419091164, "ratio_7": -0.0002320294908626508, "ratio_8": -0.004047815788699838, "ratio_9": -0.006183208467739232, "ratio_10": -0.00655167880350227, "ratio_label": "-0.5%", "ratio_label_0": "-0.5%", "ratio_label_1": "-0.5%", "ratio_label_2": "-0.1%", "ratio_label_3": "-0.4%", "ratio_label_4": " ", "ratio_label_5": "-0.1%", "ratio_label_6": "-1.2%", "ratio_label_7": "-0.0%", "ratio_label_8": "-0.4%", "ratio_label_9": "-0.6%", "ratio_label_10": "-0.7%"}, {"source": "PPP", "carrier": "Tapas", "sys_lf": 84.99374969796901, "rm_system": "P", "ratio_0": 0.0027821131584244707, "ratio_1": -0.005710111826485842, "ratio_2": -0.009124135381019971, "ratio_3": 0.013514881307552962, "ratio_4": -0.01612254092648102, "ratio_5": null, "ratio_6": 0.00045901425526584383, "ratio_7": -0.0027648111084250804, "ratio_8": 0.009329736398829391, "ratio_9": -0.004500112891755337, "ratio_10": 0.006455935479824593, "ratio_label": "+0.3%", "ratio_label_0": "+0.3%", "ratio_label_1": "-0.6%", "ratio_label_2": "-0.9%", "ratio_label_3": "+1.4%", "ratio_label_4": "-1.6%", "ratio_label_5": " ", "ratio_label_6": "+0.0%", "ratio_label_7": "-0.3%", "ratio_label_8": "+0.9%", "ratio_label_9": "-0.5%", "ratio_label_10": "+0.6%"}, {"source": "PPP", "carrier": "Stroop", "sys_lf": 84.57528166872382, "rm_system": "P", "ratio_0": -0.0003659934445090496, "ratio_1": 0.005365832126724923, "ratio_2": -0.00572569808153367, "ratio_3": -0.003224813847569896, "ratio_4": 0.001894041494044707, "ratio_5": null, "ratio_6": 0.0055466835056248165, "ratio_7": -0.011313354780293716, "ratio_8": -0.0020569815754103438, "ratio_9": -0.002048879363669709, "ratio_10": -0.0034745377581910653, "ratio_label": "-0.0%", "ratio_label_0": "-0.0%", "ratio_label_1": "+0.5%", "ratio_label_2": "-0.6%", "ratio_label_3": "-0.3%", "ratio_label_4": "+0.2%", "ratio_label_5": " ", "ratio_label_6": "+0.6%", "ratio_label_7": "-1.1%", "ratio_label_8": "-0.2%", "ratio_label_9": "-0.2%", "ratio_label_10": "-0.3%"}, {"source": "PPP", "carrier": "Brat", "sys_lf": 85.34988915778621, "rm_system": "P", "ratio_0": -0.0036027384453102274, "ratio_1": -0.00452488358736991, "ratio_2": -0.0004758005981849722, "ratio_3": -0.0027073970302937678, "ratio_4": 0.0009235522675019592, "ratio_5": null, "ratio_6": -0.011476503456136822, "ratio_7": 0.0006913084852768758, "ratio_8": -0.003128001890647991, "ratio_9": -0.005265366716438069, "ratio_10": -0.005634177353815217, "ratio_label": "-0.4%", "ratio_label_0": "-0.4%", "ratio_label_1": "-0.5%", "ratio_label_2": "-0.0%", "ratio_label_3": "-0.3%", "ratio_label_4": "+0.1%", "ratio_label_5": " ", "ratio_label_6": "-1.1%", "ratio_label_7": "+0.1%", "ratio_label_8": "-0.3%", "ratio_label_9": "-0.5%", "ratio_label_10": "-0.6%"}, {"source": "UEE", "carrier": "Tapas", "sys_lf": 84.95475425471349, "rm_system": "E", "ratio_0": 0.002322033056884276, "ratio_1": -0.0061662956641396205, "ratio_2": -0.009578752852179018, "ratio_3": 0.013049876972727192, "ratio_4": -0.016573947503576658, "ratio_5": -0.0004588036578464516, "ratio_6": null, "ratio_7": -0.00322234626082174, "ratio_8": 0.008866652223796567, "ratio_9": -0.004956851881346314, "ratio_10": 0.005994169815165318, "ratio_label": "+0.2%", "ratio_label_0": "+0.2%", "ratio_label_1": "-0.6%", "ratio_label_2": "-1.0%", "ratio_label_3": "+1.3%", "ratio_label_4": "-1.7%", "ratio_label_5": "-0.0%", "ratio_label_6": " ", "ratio_label_7": "-0.3%", "ratio_label_8": "+0.9%", "ratio_label_9": "-0.5%", "ratio_label_10": "+0.6%"}, {"source": "UEE", "carrier": "Stroop", "sys_lf": 84.10875701351833, "rm_system": "E", "ratio_0": -0.005880062106634942, "ratio_1": -0.00017985378686691256, "ratio_2": -0.011210202143832504, "ratio_3": -0.008723113006165684, "ratio_4": -0.003632493718586982, "ratio_5": -0.005516087513995349, "ratio_6": null, "ratio_7": -0.016767036839244076, "ratio_8": -0.0075617225990211034, "ratio_9": -0.0075536650797893845, "ratio_10": -0.00897145941784161, "ratio_label": "-0.6%", "ratio_label_0": "-0.6%", "ratio_label_1": "-0.0%", "ratio_label_2": "-1.1%", "ratio_label_3": "-0.9%", "ratio_label_4": "-0.4%", "ratio_label_5": "-0.6%", "ratio_label_6": " ", "ratio_label_7": "-1.7%", "ratio_label_8": "-0.8%", "ratio_label_9": "-0.8%", "ratio_label_10": "-0.9%"}, {"source": "UEE", "carrier": "Brat", "sys_lf": 86.34077941110328, "rm_system": "U", "ratio_0": 0.00796517739674929, "ratio_1": 0.007032326386850363, "ratio_2": 0.011128418187744904, "ratio_3": 0.008870913495230281, "ratio_4": 0.012544017180160738, "ratio_5": 0.011609742708455384, "ratio_6": null, "ratio_7": 0.012309077107378386, "ratio_8": 0.008445425520665406, "ratio_9": 0.006283246439173773, "ratio_10": 0.005910154005188462, "ratio_label": "+0.8%", "ratio_label_0": "+0.8%", "ratio_label_1": "+0.7%", "ratio_label_2": "+1.1%", "ratio_label_3": "+0.9%", "ratio_label_4": "+1.3%", "ratio_label_5": "+1.2%", "ratio_label_6": " ", "ratio_label_7": "+1.2%", "ratio_label_8": "+0.8%", "ratio_label_9": "+0.6%", "ratio_label_10": "+0.6%"}, {"source": "EUE", "carrier": "Tapas", "sys_lf": 85.2293928701407, "rm_system": "E", "ratio_0": 0.005562302983928014, "ratio_1": -0.0029534664950345846, "ratio_2": -0.00637695534958338, "ratio_3": 0.01632482748033892, "ratio_4": -0.013394763809832178, "ratio_5": 0.002772476482201025, "ratio_6": 0.003232763343694378, "ratio_7": null, "ratio_8": 0.012128079355781418, "ratio_9": -0.0017401128667140497, "ratio_10": 0.009246310891314113, "ratio_label": "+0.6%", "ratio_label_0": "+0.6%", "ratio_label_1": "-0.3%", "ratio_label_2": "-0.6%", "ratio_label_3": "+1.6%", "ratio_label_4": "-1.3%", "ratio_label_5": "+0.3%", "ratio_label_6": "+0.3%", "ratio_label_7": " ", "ratio_label_8": "+1.2%", "ratio_label_9": "-0.2%", "ratio_label_10": "+0.9%"}, {"source": "EUE", "carrier": "Stroop", "sys_lf": 85.54306066299648, "rm_system": "U", "ratio_0": 0.011072629926493827, "ratio_1": 0.016870043696516346, "ratio_2": 0.005651595200335979, "ratio_3": 0.008181096580834657, "ratio_4": 0.013358526018527828, "ratio_5": 0.011442811364949401, "ratio_6": 0.017052964523630143, "ratio_7": null, "ratio_8": 0.009362292137390371, "ratio_9": 0.009370487061211685, "ratio_10": 0.007928515126610858, "ratio_label": "+1.1%", "ratio_label_0": "+1.1%", "ratio_label_1": "+1.7%", "ratio_label_2": "+0.6%", "ratio_label_3": "+0.8%", "ratio_label_4": "+1.3%", "ratio_label_5": "+1.1%", "ratio_label_6": "+1.7%", "ratio_label_7": " ", "ratio_label_8": "+0.9%", "ratio_label_9": "+0.9%", "ratio_label_10": "+0.8%"}, {"source": "EUE", "carrier": "Brat", "sys_lf": 85.29092681636092, "rm_system": "E", "ratio_0": -0.004291080470247066, "ratio_1": -0.005212588565940979, "ratio_2": -0.0011663028084339944, "ratio_3": -0.003396357584753318, "ratio_4": 0.0002320833410420775, "ratio_5": -0.0006908309080083663, "ratio_6": -0.01215940604084187, "ratio_7": null, "ratio_8": -0.0038166718782699505, "ratio_9": -0.005952560146376795, "ratio_10": -0.0063211159979663645, "ratio_label": "-0.4%", "ratio_label_0": "-0.4%", "ratio_label_1": "-0.5%", "ratio_label_2": "-0.1%", "ratio_label_3": "-0.3%", "ratio_label_4": "+0.0%", "ratio_label_5": "-0.1%", "ratio_label_6": "-1.2%", "ratio_label_7": " ", "ratio_label_8": "-0.4%", "ratio_label_9": "-0.6%", "ratio_label_10": "-0.6%"}, {"source": "EEU", "carrier": "Tapas", "sys_lf": 84.20811022690837, "rm_system": "U", "ratio_0": -0.00648710030457067, "ratio_1": -0.014900827433238839, "ratio_2": -0.01828329347126023, "ratio_3": 0.004146459534280167, "ratio_4": -0.02521700927599868, "ratio_5": -0.009243497008338375, "ratio_6": -0.00878872564996791, "ratio_7": -0.011982751593554108, "ratio_8": null, "ratio_9": -0.0137020131200416, "ratio_10": -0.0028472369488073968, "ratio_label": "-0.6%", "ratio_label_0": "-0.6%", "ratio_label_1": "-1.5%", "ratio_label_2": "-1.8%", "ratio_label_3": "+0.4%", "ratio_label_4": "-2.5%", "ratio_label_5": "-0.9%", "ratio_label_6": "-0.9%", "ratio_label_7": "-1.2%", "ratio_label_8": " ", "ratio_label_9": "-1.4%", "ratio_label_10": "-0.3%"}, {"source": "EEU", "carrier": "Stroop", "sys_lf": 84.74961005513043, "rm_system": "E", "ratio_0": 0.001694473631942195, "ratio_1": 0.007438113765105836, "ratio_2": -0.003676278543353062, "ratio_3": -0.0011702394331122301, "ratio_4": 0.003959167003034336, "ratio_5": 0.0020612214699968767, "ratio_6": 0.0076193379187508015, "ratio_7": -0.009275452640067572, "ratio_8": null, "ratio_9": 8.118912193433303e-06, "ratio_10": -0.0014204780800195493, "ratio_label": "+0.2%", "ratio_label_0": "+0.2%", "ratio_label_1": "+0.7%", "ratio_label_2": "-0.4%", "ratio_label_3": "-0.1%", "ratio_label_4": "+0.4%", "ratio_label_5": "+0.2%", "ratio_label_6": "+0.8%", "ratio_label_7": "-0.9%", "ratio_label_8": " ", "ratio_label_9": "+0.0%", "ratio_label_10": "-0.1%"}, {"source": "EEU", "carrier": "Brat", "sys_lf": 85.61770148991961, "rm_system": "E", "ratio_0": -0.00047622619108833586, "ratio_1": -0.0014012648558403562, "ratio_2": 0.002660523414734328, "ratio_3": 0.0004219246414303157, "ratio_4": 0.004064267193615745, "ratio_5": 0.003137816988119324, "ratio_6": -0.008374697635526451, "ratio_7": 0.0038312946729053277, "ratio_8": null, "ratio_9": -0.0021440714854502607, "ratio_10": -0.002514039383110789, "ratio_label": "-0.0%", "ratio_label_0": "-0.0%", "ratio_label_1": "-0.1%", "ratio_label_2": "+0.3%", "ratio_label_3": "+0.0%", "ratio_label_4": "+0.4%", "ratio_label_5": "+0.3%", "ratio_label_6": "-0.8%", "ratio_label_7": "+0.4%", "ratio_label_8": " ", "ratio_label_9": "-0.2%", "ratio_label_10": "-0.3%"}, {"source": "UUE", "carrier": "Tapas", "sys_lf": 85.37796015714395, "rm_system": "E", "ratio_0": 0.007315145028628178, "ratio_1": -0.0012154686810115223, "ratio_2": -0.0046449251769346, "ratio_3": 0.018096430178047296, "ratio_4": -0.01167496670289625, "ratio_5": 0.004520455451609839, "ratio_6": 0.0049815446603680424, "ratio_7": 0.0017431461377368507, "ratio_8": 0.013892366508205356, "ratio_9": null, "ratio_10": 0.011005574700169385, "ratio_label": "+0.7%", "ratio_label_0": "+0.7%", "ratio_label_1": "-0.1%", "ratio_label_2": "-0.5%", "ratio_label_3": "+1.8%", "ratio_label_4": "-1.2%", "ratio_label_5": "+0.5%", "ratio_label_6": "+0.5%", "ratio_label_7": "+0.2%", "ratio_label_8": "+1.4%", "ratio_label_9": " ", "ratio_label_10": "+1.1%"}, {"source": "UUE", "carrier": "Stroop", "sys_lf": 84.74892198607434, "rm_system": "U", "ratio_0": 0.001686341028493965, "ratio_1": 0.007429934529926241, "ratio_2": -0.003684367542489908, "ratio_3": -0.0011783487783955104, "ratio_4": 0.0039510160128886085, "ratio_5": 0.0020530858889793446, "ratio_6": 0.0076111572122403715, "ratio_7": -0.00928349618037072, "ratio_8": -8.118846277271885e-06, "ratio_9": null, "ratio_10": -0.0014285853936536475, "ratio_label": "+0.2%", "ratio_label_0": "+0.2%", "ratio_label_1": "+0.7%", "ratio_label_2": "-0.4%", "ratio_label_3": "-0.1%", "ratio_label_4": "+0.4%", "ratio_label_5": "+0.2%", "ratio_label_6": "+0.8%", "ratio_label_7": "-0.9%", "ratio_label_8": "-0.0%", "ratio_label_9": " ", "ratio_label_10": "-0.1%"}, {"source": "UUE", "carrier": "Brat", "sys_lf": 85.80166639624392, "rm_system": "U", "ratio_0": 0.001671428957529697, "ratio_1": 0.000744402682174572, "ratio_2": 0.004814918429494108, "ratio_3": 0.0025715096273473126, "ratio_4": 0.00622167840232013, "ratio_5": 0.005293237553273267, "ratio_6": -0.006244013761937839, "ratio_7": 0.005988205298585347, "ratio_8": 0.0021486784055511077, "ratio_9": null, "ratio_10": -0.00037076283969295076, "ratio_label": "+0.2%", "ratio_label_0": "+0.2%", "ratio_label_1": "+0.1%", "ratio_label_2": "+0.5%", "ratio_label_3": "+0.3%", "ratio_label_4": "+0.6%", "ratio_label_5": "+0.5%", "ratio_label_6": "-0.6%", "ratio_label_7": "+0.6%", "ratio_label_8": "+0.2%", "ratio_label_9": " ", "ratio_label_10": "-0.0%"}, {"source": "UUU", "carrier": "Tapas", "sys_lf": 84.44855527375722, "rm_system": "U", "ratio_0": -0.0036502565009453036, "ratio_1": -0.01208800790718223, "ratio_2": -0.015480132126616142, "ratio_3": 0.007013666052218204, "ratio_4": -0.02243364623364419, "ratio_5": -0.00641452372849971, "ratio_6": -0.0059584538310660795, "ratio_7": -0.009161599890464944, "ratio_8": 0.002855366854818797, "ratio_9": -0.010885770539329931, "ratio_10": null, "ratio_label": "-0.4%", "ratio_label_0": "-0.4%", "ratio_label_1": "-1.2%", "ratio_label_2": "-1.5%", "ratio_label_3": "+0.7%", "ratio_label_4": "-2.2%", "ratio_label_5": "-0.6%", "ratio_label_6": "-0.6%", "ratio_label_7": "-0.9%", "ratio_label_8": "+0.3%", "ratio_label_9": "-1.1%", "ratio_label_10": " "}, {"source": "UUU", "carrier": "Stroop", "sys_lf": 84.87016626595884, "rm_system": "U", "ratio_0": 0.0031193827267483876, "ratio_1": 0.008871193180582049, "ratio_2": -0.0022590093365786323, "ratio_3": 0.00025059461105936265, "ratio_4": 0.005387297621235243, "ratio_5": 0.003486652263128942, "ratio_6": 0.009052675125351461, "ratio_7": -0.007866148251213012, "ratio_8": 0.0014224987082533946, "ratio_9": 0.001430629169589137, "ratio_10": null, "ratio_label": "+0.3%", "ratio_label_0": "+0.3%", "ratio_label_1": "+0.9%", "ratio_label_2": "-0.2%", "ratio_label_3": "+0.0%", "ratio_label_4": "+0.5%", "ratio_label_5": "+0.3%", "ratio_label_6": "+0.9%", "ratio_label_7": "-0.8%", "ratio_label_8": "+0.1%", "ratio_label_9": "+0.1%", "ratio_label_10": " "}, {"source": "UUU", "carrier": "Brat", "sys_lf": 85.83349026483526, "rm_system": "U", "ratio_0": 0.0020429492468867494, "ratio_1": 0.0011155791371562085, "ratio_2": 0.005187604640214616, "ratio_3": 0.002943363756944928, "ratio_4": 0.006594886380814957, "ratio_5": 0.005666101172727034, "ratio_6": -0.005875429313101477, "ratio_7": 0.0063613266818232095, "ratio_8": 0.0025203757068981147, "ratio_9": 0.0003709003557621493, "ratio_10": null, "ratio_label": "+0.2%", "ratio_label_0": "+0.2%", "ratio_label_1": "+0.1%", "ratio_label_2": "+0.5%", "ratio_label_3": "+0.3%", "ratio_label_4": "+0.7%", "ratio_label_5": "+0.6%", "ratio_label_6": "-0.6%", "ratio_label_7": "+0.6%", "ratio_label_8": "+0.3%", "ratio_label_9": "+0.0%", "ratio_label_10": " "}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">out</span><span class="o">.</span><span class="n">fig_carrier_yields</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style>
+  #altair-viz-ea74e178efb646418b2fd25db32c8d0c.vega-embed {
+    width: 100%;
+    display: flex;
+  }
+
+  #altair-viz-ea74e178efb646418b2fd25db32c8d0c.vega-embed details,
+  #altair-viz-ea74e178efb646418b2fd25db32c8d0c.vega-embed details summary {
+    position: relative;
+  }
+</style>
+<div id="altair-viz-ea74e178efb646418b2fd25db32c8d0c"></div>
+<script type="text/javascript">
+  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-ea74e178efb646418b2fd25db32c8d0c") {
+      outputDiv = document.getElementById("altair-viz-ea74e178efb646418b2fd25db32c8d0c");
+    }
+
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm/vega@6?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@6.4.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@7?noext",
+    };
+
+    function maybeLoadScript(lib, version) {
+      var key = `${lib.replace("-", "")}_version`;
+      return (VEGA_DEBUG[key] == version) ?
+        Promise.resolve(paths[lib]) :
+        new Promise(function(resolve, reject) {
+          var s = document.createElement('script');
+          document.getElementsByTagName("head")[0].appendChild(s);
+          s.async = true;
+          s.onload = () => {
+            VEGA_DEBUG[key] = version;
+            return resolve(paths[lib]);
+          };
+          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+          s.src = paths[lib];
+        });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      let deps = ["vega-embed"];
+      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else {
+      maybeLoadScript("vega", "6")
+        .then(() => maybeLoadScript("vega-lite", "6.4.1"))
+        .then(() => maybeLoadScript("vega-embed", "7"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousHeight": 300, "continuousWidth": 400}, "range": {"category": ["#6a3d9a", "#cab2d6", "#33a02c", "#b2df8a", "#ff7f00", "#fdbf6f", "#1f78b4", "#a6cee3", "#e31a1c", "#fb9a99", "#b15928", "#e3d086"], "heatmap": "plasma"}, "title": {"font": "Roboto, Arial, sans-serif", "fontSize": 18, "anchor": "start", "offset": 8}, "axis": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "header": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "legend": {"labelFont": "Roboto, Arial, sans-serif", "titleFont": "Roboto, Arial, sans-serif"}, "bar": {"color": "#6a3d9a"}, "mark": {"color": "#6a3d9a"}, "line": {"color": "#6a3d9a"}}, "data": {"name": "data-ee61a96be8a68872eaab708f9fca0deb"}, "facet": {"row": {"field": "carrier", "title": "Carrier", "type": "nominal"}}, "spec": {"layer": [{"mark": {"type": "bar"}, "encoding": {"color": {"field": "rm_system", "title": "RM System", "type": "nominal"}, "tooltip": [{"field": "source", "title": null, "type": "nominal"}, {"field": "carrier", "title": "Carrier", "type": "nominal"}, {"field": "rm_system", "title": "RM System", "type": "nominal"}, {"field": "yield", "format": "$.4f", "title": "Yield ($)", "type": "quantitative"}, {"field": "ratio_0", "format": ".3%", "title": "vs EEE", "type": "quantitative"}, {"field": "ratio_1", "format": ".3%", "title": "vs PEE", "type": "quantitative"}, {"field": "ratio_2", "format": ".3%", "title": "vs EPE", "type": "quantitative"}, {"field": "ratio_3", "format": ".3%", "title": "vs EEP", "type": "quantitative"}, {"field": "ratio_4", "format": ".3%", "title": "vs PPE", "type": "quantitative"}, {"field": "ratio_5", "format": ".3%", "title": "vs PPP", "type": "quantitative"}, {"field": "ratio_6", "format": ".3%", "title": "vs UEE", "type": "quantitative"}, {"field": "ratio_7", "format": ".3%", "title": "vs EUE", "type": "quantitative"}, {"field": "ratio_8", "format": ".3%", "title": "vs EEU", "type": "quantitative"}, {"field": "ratio_9", "format": ".3%", "title": "vs UUE", "type": "quantitative"}, {"field": "ratio_10", "format": ".3%", "title": "vs UUU", "type": "quantitative"}], "x": {"axis": {"format": "$.4f"}, "field": "yield", "stack": "zero", "title": "Yield ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["EEE", "PEE", "EPE", "EEP", "PPE", "PPP", "UEE", "EUE", "EEU", "UUE", "UUU"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "right", "baseline": "middle", "color": "white", "dx": -5, "dy": 0}, "encoding": {"text": {"field": "yield", "format": "$.4f", "type": "quantitative"}, "x": {"axis": {"format": "$.4f"}, "field": "yield", "stack": "zero", "title": "Yield ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["EEE", "PEE", "EPE", "EEP", "PPE", "PPP", "UEE", "EUE", "EEU", "UUE", "UUU"], "title": null, "type": "nominal"}}}, {"mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 5, "dy": 0}, "encoding": {"text": {"field": "reference_source", "type": "nominal"}, "x": {"field": "yield", "scale": {"domain": [0, 0.2733592320733883]}, "stack": "zero", "title": "Yield ($)", "type": "quantitative"}, "y": {"field": "source", "sort": ["EEE", "PEE", "EPE", "EEP", "PPE", "PPP", "UEE", "EUE", "EEU", "UUE", "UUU"], "title": null, "type": "nominal"}}, "transform": [{"calculate": "datum[\"ratio_label_\" + ref_source]", "as": "reference_source"}]}], "height": 230, "width": 500}, "params": [{"name": "ref_source", "bind": {"input": "radio", "options": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"], "labels": ["EEE", "PEE", "EPE", "EEP", "PPE", "PPP", "UEE", "EUE", "EEU", "UUE", "UUU"], "name": "Reference Source: "}, "value": "0"}], "title": "Carrier Yields", "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-ee61a96be8a68872eaab708f9fca0deb": [{"source": "EEE", "carrier": "Tapas", "yield": 0.15258455835911142, "rm_system": "E", "ratio_0": null, "ratio_1": 0.005923244371226044, "ratio_2": 0.009514992943697953, "ratio_3": -0.03757788061863043, "ratio_4": 0.017718591187870558, "ratio_5": -0.021576966212483506, "ratio_6": 0.005894658956017151, "ratio_7": 0.007216300037178103, "ratio_8": -0.03610992053011719, "ratio_9": 0.014153571794655262, "ratio_10": -0.022362698581256724, "ratio_label": " ", "ratio_label_0": " ", "ratio_label_1": "+0.6%", "ratio_label_2": "+1.0%", "ratio_label_3": "-3.8%", "ratio_label_4": "+1.8%", "ratio_label_5": "-2.2%", "ratio_label_6": "+0.6%", "ratio_label_7": "+0.7%", "ratio_label_8": "-3.6%", "ratio_label_9": "+1.4%", "ratio_label_10": "-2.2%"}, {"source": "EEE", "carrier": "Stroop", "yield": 0.23982882078222836, "rm_system": "E", "ratio_0": null, "ratio_1": 0.012954963764192806, "ratio_2": -0.03699405566122149, "ratio_3": 0.003280739541463573, "ratio_4": -0.018054274401129278, "ratio_5": -0.011251570050769488, "ratio_6": 0.012679909108765264, "ratio_7": -0.038389554759802436, "ratio_8": 0.002082976221703614, "ratio_9": -0.01904973057050441, "ratio_10": -0.013603471326261274, "ratio_label": " ", "ratio_label_0": " ", "ratio_label_1": "+1.3%", "ratio_label_2": "-3.7%", "ratio_label_3": "+0.3%", "ratio_label_4": "-1.8%", "ratio_label_5": "-1.1%", "ratio_label_6": "+1.3%", "ratio_label_7": "-3.8%", "ratio_label_8": "+0.2%", "ratio_label_9": "-1.9%", "ratio_label_10": "-1.4%"}, {"source": "EEE", "carrier": "Brat", "yield": 0.24540342355759032, "rm_system": "E", "ratio_0": null, "ratio_1": -0.03942639429084005, "ratio_2": 0.012626615471120095, "ratio_3": 0.002241643145507455, "ratio_4": -0.02609956676107361, "ratio_5": -0.023801344787785284, "ratio_6": -0.03922665396440761, "ratio_7": 0.01246353742462536, "ratio_8": 0.0017660476745771092, "ratio_9": -0.024412041873379753, "ratio_10": -0.022685632449545468, "ratio_label": " ", "ratio_label_0": " ", "ratio_label_1": "-3.9%", "ratio_label_2": "+1.3%", "ratio_label_3": "+0.2%", "ratio_label_4": "-2.6%", "ratio_label_5": "-2.4%", "ratio_label_6": "-3.9%", "ratio_label_7": "+1.2%", "ratio_label_8": "+0.2%", "ratio_label_9": "-2.4%", "ratio_label_10": "-2.3%"}, {"source": "PEE", "carrier": "Tapas", "yield": 0.15168608461223865, "rm_system": "E", "ratio_0": -0.005888366139633838, "ratio_1": null, "ratio_2": 0.0035705990417955746, "ratio_3": -0.04324497443843034, "ratio_4": 0.011725891495844243, "ratio_5": -0.027338279274875754, "ratio_6": -2.8417093817956207e-05, "ratio_7": 0.001285441680751953, "ratio_8": -0.04178565823639657, "ratio_9": 0.008181864242110981, "ratio_10": -0.028119384963773753, "ratio_label": "-0.6%", "ratio_label_0": "-0.6%", "ratio_label_1": " ", "ratio_label_2": "+0.4%", "ratio_label_3": "-4.3%", "ratio_label_4": "+1.2%", "ratio_label_5": "-2.7%", "ratio_label_6": "-0.0%", "ratio_label_7": "+0.1%", "ratio_label_8": "-4.2%", "ratio_label_9": "+0.8%", "ratio_label_10": "-2.8%"}, {"source": "PEE", "carrier": "Stroop", "yield": 0.23676158305302353, "rm_system": "E", "ratio_0": -0.012789279116666163, "ratio_1": null, "ratio_2": -0.049310207474378864, "ratio_3": -0.009550497868907493, "ratio_4": -0.03061265236323052, "ratio_5": -0.023896949697555625, "ratio_6": -0.0002715369046668581, "ratio_7": -0.05068785914548102, "ratio_8": -0.010732942659255285, "ratio_9": -0.03159537736580709, "ratio_10": -0.026218771851180378, "ratio_label": "-1.3%", "ratio_label_0": "-1.3%", "ratio_label_1": " ", "ratio_label_2": "-4.9%", "ratio_label_3": "-1.0%", "ratio_label_4": "-3.1%", "ratio_label_5": "-2.4%", "ratio_label_6": "-0.0%", "ratio_label_7": "-5.1%", "ratio_label_8": "-1.1%", "ratio_label_9": "-3.2%", "ratio_label_10": "-2.6%"}, {"source": "PEE", "carrier": "Brat", "yield": 0.25547591782559653, "rm_system": "P", "ratio_0": 0.0410446363053385, "ratio_1": null, "ratio_2": 0.054189506616238114, "ratio_3": 0.04337828687847978, "ratio_4": 0.01387382231882972, "ratio_5": 0.016266373977160464, "ratio_6": 0.00020793859548629, "ratio_7": 0.05401973509063551, "ratio_8": 0.04288317076441639, "ratio_9": 0.015630611051795196, "ratio_10": 0.01742788032254472, "ratio_label": "+4.1%", "ratio_label_0": "+4.1%", "ratio_label_1": " ", "ratio_label_2": "+5.4%", "ratio_label_3": "+4.3%", "ratio_label_4": "+1.4%", "ratio_label_5": "+1.6%", "ratio_label_6": "+0.0%", "ratio_label_7": "+5.4%", "ratio_label_8": "+4.3%", "ratio_label_9": "+1.6%", "ratio_label_10": "+1.7%"}, {"source": "EPE", "carrier": "Tapas", "yield": 0.15114640141617122, "rm_system": "E", "ratio_0": -0.009425311174381501, "ratio_1": -0.0035578952245161055, "ratio_2": null, "ratio_3": -0.04664900857490761, "ratio_4": 0.00812627677797173, "ratio_5": -0.03079890776611327, "ratio_6": -0.0035862112132917234, "ratio_7": -0.0022770270105814117, "ratio_8": -0.045194884467020136, "ratio_9": 0.004594858801880264, "ratio_10": -0.0315772343628109, "ratio_label": "-0.9%", "ratio_label_0": "-0.9%", "ratio_label_1": "-0.4%", "ratio_label_2": " ", "ratio_label_3": "-4.7%", "ratio_label_4": "+0.8%", "ratio_label_5": "-3.1%", "ratio_label_6": "-0.4%", "ratio_label_7": "-0.2%", "ratio_label_8": "-4.5%", "ratio_label_9": "+0.5%", "ratio_label_10": "-3.2%"}, {"source": "EPE", "carrier": "Stroop", "yield": 0.24904189033526705, "rm_system": "P", "ratio_0": 0.03841518931289922, "ratio_1": 0.05186782046263527, "ratio_2": null, "ratio_3": 0.04182195908493447, "ratio_4": 0.019667356542743653, "ratio_5": 0.026731388068562234, "ratio_6": 0.0515821995305481, "ratio_7": -0.0014491074606389764, "ratio_8": 0.04057818346049391, "ratio_9": 0.01863365973616915, "ratio_10": 0.024289138060326954, "ratio_label": "+3.8%", "ratio_label_0": "+3.8%", "ratio_label_1": "+5.2%", "ratio_label_2": " ", "ratio_label_3": "+4.2%", "ratio_label_4": "+2.0%", "ratio_label_5": "+2.7%", "ratio_label_6": "+5.2%", "ratio_label_7": "-0.1%", "ratio_label_8": "+4.1%", "ratio_label_9": "+1.9%", "ratio_label_10": "+2.4%"}, {"source": "EPE", "carrier": "Brat", "yield": 0.24234344605234126, "rm_system": "E", "ratio_0": -0.012469172030645903, "ratio_1": -0.05140395182852542, "ratio_2": null, "ratio_3": -0.010255480319151022, "ratio_4": -0.038243298803850356, "ratio_5": -0.03597373375571156, "ratio_6": -0.05120670209858469, "ratio_7": -0.0001610445982785924, "ratio_8": -0.010725145508337364, "ratio_9": -0.03657681595428708, "ratio_10": -0.034871933426554036, "ratio_label": "-1.2%", "ratio_label_0": "-1.2%", "ratio_label_1": "-5.1%", "ratio_label_2": " ", "ratio_label_3": "-1.0%", "ratio_label_4": "-3.8%", "ratio_label_5": "-3.6%", "ratio_label_6": "-5.1%", "ratio_label_7": "-0.0%", "ratio_label_8": "-1.1%", "ratio_label_9": "-3.7%", "ratio_label_10": "-3.5%"}, {"source": "EEP", "carrier": "Tapas", "yield": 0.15854223971617618, "rm_system": "P", "ratio_0": 0.03904511322202886, "ratio_1": 0.04519963134037108, "ratio_2": 0.04893162014252006, "ratio_3": null, "ratio_4": 0.05745552880896465, "ratio_5": 0.016625671920790897, "ratio_6": 0.04516992980438883, "ratio_7": 0.0465431745112026, "ratio_8": 0.001525276756374705, "ratio_9": 0.05375131282990231, "ratio_10": 0.01580926054271692, "ratio_label": "+3.9%", "ratio_label_0": "+3.9%", "ratio_label_1": "+4.5%", "ratio_label_2": "+4.9%", "ratio_label_3": " ", "ratio_label_4": "+5.7%", "ratio_label_5": "+1.7%", "ratio_label_6": "+4.5%", "ratio_label_7": "+4.7%", "ratio_label_8": "+0.2%", "ratio_label_9": "+5.4%", "ratio_label_10": "+1.6%"}, {"source": "EEP", "carrier": "Stroop", "yield": 0.23904457778372085, "rm_system": "E", "ratio_0": -0.003270011485482116, "ratio_1": 0.009642589398407786, "ratio_2": -0.04014309615979683, "ratio_3": null, "ratio_4": -0.02126524820195763, "ratio_5": -0.014484788772955892, "ratio_6": 0.009368434174862772, "ratio_7": -0.04153403196029748, "ratio_8": -0.0011938466199474806, "ratio_9": -0.02225744921822559, "ratio_10": -0.01682899930426418, "ratio_label": "-0.3%", "ratio_label_0": "-0.3%", "ratio_label_1": "+1.0%", "ratio_label_2": "-4.0%", "ratio_label_3": " ", "ratio_label_4": "-2.1%", "ratio_label_5": "-1.4%", "ratio_label_6": "+0.9%", "ratio_label_7": "-4.2%", "ratio_label_8": "-0.1%", "ratio_label_9": "-2.2%", "ratio_label_10": "-1.7%"}, {"source": "EEP", "carrier": "Brat", "yield": 0.24485454704057047, "rm_system": "E", "ratio_0": -0.002236629420498071, "ratio_1": -0.04157484147792301, "ratio_2": 0.010361744990978083, "ratio_3": null, "ratio_4": -0.028277821122691504, "ratio_5": -0.025984739420283565, "ratio_6": -0.041375547896581155, "ratio_7": 0.01019903168963987, "ratio_8": -0.00047453174010791965, "ratio_9": -0.026594070602809272, "ratio_10": -0.024871522517084244, "ratio_label": "-0.2%", "ratio_label_0": "-0.2%", "ratio_label_1": "-4.2%", "ratio_label_2": "+1.0%", "ratio_label_3": " ", "ratio_label_4": "-2.8%", "ratio_label_5": "-2.6%", "ratio_label_6": "-4.1%", "ratio_label_7": "+1.0%", "ratio_label_8": "-0.0%", "ratio_label_9": "-2.7%", "ratio_label_10": "-2.5%"}, {"source": "PPE", "carrier": "Tapas", "yield": 0.149928044628738, "rm_system": "E", "ratio_0": -0.01741010859120662, "ratio_1": -0.011589988547695773, "ratio_2": -0.008060772707903063, "ratio_3": -0.05433375422763931, "ratio_4": null, "ratio_5": -0.03861141747886199, "ratio_6": -0.011618076287721824, "ratio_7": -0.01031944512130245, "ratio_8": -0.05289135148367463, "ratio_9": -0.0035029520184497454, "ratio_10": -0.03938347016177113, "ratio_label": "-1.7%", "ratio_label_0": "-1.7%", "ratio_label_1": "-1.2%", "ratio_label_2": "-0.8%", "ratio_label_3": "-5.4%", "ratio_label_4": " ", "ratio_label_5": "-3.9%", "ratio_label_6": "-1.2%", "ratio_label_7": "-1.0%", "ratio_label_8": "-5.3%", "ratio_label_9": "-0.4%", "ratio_label_10": "-3.9%"}, {"source": "PPE", "carrier": "Stroop", "yield": 0.2442383672844659, "rm_system": "P", "ratio_0": 0.018386224340574797, "ratio_1": 0.031579380974859905, "ratio_2": -0.019288012327301707, "ratio_3": 0.021727284295250726, "ratio_4": null, "ratio_5": 0.0069277803986680375, "ratio_6": 0.031299269102831984, "ratio_7": -0.020709169385376258, "ratio_8": 0.02050749863038659, "ratio_9": -0.0010137588498264627, "ratio_10": 0.004532636538698176, "ratio_label": "+1.8%", "ratio_label_0": "+1.8%", "ratio_label_1": "+3.2%", "ratio_label_2": "-1.9%", "ratio_label_3": "+2.2%", "ratio_label_4": " ", "ratio_label_5": "+0.7%", "ratio_label_6": "+3.1%", "ratio_label_7": "-2.1%", "ratio_label_8": "+2.1%", "ratio_label_9": "-0.1%", "ratio_label_10": "+0.5%"}, {"source": "PPE", "carrier": "Brat", "yield": 0.2519799921861064, "rm_system": "P", "ratio_0": 0.026799009293253517, "ratio_1": -0.013683973304586261, "ratio_2": 0.03976400554972637, "ratio_3": 0.02910072625424953, "ratio_4": null, "ratio_5": 0.0023598120453083293, "ratio_6": -0.01347888013528964, "ratio_7": 0.03959655717314825, "ratio_8": 0.028612385295873954, "ratio_9": 0.0017327488828418058, "ratio_10": 0.0035054243688692477, "ratio_label": "+2.7%", "ratio_label_0": "+2.7%", "ratio_label_1": "-1.4%", "ratio_label_2": "+4.0%", "ratio_label_3": "+2.9%", "ratio_label_4": " ", "ratio_label_5": "+0.2%", "ratio_label_6": "-1.3%", "ratio_label_7": "+4.0%", "ratio_label_8": "+2.9%", "ratio_label_9": "+0.2%", "ratio_label_10": "+0.4%"}, {"source": "PPP", "carrier": "Tapas", "yield": 0.15594947491010122, "rm_system": "P", "ratio_0": 0.02205279870503274, "ratio_1": 0.028106667192058232, "ratio_2": 0.03177762387279781, "ratio_3": -0.016353779350642084, "ratio_4": 0.04016213441770633, "ratio_5": null, "ratio_6": 0.028077451388441643, "ratio_7": 0.029428238354325842, "ratio_8": -0.014853446633789846, "ratio_9": 0.03651849636943272, "ratio_10": -0.0008030599665377336, "ratio_label": "+2.2%", "ratio_label_0": "+2.2%", "ratio_label_1": "+2.8%", "ratio_label_2": "+3.2%", "ratio_label_3": "-1.6%", "ratio_label_4": "+4.0%", "ratio_label_5": " ", "ratio_label_6": "+2.8%", "ratio_label_7": "+2.9%", "ratio_label_8": "-1.5%", "ratio_label_9": "+3.7%", "ratio_label_10": "-0.1%"}, {"source": "PPP", "carrier": "Stroop", "yield": 0.24255797887288974, "rm_system": "P", "ratio_0": 0.011379608513105044, "ratio_1": 0.024481994693235754, "ratio_2": -0.026035425018853253, "ratio_3": 0.014697681586183897, "ratio_4": -0.006880116462697261, "ratio_5": null, "ratio_6": 0.024203810023509797, "ratio_7": -0.027446804350856446, "ratio_8": 0.013486288188753637, "ratio_9": -0.007886900533571883, "ratio_10": -0.0023786649912684865, "ratio_label": "+1.1%", "ratio_label_0": "+1.1%", "ratio_label_1": "+2.4%", "ratio_label_2": "-2.6%", "ratio_label_3": "+1.5%", "ratio_label_4": "-0.7%", "ratio_label_5": " ", "ratio_label_6": "+2.4%", "ratio_label_7": "-2.7%", "ratio_label_8": "+1.3%", "ratio_label_9": "-0.8%", "ratio_label_10": "-0.2%"}, {"source": "PPP", "carrier": "Brat", "yield": 0.2513867666660966, "rm_system": "P", "ratio_0": 0.02438166111037221, "ratio_1": -0.01600601416487102, "ratio_2": 0.03731613444088011, "ratio_3": 0.026677959239383764, "ratio_4": -0.0023542564425974577, "ratio_5": null, "ratio_6": -0.015801403837489514, "ratio_7": 0.03714908028072128, "ratio_8": 0.02619076796085551, "ratio_9": -0.0006255868949764931, "ratio_10": 0.0011429152583672941, "ratio_label": "+2.4%", "ratio_label_0": "+2.4%", "ratio_label_1": "-1.6%", "ratio_label_2": "+3.7%", "ratio_label_3": "+2.7%", "ratio_label_4": "-0.2%", "ratio_label_5": " ", "ratio_label_6": "-1.6%", "ratio_label_7": "+3.7%", "ratio_label_8": "+2.6%", "ratio_label_9": "-0.1%", "ratio_label_10": "+0.1%"}, {"source": "UEE", "carrier": "Tapas", "yield": 0.1516903952124307, "rm_system": "E", "ratio_0": -0.00586011557326982, "ratio_1": 2.841790137209088e-05, "ratio_2": 0.003599118412099145, "ratio_3": -0.043217785468476544, "ratio_4": 0.011754642622444411, "ratio_5": -0.027310638270027665, "ratio_6": null, "ratio_7": 0.0013138961116789805, "ratio_8": -0.04175842779573902, "ratio_9": 0.008210514654894085, "ratio_10": -0.02809176615631015, "ratio_label": "-0.6%", "ratio_label_0": "-0.6%", "ratio_label_1": "+0.0%", "ratio_label_2": "+0.4%", "ratio_label_3": "-4.3%", "ratio_label_4": "+1.2%", "ratio_label_5": "-2.7%", "ratio_label_6": " ", "ratio_label_7": "+0.1%", "ratio_label_8": "-4.2%", "ratio_label_9": "+0.8%", "ratio_label_10": "-2.8%"}, {"source": "UEE", "carrier": "Stroop", "yield": 0.2368258900221451, "rm_system": "E", "ratio_0": -0.01252114216418554, "ratio_1": 0.0002716106569837784, "ratio_2": -0.04905198999524307, "ratio_3": -0.00928148122892436, "ratio_4": -0.030349356428867047, "ratio_5": -0.023631829706779017, "ratio_6": null, "ratio_7": -0.050430015851220755, "ratio_8": -0.010464247183878506, "ratio_9": -0.031332348350027184, "ratio_10": -0.025954282492044345, "ratio_label": "-1.3%", "ratio_label_0": "-1.3%", "ratio_label_1": "+0.0%", "ratio_label_2": "-4.9%", "ratio_label_3": "-0.9%", "ratio_label_4": "-3.0%", "ratio_label_5": "-2.4%", "ratio_label_6": " ", "ratio_label_7": "-5.0%", "ratio_label_8": "-1.0%", "ratio_label_9": "-3.1%", "ratio_label_10": "-2.6%"}, {"source": "UEE", "carrier": "Brat", "yield": 0.25542280556615193, "rm_system": "U", "ratio_0": 0.04082820794963493, "ratio_1": -0.00020789536601584224, "ratio_2": 0.05397034550290991, "ratio_3": 0.04316137336763615, "ratio_4": 0.013663042649444845, "ratio_5": 0.016055096907372945, "ratio_6": null, "ratio_7": 0.053800609272020905, "ratio_8": 0.04266636018591852, "ratio_9": 0.015419466154173556, "ratio_10": 0.017216361780970413, "ratio_label": "+4.1%", "ratio_label_0": "+4.1%", "ratio_label_1": "-0.0%", "ratio_label_2": "+5.4%", "ratio_label_3": "+4.3%", "ratio_label_4": "+1.4%", "ratio_label_5": "+1.6%", "ratio_label_6": " ", "ratio_label_7": "+5.4%", "ratio_label_8": "+4.3%", "ratio_label_9": "+1.5%", "ratio_label_10": "+1.7%"}, {"source": "EUE", "carrier": "Tapas", "yield": 0.15149135131498492, "rm_system": "E", "ratio_0": -0.007164598147301415, "ratio_1": -0.0012837914417234142, "ratio_2": 0.0022822236955803987, "ratio_3": -0.044473248352072114, "ratio_4": 0.010427046454971833, "ratio_5": -0.028586974067634663, "ratio_6": -0.0013121720539195358, "ratio_7": null, "ratio_8": -0.04301580560768936, "ratio_9": 0.00688756899309606, "ratio_10": -0.029367076979734175, "ratio_label": "-0.7%", "ratio_label_0": "-0.7%", "ratio_label_1": "-0.1%", "ratio_label_2": "+0.2%", "ratio_label_3": "-4.4%", "ratio_label_4": "+1.0%", "ratio_label_5": "-2.9%", "ratio_label_6": "-0.1%", "ratio_label_7": " ", "ratio_label_8": "-4.3%", "ratio_label_9": "+0.7%", "ratio_label_10": "-2.9%"}, {"source": "EUE", "carrier": "Stroop", "yield": 0.24940330252165918, "rm_system": "U", "ratio_0": 0.039922148256421375, "ratio_1": 0.05339430200466477, "ratio_2": 0.0014512104204862375, "ratio_3": 0.043333861968249954, "ratio_4": 0.021147108435987994, "ratio_5": 0.02822139135796764, "ratio_6": 0.0531082665765048, "ratio_7": null, "ratio_8": 0.042088281363662494, "ratio_9": 0.02011191151783631, "ratio_10": 0.025775597131070915, "ratio_label": "+4.0%", "ratio_label_0": "+4.0%", "ratio_label_1": "+5.3%", "ratio_label_2": "+0.1%", "ratio_label_3": "+4.3%", "ratio_label_4": "+2.1%", "ratio_label_5": "+2.8%", "ratio_label_6": "+5.3%", "ratio_label_7": " ", "ratio_label_8": "+4.2%", "ratio_label_9": "+2.0%", "ratio_label_10": "+2.6%"}, {"source": "EUE", "carrier": "Brat", "yield": 0.24238248044153374, "rm_system": "E", "ratio_0": -0.012310109909072331, "ratio_1": -0.05125116095287374, "ratio_2": 0.00016107053781855285, "ratio_3": -0.010096061637063003, "ratio_4": -0.038088388134737916, "ratio_5": -0.03581845752653623, "ratio_6": -0.051053879451813056, "ratio_7": null, "ratio_8": -0.010565802475474007, "ratio_9": -0.03642163686388589, "ratio_10": -0.03471647972980718, "ratio_label": "-1.2%", "ratio_label_0": "-1.2%", "ratio_label_1": "-5.1%", "ratio_label_2": "+0.0%", "ratio_label_3": "-1.0%", "ratio_label_4": "-3.8%", "ratio_label_5": "-3.6%", "ratio_label_6": "-5.1%", "ratio_label_7": " ", "ratio_label_8": "-1.1%", "ratio_label_9": "-3.6%", "ratio_label_10": "-3.5%"}, {"source": "EEU", "carrier": "Tapas", "yield": 0.15830078720493668, "rm_system": "U", "ratio_0": 0.037462695486996545, "ratio_1": 0.04360784055839706, "ratio_2": 0.04733414571390515, "ratio_3": -0.0015229538302962142, "ratio_4": 0.055845072860996936, "ratio_5": 0.015077397959761596, "ratio_6": 0.04357818425648263, "ratio_7": 0.044949337575010295, "ratio_8": null, "ratio_9": 0.05214649823184847, "ratio_10": 0.014262229938522886, "ratio_label": "+3.7%", "ratio_label_0": "+3.7%", "ratio_label_1": "+4.4%", "ratio_label_2": "+4.7%", "ratio_label_3": "-0.2%", "ratio_label_4": "+5.6%", "ratio_label_5": "+1.5%", "ratio_label_6": "+4.4%", "ratio_label_7": "+4.5%", "ratio_label_8": " ", "ratio_label_9": "+5.2%", "ratio_label_10": "+1.4%"}, {"source": "EEU", "carrier": "Stroop", "yield": 0.2393303014551641, "rm_system": "E", "ratio_0": -0.0020786464505737623, "ratio_1": 0.010849388524173165, "ratio_2": -0.03899580454930274, "ratio_3": 0.0011952735932867498, "ratio_4": -0.020095392398301493, "ratio_5": -0.01330682846519382, "ratio_6": 0.01057490561012897, "ratio_7": -0.040388402898635656, "ratio_8": null, "ratio_9": -0.021088779366243315, "ratio_10": -0.01565384096944722, "ratio_label": "-0.2%", "ratio_label_0": "-0.2%", "ratio_label_1": "+1.1%", "ratio_label_2": "-3.9%", "ratio_label_3": "+0.1%", "ratio_label_4": "-2.0%", "ratio_label_5": "-1.3%", "ratio_label_6": "+1.1%", "ratio_label_7": "-4.0%", "ratio_label_8": " ", "ratio_label_9": "-2.1%", "ratio_label_10": "-1.6%"}, {"source": "EEU", "carrier": "Brat", "yield": 0.24497079345746545, "rm_system": "E", "ratio_0": -0.0017629342486468191, "ratio_1": -0.04111982239869094, "ratio_2": 0.010841421329614631, "ratio_3": 0.00047475702738619674, "ratio_4": -0.027816489189602445, "ratio_5": -0.0255223188305419, "ratio_6": -0.040920434201320854, "ratio_7": 0.010678630778993226, "ratio_8": null, "ratio_9": -0.0261319392973286, "ratio_10": -0.024408573419794855, "ratio_label": "-0.2%", "ratio_label_0": "-0.2%", "ratio_label_1": "-4.1%", "ratio_label_2": "+1.1%", "ratio_label_3": "+0.0%", "ratio_label_4": "-2.8%", "ratio_label_5": "-2.6%", "ratio_label_6": "-4.1%", "ratio_label_7": "+1.1%", "ratio_label_8": " ", "ratio_label_9": "-2.6%", "ratio_label_10": "-2.4%"}, {"source": "UUE", "carrier": "Tapas", "yield": 0.15045508156037593, "rm_system": "E", "ratio_0": -0.0139560439249935, "ratio_1": -0.008115464612390655, "ratio_2": -0.004573842640763881, "ratio_3": -0.05100948599110211, "ratio_4": 0.003515265825970282, "ratio_5": -0.03523188104924746, "ratio_6": -0.008143651088289405, "ratio_7": -0.006840454888110137, "ratio_8": -0.04956201281806438, "ratio_9": null, "ratio_10": -0.03600664770256867, "ratio_label": "-1.4%", "ratio_label_0": "-1.4%", "ratio_label_1": "-0.8%", "ratio_label_2": "-0.5%", "ratio_label_3": "-5.1%", "ratio_label_4": "+0.4%", "ratio_label_5": "-3.5%", "ratio_label_6": "-0.8%", "ratio_label_7": "-0.7%", "ratio_label_8": "-5.0%", "ratio_label_9": " ", "ratio_label_10": "-3.6%"}, {"source": "UUE", "carrier": "Stroop", "yield": 0.24448621735096604, "rm_system": "U", "ratio_0": 0.019419670052777782, "ratio_1": 0.03262621493881701, "ratio_2": -0.018292797963298635, "ratio_3": 0.022764120473665717, "ratio_4": 0.0010147875997363887, "ratio_5": 0.007949598224046728, "ratio_6": 0.032345818812734795, "ratio_7": -0.019715397193933004, "ratio_8": 0.021543096985434884, "ratio_9": null, "ratio_10": 0.005552023801788097, "ratio_label": "+1.9%", "ratio_label_0": "+1.9%", "ratio_label_1": "+3.3%", "ratio_label_2": "-1.8%", "ratio_label_3": "+2.3%", "ratio_label_4": "+0.1%", "ratio_label_5": "+0.8%", "ratio_label_6": "+3.2%", "ratio_label_7": "-2.0%", "ratio_label_8": "+2.2%", "ratio_label_9": " ", "ratio_label_10": "+0.6%"}, {"source": "UUE", "carrier": "Brat", "yield": 0.2515441293769431, "rm_system": "U", "ratio_0": 0.025022902004917302, "ratio_1": -0.015390055086669685, "ratio_2": 0.037965472037625014, "ratio_3": 0.027320637567184836, "ratio_4": -0.0017297516575894845, "ratio_5": 0.0006259784989219863, "ratio_6": -0.015185316677622573, "ratio_7": 0.0377983133051536, "ratio_8": 0.02683314131739123, "ratio_9": null, "ratio_10": 0.0017696091976671102, "ratio_label": "+2.5%", "ratio_label_0": "+2.5%", "ratio_label_1": "-1.5%", "ratio_label_2": "+3.8%", "ratio_label_3": "+2.7%", "ratio_label_4": "-0.2%", "ratio_label_5": "+0.1%", "ratio_label_6": "-1.5%", "ratio_label_7": "+3.8%", "ratio_label_8": "+2.7%", "ratio_label_9": " ", "ratio_label_10": "+0.2%"}, {"source": "UUU", "carrier": "Tapas", "yield": 0.15607481234367931, "rm_system": "U", "ratio_0": 0.022874228048381573, "ratio_1": 0.028932962062141465, "ratio_2": 0.03260686911055233, "ratio_3": -0.015563217581094357, "ratio_4": 0.040998118331779576, "ratio_5": 0.0008037053901615021, "ratio_6": 0.028903722777626095, "ratio_7": 0.030255595378275713, "ratio_8": -0.014061679038750552, "ratio_9": 0.037351551871966926, "ratio_10": null, "ratio_label": "+2.3%", "ratio_label_0": "+2.3%", "ratio_label_1": "+2.9%", "ratio_label_2": "+3.3%", "ratio_label_3": "-1.6%", "ratio_label_4": "+4.1%", "ratio_label_5": "+0.1%", "ratio_label_6": "+2.9%", "ratio_label_7": "+3.0%", "ratio_label_8": "-1.4%", "ratio_label_9": "+3.7%", "ratio_label_10": " "}, {"source": "UUU", "carrier": "Stroop", "yield": 0.24313631872234046, "rm_system": "U", "ratio_0": 0.013791077858467116, "ratio_1": 0.026924704536585686, "ratio_2": -0.02371316570467863, "ratio_3": 0.017117062334380373, "ratio_4": -0.004512184446606171, "ratio_5": 0.0023843365290976415, "ratio_6": 0.026645856580989946, "ratio_7": -0.025127910239979623, "ratio_8": 0.01590278056742167, "ratio_9": -0.005521369029517831, "ratio_10": null, "ratio_label": "+1.4%", "ratio_label_0": "+1.4%", "ratio_label_1": "+2.7%", "ratio_label_2": "-2.4%", "ratio_label_3": "+1.7%", "ratio_label_4": "-0.5%", "ratio_label_5": "+0.2%", "ratio_label_6": "+2.7%", "ratio_label_7": "-2.5%", "ratio_label_8": "+1.6%", "ratio_label_9": "-0.6%", "ratio_label_10": " "}, {"source": "UUU", "carrier": "Brat", "yield": 0.25109978089513885, "rm_system": "U", "ratio_0": 0.023212216255865448, "ratio_1": -0.017129352025442635, "ratio_2": 0.03613192345588079, "ratio_3": 0.025505892906835026, "ratio_4": -0.0034931792930505967, "ratio_5": -0.0011416104943142713, "ratio_6": -0.016924975283358012, "ratio_7": 0.035965060006504235, "ratio_8": 0.02501925781098291, "ratio_9": -0.001766483212726433, "ratio_10": null, "ratio_label": "+2.3%", "ratio_label_0": "+2.3%", "ratio_label_1": "-1.7%", "ratio_label_2": "+3.6%", "ratio_label_3": "+2.6%", "ratio_label_4": "-0.3%", "ratio_label_5": "-0.1%", "ratio_label_6": "-1.7%", "ratio_label_7": "+3.6%", "ratio_label_8": "+2.5%", "ratio_label_9": "-0.2%", "ratio_label_10": " "}]}}, {"mode": "vega-lite"});
+</script></div></div>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2026, PassengerSim LLC.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.2.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.view", "content.code.copy", "content.code.annotate", "navigation.tabs", "navigation.top", "navigation.tracking", "announce.dismiss"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": null}}</script>
+    
+      
+        <script src="../../_static/sphinx_immaterial_theme.32136f45f91ae6956.min.js?v=a7a9472a"></script>
+    
+  </body>
+</html>

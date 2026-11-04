@@ -1,0 +1,6 @@
+register\_circuity\_function
+============================
+
+.. currentmodule:: passengersim.connection_builder.circuity
+
+.. autofunction:: register_circuity_function

@@ -1,0 +1,397 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<style>.md-sidebar--secondary {display: none !important;}</style>\n",
+    "\n",
+    "# Q vs Conditional Forecasting\n",
+    "\n",
+    "There are two different approaches to forecasting the priceable (i.e. price sensitive) demand for\n",
+    "unrestricted networks: Q forecasting, and conditional forecasting.\n",
+    "\n",
+    "Under Q forecasting, each priceable booking is converted into an equivalent number of Q-class\n",
+    "bookings, where the \"Q\" class is the lowest possible fare class for the relevant path. Forecasts are\n",
+    "then made for how much demand there would be for that Q class, and then those forecasts are\n",
+    "broadcast up to the various higher fare classes, based on the sellup probability in each time frame\n",
+    "along the booking curve.\n",
+    "\n",
+    "Under conditional forecasting, bookings are all recorded in the class where they occur, and the\n",
+    "level of demand in that class is computed *conditional* on it being the lowest available fare class\n",
+    "at that time.\n",
+    "\n",
+    "These two methodologies are similar, and indeed with certain configurations and under the right\n",
+    "conditions (e.g. flights never sell out, the lowest available fare class is always the same for full\n",
+    "time frames) the methodologies become identical. In practice, and in most simulations, these\n",
+    "particular conditions do not actually hold, so these algorithms are not actually identical, so\n",
+    "PassengerSim allows you to choose one or the other as appropriate."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import passengersim as pax\n",
+    "\n",
+    "pax.versions()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg = pax.Config.from_yaml(pax.demo_network(\"3MKT/DEMO\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "In this example, we will work with a completely fenceless marketplace. To convert the typical 3MKT\n",
+    "network into a restriction-free network, we can use a tool to strip the restrictions."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from passengersim.config.manipulate import strip_ap_restrictions, strip_fare_restrictions\n",
+    "\n",
+    "cfg = strip_fare_restrictions(strip_ap_restrictions(cfg))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "For this example, we will assign Q forecasting to AL1. The \"Q\" RM system uses Q forecasting, as well\n",
+    "as a ProBP optimizer. We also need to give this carrier a Frat5 curve, and tell it that we need to\n",
+    "store the Q history while running the simulation."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg.carriers.AL1.rm_system = \"Q\"  # Q forecasting\n",
+    "cfg.carriers.AL1.frat5 = \"curve_C\"\n",
+    "cfg.carriers.AL1.store_q_history = True"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "For AL2, we will use conditional forecasting. We'll select the \"M\" system, which pairs the\n",
+    "conditional forecast with a ProBP optimizer."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg.carriers.AL2.rm_system = \"M\"  # Conditional forecasting\n",
+    "cfg.carriers.AL2.frat5 = \"curve_C\""
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Having set up our carriers with the desired RM systems, we can now run the model and see how they\n",
+    "do."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "sim = pax.MultiSimulation(cfg)\n",
+    "summary = sim.run()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "summary.fig_carrier_revenues()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "summary.fig_carrier_load_factors()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "summary.fig_carrier_rasm()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "summary.fig_fare_class_mix()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "summary.fig_carrier_head_to_head_revenue(\"AL1\", \"AL2\", mean_adjusted=False)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Changing RM System Options\n",
+    "\n",
+    "We can also change some of the options associated with the RM systems. For example, the Q system\n",
+    "allows us to disable the detruncation of priceable demand. This has only a very modest impact of\n",
+    "results, as priceable demand is presumed to be censored and in need of detruncation only when a leg\n",
+    "is completely sold out. To remove the detruncation of priceable demand from the Q system, we can use\n",
+    "the `rm_system_options` setting."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from passengersim.experiments import Experiments\n",
+    "\n",
+    "experiments = Experiments(cfg, output_dir=False)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "@experiments.existing(summary)\n",
+    "def baseline(cfg: pax.Config) -> pax.Config:\n",
+    "    return cfg\n",
+    "\n",
+    "\n",
+    "@experiments\n",
+    "def no_price_detrunc(cfg: pax.Config) -> pax.Config:\n",
+    "    cfg.carriers.AL1.rm_system_options = {\"priceable_detruncation\": \"none\"}\n",
+    "    return cfg"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now we can run the additional experiment, and we can see that the results are only very slightly\n",
+    "different."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "summaries = experiments.run(write_report=False)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "summaries.fig_carrier_revenues()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "summaries.fig_carrier_load_factors()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "summaries.fig_carrier_rasm()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "summaries.fig_fare_class_mix()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "summaries[\"no_price_detrunc\"].fig_carrier_head_to_head_revenue(\"AL1\", \"AL2\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Swapping for Leg Forecasting\n",
+    "\n",
+    "The standard \"Q\" RM system that comes with PassengerSim uses path-based forecasting and a ProBP\n",
+    "optimizer. We can alternatively use the \"Qe\" system, which uses leg-based forecasts and an EMSR\n",
+    "capacity allocation optimization."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "@experiments\n",
+    "def al1_Qe(cfg: pax.Config) -> pax.Config:\n",
+    "    cfg.carriers.AL1.rm_system = \"Qe\"\n",
+    "    return cfg"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "summaries = experiments.run(write_report=False)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "summaries.fig_carrier_revenues()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "summaries[\"al1_Qe\"].fig_carrier_head_to_head_revenue(\"AL1\", \"AL2\", mean_adjusted=False)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Carrier 2 Responds"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "@experiments\n",
+    "def al2_Q(cfg: pax.Config) -> pax.Config:\n",
+    "    cfg.carriers.AL1.rm_system = \"Qe\"\n",
+    "    cfg.carriers.AL2.rm_system = \"Q\"\n",
+    "    cfg.carriers.AL2.store_q_history = True\n",
+    "    return cfg\n",
+    "\n",
+    "\n",
+    "summaries = experiments.run(write_report=False)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "summaries.fig_carrier_revenues()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "summaries[\"al2_Q\"].fig_carrier_head_to_head_revenue(\"AL1\", \"AL2\", mean_adjusted=False)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "summaries.fig_fare_class_mix()"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "pax (3.12.11)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.11"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

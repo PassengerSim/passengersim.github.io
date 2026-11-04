@@ -1,0 +1,38 @@
+---
+title: Europa Network
+icon: material/power-socket-de
+---
+
+# Europa Network
+
+This is a very small network of European airports and flights, intended to support testing of the
+PassengerSim simulation engine. It is not intended to be a realistic representation of the European
+air travel market. This network is larger and more complex than the 3MKT test network, but still
+quite small, with just 33 markets across only 8 airports in Europe and 2 elsewhere. All travel is
+west-to-east.
+
+This network has three carriers:
+
+**Bratwurst** (`Brat`) is a "legacy" carrier with a hub at FRA. It has 3 banks of flights there,
+with multiple inbound and outbound flights in each bank. It offers service to or from every airport
+in the network, with the exception of KEF. It has a monopoly on eastbound markets from FRA,
+including WAW, HEL, ATH, and SIN.
+
+**Stroopwaffel** (`Stroop`) is also a "legacy" carrier, with a hub at AMS. It has 3 banks of flights
+there, with multiple inbound and outbound flights in each bank. It offers service to or from every
+airport in the network. It has a monopoly in three markets: CDG~AMS, JFK~AMS, and KEF~SIN.
+
+**Tapas** (`Tapas`) is a low-cost carrier (LCC) operating primarily out of Madrid, serving customers
+originating at MAD or KEF. It operates three "banks" of flights at MAD, where each bank starts with
+an inbound flight from KEF, followed by connectable outbound flights to other European destinations.
+There are no long-haul international flights, and the carrier does not serve CDG. It has a monopoly
+only in the KEF~MAD market.
+
+```{toctree}
+---
+maxdepth: 1
+hidden:
+---
+Baseline Results <eu-baseline>
+RM Optimizers <eu-rm-optimizers>
+```

@@ -1,0 +1,34 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.connection_builder.
+
+circuity
+========
+
+.. automodule:: passengersim.connection_builder.circuity
+   :no-members:
+
+
+
+
+
+
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: .
+
+   default_circuity_function
+   get_registered_circuity_function
+   register_circuity_function
+   unlimited_circuity
+
+
+
+
+

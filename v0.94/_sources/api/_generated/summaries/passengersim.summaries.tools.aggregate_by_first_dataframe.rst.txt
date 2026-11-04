@@ -1,0 +1,6 @@
+aggregate\_by\_first\_dataframe
+===============================
+
+.. currentmodule:: passengersim.summaries.tools
+
+.. autofunction:: aggregate_by_first_dataframe

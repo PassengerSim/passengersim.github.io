@@ -1,0 +1,34 @@
+---
+title: 3MKT Network
+icon: material/power-socket-us
+---
+
+# 3MKT Network
+
+The three-market (3MKT) network is a small demonstration network included with PassengerSim. It is a
+useful starting point for exploring demand, fares, connecting itineraries, and revenue management
+methods.
+
+The network contains three directional markets:
+
+- Boston (BOS) to Chicago (ORD).
+- Chicago (ORD) to Los Angeles (LAX).
+- Boston (BOS) to Los Angeles (LAX), with connections through Chicago.
+
+Two carriers, `AL1` and `AL2`, compete for business and leisure passengers. The compact network
+makes it easy to inspect the configuration and understand how local and connecting passengers share
+flight capacity.
+
+## Load the demo configuration
+
+```python
+import passengersim as pax
+
+cfg = pax.Config.from_yaml(pax.demo_network("3MKT/DEMO"))
+```
+
+The {doc}`3MKT walkthrough <../../examples/intro-3mkt>` introduces the markets, demand segments,
+flight schedules, and fare classes, then demonstrates running a simulation and examining its
+results.
+
+For a larger network with additional hubs and a third carrier, see {doc}`Europa <../europa/index>`.

@@ -1,0 +1,6 @@
+aggregate\_by\_averaging\_dataframe
+===================================
+
+.. currentmodule:: passengersim.summaries.tools
+
+.. autofunction:: aggregate_by_averaging_dataframe

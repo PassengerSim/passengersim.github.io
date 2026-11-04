@@ -1,0 +1,33 @@
+ProBP
+=====
+
+.. currentmodule:: passengersim.core
+
+.. autoclass:: ProBP
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ProBP.__init__
+      ~ProBP.add_debug_fltno
+      ~ProBP.run
+      ~ProBP.update_decision_fares
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~ProBP.carrier
+      ~ProBP.debug_fltno
+      ~ProBP.tolerance
+      ~ProBP.use_sub_bp
+   
+   

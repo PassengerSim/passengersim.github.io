@@ -1,0 +1,6 @@
+fig\_segmentation\_by\_timeframe
+================================
+
+.. currentmodule:: passengersim.contrast
+
+.. autofunction:: fig_segmentation_by_timeframe

@@ -1,0 +1,6 @@
+compute\_rrd
+============
+
+.. currentmodule:: passengersim.database.database
+
+.. autofunction:: compute_rrd

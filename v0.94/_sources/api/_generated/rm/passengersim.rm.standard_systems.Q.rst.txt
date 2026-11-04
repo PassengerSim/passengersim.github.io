@@ -1,0 +1,16 @@
+﻿Q
+=
+
+.. currentmodule:: passengersim.rm.standard_systems
+
+.. autoclass:: Q()
+
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      ~Q.availability_control
+      ~Q.actions
+
+   

@@ -1,0 +1,6 @@
+summarize\_leg\_bid\_price\_detail
+==================================
+
+.. currentmodule:: passengersim.callbacks.bid_price_detail
+
+.. autofunction:: summarize_leg_bid_price_detail

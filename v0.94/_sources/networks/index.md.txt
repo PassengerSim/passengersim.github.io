@@ -1,0 +1,9 @@
+# Networks
+
+| Network                   | Description                                                                                                                                                |
+| :------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [3MKT](3mkt/index.md)     | A small network with just three directional markets, two carriers, and business and leisure demand. Start here to learn the simulation workflow.           |
+| [Europa](europa/index.md) | A larger test network with three European carriers and 33 markets.                                                                                         |
+| [U25](u25/index.md)       | A research network closely based on the historical PODS U10 network. Available only for internal use at Georgia Tech and other approved academic research. |
+| [NA26](na26/index.md)     | A US-focused network with two hub carriers and about 338 markets. Requires the separate NA26 package.                                                      |
+| [ME26](me26/index.md)     | A Middle East-focused network with four carriers. Requires the separate ME26 package.                                                                      |

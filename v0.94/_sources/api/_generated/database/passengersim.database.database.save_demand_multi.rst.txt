@@ -1,0 +1,6 @@
+save\_demand\_multi
+===================
+
+.. currentmodule:: passengersim.database.database
+
+.. autofunction:: save_demand_multi

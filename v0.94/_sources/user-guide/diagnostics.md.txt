@@ -1,0 +1,180 @@
+---
+title: Live Diagnostics
+icon: material/gauge
+---
+
+# Live Diagnostics
+
+Use run diagnostics to monitor simulation progress, assess revenue uncertainty, and investigate slow
+runs from a compact terminal or notebook dashboard. Optional timing and SQLite file panels provide
+more detail when needed. Periodic logging can retain diagnostic snapshots for later review.
+
+## Configuration
+
+`MultiSimulation` and `Experiments` include a compact terminal/notebook live diagnostic dashboard.
+Diagnostics are controlled through the simulation configuration:
+
+```python
+cfg.simulation_controls.diagnostics.mode = "live"
+cfg.simulation_controls.diagnostics.show_timing = True
+cfg.simulation_controls.diagnostics.show_database_files = True
+```
+
+The mode defaults to `live`; both optional panels default to hidden. A mode string is also accepted
+as shorthand for replacing the entire diagnostics configuration:
+
+```python
+cfg.simulation_controls.diagnostics = "live"  # default: collect, log, and display
+cfg.simulation_controls.diagnostics = "full"  # live mode with all diagnostic panels
+cfg.simulation_controls.diagnostics = "off"  # disable diagnostics; plain progress bars only
+cfg.simulation_controls.diagnostics = False  # also disables diagnostics
+cfg.simulation_controls.diagnostics = True  # equivalent to "live"
+```
+
+String or boolean assignment resets both panel flags to `False`, except `"full"`, which sets both to
+`True`. YAML also accepts `diagnostics: full`. This shorthand expands to `mode: live` with
+`show_timing: true` and `show_database_files: true`; `full` is not a separate mode. Change `.mode`
+to preserve existing panel preferences. A dictionary can set the mode and panels together:
+
+```python
+cfg.simulation_controls.diagnostics = {"mode": "live", "show_database_files": True}
+```
+
+The equivalent YAML is:
+
+```yaml
+simulation_controls:
+  diagnostics:
+    mode: live
+    show_timing: false
+    show_database_files: true
+```
+
+YAML also accepts `diagnostics: live` or `diagnostics: off`. The values `off` and `false` disable
+diagnostics; `on` and `true` select live mode. These aliases work both as shorthand and within
+`mode`, with or without quotes. Serialized configurations always use the nested form with canonical
+mode strings (`live` or `off`). Panel flags affect only live mode; `off` shows ordinary progress
+bars without diagnostic panels.
+
+## Progress and revenue
+
+The default dashboard shows trial progress and summary revenue statistics, with a separate row for
+each run. Each trial's speed readout uses up to its last 50 completed samples, excluding the first
+10 samples because these often have unusual timing. Speed includes sample setup and end-of-sample
+work and is independent of the configured burn-in period. A dash appears until an eligible sample
+completes.
+
+Revenue statistics use post-burn-in samples pooled across trials. Each carrier has a **Mean** column
+and a **95% CI** column showing the approximate confidence interval for its mean revenue. For
+example, `±1.58K` means the interval extends about 1,580 revenue units above and below the displayed
+mean. This measures uncertainty in the mean, rather than the variability of individual samples. The
+mean appears immediately; the interval appears after 30 observations.
+
+The interval uses a normal approximation based on the standard error of the mean. It assumes
+independent observations from a stable distribution; correlated samples or ongoing adaptation can
+make it too narrow. Treat it as a guide to uncertainty, not a convergence test or an automatic
+stopping rule. Large values are abbreviated for readability.
+
+The dashboard updates periodically and retains summaries rather than full sample histories to keep
+its overhead small. Final timing and progress counters are saved in
+`result.metadata("diagnostics")`. Carrier revenue statistics remain in the result tables rather than
+diagnostic metadata. Completed multi-trial aggregates omit `recent_seconds`, which describes active
+workers only. Standalone `Simulation` also saves diagnostics, but uses a simpler progress bar rather
+than the full dashboard.
+
+## Timing
+
+The timing panel shows the elapsed time spent in each of the main simulation phases, including core
+simulation, RM system callbacks, database recording, and other unclassified work. If your simulation
+is running slower than expected, this panel can be a tool to help identify the source of the
+slowdown.
+
+The timing panel is hidden by default. To show it alongside progress and revenue statistics, set
+`cfg.simulation_controls.diagnostics.show_timing = True` (default: `False`). Timing is still
+collected and saved. In shared experiment dashboards, this setting controls each run's timing row;
+the panel disappears when all runs hide it. The setting has no display effect in `off` mode.
+
+Total timing reports the share of overall elapsed time spent in each phase, while recent timing
+covers at most 20 completed sample intervals per active worker. Significantly different values in
+recent and total timing can indicate a change in simulation behavior, data leakage, competing
+processes running on your machine, or other issues.
+
+Timing covers work during simulation runs, excluding worker startup and model construction. RM time
+includes work invoked by RM callbacks. Database time covers built-in recording and commits; SQL
+issued independently by custom callbacks may instead appear under **Other**. **Other** also includes
+work outside the named stages. Report generation and database consolidation are recorded separately
+in final timing metadata. For parallel runs, summed worker time can exceed elapsed wall time.
+
+## SQLite files
+
+Enable the optional file panel with:
+
+```python
+cfg.simulation_controls.diagnostics.show_database_files = True
+```
+
+This setting defaults to `False` and applies only in `live` mode. It is independent of the timing
+panel. Each enabled run lists its existing trial and consolidated results databases, including
+temporary files. Each database has one row whose size and growth combine the main file with its
+SQLite `-wal`, `-shm`, and `-journal` companions when present. Directories appear below the table,
+with short directory IDs when needed to distinguish identical filenames. The panel shows a waiting
+message before files appear, or “No file-backed databases” for memory-only or disabled storage. Only
+PassengerSim-managed paths are monitored; databases opened independently by custom callbacks are not
+discovered.
+
+Sizes are logical file lengths in binary units (KiB, MiB, GiB), not allocated disk blocks. Growth is
+the net size change per second over at most 20 seconds, sampled every two seconds. A dash means
+there are not yet two usable observations. A negative rate means the combined size has shrunk. Zero
+growth does not imply zero database activity: SQLite can overwrite existing pages without increasing
+file size. Companion creation, removal, and truncation contribute to the group's net growth. Very
+short-lived files may appear and disappear between checks.
+
+Monitoring reads file metadata without querying SQLite tables and continues during consolidation. An
+unreadable file is reported in the panel without failing the simulation. The panel does not save a
+history or create log files. Monitoring files on unusually slow or remote filesystems can add more
+overhead than monitoring local files.
+
+## Periodic diagnostic logging
+
+See [Logging simulation diagnostics](../examples/diagnostic-logging.ipynb) for a runnable example
+that configures a JSON-lines file handler before starting a model run.
+
+In `live` mode, diagnostic snapshots are logged at INFO level every 60 seconds through the
+`passengersim.diagnostics` logger and its existing handlers. No separate file or handler is created.
+Configure logging before starting the run; no logging thread or file polling is started if this
+logger does not accept INFO records.
+
+```python
+cfg.simulation_controls.diagnostics.log_interval = 120  # seconds; default 60
+cfg.simulation_controls.diagnostics.log_interval = None  # disable diagnostic logging
+```
+
+The interval must be positive and finite. YAML accepts the same nested `log_interval` setting, with
+`null` to disable it. Setting `diagnostics` to a string or boolean replaces the entire settings
+object, including resetting the logging interval to 60 seconds. Changing `.mode` preserves the
+interval and panel preferences. `off` mode disables diagnostic logging entirely.
+
+Each message contains a JSON object, also available as the LogRecord's `diagnostics` attribute for
+custom handlers. Records include a run ID, event type, trial identifiers where applicable, elapsed
+wall time, completed samples, recent per-trial throughput, recent and cumulative worker seconds and
+percentages by stage, and per-carrier post-burn counts, means, and CI half-widths. Numeric values
+are not rounded or abbreviated. Summed worker seconds can exceed wall time for parallel runs. The
+same approximate CI calculation and 30-observation threshold as the dashboard apply; an unavailable
+CI is `null`.
+
+Database records contain each known database group's path, combined byte size, and recent net growth
+rate, including journal/WAL/SHM files. Monitoring is independent of panel visibility: logging reuses
+the file panel's cached observations when available and otherwise polls filesystem metadata in the
+background, without SQLite queries. File metadata is checked approximately every two seconds (or at
+the logging interval if shorter). Periodic logging continues while the parent is consolidating trial
+databases.
+
+Run start/end, trial completion/failure/cancellation, and database consolidation boundaries also
+produce records, including a final snapshot on normal completion or a handled failure/cancellation.
+An abrupt process termination cannot guarantee a final record. Final parallel summaries use
+authoritative worker results when available; failure events retain the last available observations.
+
+Logs report snapshot age, including per-trial age, so delayed reports are not mistaken for current
+measurements. A long simulation operation may not provide fresh data at every logging interval.
+Logging retains summaries rather than sample histories, but slow handlers or remote filesystems can
+still add overhead.

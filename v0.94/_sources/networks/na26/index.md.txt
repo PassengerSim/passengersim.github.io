@@ -1,0 +1,19 @@
+---
+title: NA26 Network
+icon: custom/earth-north-america
+---
+
+# NA26 Network
+
+The NA26 network is a larger demonstration network available for use with PassengerSim. It is a
+US-focused network with two carriers, each operating a hub with three banks of flights, and about
+338 origin-destination markets. NA26 is distributed as a separate `NA26` Python package rather than
+as part of PassengerSim itself.
+
+```{toctree}
+---
+maxdepth: 1
+hidden:
+---
+Baseline Results <na26>
+```

@@ -1,0 +1,32 @@
+MultiContrast
+=============
+
+.. currentmodule:: passengersim.contrast
+
+.. autoclass:: MultiContrast
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~MultiContrast.__init__
+      ~MultiContrast.clear
+      ~MultiContrast.copy
+      ~MultiContrast.fromkeys
+      ~MultiContrast.get
+      ~MultiContrast.items
+      ~MultiContrast.keys
+      ~MultiContrast.pop
+      ~MultiContrast.popitem
+      ~MultiContrast.setdefault
+      ~MultiContrast.update
+      ~MultiContrast.values
+   
+   
+
+   
+   
+   

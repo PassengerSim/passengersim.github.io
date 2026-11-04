@@ -1,0 +1,54 @@
+﻿.. rst-class:: page_title_prefix
+
+    passengersim.
+
+core
+====
+
+.. automodule:: passengersim.core
+   :no-members:
+
+
+
+
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: .
+   :template: autosummary/class.rst
+
+   Airport
+   BookingCurve
+   Bucket
+   Cabin
+   Carrier
+   ChoiceModel
+   DecisionWindow
+   Demand
+   DynamicProgram
+   Event
+   Fare
+   Forecast
+   ForecastAccessor
+   ForecastGroup
+   Frat5
+   History
+   Leg
+   Market
+   Path
+   PathClass
+   ProBP
+   Profiler
+   UserAction
+
+
+
+
+
+
+
+
+

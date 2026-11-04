@@ -1,0 +1,424 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "57d31e26",
+   "metadata": {},
+   "source": [
+    "# Europa Baseline Network\n",
+    "\n",
+    "This page reviews the configuration of the Europa network and runs a baseline simulation, with all\n",
+    "three carriers using the same revenue management system (`E`). See the\n",
+    "{doc}`Europa network overview <index>` for a description of the carriers and their hubs."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "initial_id",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import altair as alt\n",
+    "import passengersim as pax\n",
+    "from passengersim.config.checks import check_config\n",
+    "\n",
+    "pax.versions()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "3f9d2a71",
+   "metadata": {
+    "tags": [
+     "remove-cell"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "import plotly.io as pio\n",
+    "\n",
+    "pio.renderers.default = \"notebook_connected\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "874aebd7",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg = pax.Config.from_yaml(pax.demo_network(\"europa\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "711bbee2",
+   "metadata": {},
+   "source": [
+    "## Route Maps"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "ae36bc9c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg.plotly_route_map(\"Brat\", center_lon=31, center_lat=52, zoom=2.2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "7cc71a24",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg.plotly_route_map(\"Stroop\", center_lon=31, center_lat=52, zoom=2.2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "88d7db82",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg.plotly_route_map(\"Tapas\", center_lon=0, center_lat=50, zoom=4.5)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "cee22b8a",
+   "metadata": {},
+   "source": [
+    "For this example page, we will pre-build the flight connections, so we can do some pre-simulation\n",
+    "checking to review our network and verify it is constructed correctly."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "cc403289",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from passengersim.connection_builder import prebuild_connections\n",
+    "\n",
+    "cfg = prebuild_connections(cfg, inplace=False)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e9470c5c",
+   "metadata": {},
+   "source": [
+    "## Hub Flight Schedules"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "6d51a979",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg.fig_hub_schedule(\"AMS\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "c2d18fd0",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg.fig_hub_schedule(\"FRA\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "cb6b62ca",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg.fig_hub_schedule(\"MAD\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "065c8082",
+   "metadata": {},
+   "source": [
+    "## Check Configuration"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "e621fe99",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "check_config(cfg)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8e7962a5",
+   "metadata": {},
+   "source": [
+    "### List of Markets"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "0d55ed71",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg.dataframes.markets"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8abdb34e",
+   "metadata": {},
+   "source": [
+    "### Market Pricing Distribution"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "368497d4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "alt.Chart(cfg.dataframes.markets.eval(\"price_per_mile = lowest_fare / distance\")).mark_point().encode(\n",
+    "    x=alt.X(\"distance\", title=\"Market Distance (miles)\"),\n",
+    "    y=alt.Y(\"price_per_mile\", title=\"Lowest Fare Price per Mile\", scale=alt.Scale(zero=False)),\n",
+    "    tooltip=[\"orig\", \"dest\", \"distance\", \"lowest_fare\", \"price_per_mile\"],\n",
+    "    color=\"orig\",\n",
+    "    shape=\"dest\",\n",
+    ")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "af96e9d4",
+   "metadata": {},
+   "source": [
+    "Here we have plotted the lowest price fare per mile against the distance. We can see the cluster of\n",
+    "lower priced markets with MAD origins (reflecting the LCC that is dominant there) as well as cluster\n",
+    "of higher priced markets that are effectively controlled by legacy carriers flying into fortress\n",
+    "hubs with zero or nearly zero competition. Note none of this is an outcome of the simulation, this\n",
+    "is merely the input/setup of pricing for the network."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5b2c351c",
+   "metadata": {},
+   "source": [
+    "### Carrier Service Capacity\n",
+    "\n",
+    "We can calculate the number of seats offered by each carrier on each served route."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "5077c63a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg.dataframes.legs.groupby([\"carrier\", \"orig\", \"dest\"])[[\"capacity\"]].sum().reset_index()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "dfe75301",
+   "metadata": {},
+   "source": [
+    "## Simulation Results"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "22d30150",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "sim = pax.MultiSimulation(cfg)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "387a7e44",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "out = sim.run()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "de39762f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "out.fig_carrier_revenues()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b6e20662",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "out.fig_carrier_load_factors()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "c56dbd95",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "out.fig_carrier_rasm()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "2fa1220f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "out.fig_carrier_yields()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "309a80fe",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "out.fig_fare_class_mix()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "2184bdae",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "out.fig_leg_load_v_distance(carrier=\"Brat\", beeswarm=1000)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b3c169a5",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "out.fig_leg_load_v_distance(carrier=\"Stroop\", beeswarm=1000)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "9a8bcf8e",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "out.fig_leg_load_v_distance(carrier=\"Tapas\", beeswarm=1000)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a64d7309",
+   "metadata": {},
+   "source": [
+    "The `Tapas` network is much smaller than the other carriers, both in terms of seats flown and also\n",
+    "distance of legs, as there are no long-haul legs for this carrier."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c71700ad",
+   "metadata": {},
+   "source": [
+    "### Market Shares"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "e5c6dab6",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "out.market_shares()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "0501f03f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "out.market_shares(agg=\"orig\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "e6e22ef1",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "out.market_shares(agg=\"dest\")"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "pax (3.12.13)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.13"
+  },
+  "mystnb": {
+   "execution_timeout": 1200
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

@@ -1,0 +1,6 @@
+process\_leg\_bid\_price\_detail
+================================
+
+.. currentmodule:: passengersim.callbacks.bid_price_detail
+
+.. autofunction:: process_leg_bid_price_detail

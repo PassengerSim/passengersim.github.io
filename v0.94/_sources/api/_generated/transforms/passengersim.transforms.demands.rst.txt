@@ -1,0 +1,37 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.transforms.
+
+demands
+=======
+
+.. automodule:: passengersim.transforms.demands
+   :no-members:
+
+
+
+
+
+
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: .
+
+   common_reference_prices
+   demand_multiplier
+   dissolve_reference_price_multipliers
+   quick_mean_wtp
+   relevel_demand
+   set_demand_mean_wtp
+   set_demand_reference_prices
+
+
+
+
+

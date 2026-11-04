@@ -1,0 +1,6 @@
+total\_demand
+=============
+
+.. currentmodule:: passengersim.database.common_queries
+
+.. autofunction:: total_demand

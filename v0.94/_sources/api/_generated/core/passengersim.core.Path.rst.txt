@@ -1,0 +1,111 @@
+Path
+====
+
+.. currentmodule:: passengersim.core
+
+.. autoclass:: Path
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Path.__init__
+      ~Path.accumulate_forecasts
+      ~Path.add_booking_class
+      ~Path.add_carrier
+      ~Path.add_leg
+      ~Path.add_order
+      ~Path.add_path_class
+      ~Path.allocate_q_demand
+      ~Path.capture_dcp
+      ~Path.check_avail
+      ~Path.combine_forecasts
+      ~Path.compute_classless_q_equivalent_history
+      ~Path.compute_conditional_q_forecast
+      ~Path.compute_fare_adjustments
+      ~Path.compute_forecasts
+      ~Path.compute_hybrid_forecasts
+      ~Path.compute_q_equivalent
+      ~Path.compute_simple_fare_adjustments
+      ~Path.contains_leg_id
+      ~Path.detruncate_demand
+      ~Path.get_class_decision_fare
+      ~Path.get_class_fcst_mean
+      ~Path.get_class_fcst_std_dev
+      ~Path.get_class_sold
+      ~Path.get_displacement_adjusted_fare
+      ~Path.get_f_star
+      ~Path.get_forecast_data
+      ~Path.get_leg_arr_time
+      ~Path.get_leg_arr_time_local
+      ~Path.get_leg_bid_price
+      ~Path.get_leg_capacity
+      ~Path.get_leg_carrier
+      ~Path.get_leg_dep_time
+      ~Path.get_leg_dep_time_local
+      ~Path.get_leg_dest
+      ~Path.get_leg_equipment
+      ~Path.get_leg_fltno
+      ~Path.get_leg_id
+      ~Path.get_leg_orig
+      ~Path.get_orders
+      ~Path.get_total_bid_price
+      ~Path.get_total_distance
+      ~Path.mid_timeframe_forecast_interpolation
+      ~Path.new_forecast
+      ~Path.next_departure
+      ~Path.num_classes
+      ~Path.num_deps
+      ~Path.num_legs
+      ~Path.report_total_bid_price
+      ~Path.reset_counters
+      ~Path.set_class_decision_fare
+      ~Path.set_class_fcst_mean
+      ~Path.set_class_fcst_std_dev
+      ~Path.set_class_sold
+      ~Path.update_forecasts
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Path.arr_time
+      ~Path.carrier
+      ~Path.carrier_name
+      ~Path.delta_t
+      ~Path.dep_time
+      ~Path.dest
+      ~Path.duration
+      ~Path.early_path
+      ~Path.forecast
+      ~Path.gt_revenue
+      ~Path.gt_sold
+      ~Path.gt_sold_priceable
+      ~Path.hhi
+      ~Path.late_path
+      ~Path.leg_ids
+      ~Path.legs
+      ~Path.market
+      ~Path.max_hhi
+      ~Path.minimum_connect_time
+      ~Path.num_objects
+      ~Path.orig
+      ~Path.path_id
+      ~Path.path_quality_index
+      ~Path.pathclasses
+      ~Path.price
+      ~Path.q_forecast
+      ~Path.revenue
+      ~Path.sold
+      ~Path.sold_priceable
+      ~Path.total_bid_price
+      ~Path.truncation_rule
+   
+   

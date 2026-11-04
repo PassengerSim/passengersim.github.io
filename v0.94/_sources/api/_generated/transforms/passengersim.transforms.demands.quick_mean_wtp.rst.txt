@@ -1,0 +1,6 @@
+quick\_mean\_wtp
+================
+
+.. currentmodule:: passengersim.transforms.demands
+
+.. autofunction:: quick_mean_wtp

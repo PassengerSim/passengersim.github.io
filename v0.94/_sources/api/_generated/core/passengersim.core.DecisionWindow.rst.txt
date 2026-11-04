@@ -1,0 +1,35 @@
+DecisionWindow
+==============
+
+.. currentmodule:: passengersim.core
+
+.. autoclass:: DecisionWindow
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~DecisionWindow.__init__
+      ~DecisionWindow.add_parm
+      ~DecisionWindow.get_midpoint
+      ~DecisionWindow.get_time_disutility
+      ~DecisionWindow.get_window
+      ~DecisionWindow.serialize
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~DecisionWindow.dwm_tod
+      ~DecisionWindow.k_factor
+      ~DecisionWindow.name
+      ~DecisionWindow.random_generator
+   
+   

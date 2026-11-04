@@ -1,0 +1,6 @@
+pricing\_multiplier
+===================
+
+.. currentmodule:: passengersim.transforms.pricing
+
+.. autofunction:: pricing_multiplier

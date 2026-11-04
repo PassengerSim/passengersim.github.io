@@ -1,0 +1,6 @@
+clean\_restrictions
+===================
+
+.. currentmodule:: passengersim.transforms.restrictions
+
+.. autofunction:: clean_restrictions

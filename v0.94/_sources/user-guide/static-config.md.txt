@@ -1,0 +1,112 @@
+---
+title: Raw Configuration
+icon: material/receipt-text-outline
+---
+
+# Raw Configuration
+
+Most setup of the simulation is best done via configuration files written in YAML and CSV format.
+This will allow us to specify all the details of the simulation, from the network structure to the
+passenger choice model parameters to the revenue management systems used by each carrier. There are
+a lot of different parameters to be set, and starting from a pre-configured model almost always the
+best way to get going.
+
+## YAML Inputs
+
+Most inputs are provided in YAML format, which is a human-readable data serialization format that is
+commonly used for configuration files. YAML allows us to define complex data structures in a clear
+and organized way, making it easier to specify the various parameters of the simulation.
+
+In general, the YAML files will be structured as a series of key-value pairs, where the keys
+represent different aspects of the simulation (e.g., `simulation_controls`, `carriers`, `legs`,
+etc.) and the values provide the specific details for each aspect. For example, the
+`simulation_controls` section might look like this:
+
+```yaml
+simulation_controls:
+  random_seed: 42
+  num_trials: 3
+  num_samples: 300
+  burn_samples: 300
+  sys_k_factor: 0.1
+  mkt_k_factor: 0.2
+```
+
+You'll note the top level key `simulation_controls` is not indented, and then the various parameters
+that are nested under it with a common level of indentation (here, 2 spaces). This structure allows
+us to organize the configuration in a way that is easy to read and understand.
+
+Some inputs are simple key-value pairs as shown for `simulation_controls`, while others may be more
+complex structures, such as lists or nested mappings. For example, the `carriers` section might look
+like this:
+
+```yaml
+carriers:
+  AL1:
+    rm_system: E
+  AL2:
+    rm_system: Q
+    frat5: curve_C
+```
+
+Here we can see deeper levels of nesting, with the top-level key `carriers`, then each carrier (AL1
+and AL2) as a key, and then the attributes of each carrier (rm_system, frat5) nested under each
+carrier. Not all carriers need to have the same set of attribute keys, so AL1 only has an rm_system
+defined, while AL2 has both an rm_system and a frat5 curve defined.
+
+Some inputs, such as the `legs`, are not simply nested key-value pairs, but instead are represented
+as lists of objects, where each object has its own set of attributes. When defined in YAML, a set of
+legs might look like this:
+
+```yaml
+legs:
+  - carrier: AL1
+    fltno: 1
+    orig: BOS
+    dest: SFO
+    date: '2026-06-07'
+    dep_time: '08:00'
+    arr_time: '10:00'
+    capacity: 100
+    distance: 2704.0
+  - carrier: AL2
+    fltno: 2
+    orig: BOS
+    dest: LAX
+    date: '2026-06-07'
+    dep_time: '14:00'
+    arr_time: '16:00'
+    capacity: 116
+    distance: 2610.0
+```
+
+You can imagine that these inputs can be quite long and complex, especially for larger networks with
+many legs, paths, carriers, etc. To keep things organized and manageable, it's often helpful to
+break the configuration up into multiple files. Pre-packaged networks are typically stored in
+multiple [YAML](https://yaml.org/spec/1.2.2/) and CSV files stored in a common directory. For
+convenience, we typically have one top-level file named `__main__.yaml` that serves as the entry
+point for loading the network, and this file references the other files that define the various
+aspects of the simulation. When structured like this, you can load the entire network with a single
+call to [`Config.from_yaml`](passengersim.config.Config.from_yaml), pointing to the directory
+instead of individual files.
+
+Breaking the configuration up into multiple files is not strictly necessary, but it can be helpful
+for organization and readability. For example, you might have one file that defines the network
+structure (legs, paths), another file that defines the passenger choice models, and another file
+that defines carriers and assigns RM systems. This way, you can keep related parameters together and
+make it easier to navigate the configuration.
+
+## CSV Inputs
+
+Certain network inputs ([legs](passengersim.config.Config.legs),
+[paths](passengersim.config.Config.paths), [fares](passengersim.config.Config.fares),
+[demands](passengersim.config.Config.demands)) can be defined in either YAML or CSV format. Either
+way the data provided is identical, but the CSV format can be more compact and easier to read for
+large tables of data. for example, the same legs defined above in YAML could be defined in CSV
+format as follows:
+
+```csv
+carrier,fltno,orig,dest,date,dep_time,arr_time,capacity,distance
+AL1,1,BOS,SFO,2026-06-07,08:00,10:00,100,2704.0
+AL2,2,BOS,LAX,2026-06-07,14:00,16:00,116,2610.0
+```

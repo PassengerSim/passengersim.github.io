@@ -1,0 +1,38 @@
+﻿.. rst-class:: page_title_prefix
+
+    passengersim.
+
+transforms
+==========
+
+.. automodule:: passengersim.transforms
+   :no-members:
+
+
+
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree: .
+   :recursive:
+
+   booking_classes
+   carriers
+   demands
+   places
+   pricing
+   restrictions
+   simplify
+
+
+
+
+
+
+
+
+
+
+
+
+

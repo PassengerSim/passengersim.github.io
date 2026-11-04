@@ -1,0 +1,12 @@
+---
+title: U25 Network
+icon: custom/chart-network
+---
+
+# U25 Network
+
+The U25 network is a research network available for use with PassengerSim, but only for use
+internally at Georgia Tech and for other approved academic research. It is closely based on the
+historical U10 network used with PODS. It is not literally identical to the PODS U10 network,
+primarily because PassengerSim is not a perfect replica of PODS, and not every detail can be
+reproduced exactly.

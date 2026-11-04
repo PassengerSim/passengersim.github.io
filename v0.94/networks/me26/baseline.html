@@ -1,0 +1,2253 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="index.html">
+      
+      
+        <link rel="next" href="../../api/_index.html">
+      
+      
+      <link rel="icon" href="../../_static/favicon.png">
+    
+    
+      
+        <title>ME26 Baseline Network - PassengerSim</title>
+      
+    
+    
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+        <link rel="stylesheet" type="text/css" href="../../_static/sphinx_immaterial_theme.50640b526df5ff663.min.css?v=cff97996" />
+        <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+        <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=6c696159" />
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+
+<style>
+  /* Keep the Networks landing page in the top tabs, but omit its sidebar row. */
+  .md-sidebar--primary .md-nav__item:has(> a[href="../index.html"]) {
+    display: none;
+  }
+  
+</style>
+
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../index.html" title="PassengerSim" class="md-header__button md-logo" aria-label="PassengerSim" data-md-component="logo">
+      <img src="../../_static/logo.svg" alt="logo">
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PassengerSim
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ME26 Baseline Network
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/passengersim/passengersim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    PassengerSim/passengersim
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../user-guide/welcome.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>User Guide</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../mechanics/counting-sims.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Mechanics</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../examples/intro-3mkt.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Examples</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>Networks</span>
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../api/_index.html" class="md-tabs__link">
+        
+  
+    
+  
+  <span>API</span>
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="PassengerSim" class="md-nav__button md-logo" aria-label="PassengerSim" data-md-component="logo">
+      <img src="../../_static/logo.svg" alt="logo">
+    </a>
+    PassengerSim
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/passengersim/passengersim" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    PassengerSim/passengersim
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>User Guide</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            <span>User Guide</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/welcome.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 10H5L3 8l2-2h6V3l1-1 1 1v1h6l2 2-2 2h-6v2h6l2 2-2 2h-6v6a2 2 0 0 1 2 2H9a2 2 0 0 1 2-2z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Wayfinding</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/installation.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m13.13 22.19-1.63-3.83c1.57-.58 3.04-1.36 4.4-2.27zM5.64 12.5l-3.83-1.63 6.1-2.77C7 9.46 6.22 10.93 5.64 12.5M21.61 2.39S16.66.269 11 5.93c-2.19 2.19-3.5 4.6-4.35 6.71-.28.75-.09 1.57.46 2.13l2.13 2.12c.55.56 1.37.74 2.12.46A19.1 19.1 0 0 0 18.07 13c5.66-5.66 3.54-10.61 3.54-10.61m-7.07 7.07c-.78-.78-.78-2.05 0-2.83s2.05-.78 2.83 0c.77.78.78 2.05 0 2.83s-2.05.78-2.83 0m-5.66 7.07-1.41-1.41zM6.24 22l3.64-3.64c-.34-.09-.67-.24-.97-.45L4.83 22zM2 22h1.41l4.77-4.76-1.42-1.41L2 20.59zm0-2.83 4.09-4.08c-.21-.3-.36-.62-.45-.97L2 17.76z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Installation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/static-config.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.5 3.5 18 2l-1.5 1.5L15 2l-1.5 1.5L12 2l-1.5 1.5L9 2 7.5 3.5 6 2 4.5 3.5 3 2v20l1.5-1.5L6 22l1.5-1.5L9 22l1.5-1.5L12 22l1.5-1.5L15 22l1.5-1.5L18 22l1.5-1.5L21 22V2zM19 19H5V5h14zM6 15h12v2H6m0-6h12v2H6m0-6h12v2H6z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Raw Configuration</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/dynamic-config.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 2 1.5 1.5L21 2v7.13l-2 2V4.91H5v14.18h5.5v1.41L9 22l-1.5-1.5L6 22l-1.5-1.5L3 22V2l1.5 1.5L6 2l1.5 1.5L9 2l1.5 1.5L12 2l1.5 1.5L15 2l1.5 1.5zm-5 17.96 6.13-6.13 2.04 2.04L15.04 22H13zm6.83-6.83.98-.98.02-.02c.05-.04.11-.08.17-.1a.5.5 0 0 1 .53.12l1.32 1.32c.2.2.2.53 0 .72l-.98.98zm-1.83-1-.87.87H6v-2h12zM15.13 15l-2 2H6v-2zM18 9V7H6v2z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Dynamic Configuration</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/network-editors.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.55 11.63 7.66 15.5 8 18l-1.05 1.06-1.77-3.19L2 14.11l1.06-1.06 2.48.35 3.89-3.9L2 5.62l1.41-1.41 9.2 2.12 3.89-3.89a1.49 1.49 0 0 1 2.12 0c.58.59.58 1.56 0 2.12l-3.89 3.89 1.3 5.65-2.09 2.09zM13 19.96V22h2.04l6.13-6.12-2.04-2.05zm9.85-6.49-1.32-1.32c-.2-.2-.53-.2-.72 0l-.98.98 2.04 2.04.98-.98c.2-.19.2-.52 0-.72"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Network Editors</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/basic-usage.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m9 4 2.5 5.5L17 12l-5.5 2.5L9 20l-2.5-5.5L1 12l5.5-2.5zm0 4.83L8 11l-2.17 1L8 13l1 2.17L10 13l2.17-1L10 11zM19 9l-1.26-2.74L15 5l2.74-1.25L19 1l1.25 2.75L23 5l-2.75 1.26zm0 14-1.26-2.74L15 19l2.74-1.25L19 15l1.25 2.75L23 19l-2.75 1.26z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Summary Outputs</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/rm-systems.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 6h18v12H5zm9 3a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3M9 8a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2v-4a2 2 0 0 1-2-2zm-8 2h2v10h16v2H1z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>RM Systems</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/rm-actions.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v12H3zm9 3a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3M7 8a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2v-4a2 2 0 0 1-2-2z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>RM Actions</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/database/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Database</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/experiments.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 19a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1c0-.21-.07-.41-.18-.57L13 8.35V4h-2v4.35L5.18 18.43c-.11.16-.18.36-.18.57m1 3a3 3 0 0 1-3-3c0-.6.18-1.16.5-1.63L9 7.81V6a1 1 0 0 1-1-1V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1v1.81l5.5 9.56c.32.47.5 1.03.5 1.63a3 3 0 0 1-3 3zm7-6 1.34-1.34L16.27 18H7.73l2.66-4.61zm-.5-4a.5.5 0 0 1 .5.5.5.5 0 0 1-.5.5.5.5 0 0 1-.5-.5.5.5 0 0 1 .5-.5"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Experiments</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/callbacks.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.6 5.29c-1.1-.1-2.07.71-2.17 1.82L13.18 10H16v2h-3l-.44 5.07a3.986 3.986 0 0 1-4.33 3.63 4 4 0 0 1-3.06-1.87l1.5-1.5c.24.74.9 1.31 1.73 1.38 1.1.1 2.07-.71 2.17-1.82L11 12H8v-2h3.17l.27-3.07c.19-2.2 2.13-3.83 4.33-3.63 1.31.11 2.41.84 3.06 1.87l-1.5 1.5c-.24-.74-.9-1.31-1.73-1.38"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Callbacks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/tracers.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.84 2.73c-.39 0-.77.15-1.07.44l-2.12 2.12 5.3 5.31 2.12-2.1c.6-.61.6-1.56 0-2.14L17.9 3.17c-.3-.29-.68-.44-1.06-.44M12.94 6l-8.1 8.11 2.56.28.18 2.29 2.28.17.29 2.56 8.1-8.11m-14 3.74L2.5 21.73l6.7-1.79-.24-2.16-2.31-.17-.18-2.32"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Tracing</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/viz/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.45 15.18 22 7.31V21H2V3h2v12.54L9.5 6 16 9.78l4.24-7.33 1.73 1-5.23 9.05-6.51-3.75L4.31 19h2.26l4.39-7.56z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Visualizations</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/diagnostics.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 2a8 8 0 0 1 8 8c0 2.4-1 4.5-2.7 6-1.4-1.3-3.3-2-5.3-2s-3.8.7-5.3 2C5 16.5 4 14.4 4 12a8 8 0 0 1 8-8m2 1.89c-.38.01-.74.26-.9.65l-1.29 3.23-.1.23c-.71.13-1.3.6-1.57 1.26-.41 1.03.09 2.19 1.12 2.6s2.19-.09 2.6-1.12c.26-.66.14-1.42-.29-1.98l.1-.26 1.29-3.21.01-.03c.2-.51-.05-1.09-.56-1.3-.13-.05-.26-.07-.41-.07M10 6a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1M7 9a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1m10 0a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Live Diagnostics</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/firehose.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 15v-1H4v-2h1v-1h2v4zm14-3v-1h-2v4h2v-1h1v-2zm-1-6h-2.14C15.5 4.6 14.4 3.5 13 3.14V2h-2v1.14C9.6 3.5 8.5 4.6 8.14 6H6v2h12zm0 16H6c0-1.1.9-2 2-2V9h8v11a2 2 0 0 1 2 2m-8-9a2 2 0 1 0 4 0c0-1.11-.89-2-2-2s-2 .9-2 2"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Firehose</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>Mechanics</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Mechanics</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanics/counting-sims.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 10.73V19h-2v-7.64L15 12v7h-2v-6.38l-2 .64V19H9v-5.11l-2 .61V19H5v-3.85l-2.43.77L2 14l3-.95V5h2v7.42l2-.63V5h2v6.16l2-.63V5h2v4.9l2-.64V5h2v3.63L21 8l.57 1.92z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Counting Simulations</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanics/demand-generation.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.35 5.64c-.9-.64-1.12-1.88-.49-2.79.64-.9 1.88-1.12 2.79-.49.9.64 1.12 1.88.49 2.79-.64.9-1.88 1.12-2.79.49M16 19H8.93c-1.48 0-2.74-1.08-2.96-2.54L4 7H2l2 9.76A4.99 4.99 0 0 0 8.94 21H16m.23-6h-4.88l-1.03-4.1c1.58.89 3.28 1.54 5.15 1.22V10c-1.63.3-3.44-.28-4.69-1.26L9.14 7.47c-.23-.18-.49-.3-.76-.38a2.2 2.2 0 0 0-.99-.06h-.02a2.27 2.27 0 0 0-1.84 2.61l1.35 5.92A2.99 2.99 0 0 0 9.83 18h6.85l3.82 3 1.5-1.5"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Demand Generation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanics/forecasting.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m9.38 8.38 2.12.96 2.12-.96-.96 2.12.96 2.12-2.12-.96-2.12.96.96-2.12zM16.5 2.5l1.09 2.91L20.5 6.5l-2.91 1.09-1.09 2.91-1.09-2.91L12.5 6.5l2.91-1.09zM6 19h1v-1a1 1 0 0 1 1-1h.26a7.47 7.47 0 0 1-3.76-6.5A7.5 7.5 0 0 1 12 3c1.05 0 2.05.22 2.96.61l-.37.98-1.42.53Q12.6 5 12 5a5.5 5.5 0 0 0-5.5 5.5A5.5 5.5 0 0 0 12 16c2.91 0 5.3-2.27 5.5-5.13l.91-2.46.71-.27c.25.74.38 1.54.38 2.36 0 2.78-1.5 5.2-3.76 6.5H16a1 1 0 0 1 1 1v1h1a2 2 0 0 1 2 2v1H4v-1a2 2 0 0 1 2-2"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Forecasting</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanics/todd.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 9c-.91 0-1.77.18-2.57.5l-.7-3.05 3.89-3.89c.58-.56.58-1.53 0-2.12s-1.54-.586-2.12 0l-3.89 3.89-9.2-2.12L0 3.62 7.43 7.5l-3.89 3.9-2.48-.35L0 12.11l3.18 1.76 1.77 3.19L6 16l-.34-2.5 3.89-3.87 1.02 1.96A6.995 6.995 0 0 0 16 23c3.87 0 7-3.13 7-7s-3.13-7-7-7m0 12c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5m.5-4.75V12H15v5l3.61 2.16.75-1.22z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Time of Day Preferences</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanics/database-storage.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3C7.58 3 4 4.79 4 7s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4M4 9v3c0 2.21 3.58 4 8 4s8-1.79 8-4V9c0 2.21-3.58 4-8 4s-8-1.79-8-4m0 5v3c0 2.21 3.58 4 8 4s8-1.79 8-4v-3c0 2.21-3.58 4-8 4s-8-1.79-8-4"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Database connections and consolidation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanics/pxsim-storage.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 3h18v4H3zm1 5h16v13H4zm5.5 3a.5.5 0 0 0-.5.5V13h6v-1.5a.5.5 0 0 0-.5-.5z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>PXSIM storage format</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>Examples</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Examples</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/intro-3mkt.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>The 3MKT Network</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/diagnostic-logging.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Logging simulation diagnostics</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/EE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Basic Simulation</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/PE.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Pro<wbr>BP Optimization</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/LL.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Unrestricted Networks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/QC.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Q vs Conditional Forecasting</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/olympic-fcst.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Custom Forecaster</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/blf-curves.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Heuristic Intervention</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/continuous-price.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Continuous Pricing</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../labs/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Labs</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>Networks</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            <span>Networks</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Networks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3mkt/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 7h2v5H8zM4.22 2h15.56C21 2 22 3 22 4.22v15.56A2.22 2.22 0 0 1 19.78 22H4.22C3 22 2 21 2 19.78V4.22A2.22 2.22 0 0 1 4.22 2M12 4a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8 8 8 0 0 0-8-8m2 3.5h2v4h-2zm-3.5 8.75a1.5 1.5 0 0 1 1.5-1.5 1.5 1.5 0 0 1 1.5 1.5V17h-3z"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>3MKT Network</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../europa/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4.22 2A2.22 2.22 0 0 0 2 4.22v15.56C2 21 3 22 4.22 22h15.56A2.22 2.22 0 0 0 22 19.78V4.22C22 3 21 2 19.78 2zM11 4.07V6h2V4.07A8 8 0 0 1 20 12a8 8 0 0 1-7 7.93V18h-2v1.93A8 8 0 0 1 4 12a8 8 0 0 1 7-7.93M7.5 10.5A1.5 1.5 0 0 0 6 12c0 .83.66 1.5 1.5 1.5A1.5 1.5 0 0 0 9 12a1.5 1.5 0 0 0-1.5-1.5m9 0A1.5 1.5 0 0 0 15 12a1.5 1.5 0 0 0 1.5 1.5A1.5 1.5 0 0 0 18 12a1.5 1.5 0 0 0-1.5-1.5"/></svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>Europa Network</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../u25/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
+  <!-- Original network icon with a transparent hub opening. -->
+  <path d="M164 280H48M220 202 168 80M331 228 464 136M335 332 464 416" fill="none" stroke="currentColor" stroke-width="48" stroke-linecap="round"/>
+  <path fill-rule="evenodd" d="M368 280a112 112 0 1 1-224 0 112 112 0 1 1 224 0Zm-72 0a40 40 0 1 0-80 0 40 40 0 1 0 80 0Z"/>
+  <circle cx="48" cy="280" r="48"/>
+  <circle cx="168" cy="80" r="48"/>
+  <circle cx="464" cy="136" r="48"/>
+  <circle cx="464" cy="416" r="48"/>
+</svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>U25 Network</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../na26/index.html" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
+  <!-- Original artwork: simplified continents cut out of a solid globe. -->
+  <path fill-rule="evenodd" d="M 256,0 C 114.61501,0 1.1113408e-4,114.61511 1.1113408e-4,256 1.1113408e-4,397.38489 114.61501,512 256,512 397.38499,512 511.99989,397.38489 511.99989,256 511.99989,114.61511 397.38499,0 256,0 Z M 124.24456,102.49276 C 147.12323,75.17321 203.37541,37.044495 289,51 c 11,15 10,29 -3,43 l -13,14 c -11,12 -9,29 4,39 13,10 30,6 37,-8 l 8,-16 c 5,-9 16,-9 23,-1 l 25,31 c 12,15 9,35 -5,47 l -31,26 c -9,8 -14,18 -16,30 l -4,26 c -1,10 -13,13 -18,4 l -9,-16 c -5,-10 -15,-14 -25,-10 l -16,7 c -12,5 -16,18 -10,29 l 4.08488,17.43276 c 17.91512,20.52361 34.59945,-20.33452 38.86249,-2.2352 l 6.43944,27.33954 c 2.20913,9.37918 59.41074,25.6605 71.11143,42.32761 -9.73785,10.39924 -7.79254,9.63885 -15.47599,19.67132 -8.46486,-21.23535 -19.49171,-19.66394 -31.60239,-25.89185 -12.64285,-6.50158 -27.47664,-7.31512 -41.17705,-11.1113 -17.81509,-4.9363 -37.72392,-5.28191 -53.34426,-15.16875 -14.76006,-9.34233 -23.53648,-25.84514 -34.52536,-39.42391 -10.8187,-13.36848 -22.2055,-26.48277 -30.87243,-41.33689 -10.11264,-17.33189 -19.01913,-35.72371 -24.26461,-55.09237 -5.43225,-20.05829 -10.46195,-47.17548 -7.09703,-61.93733 6.0465,-26.52588 14.57382,-30.64632 6.10544,-48.08087 z M 374,85 c 18.79736,12.877097 35.35119,28.75526 49,47 l -12,32 c -3,9 -7,16 -11,20 -5,6 -12,2 -13,-6 l -4,-25 c -1,-8 -5,-14 -10,-20 -10,-12 -8,-33 1,-48 z m -17.08608,296.00119 c 11,-10 16.91154,-13.56604 29.91154,-4.56604 l 31.17573,22.30424 c -12.15311,13.04357 -24.88908,31.77601 -74.39628,51.74177 l -7.04244,-18.08726 c -11,-12 9.35145,-39.39271 20.35145,-51.39271 z"/>
+</svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>NA26 Network</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
+  <!-- Original artwork: simplified land cut out of a solid globe, centered on the Middle East. -->
+  <path fill-rule="evenodd" d="M256 0a256 256 0 1 0 0 512A256 256 0 0 0 256 0Z
+    M120 99A208 208 0 0 1 458 205
+    L426 221C415 226 410 236 406 247
+    C402 258 392 261 383 255
+    L374 250L368 302C367 314 362 326 354 328
+    C346 330 341 320 337 309
+    L322 273C319 266 313 261 306 258
+    L288 248C280 244 277 234 270 231
+    C263 228 259 234 263 241
+    L286 267C294 277 291 290 280 297
+    L251 314C240 320 231 316 226 306
+    L201 256C196 246 194 234 185 234
+    C179 234 180 244 185 254
+    L211 307C217 319 227 324 239 322
+    L257 318C267 316 272 326 265 334
+    L238 365C231 373 225 387 221 400
+    L212 428C207 443 194 448 183 438
+    L159 414C148 403 143 388 143 373
+    L143 338C143 326 135 318 123 318
+    L89 318C72 318 60 307 56 291
+    A208 208 0 0 1 56 199
+    L132 199C148 199 162 207 178 207
+    L195 207C204 207 212 200 212 191
+    C212 182 205 177 196 177
+    L179 177C171 177 166 173 161 167
+    L151 154C146 147 138 146 132 151
+    C125 157 116 154 114 146
+    C110 132 117 113 120 99Z"/>
+</svg>
+  
+  
+  <span class="md-ellipsis">
+    <span>ME26 Network</span>
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            <span>ME26 Network</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      <a href="#" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Baseline Results</span>
+    
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    <span>API</span>
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            <span>API</span>
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/_index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Passenger<wbr>Sim</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/_generated/callbacks/passengersim.callbacks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>callbacks</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/config.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>config</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/_generated/connection_builder/passengersim.connection_builder.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>connection_<wbr>builder</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/_generated/contrast/passengersim.contrast.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>contrast</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/_generated/core/passengersim.core.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>core</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/database.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Database</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/_generated/driver/passengersim.driver.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>driver</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/_generated/experiments/passengersim.experiments.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>experiments</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>rm</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/_generated/summaries/passengersim.summaries.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>summaries</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/_generated/tracers/passengersim.tracers.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>tracers</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/_generated/transforms/passengersim.transforms.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>transforms</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset" role="main">
+                
+                
+                  
+
+
+<h1 id="me26-baseline-network">ME26 Baseline Network<a class="headerlink" href="#me26-baseline-network" title="Link to this heading">¶</a></h1>
+<p>This page reviews the configuration of the ME26 network and runs a baseline simulation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ME26</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">passengersim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pax</span>
+
+<span class="n">pax</span><span class="o">.</span><span class="n">versions</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><code>passengersim 0.94
+passengersim.core 0.94
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">cfg</span> <span class="o">=</span> <span class="n">ME26</span><span class="o">.</span><span class="n">load_config</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><code>Loading network config file /Users/jpn/Git/pax/networks/ME26/configs/v26.8.1
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">cfg</span><span class="o">.</span><span class="n">plotly_route_map</span><span class="p">(</span><span class="s2">&quot;Olive&quot;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">        <script>
+        window.PlotlyConfig = {MathJaxConfig: 'local'};
+        if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+        </script>
+        <script type="module">import "https://cdn.plot.ly/plotly-3.5.0.min"</script>
+        </div><div class="output text_html"><div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script>if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.5.0.min.js" integrity="sha256-fHbNLP+GlIXN+efbQec78UkemUz3NJp7UmfGxC1tNxs=" crossorigin="anonymous"></script>                <div id="a37972be-d226-4880-8635-b40af7a5b858" class="plotly-graph-div" style="height:400px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("a37972be-d226-4880-8635-b40af7a5b858")) {                    Plotly.newPlot(                        "a37972be-d226-4880-8635-b40af7a5b858",                        [{"lat":[49.0128,25.2528],"line":{"color":"#636b2f","width":1},"lon":[2.55,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,25.2528],"line":{"color":"#636b2f","width":1},"lon":[39.1565,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[51.4706,25.2528],"line":{"color":"#636b2f","width":1},"lon":[-0.46194,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,-33.9461],"line":{"color":"#636b2f","width":1},"lon":[55.3644,151.177],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,51.4706],"line":{"color":"#636b2f","width":1},"lon":[55.3644,-0.46194],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,49.0128],"line":{"color":"#636b2f","width":1},"lon":[55.3644,2.55],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,28.5665],"line":{"color":"#636b2f","width":1},"lon":[55.3644,77.1031],"mode":"lines","type":"scattergeo"},{"lat":[12.99001,25.2528],"line":{"color":"#636b2f","width":1},"lon":[80.1693,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[13.6811,25.2528],"line":{"color":"#636b2f","width":1},"lon":[100.747,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[4.19167,25.2528],"line":{"color":"#636b2f","width":1},"lon":[73.52917,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,50.0264],"line":{"color":"#636b2f","width":1},"lon":[55.3644,8.54313],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,21.6796],"line":{"color":"#636b2f","width":1},"lon":[55.3644,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[37.618806,25.2528],"line":{"color":"#636b2f","width":1},"lon":[-122.375417,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,25.2528],"line":{"color":"#636b2f","width":1},"lon":[28.752,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[-37.6733,25.2528],"line":{"color":"#636b2f","width":1},"lon":[144.843,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,4.19167],"line":{"color":"#636b2f","width":1},"lon":[55.3644,73.52917],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,17.23132],"line":{"color":"#636b2f","width":1},"lon":[55.3644,78.42986],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,12.99001],"line":{"color":"#636b2f","width":1},"lon":[55.3644,80.1693],"mode":"lines","type":"scattergeo"},{"lat":[14.5086,25.2528],"line":{"color":"#636b2f","width":1},"lon":[121.02,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[2.74558,25.2528],"line":{"color":"#636b2f","width":1},"lon":[101.71,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,19.0887],"line":{"color":"#636b2f","width":1},"lon":[55.3644,72.8679],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,32.897233],"line":{"color":"#636b2f","width":1},"lon":[55.3644,-97.037695],"mode":"lines","type":"scattergeo"},{"lat":[51.4706,25.2528],"line":{"color":"#636b2f","width":1},"lon":[-0.46194,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,13.1979],"line":{"color":"#636b2f","width":1},"lon":[55.3644,77.7063],"mode":"lines","type":"scattergeo"},{"lat":[59.8003,25.2528],"line":{"color":"#636b2f","width":1},"lon":[30.2625,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,25.2528],"line":{"color":"#636b2f","width":1},"lon":[28.752,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[13.6811,25.2528],"line":{"color":"#636b2f","width":1},"lon":[100.747,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,2.74558],"line":{"color":"#636b2f","width":1},"lon":[55.3644,101.71],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,14.5086],"line":{"color":"#636b2f","width":1},"lon":[55.3644,121.02],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,-37.6733],"line":{"color":"#636b2f","width":1},"lon":[55.3644,144.843],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,51.4706],"line":{"color":"#636b2f","width":1},"lon":[55.3644,-0.46194],"mode":"lines","type":"scattergeo"},{"lat":[7.18076,25.2528],"line":{"color":"#636b2f","width":1},"lon":[79.8841,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,25.2528],"line":{"color":"#636b2f","width":1},"lon":[39.1565,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,49.0128],"line":{"color":"#636b2f","width":1},"lon":[55.3644,2.55],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,21.6796],"line":{"color":"#636b2f","width":1},"lon":[55.3644,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[19.0887,25.2528],"line":{"color":"#636b2f","width":1},"lon":[72.8679,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,-33.9461],"line":{"color":"#636b2f","width":1},"lon":[55.3644,151.177],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,33.54908],"line":{"color":"#636b2f","width":1},"lon":[55.3644,72.82565],"mode":"lines","type":"scattergeo"},{"lat":[-20.4302,25.2528],"line":{"color":"#636b2f","width":1},"lon":[57.6836,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[13.1979,25.2528],"line":{"color":"#636b2f","width":1},"lon":[77.7063,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,55.95],"line":{"color":"#636b2f","width":1},"lon":[55.3644,-3.3725],"mode":"lines","type":"scattergeo"},{"lat":[41.8045,25.2528],"line":{"color":"#636b2f","width":1},"lon":[12.2508,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,-8.74817],"line":{"color":"#636b2f","width":1},"lon":[55.3644,115.167],"mode":"lines","type":"scattergeo"},{"lat":[-33.9461,25.2528],"line":{"color":"#636b2f","width":1},"lon":[151.177,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,-20.4302],"line":{"color":"#636b2f","width":1},"lon":[55.3644,57.6836],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,19.0887],"line":{"color":"#636b2f","width":1},"lon":[55.3644,72.8679],"mode":"lines","type":"scattergeo"},{"lat":[49.0128,25.2528],"line":{"color":"#636b2f","width":1},"lon":[2.55,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[-8.74817,25.2528],"line":{"color":"#636b2f","width":1},"lon":[115.167,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,14.5086],"line":{"color":"#636b2f","width":1},"lon":[55.3644,121.02],"mode":"lines","type":"scattergeo"},{"lat":[45.6306,25.2528],"line":{"color":"#636b2f","width":1},"lon":[8.72811,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,40.639928],"line":{"color":"#636b2f","width":1},"lon":[55.3644,-73.778692],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,8.1132],"line":{"color":"#636b2f","width":1},"lon":[55.3644,98.3169],"mode":"lines","type":"scattergeo"},{"lat":[8.1132,25.2528],"line":{"color":"#636b2f","width":1},"lon":[98.3169,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[55.95,25.2528],"line":{"color":"#636b2f","width":1},"lon":[-3.3725,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,45.6306],"line":{"color":"#636b2f","width":1},"lon":[55.3644,8.72811],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,41.27533],"line":{"color":"#636b2f","width":1},"lon":[55.3644,28.752],"mode":"lines","type":"scattergeo"},{"lat":[44.5354,25.2528],"line":{"color":"#636b2f","width":1},"lon":[11.2887,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.0777,25.2528],"line":{"color":"#636b2f","width":1},"lon":[121.233,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,7.18076],"line":{"color":"#636b2f","width":1},"lon":[55.3644,79.8841],"mode":"lines","type":"scattergeo"},{"lat":[12.99001,25.2528],"line":{"color":"#636b2f","width":1},"lon":[80.1693,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,25.0777],"line":{"color":"#636b2f","width":1},"lon":[55.3644,121.233],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,50.0264],"line":{"color":"#636b2f","width":1},"lon":[55.3644,8.54313],"mode":"lines","type":"scattergeo"},{"lat":[28.5665,25.2528],"line":{"color":"#636b2f","width":1},"lon":[77.1031,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[4.19167,25.2528],"line":{"color":"#636b2f","width":1},"lon":[73.52917,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,2.74558],"line":{"color":"#636b2f","width":1},"lon":[55.3644,101.71],"mode":"lines","type":"scattergeo"},{"lat":[33.54908,25.2528],"line":{"color":"#636b2f","width":1},"lon":[72.82565,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,51.4706],"line":{"color":"#636b2f","width":1},"lon":[55.3644,-0.46194],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,4.19167],"line":{"color":"#636b2f","width":1},"lon":[55.3644,73.52917],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,41.97694],"line":{"color":"#636b2f","width":1},"lon":[55.3644,-87.90815],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,37.618806],"line":{"color":"#636b2f","width":1},"lon":[55.3644,-122.375417],"mode":"lines","type":"scattergeo"},{"lat":[17.23132,25.2528],"line":{"color":"#636b2f","width":1},"lon":[78.42986,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[50.0264,25.2528],"line":{"color":"#636b2f","width":1},"lon":[8.54313,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[40.639928,25.2528],"line":{"color":"#636b2f","width":1},"lon":[-73.778692,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[41.97694,25.2528],"line":{"color":"#636b2f","width":1},"lon":[-87.90815,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,13.6811],"line":{"color":"#636b2f","width":1},"lon":[55.3644,100.747],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,44.5354],"line":{"color":"#636b2f","width":1},"lon":[55.3644,11.2887],"mode":"lines","type":"scattergeo"},{"lat":[51.4706,25.2528],"line":{"color":"#636b2f","width":1},"lon":[-0.46194,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[32.897233,25.2528],"line":{"color":"#636b2f","width":1},"lon":[-97.037695,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[51.4706,25.2528],"line":{"color":"#636b2f","width":1},"lon":[-0.46194,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,41.8045],"line":{"color":"#636b2f","width":1},"lon":[55.3644,12.2508],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,28.5665],"line":{"color":"#636b2f","width":1},"lon":[55.3644,77.1031],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,59.8003],"line":{"color":"#636b2f","width":1},"lon":[55.3644,30.2625],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,13.6811],"line":{"color":"#636b2f","width":1},"lon":[55.3644,100.747],"mode":"lines","type":"scattergeo"},{"lat":[19.0887,25.2528],"line":{"color":"#636b2f","width":1},"lon":[72.8679,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[13.6811,25.2528],"line":{"color":"#636b2f","width":1},"lon":[100.747,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[-33.9461,25.2528],"line":{"color":"#636b2f","width":1},"lon":[151.177,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,28.5665],"line":{"color":"#636b2f","width":1},"lon":[55.3644,77.1031],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,4.19167],"line":{"color":"#636b2f","width":1},"lon":[55.3644,73.52917],"mode":"lines","type":"scattergeo"},{"lat":[4.19167,25.2528],"line":{"color":"#636b2f","width":1},"lon":[73.52917,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[28.5665,25.2528],"line":{"color":"#636b2f","width":1},"lon":[77.1031,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,41.27533],"line":{"color":"#636b2f","width":1},"lon":[55.3644,28.752],"mode":"lines","type":"scattergeo"},{"lat":[13.1979,25.2528],"line":{"color":"#636b2f","width":1},"lon":[77.7063,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,13.6811],"line":{"color":"#636b2f","width":1},"lon":[55.3644,100.747],"mode":"lines","type":"scattergeo"},{"lat":[50.0264,25.2528],"line":{"color":"#636b2f","width":1},"lon":[8.54313,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,51.4706],"line":{"color":"#636b2f","width":1},"lon":[55.3644,-0.46194],"mode":"lines","type":"scattergeo"},{"lat":[14.5086,25.2528],"line":{"color":"#636b2f","width":1},"lon":[121.02,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,13.1979],"line":{"color":"#636b2f","width":1},"lon":[55.3644,77.7063],"mode":"lines","type":"scattergeo"},{"lat":[2.74558,25.2528],"line":{"color":"#636b2f","width":1},"lon":[101.71,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,19.0887],"line":{"color":"#636b2f","width":1},"lon":[55.3644,72.8679],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,17.23132],"line":{"color":"#636b2f","width":1},"lon":[55.3644,78.42986],"mode":"lines","type":"scattergeo"},{"lat":[28.5665,25.2528],"line":{"color":"#636b2f","width":1},"lon":[77.1031,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[19.0887,25.2528],"line":{"color":"#636b2f","width":1},"lon":[72.8679,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,12.99001],"line":{"color":"#636b2f","width":1},"lon":[55.3644,80.1693],"mode":"lines","type":"scattergeo"},{"lat":[17.23132,25.2528],"line":{"color":"#636b2f","width":1},"lon":[78.42986,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,25.26059],"line":{"color":"#636b2f","width":1},"lon":[55.3644,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,25.26059],"line":{"color":"#636b2f","width":1},"lon":[55.3644,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,25.26059],"line":{"color":"#636b2f","width":1},"lon":[55.3644,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,25.26059],"line":{"color":"#636b2f","width":1},"lon":[55.3644,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,25.2528],"line":{"color":"#636b2f","width":1},"lon":[51.61377,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,25.2528],"line":{"color":"#636b2f","width":1},"lon":[51.61377,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,25.2528],"line":{"color":"#636b2f","width":1},"lon":[51.61377,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,25.2528],"line":{"color":"#636b2f","width":1},"lon":[51.61377,55.3644],"mode":"lines","type":"scattergeo"},{"hoverinfo":"text","lat":{"dtype":"f8","bdata":"xLEubqOBSEDGbTSAt0A5QJJc\u002fkP6rTVAsb\u002fsnjy8SUBwXwfOGflAwBsv3SQGkTxACW05l+L6KUB4nKIjuVwrQE5\u002f9iNFxBBApU5AE2EDSUDHSPYINc9CQMjNcAM+o0RAyjLEsS7WQsAl6ZrJNzsxQL99HThnBC1A12mkpfL2BUC7Jw8LtRYzQCzy64fYckBAvsEXJlNlKkCRfvs6cOZNQCmzQSYZuRxAn3HhQEjGQEA8vVKWIW40wJqZmZmZ+UtA5dAi2\u002fnmREBXsmMjEH8hwMZtNIC30EZAuOUjKelRREB90LNZ9TkgQKMjufyHREZAMuauJeQTOUC+E7NeDP1EQCaqtwa2QjlA0csollsuSkDZPXlYqLU\u002fQNk9eVio1URAt2J\u002f2T1JRkCkcD0K1ztEQA=="},"lon":{"dtype":"f8","bdata":"ZmZmZmZmBEDKVMGopK5LQHnpJjEIlENAHLYtymyQ3b+LbOf7qeViQO0NvjCZRlNAn82qz9UKVEArhxbZzi9ZQI4B2evdYVJA9fOmIhUWIUAyVwbVBphewI2XbhKDwDxA5dAi2\u002fkaYkDzdoTTgptTQOF6FK5HQV5APQrXo3BtWUCzDHGsizdSQEEOSphpQljAjErqBDRtU0AzMzMzM0M+QDGZKhiV+FNAUPwYc9c0UkDWxW00gNdMQHsUrkfh+grAcayL22iAKECmm8QgsMpcQPfHe9XKdCFACmr4FtZxUsCOBvAWSJRYQN21hHzQkyZA9P3UeOlOXkAydy0hH\u002fpVwAqi7gOQzklAOC140VcAK0B0RpT2BrNSQOC+DpwzekZAtaZ5xykaOkCSXP5D+gVJQA=="},"marker":{"color":"rgb(0, 0, 0)","line":{"color":"rgba(68, 68, 68, 0)","width":3},"size":4},"mode":"markers","text":["CDG\u003cbr\u003eCharles de Gaulle International Airport\u003cbr\u003eEurope\u002fParis","DXB\u003cbr\u003eDubai International Airport\u003cbr\u003eAsia\u002fDubai","JED\u003cbr\u003eKing Abdulaziz International Airport\u003cbr\u003eAsia\u002fRiyadh","LHR\u003cbr\u003eLondon Heathrow Airport\u003cbr\u003eEurope\u002fLondon","SYD\u003cbr\u003eSydney Kingsford Smith International Airport\u003cbr\u003eAustralia\u002fSydney","DEL\u003cbr\u003eIndira Gandhi International Airport\u003cbr\u003eAsia\u002fKolkata","MAA\u003cbr\u003eChennai International Airport\u003cbr\u003eAsia\u002fKolkata","BKK\u003cbr\u003eSuvarnabhumi Airport\u003cbr\u003eAsia\u002fBangkok","MLE\u003cbr\u003eVelana International Airport\u003cbr\u003eIndian\u002fMaldives","FRA\u003cbr\u003eFrankfurt am Main International Airport\u003cbr\u003eEurope\u002fBerlin","SFO\u003cbr\u003eSan Francisco International Airport\u003cbr\u003eAmerica\u002fLos_Angeles","IST\u003cbr\u003eIstanbul Airport\u003cbr\u003eEurope\u002fIstanbul","MEL\u003cbr\u003eMelbourne International Airport\u003cbr\u003eAustralia\u002fMelbourne","HYD\u003cbr\u003eRajiv Gandhi International Airport Shamshabad\u003cbr\u003eAsia\u002fKolkata","MNL\u003cbr\u003eNinoy Aquino International Airport\u003cbr\u003eAsia\u002fManila","KUL\u003cbr\u003eKuala Lumpur International Airport\u003cbr\u003eAsia\u002fKuala_Lumpur","BOM\u003cbr\u003eChhatrapati Shivaji International Airport\u003cbr\u003eAsia\u002fKolkata","DFW\u003cbr\u003eDallas-Fort Worth International Airport\u003cbr\u003eAmerica\u002fChicago","BLR\u003cbr\u003eBengaluru International Airport\u003cbr\u003eAsia\u002fKolkata","LED\u003cbr\u003ePulkovo Airport\u003cbr\u003eEurope\u002fMoscow","CMB\u003cbr\u003eBandaranaike International Apt Colombo Airport\u003cbr\u003eAsia\u002fColombo","ISB\u003cbr\u003eIslamabad International Airport\u003cbr\u003eAsia\u002fKarachi","MRU\u003cbr\u003eSir Seewoosagur Ramgoolam International Airport\u003cbr\u003eIndian\u002fMauritius","EDI\u003cbr\u003eEdinburgh Airport\u003cbr\u003eEurope\u002fLondon","FCO\u003cbr\u003eLeonardo Da Vinci (Fiumicino) International Airport\u003cbr\u003eEurope\u002fRome","DPS\u003cbr\u003eNgurah Rai (Bali) International Airport\u003cbr\u003eAsia\u002fMakassar","MXP\u003cbr\u003eMalpensa International Airport\u003cbr\u003eEurope\u002fRome","JFK\u003cbr\u003eJohn F Kennedy International Airport\u003cbr\u003eAmerica\u002fNew_York","HKT\u003cbr\u003ePhuket International Airport\u003cbr\u003eAsia\u002fBangkok","BLQ\u003cbr\u003eBologna \u002f Borgo Panigale Airport\u003cbr\u003eEurope\u002fRome","TPE\u003cbr\u003eTaiwan Taoyuan International Airport\u003cbr\u003eAsia\u002fTaipei","ORD\u003cbr\u003eChicago O'Hare International Airport\u003cbr\u003eAmerica\u002fChicago","DOH\u003cbr\u003eHamad International Airport\u003cbr\u003eAsia\u002fQatar","BER\u003cbr\u003eBerlin Brandenburg Airport\u003cbr\u003eEurope\u002fBerlin","ATQ\u003cbr\u003eSri Guru Ram Dass Jee International Airport Amritsar\u003cbr\u003eAsia\u002fKolkata","TBS\u003cbr\u003eTbilisi International Airport\u003cbr\u003eAsia\u002fTbilisi","OTP\u003cbr\u003eHenri Coanda International Airport\u003cbr\u003eEurope\u002fBucharest","GYD\u003cbr\u003eHeydar Aliyev International Airport\u003cbr\u003eAsia\u002fBaku"],"type":"scattergeo"}],                        {"template":{"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#6a3d9a","#cab2d6","#33a02c","#b2df8a","#ff7f00","#fdbf6f","#1f78b4","#a6cee3","#e31a1c","#fb9a99","#b15928","#e3d086"],"dragmode":"pan","font":{"color":"#2a3f5f","family":"Roboto, Arial, sans-serif"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"rgb(242, 242, 245)","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"rgb(242, 242, 245)","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"white","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"white","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15,"font":{"color":"black","size":13,"weight":"bold"}},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15,"font":{"color":"black","size":13,"weight":"bold"}},"zerolinecolor":"white","zerolinewidth":2}}},"geo":{"projection":{"rotation":{"lon":55.3644,"lat":10,"roll":0},"type":"robinson","scale":1},"scope":"world"},"margin":{"r":0,"t":40,"l":0,"b":0},"showlegend":false,"height":400,"title":{"pad":{"b":8},"font":{"family":"Roboto, Arial, sans-serif","size":18,"color":"black","weight":"bold"},"text":"Olive Routes","y":1,"yref":"paper","x":0,"xref":"paper","xanchor":"left","yanchor":"bottom","automargin":true}},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('a37972be-d226-4880-8635-b40af7a5b858');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };            </script>        </div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">cfg</span><span class="o">.</span><span class="n">plotly_route_map</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script>if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.5.0.min.js" integrity="sha256-fHbNLP+GlIXN+efbQec78UkemUz3NJp7UmfGxC1tNxs=" crossorigin="anonymous"></script>                <div id="74879470-b184-4daa-8d9f-28b6dfad516b" class="plotly-graph-div" style="height:400px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("74879470-b184-4daa-8d9f-28b6dfad516b")) {                    Plotly.newPlot(                        "74879470-b184-4daa-8d9f-28b6dfad516b",                        [{"lat":[25.26059,21.6796],"line":{"color":"#c38764","width":1},"lon":[51.61377,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[50.0264,25.26059],"line":{"color":"#c38764","width":1},"lon":[8.54313,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[51.4706,25.26059],"line":{"color":"#c38764","width":1},"lon":[-0.46194,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,4.19167],"line":{"color":"#c38764","width":1},"lon":[51.61377,73.52917],"mode":"lines","type":"scattergeo"},{"lat":[52.36217,25.26059],"line":{"color":"#c38764","width":1},"lon":[13.50067,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[13.6811,25.26059],"line":{"color":"#c38764","width":1},"lon":[100.747,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[28.5665,25.26059],"line":{"color":"#c38764","width":1},"lon":[77.1031,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,25.2528],"line":{"color":"#c38764","width":1},"lon":[51.61377,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,25.26059],"line":{"color":"#c38764","width":1},"lon":[55.3644,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[4.19167,25.26059],"line":{"color":"#c38764","width":1},"lon":[73.52917,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[31.7096,25.26059],"line":{"color":"#c38764","width":1},"lon":[74.7973,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[41.6692,25.26059],"line":{"color":"#c38764","width":1},"lon":[44.9547,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[17.23132,25.26059],"line":{"color":"#c38764","width":1},"lon":[78.42986,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[13.6811,25.26059],"line":{"color":"#c38764","width":1},"lon":[100.747,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[14.5086,25.26059],"line":{"color":"#c38764","width":1},"lon":[121.02,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[-33.9461,25.26059],"line":{"color":"#c38764","width":1},"lon":[151.177,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[-37.6733,25.26059],"line":{"color":"#c38764","width":1},"lon":[144.843,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,21.6796],"line":{"color":"#c38764","width":1},"lon":[51.61377,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,41.27533],"line":{"color":"#c38764","width":1},"lon":[51.61377,28.752],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,37.618806],"line":{"color":"#c38764","width":1},"lon":[51.61377,-122.375417],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,32.897233],"line":{"color":"#c38764","width":1},"lon":[51.61377,-97.037695],"mode":"lines","type":"scattergeo"},{"lat":[45.6306,25.26059],"line":{"color":"#c38764","width":1},"lon":[8.72811,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[-8.74817,25.26059],"line":{"color":"#c38764","width":1},"lon":[115.167,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[13.1979,25.26059],"line":{"color":"#c38764","width":1},"lon":[77.7063,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,4.19167],"line":{"color":"#c38764","width":1},"lon":[51.61377,73.52917],"mode":"lines","type":"scattergeo"},{"lat":[12.99001,25.26059],"line":{"color":"#c38764","width":1},"lon":[80.1693,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,25.2528],"line":{"color":"#c38764","width":1},"lon":[51.61377,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,41.97694],"line":{"color":"#c38764","width":1},"lon":[51.61377,-87.90815],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,45.6306],"line":{"color":"#c38764","width":1},"lon":[51.61377,8.72811],"mode":"lines","type":"scattergeo"},{"lat":[7.18076,25.26059],"line":{"color":"#c38764","width":1},"lon":[79.8841,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[8.1132,25.26059],"line":{"color":"#c38764","width":1},"lon":[98.3169,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,49.0128],"line":{"color":"#c38764","width":1},"lon":[51.61377,2.55],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,52.36217],"line":{"color":"#c38764","width":1},"lon":[51.61377,13.50067],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,44.5722],"line":{"color":"#c38764","width":1},"lon":[51.61377,26.1022],"mode":"lines","type":"scattergeo"},{"lat":[33.54908,25.26059],"line":{"color":"#c38764","width":1},"lon":[72.82565,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[41.8045,25.26059],"line":{"color":"#c38764","width":1},"lon":[12.2508,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,40.4675],"line":{"color":"#c38764","width":1},"lon":[51.61377,50.0467],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,-8.74817],"line":{"color":"#c38764","width":1},"lon":[51.61377,115.167],"mode":"lines","type":"scattergeo"},{"lat":[49.0128,25.26059],"line":{"color":"#c38764","width":1},"lon":[2.55,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,40.639928],"line":{"color":"#c38764","width":1},"lon":[51.61377,-73.778692],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,13.6811],"line":{"color":"#c38764","width":1},"lon":[51.61377,100.747],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,25.26059],"line":{"color":"#c38764","width":1},"lon":[39.1565,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[19.0887,25.26059],"line":{"color":"#c38764","width":1},"lon":[72.8679,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,41.8045],"line":{"color":"#c38764","width":1},"lon":[51.61377,12.2508],"mode":"lines","type":"scattergeo"},{"lat":[40.639928,25.26059],"line":{"color":"#c38764","width":1},"lon":[-73.778692,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,8.1132],"line":{"color":"#c38764","width":1},"lon":[51.61377,98.3169],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,51.4706],"line":{"color":"#c38764","width":1},"lon":[51.61377,-0.46194],"mode":"lines","type":"scattergeo"},{"lat":[52.36217,25.26059],"line":{"color":"#c38764","width":1},"lon":[13.50067,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,50.0264],"line":{"color":"#c38764","width":1},"lon":[51.61377,8.54313],"mode":"lines","type":"scattergeo"},{"lat":[49.0128,25.26059],"line":{"color":"#c38764","width":1},"lon":[2.55,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[40.4675,25.26059],"line":{"color":"#c38764","width":1},"lon":[50.0467,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,51.4706],"line":{"color":"#c38764","width":1},"lon":[51.61377,-0.46194],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,14.5086],"line":{"color":"#c38764","width":1},"lon":[51.61377,121.02],"mode":"lines","type":"scattergeo"},{"lat":[45.6306,25.26059],"line":{"color":"#c38764","width":1},"lon":[8.72811,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,25.26059],"line":{"color":"#c38764","width":1},"lon":[55.3644,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,25.26059],"line":{"color":"#c38764","width":1},"lon":[39.1565,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,-8.74817],"line":{"color":"#c38764","width":1},"lon":[51.61377,115.167],"mode":"lines","type":"scattergeo"},{"lat":[32.897233,25.26059],"line":{"color":"#c38764","width":1},"lon":[-97.037695,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[41.8045,25.26059],"line":{"color":"#c38764","width":1},"lon":[12.2508,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,21.6796],"line":{"color":"#c38764","width":1},"lon":[51.61377,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[37.618806,25.26059],"line":{"color":"#c38764","width":1},"lon":[-122.375417,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,41.27533],"line":{"color":"#c38764","width":1},"lon":[51.61377,28.752],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,33.54908],"line":{"color":"#c38764","width":1},"lon":[51.61377,72.82565],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,2.74558],"line":{"color":"#c38764","width":1},"lon":[51.61377,101.71],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,49.0128],"line":{"color":"#c38764","width":1},"lon":[51.61377,2.55],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,14.5086],"line":{"color":"#c38764","width":1},"lon":[51.61377,121.02],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,31.7096],"line":{"color":"#c38764","width":1},"lon":[51.61377,74.7973],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,19.0887],"line":{"color":"#c38764","width":1},"lon":[51.61377,72.8679],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,-33.9461],"line":{"color":"#c38764","width":1},"lon":[51.61377,151.177],"mode":"lines","type":"scattergeo"},{"lat":[41.97694,25.26059],"line":{"color":"#c38764","width":1},"lon":[-87.90815,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[51.4706,25.26059],"line":{"color":"#c38764","width":1},"lon":[-0.46194,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[40.639928,25.26059],"line":{"color":"#c38764","width":1},"lon":[-73.778692,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[51.4706,25.26059],"line":{"color":"#c38764","width":1},"lon":[-0.46194,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,25.26059],"line":{"color":"#c38764","width":1},"lon":[28.752,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[50.0264,25.26059],"line":{"color":"#c38764","width":1},"lon":[8.54313,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,40.639928],"line":{"color":"#c38764","width":1},"lon":[51.61377,-73.778692],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,25.26059],"line":{"color":"#c38764","width":1},"lon":[55.3644,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[44.5722,25.26059],"line":{"color":"#c38764","width":1},"lon":[26.1022,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,8.1132],"line":{"color":"#c38764","width":1},"lon":[51.61377,98.3169],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,25.2528],"line":{"color":"#c38764","width":1},"lon":[51.61377,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,41.8045],"line":{"color":"#c38764","width":1},"lon":[51.61377,12.2508],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,-37.6733],"line":{"color":"#c38764","width":1},"lon":[51.61377,144.843],"mode":"lines","type":"scattergeo"},{"lat":[4.19167,25.26059],"line":{"color":"#c38764","width":1},"lon":[73.52917,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[14.5086,25.26059],"line":{"color":"#c38764","width":1},"lon":[121.02,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,28.5665],"line":{"color":"#c38764","width":1},"lon":[51.61377,77.1031],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,51.4706],"line":{"color":"#c38764","width":1},"lon":[51.61377,-0.46194],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,12.99001],"line":{"color":"#c38764","width":1},"lon":[51.61377,80.1693],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,25.26059],"line":{"color":"#c38764","width":1},"lon":[39.1565,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,41.6692],"line":{"color":"#c38764","width":1},"lon":[51.61377,44.9547],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,17.23132],"line":{"color":"#c38764","width":1},"lon":[51.61377,78.42986],"mode":"lines","type":"scattergeo"},{"lat":[2.74558,25.26059],"line":{"color":"#c38764","width":1},"lon":[101.71,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[-8.74817,25.26059],"line":{"color":"#c38764","width":1},"lon":[115.167,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,7.18076],"line":{"color":"#c38764","width":1},"lon":[51.61377,79.8841],"mode":"lines","type":"scattergeo"},{"lat":[8.1132,25.26059],"line":{"color":"#c38764","width":1},"lon":[98.3169,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,13.1979],"line":{"color":"#c38764","width":1},"lon":[51.61377,77.7063],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,52.36217],"line":{"color":"#c38764","width":1},"lon":[51.61377,13.50067],"mode":"lines","type":"scattergeo"},{"lat":[13.6811,25.26059],"line":{"color":"#c38764","width":1},"lon":[100.747,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,13.6811],"line":{"color":"#c38764","width":1},"lon":[51.61377,100.747],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,25.26059],"line":{"color":"#c38764","width":1},"lon":[28.752,51.61377],"mode":"lines","type":"scattergeo"},{"hoverinfo":"text","lat":{"dtype":"f8","bdata":"xLEubqOBSEDGbTSAt0A5QJJc\u002fkP6rTVAsb\u002fsnjy8SUBwXwfOGflAwBsv3SQGkTxACW05l+L6KUB4nKIjuVwrQE5\u002f9iNFxBBApU5AE2EDSUDHSPYINc9CQMjNcAM+o0RAyjLEsS7WQsAl6ZrJNzsxQL99HThnBC1A12mkpfL2BUC7Jw8LtRYzQCzy64fYckBAvsEXJlNlKkCRfvs6cOZNQCmzQSYZuRxAn3HhQEjGQEA8vVKWIW40wJqZmZmZ+UtA5dAi2\u002fnmREBXsmMjEH8hwMZtNIC30EZAuOUjKelRREB90LNZ9TkgQKMjufyHREZAMuauJeQTOUC+E7NeDP1EQCaqtwa2QjlA0csollsuSkDZPXlYqLU\u002fQNk9eVio1URAt2J\u002f2T1JRkCkcD0K1ztEQA=="},"lon":{"dtype":"f8","bdata":"ZmZmZmZmBEDKVMGopK5LQHnpJjEIlENAHLYtymyQ3b+LbOf7qeViQO0NvjCZRlNAn82qz9UKVEArhxbZzi9ZQI4B2evdYVJA9fOmIhUWIUAyVwbVBphewI2XbhKDwDxA5dAi2\u002fkaYkDzdoTTgptTQOF6FK5HQV5APQrXo3BtWUCzDHGsizdSQEEOSphpQljAjErqBDRtU0AzMzMzM0M+QDGZKhiV+FNAUPwYc9c0UkDWxW00gNdMQHsUrkfh+grAcayL22iAKECmm8QgsMpcQPfHe9XKdCFACmr4FtZxUsCOBvAWSJRYQN21hHzQkyZA9P3UeOlOXkAydy0hH\u002fpVwAqi7gOQzklAOC140VcAK0B0RpT2BrNSQOC+DpwzekZAtaZ5xykaOkCSXP5D+gVJQA=="},"marker":{"color":"rgb(0, 0, 0)","line":{"color":"rgba(68, 68, 68, 0)","width":3},"size":4},"mode":"markers","text":["CDG\u003cbr\u003eCharles de Gaulle International Airport\u003cbr\u003eEurope\u002fParis","DXB\u003cbr\u003eDubai International Airport\u003cbr\u003eAsia\u002fDubai","JED\u003cbr\u003eKing Abdulaziz International Airport\u003cbr\u003eAsia\u002fRiyadh","LHR\u003cbr\u003eLondon Heathrow Airport\u003cbr\u003eEurope\u002fLondon","SYD\u003cbr\u003eSydney Kingsford Smith International Airport\u003cbr\u003eAustralia\u002fSydney","DEL\u003cbr\u003eIndira Gandhi International Airport\u003cbr\u003eAsia\u002fKolkata","MAA\u003cbr\u003eChennai International Airport\u003cbr\u003eAsia\u002fKolkata","BKK\u003cbr\u003eSuvarnabhumi Airport\u003cbr\u003eAsia\u002fBangkok","MLE\u003cbr\u003eVelana International Airport\u003cbr\u003eIndian\u002fMaldives","FRA\u003cbr\u003eFrankfurt am Main International Airport\u003cbr\u003eEurope\u002fBerlin","SFO\u003cbr\u003eSan Francisco International Airport\u003cbr\u003eAmerica\u002fLos_Angeles","IST\u003cbr\u003eIstanbul Airport\u003cbr\u003eEurope\u002fIstanbul","MEL\u003cbr\u003eMelbourne International Airport\u003cbr\u003eAustralia\u002fMelbourne","HYD\u003cbr\u003eRajiv Gandhi International Airport Shamshabad\u003cbr\u003eAsia\u002fKolkata","MNL\u003cbr\u003eNinoy Aquino International Airport\u003cbr\u003eAsia\u002fManila","KUL\u003cbr\u003eKuala Lumpur International Airport\u003cbr\u003eAsia\u002fKuala_Lumpur","BOM\u003cbr\u003eChhatrapati Shivaji International Airport\u003cbr\u003eAsia\u002fKolkata","DFW\u003cbr\u003eDallas-Fort Worth International Airport\u003cbr\u003eAmerica\u002fChicago","BLR\u003cbr\u003eBengaluru International Airport\u003cbr\u003eAsia\u002fKolkata","LED\u003cbr\u003ePulkovo Airport\u003cbr\u003eEurope\u002fMoscow","CMB\u003cbr\u003eBandaranaike International Apt Colombo Airport\u003cbr\u003eAsia\u002fColombo","ISB\u003cbr\u003eIslamabad International Airport\u003cbr\u003eAsia\u002fKarachi","MRU\u003cbr\u003eSir Seewoosagur Ramgoolam International Airport\u003cbr\u003eIndian\u002fMauritius","EDI\u003cbr\u003eEdinburgh Airport\u003cbr\u003eEurope\u002fLondon","FCO\u003cbr\u003eLeonardo Da Vinci (Fiumicino) International Airport\u003cbr\u003eEurope\u002fRome","DPS\u003cbr\u003eNgurah Rai (Bali) International Airport\u003cbr\u003eAsia\u002fMakassar","MXP\u003cbr\u003eMalpensa International Airport\u003cbr\u003eEurope\u002fRome","JFK\u003cbr\u003eJohn F Kennedy International Airport\u003cbr\u003eAmerica\u002fNew_York","HKT\u003cbr\u003ePhuket International Airport\u003cbr\u003eAsia\u002fBangkok","BLQ\u003cbr\u003eBologna \u002f Borgo Panigale Airport\u003cbr\u003eEurope\u002fRome","TPE\u003cbr\u003eTaiwan Taoyuan International Airport\u003cbr\u003eAsia\u002fTaipei","ORD\u003cbr\u003eChicago O'Hare International Airport\u003cbr\u003eAmerica\u002fChicago","DOH\u003cbr\u003eHamad International Airport\u003cbr\u003eAsia\u002fQatar","BER\u003cbr\u003eBerlin Brandenburg Airport\u003cbr\u003eEurope\u002fBerlin","ATQ\u003cbr\u003eSri Guru Ram Dass Jee International Airport Amritsar\u003cbr\u003eAsia\u002fKolkata","TBS\u003cbr\u003eTbilisi International Airport\u003cbr\u003eAsia\u002fTbilisi","OTP\u003cbr\u003eHenri Coanda International Airport\u003cbr\u003eEurope\u002fBucharest","GYD\u003cbr\u003eHeydar Aliyev International Airport\u003cbr\u003eAsia\u002fBaku"],"type":"scattergeo"}],                        {"template":{"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#6a3d9a","#cab2d6","#33a02c","#b2df8a","#ff7f00","#fdbf6f","#1f78b4","#a6cee3","#e31a1c","#fb9a99","#b15928","#e3d086"],"dragmode":"pan","font":{"color":"#2a3f5f","family":"Roboto, Arial, sans-serif"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"rgb(242, 242, 245)","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"rgb(242, 242, 245)","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"white","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"white","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15,"font":{"color":"black","size":13,"weight":"bold"}},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15,"font":{"color":"black","size":13,"weight":"bold"}},"zerolinecolor":"white","zerolinewidth":2}}},"geo":{"projection":{"rotation":{"lon":51.61377,"lat":10,"roll":0},"type":"robinson","scale":1},"scope":"world"},"margin":{"r":0,"t":40,"l":0,"b":0},"showlegend":false,"height":400,"title":{"pad":{"b":8},"font":{"family":"Roboto, Arial, sans-serif","size":18,"color":"black","weight":"bold"},"text":"Date Routes","y":1,"yref":"paper","x":0,"xref":"paper","xanchor":"left","yanchor":"bottom","automargin":true}},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('74879470-b184-4daa-8d9f-28b6dfad516b');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };            </script>        </div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">cfg</span><span class="o">.</span><span class="n">plotly_route_map</span><span class="p">(</span><span class="s2">&quot;Kebab&quot;</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script>if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.5.0.min.js" integrity="sha256-fHbNLP+GlIXN+efbQec78UkemUz3NJp7UmfGxC1tNxs=" crossorigin="anonymous"></script>                <div id="00bc9832-5214-4761-a981-9431ee38dcdf" class="plotly-graph-div" style="height:400px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("00bc9832-5214-4761-a981-9431ee38dcdf")) {                    Plotly.newPlot(                        "00bc9832-5214-4761-a981-9431ee38dcdf",                        [{"lat":[52.36217,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[13.50067,28.752],"mode":"lines","type":"scattergeo"},{"lat":[41.8045,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[12.2508,28.752],"mode":"lines","type":"scattergeo"},{"lat":[44.5354,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[11.2887,28.752],"mode":"lines","type":"scattergeo"},{"lat":[40.4675,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[50.0467,28.752],"mode":"lines","type":"scattergeo"},{"lat":[49.0128,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[2.55,28.752],"mode":"lines","type":"scattergeo"},{"lat":[51.4706,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[-0.46194,28.752],"mode":"lines","type":"scattergeo"},{"lat":[8.1132,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[98.3169,28.752],"mode":"lines","type":"scattergeo"},{"lat":[4.19167,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[73.52917,28.752],"mode":"lines","type":"scattergeo"},{"lat":[-8.74817,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[115.167,28.752],"mode":"lines","type":"scattergeo"},{"lat":[14.5086,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[121.02,28.752],"mode":"lines","type":"scattergeo"},{"lat":[13.1979,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[77.7063,28.752],"mode":"lines","type":"scattergeo"},{"lat":[17.23132,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[78.42986,28.752],"mode":"lines","type":"scattergeo"},{"lat":[12.99001,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[80.1693,28.752],"mode":"lines","type":"scattergeo"},{"lat":[31.7096,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[74.7973,28.752],"mode":"lines","type":"scattergeo"},{"lat":[-20.4302,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[57.6836,28.752],"mode":"lines","type":"scattergeo"},{"lat":[25.0777,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[121.233,28.752],"mode":"lines","type":"scattergeo"},{"lat":[13.6811,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[100.747,28.752],"mode":"lines","type":"scattergeo"},{"lat":[2.74558,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[101.71,28.752],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[51.61377,28.752],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[39.1565,28.752],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[55.3644,28.752],"mode":"lines","type":"scattergeo"},{"lat":[-33.9461,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[151.177,28.752],"mode":"lines","type":"scattergeo"},{"lat":[-37.6733,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[144.843,28.752],"mode":"lines","type":"scattergeo"},{"lat":[13.1979,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[77.7063,28.752],"mode":"lines","type":"scattergeo"},{"lat":[17.23132,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[78.42986,28.752],"mode":"lines","type":"scattergeo"},{"lat":[12.99001,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[80.1693,28.752],"mode":"lines","type":"scattergeo"},{"lat":[31.7096,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[74.7973,28.752],"mode":"lines","type":"scattergeo"},{"lat":[52.36217,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[13.50067,28.752],"mode":"lines","type":"scattergeo"},{"lat":[45.6306,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[8.72811,28.752],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,50.0264],"line":{"color":"#E5B73B","width":1},"lon":[28.752,8.54313],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,31.7096],"line":{"color":"#E5B73B","width":1},"lon":[28.752,74.7973],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,25.2528],"line":{"color":"#E5B73B","width":1},"lon":[28.752,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,21.6796],"line":{"color":"#E5B73B","width":1},"lon":[28.752,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,25.26059],"line":{"color":"#E5B73B","width":1},"lon":[28.752,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,7.18076],"line":{"color":"#E5B73B","width":1},"lon":[28.752,79.8841],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,41.6692],"line":{"color":"#E5B73B","width":1},"lon":[28.752,44.9547],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,49.0128],"line":{"color":"#E5B73B","width":1},"lon":[28.752,2.55],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,17.23132],"line":{"color":"#E5B73B","width":1},"lon":[28.752,78.42986],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,12.99001],"line":{"color":"#E5B73B","width":1},"lon":[28.752,80.1693],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,13.1979],"line":{"color":"#E5B73B","width":1},"lon":[28.752,77.7063],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,59.8003],"line":{"color":"#E5B73B","width":1},"lon":[28.752,30.2625],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,52.36217],"line":{"color":"#E5B73B","width":1},"lon":[28.752,13.50067],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,45.6306],"line":{"color":"#E5B73B","width":1},"lon":[28.752,8.72811],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,19.0887],"line":{"color":"#E5B73B","width":1},"lon":[28.752,72.8679],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,-8.74817],"line":{"color":"#E5B73B","width":1},"lon":[28.752,115.167],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,28.5665],"line":{"color":"#E5B73B","width":1},"lon":[28.752,77.1031],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,8.1132],"line":{"color":"#E5B73B","width":1},"lon":[28.752,98.3169],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,33.54908],"line":{"color":"#E5B73B","width":1},"lon":[28.752,72.82565],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,13.6811],"line":{"color":"#E5B73B","width":1},"lon":[28.752,100.747],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,25.0777],"line":{"color":"#E5B73B","width":1},"lon":[28.752,121.233],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,2.74558],"line":{"color":"#E5B73B","width":1},"lon":[28.752,101.71],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,40.4675],"line":{"color":"#E5B73B","width":1},"lon":[28.752,50.0467],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,4.19167],"line":{"color":"#E5B73B","width":1},"lon":[28.752,73.52917],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,41.8045],"line":{"color":"#E5B73B","width":1},"lon":[28.752,12.2508],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,51.4706],"line":{"color":"#E5B73B","width":1},"lon":[28.752,-0.46194],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,25.2528],"line":{"color":"#E5B73B","width":1},"lon":[28.752,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,40.639928],"line":{"color":"#E5B73B","width":1},"lon":[28.752,-73.778692],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,32.897233],"line":{"color":"#E5B73B","width":1},"lon":[28.752,-97.037695],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,49.0128],"line":{"color":"#E5B73B","width":1},"lon":[28.752,2.55],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,14.5086],"line":{"color":"#E5B73B","width":1},"lon":[28.752,121.02],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,45.6306],"line":{"color":"#E5B73B","width":1},"lon":[28.752,8.72811],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,44.5354],"line":{"color":"#E5B73B","width":1},"lon":[28.752,11.2887],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,21.6796],"line":{"color":"#E5B73B","width":1},"lon":[28.752,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[28.5665,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[77.1031,28.752],"mode":"lines","type":"scattergeo"},{"lat":[28.5665,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[77.1031,28.752],"mode":"lines","type":"scattergeo"},{"lat":[50.0264,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[8.54313,28.752],"mode":"lines","type":"scattergeo"},{"lat":[19.0887,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[72.8679,28.752],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,49.0128],"line":{"color":"#E5B73B","width":1},"lon":[28.752,2.55],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,44.5722],"line":{"color":"#E5B73B","width":1},"lon":[28.752,26.1022],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,-20.4302],"line":{"color":"#E5B73B","width":1},"lon":[28.752,57.6836],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,44.5354],"line":{"color":"#E5B73B","width":1},"lon":[28.752,11.2887],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,41.6692],"line":{"color":"#E5B73B","width":1},"lon":[28.752,44.9547],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,19.0887],"line":{"color":"#E5B73B","width":1},"lon":[28.752,72.8679],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,25.26059],"line":{"color":"#E5B73B","width":1},"lon":[28.752,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,52.36217],"line":{"color":"#E5B73B","width":1},"lon":[28.752,13.50067],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,50.0264],"line":{"color":"#E5B73B","width":1},"lon":[28.752,8.54313],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,40.4675],"line":{"color":"#E5B73B","width":1},"lon":[28.752,50.0467],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,45.6306],"line":{"color":"#E5B73B","width":1},"lon":[28.752,8.72811],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,13.1979],"line":{"color":"#E5B73B","width":1},"lon":[28.752,77.7063],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,17.23132],"line":{"color":"#E5B73B","width":1},"lon":[28.752,78.42986],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,12.99001],"line":{"color":"#E5B73B","width":1},"lon":[28.752,80.1693],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,41.97694],"line":{"color":"#E5B73B","width":1},"lon":[28.752,-87.90815],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[51.61377,28.752],"mode":"lines","type":"scattergeo"},{"lat":[49.0128,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[2.55,28.752],"mode":"lines","type":"scattergeo"},{"lat":[44.5354,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[11.2887,28.752],"mode":"lines","type":"scattergeo"},{"lat":[19.0887,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[72.8679,28.752],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[55.3644,28.752],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[39.1565,28.752],"mode":"lines","type":"scattergeo"},{"lat":[59.8003,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[30.2625,28.752],"mode":"lines","type":"scattergeo"},{"lat":[44.5722,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[26.1022,28.752],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,51.4706],"line":{"color":"#E5B73B","width":1},"lon":[28.752,-0.46194],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,21.6796],"line":{"color":"#E5B73B","width":1},"lon":[28.752,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,-37.6733],"line":{"color":"#E5B73B","width":1},"lon":[28.752,144.843],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,55.95],"line":{"color":"#E5B73B","width":1},"lon":[28.752,-3.3725],"mode":"lines","type":"scattergeo"},{"lat":[41.6692,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[44.9547,28.752],"mode":"lines","type":"scattergeo"},{"lat":[7.18076,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[79.8841,28.752],"mode":"lines","type":"scattergeo"},{"lat":[41.97694,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[-87.90815,28.752],"mode":"lines","type":"scattergeo"},{"lat":[41.8045,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[12.2508,28.752],"mode":"lines","type":"scattergeo"},{"lat":[40.639928,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[-73.778692,28.752],"mode":"lines","type":"scattergeo"},{"lat":[40.4675,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[50.0467,28.752],"mode":"lines","type":"scattergeo"},{"lat":[33.54908,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[72.82565,28.752],"mode":"lines","type":"scattergeo"},{"lat":[32.897233,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[-97.037695,28.752],"mode":"lines","type":"scattergeo"},{"lat":[37.618806,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[-122.375417,28.752],"mode":"lines","type":"scattergeo"},{"lat":[13.6811,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[100.747,28.752],"mode":"lines","type":"scattergeo"},{"lat":[51.4706,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[-0.46194,28.752],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,37.618806],"line":{"color":"#E5B73B","width":1},"lon":[28.752,-122.375417],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,-33.9461],"line":{"color":"#E5B73B","width":1},"lon":[28.752,151.177],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,25.2528],"line":{"color":"#E5B73B","width":1},"lon":[28.752,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,51.4706],"line":{"color":"#E5B73B","width":1},"lon":[28.752,-0.46194],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,41.8045],"line":{"color":"#E5B73B","width":1},"lon":[28.752,12.2508],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,40.639928],"line":{"color":"#E5B73B","width":1},"lon":[28.752,-73.778692],"mode":"lines","type":"scattergeo"},{"lat":[49.0128,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[2.55,28.752],"mode":"lines","type":"scattergeo"},{"lat":[44.5722,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[26.1022,28.752],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[55.3644,28.752],"mode":"lines","type":"scattergeo"},{"lat":[50.0264,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[8.54313,28.752],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,28.5665],"line":{"color":"#E5B73B","width":1},"lon":[28.752,77.1031],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,31.7096],"line":{"color":"#E5B73B","width":1},"lon":[28.752,74.7973],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,49.0128],"line":{"color":"#E5B73B","width":1},"lon":[28.752,2.55],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,13.6811],"line":{"color":"#E5B73B","width":1},"lon":[28.752,100.747],"mode":"lines","type":"scattergeo"},{"lat":[41.6692,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[44.9547,28.752],"mode":"lines","type":"scattergeo"},{"lat":[45.6306,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[8.72811,28.752],"mode":"lines","type":"scattergeo"},{"lat":[55.95,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[-3.3725,28.752],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,41.27533],"line":{"color":"#E5B73B","width":1},"lon":[39.1565,28.752],"mode":"lines","type":"scattergeo"},{"hoverinfo":"text","lat":{"dtype":"f8","bdata":"xLEubqOBSEDGbTSAt0A5QJJc\u002fkP6rTVAsb\u002fsnjy8SUBwXwfOGflAwBsv3SQGkTxACW05l+L6KUB4nKIjuVwrQE5\u002f9iNFxBBApU5AE2EDSUDHSPYINc9CQMjNcAM+o0RAyjLEsS7WQsAl6ZrJNzsxQL99HThnBC1A12mkpfL2BUC7Jw8LtRYzQCzy64fYckBAvsEXJlNlKkCRfvs6cOZNQCmzQSYZuRxAn3HhQEjGQEA8vVKWIW40wJqZmZmZ+UtA5dAi2\u002fnmREBXsmMjEH8hwMZtNIC30EZAuOUjKelRREB90LNZ9TkgQKMjufyHREZAMuauJeQTOUC+E7NeDP1EQCaqtwa2QjlA0csollsuSkDZPXlYqLU\u002fQNk9eVio1URAt2J\u002f2T1JRkCkcD0K1ztEQA=="},"lon":{"dtype":"f8","bdata":"ZmZmZmZmBEDKVMGopK5LQHnpJjEIlENAHLYtymyQ3b+LbOf7qeViQO0NvjCZRlNAn82qz9UKVEArhxbZzi9ZQI4B2evdYVJA9fOmIhUWIUAyVwbVBphewI2XbhKDwDxA5dAi2\u002fkaYkDzdoTTgptTQOF6FK5HQV5APQrXo3BtWUCzDHGsizdSQEEOSphpQljAjErqBDRtU0AzMzMzM0M+QDGZKhiV+FNAUPwYc9c0UkDWxW00gNdMQHsUrkfh+grAcayL22iAKECmm8QgsMpcQPfHe9XKdCFACmr4FtZxUsCOBvAWSJRYQN21hHzQkyZA9P3UeOlOXkAydy0hH\u002fpVwAqi7gOQzklAOC140VcAK0B0RpT2BrNSQOC+DpwzekZAtaZ5xykaOkCSXP5D+gVJQA=="},"marker":{"color":"rgb(0, 0, 0)","line":{"color":"rgba(68, 68, 68, 0)","width":3},"size":4},"mode":"markers","text":["CDG\u003cbr\u003eCharles de Gaulle International Airport\u003cbr\u003eEurope\u002fParis","DXB\u003cbr\u003eDubai International Airport\u003cbr\u003eAsia\u002fDubai","JED\u003cbr\u003eKing Abdulaziz International Airport\u003cbr\u003eAsia\u002fRiyadh","LHR\u003cbr\u003eLondon Heathrow Airport\u003cbr\u003eEurope\u002fLondon","SYD\u003cbr\u003eSydney Kingsford Smith International Airport\u003cbr\u003eAustralia\u002fSydney","DEL\u003cbr\u003eIndira Gandhi International Airport\u003cbr\u003eAsia\u002fKolkata","MAA\u003cbr\u003eChennai International Airport\u003cbr\u003eAsia\u002fKolkata","BKK\u003cbr\u003eSuvarnabhumi Airport\u003cbr\u003eAsia\u002fBangkok","MLE\u003cbr\u003eVelana International Airport\u003cbr\u003eIndian\u002fMaldives","FRA\u003cbr\u003eFrankfurt am Main International Airport\u003cbr\u003eEurope\u002fBerlin","SFO\u003cbr\u003eSan Francisco International Airport\u003cbr\u003eAmerica\u002fLos_Angeles","IST\u003cbr\u003eIstanbul Airport\u003cbr\u003eEurope\u002fIstanbul","MEL\u003cbr\u003eMelbourne International Airport\u003cbr\u003eAustralia\u002fMelbourne","HYD\u003cbr\u003eRajiv Gandhi International Airport Shamshabad\u003cbr\u003eAsia\u002fKolkata","MNL\u003cbr\u003eNinoy Aquino International Airport\u003cbr\u003eAsia\u002fManila","KUL\u003cbr\u003eKuala Lumpur International Airport\u003cbr\u003eAsia\u002fKuala_Lumpur","BOM\u003cbr\u003eChhatrapati Shivaji International Airport\u003cbr\u003eAsia\u002fKolkata","DFW\u003cbr\u003eDallas-Fort Worth International Airport\u003cbr\u003eAmerica\u002fChicago","BLR\u003cbr\u003eBengaluru International Airport\u003cbr\u003eAsia\u002fKolkata","LED\u003cbr\u003ePulkovo Airport\u003cbr\u003eEurope\u002fMoscow","CMB\u003cbr\u003eBandaranaike International Apt Colombo Airport\u003cbr\u003eAsia\u002fColombo","ISB\u003cbr\u003eIslamabad International Airport\u003cbr\u003eAsia\u002fKarachi","MRU\u003cbr\u003eSir Seewoosagur Ramgoolam International Airport\u003cbr\u003eIndian\u002fMauritius","EDI\u003cbr\u003eEdinburgh Airport\u003cbr\u003eEurope\u002fLondon","FCO\u003cbr\u003eLeonardo Da Vinci (Fiumicino) International Airport\u003cbr\u003eEurope\u002fRome","DPS\u003cbr\u003eNgurah Rai (Bali) International Airport\u003cbr\u003eAsia\u002fMakassar","MXP\u003cbr\u003eMalpensa International Airport\u003cbr\u003eEurope\u002fRome","JFK\u003cbr\u003eJohn F Kennedy International Airport\u003cbr\u003eAmerica\u002fNew_York","HKT\u003cbr\u003ePhuket International Airport\u003cbr\u003eAsia\u002fBangkok","BLQ\u003cbr\u003eBologna \u002f Borgo Panigale Airport\u003cbr\u003eEurope\u002fRome","TPE\u003cbr\u003eTaiwan Taoyuan International Airport\u003cbr\u003eAsia\u002fTaipei","ORD\u003cbr\u003eChicago O'Hare International Airport\u003cbr\u003eAmerica\u002fChicago","DOH\u003cbr\u003eHamad International Airport\u003cbr\u003eAsia\u002fQatar","BER\u003cbr\u003eBerlin Brandenburg Airport\u003cbr\u003eEurope\u002fBerlin","ATQ\u003cbr\u003eSri Guru Ram Dass Jee International Airport Amritsar\u003cbr\u003eAsia\u002fKolkata","TBS\u003cbr\u003eTbilisi International Airport\u003cbr\u003eAsia\u002fTbilisi","OTP\u003cbr\u003eHenri Coanda International Airport\u003cbr\u003eEurope\u002fBucharest","GYD\u003cbr\u003eHeydar Aliyev International Airport\u003cbr\u003eAsia\u002fBaku"],"type":"scattergeo"}],                        {"template":{"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#6a3d9a","#cab2d6","#33a02c","#b2df8a","#ff7f00","#fdbf6f","#1f78b4","#a6cee3","#e31a1c","#fb9a99","#b15928","#e3d086"],"dragmode":"pan","font":{"color":"#2a3f5f","family":"Roboto, Arial, sans-serif"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"rgb(242, 242, 245)","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"rgb(242, 242, 245)","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"white","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"white","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15,"font":{"color":"black","size":13,"weight":"bold"}},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15,"font":{"color":"black","size":13,"weight":"bold"}},"zerolinecolor":"white","zerolinewidth":2}}},"geo":{"projection":{"rotation":{"lon":28.752,"lat":10,"roll":0},"type":"robinson","scale":1},"scope":"world"},"margin":{"r":0,"t":40,"l":0,"b":0},"showlegend":false,"height":400,"title":{"pad":{"b":8},"font":{"family":"Roboto, Arial, sans-serif","size":18,"color":"black","weight":"bold"},"text":"Kebab Routes","y":1,"yref":"paper","x":0,"xref":"paper","xanchor":"left","yanchor":"bottom","automargin":true}},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('00bc9832-5214-4761-a981-9431ee38dcdf');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };            </script>        </div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">cfg</span><span class="o">.</span><span class="n">plotly_route_map</span><span class="p">(</span><span class="s2">&quot;Pomegranate&quot;</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script>if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.5.0.min.js" integrity="sha256-fHbNLP+GlIXN+efbQec78UkemUz3NJp7UmfGxC1tNxs=" crossorigin="anonymous"></script>                <div id="cb691ed9-5742-44a8-afff-92e7e3a61af6" class="plotly-graph-div" style="height:400px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("cb691ed9-5742-44a8-afff-92e7e3a61af6")) {                    Plotly.newPlot(                        "cb691ed9-5742-44a8-afff-92e7e3a61af6",                        [{"lat":[40.639928,21.6796],"line":{"color":"#A42A35","width":1},"lon":[-73.778692,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,40.639928],"line":{"color":"#A42A35","width":1},"lon":[39.1565,-73.778692],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,51.4706],"line":{"color":"#A42A35","width":1},"lon":[39.1565,-0.46194],"mode":"lines","type":"scattergeo"},{"lat":[51.4706,21.6796],"line":{"color":"#A42A35","width":1},"lon":[-0.46194,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[51.4706,21.6796],"line":{"color":"#A42A35","width":1},"lon":[-0.46194,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,49.0128],"line":{"color":"#A42A35","width":1},"lon":[39.1565,2.55],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,50.0264],"line":{"color":"#A42A35","width":1},"lon":[39.1565,8.54313],"mode":"lines","type":"scattergeo"},{"lat":[50.0264,21.6796],"line":{"color":"#A42A35","width":1},"lon":[8.54313,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,41.8045],"line":{"color":"#A42A35","width":1},"lon":[39.1565,12.2508],"mode":"lines","type":"scattergeo"},{"lat":[41.8045,21.6796],"line":{"color":"#A42A35","width":1},"lon":[12.2508,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[45.6306,21.6796],"line":{"color":"#A42A35","width":1},"lon":[8.72811,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,45.6306],"line":{"color":"#A42A35","width":1},"lon":[39.1565,8.72811],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,41.27533],"line":{"color":"#A42A35","width":1},"lon":[39.1565,28.752],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,21.6796],"line":{"color":"#A42A35","width":1},"lon":[28.752,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,41.27533],"line":{"color":"#A42A35","width":1},"lon":[39.1565,28.752],"mode":"lines","type":"scattergeo"},{"lat":[41.27533,21.6796],"line":{"color":"#A42A35","width":1},"lon":[28.752,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,25.26059],"line":{"color":"#A42A35","width":1},"lon":[39.1565,51.61377],"mode":"lines","type":"scattergeo"},{"lat":[25.26059,21.6796],"line":{"color":"#A42A35","width":1},"lon":[51.61377,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,25.2528],"line":{"color":"#A42A35","width":1},"lon":[39.1565,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,21.6796],"line":{"color":"#A42A35","width":1},"lon":[55.3644,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,25.2528],"line":{"color":"#A42A35","width":1},"lon":[39.1565,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,21.6796],"line":{"color":"#A42A35","width":1},"lon":[55.3644,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,25.2528],"line":{"color":"#A42A35","width":1},"lon":[39.1565,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,21.6796],"line":{"color":"#A42A35","width":1},"lon":[55.3644,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,21.6796],"line":{"color":"#A42A35","width":1},"lon":[55.3644,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,25.2528],"line":{"color":"#A42A35","width":1},"lon":[39.1565,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,25.2528],"line":{"color":"#A42A35","width":1},"lon":[39.1565,55.3644],"mode":"lines","type":"scattergeo"},{"lat":[25.2528,21.6796],"line":{"color":"#A42A35","width":1},"lon":[55.3644,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,33.54908],"line":{"color":"#A42A35","width":1},"lon":[39.1565,72.82565],"mode":"lines","type":"scattergeo"},{"lat":[33.54908,21.6796],"line":{"color":"#A42A35","width":1},"lon":[72.82565,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,33.54908],"line":{"color":"#A42A35","width":1},"lon":[39.1565,72.82565],"mode":"lines","type":"scattergeo"},{"lat":[33.54908,21.6796],"line":{"color":"#A42A35","width":1},"lon":[72.82565,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,17.23132],"line":{"color":"#A42A35","width":1},"lon":[39.1565,78.42986],"mode":"lines","type":"scattergeo"},{"lat":[17.23132,21.6796],"line":{"color":"#A42A35","width":1},"lon":[78.42986,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[28.5665,21.6796],"line":{"color":"#A42A35","width":1},"lon":[77.1031,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,28.5665],"line":{"color":"#A42A35","width":1},"lon":[39.1565,77.1031],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,19.0887],"line":{"color":"#A42A35","width":1},"lon":[39.1565,72.8679],"mode":"lines","type":"scattergeo"},{"lat":[19.0887,21.6796],"line":{"color":"#A42A35","width":1},"lon":[72.8679,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,4.19167],"line":{"color":"#A42A35","width":1},"lon":[39.1565,73.52917],"mode":"lines","type":"scattergeo"},{"lat":[4.19167,21.6796],"line":{"color":"#A42A35","width":1},"lon":[73.52917,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,2.74558],"line":{"color":"#A42A35","width":1},"lon":[39.1565,101.71],"mode":"lines","type":"scattergeo"},{"lat":[2.74558,21.6796],"line":{"color":"#A42A35","width":1},"lon":[101.71,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,13.6811],"line":{"color":"#A42A35","width":1},"lon":[39.1565,100.747],"mode":"lines","type":"scattergeo"},{"lat":[13.6811,21.6796],"line":{"color":"#A42A35","width":1},"lon":[100.747,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,8.1132],"line":{"color":"#A42A35","width":1},"lon":[39.1565,98.3169],"mode":"lines","type":"scattergeo"},{"lat":[8.1132,21.6796],"line":{"color":"#A42A35","width":1},"lon":[98.3169,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,13.1979],"line":{"color":"#A42A35","width":1},"lon":[39.1565,77.7063],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,14.5086],"line":{"color":"#A42A35","width":1},"lon":[39.1565,121.02],"mode":"lines","type":"scattergeo"},{"lat":[14.5086,21.6796],"line":{"color":"#A42A35","width":1},"lon":[121.02,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,51.4706],"line":{"color":"#A42A35","width":1},"lon":[39.1565,-0.46194],"mode":"lines","type":"scattergeo"},{"lat":[21.6796,12.99001],"line":{"color":"#A42A35","width":1},"lon":[39.1565,80.1693],"mode":"lines","type":"scattergeo"},{"lat":[12.99001,21.6796],"line":{"color":"#A42A35","width":1},"lon":[80.1693,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[49.0128,21.6796],"line":{"color":"#A42A35","width":1},"lon":[2.55,39.1565],"mode":"lines","type":"scattergeo"},{"lat":[13.1979,21.6796],"line":{"color":"#A42A35","width":1},"lon":[77.7063,39.1565],"mode":"lines","type":"scattergeo"},{"hoverinfo":"text","lat":{"dtype":"f8","bdata":"xLEubqOBSEDGbTSAt0A5QJJc\u002fkP6rTVAsb\u002fsnjy8SUBwXwfOGflAwBsv3SQGkTxACW05l+L6KUB4nKIjuVwrQE5\u002f9iNFxBBApU5AE2EDSUDHSPYINc9CQMjNcAM+o0RAyjLEsS7WQsAl6ZrJNzsxQL99HThnBC1A12mkpfL2BUC7Jw8LtRYzQCzy64fYckBAvsEXJlNlKkCRfvs6cOZNQCmzQSYZuRxAn3HhQEjGQEA8vVKWIW40wJqZmZmZ+UtA5dAi2\u002fnmREBXsmMjEH8hwMZtNIC30EZAuOUjKelRREB90LNZ9TkgQKMjufyHREZAMuauJeQTOUC+E7NeDP1EQCaqtwa2QjlA0csollsuSkDZPXlYqLU\u002fQNk9eVio1URAt2J\u002f2T1JRkCkcD0K1ztEQA=="},"lon":{"dtype":"f8","bdata":"ZmZmZmZmBEDKVMGopK5LQHnpJjEIlENAHLYtymyQ3b+LbOf7qeViQO0NvjCZRlNAn82qz9UKVEArhxbZzi9ZQI4B2evdYVJA9fOmIhUWIUAyVwbVBphewI2XbhKDwDxA5dAi2\u002fkaYkDzdoTTgptTQOF6FK5HQV5APQrXo3BtWUCzDHGsizdSQEEOSphpQljAjErqBDRtU0AzMzMzM0M+QDGZKhiV+FNAUPwYc9c0UkDWxW00gNdMQHsUrkfh+grAcayL22iAKECmm8QgsMpcQPfHe9XKdCFACmr4FtZxUsCOBvAWSJRYQN21hHzQkyZA9P3UeOlOXkAydy0hH\u002fpVwAqi7gOQzklAOC140VcAK0B0RpT2BrNSQOC+DpwzekZAtaZ5xykaOkCSXP5D+gVJQA=="},"marker":{"color":"rgb(0, 0, 0)","line":{"color":"rgba(68, 68, 68, 0)","width":3},"size":4},"mode":"markers","text":["CDG\u003cbr\u003eCharles de Gaulle International Airport\u003cbr\u003eEurope\u002fParis","DXB\u003cbr\u003eDubai International Airport\u003cbr\u003eAsia\u002fDubai","JED\u003cbr\u003eKing Abdulaziz International Airport\u003cbr\u003eAsia\u002fRiyadh","LHR\u003cbr\u003eLondon Heathrow Airport\u003cbr\u003eEurope\u002fLondon","SYD\u003cbr\u003eSydney Kingsford Smith International Airport\u003cbr\u003eAustralia\u002fSydney","DEL\u003cbr\u003eIndira Gandhi International Airport\u003cbr\u003eAsia\u002fKolkata","MAA\u003cbr\u003eChennai International Airport\u003cbr\u003eAsia\u002fKolkata","BKK\u003cbr\u003eSuvarnabhumi Airport\u003cbr\u003eAsia\u002fBangkok","MLE\u003cbr\u003eVelana International Airport\u003cbr\u003eIndian\u002fMaldives","FRA\u003cbr\u003eFrankfurt am Main International Airport\u003cbr\u003eEurope\u002fBerlin","SFO\u003cbr\u003eSan Francisco International Airport\u003cbr\u003eAmerica\u002fLos_Angeles","IST\u003cbr\u003eIstanbul Airport\u003cbr\u003eEurope\u002fIstanbul","MEL\u003cbr\u003eMelbourne International Airport\u003cbr\u003eAustralia\u002fMelbourne","HYD\u003cbr\u003eRajiv Gandhi International Airport Shamshabad\u003cbr\u003eAsia\u002fKolkata","MNL\u003cbr\u003eNinoy Aquino International Airport\u003cbr\u003eAsia\u002fManila","KUL\u003cbr\u003eKuala Lumpur International Airport\u003cbr\u003eAsia\u002fKuala_Lumpur","BOM\u003cbr\u003eChhatrapati Shivaji International Airport\u003cbr\u003eAsia\u002fKolkata","DFW\u003cbr\u003eDallas-Fort Worth International Airport\u003cbr\u003eAmerica\u002fChicago","BLR\u003cbr\u003eBengaluru International Airport\u003cbr\u003eAsia\u002fKolkata","LED\u003cbr\u003ePulkovo Airport\u003cbr\u003eEurope\u002fMoscow","CMB\u003cbr\u003eBandaranaike International Apt Colombo Airport\u003cbr\u003eAsia\u002fColombo","ISB\u003cbr\u003eIslamabad International Airport\u003cbr\u003eAsia\u002fKarachi","MRU\u003cbr\u003eSir Seewoosagur Ramgoolam International Airport\u003cbr\u003eIndian\u002fMauritius","EDI\u003cbr\u003eEdinburgh Airport\u003cbr\u003eEurope\u002fLondon","FCO\u003cbr\u003eLeonardo Da Vinci (Fiumicino) International Airport\u003cbr\u003eEurope\u002fRome","DPS\u003cbr\u003eNgurah Rai (Bali) International Airport\u003cbr\u003eAsia\u002fMakassar","MXP\u003cbr\u003eMalpensa International Airport\u003cbr\u003eEurope\u002fRome","JFK\u003cbr\u003eJohn F Kennedy International Airport\u003cbr\u003eAmerica\u002fNew_York","HKT\u003cbr\u003ePhuket International Airport\u003cbr\u003eAsia\u002fBangkok","BLQ\u003cbr\u003eBologna \u002f Borgo Panigale Airport\u003cbr\u003eEurope\u002fRome","TPE\u003cbr\u003eTaiwan Taoyuan International Airport\u003cbr\u003eAsia\u002fTaipei","ORD\u003cbr\u003eChicago O'Hare International Airport\u003cbr\u003eAmerica\u002fChicago","DOH\u003cbr\u003eHamad International Airport\u003cbr\u003eAsia\u002fQatar","BER\u003cbr\u003eBerlin Brandenburg Airport\u003cbr\u003eEurope\u002fBerlin","ATQ\u003cbr\u003eSri Guru Ram Dass Jee International Airport Amritsar\u003cbr\u003eAsia\u002fKolkata","TBS\u003cbr\u003eTbilisi International Airport\u003cbr\u003eAsia\u002fTbilisi","OTP\u003cbr\u003eHenri Coanda International Airport\u003cbr\u003eEurope\u002fBucharest","GYD\u003cbr\u003eHeydar Aliyev International Airport\u003cbr\u003eAsia\u002fBaku"],"type":"scattergeo"}],                        {"template":{"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#6a3d9a","#cab2d6","#33a02c","#b2df8a","#ff7f00","#fdbf6f","#1f78b4","#a6cee3","#e31a1c","#fb9a99","#b15928","#e3d086"],"dragmode":"pan","font":{"color":"#2a3f5f","family":"Roboto, Arial, sans-serif"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"rgb(242, 242, 245)","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"rgb(242, 242, 245)","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"white","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"white","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15,"font":{"color":"black","size":13,"weight":"bold"}},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15,"font":{"color":"black","size":13,"weight":"bold"}},"zerolinecolor":"white","zerolinewidth":2}}},"geo":{"projection":{"rotation":{"lon":39.1565,"lat":10,"roll":0},"type":"robinson","scale":1.5},"scope":"world"},"margin":{"r":0,"t":40,"l":0,"b":0},"showlegend":false,"height":400,"title":{"pad":{"b":8},"font":{"family":"Roboto, Arial, sans-serif","size":18,"color":"black","weight":"bold"},"text":"Pomegranate Routes","y":1,"yref":"paper","x":0,"xref":"paper","xanchor":"left","yanchor":"bottom","automargin":true}},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('cb691ed9-5742-44a8-afff-92e7e3a61af6');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };            </script>        </div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">sim</span> <span class="o">=</span> <span class="n">pax</span><span class="o">.</span><span class="n">MultiSimulation</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"></div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"></pre>
+</div><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><code><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">sim</span> <span class="o">=</span> <span class="n">pax</span><span class="o">.</span><span class="n">MultiSimulation</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">out</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="nn">File ~/Git/pax/packages/passengersim-public/src/passengersim/driver/_multiproc.py:873,</span> in <span class="ni">MultiSimulation.run</span><span class="nt">(self, summarizer, output_dir, max_processes, fail_fast, rich_progress, cache_dir, run_id)</span>
+<span class="g g-Whitespace">    </span><span class="mi">863</span> <span class="n">future</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_asynchronously</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">864</span>     <span class="n">summarizer</span><span class="o">=</span><span class="n">summarizer</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">865</span>     <span class="n">output_dir</span><span class="o">=</span><span class="n">output_dir</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>    <span class="mi">870</span>     <span class="n">jobber</span><span class="o">=</span><span class="n">jobber</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">871</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">872</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">873</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">874</span>     <span class="n">future</span><span class="o">.</span><span class="n">_monitor_thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">875</span>     <span class="k">return</span> <span class="n">finalize_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="nn">File ~/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/concurrent/futures/_base.py:451,</span> in <span class="ni">Future.result</span><span class="nt">(self, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">448</span> <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="o">==</span> <span class="n">FINISHED</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">449</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_result</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">451</span> <span class="bp">self</span><span class="o">.</span><span class="n">_condition</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">453</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state</span> <span class="ow">in</span> <span class="p">[</span><span class="n">CANCELLED</span><span class="p">,</span> <span class="n">CANCELLED_AND_NOTIFIED</span><span class="p">]:</span>
+<span class="g g-Whitespace">    </span><span class="mi">454</span>     <span class="k">raise</span> <span class="n">CancelledError</span><span class="p">()</span>
+
+<span class="nn">File ~/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/threading.py:355,</span> in <span class="ni">Condition.wait</span><span class="nt">(self, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">353</span> <span class="k">try</span><span class="p">:</span>    <span class="c1"># restore state no matter what (e.g., KeyboardInterrupt)</span>
+<span class="g g-Whitespace">    </span><span class="mi">354</span>     <span class="k">if</span> <span class="n">timeout</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">355</span>         <span class="n">waiter</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">356</span>         <span class="n">gotit</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="g g-Whitespace">    </span><span class="mi">357</span>     <span class="k">else</span><span class="p">:</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">out</span><span class="o">.</span><span class="n">fig_carrier_revenues</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">out</span><span class="o">.</span><span class="n">fig_carrier_load_factors</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">out</span><span class="o">.</span><span class="n">fig_carrier_local_share</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><code><span class="n">out</span><span class="o">.</span><span class="n">fig_fare_class_mix</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  
+  
+  <div class="md-footer-meta md-typeset">
+    
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-footer-copyright__highlight">
+        &#169; Copyright 2026, PassengerSim LLC.
+        
+    </div>
+  
+    Created using
+    <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx</a>
+    8.2.3.
+     and
+    <a href="https://github.com/jbms/sphinx-immaterial/" target="_blank" rel="noopener">Sphinx-Immaterial</a>
+  
+</div>
+      
+    </div>
+    
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.action.view", "content.code.copy", "content.code.annotate", "navigation.tabs", "navigation.top", "navigation.tracking", "announce.dismiss"], "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike", "staticVersions": null, "versionPath": null}}</script>
+    
+      
+        <script src="../../_static/sphinx_immaterial_theme.32136f45f91ae6956.min.js?v=a7a9472a"></script>
+    
+  </body>
+</html>

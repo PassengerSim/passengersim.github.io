@@ -1,0 +1,44 @@
+History
+=======
+
+.. currentmodule:: passengersim.core
+
+.. autoclass:: History
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~History.__init__
+      ~History.as_arrays
+      ~History.as_mean_arrays
+      ~History.current_dep_as_arrays
+      ~History.from_arrays
+      ~History.get_closed_flags
+      ~History.get_closure
+      ~History.get_sold
+      ~History.get_sold_priceable
+      ~History.get_sold_yieldable
+      ~History.next_departure
+      ~History.next_timeframe
+      ~History.rebuild
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~History.length
+      ~History.n_departures
+      ~History.n_timeframes
+      ~History.sample_number
+      ~History.tf_index_closed_by_ap
+      ~History.truncation_rule
+   
+   

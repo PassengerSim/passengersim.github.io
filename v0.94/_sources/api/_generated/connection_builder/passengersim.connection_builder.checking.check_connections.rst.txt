@@ -1,0 +1,6 @@
+check\_connections
+==================
+
+.. currentmodule:: passengersim.connection_builder.checking
+
+.. autofunction:: check_connections

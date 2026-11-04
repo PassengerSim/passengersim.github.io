@@ -1,0 +1,57 @@
+GenericSimulationTables
+=======================
+
+.. currentmodule:: passengersim.summaries.generic
+
+.. autoclass:: GenericSimulationTables
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~GenericSimulationTables.__init__
+      ~GenericSimulationTables.aggregate
+      ~GenericSimulationTables.close
+      ~GenericSimulationTables.extract
+      ~GenericSimulationTables.fig_leg_bid_price_detail_rake
+      ~GenericSimulationTables.fig_leg_bid_price_history
+      ~GenericSimulationTables.fig_leg_booking_detail_rake
+      ~GenericSimulationTables.file_info
+      ~GenericSimulationTables.from_file
+      ~GenericSimulationTables.from_pickle
+      ~GenericSimulationTables.metadata
+      ~GenericSimulationTables.remove_data
+      ~GenericSimulationTables.run_queries
+      ~GenericSimulationTables.save
+      ~GenericSimulationTables.subclasses
+      ~GenericSimulationTables.to_file
+      ~GenericSimulationTables.to_html
+      ~GenericSimulationTables.to_pickle
+      ~GenericSimulationTables.to_xlsx
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~GenericSimulationTables.callback_data
+      ~GenericSimulationTables.cnx
+      ~GenericSimulationTables.config
+      ~GenericSimulationTables.database_available
+      ~GenericSimulationTables.database_path
+      ~GenericSimulationTables.database_status
+      ~GenericSimulationTables.db
+      ~GenericSimulationTables.leg_bid_price_detail
+      ~GenericSimulationTables.leg_booking_detail
+      ~GenericSimulationTables.trial_databases
+      ~GenericSimulationTables.sim
+      ~GenericSimulationTables.n_total_samples
+      ~GenericSimulationTables.meta_summaries
+   
+   

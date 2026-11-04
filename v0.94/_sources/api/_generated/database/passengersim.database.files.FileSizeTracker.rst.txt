@@ -1,0 +1,22 @@
+FileSizeTracker
+===============
+
+.. currentmodule:: passengersim.database.files
+
+.. autoclass:: FileSizeTracker
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~FileSizeTracker.__init__
+      ~FileSizeTracker.sample
+   
+   
+
+   
+   
+   

@@ -1,0 +1,6 @@
+break\_on\_integer
+==================
+
+.. currentmodule:: passengersim.summaries.tools
+
+.. autofunction:: break_on_integer

@@ -1,0 +1,883 @@
+---
+icon: material/crystal-ball
+jupytext:
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.19.3
+kernelspec:
+  display_name: pax (3.12.13)
+  language: python
+  name: python3
+language_info:
+  codemirror_mode:
+    name: ipython
+    version: 3
+  file_extension: .py
+  mimetype: text/x-python
+  name: python
+  nbconvert_exporter: python
+  pygments_lexer: ipython3
+  version: 3.12.13
+title: Forecasting
+---
+
+# Forecasting
+
+```{code-cell} ipython3
+---
+tags: [remove-cell]
+---
+import passengersim as pax
+
+pax.versions()
+```
+
+A PassengerSim forecast is not just an attempt to predict the future -- it is a very specific format
+for a set of predictions of some very specific things. The default implementation in PassengerSim is
+a [`ForecastGroup`](passengersim.core.ForecastGroup), but it can be replaced by any other code that
+exposes the same API. The forecast is generated for one or more booking classes (hence, "group") on
+a common simulation element. This simulation element can be a [`Leg`](passengersim.core.Leg)
+representing a particular flight, which also has a collection of
+[`Bucket`](passengersim.core.Bucket) objects corresponding to various booking classes.
+Alternatively, the simulation element can be a [`Path`](passengersim.core.Path) representing a
+sequence of one or more flights sold to customers as a non-stop itinerary (for a single leg path) or
+a connecting itinerary (for multi-leg paths), which also has a collection of `PathClass` objects
+corresponding to various booking classes.
+
+```{code-cell} ipython3
+---
+tags: [remove-cell]
+---
+# Setup a core.Leg to use in this demo.
+
+import passengersim as pax
+from passengersim.utils.compression import deserialize_from_bytes
+
+core = pax.core
+
+
+def histories():
+    """Create some History objects for testing."""
+    raw_histories = {
+        "Y0": {
+            "arrays": deserialize_from_bytes(
+                b"BCJNGGhA+hwAAAAAAADuDgUAAGGABJXvHAABAPADfZQojARzb2xklIwKZGlsbC5fBgDyGJSM"
+                b"DV9jcmVhdGVfYXJyYXmUk5QojBZudW1weS5fY29yZS5tdWx0aRwA8QSMDF9yZWNvbnN0cnVj"
+                b"dJSTlIwFKgBSlIwHbmQjAPAPk5RLAIWUQwFilIeUKEsBSxpLEIaUaAiMBWR0eXBlMwDxCgJm"
+                b"OJSJiIeUUpQoSwOMATyUTk5OSv////8FAJFLAHSUYolCAA20AFEAAADwPwcABQgAKwBAEAAD"
+                b"AgAEKAAbCCAABBgABAIABRAAAygABQIAAxAAExwIAAQoAAQIAAQCAAQQAAQIAAwCABMQQAAF"
+                b"AgADEAAEmAAECAAEQAAECAAE2AAFQAADOAAEGAAEKAAECAAMSAANAgAEQAADAgAEOAAEUAAE"
+                b"QAAEAgAEeAAEGAAEMAAECAAFAgALWAAEUAAMAgAMOAAEEAAECAAMAgATGFgABIABBAIABDAA"
+                b"DAgABAIABBgADwIABQwgAAToABMUcAAM8AAE0AAFOAADKAAFEAAPAgANAzAABAIABDgABAgA"
+                b"BOgABIgABAIABCAABJgABIgADwIAJguIAA0CAAsgAASAAAR4AAQQAASwAA8oAQ4LAgAEMAAE"
+                b"UAAECAAE4AEEIAAMCAAFAAEDAgAEIAAEQAAEOAEEoAAEAgAEEAAEMAAEEAAEOAAFCAAEAgAD"
+                b"AAEEMAAEWAAEgAAEGAAFOAADMAAEEAAEMAAFaAAEAgAEKAAEAgAPEAAFAxgADXAADwIADARw"
+                b"AAQIAA8CABUFMAADeAAMwAAEEAAE4AAMAAEEIAAMSAAEEAAECAAEAgAEQAAMGAAESAAECAIE"
+                b"EAAPAgAFBEAABAgABKAABBAABAgADAIABBgABAgADAIABBgABAgADIgABBgADAIABBgABAgA"
+                b"DQIAA2ABBQIAAxAABDAABGgABCABBNAABAIABBACBDAABBAADCgADAIABDAADQIAA4AABAIA"
+                b"BCgABIgABQIAAygABCAABKAABAgABIAABBAABCgABAIADBAABAIABBgADwgABQwCAAXwAAwC"
+                b"AAOgAA8CAA0PaAAFDbgABFAAAwgABCAADIAABFAABAIADBAABBgBDAIADygABQxoAAQQAAwI"
+                b"AARAAAQIAAQgAAQCAAQYAA0CAAPQAAQCAA0oAAQgAAMIAARYAAQoAATwBQQCAAQQAQQoAA/w"
+                b"ABUEUAAMAgANSAADiAAEAgAEmAIEQAAPCAAFBAIADCAABQIAC1gABCgABQIABCAACwgADIAA"
+                b"DPAABEgABAgADCAABEAADwIABQxQAQ1IAAOQAAUYAA8CAAQFSAEPAgAMBUgAA1gABKAABUAA"
+                b"AxgABCgABKAABAIABBgABDgABAIABBgADwIADgNgAAQCAAR4AAQIAARIAAQQAAQIAAQYAAQI"
+                b"AAQCAA8QAA0EAgAMKAAEWAAECAAMuAEEMAAMCAAFAgADyAAPIAAVDAIABDgABGABBIgADAgA"
+                b"BGgBwAhAlHSUTnSUUpSMDrYN8ANfcHJpY2VhYmxllGgEKGgHaAppDShoDGcNGBM5DQ8CAP//"
+                b"/9gEWQQM0QQPAgD/zwORBg8CAP/2BDkIDwIA//////MFOQ3fDGNsb3NlZF9mbGFnczcNB1gQ"
+                b"jAJ1MZQaH3yUGgIvoAFbBS0vAgNCACsPQAAMLwIDYAAKLwIDIAALQQAAAAIGAA8CAAYMgAAM"
+                b"EAAPAgBvoJR0lE50lFKUdS4AAAAA"
+            ),
+            "tf_index_closed_by_ap": 999,
+            "num_departures": 26,
+            "num_timeframes": 16,
+            "truncation_rule": "either",
+            "store_priceable": True,
+            "dcp_days_prior": (63, 56, 49, 42, 35, 31, 28, 24, 21, 17, 14, 10, 7, 5, 3, 1, 0),
+            "floating_closures": False,
+        },
+        "Y1": {
+            "arrays": deserialize_from_bytes(
+                b"BCJNGGhA+hwAAAAAAADuNQUAAGGABJXvHAABAPADfZQojARzb2xklIwKZGlsbC5fBgDyGJSM"
+                b"DV9jcmVhdGVfYXJyYXmUk5QojBZudW1weS5fY29yZS5tdWx0aRwA8QSMDF9yZWNvbnN0cnVj"
+                b"dJSTlIwFKgBSlIwHbmQjAPAPk5RLAIWUQwFilIeUKEsBSxpLEIaUaAiMBWR0eXBlMwDxCgJm"
+                b"OJSJiIeUUpQoSwOMATyUTk5OSv////8FAJFLAHSUYolCAA20AA8CAAETQBUAAwgAIvA/EAAE"
+                b"CAAEAgAFEAAPKAAEEwgYAAwCABMQGAAPIAAFBAIABGAABAgADwIABgNQAAwCAAU4AAMgAAQQ"
+                b"AAR4AAQQAAQgAAQIAAQYAAQIAA8CABUEMAAECAAUFFgAAwIABBgABGgABAIABRgADAIAC0AA"
+                b"DAIABDgABNAABQIAAzgABCAADHABDTAABAIAAzgADwIABQRQAAQCAAQQAA8IAAUEaAAEIAAF"
+                b"+AADaAAEmAAMAgAEGAAFOAAPAgAEBCAABAgABQIAA2AABIAADwIABQ04AAwCAANIAAQCAA8w"
+                b"AA4DAgAEKAAECAAEAgAFEAAPWAAUBDAABAgABAIADxAABgNYAAQgAAQIAA8IAR0EOAAFsAEL"
+                b"AgAEIAAPWAAFBCAABUAAA5gABBAABBgDBAgADDAABBAABAgABAIABBAABAgADQIAA2gABCAA"
+                b"DaAAAyAADAIABDAADAIADxgAJgRoAAsIAAxQAAWgAA8oAAQECAMPAgAVBGAABDgABGAABBgA"
+                b"DwIADQQoAAQIAA8CAA0PKAAFDXgAC+AABAgCDQgAAwIADFgABBAABAgABQIAA1gABRgAAxAA"
+                b"BVgAAwIABBABBSgADwIADQ9IAAQMQAAMEAAEeAAEcAAM4AIEMAAEIAAEAgAMEAAEKAAFAgAD"
+                b"kAAEGAAECAAEAgAPEAAGDzgABAwwAAQCAAwYAAwQAA8CAAUEKAAMCAAM2AANGAIPAgAEDEgA"
+                b"DwIABQwoAAwQAA0CAAMQAQyIAAQ4AA8YAAUPAgAFBDgADAIABfgAA3AABBgCBGAABBAABEAA"
+                b"DAgABCAADAIABCgABQIABGAADAIABBgAAwgABDgABIAABJgCBKgABCAABAgABAIADBAADwIA"
+                b"FQw4AAwQAAwCAAUgAAOwAA8CABUFOAAPAgAEGxhQAAQwAAQIAQ9oAQUEAgAEMAAPAgAFDyAA"
+                b"BQQYAAVoAAMCAAQYAAQIAAQCAAQQAAQIAAQCAAwQAAwCAAQgAAQIAAQCAAQQAA8IAAUFAgAP"
+                b"IAEEDBgBBEgADAIADRgAC1AABAIABGgCBRABAygABUAADBAAAwIABSAADwIABQM4AA0CAAMY"
+                b"AARAAAx4AASQAMAAQJR0lE50lFKUjA62DfADX3ByaWNlYWJsZZRoBChoB2gKaQ0oaAxnDR8T"
+                b"OQ0KDwIATAS5AAXRAA8CAFwEeAAEWQEPAgBeA9kBDwIAZQQAAQ8CAGYDAAEECAIPAgBlDwAC"
+                b"5Q8CAG0EuQcECAAPAgBFDegCA3gCDwIAdQ2gAA8CAD0D8AAP6AJmDwIABQOYAAyhBw8CANUP"
+                b"+ARWBGgBCwIADxACbQ+AAG0EeAMPiABmA5gBD4AAZQR4BQ+IAlYPAgB8BAACD4AEZQ/4AWUN"
+                b"AgADiAIPAgBeA3gADwgBZQX4AgY5Dd8MY2xvc2VkX2ZsYWdzNw0HWBCMAnUxlBoffJQaAi+g"
+                b"AVMBLS8CA0IAKT8CAwNAAAkAHwAPIAApAAIAEAIFAA8CAAcMwAAMEAAPAgBvoJR0lE50lFKU"
+                b"dS4AAAAA"
+            ),
+            "tf_index_closed_by_ap": 999,
+            "num_departures": 26,
+            "num_timeframes": 16,
+            "truncation_rule": "either",
+            "store_priceable": True,
+            "dcp_days_prior": (63, 56, 49, 42, 35, 31, 28, 24, 21, 17, 14, 10, 7, 5, 3, 1, 0),
+            "floating_closures": False,
+        },
+        "Y2": {
+            "arrays": deserialize_from_bytes(
+                b"BCJNGGhA+hwAAAAAAADusQQAAGGABJXvHAABAPADfZQojARzb2xklIwKZGlsbC5fBgDyGJSM"
+                b"DV9jcmVhdGVfYXJyYXmUk5QojBZudW1weS5fY29yZS5tdWx0aRwA8QSMDF9yZWNvbnN0cnVj"
+                b"dJSTlIwFKgBSlIwHbmQjAPAPk5RLAIWUQwFilIeUKEsBSxpLEIaUaAiMBWR0eXBlMwDxCgJm"
+                b"OJSJiIeUUpQoSwOMATyUTk5OSv////8FAJFLAHSUYolCAA20AFEAAADwPwcADwIANxpASwAE"
+                b"YAAbCBgADAIABCgADAgADwIADQQwAAQCAAQQAAQIAA94AA0MAgAEOAAMCAAMAgAEIAATANgA"
+                b"BRAACwIABBgAD4gAHQ8CAAYDcAAMAgAEaAAEkAAECAAEeAAECAAPAgANBEgADzAAFQ0CAAOg"
+                b"AARIAAQIAA8CAAUEIAAECAAPAgAlBEAABAgABAABBAgAExSYAA8CAA0FQAALAgAPGAAFBQIA"
+                b"D2AABAQ4AAQIAA8CAA0NKAAPWAAEDAIABDgABAgABAIAD8gBJQ84AB4LqAAEiAAECAAPUAAF"
+                b"BCAADQIAC1AABAIABTAAAyAABRAAAwIABBAABPABBBAADwIAFQ8wAA0EIAAMCAAFAgALmAAE"
+                b"KAAPAgAFBCAABAgABLACBRAADwIADAQoAAQIAA9AAB0EMAAPAgANBWAACwIADBgABBAADwgA"
+                b"BQ8CACUMUAAPAgAFBCgABAIABXgCA5gBDwIADQxAAAQCAA8YAAUMAgAFcAADAgAEOAAfEIAA"
+                b"DAw4AA8CAAUEUAANAgADYAAESAAbGBAAD+gBBQ9QAAYPAgAEDzAADQUgAAOAAAQQAAQIAAwC"
+                b"AAQYAAwIAA8CACUMaAEPWAA1BQIAD9gADARwAA1wAQM4AA8CAC0FYAAMAgADYAAEAAIFKAAD"
+                b"GAANkAADAgAFKAAPAgA0DYAAAwIADJgBDwIADQ+YABUEKAAMCAAF8AAEAAEPAgAEBDgADwIA"
+                b"LQTgAARQAAQIAASIAAUQAAsCAA8YAAUPAgAdDEgADIgBBBAADwIAHQxYAAwQAAQCAAwYAAwQ"
+                b"AAQIAQ0CAA+gAQwPAgAdBXgAA1gADBAABgIAoJR0lE50lFKUjA62DfADX3ByaWNlYWJsZZRo"
+                b"BChoB2gKaQ0oaAxnDRgTOQ0PAgBNBLkAD7kBJQ8CAC0PeABlBAIADwABdQ8IAWUEAAEPAgBm"
+                b"A0EDBEkLDwIAXQQAAQQIAA8CAF0P+AFlBAIABPgAD4gANQRQAAwIAAQCAAQYAATwAQQQAA8C"
+                b"AGUPgABNBGAADwgABQ8CAG0MmAAPAgBdBXgCAwgEDwIAXQQAAQRZCQ8CAEYE4AADCAAEAAMP"
+                b"AAFmA4gABAABBAgADwIAXQR4AAQIAA8CAGYDEAEPAgBeBHgABAgADwIAZA8AA04PAgAFD/gA"
+                b"bAQxDA+AAmUEeAAFCAQPAgBlD4gBZAQAAQSIAQYCAAU5Dd8MY2xvc2VkX2ZsYWdzNw0HWBCM"
+                b"AnUxlBoffJQaAiagAWMADwIAIy8CAzgAIwACAF8CAQIDA0AACQAfAA8gAAgBHwAPIAAIAiIA"
+                b"AAgABwIAGAIMAA1AAB0CMAAPAgBuoJR0lE50lFKUdS4AAAAA"
+            ),
+            "tf_index_closed_by_ap": 14,
+            "num_departures": 26,
+            "num_timeframes": 16,
+            "truncation_rule": "either",
+            "store_priceable": True,
+            "dcp_days_prior": (63, 56, 49, 42, 35, 31, 28, 24, 21, 17, 14, 10, 7, 5, 3, 1, 0),
+            "floating_closures": False,
+        },
+        "Y3": {
+            "arrays": deserialize_from_bytes(
+                b"BCJNGGhA+hwAAAAAAADukgMAAGGABJXvHAABAPADfZQojARzb2xklIwKZGlsbC5fBgDyGJSM"
+                b"DV9jcmVhdGVfYXJyYXmUk5QojBZudW1weS5fY29yZS5tdWx0aRwA8QSMDF9yZWNvbnN0cnVj"
+                b"dJSTlIwFKgBSlIwHbmQjAPAPk5RLAIWUQwFilIeUKEsBSxpLEIaUaAiMBWR0eXBlMwDxCgJm"
+                b"OJSJiIeUUpQoSwOMATyUTk5OSv////8FAJFLAHSUYolCAA20AA8CAEAiCEBVACLwPwgADwIA"
+                b"VQRwAASAABMAiAAPAgBVBIAABHgABRAADwIALA9IAB0EAAEECAAPAgBNDKAAExR4AQwYAA8C"
+                b"AB0PQAAdBDAADAgADwIAHQRAAA8CACYPAAEcD3AALgwCAA+AABwPAgCVDNACBDgBBBgABBAA"
+                b"BAgABIgDDwIATQVwAAMCAAQQAAQIAA8CAEYD6AEFAgAEEAAECAAPAgAcD7AANQRIAAQIAA8C"
+                b"AF0EEAIEiAQPAgBVDPAADBAADwIAPQToAAToAgRwAAQYAAQQAA8CADUEUAAECAAEAgAEcAAE"
+                b"AgATEIACDCgADwIANQ9YAAUFGAADgAAPAgBlBIgABAgADwIAFQQwAAQIAA8CACUEgAEPAgBl"
+                b"BMAABAgADwIAFQ8wAB0PAgAFD0gANQ8CAAUPYAAOBIACBAgADwIAXA+gAA4PAgBMD4ACdQ8C"
+                b"AA+glHSUTnSUUpSMDrYN8ANfcHJpY2VhYmxllGgEKGgHaAppDShoDGcNHxM5DcEEAgAFyQUP"
+                b"uQJkDMkGDwIAXQQAAQQIAA8CAF0EsQgPwQNlBHgABAgADwIAXgN4Ag+AAOYPAgBFA1gBBAIA"
+                b"BGABBOgCBBAABAgABIgDDwIAXQSAAAQIAA8CAEYLEAEF8AAMGAAPAgBcBPgABAgADwIAXQQQ"
+                b"AgSIBA8CAFUM8AAMEAAPAgA9BOgABPgBBHAABBgABBAADwIATQRwAAQCAAQ5CQ+AAFUNAgAP"
+                b"AAPsBIABDwIAZQT4AQQIAA8CAF0PeABlBQIABIACBAgADwIAXA8AAW0PgAJ1DwIADwU5Dd8M"
+                b"Y2xvc2VkX2ZsYWdzNw0HWBCMAnUxlBoffJQaAi+gAXsADw8CAAsvAgMgAAsPAgAJIAIDAQAP"
+                b"IgADAhwAAAIADyAAAwYhAA8gAAQBAgAAJQABCQAGAgATAgsAABsAAQIAAxAAAAIAOQIBAhAA"
+                b"DwIAcqCUdJROdJRSlHUuAAAAAA=="
+            ),
+            "tf_index_closed_by_ap": 12,
+            "num_departures": 26,
+            "num_timeframes": 16,
+            "truncation_rule": "either",
+            "store_priceable": True,
+            "dcp_days_prior": (63, 56, 49, 42, 35, 31, 28, 24, 21, 17, 14, 10, 7, 5, 3, 1, 0),
+            "floating_closures": False,
+        },
+        "Y4": {
+            "arrays": deserialize_from_bytes(
+                b"BCJNGGhA+hwAAAAAAADugwUAAGGABJXvHAABAPADfZQojARzb2xklIwKZGlsbC5fBgDyGJSM"
+                b"DV9jcmVhdGVfYXJyYXmUk5QojBZudW1weS5fY29yZS5tdWx0aRwA8QSMDF9yZWNvbnN0cnVj"
+                b"dJSTlIwFKgBSlIwHbmQjAPAPk5RLAIWUQwFilIeUKEsBSxpLEIaUaAiMBWR0eXBlMwDxCgJm"
+                b"OJSJiIeUUpQoSwOMATyUTk5OSv////8FAJFLAHSUYolCAA20AFEAAAAgQAcAKwAYCAATCBAA"
+                b"FAAIAAMCABQQEAADCAAEEAAECAAPAgAdEyJIAAQCAASQAARQAASIAAQIAASoAAQQAAwIAA8C"
+                b"AB0TJoAAIvA/OgAEeAAECAATFCAABAIABHAABBgBBCgABEAADwIAHQVgAANoAATgAAwYAAQQ"
+                b"AARwAAwIAAWYAA8CABwEcAAEwAAMWAAE6AAEIAAEiAAEGAAECAAEOAAPAgAdBAACBEAABJAA"
+                b"BBAABGAABQgAAwIABfAAAzgBBZgADwIAHAxwAAwQAASIAARwAAQQAAQQAQQIAAygAA8CABUE"
+                b"UAAPCAAFBHgABGAABOgABAgABDgABCAADwIAHQRwAwRQAARIAAR4AATgAAQIAAQoAAQIAAQw"
+                b"AAQgAA8CAB0TMcABBIgAExwQAASAAAVoAA8CAEQEYAAEcAAEAAIEEAAN4AADoAAEeAEMKAAP"
+                b"AgAdBIAABGgABAABBAgABCAADGgABRAAAwIAD4ABJQR4AQz4AASAAAToAARgAAQYAASAAASg"
+                b"AAQgAA8CAB0TKlABBAABBHAABJAADFgADHgABIAABDAADwIAHQTQAAR4AARQAAQYAAQQAASg"
+                b"AAQIAARwAAWgAATIAA8CABwEAAEEaAAECAAEmAEEiAAMaAAEKAAPAgAtBGgABNgABBAHBBAA"
+                b"DHABDBgABDgBDwIAJQQAAQRIAAQIAARoAAwIAAQQAQQYAAwQAA8CAB0TKLgBBEgABPAABIgA"
+                b"BBAABAIABBgABIAABAgABBACDwIAHQSAAQRAAASIAATgAQz4AQSAAA8gAAUPAgAdBPABBFgA"
+                b"BPAABAgABYAAAwIADCgABAABBBgADwIAHQQ4AARoAAR4AAQQAQToAARoAAQgAAQIAAQwAQRA"
+                b"AA8CAB0EaAAEUAAEkAAEWAAEEAAFYAADMAIEuAgEmAAEKAAPAgAdDIACEy5gAASYAASIAARo"
+                b"AASoAAQIAAyYAA8CAB0EYAAEaAEEUAAECAAEAgAE4AAEeAAEkAAEqAAEIAAPAgAdEyTwAAQI"
+                b"AwRIAARoAASIAAwIAAQgAAQIAASQAA8CABeglHSUTnSUUpSMDrYN8ANfcHJpY2VhYmxllGgE"
+                b"KGgHaAppDShoDGcNGBM5DQ8CAC0E6QAECAAPAgBdBDkBBAgADwIAXQT4AATZAQ8CAF0EgAAP"
+                b"AAFlBLECBIgADwIAXgN5AwT5Aw8CAF0F+AEDiAAPAgBdBXgBD4AAZAQAAgUIAQ8CACwFSAAD"
+                b"0AAP2AFlDwIAFQV4AwOwAA8CAFYLcAAFOAEPAgBcBKABD4AAbQTBBw8CAD0F4AEDAgAF6AAD"
+                b"gAEMEAAPAgBOA3gADJgADwIAVQTwAAQIAAWABA8CAGQE+QkEiAQPAgBeA5ABD4ACRQ8CAA0E"
+                b"iAEPAAFtDwgCZQQAAgUIAQ8CAF0DAAIPAAFlBfgAA4gADwIAXQT4Ag8AAWUFCAUPAAEeBTkN"
+                b"3wxjbG9zZWRfZmxhZ3M3DQdYEIwCdTGUGh98lBoCL6ABgwEILwIDHgAJAwIAIwIDCQAPAgAf"
+                b"IQIDAQAPOQABAxsAAQIADyAAAQghAA8gAAIDAgAAJwADCwAAAgBQAgEAAAIJAAhCAAEOAAcR"
+                b"AAENAA8CAE8AjAAPAgASoJR0lE50lFKUdS4AAAAA"
+            ),
+            "tf_index_closed_by_ap": 10,
+            "num_departures": 26,
+            "num_timeframes": 16,
+            "truncation_rule": "either",
+            "store_priceable": True,
+            "dcp_days_prior": (63, 56, 49, 42, 35, 31, 28, 24, 21, 17, 14, 10, 7, 5, 3, 1, 0),
+            "floating_closures": False,
+        },
+        "Y5": {
+            "arrays": deserialize_from_bytes(
+                b"BCJNGGhA+hwAAAAAAADu0AMAAGGABJXvHAABAPADfZQojARzb2xklIwKZGlsbC5fBgDyGJSM"
+                b"DV9jcmVhdGVfYXJyYXmUk5QojBZudW1weS5fY29yZS5tdWx0aRwA8QSMDF9yZWNvbnN0cnVj"
+                b"dJSTlIwFKgBSlIwHbmQjAPAPk5RLAIWUQwFilIeUKEsBSxpLEIaUaAiMBWR0eXBlMwDxCgJm"
+                b"OJSJiIeUUpQoSwOMATyUTk5OSv////8FAJFLAHSUYolCAA20AFEAAAAUQAcAIwAICAAEAgAj"
+                b"8D8KAA8YAAQMMAAPAgAlFBhgAAMIAASQAAQQAAWIAAMCAAR4AAQIAA8CADYDcAAFAgADEAAM"
+                b"gAAEEAAECAAPAgAtBcgAA3AABPgABAgADGgABDAABTgBDwIALQR4AAMCABsQEAAMgAAEEAAE"
+                b"CAAPAgAtEyRwAAVQAAsQAAQYAAQIAA8YAQUPAgAlBFABBAgABGgADwgABQSAAAUIAA8CACwF"
+                b"8AIEAgADAAEEYAAEiAAEEAAEqAAECAAPAgAuA3AABGgABAgADwIABgMwAA8CADUEyAIFeAAD"
+                b"YAAMiAIPAgBGA3AABQIAAxAABJAADwgADQ8CAC0PAAEFEyCIAAT4AQyIAA8CAD0EYAAEAgAE"
+                b"EAAECAAEiAANCAAPAgAtA+gABGgABfgBAxgABAIADCAABDgBDwIALQSAAwQIAAVYAAOAAA9o"
+                b"AwUEkAAPAgAtBPAABVAAA3gABRAACwIADxgABQ8CACUEgAAE6AAMCAEEGAAE+AEEEAAECAAP"
+                b"AgAtBEgAD9gABgMQAQQCAAQoAAQ4AA8CAC0EUAAE4AAMAgAFIAALAgAPGAAFDwIAHgPgAATQ"
+                b"AAQIAA+QAA0PgAA1BPABBXAAA5AABRAAAwIABHAABAgADwIANQzwAARgAAQIAAQCAAQQAAQw"
+                b"AAQQAA8CAC0EUAAECAEEEAAPAgAGAyABD4AANQR4AA9QAA0EIAAEoAAEEAAPAgAtBAAEDFAA"
+                b"DBAABCgABIAADwIANQVQAAtYAQQYAAQIAAQCAAQQAAygAA8CAB+glHSUTnSUUpSMDrYN8ANf"
+                b"cHJpY2VhYmxllGgEKGgHaAppDShoDGcNHxM5Df////////////////8J3wxjbG9zZWRfZmxh"
+                b"Z3M3DQdYEIwCdTGUGh98lBoCL6ABxA0ILwIDHgAJAwIAIwIDCQAPAgAeIgIDAQANOQAEGQAD"
+                b"AgANIAALIgAAEQAPAgADAkkAABwAcQIDAQIBAAAEAAEPAANcAAACAAAgAAACAAQVAAAMAA8C"
+                b"AEsDagAPXgEQAAIAoJR0lE50lFKUdS4AAAAA"
+            ),
+            "tf_index_closed_by_ap": 8,
+            "num_departures": 26,
+            "num_timeframes": 16,
+            "truncation_rule": "either",
+            "store_priceable": True,
+            "dcp_days_prior": (63, 56, 49, 42, 35, 31, 28, 24, 21, 17, 14, 10, 7, 5, 3, 1, 0),
+            "floating_closures": False,
+        },
+    }
+    return {k: core.History.rebuild(**v) for k, v in raw_histories.items()}
+
+
+carrier = core.Carrier("ZA")
+carrier.dcp_days_prior = (63, 56, 49, 42, 35, 31, 28, 24, 21, 17, 14, 10, 7, 5, 3, 1, 0)
+leg = core.Leg(leg_id=42, carrier=carrier, flt_no=42, orig="LGA", dest="ORD", capacity=110)
+leg.add_cabin(core.Cabin("Y", capacity=110))
+prices = {"Y0": 300.0, "Y1": 240.0, "Y2": 190.0, "Y3": 140.0, "Y4": 115.0, "Y5": 100.0}
+for booking_class, history in histories().items():
+    tf_index_closed_by_ap = history.tf_index_closed_by_ap
+    bkt = core.Bucket(booking_class, history=history, cabin="Y")
+    bkt.tf_index_closed_by_ap = tf_index_closed_by_ap
+    bkt.fcst_revenue = prices[booking_class]
+    leg.add_bucket(bkt)
+```
+
+As an example, let's consider a single [`Leg`](passengersim.core.Leg) from an active simulation.
+
+```{code-cell} ipython3
+leg
+```
+
+This leg has 6 booking classes, each associated with a [`Bucket`](passengersim.core.Bucket).
+
+```{code-cell} ipython3
+list(leg.buckets)
+```
+
+We can index into the [`buckets`](passengersim.core.BucketIterator) via regular positional indexing,
+
+```{code-cell} ipython3
+leg.buckets[0]
+```
+
+Or by [`select`](passengersim.core.BucketIterator.select)ing for the specific booking class we want.
+
+```{code-cell} ipython3
+leg.buckets.select(booking_class="Y4")
+```
+
+## Histories
+
+```{rst-class} annotate
+Each [`bucket`](passengersim.core.Bucket) has a [`history`](passengersim.core.Bucket.history), which
+contains the sales and closure data associated with the most recent 26 sample days. (1)
+```
+
+1. The length of the stored history is configurable, but 26 is the default
+
+Each [`History`](passengersim.core.History) is updated dynamically as the simulation runs. At the
+very beginning of a simulation trial, there won't be any data in the history, which is part of why
+we include a "burn" period. For the first samples, the history gets populated by adding new rows for
+each sample, up until the history is "full" with 26 sample days. Thereafter, for every new sample
+the oldest record in the history is discarded to make room for the new one.
+
+```{code-cell} ipython3
+leg.buckets.select(booking_class="Y4").history
+```
+
+The data in each history can be retrieved using the
+[`History.as_arrays`](passengersim.core.History.as_arrays) method. The leg we are inspecting is in a
+state as if it was within a simulation, so it already has some history defined.
+
+```{code-cell} ipython3
+h_data = leg.buckets.select(booking_class="Y4").history.as_arrays()
+
+print(h_data.keys())
+print("sold:", h_data["sold"].shape, "\n", h_data["sold"][:3], "\n  ...")
+print("sold_priceable:", h_data["sold_priceable"].shape, "\n", h_data["sold_priceable"][:3], "\n  ...")
+print("closed_flags:", h_data["closed_flags"].shape, "\n", h_data["closed_flags"][:3], "\n  ...")
+```
+
+We can see the history's stored data consists of several arrays. Each array is the same size, with
+rows for historical sample days and columns for timeframes. The arrays available include:
+
+- **sold**, which contains the total number of bookings by sample day by timeframe,
+- **sold_priceable**, which identifies how many of those bookings were made at moments when the
+  booking class was the lowest price option available at that moment, and
+- **closed_flags**, which indicates whether the booking class was not available for sale at the
+  beginning of the timeframe (1), at the end of the timeframe (2), or both (3).
+
+When served as "raw" data like this, all of the values in **sold** and **sold_priceable** are
+integers, but they are stored as floating point values, to facilitate compatability with downstream
+algorithms, such as detruncation, which may create or use fractional values in an otherwise
+identically structured array.
+
+For simple forecasting approaches, it is possible to work with each booking class as an independent
+entity without any linkages to demand levels in the other booking classes. However, many modern
+approaches relax this independence assumption in one way or another, so the primary forecasting
+interface in PassengerSim is built one level of aggregation up, at the Leg or Path level.
+
++++
+
+Each [`Leg`](passengersim.core.Leg) or [`Path`](passengersim.core.Path) has a
+[`forecast`](passengersim.core.ForecastAccessor) accessor tied directly to the object. Each can also
+have one or more separate [`ForecastGroup`](passengersim.core.ForecastGroup) objects associated with
+it, which share linkages to the same history but can provide alternative forecasts. For most
+situations generally there will only be one active forecast for each, unless the user is
+intentionally studying, comparing, or mixing different forecasts. Various RM optimization algorithms
+will require either a leg-based or a path-based forecast to operate, although in theory it is
+possible to work with both, or other variations.
+
+```{note}
+The [`Leg.forecast`](passengersim.core.Leg.forecast) and [`Path.forecast`](passengersim.core.Path.forecast)
+are technically implemented as `ForecastAccessor`s that link directly to the forecast(s)
+stored within that leg or path, but provide a nearly identical API to the `ForecastGroup`.
+Most of the time, users can interact with the forecast through the accessor without needing to know
+about the underlying structure of the forecast group. The accessor is designed to be a convenient
+interface for users to access the forecasts and their outputs, while still allowing for flexibility
+in how the forecasts are structured and implemented under the hood.
+```
+
+```{code-cell} ipython3
+leg.forecast.get_advpurch_max_tf_indexes()
+```
+
+## ForecastGroup
+
+A [`ForecastGroup`](passengersim.core.ForecastGroup) represents the forecasting interface for
+PassengerSim. It is populated with some input data, the foundation of which is the set of
+[`History`](passengersim.core.History) objects stored on each [`Bucket`](passengersim.core.Bucket)
+or [`PathClass`](passengersim.core.PathClass).
+
+```{code-cell} ipython3
+leg.forecast.get_history()
+```
+
+The `leg.forecast` is the primary forecast bound to the leg, but we can also create additional
+separate [`ForecastGroup`](passengersim.core.ForecastGroup) instances for other forecasts for the
+same leg:
+
+```{code-cell} ipython3
+f = leg.new_forecast()
+f
+```
+
+The additional forecast shares the same input histories as the primary forecast, as you can observe
+the histories point to the exact same memory addresses as those above.
+
+```{code-cell} ipython3
+f.get_history()
+```
+
+### Additional Inputs By Booking Class
+
+In addition to the [`History`](passengersim.core.History) for each booking class, a selection of
+other relevant attributes of each booking class are also available as inputs to forecast algorithms:
+
+- `advpurch_max_tf_index`, the maximum timeframe position where each booking class remains available
+  for customers to purchase. After this timeframe, the booking class is closed to all further
+  purchases by an advance purchase restriction. For booking classes with no advance purchase
+  restriction, this should be set to a sufficiently large value (by default, 9999).
+
+```{code-cell} ipython3
+leg.forecast.get_advpurch_max_tf_indexes()
+```
+
+- `customer_price`, the price that a customer pays to book this booking class. This input may not be
+  needed for all forecasting algorithms.
+
+```{code-cell} ipython3
+leg.forecast.get_customer_prices()
+```
+
+### Additional Inputs in Aggregate
+
+In addition to the mapping of data by booking class described above, there is also some input data
+that is generic across all booking classes:
+
+- `dcp_days_prior`, a strictly monotonically decreasing vector of `int`, giving the number of days
+  prior to departure at each DCP. This vector should not include `0` as the final value, as there is
+  no forecasting at the moment of departure. Since the `0` is not included, the size of this vector
+  will be exactly equal to the total number of timeframes. This vector can be used as the `index`
+  for the timeframe dimension of the history input arrays, as well as the output vectors of the
+  forecast.
+
+```{code-cell} ipython3
+leg.forecast.dcp_days_prior
+```
+
+## Detruncation
+
+Many forecasts start with "detruncation". This processes estimates the quantity of demand for each
+booking class that is unobserved in each timeframe due to that booking class being closed at the
+time. In essence, we want to swap out our array of observed sales for the estimate of potential
+demand, so out later algorithms know what to expect if they open booking classes that were
+(sometimes) closed in our historical data.
+
+PassengerSim implements the expectation-maximization ("EM") algorithm for detruncation. It can be
+called on a forecast using the `detruncate_demand` method.
+
+```{code-cell} ipython3
+leg.forecast.detruncate_demand(dcp_index=0, algorithm="EM", which_data="total")
+```
+
+When running detruncation, you can do so for the "total" sales, or just for the "yieldable" portion
+of demand. The latter is useful if you are handling the forecasting of priceable demand separately.
+Once you've run the detruncation step, the detruncated version of history is also available on the
+forecast.
+
+```{code-cell} ipython3
+hd = leg.forecast.get_history(detruncated="total")
+
+print(hd.keys())
+print("Y0:", hd["Y0"].shape, "\n", hd["Y0"][:4], "\n  ...")
+print("Y1:", hd["Y1"].shape, "\n", hd["Y1"][:4], "\n  ...")
+print("... Y2, Y3, ...")
+print("Y4:", hd["Y4"].shape, "\n", hd["Y4"][:4], "\n  ...")
+print("Y5:", hd["Y5"].shape, "\n", hd["Y5"][:4], "\n  ...")
+```
+
+Note that when retrieving this detruncated data, you don't get all the other arrays from each
+history, you only get the thing you created by detruncation. Further, this data is linked *only* to
+the one forecast where it was created. Other forecasts that share the same underlying raw history
+will not share this detruncated data.
+
+```{code-cell} ipython3
+---
+tags: [raises-exception]
+---
+f.get_history(detruncated="total")
+```
+
+### Custom Algorithms
+
+```{rst-class} annotate
+If you prefer to implement your own detruncation process, you can take the history arrays and do so,
+using whatever algorithm you choose. Let's make up an algorithm where we detruncate all
+censored values to be 99. (1)
+```
+
+1. I got 99 problems, and a *bad detruncation algorithm* ain't one. Because it's all 99. Like,
+   seriously, don't do this. It's just a demo, ok?
+
+```{code-cell} ipython3
+import numpy as np
+
+bad_detruncation = {}
+for booking_class, history in f.get_history().items():
+    arrays = history.as_arrays()
+    bad_detruncation[booking_class] = np.where(arrays["closed_flags"], 99, arrays["sold"])
+```
+
+This exogenously created detruncated demand array can be fed to your own custom forecasting
+algorithm, or fed back into PassengerSim's workflow like this:
+
+```{code-cell} ipython3
+f.detruncate_demand(
+  dcp_index=0, algorithm="external", which_data="total", external=bad_detruncation
+)
+```
+
+## Creating Forecasts
+
+Just like detruncation, the processing of all these inputs into a forecast can be more or less any
+algorithm you care to implement, but PassengerSim includes some default implementations, including
+additive pickup and exponential smoothing. In addition to the inputs discussed above, individual
+`Forecast` methods may define additional parameters that serve as inputs to the forecasting process.
+The simplest algorithm is the "additive pickup" algorithm, which computes a forecast by considering
+the average of how much more demand is expected to be "picked up" between any given point on the
+booking curve and the departure.
+
+```{code-cell} ipython3
+leg.forecast.compute_forecasts(
+  dcp_index=0, algorithm="additive_pickup", which_data="total", recompute=True
+)
+```
+
+The [`compute_forecasts`](passengersim.core.ForecastGroup.compute_forecasts) method doesn't return
+anything directly. But it does the computational work internally, and caches various computed values
+in the object, so that the required dimensions of the forecast can be accessed later.
+
++++
+
+## Outputs
+
+As noted above, most of the methods that do the computational work of creating a forecast don't
+return any specific output. Instead, that output is cached internally in the forecast object, and
+various aspects of the output can be accessed via specific output methods.
+
+### Expected Future Demand Vectors
+
+A primary output for a forecast is the expected demand. A forecast should ultimately provide a set
+of vectors for each booking class:
+
+- `mean_to_departure`, accessed via
+  [`get_mean_to_departure`](passengersim.core.ForecastGroup.get_mean_to_departure), which gives the
+  expected demand from the beginning of each timeframe through departure, by timeframe.
+
+```{code-cell} ipython3
+leg.forecast.get_mean_to_departure()
+```
+
+- `mean_in_timeframe`, accessed via
+  [`get_mean_in_timeframe`](passengersim.core.ForecastGroup.get_mean_in_timeframe), which gives the
+  expected demand within each individual timeframe.
+
+```{code-cell} ipython3
+leg.forecast.get_mean_in_timeframe()
+```
+
+- `stdev_to_departure`, accessed via
+  [`get_stdev_to_departure`](passengersim.core.ForecastGroup.get_stdev_to_departure), which gives
+  the standard deviation of demand from the beginning of each timeframe through departure, by
+  timeframe.
+
+```{code-cell} ipython3
+leg.forecast.get_stdev_to_departure()
+```
+
+- `stdev_in_timeframe`, accessed via
+  [`get_stdev_in_timeframe`](passengersim.core.ForecastGroup.get_stdev_in_timeframe), which gives
+  the standard deviation of demand within each individual timeframe.
+
+```{code-cell} ipython3
+leg.forecast.get_stdev_in_timeframe()
+```
+
+Each vector should be of length equal to the number of timeframes. If a forecast is generated part
+way through the booking process, this does not change the shape of the vector; both past and future
+timeframes remain a part of the vector. It is generally not necessary or useful to update the
+portion of the vector that pertains the to the past, but the allocated size of the vector remains
+the same.
+
+Rather than accessing each component of the forecast element by element, there are also tools to
+extract the entire forecast and format it as a single pandas DataFrame.
+
+```{code-cell} ipython3
+leg.forecast.get_forecast_data().to_dataframe()
+```
+
+Or to generate a visualization of the data.
+
+```{code-cell} ipython3
+leg.forecast.get_forecast_data(summarize_history=True).dashboard()
+```
+
+### Expected Future Demand Now
+
+From a computational perspective, it is generally most efficient to generate demand forecasts all at
+once for the entire vector of timeframes in the simulation. But many optimization algorithms don't
+care about the whole vector of future demand by timeframe, they just want to know what is the mean
+(and standard deviation) of the demand from "now" through departure. The timing of "now" might be at
+one of the DCPs, or it might be at some point between DCPs. To satisfy this, in addition to the
+vector forecasts outlined above we also offer from the ForecastGroup the "now" forecasts for mean
+and standard deviation through departure.
+
+```{code-cell} ipython3
+leg.forecast.get_current_mean()
+```
+
+```{code-cell} ipython3
+leg.forecast.get_current_stdev()
+```
+
+When we used the [`compute_forecasts`](passengersim.core.ForecastGroup.compute_forecasts) method
+above, we set the `dcp_index` to zero, which told that method two things: to compute the vector of
+forecasts from the first DCP all the way through departure, and to set "now" to be that first DCP.
+For subsequent DCPs, if we don't want to do any recomputation but just move the "now" forward along
+the vector, we can use `move_forecast_pointers`.
+
+```{code-cell} ipython3
+leg.forecast.move_forecast_pointers(dcp_index=1)
+leg.forecast.get_current_mean()
+```
+
+To get the "now" values to be interpolated forecasts in between the DCP points along the vector of
+forecasts, we can set `days_prior` instead of `dcp_index`, which allows us to give a point in
+between DCPs.
+
+```{code-cell} ipython3
+leg.forecast.move_forecast_pointers(days_prior=62)
+leg.forecast.get_current_mean()
+```
+
+This works even for fractional values for `days_prior`.
+
+```{code-cell} ipython3
+leg.forecast.move_forecast_pointers(days_prior=62.5)
+leg.forecast.get_current_mean()
+```
+
+### Marginal Revenue
+
+In addition to a forecast of demand, the forecast *may* also provide a measure of marginal revenue
+per unit of forecasted demand in each booking class. In simple standard forecasts in fully
+restricted markets, this marginal revenue requires no adjustments and is equal simply to the
+customer price. In this case it is not generally calculated in the forecast. If you try to access
+the adjusted marginal revenue when it's not set, you'll just get empty arrays.
+
+```{code-cell} ipython3
+leg.forecast.get_adjusted_marginal_revenue()
+```
+
+However, for more sophisticated forecasts that incorporate elasticity, this marginal revenue may be
+different, as the forecast may include some probability that some customers will buy-up to higher
+classes if their preferred class is not available. We will want to adjust the marginal revenue to
+account for this. Moreover, since the sellup rates will vary over timeframes, the
+`adjusted_marginal_revenue` will also, so this output is a vector for each booking class (with
+length equal to the number of timeframes), not just a single value.
+
+Here, we'll construct a hybrid-conditional forecast as an example.
+
+```{code-cell} ipython3
+f5 = core.Frat5(
+    name="demo",
+    values={
+        63: 1.2,
+        56: 1.2,
+        49: 1.3,
+        42: 1.3,
+        35: 1.4,
+        31: 1.5,
+        28: 1.5,
+        24: 1.6,
+        21: 2.0,
+        17: 2.3,
+        14: 2.7,
+        10: 2.8,
+        7: 2.9,
+        5: 2.9,
+        3: 3.0,
+        1: 3.0,
+    },
+)
+leg.forecast.detruncate_demand(dcp_index=0, algorithm="EM", which_data="yieldable")
+leg.forecast.compute_simple_fare_adjustments(algorithm="mr", frat5=f5, scale_factor=0.5)
+leg.forecast.compute_conditional_q_forecast(dcp_index=0, frat5=f5)
+leg.forecast.allocate_q_demand(f5, 0, allocation_algorithm="tf")
+leg.forecast.compute_forecasts(dcp_index=0, algorithm="additive_pickup", recompute=True, which_data="yieldable")
+leg.forecast.compute_fare_adjustments("mr", f5, weighted_by_ratio=True, scale_factor=0.5)
+leg.forecast.combine_forecasts(0, rollup_algorithm="tf")
+```
+
+Now we will have meaningful dynamic adjusted marginal revenues in the output.
+
+```{code-cell} ipython3
+leg.forecast.get_adjusted_marginal_revenue()
+```
+
+## Modifiers
+
+Sometimes, we want to leave a forecasting algorithm basically untouched, but apply some
+modifications to the forecast. Currently, PassengerSim offers one "baked in" modification: a
+forecast multiplier. The multiplier is applied to the
+[`ForecastGroup`](passengersim.core.ForecastGroup) separate from generating the forecast, and it's
+"sticky", in that it will stay until cleared.
+
+Let's consider an example. Before we begin adding multipliers, we can check what a piece of the
+existing forecast looks like:
+
+```{code-cell} ipython3
+leg.forecast.get_mean_to_departure()['Y0'][:5]
+```
+
+Now we'll add a forecast multiplier, using
+[`adjust_forecast_means`](passengersim.core.ForecastGroup.adjust_forecast_means).
+
+```{code-cell} ipython3
+leg.forecast.adjust_forecast_means(ratio=1.1)
+```
+
+If we check again what that piece of the forecast looks like, we'll see it's gone up by the ratio we
+set.
+
+```{code-cell} ipython3
+leg.forecast.get_mean_to_departure()['Y0'][:5]
+```
+
+We can now make changes to the forecast, setting or overriding values as desired.
+
+```{code-cell} ipython3
+leg.forecast.set_mean_to_departure(
+    {'Y0': np.array([10, 9.5, 9, 8.5, 8, 7.5, 7, 6.5, 6, 5.5, 5, 4.5, 4, 3.5, 3, 2.5])},
+    partial_ok=True
+)
+```
+
+Whatever the forecast is, whether set by an internal PassengerSim algorithm or manually by the user,
+the *output* of the forecast is scaled by the assigned multiplier. So what we get out now that the
+multiplier is set is not the same as what we put in, it's scaled up.
+
+```{code-cell} ipython3
+leg.forecast.get_mean_to_departure()['Y0'][:5]
+```
+
+This also applies to the "now" values given by
+[`get_current_mean`](passengersim.core.ForecastGroup.get_current_mean) and
+[`get_current_stdev`](passengersim.core.ForecastGroup.get_current_stdev). You'll recall we had
+pinned the current time on this forecast to 62.5 days prior to departure, and that timing pin still
+remains, so we get the scaled version of the interpolated value when we access the current mean:
+
+```{code-cell} ipython3
+leg.forecast.get_current_mean()['Y0']
+```
+
+If we want to observe what the current forecast multipliers are, separately from the forecast
+values, we can do so.
+
+```{code-cell} ipython3
+leg.forecast.get_forecast_means_adjustment()
+```
+
+By default, the `adjust_forecast_means` will stack the multipliers, so if we run the same adjustment
+again we will get an even larger multiplier.
+
+```{code-cell} ipython3
+leg.forecast.adjust_forecast_means(ratio=1.1)
+leg.forecast.get_forecast_means_adjustment()
+```
+
+We can also prevent the stacking if desired, and simply assign a specific value to the multiplier.
+
+```{code-cell} ipython3
+leg.forecast.adjust_forecast_means(ratio=1.618, stack=False)
+leg.forecast.get_forecast_means_adjustment()
+```
+
+When a forecast multiplier is set, it will scale the mean and std dev of the *outputs* of forecasts.
+
+```{code-cell} ipython3
+leg.forecast.get_mean_to_departure()['Y0']
+```
+
+By passing `use_multiplier=False` to the getter, we can access the original unscaled forecasts.
+
+```{code-cell} ipython3
+leg.forecast.get_mean_to_departure(use_multiplier=False)['Y0']
+```
+
+If we want to wipe out the forecast means adjustment, we can clear it like this:
+
+```{code-cell} ipython3
+leg.forecast.clear_forecast_means_adjustment()
+```
+
+Then, as you might expect, there won't be any "adjustments" on this forecast.
+
+```{code-cell} ipython3
+leg.forecast.get_forecast_means_adjustment()
+```
+
+If you are manipulating forecast multipliers within a sample day based on partial sales data from
+that day (for example see the booked load factor heuristic) then you will want to be sure to call
+`clear_forecast_means_adjustment` at the beginning of each new sample. If on the other hand you are
+making adjustments because you want to introduce a persistent bias up or down on the forecasts, then
+you can choose not to reset between sample days.
+
++++
+
+## Custom Forecast
+
+Just like for the custom detruncation, a user can implement any custom forecast desired. Simply
+build the forecast using any algorithm you choose, and any available input you choose -- the history
+on the Leg or Path, on other similar legs or paths, or other collected simulation data. Once
+constructed, you'll need to have a set of forecast "outputs" in exactly the same format as the
+outputs that a regular PassengerSim forecast provides. You can inject those outputs into the
+relevant ForecastGroup object, so they can be used by downstream optimization engines that expect to
+have forecast outputs available. For each `get_*` output method, there is an equivalent `set_*`
+method that allows you to inject these values.
+
+For example, we can inject some crazy `mean_to_departure` values into our leg forecast.
+
+```{code-cell} ipython3
+leg.forecast.set_mean_to_departure(
+    {
+        "Y0": np.log(np.arange(18, 2, -1)),
+        "Y1": np.log(np.arange(18, 2, -1) + 2),
+        "Y2": [8.1] * 2 + [0.8] * 7 + [6.1] * 7,
+        "Y3": (np.cos(np.arange(16) / 4 * np.pi) + 2.2) * 4,
+        "Y4": np.maximum(np.linspace(12, -7, 16), 0),
+        "Y5": np.maximum(np.arange(16, -16, -2), 0),
+    }
+)
+```
+
+Then if we subsequently go to access these values through the usual output getters, they are
+returned to us.
+
+```{code-cell} ipython3
+leg.forecast.get_mean_to_departure()
+```
+
+```{code-cell} ipython3
+leg.forecast.get_forecast_data(summarize_history=True).dashboard()
+```
+
+Just as for the other forecast outputs, we could also construct our own estimates of adjusted
+marginal revenue and inject them for use by downstream RM steps.
+
+```{code-cell} ipython3
+leg.forecast.set_adjusted_marginal_revenue(
+    {
+        "Y0": np.array([300.0] * 16),
+        "Y1": np.array([237.0] * 16),
+        "Y2": np.array([184.0] * 14 + [np.nan] * 2),
+        "Y3": np.array([123.0] * 12 + [np.nan] * 4),
+        "Y4": np.array([113.0] * 10 + [np.nan] * 6),
+        "Y5": np.array([85.0] * 8 + [np.nan] * 8),
+    }
+)
+```
+
+```{code-cell} ipython3
+leg.forecast.get_adjusted_marginal_revenue()
+```
+
+You might notice that the value we put in for `mean_to_departure` are *really* crazy: they don't
+monotonically decrease as the departure approaches as we would normally expect. And they are
+entirely inconsistent with the `mean_in_timeframe` results, which we didn't change. This flexibility
+is by design -- the onus is on the user to ensure consistent and appropriate values, or to decide
+for whatever reason to violate consistency or appropriateness. Plenty of revenue management tools
+have been built to implement algorithms that are intentionally broken, simply because they
+ultimately work. The joy of PassengerSim is that you can do exactly that, and then dissect the
+results to try to figure out why.

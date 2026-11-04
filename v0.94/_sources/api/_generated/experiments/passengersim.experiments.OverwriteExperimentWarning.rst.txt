@@ -1,0 +1,6 @@
+OverwriteExperimentWarning
+==========================
+
+.. currentmodule:: passengersim.experiments
+
+.. autoexception:: OverwriteExperimentWarning

@@ -1,0 +1,321 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<style>.md-sidebar--secondary {display: none !important;}</style>\n",
+    "\n",
+    "# Unrestricted Networks\n",
+    "\n",
+    "In the modern day market place, many carriers find themselves operating in much less restricted\n",
+    "markets, where they cannot rely on imposing fare fences or restrictions to entice higher\n",
+    "willingness-to-pay customers to purchase high price tickets."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import altair as alt\n",
+    "import pandas as pd\n",
+    "import passengersim as pax\n",
+    "from passengersim.contrast import Contrast\n",
+    "\n",
+    "pax.versions()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg = pax.Config.from_yaml(pax.demo_network(\"3MKT/DEMO\"))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "In this example, we will work with a completely fenceless marketplace. To convert the typical 3MKT\n",
+    "network into a restriction-free network, we could iterate through all the fares and remove\n",
+    "restrictions, or we can can use some pre-packaged functions to strip the restrictions."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from passengersim.config.manipulate import strip_ap_restrictions, strip_fare_restrictions\n",
+    "\n",
+    "cfg = strip_fare_restrictions(cfg)\n",
+    "cfg = strip_ap_restrictions(cfg)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now we have completely unrestricted markets. We could run this network just like this, although we\n",
+    "get what might be to some a surprising result..."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "sim = pax.MultiSimulation(cfg)\n",
+    "summary = sim.run()\n",
+    "summary.fig_carrier_revenues()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Looking at the carrier revenues, we can see that the average revenue for each carrier is now wildly\n",
+    "less than the \\$91k we saw on the restricted network."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Looking at the fare class mix, the reason for this collapse becomes clear: both carriers are now\n",
+    "selling exclusively Y5 tickets (the cheapest fare class). From the customers's perspective, this is\n",
+    "perfectly reasonable -- without any restrictions, there's no reason to buy anything other than the\n",
+    "cheapest fare available."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "summary.fig_fare_class_mix()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "From the carrier's perspective, clearly something is wrong. While customers will only purchase the\n",
+    "lowest available fare, we would expect that carriers would want to optimize their networks by\n",
+    "sometimes making the lowest *available* fare not actually the lowest *possible* fare.\n",
+    "\n",
+    "The problem in this case is in the use of standard class-based forecasting. These forecasts assume\n",
+    "demand for each fare class is independent, and that we can forecast the level of demand for each\n",
+    "fare class based on the historical demand for that fare class. But in our simulation that gets us\n",
+    "into a catch-22: the lack of sales in higher classes results in forecasting zero demand for those\n",
+    "higher classes, and that zero forecast means the optimizer never closes the lowest fare class to try\n",
+    "to save space for higher class customers (because it thinks there aren't any).\n",
+    "\n",
+    "To solve this problem, we need to use a different kind of forecast, which accounts for the\n",
+    "propensity for at least some customers to buy up to a higher fare class if the class they prefer is\n",
+    "closed. The RM system \"L\" uses the same leg-based optimizer as \"E\", but instead of using standard\n",
+    "forecasting it switches to conditional forecasting, which relaxes the independent demands by fare\n",
+    "class assumption, and instead assumes that customers who purchase the lowest available fare are\n",
+    "\"priceable\" customers, and that some fraction of those customers will still buy if the fare were\n",
+    "higher. This fraction changes over the booking horizon, with generally lower fractions for early\n",
+    "bookings and higher fractions for late bookings; how large that fraction is and how it changes over\n",
+    "time is decribed by a \"Frat5 curve\", which we will ascribe to each carrier."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg.carriers.AL1.rm_system = \"L\"\n",
+    "cfg.carriers.AL2.rm_system = \"L\"\n",
+    "cfg.carriers.AL1.frat5 = \"curve_C\"\n",
+    "cfg.carriers.AL2.frat5 = \"curve_C\"\n",
+    "\n",
+    "sim2 = pax.MultiSimulation(cfg)\n",
+    "summary2 = sim2.run()\n",
+    "\n",
+    "comp2 = Contrast(E=summary, L=summary2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "comp2.fig_carrier_revenues()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "comp2.fig_fare_class_mix()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "comp2.fig_bookings_by_timeframe(by_carrier=\"AL1\", by_class=True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The use of the conditional forecaster introduces a much larger universe of possible options to chose\n",
+    "from for simulated carriers. Some of these options are highly consequential, and others are less so.\n",
+    "\n",
+    "For example, we can consider choosing among various Frat5 curves, which control the assumed levels\n",
+    "of sellup across the booking curve. The available \"standard\" curves look like this:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# load all standard frat5 curves in a PassengerSim config\n",
+    "std_frat5 = pax.Config.from_yaml(pax.demo_network(\"standard-frat5.yaml\"))\n",
+    "\n",
+    "# convert to a dataframe for analysis\n",
+    "df = pd.concat(\n",
+    "    {\n",
+    "        curvename: pd.Series(std_frat5.frat5_curves[curvename].curve, name=\"frat5_value\")\n",
+    "        for curvename in std_frat5.frat5_curves\n",
+    "    },\n",
+    "    axis=0,\n",
+    "    names=[\"curve_name\", \"days_prior\"],\n",
+    ").reset_index()\n",
+    "\n",
+    "# plot using Altair\n",
+    "alt.Chart(df).mark_line().encode(\n",
+    "    x=alt.X(\"days_prior\", sort=\"descending\"),\n",
+    "    y=alt.Y(\"frat5_value\", scale=alt.Scale(domain=[1, 4])),\n",
+    "    color=\"curve_name\",\n",
+    "    tooltip=[\"curve_name\", \"days_prior\", \"frat5_value\"],\n",
+    ").properties(title=\"Standard Frat5 Curves\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We can assign to AL1 a different Frat5 curve, to change the rate at which the forecast predicts\n",
+    "buy-up."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg.carriers.AL1.frat5 = \"curve_E\"\n",
+    "\n",
+    "sim3 = pax.MultiSimulation(cfg)\n",
+    "summary3 = sim3.run()\n",
+    "\n",
+    "comp3 = Contrast(curve_C=summary2, curve_E=summary3)\n",
+    "comp3.fig_carrier_revenues()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Apparently, we've made things substantially worse for AL1 with this change. Perhaps moving in the\n",
+    "other direction would be more helpful"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg.carriers.AL1.frat5 = \"curve_A\"\n",
+    "\n",
+    "sim4 = pax.MultiSimulation(cfg)\n",
+    "summary4 = sim4.run()\n",
+    "\n",
+    "comp4 = Contrast(curve_E=summary3, curve_C=summary2, curve_A=summary4)\n",
+    "comp4.fig_carrier_revenues()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Looks like using \"curve_A\" for AL1 gives the best revenue result. We can also look at how the fare\n",
+    "class mix changes with the various curves."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "comp4.fig_fare_class_mix()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "It is interesting to note here how the results are also changing for AL2. This is expected; since\n",
+    "PassengerSim is simulating the entire competitive environment, it is to be expected that other\n",
+    "carriers can see changes in their results even if they don't change their own RM strategies.\n",
+    "\n",
+    "The head-to-head revenue figure can show us some details about when the Frat5 curve matter most.\n",
+    "Spoiler alert: it's the higher demand days."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "summary4.fig_carrier_head_to_head_revenue(\"AL1\", \"AL2\", mean_adjusted=False)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.11"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

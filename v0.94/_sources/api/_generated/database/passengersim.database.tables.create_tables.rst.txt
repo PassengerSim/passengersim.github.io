@@ -1,0 +1,6 @@
+create\_tables
+==============
+
+.. currentmodule:: passengersim.database.tables
+
+.. autofunction:: create_tables

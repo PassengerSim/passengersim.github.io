@@ -1,0 +1,6 @@
+extract\_bid\_price\_history
+============================
+
+.. currentmodule:: passengersim.summaries.bid_price_history
+
+.. autofunction:: extract_bid_price_history

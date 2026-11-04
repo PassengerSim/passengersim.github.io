@@ -1,0 +1,6 @@
+save\_fare\_multi
+=================
+
+.. currentmodule:: passengersim.database.database
+
+.. autofunction:: save_fare_multi

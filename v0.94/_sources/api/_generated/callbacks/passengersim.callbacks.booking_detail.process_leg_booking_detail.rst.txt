@@ -1,0 +1,6 @@
+process\_leg\_booking\_detail
+=============================
+
+.. currentmodule:: passengersim.callbacks.booking_detail
+
+.. autofunction:: process_leg_booking_detail

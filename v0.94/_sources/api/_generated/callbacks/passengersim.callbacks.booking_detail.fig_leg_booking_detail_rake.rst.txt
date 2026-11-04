@@ -1,0 +1,6 @@
+fig\_leg\_booking\_detail\_rake
+===============================
+
+.. currentmodule:: passengersim.callbacks.booking_detail
+
+.. autofunction:: fig_leg_booking_detail_rake

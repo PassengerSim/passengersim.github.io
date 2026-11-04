@@ -1,0 +1,6 @@
+load\_factor\_distribution
+==========================
+
+.. currentmodule:: passengersim.database.common_queries
+
+.. autofunction:: load_factor_distribution

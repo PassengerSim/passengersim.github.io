@@ -1,0 +1,68 @@
+ForecastGroup
+=============
+
+.. currentmodule:: passengersim.core
+
+.. autoclass:: ForecastGroup
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ForecastGroup.__init__
+      ~ForecastGroup.adjust_forecast_means
+      ~ForecastGroup.allocate_q_demand
+      ~ForecastGroup.clear_forecast_means_adjustment
+      ~ForecastGroup.combine_forecasts
+      ~ForecastGroup.compute_conditional_q_forecast
+      ~ForecastGroup.compute_fare_adjustments
+      ~ForecastGroup.compute_forecasts
+      ~ForecastGroup.compute_hybrid_forecasts
+      ~ForecastGroup.compute_sellup_probability
+      ~ForecastGroup.compute_simple_fare_adjustments
+      ~ForecastGroup.detruncate_demand
+      ~ForecastGroup.detruncate_q_demand
+      ~ForecastGroup.detruncate_yieldable_demand
+      ~ForecastGroup.follow
+      ~ForecastGroup.get_adjusted_marginal_revenue
+      ~ForecastGroup.get_advpurch_max_tf_indexes
+      ~ForecastGroup.get_current_mean
+      ~ForecastGroup.get_current_stdev
+      ~ForecastGroup.get_customer_prices
+      ~ForecastGroup.get_forecast_data
+      ~ForecastGroup.get_forecast_means_adjustment
+      ~ForecastGroup.get_history
+      ~ForecastGroup.get_mean_in_timeframe
+      ~ForecastGroup.get_mean_to_departure
+      ~ForecastGroup.get_q_mean_in_timeframe
+      ~ForecastGroup.get_q_mean_to_departure
+      ~ForecastGroup.get_q_stdev_in_timeframe
+      ~ForecastGroup.get_q_stdev_to_departure
+      ~ForecastGroup.get_stdev_in_timeframe
+      ~ForecastGroup.get_stdev_to_departure
+      ~ForecastGroup.is_freestanding
+      ~ForecastGroup.move_forecast_pointers
+      ~ForecastGroup.sellup_probability
+      ~ForecastGroup.set_adjusted_marginal_revenue
+      ~ForecastGroup.set_mean_in_timeframe
+      ~ForecastGroup.set_mean_to_departure
+      ~ForecastGroup.set_stdev_in_timeframe
+      ~ForecastGroup.set_stdev_to_departure
+      ~ForecastGroup.update_conditional_forecast
+      ~ForecastGroup.update_q_forecast
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~ForecastGroup.dcp_days_prior
+      ~ForecastGroup.label
+   
+   

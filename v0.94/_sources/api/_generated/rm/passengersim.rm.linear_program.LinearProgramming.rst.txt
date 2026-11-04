@@ -1,0 +1,40 @@
+LinearProgramming
+=================
+
+.. currentmodule:: passengersim.rm.linear_program
+
+.. autoclass:: LinearProgramming
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~LinearProgramming.__init__
+      ~LinearProgramming.apply_snapshot_filters
+      ~LinearProgramming.configure
+      ~LinearProgramming.get_dcp_index
+      ~LinearProgramming.init
+      ~LinearProgramming.run
+      ~LinearProgramming.should_run
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~LinearProgramming.frequency
+      ~LinearProgramming.lp
+      ~LinearProgramming.produces
+      ~LinearProgramming.requires
+      ~LinearProgramming.snapshot_filter_type
+      ~LinearProgramming.dcps
+      ~LinearProgramming.carrier
+      ~LinearProgramming.minimum_sample
+   
+   

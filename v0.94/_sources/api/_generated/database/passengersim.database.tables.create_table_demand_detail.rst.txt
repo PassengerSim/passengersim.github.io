@@ -1,0 +1,6 @@
+create\_table\_demand\_detail
+=============================
+
+.. currentmodule:: passengersim.database.tables
+
+.. autofunction:: create_table_demand_detail

@@ -1,0 +1,6 @@
+combine\_sigmas
+===============
+
+.. currentmodule:: passengersim.summaries.tools
+
+.. autofunction:: combine_sigmas

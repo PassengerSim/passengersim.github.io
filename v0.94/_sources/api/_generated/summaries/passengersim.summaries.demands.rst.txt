@@ -1,0 +1,40 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.summaries.
+
+demands
+=======
+
+.. automodule:: passengersim.summaries.demands
+   :no-members:
+
+
+
+
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: .
+   :template: autosummary/class.rst
+
+   SimTabDemands
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: .
+
+   extract_demand_history
+   extract_demands
+
+
+
+
+

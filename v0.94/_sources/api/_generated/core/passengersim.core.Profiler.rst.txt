@@ -1,0 +1,22 @@
+Profiler
+========
+
+.. currentmodule:: passengersim.core
+
+.. autoclass:: Profiler
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Profiler.__init__
+      ~Profiler.report
+   
+   
+
+   
+   
+   

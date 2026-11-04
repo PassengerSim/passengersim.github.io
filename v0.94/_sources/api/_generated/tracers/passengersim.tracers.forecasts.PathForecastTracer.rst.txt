@@ -1,0 +1,31 @@
+PathForecastTracer
+==================
+
+.. currentmodule:: passengersim.tracers.forecasts
+
+.. autoclass:: PathForecastTracer
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~PathForecastTracer.__init__
+      ~PathForecastTracer.attach
+      ~PathForecastTracer.finalize
+      ~PathForecastTracer.fresh
+      ~PathForecastTracer.reset
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~PathForecastTracer.name
+   
+   

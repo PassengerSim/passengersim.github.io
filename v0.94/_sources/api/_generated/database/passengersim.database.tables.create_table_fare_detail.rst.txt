@@ -1,0 +1,6 @@
+create\_table\_fare\_detail
+===========================
+
+.. currentmodule:: passengersim.database.tables
+
+.. autofunction:: create_table_fare_detail

@@ -1,0 +1,6 @@
+set\_demand\_reference\_prices
+==============================
+
+.. currentmodule:: passengersim.transforms.demands
+
+.. autofunction:: set_demand_reference_prices

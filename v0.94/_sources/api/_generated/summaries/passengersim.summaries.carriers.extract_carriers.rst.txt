@@ -1,0 +1,6 @@
+extract\_carriers
+=================
+
+.. currentmodule:: passengersim.summaries.carriers
+
+.. autofunction:: extract_carriers

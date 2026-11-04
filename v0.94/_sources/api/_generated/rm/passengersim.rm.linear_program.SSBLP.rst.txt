@@ -1,0 +1,47 @@
+SSBLP
+=====
+
+.. currentmodule:: passengersim.rm.linear_program
+
+.. autoclass:: SSBLP
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~SSBLP.__init__
+      ~SSBLP.create_OA_variables
+      ~SSBLP.create_balance_constraints_x
+      ~SSBLP.create_balance_constraints_y
+      ~SSBLP.create_capacity_constraints
+      ~SSBLP.create_decision_variables
+      ~SSBLP.create_nesting_constraints
+      ~SSBLP.create_scale_constraints_x
+      ~SSBLP.create_scale_constraints_y
+      ~SSBLP.initialize
+      ~SSBLP.solve
+      ~SSBLP.test_status
+      ~SSBLP.update
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~SSBLP.carrier
+      ~SSBLP.solver
+      ~SSBLP.objective
+      ~SSBLP.lp_vars
+      ~SSBLP.constraints
+      ~SSBLP.epsilon
+      ~SSBLP.num_samples
+      ~SSBLP.set_bp
+      ~SSBLP.debug
+   
+   

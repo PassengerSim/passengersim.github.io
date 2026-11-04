@@ -1,0 +1,6 @@
+get\_database\_connection
+=========================
+
+.. currentmodule:: passengersim.database.database
+
+.. autofunction:: get_database_connection

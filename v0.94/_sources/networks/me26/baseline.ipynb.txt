@@ -1,0 +1,165 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "dbf0f9bb",
+   "metadata": {},
+   "source": [
+    "# ME26 Baseline Network\n",
+    "\n",
+    "This page reviews the configuration of the ME26 network and runs a baseline simulation."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "5a61771f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import ME26\n",
+    "import passengersim as pax\n",
+    "\n",
+    "pax.versions()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "ea03b98e",
+   "metadata": {
+    "tags": [
+     "remove-cell"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "import plotly.io as pio\n",
+    "\n",
+    "pio.renderers.default = \"notebook_connected\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b74ba181",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg = ME26.load_config()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d32f5a8b",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg.plotly_route_map(\"Olive\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "95f72236",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg.plotly_route_map(\"Date\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "8dc61bcf",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg.plotly_route_map(\"Kebab\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "a8fbb027",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "cfg.plotly_route_map(\"Pomegranate\", zoom=1.5)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "dbad311c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "sim = pax.MultiSimulation(cfg)\n",
+    "out = sim.run()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "c6121db8",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "out.fig_carrier_revenues()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "e01468e9",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "out.fig_carrier_load_factors()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "ad148e40",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "out.fig_carrier_local_share()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "5643b4c5",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "out.fig_fare_class_mix()"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "pax (3.12.13)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.13"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

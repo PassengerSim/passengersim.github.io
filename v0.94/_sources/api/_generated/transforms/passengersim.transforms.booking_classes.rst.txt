@@ -1,0 +1,32 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.transforms.
+
+booking\_classes
+================
+
+.. automodule:: passengersim.transforms.booking_classes
+   :no-members:
+
+
+
+
+
+
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: .
+
+   class_rename
+   pad_digits
+
+
+
+
+

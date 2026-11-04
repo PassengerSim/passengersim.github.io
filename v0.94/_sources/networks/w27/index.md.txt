@@ -1,0 +1,11 @@
+---
+title: W27 Network
+icon: custom/chart-network-2
+---
+
+# W27 Network
+
+The W27 network is a research network for use with PassengerSim, but only for use internally at
+Georgia Tech and for other approved academic research. It is closely based on the historical W10
+network used with PODS. It is not literally identical to the PODS W10 network, primarily because
+PassengerSim is not a perfect replica of PODS, and not every detail can be reproduced exactly.

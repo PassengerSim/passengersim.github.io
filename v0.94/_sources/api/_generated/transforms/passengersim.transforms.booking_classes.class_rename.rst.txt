@@ -1,0 +1,6 @@
+class\_rename
+=============
+
+.. currentmodule:: passengersim.transforms.booking_classes
+
+.. autofunction:: class_rename

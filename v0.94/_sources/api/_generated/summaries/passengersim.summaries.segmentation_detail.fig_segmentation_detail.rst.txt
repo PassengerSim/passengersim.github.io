@@ -1,0 +1,6 @@
+fig\_segmentation\_detail
+=========================
+
+.. currentmodule:: passengersim.summaries.segmentation_detail
+
+.. autofunction:: fig_segmentation_detail

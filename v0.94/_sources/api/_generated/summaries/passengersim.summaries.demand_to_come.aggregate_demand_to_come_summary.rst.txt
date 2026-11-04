@@ -1,0 +1,6 @@
+aggregate\_demand\_to\_come\_summary
+====================================
+
+.. currentmodule:: passengersim.summaries.demand_to_come
+
+.. autofunction:: aggregate_demand_to_come_summary

@@ -1,0 +1,41 @@
+LegValue
+========
+
+.. currentmodule:: passengersim.rm.leg_value
+
+.. autoclass:: LegValue
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~LegValue.__init__
+      ~LegValue.apply_snapshot_filters
+      ~LegValue.configure
+      ~LegValue.get_dcp_index
+      ~LegValue.init
+      ~LegValue.run
+      ~LegValue.should_run
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~LegValue.frequency
+      ~LegValue.produces
+      ~LegValue.requires
+      ~LegValue.snapshot_filter_type
+      ~LegValue.algorithm
+      ~LegValue.minimum_pct_separation
+      ~LegValue.dcps
+      ~LegValue.carrier
+      ~LegValue.minimum_sample
+   
+   

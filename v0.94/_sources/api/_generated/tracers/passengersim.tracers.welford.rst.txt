@@ -1,0 +1,35 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.tracers.
+
+welford
+=======
+
+.. automodule:: passengersim.tracers.welford
+   :no-members:
+
+
+
+
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: .
+   :template: autosummary/class.rst
+
+   MultiWelford
+   SingleWelford
+   WeightedWelford
+   Welford
+
+
+
+
+
+
+
+
+

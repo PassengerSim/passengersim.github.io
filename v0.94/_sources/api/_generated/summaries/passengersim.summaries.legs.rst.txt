@@ -1,0 +1,39 @@
+.. rst-class:: page_title_prefix
+
+    passengersim.summaries.
+
+legs
+====
+
+.. automodule:: passengersim.summaries.legs
+   :no-members:
+
+
+
+
+
+
+
+.. rubric:: Classes
+
+.. autosummary::
+   :toctree: .
+   :template: autosummary/class.rst
+
+   SimTabLegs
+
+
+
+
+
+.. rubric:: Functions
+
+.. autosummary::
+   :toctree: .
+
+   extract_legs
+
+
+
+
+

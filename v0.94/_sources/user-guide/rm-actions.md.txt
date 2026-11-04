@@ -1,0 +1,119 @@
+---
+title: RM Actions
+icon: material/cash
+---
+
+# RM Actions
+
+A principal building block of a [revenue management (RM) system](rm-systems.md) is an **action**,
+defined in Python as an [`RmAction`](passengersim.rm.systems.RmAction). Each action runs an
+algorithm at a specified point in the simulation, such as the beginning of a sample, at data
+collection points (DCPs), or daily. Actions can detruncate demand, generate forecasts, optimize
+availability, or implement a user's own algorithm.
+
+A typical system estimates uncensored demand first, forecasts demand next, and then optimizes which
+products to offer. The action order and execution frequencies are defined by the RM system and its
+actions; not every action runs at every DCP.
+
+## Detruncation
+
+Detruncation, also called untruncation, estimates how many customers would have purchased a product
+if it had remained available. When an RM system closes a booking class, observed sales no longer
+capture all potential demand. Detruncation uses sales and closure history to estimate that missing
+demand. If a class was available throughout a timeframe, its sales already provide an uncensored
+observation.
+
+PassengerSim provides two actions, which normally run once at the beginning of each sample before
+forecasting:
+
+- [`LegDetruncation`](passengersim.rm.untruncation.LegDetruncation) operates on leg booking classes.
+- [`PathDetruncation`](passengersim.rm.untruncation.PathDetruncation) operates on path booking
+  classes.
+
+Both actions expose `algorithm`, `which_data`, and `initialization_method` options. The default
+`algorithm="em"` uses expectation maximization. `which_data` selects total, yieldable, or priceable
+history, and `initialization_method` controls initialization of the estimation procedure. See the
+API pages for supported algorithms and convergence controls.
+
+The [forecasting mechanics guide](../mechanics/forecasting.md) shows how sales and closure histories
+are transformed into estimated demand. Older examples may use the compatibility names
+`LegUntruncation` and `PathUntruncation`; use `LegDetruncation` and `PathDetruncation` in new code.
+
+## Forecasting
+
+Forecasting estimates how many customers to expect in each booking class over the remaining booking
+horizon. An optimizer uses these forecasts to decide how much capacity to protect or what bid prices
+to set. In most systems, forecasting follows detruncation and precedes optimization.
+
+- [`StandardLegForecast`](passengersim.rm.standard_forecasting.StandardLegForecast) generates
+  forecasts for leg booking classes.
+- [`StandardPathForecast`](passengersim.rm.standard_forecasting.StandardPathForecast) generates
+  forecasts for path booking classes.
+- [`PathForecastDailyDecay`](passengersim.rm.standard_forecasting.PathForecastDailyDecay) adjusts
+  path forecasts between DCPs as departure approaches.
+
+The standard forecasters accept an `algorithm` option. The default, `additive_pickup`, estimates
+future bookings from historical pickups in each timeframe. `exp_smoothing` uses the `alpha` option
+to control smoothing; `alpha` is ignored by additive pickup. The standard forecasters compute the
+full forecast at the first DCP and reuse it at later DCPs as the remaining booking horizon shortens.
+
+### Expose action options on an RM system
+
+An action's option name need not be the name exposed to users of the whole RM system. For example,
+the following system maps the forecaster's `algorithm` attribute to the carrier option
+`forecast_algorithm`, and its `alpha` attribute to `exp_smoothing_alpha`:
+
+```python
+from passengersim.rm.emsr import ExpectedMarginalSeatRevenue
+from passengersim.rm.standard_forecasting import StandardLegForecast
+from passengersim.rm.systems import RmSys, RmSysOption, register_rm_system
+from passengersim.rm.untruncation import LegDetruncation
+
+
+@register_rm_system
+class TutorialLegRm(RmSys):
+    actions = [
+        LegDetruncation,
+        StandardLegForecast.configure(
+            algorithm=RmSysOption("forecast_algorithm", default="additive_pickup"),
+            alpha=RmSysOption("exp_smoothing_alpha", expected_type=float, default=0.15),
+        ),
+        ExpectedMarginalSeatRevenue,
+    ]
+    availability_control = "leg"
+```
+
+After executing this definition, assign the registered system to a carrier and set its options:
+
+```yaml
+carriers:
+  AL1:
+    rm_system: TutorialLegRm
+    rm_system_options:
+      forecast_algorithm: exp_smoothing
+      exp_smoothing_alpha: 0.2
+```
+
+See [RM Systems](rm-systems.md) for fixed options and named system variants, and
+[Forecasting Mechanics](../mechanics/forecasting.md) for the underlying history and forecast
+interfaces.
+
+## Bucket Allocation
+
+Optimization tailors product availability to maximize revenue given the forecasts and remaining
+capacity. Expected marginal seat revenue (EMSR) compares the expected value of protecting a seat for
+higher-fare demand with the revenue from selling it in a lower fare class.
+
+[`ExpectedMarginalSeatRevenue`](passengersim.rm.emsr.ExpectedMarginalSeatRevenue) uses leg forecasts
+to set booking-class allocations for leg-level availability controls. Its `variant` option selects
+the EMSR algorithm; the default is `"b"` (EMSR-B). It normally runs at DCPs after forecasting.
+
+## Bid Price Optimization
+
+Bid price optimization sets capacity opportunity costs used to decide whether to accept an
+itinerary's fare. It normally follows detruncation and forecasting, and is used with bid price
+availability controls rather than leg booking-class allocations.
+
+[`ProbabilisticBidPrice`](passengersim.rm.probp.ProbabilisticBidPrice) implements ProBP optimization
+using path forecasts. Its `snapshot_filters` option can select diagnostic snapshots for inspecting
+the optimization. See the API reference for convergence settings and other available options.

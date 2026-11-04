@@ -1,0 +1,6 @@
+fig\_leg\_bid\_price\_history
+=============================
+
+.. currentmodule:: passengersim.callbacks.bid_price_detail
+
+.. autofunction:: fig_leg_bid_price_history

@@ -1,0 +1,6 @@
+load\_factors
+=============
+
+.. currentmodule:: passengersim.database.common_queries
+
+.. autofunction:: load_factors

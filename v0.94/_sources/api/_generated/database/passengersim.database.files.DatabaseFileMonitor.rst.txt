@@ -1,0 +1,25 @@
+DatabaseFileMonitor
+===================
+
+.. currentmodule:: passengersim.database.files
+
+.. autoclass:: DatabaseFileMonitor
+   :inherited-members:
+
+   
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~DatabaseFileMonitor.__init__
+      ~DatabaseFileMonitor.close
+      ~DatabaseFileMonitor.register
+      ~DatabaseFileMonitor.remove
+      ~DatabaseFileMonitor.snapshot
+   
+   
+
+   
+   
+   
