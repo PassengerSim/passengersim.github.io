@@ -1,0 +1,73 @@
+# Local and Connecting Flows
+
+(summary-table-local-and-flow-yields)=
+
+## `local_and_flow_yields`
+
+This table compares the revenue earned per passenger mile from local and connecting passengers on
+each leg. Local passengers take a nonstop trip on that leg; connecting passengers use it as part of
+a longer itinerary. Connecting traffic is also called flow traffic.
+
+Alongside the two yield measures, the table shows the fraction of passengers who are local. You can
+use it to understand a flight's traffic mix and how the revenue per passenger mile differs between
+those two groups. The calculations use departure results across samples, excluding burned samples.
+
+If it is available, you can access this table as `summary.local_and_flow_yields`.
+
+### Index
+
+The rows have a simple numbered index. The fields that identify each observation are included as
+ordinary columns in the table below.
+
+### Columns
+
+| Field            | Type           | Meaning                                                                                                |
+| ---------------- | -------------- | ------------------------------------------------------------------------------------------------------ |
+| `leg_id`         | integer        | Leg identifier; joins to `legs`.                                                                       |
+| `carrier`        | string         | Carrier code.                                                                                          |
+| `orig`           | string         | Origin airport code.                                                                                   |
+| `dest`           | string         | Destination airport code.                                                                              |
+| `capacity`       | number         | Seat capacity.                                                                                         |
+| `distance`       | number         | Distance in miles.                                                                                     |
+| `local_yield`    | number or null | Local path revenue divided by local passenger miles.                                                   |
+| `local_fraction` | number or null | Local sold passengers divided by local plus connecting sold passengers; a fraction, not a percentage.  |
+| `flow_yield`     | number or null | Connecting itinerary revenue divided by connecting itinerary passenger miles for paths using this leg. |
+
+Both yield measures are expressed in currency per passenger mile. The calculation uses the first and
+second legs of each path, so it covers nonstop and two-leg connecting itineraries.
+
+A value can be missing when there is no traffic in the relevant group or when the calculation would
+require dividing by zero. For example, a leg with no connecting passengers may have no flow yield to
+report.
+
+### Activation
+
+This table is built from records saved in the simulation database. To make it available, set
+[`db.engine`](passengersim.config.DatabaseConfig.engine) to `sqlite` and include `pathclass_final`
+in [`db.write_items`](passengersim.config.DatabaseConfig.write_items) before running the simulation.
+Add `local_and_flow_yields` to [`outputs.reports`](passengersim.config.outputs.OutputConfig.reports)
+if you want PassengerSim to prepare the table as part of the run.
+
+For example, your configuration could include the following. These lists replace the existing
+settings, including the default `write_items`, so keep any other entries you still need:
+
+```yaml
+db:
+  engine: sqlite
+  write_items: [pathclass_final]
+outputs:
+  reports: [local_and_flow_yields]
+```
+
+If you already record `pathclass`, you do not also need `pathclass_final`: the departure
+observations required by this table are already included.
+
+To stop preparing this table automatically, remove `local_and_flow_yields` from
+[`outputs.reports`](passengersim.config.outputs.OutputConfig.reports). You can still access it later
+if the required database records remain available. To stop recording the supporting data as well,
+remove `pathclass_final` from [`db.write_items`](passengersim.config.DatabaseConfig.write_items),
+along with any other recording options that save the same data. Keep those options if another report
+still needs them.
+
+See [database-backed tables](summary-database-backed) for how to keep the supporting database
+available or save a prepared table with your summary.

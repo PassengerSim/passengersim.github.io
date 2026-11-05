@@ -1,0 +1,45 @@
+# Fare Class Mix
+
+(summary-table-fare-class-mix)=
+
+## `fare_class_mix`
+
+This table shows the mix of fares passengers bought, grouped by carrier, fare class, booking class,
+and brand. It contains total sales and revenue across samples, excluding burned samples.
+
+You can use it to see how much traffic or revenue comes from each part of a carrier's fare offering.
+These are itinerary sales, so a passenger on a connecting trip counts once. Fare class and booking
+class can differ when branded fares are used; both appear in the index to keep that distinction
+visible.
+
+Access this table as `summary.fare_class_mix`.
+
+### Index
+
+| Field           | Type   | Meaning                                                                  |
+| --------------- | ------ | ------------------------------------------------------------------------ |
+| `carrier`       | string | Carrier code.                                                            |
+| `fare_class`    | string | Fare class label, which can differ from booking class for branded fares. |
+| `booking_class` | string | Booking class code.                                                      |
+| `brand`         | string | Fare brand label.                                                        |
+
+### Columns
+
+| Field     | Type    | Meaning                                           |
+| --------- | ------- | ------------------------------------------------- |
+| `sold`    | integer | Total retained-sample passengers; not an average. |
+| `revenue` | number  | Total retained-sample revenue; not an average.    |
+
+To calculate average sales or revenue per sample, divide the totals by `summary.n_total_samples`.
+Some plotting helpers do this for you, so the averages shown in a figure may differ from the totals
+you see in this table.
+
+### Activation
+
+PassengerSim collects this information automatically during a normal simulation run. You do not need
+to enable database recording or add the table to
+[`outputs.reports`](passengersim.config.outputs.OutputConfig.reports).
+
+There is no separate on/off switch for collecting this table. If you only want to leave it out of
+the returned summary, you can use [selecting extracted tables](summary-selecting-extracted) to
+choose which tables to include.

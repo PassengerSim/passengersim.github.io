@@ -1,0 +1,250 @@
+# Legs
+
+(summary-table-legs)=
+
+## `legs`
+
+This table shows how each operating leg performed over the simulation. A leg is a single flight from
+one airport to another, so each row describes one flight's traffic, capacity, and revenue. You can
+use it to compare flights, find heavily loaded legs, or see how much of a flight's traffic comes
+from local passengers.
+
+The sales and revenue columns are totals across samples, excluding burned samples. A passenger on a
+connecting itinerary contributes a sold seat to each leg they travel on. For example, someone flying
+A–B–C appears in the sold counts for both A–B and B–C.
+
+Access this table as `summary.legs`.
+
+### Index
+
+| Field    | Type    | Meaning                          |
+| -------- | ------- | -------------------------------- |
+| `leg_id` | integer | Leg identifier; joins to `legs`. |
+
+### Columns
+
+| Field             | Type    | Meaning                                                               |
+| ----------------- | ------- | --------------------------------------------------------------------- |
+| `carrier`         | string  | Carrier code.                                                         |
+| `flt_no`          | integer | Flight number (not necessarily a unique leg identifier).              |
+| `orig`            | string  | Origin airport code.                                                  |
+| `dest`            | string  | Destination airport code.                                             |
+| `gt_sold`         | number  | Total passengers sold across retained samples.                        |
+| `gt_capacity`     | number  | Total seat capacity across retained samples.                          |
+| `gt_sold_local`   | number  | Total local (nonconnecting) passengers across retained samples.       |
+| `gt_revenue`      | number  | Total ticket revenue across retained samples, in simulation currency. |
+| `distance`        | number  | Distance in miles.                                                    |
+| `avg_load_factor` | number  | Load factor in percent: `100 * gt_sold / gt_capacity`.                |
+| `avg_local`       | number  | Local passenger share in percent: `100 * gt_sold_local / gt_sold`.    |
+
+The `gt_` prefix means “grand total.” To convert one of these totals to an average per sample,
+divide it by `summary.n_total_samples`, which already excludes burned samples. For a connecting
+itinerary, the leg revenue is the amount attributed to that leg; the full itinerary revenue is not
+repeated on every leg.
+
+### Activation
+
+PassengerSim collects this information automatically during a normal simulation run. You do not need
+to enable database recording or add the table to
+[`outputs.reports`](passengersim.config.outputs.OutputConfig.reports).
+
+There is no separate on/off switch for collecting this table. If you only want to leave it out of
+the returned summary, you can use [selecting extracted tables](summary-selecting-extracted) to
+choose which tables to include.
+
+(summary-table-legs-defs)=
+
+## `leg_defs`
+
+This table describes the flights in your network: where they operate, when they depart and arrive,
+and how much capacity they have. It has one row per configured leg and is built from the
+configuration saved with the summary.
+
+These values describe the setup of the simulation rather than its results. For example, `capacity`
+is the configured seat capacity of a flight, whereas `legs.gt_capacity` adds up capacity across the
+samples. Any extra tags you assigned to legs also appear here, provided their names do not conflict
+with the standard columns.
+
+Access this table as `summary.leg_defs`.
+
+### Index
+
+| Field    | Type    | Meaning                          |
+| -------- | ------- | -------------------------------- |
+| `leg_id` | integer | Leg identifier; joins to `legs`. |
+
+### Columns
+
+| Field              | Type             | Meaning                                                                                                       |
+| ------------------ | ---------------- | ------------------------------------------------------------------------------------------------------------- |
+| `orig`             | string           | Origin airport code.                                                                                          |
+| `dest`             | string           | Destination airport code.                                                                                     |
+| `orig_timezone`    | string or null   | Origin IANA time zone.                                                                                        |
+| `dest_timezone`    | string or null   | Destination IANA time zone.                                                                                   |
+| `carrier`          | string           | Carrier code.                                                                                                 |
+| `fltno`            | integer          | Configured flight number; note the spelling differs from `legs.flt_no`.                                       |
+| `distance`         | number           | Distance in miles.                                                                                            |
+| `capacity`         | number           | Seat capacity.                                                                                                |
+| `date`             | datetime         | Configured departure date.                                                                                    |
+| `dep_time`         | integer          | Departure Unix timestamp, in seconds.                                                                         |
+| `arr_time`         | integer          | Arrival Unix timestamp, in seconds.                                                                           |
+| `dep_time_offset`  | integer          | Origin UTC offset in seconds.                                                                                 |
+| `arr_time_offset`  | integer          | Destination UTC offset in seconds.                                                                            |
+| `dep_hour_local`   | number           | Local departure hour plus minutes divided by 60.                                                              |
+| `arr_hour_local`   | number           | Local arrival hour plus minutes divided by 60.                                                                |
+| `duration_minutes` | number           | Elapsed flight time in minutes.                                                                               |
+| `<tag name>`       | configured value | One additional column per leg tag whose name does not collide with a standard field; absent tags can be null. |
+
+If a leg has no explicitly configured `leg_id`, its flight number (`fltno`) is used instead.
+Optional settings may appear as missing values when they were not supplied.
+
+### Activation
+
+PassengerSim creates this table when you first access `summary.leg_defs`, using the configuration
+saved with the summary. There is no setting you need to turn on, and no database records are
+required. Once created, the table is kept in the summary for later access.
+
+(summary-table-legs_)=
+
+## `legs_`
+
+This table combines the results in `legs` with the flight information in `leg_defs`. The trailing
+underscore is part of its name. It is convenient when you want to look at performance alongside
+schedule details—for example, to compare load factors for morning and evening flights.
+
+PassengerSim matches the two tables by `leg_id` and keeps every row from `legs`. When both tables
+have a column with the same name, the value from `legs` is used. The schema below lists the combined
+set of columns.
+
+Access this table as `summary.legs_`.
+
+### Index
+
+| Field    | Type    | Meaning                          |
+| -------- | ------- | -------------------------------- |
+| `leg_id` | integer | Leg identifier; joins to `legs`. |
+
+### Columns
+
+| Field              | Type             | Meaning                                                                                                       |
+| ------------------ | ---------------- | ------------------------------------------------------------------------------------------------------------- |
+| `carrier`          | string           | Carrier code.                                                                                                 |
+| `flt_no`           | integer          | Flight number (not necessarily a unique leg identifier).                                                      |
+| `orig`             | string           | Origin airport code.                                                                                          |
+| `dest`             | string           | Destination airport code.                                                                                     |
+| `gt_sold`          | number           | Total passengers sold across retained samples.                                                                |
+| `gt_capacity`      | number           | Total seat capacity across retained samples.                                                                  |
+| `gt_sold_local`    | number           | Total local (nonconnecting) passengers across retained samples.                                               |
+| `gt_revenue`       | number           | Total ticket revenue across retained samples, in simulation currency.                                         |
+| `distance`         | number           | Distance in miles.                                                                                            |
+| `avg_load_factor`  | number           | Load factor in percent: `100 * gt_sold / gt_capacity`.                                                        |
+| `avg_local`        | number           | Local passenger share in percent: `100 * gt_sold_local / gt_sold`.                                            |
+| `orig_timezone`    | string or null   | Origin IANA time zone.                                                                                        |
+| `dest_timezone`    | string or null   | Destination IANA time zone.                                                                                   |
+| `fltno`            | integer          | Configured flight number; note the spelling differs from `legs.flt_no`.                                       |
+| `capacity`         | number           | Seat capacity.                                                                                                |
+| `date`             | datetime         | Configured departure date.                                                                                    |
+| `dep_time`         | integer          | Departure Unix timestamp, in seconds.                                                                         |
+| `arr_time`         | integer          | Arrival Unix timestamp, in seconds.                                                                           |
+| `dep_time_offset`  | integer          | Origin UTC offset in seconds.                                                                                 |
+| `arr_time_offset`  | integer          | Destination UTC offset in seconds.                                                                            |
+| `dep_hour_local`   | number           | Local departure hour plus minutes divided by 60.                                                              |
+| `arr_hour_local`   | number           | Local arrival hour plus minutes divided by 60.                                                                |
+| `duration_minutes` | number           | Elapsed flight time in minutes.                                                                               |
+| `<tag name>`       | configured value | One additional column per leg tag whose name does not collide with a standard field; absent tags can be null. |
+
+You will see both `flt_no` and `fltno`: these are the flight-number columns from the results and
+configuration tables, respectively. If a leg has no matching configuration row, its added definition
+fields are missing. Extra leg tags are included unless their names are already used by another
+column.
+
+### Activation
+
+PassengerSim creates this table when you first access `summary.legs_`, combining
+[`legs` and `leg_defs`](summary-table-legs). There is no separate activation setting. The leg
+results and saved configuration must be available, so include `legs` if you choose a custom set of
+summary tables.
+
+(summary-table-leg-detail)=
+
+## `leg_detail`
+
+This table lets you follow a flight's recorded sales, revenue, and bid price during individual
+samples. Each row represents one recorded observation of one leg, with flight information such as
+carrier, origin, and destination included alongside the results.
+
+The level of detail depends on what you chose to record. You can keep observations at each data
+collection point (DCP), record daily observations, or keep only the final results at departure. The
+activation settings below explain these choices.
+
+If it is available, you can access this table as `summary.leg_detail`.
+
+### Index
+
+The rows have a simple numbered index. The fields that identify each observation are included as
+ordinary columns in the table below.
+
+### Columns
+
+| Field           | Type           | Meaning                                                                             |
+| --------------- | -------------- | ----------------------------------------------------------------------------------- |
+| `trial`         | integer        | Trial identifier (zero-based).                                                      |
+| `sample`        | integer        | Sample identifier within the trial (zero-based).                                    |
+| `leg_id`        | integer        | Leg identifier; joins to `legs`.                                                    |
+| `carrier`       | string         | Carrier code.                                                                       |
+| `flt_no`        | integer        | Flight number (not necessarily a unique leg identifier).                            |
+| `orig`          | string         | Origin airport code.                                                                |
+| `dest`          | string         | Destination airport code.                                                           |
+| `days_prior`    | integer        | Days before departure at the recorded observation or data collection point (DCP).   |
+| `sold`          | number         | Passengers sold.                                                                    |
+| `revenue`       | number         | Ticket revenue in the simulation currency.                                          |
+| `local_sold`    | integer        | Cumulative local passengers sold by this observation.                               |
+| `local_revenue` | number         | Cumulative revenue attributed to local passengers.                                  |
+| `bid_price`     | number or null | Recorded leg bid price, in simulation currency; may be null if storage is disabled. |
+
+Unlike most summary tables, this query currently does not filter by scenario or remove recorded burn
+samples, even if those arguments are supplied. It returns all matching records in the database.
+
+The result also leaves out scenario and iteration identifiers. If you need to distinguish those
+records, use a database containing only the scenario of interest or query the original database
+tables directly.
+
+### Activation
+
+This table is built from records saved in the simulation database. To make it available, set
+[`db.engine`](passengersim.config.DatabaseConfig.engine) to `sqlite` and include `leg` in
+[`db.write_items`](passengersim.config.DatabaseConfig.write_items) before running the simulation.
+Add `leg_detail` to [`outputs.reports`](passengersim.config.outputs.OutputConfig.reports) if you
+want PassengerSim to prepare the table as part of the run.
+
+For example, your configuration could include the following. These lists replace the existing
+settings, including the default `write_items`, so keep any other entries you still need:
+
+```yaml
+db:
+  engine: sqlite
+  write_items: [leg]
+outputs:
+  reports: [leg_detail]
+```
+
+If you only need departure results, use `leg_final` instead of `leg`; it is part of the default
+`write_items`. For daily observations, use `leg_daily`. These options are all entries in
+[`db.write_items`](passengersim.config.DatabaseConfig.write_items).
+
+Bid-price values are recorded when
+[`db.store_leg_bid_prices`](passengersim.config.DatabaseConfig.store_leg_bid_prices) is `True`,
+which is the default. To stop saving those values, set both this option and
+[`db.store_displacements`](passengersim.config.DatabaseConfig.store_displacements) to `False`;
+turning off only `store_leg_bid_prices` raises a `ValueError` before the run starts. The other leg
+details are still recorded, and `bid_price` is null.
+
+To stop preparing this table automatically, remove `leg_detail` from
+[`outputs.reports`](passengersim.config.outputs.OutputConfig.reports). You can still access it later
+if the required database records remain available. To stop recording the supporting data as well,
+remove `leg` from [`db.write_items`](passengersim.config.DatabaseConfig.write_items), along with any
+other recording options that save the same data. Keep those options if another report still needs
+them.
+
+See [database-backed tables](summary-database-backed) for how to keep the supporting database
+available or save a prepared table with your summary.

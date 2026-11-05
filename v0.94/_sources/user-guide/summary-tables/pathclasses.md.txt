@@ -1,0 +1,87 @@
+# Paths by Booking Class
+
+(summary-table-pathclasses)=
+
+## `pathclasses`
+
+This table breaks down itinerary sales and revenue by booking class. Each row represents a booking
+class on one path, with totals across samples excluding burned samples.
+
+Where segment data is available, the table also shows how much of that traffic and revenue came from
+each passenger segment, such as business or leisure. Those segment names become part of the column
+names, so the exact set of columns depends on the simulation's demand segments.
+
+Access this table as `summary.pathclasses`.
+
+### Index
+
+| Field           | Type    | Meaning                            |
+| --------------- | ------- | ---------------------------------- |
+| `path_id`       | integer | Path identifier; joins to `paths`. |
+| `booking_class` | string  | Booking class code.                |
+
+### Columns
+
+| Field                             | Type   | Meaning                                                                                   |
+| --------------------------------- | ------ | ----------------------------------------------------------------------------------------- |
+| `carrier`                         | string | Carrier code.                                                                             |
+| `orig`                            | string | Origin airport code.                                                                      |
+| `dest`                            | string | Destination airport code.                                                                 |
+| `gt_sold`                         | number | Total passengers sold across retained samples.                                            |
+| `gt_sold_priceable`               | number | Total priceable sales across retained samples.                                            |
+| `gt_revenue`                      | number | Total ticket revenue across retained samples, in simulation currency.                     |
+| `gt_sold_by_segment_<segment>`    | number | Cumulative sold passengers for the named demand segment; one column per recorded segment. |
+| `gt_revenue_by_segment_<segment>` | number | Cumulative ticket revenue for the named demand segment; one column per recorded segment.  |
+
+Only segments recorded by the path-class counters get their own columns. If a segment column exists
+but a particular row has no recorded value for it, that cell is filled with zero.
+
+### Activation
+
+PassengerSim collects this information automatically during a normal simulation run. You do not need
+to enable database recording or add the table to
+[`outputs.reports`](passengersim.config.outputs.OutputConfig.reports).
+
+There is no separate on/off switch for collecting this table. If you only want to leave it out of
+the returned summary, you can use [selecting extracted tables](summary-selecting-extracted) to
+choose which tables to include.
+
+(summary-table-market-segmentation)=
+
+## `market_segmentation`
+
+This table shows the average sales and revenue for each carrier in each market, broken down by
+passenger segment. A market is a directional origin–destination pair, and the averages exclude
+burned samples.
+
+PassengerSim calculates these values from `pathclasses`, adding together the paths and booking
+classes serving each market. This gives you a market-level view without having to combine all the
+individual itineraries yourself.
+
+Access this table as `summary.market_segmentation`.
+
+### Index
+
+| Field     | Type   | Meaning                              |
+| --------- | ------ | ------------------------------------ |
+| `carrier` | string | Carrier code.                        |
+| `orig`    | string | Origin airport code.                 |
+| `dest`    | string | Destination airport code.            |
+| `segment` | string | Configured passenger demand segment. |
+
+### Columns
+
+| Field     | Type   | Meaning                                                      |
+| --------- | ------ | ------------------------------------------------------------ |
+| `sold`    | number | Segment passengers per retained sample.                      |
+| `revenue` | number | Segment revenue per retained sample, in simulation currency. |
+
+The `segment` values come from the segment columns in `pathclasses`. If that source table has no
+segment breakdown, there are no segment results to show here.
+
+### Activation
+
+PassengerSim creates this table when you first access `summary.market_segmentation`, using
+[`pathclasses`](summary-table-pathclasses). There is no separate activation setting. The source
+table must include a segment breakdown; without those segment columns, there are no segment
+observations to summarize.

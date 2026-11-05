@@ -37,8 +37,8 @@
       
     
         <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_immaterial_theme.50640b526df5ff663.min.css?v=cff97996" />
-        <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
-        <link rel="stylesheet" type="text/css" href="../../../_static/css/extra.css?v=6c696159" />
+        <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+        <link rel="stylesheet" type="text/css" href="../../../_static/css/extra.css?v=ccd81cd0" />
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -2701,28 +2701,35 @@
 <span class="sd">            sample.</span>
 <span class="sd">        - `sold`: Total bookings accepted by this carrier in this sample.</span>
 <span class="sd">        - `revenue`: Total revenue for this carrier in this sample.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        The database has no leg bucket records for the requested scenario.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Provides content similar to PODS *.HST output file.</span>
     <span class="n">qry_params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;burn_samples&quot;</span><span class="p">:</span> <span class="n">burn_samples</span><span class="p">}</span>
     <span class="k">if</span> <span class="n">scenario</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">qry_params</span><span class="p">[</span><span class="s2">&quot;scenario&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scenario</span>
-        <span class="n">max_days_prior</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>
-            <span class="n">db</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span>
-<span class="w">                </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">                SELECT max(days_prior) FROM leg_bucket_detail WHERE scenario == ?</span>
-<span class="sd">                &quot;&quot;&quot;</span><span class="p">,</span>
-                <span class="p">(</span><span class="n">scenario</span><span class="p">,),</span>
-            <span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-        <span class="p">)</span>
+        <span class="n">max_days_prior</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            SELECT max(days_prior) FROM leg_bucket_detail WHERE scenario == ?</span>
+<span class="sd">            &quot;&quot;&quot;</span><span class="p">,</span>
+            <span class="p">(</span><span class="n">scenario</span><span class="p">,),</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">max_days_prior</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span>
-            <span class="n">db</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span>
-<span class="w">                </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">                SELECT max(days_prior) FROM leg_bucket_detail</span>
-<span class="sd">                &quot;&quot;&quot;</span><span class="p">,</span>
-            <span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="n">max_days_prior</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            SELECT max(days_prior) FROM leg_bucket_detail</span>
+<span class="sd">            &quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># The maximum over no rows is NULL, which means nothing was recorded to report on.</span>
+    <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">max_days_prior</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;the `carrier_history` report found no leg bucket records; &quot;</span>
+            <span class="s2">&quot;include `bucket` in `db.write_items` when running the simulation&quot;</span>
         <span class="p">)</span>
-    <span class="n">qry_params</span><span class="p">[</span><span class="s2">&quot;max_days_prior&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">max_days_prior</span>
+    <span class="n">qry_params</span><span class="p">[</span><span class="s2">&quot;max_days_prior&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">max_days_prior</span><span class="p">)</span>
     <span class="n">qry1</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">    SELECT</span>
 <span class="s2">        iteration, trial, sample, carrier,</span>
@@ -3075,7 +3082,9 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">(</span><span class="n">burn_samples</span><span class="p">,</span> <span class="n">scenario</span><span class="p">)</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span><span class="n">qry</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">df</span></div>
+    <span class="c1"># Without path class records these columns are entirely NULL, which pandas reads</span>
+    <span class="c1"># as objects holding None. Those can&#39;t be averaged across trials, so force floats.</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">astype</span><span class="p">({</span><span class="s2">&quot;local_yield&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;local_fraction&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;flow_yield&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">})</span></div>
 
 
 

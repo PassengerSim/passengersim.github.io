@@ -37,8 +37,8 @@
       
     
         <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_immaterial_theme.50640b526df5ff663.min.css?v=cff97996" />
-        <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
-        <link rel="stylesheet" type="text/css" href="../../../_static/css/extra.css?v=6c696159" />
+        <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+        <link rel="stylesheet" type="text/css" href="../../../_static/css/extra.css?v=ccd81cd0" />
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -1877,7 +1877,7 @@
     <span class="n">GenericSimulationTables</span><span class="p">,</span>
     <span class="n">SimulationTableItem</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">aggregate_by_concat_dataframe</span><span class="p">,</span> <span class="n">aggregate_by_summing_dataframe</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">aggregate_by_concat_dataframe</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="kn">import</span><span class="w"> </span><span class="nn">altair</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">alt</span>
@@ -2016,6 +2016,40 @@
 
 
 
+<div class="viewcode-block" id="aggregate_spill">
+<a class="viewcode-back" href="../../../api/_generated/summaries/passengersim.summaries.carriers.aggregate_spill.html#passengersim.summaries.carriers.aggregate_spill">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">aggregate_spill</span><span class="p">(</span><span class="n">summaries</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SimTabCarriers</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">|</span> <span class="ne">Exception</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add spill counts across trials, matching rows by carrier and booking class.</span>
+
+<span class="sd">    Row positions can&#39;t be used to line up the trials, because a first-choice</span>
+<span class="sd">    class seen in only some trials shifts every row after it. Adding by position</span>
+<span class="sd">    would also concatenate the text labels instead of keeping them as keys.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    summaries : list[SimTabCarriers]</span>
+<span class="sd">        The trial summaries to combine.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pandas.DataFrame or None or Exception</span>
+<span class="sd">        One row for each carrier and booking class seen in any trial, in order of</span>
+<span class="sd">        first appearance. Returns None if no trial has spill data, or the stored</span>
+<span class="sd">        exception if a trial failed to produce the table.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">frames</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">summary</span> <span class="ow">in</span> <span class="n">summaries</span><span class="p">:</span>
+        <span class="n">frame</span> <span class="o">=</span> <span class="n">summary</span><span class="o">.</span><span class="n">_raw_spill</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="ne">Exception</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">frame</span>
+        <span class="k">if</span> <span class="n">frame</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">frames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">frames</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">frames</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;carrier&quot;</span><span class="p">,</span> <span class="s2">&quot;booking_class&quot;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span></div>
+
+
+
 <div class="viewcode-block" id="SimTabCarriers">
 <a class="viewcode-back" href="../../../api/_generated/summaries/passengersim.summaries.carriers.SimTabCarriers.html#passengersim.summaries.carriers.SimTabCarriers">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">SimTabCarriers</span><span class="p">(</span><span class="n">GenericSimulationTables</span><span class="p">):</span>
@@ -2063,7 +2097,7 @@
     <span class="p">)</span>
 
     <span class="n">spill</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">SimulationTableItem</span><span class="p">(</span>
-        <span class="n">aggregation_func</span><span class="o">=</span><span class="n">aggregate_by_summing_dataframe</span><span class="p">(</span><span class="s2">&quot;spill&quot;</span><span class="p">),</span>
+        <span class="n">aggregation_func</span><span class="o">=</span><span class="n">aggregate_spill</span><span class="p">,</span>
         <span class="n">extraction_func</span><span class="o">=</span><span class="n">extract_spill</span><span class="p">,</span>
         <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;SWhat did the customer choose, given their first choice?&quot;</span><span class="p">,</span>
     <span class="p">)</span>

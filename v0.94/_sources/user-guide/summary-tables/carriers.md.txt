@@ -1,0 +1,58 @@
+# Carriers
+
+(summary-table-carriers)=
+
+## `carriers`
+
+This table gives you an overview of each carrier's results, with one row per carrier. It brings
+together revenue, passenger counts, capacity, and measures such as load factor and revenue per
+available seat mile. It is a useful starting point when you want to compare carriers or see how a
+change in the simulation affects their overall performance.
+
+Most of the traffic and revenue measures are averages across samples, excluding burned samples. Keep
+in mind that an itinerary passenger and a leg passenger are different counts: someone taking a
+two-leg connecting trip makes one booking but occupies a seat on two legs. The table includes both
+views, as well as two ways to calculate load factor: an average across individual legs and a
+system-wide measure weighted by distance.
+
+Access this table as `summary.carriers`.
+
+### Index
+
+| Field     | Type   | Meaning       |
+| --------- | ------ | ------------- |
+| `carrier` | string | Carrier code. |
+
+### Columns
+
+| Field                | Type           | Meaning                                                                                               |
+| -------------------- | -------------- | ----------------------------------------------------------------------------------------------------- |
+| `control`            | string         | Carrier inventory-control mode.                                                                       |
+| `avg_rev`            | number         | Ticket revenue per retained sample.                                                                   |
+| `avg_sold`           | number         | Itinerary passengers per retained sample; connections count once.                                     |
+| `truncation_rule`    | integer        | Carrier truncation rule identifier.                                                                   |
+| `avg_leg_lf`         | number         | Unweighted average of individual leg load factors, in percent.                                        |
+| `asm`                | number         | Available seat miles per retained sample.                                                             |
+| `rpm`                | number         | Revenue passenger miles per retained sample.                                                          |
+| `ancillary_rev`      | number         | Sum of ancillary price times sold counters at extraction; not normalized by the summary sample count. |
+| `avg_local_leg_pax`  | number         | Local leg passengers per retained sample.                                                             |
+| `avg_total_leg_pax`  | number         | Total leg passengers per retained sample; connections count on every leg.                             |
+| `cp_sold`            | number         | Continuously priced passengers per retained sample.                                                   |
+| `cp_revenue`         | number         | Continuously priced ticket revenue per retained sample.                                               |
+| `rm_system`          | string or null | Revenue-management system name from carrier metadata.                                                 |
+| `avg_price`          | number         | `avg_rev / avg_sold`, currency per itinerary passenger.                                               |
+| `yield`              | number         | `avg_rev / rpm`, currency per passenger mile.                                                         |
+| `rasm`               | number         | `avg_rev / asm`, currency per available seat mile.                                                    |
+| `sys_lf`             | number         | Distance-weighted system load factor, `100 * rpm / asm`.                                              |
+| `local_pct_leg_pax`  | number         | `100 * avg_local_leg_pax / avg_total_leg_pax`.                                                        |
+| `local_pct_bookings` | number         | `100 * avg_local_leg_pax / avg_sold`.                                                                 |
+
+### Activation
+
+PassengerSim collects this information automatically during a normal simulation run. You do not need
+to enable database recording or add the table to
+[`outputs.reports`](passengersim.config.outputs.OutputConfig.reports).
+
+There is no separate on/off switch for collecting this table. If you only want to leave it out of
+the returned summary, you can use [selecting extracted tables](summary-selecting-extracted) to
+choose which tables to include.

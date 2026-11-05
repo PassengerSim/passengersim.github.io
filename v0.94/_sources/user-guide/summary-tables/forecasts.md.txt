@@ -1,0 +1,139 @@
+# Forecasts
+
+(summary-table-leg-forecasts)=
+
+## `leg_forecasts`
+
+This table shows the demand forecasts made for each booking class on each leg as departure
+approaches. Each row identifies a carrier, leg, booking class, and data collection point (DCP). The
+values are averages across samples, excluding burned samples.
+
+Alongside the forecast mean and standard deviation, the table includes measures of how often
+inventory was closed in the history used to make the forecast. These can help you understand the
+information the forecasting process had available. The forecast standard deviation column is an
+average of the reported standard deviations, rather than a new standard deviation calculated from
+all the forecasts together.
+
+If it is available, you can access this table as `summary.leg_forecasts`.
+
+### Index
+
+| Field           | Type    | Meaning                                                                           |
+| --------------- | ------- | --------------------------------------------------------------------------------- |
+| `carrier`       | string  | Carrier code.                                                                     |
+| `leg_id`        | integer | Leg identifier; joins to `legs`.                                                  |
+| `bucket_number` | integer | Leg bucket number.                                                                |
+| `booking_class` | string  | Booking class code.                                                               |
+| `days_prior`    | integer | Days before departure at the recorded observation or data collection point (DCP). |
+
+### Columns
+
+| Field                       | Type   | Meaning                                                                             |
+| --------------------------- | ------ | ----------------------------------------------------------------------------------- |
+| `forecast_mean`             | number | Mean of the recorded demand forecast means, in passengers.                          |
+| `forecast_stdev`            | number | Mean of the recorded forecast standard deviations; not a pooled standard deviation. |
+| `forecast_closed_in_tf`     | number | Mean closure fraction for this timeframe in the history used for forecasting.       |
+| `forecast_closed_in_future` | number | Mean closure fraction for future timeframes in the history used for forecasting.    |
+
+The values reflect the forecasts produced by the carrier’s configured revenue-management system.
+Recording the table does not create forecasts that the system itself does not calculate.
+
+### Activation
+
+This table is built from records saved in the simulation database. To make it available, set
+[`db.engine`](passengersim.config.DatabaseConfig.engine) to `sqlite` and include `bucket` in
+[`db.write_items`](passengersim.config.DatabaseConfig.write_items) before running the simulation.
+Add `leg_forecasts` to [`outputs.reports`](passengersim.config.outputs.OutputConfig.reports) if you
+want PassengerSim to prepare the table as part of the run.
+
+For example, your configuration could include the following. These lists replace the existing
+settings, including the default `write_items`, so keep any other entries you still need:
+
+```yaml
+db:
+  engine: sqlite
+  write_items: [bucket]
+outputs:
+  reports: [leg_forecasts]
+```
+
+Use `bucket` to record forecasts throughout the booking horizon. The `bucket_final` option only
+provides records at departure.
+
+To stop preparing this table automatically, remove `leg_forecasts` from
+[`outputs.reports`](passengersim.config.outputs.OutputConfig.reports). You can still access it later
+if the required database records remain available. To stop recording the supporting data as well,
+remove `bucket` from [`db.write_items`](passengersim.config.DatabaseConfig.write_items), along with
+any other recording options that save the same data. Keep those options if another report still
+needs them.
+
+See [database-backed tables](summary-database-backed) for how to keep the supporting database
+available or save a prepared table with your summary.
+
+(summary-table-path-forecasts)=
+
+## `path_forecasts`
+
+This table shows demand forecasts at the itinerary and booking-class level. Each row represents a
+booking class on a path at a particular data collection point (DCP), with values averaged across
+samples excluding burned samples.
+
+In addition to the forecast and closure measures, it includes the average adjusted price recorded
+for the path class. The values depend on the revenue-management processes you configured. As with
+`leg_forecasts`, `forecast_stdev` is an average of the reported standard deviations, not a pooled
+measure of variation.
+
+If it is available, you can access this table as `summary.path_forecasts`.
+
+### Index
+
+| Field           | Type    | Meaning                                                                           |
+| --------------- | ------- | --------------------------------------------------------------------------------- |
+| `path_id`       | integer | Path identifier; joins to `paths`.                                                |
+| `booking_class` | string  | Booking class code.                                                               |
+| `days_prior`    | integer | Days before departure at the recorded observation or data collection point (DCP). |
+
+### Columns
+
+| Field                       | Type   | Meaning                                                                             |
+| --------------------------- | ------ | ----------------------------------------------------------------------------------- |
+| `forecast_mean`             | number | Mean of the recorded demand forecast means, in passengers.                          |
+| `forecast_stdev`            | number | Mean of the recorded forecast standard deviations; not a pooled standard deviation. |
+| `forecast_closed_in_tf`     | number | Mean closure fraction for this timeframe in the history used for forecasting.       |
+| `forecast_closed_in_future` | number | Mean closure fraction for future timeframes in the history used for forecasting.    |
+| `adjusted_price`            | number | Mean recorded adjusted price, in simulation currency.                               |
+
+Recording these results does not enable a forecasting or pricing method by itself. The values come
+from the revenue-management processes already configured for the path.
+
+### Activation
+
+This table is built from records saved in the simulation database. To make it available, set
+[`db.engine`](passengersim.config.DatabaseConfig.engine) to `sqlite` and include `pathclass` in
+[`db.write_items`](passengersim.config.DatabaseConfig.write_items) before running the simulation.
+Add `path_forecasts` to [`outputs.reports`](passengersim.config.outputs.OutputConfig.reports) if you
+want PassengerSim to prepare the table as part of the run.
+
+For example, your configuration could include the following. These lists replace the existing
+settings, including the default `write_items`, so keep any other entries you still need:
+
+```yaml
+db:
+  engine: sqlite
+  write_items: [pathclass]
+outputs:
+  reports: [path_forecasts]
+```
+
+Use `pathclass` to record the forecasts at each DCP. The `pathclass_final` option only keeps
+departure observations.
+
+To stop preparing this table automatically, remove `path_forecasts` from
+[`outputs.reports`](passengersim.config.outputs.OutputConfig.reports). You can still access it later
+if the required database records remain available. To stop recording the supporting data as well,
+remove `pathclass` from [`db.write_items`](passengersim.config.DatabaseConfig.write_items), along
+with any other recording options that save the same data. Keep those options if another report still
+needs them.
+
+See [database-backed tables](summary-database-backed) for how to keep the supporting database
+available or save a prepared table with your summary.

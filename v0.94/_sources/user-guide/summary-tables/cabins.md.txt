@@ -1,0 +1,49 @@
+# Cabins
+
+(summary-table-cabins)=
+
+## `cabins`
+
+This table records the departure results for each cabin on each flight, separately for every sample
+and trial. It lets you compare cabin-level sales and revenue, including the portions sold through
+continuous pricing.
+
+Unlike an overall average, this history keeps individual sample results. You can use it to see how
+much cabin performance varies from one simulated departure to the next. Burned samples are excluded.
+
+Access this table as `summary.cabins`.
+
+### Index
+
+| Field     | Type    | Meaning                                                  |
+| --------- | ------- | -------------------------------------------------------- |
+| `trial`   | integer | Trial identifier (zero-based).                           |
+| `sample`  | integer | Sample identifier within the trial (zero-based).         |
+| `carrier` | string  | Carrier code.                                            |
+| `flt_no`  | integer | Flight number (not necessarily a unique leg identifier). |
+| `cabin`   | string  | Cabin code.                                              |
+
+### Columns
+
+| Field            | Type    | Meaning                                               |
+| ---------------- | ------- | ----------------------------------------------------- |
+| `capacity`       | number  | Seat capacity.                                        |
+| `distance`       | integer | Recorded leg distance in miles.                       |
+| `sold`           | number  | Seats sold.                                           |
+| `sold_priceable` | number  | Sales classified as priceable.                        |
+| `revenue`        | number  | Ticket revenue in the simulation currency.            |
+| `sold_cp`        | integer | Continuously priced seats in this cabin and sample.   |
+| `revenue_cp`     | number  | Continuously priced revenue in this cabin and sample. |
+
+The table identifies flights by flight number rather than `leg_id`. If your network uses the same
+flight number for multiple legs, those rows may share the same index values.
+
+### Activation
+
+PassengerSim collects this information automatically during a normal simulation run. You do not need
+to enable database recording or add the table to
+[`outputs.reports`](passengersim.config.outputs.OutputConfig.reports).
+
+There is no separate on/off switch for collecting this table. If you only want to leave it out of
+the returned summary, you can use [selecting extracted tables](summary-selecting-extracted) to
+choose which tables to include.

@@ -1,0 +1,45 @@
+# Continuous Pricing
+
+(summary-table-cp-segmentation)=
+
+## `cp_segmentation`
+
+This table shows how much of each carrier's sales and revenue came from continuous pricing, broken
+down by booking class. The `sold` and `revenue` columns give the overall totals, while `cp_sold` and
+`cp_revenue` give the continuously priced portion of those totals.
+
+The values cover all samples except burned samples. For example, dividing `cp_sold` by `sold` tells
+you the share of passengers in that row who bought a continuously priced offer, provided the row has
+some sales.
+
+Access this table as `summary.cp_segmentation`.
+
+### Index
+
+| Field           | Type   | Meaning             |
+| --------------- | ------ | ------------------- |
+| `carrier`       | string | Carrier code.       |
+| `booking_class` | string | Booking class code. |
+
+### Columns
+
+| Field        | Type   | Meaning                                                                    |
+| ------------ | ------ | -------------------------------------------------------------------------- |
+| `sold`       | number | Total retained-sample passengers, including continuously priced sales.     |
+| `revenue`    | number | Total retained-sample ticket revenue, including continuously priced sales. |
+| `cp_sold`    | number | Continuously priced portion of sold passengers.                            |
+| `cp_revenue` | number | Continuously priced portion of revenue.                                    |
+
+Pandas labels the column axis `measure`. The `cp_` columns will only have nonzero values if
+passengers actually bought continuously priced offers. Collecting this table does not itself turn
+continuous pricing on.
+
+### Activation
+
+PassengerSim collects this information automatically during a normal simulation run. You do not need
+to enable database recording or add the table to
+[`outputs.reports`](passengersim.config.outputs.OutputConfig.reports).
+
+There is no separate on/off switch for collecting this table. If you only want to leave it out of
+the returned summary, you can use [selecting extracted tables](summary-selecting-extracted) to
+choose which tables to include.

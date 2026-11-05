@@ -1,0 +1,169 @@
+# Bid Prices
+
+(summary-table-bid-price-history)=
+
+## `bid_price_history`
+
+This table contains the average bid prices across all legs for each carrier. The bid prices are as
+recorded at each day throughout the booking horizon while the simulation runs, and the averages are
+pooled across all legs and all samples (excluding burned samples). Each trial is recorded
+separately, so the table contains multiple rows for each carrier and day.
+
+In theory, the bid price of sold-out legs is not defined. In PassengerSim, recorded bid prices for
+sold-out legs are fixed at the current active bid price just prior to selling out, and are included
+in the averages at that fixed price for all remaining days. The table also includes columns that
+show the average bid price only for legs with remaining capacity (which excludes these sold-out
+placeholder values) as well as the fraction of legs with remaining capacity.
+
+Access this table as `summary.bid_price_history`.
+
+### Index
+
+| Field        | Type    | Meaning                                                                           |
+| ------------ | ------- | --------------------------------------------------------------------------------- |
+| `trial`      | integer | Trial identifier (zero-based).                                                    |
+| `carrier`    | string  | Carrier code.                                                                     |
+| `days_prior` | integer | Days before departure at the recorded observation or data collection point (DCP). |
+
+### Columns
+
+| Field                      | Type   | Meaning                                                               |
+| -------------------------- | ------ | --------------------------------------------------------------------- |
+| `bid_price_mean`           | number | Mean leg reporting bid price, including sold-out legs.                |
+| `bid_price_stdev`          | number | Sample standard deviation of those prices.                            |
+| `some_cap_bid_price_mean`  | number | Mean bid price among observations with remaining capacity.            |
+| `some_cap_bid_price_stdev` | number | Sample standard deviation among observations with remaining capacity. |
+| `fraction_some_cap`        | number | Fraction of observations with remaining capacity, from 0 to 1.        |
+| `fraction_zero_cap`        | number | Complement of `fraction_some_cap`.                                    |
+
+### Activation
+
+This table is always populated on every simulation run, even if no carriers are using bid price
+controls. There is no switch to turn this table on or off. For carriers that do not have any
+bid-price-controlled legs, the table will contain all zeros for the bid prices. The
+`fraction_some_cap` and `fraction_zero_cap` columns are always computed, even if there are no bid
+prices reported. See [selecting extracted tables](summary-selecting-extracted) to omit it from a
+custom summary, if desired.
+
+(summary-table-leg-bid-price-history)=
+
+## `leg_bid_price_history`
+
+Daily leg bid-price statistics pooled across retained samples and trials.
+
+If it is available, you can access this table as `summary.leg_bid_price_history`.
+
+### Index
+
+| Field        | Type    | Meaning                                                                           |
+| ------------ | ------- | --------------------------------------------------------------------------------- |
+| `leg_id`     | integer | Leg identifier; joins to `legs`.                                                  |
+| `days_prior` | integer | Days before departure at the recorded observation or data collection point (DCP). |
+
+### Columns
+
+| Field               | Type    | Meaning                                                            |
+| ------------------- | ------- | ------------------------------------------------------------------ |
+| `bid_price_mean`    | float64 | Pooled mean bid price in simulation currency.                      |
+| `bid_price_std_dev` | float64 | Pooled sample standard deviation of bid price (denominator n − 1). |
+| `n_observations`    | int64   | Number of retained observations contributing to this cell.         |
+
+The mean is `NaN` for zero observations; standard deviations are `NaN` for fewer than two. Stored
+accumulators retain counts and moments for statistically correct pooling. All legs are included,
+using the leg reporting-price convention for sold-out legs.
+
+### Activation
+
+This table is populated only if
+[`simulation_controls.collect_leg_bid_prices`](passengersim.config.SimulationSettings.collect_leg_bid_prices)
+is `True`, which is the case by default. Set `simulation_controls.collect_leg_bid_prices = False` to
+stop collection and avoid allocating memory to support this table.
+
+(summary-table-path-bid-price-history)=
+
+## `path_bid_price_history`
+
+Daily path/cabin bid-price statistics pooled across retained samples and trials.
+
+If it is available, you can access this table as `summary.path_bid_price_history`.
+
+### Index
+
+| Field        | Type    | Meaning                                                                           |
+| ------------ | ------- | --------------------------------------------------------------------------------- |
+| `path_id`    | integer | Path identifier; joins to `paths`.                                                |
+| `cabin_code` | string  | Cabin code.                                                                       |
+| `days_prior` | integer | Days before departure at the recorded observation or data collection point (DCP). |
+
+### Columns
+
+| Field                         | Type    | Meaning                                                                                                                             |
+| ----------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `bid_price_mean`              | float64 | Pooled mean bid price in simulation currency.                                                                                       |
+| `bid_price_std_dev`           | float64 | Pooled sample standard deviation of bid price (denominator n − 1).                                                                  |
+| `augmented_bid_price_mean`    | float64 | Pooled effective reference-class path/cabin bid price, including effective adjusted-fare augmentation (MR/KI and hybrid weighting). |
+| `augmented_bid_price_std_dev` | float64 | Pooled sample standard deviation of the augmented bid price.                                                                        |
+| `n_observations`              | int64   | Number of retained observations contributing to this cell.                                                                          |
+
+The mean is `NaN` for zero observations; standard deviations are `NaN` for fewer than two. Stored
+accumulators retain counts and moments for statistically correct pooling. Only paths of
+bid-price-controlled carriers are included. Both price measures share the same observation count.
+
+The ordinary path price sums one-passenger reporting prices over its legs, including finite sold-out
+reporting prices. The augmented price adds `fcst_revenue - adjusted_fare_price` for the eligible
+reference class with the lowest forecast revenue in the active timeframe. This includes
+marginal-revenue (MR) or KI adjustments and hybrid weighting. If no reference class qualifies, the
+adjustment is zero. The reference class can change across days and samples; the augmented price is
+not a universal threshold for every booking class.
+
+### Activation
+
+This table is populated only if
+[`simulation_controls.collect_path_bid_prices`](passengersim.config.SimulationSettings.collect_path_bid_prices)
+is `True`, which is NOT the case by default, as the table is relatively large and expensive to store
+if not of interest.
+
+(summary-table-displacement-history)=
+
+## `displacement_history`
+
+This table summarizes the leg displacement costs recorded for each carrier at each data collection
+point (DCP). It reports the average and standard deviation across legs and samples, excluding burned
+samples, with each trial kept separate.
+
+Displacement costs are set by the revenue-management process and represent the opportunity cost
+associated with using capacity. This table lets you see how those recorded costs change as departure
+approaches. If the configured revenue-management process does not set leg displacements, the values
+may remain zero.
+
+Access this table as `summary.displacement_history`.
+
+### Index
+
+| Field        | Type    | Meaning                                                                           |
+| ------------ | ------- | --------------------------------------------------------------------------------- |
+| `trial`      | integer | Trial identifier (zero-based).                                                    |
+| `carrier`    | string  | Carrier code.                                                                     |
+| `days_prior` | integer | Days before departure at the recorded observation or data collection point (DCP). |
+
+### Columns
+
+| Field                | Type   | Meaning                                                      |
+| -------------------- | ------ | ------------------------------------------------------------ |
+| `displacement_mean`  | number | Mean recorded leg displacement cost, in simulation currency. |
+| `displacement_stdev` | number | Sample standard deviation of recorded displacement costs.    |
+
+The summary is collected independently of
+[`db.store_displacements`](passengersim.config.DatabaseConfig.store_displacements). That setting
+controls whether displacement values are written to the database; turning it off does not turn this
+summary off. Missing values are replaced with zero when the summary table is created.
+
+### Activation
+
+PassengerSim collects this information automatically during a normal simulation run. You do not need
+to enable database recording or add the table to
+[`outputs.reports`](passengersim.config.outputs.OutputConfig.reports).
+
+There is no separate on/off switch for collecting this table. If you only want to leave it out of
+the returned summary, you can use [selecting extracted tables](summary-selecting-extracted) to
+choose which tables to include.

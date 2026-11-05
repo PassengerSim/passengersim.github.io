@@ -37,8 +37,8 @@
       
     
         <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_immaterial_theme.50640b526df5ff663.min.css?v=cff97996" />
-        <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
-        <link rel="stylesheet" type="text/css" href="../../../_static/css/extra.css?v=6c696159" />
+        <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+        <link rel="stylesheet" type="text/css" href="../../../_static/css/extra.css?v=ccd81cd0" />
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -2311,11 +2311,27 @@
         <span class="k">return</span> <span class="bp">self</span></div>
 
 
+    <span class="k">def</span><span class="w"> </span><span class="nf">_has_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check whether a table was collected, without loading it from a file store.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="ow">or</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_file_store</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_file_store</span><span class="p">)</span>
+
 <div class="viewcode-block" id="GenericSimulationTables.aggregate">
 <a class="viewcode-back" href="../../../api/_generated/summaries/passengersim.summaries.generic.GenericSimulationTables.html#passengersim.summaries.generic.GenericSimulationTables.aggregate">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">aggregate</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">summaries</span><span class="p">:</span> <span class="n">Collection</span><span class="p">[</span><span class="n">GenericSimulationTables</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Aggregate multiple summary tables.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Aggregate multiple summary tables.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        summaries : Collection[GenericSimulationTables]</span>
+<span class="sd">            The summaries to combine, typically one for each trial.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Self</span>
+<span class="sd">            The combined summary. Tables that none of the summaries collected are</span>
+<span class="sd">            left out, and are treated as missing when read.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">summaries</span><span class="p">:</span>
             <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;no summaries available&quot;</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
             <span class="k">return</span> <span class="bp">cls</span><span class="p">({})</span>
@@ -2323,7 +2339,13 @@
         <span class="n">result</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">({})</span>
         <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">func</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_std_agg</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">func</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">result</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">summaries</span><span class="p">)</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">summaries</span><span class="p">)</span>
+                <span class="c1"># A table no trial collected stays absent, so reading it behaves as</span>
+                <span class="c1"># it does after a single Simulation: a database report is queried on</span>
+                <span class="c1"># demand, and anything else raises MissingDataError. A None recorded</span>
+                <span class="c1"># by a trial means the table was collected but empty, so it is kept.</span>
+                <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">any</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">_has_table</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">summaries</span><span class="p">):</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
         <span class="n">result</span><span class="o">.</span><span class="n">meta_summaries</span> <span class="o">=</span> <span class="n">summaries</span>
         <span class="n">result</span><span class="o">.</span><span class="n">n_total_samples</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">n_total_samples</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">summaries</span><span class="p">)</span>
         <span class="n">result</span><span class="o">.</span><span class="n">callback_data</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">callback_data</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">summaries</span><span class="p">)</span>

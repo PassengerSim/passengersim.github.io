@@ -1,0 +1,39 @@
+# Legs by Booking Class
+
+(summary-table-legbuckets)=
+
+## `legbuckets`
+
+This table breaks down each leg's sales and revenue by booking class. Each row represents one
+booking class on one leg; a leg-level booking class is also called a bucket.
+
+Use this table when you want to see which classes contribute to a flight's traffic or revenue. The
+values are totals across samples, excluding burned samples. As with the `legs` table, a connecting
+passenger is counted on every leg they travel on.
+
+Access this table as `summary.legbuckets`.
+
+### Index
+
+| Field           | Type    | Meaning                          |
+| --------------- | ------- | -------------------------------- |
+| `leg_id`        | integer | Leg identifier; joins to `legs`. |
+| `booking_class` | string  | Booking class code.              |
+
+### Columns
+
+| Field        | Type   | Meaning                                                               |
+| ------------ | ------ | --------------------------------------------------------------------- |
+| `carrier`    | string | Carrier code.                                                         |
+| `gt_sold`    | number | Total passengers sold across retained samples.                        |
+| `gt_revenue` | number | Total ticket revenue across retained samples, in simulation currency. |
+
+### Activation
+
+PassengerSim collects this information automatically during a normal simulation run. You do not need
+to enable database recording or add the table to
+[`outputs.reports`](passengersim.config.outputs.OutputConfig.reports).
+
+There is no separate on/off switch for collecting this table. If you only want to leave it out of
+the returned summary, you can use [selecting extracted tables](summary-selecting-extracted) to
+choose which tables to include.

@@ -1,0 +1,109 @@
+# Demand to Come
+
+(summary-table-demand-to-come-summary)=
+
+## `demand_to_come_summary`
+
+This table shows how many passengers have yet to arrive at each data collection point (DCP) in the
+booking horizon. It adds the remaining demand across all markets within each passenger segment, then
+reports the average and standard deviation across samples, excluding burned samples.
+
+For example, a row for the business segment at 14 days prior describes the network-wide business
+demand still to come two weeks before departure. The standard deviation helps you see how much that
+remaining demand varies from sample to sample.
+
+Access this table as `summary.demand_to_come_summary`.
+
+### Index
+
+| Field        | Type    | Meaning                                                                           |
+| ------------ | ------- | --------------------------------------------------------------------------------- |
+| `segment`    | string  | Configured passenger demand segment.                                              |
+| `days_prior` | integer | Days before departure at the recorded observation or data collection point (DCP). |
+
+### Columns
+
+| Field                 | Type   | Meaning                                                                             |
+| --------------------- | ------ | ----------------------------------------------------------------------------------- |
+| `mean_future_demand`  | number | Mean remaining passengers across samples, after summing markets within the segment. |
+| `stdev_future_demand` | number | Sample standard deviation of the remaining segment demand.                          |
+
+Within each segment, rows run from earlier in the booking horizon toward departure. When summaries
+are combined, PassengerSim accounts for the number of samples behind each mean and standard
+deviation, so a result based on more samples receives the appropriate weight.
+
+### Activation
+
+PassengerSim collects this information automatically during a normal simulation run. You do not need
+to enable database recording or add the table to
+[`outputs.reports`](passengersim.config.outputs.OutputConfig.reports).
+
+There is no separate on/off switch for collecting this table. If you only want to leave it out of
+the returned summary, you can use [selecting extracted tables](summary-selecting-extracted) to
+choose which tables to include.
+
+(summary-table-demand-to-come)=
+
+## `demand_to_come`
+
+This table gives you the detailed, sample-by-sample view of remaining demand. Each row identifies a
+market, passenger segment, trial, and sample. The columns are the recorded data collection points
+(DCPs), so you can read across a row to follow the remaining demand as departure approaches.
+
+Unlike `demand_to_come_summary`, this table keeps markets and samples separate. It is useful when
+you want to analyze a particular market or calculate your own demand statistics. Burned samples are
+excluded.
+
+If it is available, you can access this table as `summary.demand_to_come`.
+
+### Index
+
+| Field       | Type    | Meaning                                                   |
+| ----------- | ------- | --------------------------------------------------------- |
+| `iteration` | integer | Simulation iteration identifier recorded by the database. |
+| `trial`     | integer | Trial identifier (zero-based).                            |
+| `sample`    | integer | Sample identifier within the trial (zero-based).          |
+| `segment`   | string  | Configured passenger demand segment.                      |
+| `orig`      | string  | Origin airport code.                                      |
+| `dest`      | string  | Destination airport code.                                 |
+
+### Columns
+
+| Field          | Type    | Meaning                                                                                                  |
+| -------------- | ------- | -------------------------------------------------------------------------------------------------------- |
+| `<days_prior>` | integer | One integer-labeled column per recorded DCP. Value is `round(sample_demand) - sold - no_go` at that DCP. |
+
+The columns are labeled with their `days_prior` values and run from the largest number of days prior
+down toward departure. Their number and labels depend on which DCPs were recorded.
+
+### Activation
+
+This table is built from records saved in the simulation database. To make it available, set
+[`db.engine`](passengersim.config.DatabaseConfig.engine) to `sqlite` and include `demand` in
+[`db.write_items`](passengersim.config.DatabaseConfig.write_items) before running the simulation.
+Add `demand_to_come` to [`outputs.reports`](passengersim.config.outputs.OutputConfig.reports) if you
+want PassengerSim to prepare the table as part of the run.
+
+For example, your configuration could include the following. These lists replace the existing
+settings, including the default `write_items`, so keep any other entries you still need:
+
+```yaml
+db:
+  engine: sqlite
+  write_items: [demand]
+outputs:
+  reports: [demand_to_come]
+```
+
+The `demand_final` option records only departure values. Use `demand` to follow remaining demand
+throughout the booking horizon.
+
+To stop preparing this table automatically, remove `demand_to_come` from
+[`outputs.reports`](passengersim.config.outputs.OutputConfig.reports). You can still access it later
+if the required database records remain available. To stop recording the supporting data as well,
+remove `demand` from [`db.write_items`](passengersim.config.DatabaseConfig.write_items), along with
+any other recording options that save the same data. Keep those options if another report still
+needs them.
+
+See [database-backed tables](summary-database-backed) for how to keep the supporting database
+available or save a prepared table with your summary.

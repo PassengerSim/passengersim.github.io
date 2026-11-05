@@ -1,0 +1,86 @@
+# Paths
+
+(summary-table-paths)=
+
+## `paths`
+
+This table summarizes the itineraries offered in the simulation. An itinerary is called a path, and
+it can consist of one nonstop leg or multiple connecting legs. Each row contains one path's total
+sales and revenue, along with characteristics used by the model.
+
+You can use this table to compare traffic across different ways of traveling between the same
+airports. A passenger is counted once on their chosen path, even when the trip uses more than one
+leg. Sales and revenue totals exclude burned samples.
+
+Access this table as `summary.paths`.
+
+### Index
+
+| Field     | Type    | Meaning                            |
+| --------- | ------- | ---------------------------------- |
+| `path_id` | integer | Path identifier; joins to `paths`. |
+
+### Columns
+
+| Field                  | Type    | Meaning                                                                                   |
+| ---------------------- | ------- | ----------------------------------------------------------------------------------------- |
+| `carrier`              | string  | Carrier code.                                                                             |
+| `orig`                 | string  | Origin airport code.                                                                      |
+| `dest`                 | string  | Destination airport code.                                                                 |
+| `gt_sold`              | number  | Total passengers sold across retained samples.                                            |
+| `gt_sold_priceable`    | number  | Total priceable sales across retained samples.                                            |
+| `gt_revenue`           | number  | Total ticket revenue across retained samples, in simulation currency.                     |
+| `hhi`                  | number  | Carrier-specific Herfindahl–Hirschman index at the path origin, used by the choice model. |
+| `max_hhi`              | number  | Maximum carrier HHI at that origin, used as a reference by the choice model.              |
+| `minimum_connect_time` | integer | Minimum connection time in minutes.                                                       |
+| `num_legs`             | integer | Number of operating legs in the path.                                                     |
+| `path_quality_index`   | number  | Path quality index used by the model.                                                     |
+
+### Activation
+
+PassengerSim collects this information automatically during a normal simulation run. You do not need
+to enable database recording or add the table to
+[`outputs.reports`](passengersim.config.outputs.OutputConfig.reports).
+
+There is no separate on/off switch for collecting this table. If you only want to leave it out of
+the returned summary, you can use [selecting extracted tables](summary-selecting-extracted) to
+choose which tables to include.
+
+(summary-table-path-legs)=
+
+## `path_legs`
+
+This table tells you which flights make up each itinerary. There is one row for each leg within each
+path, so a two-leg connecting path appears in two rows.
+
+The `path_seq` column gives the travel order, starting at zero. For example, the A–B leg of an A–B–C
+itinerary has `path_seq = 0`, and B–C has `path_seq = 1`. You can use `leg_id` to look up the flight
+details in `legs` or `leg_defs`.
+
+Access this table as `summary.path_legs`.
+
+### Index
+
+The rows have a simple numbered index. The fields that identify each observation are included as
+ordinary columns in the table below.
+
+### Columns
+
+| Field      | Type    | Meaning                                                   |
+| ---------- | ------- | --------------------------------------------------------- |
+| `path_id`  | integer | Path identifier; joins to `paths`.                        |
+| `leg_id`   | integer | Leg identifier; joins to `legs`.                          |
+| `path_seq` | integer | Zero-based position in the itinerary: 0 is the first leg. |
+
+When you combine this table with flight details, keep `path_seq` so you can put the legs back in
+travel order. The rows describe the network itself; they are not repeated for each sample.
+
+### Activation
+
+PassengerSim collects this information automatically during a normal simulation run. You do not need
+to enable database recording or add the table to
+[`outputs.reports`](passengersim.config.outputs.OutputConfig.reports).
+
+There is no separate on/off switch for collecting this table. If you only want to leave it out of
+the returned summary, you can use [selecting extracted tables](summary-selecting-extracted) to
+choose which tables to include.

@@ -37,8 +37,8 @@
       
     
         <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_immaterial_theme.50640b526df5ff663.min.css?v=cff97996" />
-        <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
-        <link rel="stylesheet" type="text/css" href="../../../_static/css/extra.css?v=6c696159" />
+        <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+        <link rel="stylesheet" type="text/css" href="../../../_static/css/extra.css?v=ccd81cd0" />
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -1873,7 +1873,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">passengersim.utils._database_compat</span><span class="w"> </span><span class="kn">import</span> <span class="n">deprecated_cnx_keyword</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">.generic</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatabaseTableItem</span><span class="p">,</span> <span class="n">GenericSimulationTables</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">aggregate_by_averaging_dataframe</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">aggregate_by_concat_dataframe</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="kn">import</span><span class="w"> </span><span class="nn">altair</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">alt</span>
@@ -1951,8 +1951,10 @@
 <span class="sd">    This class is a subclass of _Generic</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
+    <span class="c1"># The rows are already separate for each trial, so trials are joined rather than</span>
+    <span class="c1"># averaged. Averaging would divide every row by the number of trials.</span>
     <span class="n">segmentation_detail</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">DatabaseTableItem</span><span class="p">(</span>
-        <span class="n">aggregation_func</span><span class="o">=</span><span class="n">aggregate_by_averaging_dataframe</span><span class="p">(</span><span class="s2">&quot;segmentation_detail&quot;</span><span class="p">),</span>
+        <span class="n">aggregation_func</span><span class="o">=</span><span class="n">aggregate_by_concat_dataframe</span><span class="p">(</span><span class="s2">&quot;segmentation_detail&quot;</span><span class="p">),</span>
         <span class="n">query_func</span><span class="o">=</span><span class="n">detailed_bookings_by_timeframe</span><span class="p">,</span>
         <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Segmentation detail.&quot;</span><span class="p">,</span>
     <span class="p">)</span>

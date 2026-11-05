@@ -32,6 +32,7 @@ carriers
    :toctree: .
 
    aggregate_carriers
+   aggregate_spill
    extract_carrier_history2
    extract_carriers
    extract_forecast_accuracy

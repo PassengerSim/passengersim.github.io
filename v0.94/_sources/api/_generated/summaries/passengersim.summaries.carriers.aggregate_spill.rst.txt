@@ -1,0 +1,6 @@
+aggregate\_spill
+================
+
+.. currentmodule:: passengersim.summaries.carriers
+
+.. autofunction:: aggregate_spill

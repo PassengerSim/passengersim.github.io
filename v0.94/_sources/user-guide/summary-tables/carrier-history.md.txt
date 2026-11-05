@@ -1,0 +1,112 @@
+# Carrier Histories
+
+(summary-table-carrier-history2)=
+
+## `carrier_history2`
+
+This table records each carrier's passenger sales and revenue separately for every sample and trial,
+excluding burned samples. It is useful when you want to see the variation behind the averages in
+`carriers` or calculate your own statistics from individual sample results.
+
+The `2` is part of the table's name. This table comes directly from the simulation and does not need
+database recording. The similarly named `carrier_history`, described below, comes from the database
+and contains a different set of measures.
+
+Access this table as `summary.carrier_history2`.
+
+### Index
+
+| Field     | Type    | Meaning                                          |
+| --------- | ------- | ------------------------------------------------ |
+| `trial`   | integer | Trial identifier (zero-based).                   |
+| `sample`  | integer | Sample identifier within the trial (zero-based). |
+| `carrier` | string  | Carrier code.                                    |
+
+### Columns
+
+| Field            | Type   | Meaning                                    |
+| ---------------- | ------ | ------------------------------------------ |
+| `sold`           | number | Seats sold.                                |
+| `sold_priceable` | number | Sales classified as priceable.             |
+| `revenue`        | number | Ticket revenue in the simulation currency. |
+
+The sales columns count itinerary passengers. Someone taking a connecting trip counts once, just as
+they do in the carrier-level average sales measure.
+
+### Activation
+
+PassengerSim collects this information automatically during a normal simulation run. You do not need
+to enable database recording or add the table to
+[`outputs.reports`](passengersim.config.outputs.OutputConfig.reports).
+
+There is no separate on/off switch for collecting this table. If you only want to leave it out of
+the returned summary, you can use [selecting extracted tables](summary-selecting-extracted) to
+choose which tables to include.
+
+(summary-table-carrier-history)=
+
+## `carrier_history`
+
+This table puts each carrier's starting demand forecasts alongside its final sales and revenue for
+each sample. It is built from the recorded leg booking-class data, adding the values across the
+carrier's legs.
+
+This means its sales count seats occupied on legs: a passenger on a two-leg connection contributes
+two sales. If you want a history that counts that passenger only once, use `carrier_history2`
+instead. Burned samples are excluded.
+
+If it is available, you can access this table as `summary.carrier_history`.
+
+### Index
+
+| Field       | Type    | Meaning                                                   |
+| ----------- | ------- | --------------------------------------------------------- |
+| `iteration` | integer | Simulation iteration identifier recorded by the database. |
+| `trial`     | integer | Trial identifier (zero-based).                            |
+| `sample`    | integer | Sample identifier within the trial (zero-based).          |
+
+### Columns
+
+| Field                         | Type   | Meaning                                                                                                     |
+| ----------------------------- | ------ | ----------------------------------------------------------------------------------------------------------- |
+| `(forecast_mean, <carrier>)`  | number | Sum of bucket forecast means at the largest recorded `days_prior`.                                          |
+| `(forecast_stdev, <carrier>)` | number | Square root of the sum of squared bucket forecast standard deviations at the largest recorded `days_prior`. |
+| `(sold, <carrier>)`           | number | Sum of leg-bucket sold seats at departure (`days_prior == 0`). Connections count on each leg.               |
+| `(revenue, <carrier>)`        | number | Sum of leg-bucket revenue at departure.                                                                     |
+
+Each column has two labels: the measure and the carrier. Pandas calls this a MultiIndex. For
+example, `(sold, AL1)` contains AL1’s sold-seat counts, while `(revenue, AL1)` contains its revenue.
+This layout puts the carriers side by side for comparison.
+
+### Activation
+
+This table is built from records saved in the simulation database. To make it available, set
+[`db.engine`](passengersim.config.DatabaseConfig.engine) to `sqlite` and include `bucket` in
+[`db.write_items`](passengersim.config.DatabaseConfig.write_items) before running the simulation.
+Without those records, reading the table raises a `ValueError` that says so. Add `carrier_history`
+to [`outputs.reports`](passengersim.config.outputs.OutputConfig.reports) if you want PassengerSim to
+prepare the table as part of the run.
+
+For example, your configuration could include the following. These lists replace the existing
+settings, including the default `write_items`, so keep any other entries you still need:
+
+```yaml
+db:
+  engine: sqlite
+  write_items: [bucket]
+outputs:
+  reports: [carrier_history]
+```
+
+Use `bucket` rather than only `bucket_final` if you want both the starting forecasts and the
+departure results.
+
+To stop preparing this table automatically, remove `carrier_history` from
+[`outputs.reports`](passengersim.config.outputs.OutputConfig.reports). You can still access it later
+if the required database records remain available. To stop recording the supporting data as well,
+remove `bucket` from [`db.write_items`](passengersim.config.DatabaseConfig.write_items), along with
+any other recording options that save the same data. Keep those options if another report still
+needs them.
+
+See [database-backed tables](summary-database-backed) for how to keep the supporting database
+available or save a prepared table with your summary.

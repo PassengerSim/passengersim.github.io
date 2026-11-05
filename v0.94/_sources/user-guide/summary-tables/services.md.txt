@@ -1,0 +1,82 @@
+# Services
+
+(summary-table-services)=
+
+## `services`
+
+This table combines flights that offer the same service: the same carrier flying between the same
+origin and destination. For example, if a carrier operates three flights from A to B, they appear
+together in one row here rather than as three separate legs.
+
+It gives you a convenient view of total service frequency, capacity, traffic, and revenue. The table
+includes both totals across samples and averages per sample, as well as load factor and local
+passenger share. Burned samples are excluded from the underlying results.
+
+Access this table as `summary.services`.
+
+### Index
+
+| Field     | Type   | Meaning                   |
+| --------- | ------ | ------------------------- |
+| `carrier` | string | Carrier code.             |
+| `orig`    | string | Origin airport code.      |
+| `dest`    | string | Destination airport code. |
+
+### Columns
+
+| Field             | Type    | Meaning                                                                      |
+| ----------------- | ------- | ---------------------------------------------------------------------------- |
+| `frequency`       | integer | Number of legs in this service.                                              |
+| `distance`        | number  | Unweighted mean leg distance in miles.                                       |
+| `gt_sold`         | number  | Total passengers sold across retained samples.                               |
+| `gt_capacity`     | number  | Total seat capacity across retained samples.                                 |
+| `gt_sold_local`   | number  | Total local (nonconnecting) passengers across retained samples.              |
+| `gt_revenue`      | number  | Total ticket revenue across retained samples, in simulation currency.        |
+| `capacity`        | number  | Total service capacity per retained sample: `gt_capacity / n_total_samples`. |
+| `avg_sold`        | number  | Passengers per retained sample.                                              |
+| `avg_sold_local`  | number  | Local passengers per retained sample.                                        |
+| `avg_revenue`     | number  | Revenue per retained sample.                                                 |
+| `avg_load_factor` | number  | Percent: `100 * gt_sold / gt_capacity`.                                      |
+| `avg_local`       | number  | Percent: `100 * gt_sold_local / gt_sold`.                                    |
+
+### Activation
+
+PassengerSim creates this table when you first access `summary.services`, using the results in
+[`legs`](summary-table-legs). There is no separate activation setting or database requirement. If
+you choose a custom set of summary tables, include `legs` so the service totals can be calculated.
+
+(summary-table-local-fraction-by-place)=
+
+## `local_fraction_by_place`
+
+This table shows how much of each carrier's traffic at an airport consists of local passengers. It
+looks at that carrier's legs arriving at or departing from the airport and divides the local
+passenger count by the total leg passenger count.
+
+Each row is an airport and each column is a carrier. A value of 0.25 means that 25% of the counted
+leg passengers are local. A passenger is considered local only if their entire itinerary is nonstop,
+even if their connection would occur at another airport.
+
+Access this table as `summary.local_fraction_by_place`.
+
+### Index
+
+| Field   | Type   | Meaning                        |
+| ------- | ------ | ------------------------------ |
+| `place` | string | Airport code; index is sorted. |
+
+### Columns
+
+| Field       | Type   | Meaning                                                                                                    |
+| ----------- | ------ | ---------------------------------------------------------------------------------------------------------- |
+| `<carrier>` | number | One column per carrier. `sum(gt_sold_local) / sum(gt_sold)` over that carrier’s legs touching the airport. |
+
+The values run from 0 to 1; multiply by 100 if you want to display a percentage. If a carrier has no
+sold seats on legs touching an airport, its share is undefined and appears as `NaN`. The airport
+rows and carrier columns are sorted by name.
+
+### Activation
+
+PassengerSim creates this table when you first access `summary.local_fraction_by_place`, using
+[`legs`](summary-table-legs). You do not need to enable a separate collector or database report. If
+you choose a custom set of summary tables, include `legs` so the passenger shares can be calculated.

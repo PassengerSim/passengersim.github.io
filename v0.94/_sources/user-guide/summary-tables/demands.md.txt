@@ -1,0 +1,102 @@
+# Demands
+
+(summary-table-demands)=
+
+## `demands`
+
+This table describes the demand for travel in each market and shows what happened to those potential
+passengers. Each row represents a directional origin–destination pair and a passenger segment, such
+as business or leisure.
+
+The table includes the demand settings used for that group, the total demand generated during the
+simulation, and the resulting sales and revenue. It also records reasons that passengers did not
+book. The totals exclude burned samples, so you can use them to compare realized traffic with the
+demand the simulation generated.
+
+Access this table as `summary.demands`.
+
+### Index
+
+| Field     | Type   | Meaning                              |
+| --------- | ------ | ------------------------------------ |
+| `orig`    | string | Origin airport code.                 |
+| `dest`    | string | Destination airport code.            |
+| `segment` | string | Configured passenger demand segment. |
+
+### Columns
+
+| Field                         | Type   | Meaning                                                               |
+| ----------------------------- | ------ | --------------------------------------------------------------------- |
+| `base_demand`                 | number | Configured baseline demand before scenario variation.                 |
+| `reference_price`             | number | Demand reference price, in simulation currency.                       |
+| `distance`                    | number | Distance in miles.                                                    |
+| `gt_demand`                   | number | Total generated demand across retained samples.                       |
+| `gt_revenue`                  | number | Total ticket revenue across retained samples, in simulation currency. |
+| `gt_sold`                     | number | Total passengers sold across retained samples.                        |
+| `gt_eliminated_no_offers`     | number | Passengers eliminated because no offers were available.               |
+| `gt_eliminated_chose_nothing` | number | Passengers who selected no offered itinerary.                         |
+| `gt_eliminated_wtp`           | number | Passengers eliminated by willingness-to-pay checks.                   |
+
+The elimination columns count passengers at different stages of offer generation and choice. Treat
+them as counts of recorded outcomes, rather than as independent probabilities of not booking.
+
+### Activation
+
+PassengerSim collects this information automatically during a normal simulation run. You do not need
+to enable database recording or add the table to
+[`outputs.reports`](passengersim.config.outputs.OutputConfig.reports).
+
+There is no separate on/off switch for collecting this table. If you only want to leave it out of
+the returned summary, you can use [selecting extracted tables](summary-selecting-extracted) to
+choose which tables to include.
+
+(summary-table-demand-history)=
+
+## `demand_history`
+
+This table keeps the demand and sales results for each individual sample, rather than adding them up
+over the run. Each row identifies a market, passenger segment, trial, and sample, and shows the
+demand generated, passengers sold and unsold, and revenue.
+
+It is useful when you want to explore how demand varies across samples or compare that variation
+with changes in sales. Burned samples are excluded.
+
+If it is available, you can access this table as `summary.demand_history`.
+
+### Index
+
+| Field     | Type    | Meaning                                          |
+| --------- | ------- | ------------------------------------------------ |
+| `trial`   | integer | Trial identifier (zero-based).                   |
+| `sample`  | integer | Sample identifier within the trial (zero-based). |
+| `orig`    | string  | Origin airport code.                             |
+| `dest`    | string  | Destination airport code.                        |
+| `segment` | string  | Configured passenger demand segment.             |
+
+### Columns
+
+| Field     | Type    | Meaning                                    |
+| --------- | ------- | ------------------------------------------ |
+| `demand`  | number  | Generated demand for this sample.          |
+| `sold`    | number  | Passengers sold.                           |
+| `unsold`  | integer | Recorded passengers who did not purchase.  |
+| `revenue` | number  | Ticket revenue in the simulation currency. |
+
+The generated `demand` value can contain a fractional part, while `sold` and `unsold` count whole
+passengers.
+
+### Activation
+
+This table is collected only when
+[`simulation_controls.capture_demand_history`](passengersim.config.SimulationSettings.capture_demand_history)
+is `True`. It is `False` by default, so you need to turn it on before running if you want to keep
+the sample-by-sample demand history:
+
+```yaml
+simulation_controls:
+  capture_demand_history: true
+```
+
+Set the same option to `False` to stop collecting the history. You do not need database recording or
+an entry in [`outputs.reports`](passengersim.config.outputs.OutputConfig.reports). If no history was
+collected, `summary.demand_history` is `None`.

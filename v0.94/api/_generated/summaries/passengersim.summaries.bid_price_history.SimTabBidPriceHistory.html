@@ -41,8 +41,8 @@
       
     
         <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_immaterial_theme.50640b526df5ff663.min.css?v=cff97996" />
-        <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
-        <link rel="stylesheet" type="text/css" href="../../../_static/css/extra.css?v=6c696159" />
+        <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+        <link rel="stylesheet" type="text/css" href="../../../_static/css/extra.css?v=ccd81cd0" />
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -3574,8 +3574,20 @@
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight sig-wrap py" id="passengersim.summaries.bid_price_history.SimTabBidPriceHistory.aggregate">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#passengersim.summaries.bid_price_history.SimTabBidPriceHistory.aggregate" title="passengersim.summaries.bid_price_history.SimTabBidPriceHistory.aggregate.summaries (Python parameter)"><span class="n"><span class="pre">summaries</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><span class="pre">Collection</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="passengersim.summaries.generic.GenericSimulationTables.html#passengersim.summaries.generic.GenericSimulationTables" title="passengersim.summaries.generic.GenericSimulationTables (Python class) — Bases: object"><span class="pre">GenericSimulationTables</span></a><span class="p"><span class="pre">]</span></span></span></span></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><span class="pre">Self</span></span></span></span><a class="headerlink" href="#passengersim.summaries.bid_price_history.SimTabBidPriceHistory.aggregate" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#passengersim.summaries.bid_price_history.SimTabBidPriceHistory.aggregate.summaries" title="passengersim.summaries.bid_price_history.SimTabBidPriceHistory.aggregate.summaries (Python parameter) — The summaries to combine, typically one for each trial."><span class="n"><span class="pre">summaries</span></span></a><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="desctype"><span class="pre">Collection</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="passengersim.summaries.generic.GenericSimulationTables.html#passengersim.summaries.generic.GenericSimulationTables" title="passengersim.summaries.generic.GenericSimulationTables (Python class) — Bases: object"><span class="pre">GenericSimulationTables</span></a><span class="p"><span class="pre">]</span></span></span></span></em></span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="desctype"><span class="pre">Self</span></span></span></span><a class="headerlink" href="#passengersim.summaries.bid_price_history.SimTabBidPriceHistory.aggregate" title="Link to this definition">¶</a></dt>
 <dd><p>Aggregate multiple summary tables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple api-field highlight">
+<dt id="passengersim.summaries.bid_price_history.SimTabBidPriceHistory.aggregate.summaries"><span class="sig-name descname">summaries</span><span class="p"> : </span><span class="desctype"><span class="desctype">Collection[<a class="reference internal" href="passengersim.summaries.generic.GenericSimulationTables.html#passengersim.summaries.generic.GenericSimulationTables" title="passengersim.summaries.generic.GenericSimulationTables (Python class) — Bases: object">GenericSimulationTables</a>]</span></span><a class="headerlink" href="#passengersim.summaries.bid_price_history.SimTabBidPriceHistory.aggregate.summaries" title="Permalink to this definition">¶</a></dt><dd><p>The summaries to combine, typically one for each trial.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Self</em> – The combined summary. Tables that none of the summaries collected are
+left out, and are treated as missing when read.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py property objdesc">

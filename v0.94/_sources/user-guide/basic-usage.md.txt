@@ -15,8 +15,33 @@ kernelspec:
 
 # Summary Outputs
 
+```{toctree}
+---
+maxdepth: 1
+hidden:
+---
+summary-tables/legs
+summary-tables/legbuckets
+summary-tables/services
+summary-tables/carriers
+summary-tables/carrier-history
+summary-tables/cabins
+summary-tables/paths
+summary-tables/pathclasses
+summary-tables/demands
+summary-tables/demand-to-come
+summary-tables/fare-class-mix
+summary-tables/cp-segmentation
+summary-tables/segmentation
+summary-tables/bid-prices
+summary-tables/forecasts
+summary-tables/forecast-accuracy
+summary-tables/spill
+summary-tables/local-and-flow
+```
+
 When you run a simulation in PassengerSim, you will get a
-[`SimulationTables`](passengersim.summaries.SimulationTables) object. This objects embeds a variety
+[`SimulationTables`](passengersim.summaries.SimulationTables) object. This object contains a variety
 of summary information from the run.
 
 ```{code-cell} ipython3
@@ -47,6 +72,104 @@ values of any of these dataframes directly in Python as an attribute on the
 ```{code-cell} ipython3
 summary.carriers
 ```
+
+## Table reference
+
+Each page below describes the tables available as attributes of `SimulationTables`, including
+related derived tables. The documentation on each page describes the public schema of each
+DataFrame, not the native counters on the simulation engine or raw SQLite output tables. Callback
+outputs are user-defined and live in `summary.callback_data`; they do not have a fixed schema.
+
+Index fields are listed separately from columns. Use `table.reset_index()` to turn index levels into
+ordinary columns. Types describe the logical values; pandas dtypes can vary with empty data, missing
+values, aggregation, or restored files. Monetary values use the simulation's currency; distances are
+in miles. A DCP is a data collection point measured in days before departure.
+
+Unless a page says otherwise, `gt_` fields are totals over non-burned samples. Divide them by
+`summary.n_total_samples` for per-sample averages. Ratios with zero denominators can be undefined
+(`NaN` or infinity); an absent/disabled collector can return `None`, and an unavailable table can
+raise `MissingDataError` rather than return an empty DataFrame. Older archives may contain fewer
+fields than the current schemas.
+
+```{rst-class} summary-table-index
+```
+
+| Output Table                                                           | Description                                                                             |
+| :--------------------------------------------------------------------- | :-------------------------------------------------------------------------------------- |
+| [`legs`](summary-table-legs)                                           | Simulation results for each operating leg.                                              |
+| [`leg_defs`](summary-table-legs-defs)                                  | Configuration inputs for each operating leg.                                            |
+| [`legs_`](summary-table-legs_)                                         | Convenience alias for the join of `legs` and `leg_defs`.                                |
+| [`leg_detail`](summary-table-leg-detail)                               | Recorded sales, revenue, and bid prices for each leg in individual samples.             |
+| [`legbuckets`](summary-table-legbuckets)                               | Sales and revenue for each booking class on each leg.                                   |
+| [`services`](summary-table-services)                                   | Results combined across flights with the same carrier, origin, and destination.         |
+| [`local_fraction_by_place`](summary-table-local-fraction-by-place)     | Local share of each carrier's passengers at each airport.                               |
+| [`carriers`](summary-table-carriers)                                   | Overall results for each carrier.                                                       |
+| [`carrier_history2`](summary-table-carrier-history2)                   | Passenger sales and revenue for each carrier in each sample.                            |
+| [`carrier_history`](summary-table-carrier-history)                     | Starting forecasts, leg sales, and revenue for each carrier in each sample.             |
+| [`cabins`](summary-table-cabins)                                       | Departure results for each cabin on each flight in each sample.                         |
+| [`paths`](summary-table-paths)                                         | Sales and revenue for each itinerary.                                                   |
+| [`path_legs`](summary-table-path-legs)                                 | The legs that make up each itinerary.                                                   |
+| [`pathclasses`](summary-table-pathclasses)                             | Sales and revenue for each booking class on each itinerary.                             |
+| [`market_segmentation`](summary-table-market-segmentation)             | Average sales and revenue by carrier, market, and passenger segment.                    |
+| [`demands`](summary-table-demands)                                     | Demand settings and outcomes for each market and passenger segment.                     |
+| [`demand_history`](summary-table-demand-history)                       | Demand, sales, and revenue for each market and passenger segment in each sample.        |
+| [`demand_to_come_summary`](summary-table-demand-to-come-summary)       | Average remaining demand for each passenger segment at each DCP.                        |
+| [`demand_to_come`](summary-table-demand-to-come)                       | Remaining demand at each DCP for each market and passenger segment in each sample.      |
+| [`fare_class_mix`](summary-table-fare-class-mix)                       | Sales and revenue by carrier, fare class, booking class, and brand.                     |
+| [`cp_segmentation`](summary-table-cp-segmentation)                     | Total and continuously priced sales and revenue by carrier and booking class.           |
+| [`segmentation_by_timeframe`](summary-table-segmentation-by-timeframe) | Average bookings and revenue in each booking timeframe, for each trial.                 |
+| [`segmentation_detail`](summary-table-segmentation-detail)             | Average cumulative bookings by carrier, market, booking class, and DCP, for each trial. |
+| [`bid_price_history`](summary-table-bid-price-history)                 | Average bid prices across all legs for each carrier during the booking horizon.         |
+| [`leg_bid_price_history`](summary-table-leg-bid-price-history)         | Daily leg bid-price statistics pooled across samples and trials.                        |
+| [`path_bid_price_history`](summary-table-path-bid-price-history)       | Daily path and cabin bid-price statistics pooled across samples and trials.             |
+| [`displacement_history`](summary-table-displacement-history)           | Leg displacement costs for each carrier at each DCP.                                    |
+| [`leg_forecasts`](summary-table-leg-forecasts)                         | Demand forecasts for each booking class on each leg at each DCP.                        |
+| [`path_forecasts`](summary-table-path-forecasts)                       | Demand forecasts for each booking class on each itinerary at each DCP.                  |
+| [`forecast_accuracy`](summary-table-forecast-accuracy)                 | Forecast demand compared with sales by carrier, booking class, and timeframe.           |
+| [`edgar`](summary-table-edgar)                                         | Recorded path-class forecasts compared with sales for each timeframe and sample.        |
+| [`spill`](summary-table-spill)                                         | What passengers chose compared with their first-choice offer.                           |
+| [`local_and_flow_yields`](summary-table-local-and-flow-yields)         | Local and connecting yields, and the local share of traffic, on each leg.               |
+
+(summary-selecting-extracted)=
+
+### Selecting extracted tables
+
+Native tables are normally extracted automatically, without entries in `outputs.reports`. Optional
+collectors have their own switches, documented on the corresponding page. To restrict which native
+tables are extracted, pass a summary instance with a **nonempty** selection:
+
+```python
+summary = sim.run(summarizer=pax.SimulationTables(items=["carriers", "legs"]))
+```
+
+An empty `items` collection means all native tables, not none. This selection omits tables from
+extraction; it does not turn off their engine counters, disable requested database reports, or
+prevent derived properties from being computed later. For memory savings, use a table's dedicated
+collection switch when one exists. Derived tables need their documented source tables.
+
+(summary-database-backed)=
+
+### Database-backed tables
+
+Database reports require both recording the source data during the run and querying it afterward.
+Their pages show minimal `db.write_items` and `outputs.reports` examples. Those lists replace the
+configured values rather than adding to them. The default `db.write_items` is `leg_final`,
+`fare_final`, `demand_final`, and `bookings`, so include any of these you still need, along with
+anything else you record. `outputs.reports` defaults to an empty set; explicitly requesting reports
+materializes them while the database is available, which is especially useful for multiprocessing
+and `summary_only` storage. `reports: ["*"]` requests all database reports and can be expensive; it
+does not enable missing source recording. The wildcard only works as the sole entry:
+`reports: ["*", "forecast_accuracy"]` does not request the other database reports.
+
+Removing a report from `outputs.reports` skips eager querying, but accessing its attribute can still
+query a retained database. Removing its recording flags stops new source rows; it does not erase
+already collected or saved data. Setting `db: null` disables all database recording while leaving
+native summaries available. `outputs.html` options control presentation, not collection.
+
+An archived report can be loaded lazily from a PXSIM file. An unmaterialized database report needs
+its separate retained database: loading a summary archive does not automatically reopen that
+connection. See [summary archives and caches](summary-archives-and-caches) and
+[database storage](database/storage.md) for retention and reconnection.
 
 ## Metadata
 

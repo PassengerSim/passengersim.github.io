@@ -200,3 +200,8 @@ p.page-title-prefix {
 a.reference.internal {
   text-decoration: underline;
 }
+
+/* Keep table names on one line in the summary table index; descriptions can wrap. */
+.md-typeset table.summary-table-index td:first-child {
+  white-space: nowrap;
+}

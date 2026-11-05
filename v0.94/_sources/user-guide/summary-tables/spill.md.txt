@@ -1,0 +1,69 @@
+# Spill and Recapture
+
+(summary-table-spill)=
+
+## `spill`
+
+This table shows what passengers chose when compared with the offer they would have preferred
+without availability restrictions. It groups the outcomes by the carrier and fare class of that
+first-choice offer.
+
+Passengers may buy their preferred offer, choose another fare or itinerary, move to a different
+carrier, or make no purchase. The columns count those outcomes, helping you see where a carrier
+keeps business and where it loses it. The preferred offer is determined by the choice model's
+generalized cost, which accounts for the factors passengers consider; it is not necessarily the
+offer with the lowest ticket price.
+
+Access this table as `summary.spill`.
+
+### Index
+
+The rows have a simple numbered index. The fields that identify each observation are included as
+ordinary columns in the table below.
+
+### Columns
+
+| Field               | Type    | Meaning                                                                                     |
+| ------------------- | ------- | ------------------------------------------------------------------------------------------- |
+| `carrier`           | string  | Carrier of the first-choice offer.                                                          |
+| `booking_class`     | string  | First-choice fare class label (the collector uses `fareClass`, despite this column’s name). |
+| `n_obs`             | integer | Number of choice observations; counts events, not party members.                            |
+| `sameP_sameF`       | integer | Passengers choosing the same path and fare class.                                           |
+| `sameP_diffF`       | integer | Passengers choosing the same path and a different fare class.                               |
+| `diffP_sameF_sameA` | integer | Passengers choosing a different path, same fare class, same carrier.                        |
+| `diffP_sameF_diffA` | integer | Passengers choosing a different path, same fare class, different carrier.                   |
+| `diffP_diffF_sameA` | integer | Passengers choosing a different path, different fare class, same carrier.                   |
+| `diffP_diffF_diffA` | integer | Passengers choosing a different path, different fare class, different carrier.              |
+| `no_go`             | integer | Passengers making no purchase.                                                              |
+
+In these column names, `P` means path, `F` means fare class, and `A` means airline or carrier. For
+example, `sameP_diffF` counts passengers who stayed on their preferred itinerary but bought a
+different fare class.
+
+The outcome columns count passengers, while `n_obs` counts choice events. A party of several
+passengers can make one choice, so the passenger counts need not add up to `n_obs`. These are the
+simulation’s cumulative spill counters; the summary does not apply an additional filter to remove
+burned samples.
+
+After a `MultiSimulation` run, the counts from each trial are added together for each carrier and
+first-choice class.
+
+### Activation
+
+PassengerSim fills this table during a normal simulation run, without database recording or an entry
+in [`outputs.reports`](passengersim.config.outputs.OutputConfig.reports). For meaningful results,
+however, you need to set
+[`simulation_controls.save_all_offers`](passengersim.config.SimulationSettings.save_all_offers) to
+`True` before running. It is `False` by default, and without it closed offers are not kept, so they
+cannot be counted as first choices. The table then reports observations as `sameP_sameF`, with the
+other outcome columns, including `no_go`, left at zero. To turn the option on:
+
+```yaml
+simulation_controls:
+  save_all_offers: true
+```
+
+Turning this option on can change the simulation's results, so compare runs that use the same
+setting. There is no switch that turns off collecting this table. If you only want to leave it out
+of the returned summary, you can use [selecting extracted tables](summary-selecting-extracted) to
+choose which tables to include.

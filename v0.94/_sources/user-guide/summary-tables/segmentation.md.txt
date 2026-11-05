@@ -1,0 +1,118 @@
+# Segmentation by Time
+
+(summary-table-segmentation-by-timeframe)=
+
+## `segmentation_by_timeframe`
+
+This table shows when different passenger segments book and how much revenue they generate during
+each booking timeframe. It reports average bookings and revenue by carrier and booking class, with
+separate results for each trial. Burned samples are excluded from the averages.
+
+The values describe what happened within a timeframe, rather than everything booked up to that
+point. This makes the table useful for comparing booking patterns—for example, whether business
+passengers tend to book later than leisure passengers.
+
+Access this table as `summary.segmentation_by_timeframe`.
+
+### Index
+
+| Field           | Type    | Meaning                                                                           |
+| --------------- | ------- | --------------------------------------------------------------------------------- |
+| `trial`         | integer | Trial identifier (zero-based).                                                    |
+| `carrier`       | string  | Carrier code.                                                                     |
+| `booking_class` | string  | Booking class code.                                                               |
+| `days_prior`    | integer | Days before departure at the recorded observation or data collection point (DCP). |
+
+### Columns
+
+| Field                   | Type   | Meaning                                                                     |
+| ----------------------- | ------ | --------------------------------------------------------------------------- |
+| `(bookings, <segment>)` | number | Mean passengers booked in this timeframe per retained sample in this trial. |
+| `(revenue, <segment>)`  | number | Mean revenue earned in this timeframe per retained sample in this trial.    |
+
+Each column has two labels: the metric (`bookings` or `revenue`) and the passenger segment. Pandas
+calls this a MultiIndex. For example, `(bookings, business)` contains the average business bookings
+for each row.
+
+You may also see rows with carrier `NONE` and booking class `XX`. These represent passengers who did
+not book, rather than an actual carrier or class. Their revenue values can be missing (`NaN`).
+
+### Activation
+
+PassengerSim collects this information automatically during a normal simulation run. You do not need
+to enable database recording or add the table to
+[`outputs.reports`](passengersim.config.outputs.OutputConfig.reports).
+
+There is no separate on/off switch for collecting this table. If you only want to leave it out of
+the returned summary, you can use [selecting extracted tables](summary-selecting-extracted) to
+choose which tables to include.
+
+(summary-table-segmentation-detail)=
+
+## `segmentation_detail`
+
+This table adds market detail to the picture of when passengers book. Each row shows average
+bookings for a carrier, market, booking class, and data collection point (DCP), separately for each
+trial. It also splits those bookings into business and nonbusiness passengers.
+
+Here the counts are cumulative: a value at 14 days prior includes bookings made up to that point.
+This differs from `segmentation_by_timeframe`, whose values describe bookings within individual
+timeframes. Burned samples are excluded from the averages.
+
+If it is available, you can access this table as `summary.segmentation_detail`.
+
+### Index
+
+| Field           | Type    | Meaning                                                                           |
+| --------------- | ------- | --------------------------------------------------------------------------------- |
+| `trial`         | integer | Trial identifier (zero-based).                                                    |
+| `carrier`       | string  | Carrier code.                                                                     |
+| `orig`          | string  | Origin airport code.                                                              |
+| `dest`          | string  | Destination airport code.                                                         |
+| `booking_class` | string  | Booking class code.                                                               |
+| `days_prior`    | integer | Days before departure at the recorded observation or data collection point (DCP). |
+
+### Columns
+
+| Field          | Type   | Meaning                                                                                                     |
+| -------------- | ------ | ----------------------------------------------------------------------------------------------------------- |
+| `avg_sold`     | number | Mean cumulative passengers sold by this DCP.                                                                |
+| `avg_business` | number | Mean cumulative passengers counted in `sold_business`.                                                      |
+| `avg_leisure`  | number | Mean cumulative nonbusiness sales: `sold - sold_business`. This is not a separate arbitrary segment lookup. |
+
+To find the bookings made between two DCPs, subtract the earlier cumulative count from the later
+one. A plotting helper may do this subtraction for you, which is why a figure can show timeframe
+bookings even though this table contains cumulative values.
+
+### Activation
+
+This table is built from records saved in the simulation database. To make it available, set
+[`db.engine`](passengersim.config.DatabaseConfig.engine) to `sqlite` and include `fare` in
+[`db.write_items`](passengersim.config.DatabaseConfig.write_items) before running the simulation.
+Add `segmentation_detail` to [`outputs.reports`](passengersim.config.outputs.OutputConfig.reports)
+if you want PassengerSim to prepare the table as part of the run.
+
+For example, your configuration could include the following. These lists replace the existing
+settings, including the default `write_items`, so keep any other entries you still need:
+
+```yaml
+db:
+  engine: sqlite
+  write_items: [fare]
+outputs:
+  reports: [segmentation_detail]
+```
+
+Use `fare` to get the full booking curve, or `fare_final` if you only need the departure values;
+`fare_final` is part of the default `write_items`. The `bookings` option alone does not provide the
+fare records used to build this table.
+
+To stop preparing this table automatically, remove `segmentation_detail` from
+[`outputs.reports`](passengersim.config.outputs.OutputConfig.reports). You can still access it later
+if the required database records remain available. To stop recording the supporting data as well,
+remove `fare` from [`db.write_items`](passengersim.config.DatabaseConfig.write_items), along with
+any other recording options that save the same data. Keep those options if another report still
+needs them.
+
+See [database-backed tables](summary-database-backed) for how to keep the supporting database
+available or save a prepared table with your summary.

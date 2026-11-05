@@ -1,0 +1,133 @@
+# Forecast Accuracy
+
+(summary-table-forecast-accuracy)=
+
+## `forecast_accuracy`
+
+This table helps you compare forecast demand with the sales that actually occurred. It groups
+path-class observations by carrier, booking class, and timeframe, keeping each sample and trial
+separate.
+
+Only observations whose history shows no closure during the timeframe are included. This focuses the
+comparison on periods when availability controls did not close the class. The forecast means,
+variances, and sales are added across the qualifying observations; `num_obs` tells you how many
+observations contributed to each row.
+
+If it is available, you can access this table as `summary.forecast_accuracy`.
+
+### Index
+
+The rows have a simple numbered index. The fields that identify each observation are included as
+ordinary columns in the table below.
+
+### Columns
+
+| Field                   | Type    | Meaning                                                                                        |
+| ----------------------- | ------- | ---------------------------------------------------------------------------------------------- |
+| `trial`                 | integer | Trial identifier (zero-based).                                                                 |
+| `sample`                | integer | Sample identifier within the trial (zero-based).                                               |
+| `carrier`               | string  | Carrier code.                                                                                  |
+| `booking_class`         | string  | Booking class code.                                                                            |
+| `timeframe`             | integer | Zero-based booking timeframe index, not a number of days.                                      |
+| `num_zero_displacement` | integer | Reserved diagnostic counter; the current collector leaves it at its initialized value of zero. |
+| `num_obs`               | integer | Number of qualifying path-class observations.                                                  |
+| `sold`                  | number  | Seats sold.                                                                                    |
+| `sold_priceable`        | number  | Sales classified as priceable.                                                                 |
+| `fcst_mean`             | number  | Sum of qualifying path-class forecast means.                                                   |
+| `fcst_variance`         | number  | Sum of squared qualifying forecast standard deviations; a variance, not a standard deviation.  |
+
+This collector runs at the end of samples and does not itself remove burned samples. If you want to
+analyze only samples after the burn period, filter the `sample` column accordingly. The trial,
+sample, carrier, class, and timeframe remain ordinary columns, which you can use to select the
+observations you need.
+
+### Activation
+
+To collect this table, explicitly add `forecast_accuracy` to
+[`outputs.reports`](passengersim.config.outputs.OutputConfig.reports) before running:
+
+```yaml
+outputs:
+  reports: [forecast_accuracy]
+```
+
+Remove that name to turn collection off. You need to include the name itself; `reports: ["*"]` alone
+does not enable this collector, and `reports: ["*", "forecast_accuracy"]` enables it but stops the
+wildcard from requesting the database reports. To collect it alongside other reports, name each one.
+Although it is selected through the reports setting, this table does not require database recording.
+
+The revenue-management system must produce path-class forecasts and histories for there to be
+observations to collect. If none are available, the table can be `None`.
+
+(summary-table-edgar)=
+
+## `edgar`
+
+This table provides detailed forecast-accuracy records from the database. Each row compares a path
+class's forecast with its recorded sales for one timeframe in one sample. It also includes the
+recorded closure fraction, so you can see whether availability was restricted during that timeframe.
+
+Unlike `forecast_accuracy`, this table keeps individual paths separate. You can use it when you want
+to investigate the forecasts for particular itineraries instead of looking only at carrier-level
+totals. Burned samples are excluded.
+
+If it is available, you can access this table as `summary.edgar`.
+
+### Index
+
+The rows have a simple numbered index. The fields that identify each observation are included as
+ordinary columns in the table below.
+
+### Columns
+
+| Field            | Type    | Meaning                                                   |
+| ---------------- | ------- | --------------------------------------------------------- |
+| `iteration`      | integer | Simulation iteration identifier recorded by the database. |
+| `trial`          | integer | Trial identifier (zero-based).                            |
+| `sample`         | integer | Sample identifier within the trial (zero-based).          |
+| `timeframe`      | integer | Zero-based booking timeframe index, not a number of days. |
+| `path_id`        | integer | Path identifier; joins to `paths`.                        |
+| `booking_class`  | string  | Booking class code.                                       |
+| `sold`           | number  | Seats sold.                                               |
+| `sold_priceable` | number  | Sales classified as priceable.                            |
+| `forecast_mean`  | number  | Recorded timeframe demand forecast mean.                  |
+| `forecast_stdev` | number  | Recorded timeframe demand forecast standard deviation.    |
+| `closed`         | number  | Recorded timeframe closure fraction.                      |
+
+Each timeframe appears in a separate row. It does not become a separate column as it does in the
+wide layout of `demand_to_come`.
+
+Rows require path-class forecasts and histories. A configuration that only forecasts leg buckets can
+therefore return an empty table even with database recording enabled.
+
+### Activation
+
+This table is built from records saved in the simulation database. To make it available, set
+[`db.engine`](passengersim.config.DatabaseConfig.engine) to `sqlite` and include `edgar` in
+[`db.write_items`](passengersim.config.DatabaseConfig.write_items) before running the simulation.
+Add `edgar` to [`outputs.reports`](passengersim.config.outputs.OutputConfig.reports) if you want
+PassengerSim to prepare the table as part of the run.
+
+For example, your configuration could include the following. These lists replace the existing
+settings, including the default `write_items`, so keep any other entries you still need:
+
+```yaml
+db:
+  engine: sqlite
+  write_items: [edgar]
+outputs:
+  reports: [edgar]
+```
+
+Recording must be enabled while the simulation runs; requesting this table afterward cannot recreate
+forecast histories that were not saved.
+
+To stop preparing this table automatically, remove `edgar` from
+[`outputs.reports`](passengersim.config.outputs.OutputConfig.reports). You can still access it later
+if the required database records remain available. To stop recording the supporting data as well,
+remove `edgar` from [`db.write_items`](passengersim.config.DatabaseConfig.write_items), along with
+any other recording options that save the same data. Keep those options if another report still
+needs them.
+
+See [database-backed tables](summary-database-backed) for how to keep the supporting database
+available or save a prepared table with your summary.
